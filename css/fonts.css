@@ -1,0 +1,1140 @@
+/* Copyright (c) 2017 Himanshu Softtech.
+------------------------------------------------------------------
+	Google Web Foonts
+-------------------------------------------------------------------*/
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Open Sans Light'), local('OpenSans-Light'), url(https://fonts.gstatic.com/s/opensans/v13/DXI1ORHCpsQm3Vp6mXoaTa-j2U0lmluP9RWlSytm3ho.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+20B4, U+2DE0-2DFF, U+A640-A69F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Open Sans Light'), local('OpenSans-Light'), url(https://fonts.gstatic.com/s/opensans/v13/DXI1ORHCpsQm3Vp6mXoaTZX5f-9o1vgP2EXwfjgl7AY.woff2) format('woff2');
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Open Sans Light'), local('OpenSans-Light'), url(https://fonts.gstatic.com/s/opensans/v13/DXI1ORHCpsQm3Vp6mXoaTRWV49_lSm1NYrwo-zkhivY.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Open Sans Light'), local('OpenSans-Light'), url(https://fonts.gstatic.com/s/opensans/v13/DXI1ORHCpsQm3Vp6mXoaTaaRobkAwv3vxw3jMhVENGA.woff2) format('woff2');
+  unicode-range: U+0370-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Open Sans Light'), local('OpenSans-Light'), url(https://fonts.gstatic.com/s/opensans/v13/DXI1ORHCpsQm3Vp6mXoaTf8zf_FOSsgRmwsS7Aa9k2w.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Open Sans Light'), local('OpenSans-Light'), url(https://fonts.gstatic.com/s/opensans/v13/DXI1ORHCpsQm3Vp6mXoaTT0LW-43aMEzIO6XUTLjad8.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Open Sans Light'), local('OpenSans-Light'), url(https://fonts.gstatic.com/s/opensans/v13/DXI1ORHCpsQm3Vp6mXoaTegdm0LZdjqr5-oayXSOefg.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Open Sans'), local('OpenSans'), url(https://fonts.gstatic.com/s/opensans/v13/K88pR3goAWT7BTt32Z01mxJtnKITppOI_IvcXXDNrsc.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+20B4, U+2DE0-2DFF, U+A640-A69F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Open Sans'), local('OpenSans'), url(https://fonts.gstatic.com/s/opensans/v13/RjgO7rYTmqiVp7vzi-Q5URJtnKITppOI_IvcXXDNrsc.woff2) format('woff2');
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Open Sans'), local('OpenSans'), url(https://fonts.gstatic.com/s/opensans/v13/LWCjsQkB6EMdfHrEVqA1KRJtnKITppOI_IvcXXDNrsc.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Open Sans'), local('OpenSans'), url(https://fonts.gstatic.com/s/opensans/v13/xozscpT2726on7jbcb_pAhJtnKITppOI_IvcXXDNrsc.woff2) format('woff2');
+  unicode-range: U+0370-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Open Sans'), local('OpenSans'), url(https://fonts.gstatic.com/s/opensans/v13/59ZRklaO5bWGqF5A9baEERJtnKITppOI_IvcXXDNrsc.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Open Sans'), local('OpenSans'), url(https://fonts.gstatic.com/s/opensans/v13/u-WUoqrET9fUeobQW7jkRRJtnKITppOI_IvcXXDNrsc.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Open Sans'), local('OpenSans'), url(https://fonts.gstatic.com/s/opensans/v13/cJZKeOuBrn4kERxqtaUH3VtXRa8TVwTICgirnJhmVJw.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 600;
+  src: local('Open Sans Semibold'), local('OpenSans-Semibold'), url(https://fonts.gstatic.com/s/opensans/v13/MTP_ySUJH_bn48VBG8sNSq-j2U0lmluP9RWlSytm3ho.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+20B4, U+2DE0-2DFF, U+A640-A69F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 600;
+  src: local('Open Sans Semibold'), local('OpenSans-Semibold'), url(https://fonts.gstatic.com/s/opensans/v13/MTP_ySUJH_bn48VBG8sNSpX5f-9o1vgP2EXwfjgl7AY.woff2) format('woff2');
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 600;
+  src: local('Open Sans Semibold'), local('OpenSans-Semibold'), url(https://fonts.gstatic.com/s/opensans/v13/MTP_ySUJH_bn48VBG8sNShWV49_lSm1NYrwo-zkhivY.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 600;
+  src: local('Open Sans Semibold'), local('OpenSans-Semibold'), url(https://fonts.gstatic.com/s/opensans/v13/MTP_ySUJH_bn48VBG8sNSqaRobkAwv3vxw3jMhVENGA.woff2) format('woff2');
+  unicode-range: U+0370-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 600;
+  src: local('Open Sans Semibold'), local('OpenSans-Semibold'), url(https://fonts.gstatic.com/s/opensans/v13/MTP_ySUJH_bn48VBG8sNSv8zf_FOSsgRmwsS7Aa9k2w.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 600;
+  src: local('Open Sans Semibold'), local('OpenSans-Semibold'), url(https://fonts.gstatic.com/s/opensans/v13/MTP_ySUJH_bn48VBG8sNSj0LW-43aMEzIO6XUTLjad8.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 600;
+  src: local('Open Sans Semibold'), local('OpenSans-Semibold'), url(https://fonts.gstatic.com/s/opensans/v13/MTP_ySUJH_bn48VBG8sNSugdm0LZdjqr5-oayXSOefg.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Open Sans Bold'), local('OpenSans-Bold'), url(https://fonts.gstatic.com/s/opensans/v13/k3k702ZOKiLJc3WVjuplzK-j2U0lmluP9RWlSytm3ho.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+20B4, U+2DE0-2DFF, U+A640-A69F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Open Sans Bold'), local('OpenSans-Bold'), url(https://fonts.gstatic.com/s/opensans/v13/k3k702ZOKiLJc3WVjuplzJX5f-9o1vgP2EXwfjgl7AY.woff2) format('woff2');
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Open Sans Bold'), local('OpenSans-Bold'), url(https://fonts.gstatic.com/s/opensans/v13/k3k702ZOKiLJc3WVjuplzBWV49_lSm1NYrwo-zkhivY.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Open Sans Bold'), local('OpenSans-Bold'), url(https://fonts.gstatic.com/s/opensans/v13/k3k702ZOKiLJc3WVjuplzKaRobkAwv3vxw3jMhVENGA.woff2) format('woff2');
+  unicode-range: U+0370-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Open Sans Bold'), local('OpenSans-Bold'), url(https://fonts.gstatic.com/s/opensans/v13/k3k702ZOKiLJc3WVjuplzP8zf_FOSsgRmwsS7Aa9k2w.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Open Sans Bold'), local('OpenSans-Bold'), url(https://fonts.gstatic.com/s/opensans/v13/k3k702ZOKiLJc3WVjuplzD0LW-43aMEzIO6XUTLjad8.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Open Sans Bold'), local('OpenSans-Bold'), url(https://fonts.gstatic.com/s/opensans/v13/k3k702ZOKiLJc3WVjuplzOgdm0LZdjqr5-oayXSOefg.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 800;
+  src: local('Open Sans Extrabold'), local('OpenSans-Extrabold'), url(https://fonts.gstatic.com/s/opensans/v13/EInbV5DfGHOiMmvb1Xr-hq-j2U0lmluP9RWlSytm3ho.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+20B4, U+2DE0-2DFF, U+A640-A69F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 800;
+  src: local('Open Sans Extrabold'), local('OpenSans-Extrabold'), url(https://fonts.gstatic.com/s/opensans/v13/EInbV5DfGHOiMmvb1Xr-hpX5f-9o1vgP2EXwfjgl7AY.woff2) format('woff2');
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 800;
+  src: local('Open Sans Extrabold'), local('OpenSans-Extrabold'), url(https://fonts.gstatic.com/s/opensans/v13/EInbV5DfGHOiMmvb1Xr-hhWV49_lSm1NYrwo-zkhivY.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 800;
+  src: local('Open Sans Extrabold'), local('OpenSans-Extrabold'), url(https://fonts.gstatic.com/s/opensans/v13/EInbV5DfGHOiMmvb1Xr-hqaRobkAwv3vxw3jMhVENGA.woff2) format('woff2');
+  unicode-range: U+0370-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 800;
+  src: local('Open Sans Extrabold'), local('OpenSans-Extrabold'), url(https://fonts.gstatic.com/s/opensans/v13/EInbV5DfGHOiMmvb1Xr-hv8zf_FOSsgRmwsS7Aa9k2w.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 800;
+  src: local('Open Sans Extrabold'), local('OpenSans-Extrabold'), url(https://fonts.gstatic.com/s/opensans/v13/EInbV5DfGHOiMmvb1Xr-hj0LW-43aMEzIO6XUTLjad8.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 800;
+  src: local('Open Sans Extrabold'), local('OpenSans-Extrabold'), url(https://fonts.gstatic.com/s/opensans/v13/EInbV5DfGHOiMmvb1Xr-hugdm0LZdjqr5-oayXSOefg.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 300;
+  src: local('Open Sans Light Italic'), local('OpenSansLight-Italic'), url(https://fonts.gstatic.com/s/opensans/v13/PRmiXeptR36kaC0GEAetxhgVThLs8Y7ETJzDCYFCSLE.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+20B4, U+2DE0-2DFF, U+A640-A69F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 300;
+  src: local('Open Sans Light Italic'), local('OpenSansLight-Italic'), url(https://fonts.gstatic.com/s/opensans/v13/PRmiXeptR36kaC0GEAetxpiMaisvaUVUsYyVzOmndek.woff2) format('woff2');
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 300;
+  src: local('Open Sans Light Italic'), local('OpenSansLight-Italic'), url(https://fonts.gstatic.com/s/opensans/v13/PRmiXeptR36kaC0GEAetxrBAWGjcah5Ky0jbCgIwDB8.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 300;
+  src: local('Open Sans Light Italic'), local('OpenSansLight-Italic'), url(https://fonts.gstatic.com/s/opensans/v13/PRmiXeptR36kaC0GEAetxv14vlcfyPYlAcQy2UfDRm4.woff2) format('woff2');
+  unicode-range: U+0370-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 300;
+  src: local('Open Sans Light Italic'), local('OpenSansLight-Italic'), url(https://fonts.gstatic.com/s/opensans/v13/PRmiXeptR36kaC0GEAetxqfJul7RR1X4poJgi27uS4w.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 300;
+  src: local('Open Sans Light Italic'), local('OpenSansLight-Italic'), url(https://fonts.gstatic.com/s/opensans/v13/PRmiXeptR36kaC0GEAetxqvyPXdneeGd26m9EmFSSWg.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 300;
+  src: local('Open Sans Light Italic'), local('OpenSansLight-Italic'), url(https://fonts.gstatic.com/s/opensans/v13/PRmiXeptR36kaC0GEAetxko2lTMeWA_kmIyWrkNCwPc.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 400;
+  src: local('Open Sans Italic'), local('OpenSans-Italic'), url(https://fonts.gstatic.com/s/opensans/v13/xjAJXh38I15wypJXxuGMBjTOQ_MqJVwkKsUn0wKzc2I.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+20B4, U+2DE0-2DFF, U+A640-A69F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 400;
+  src: local('Open Sans Italic'), local('OpenSans-Italic'), url(https://fonts.gstatic.com/s/opensans/v13/xjAJXh38I15wypJXxuGMBjUj_cnvWIuuBMVgbX098Mw.woff2) format('woff2');
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 400;
+  src: local('Open Sans Italic'), local('OpenSans-Italic'), url(https://fonts.gstatic.com/s/opensans/v13/xjAJXh38I15wypJXxuGMBkbcKLIaa1LC45dFaAfauRA.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 400;
+  src: local('Open Sans Italic'), local('OpenSans-Italic'), url(https://fonts.gstatic.com/s/opensans/v13/xjAJXh38I15wypJXxuGMBmo_sUJ8uO4YLWRInS22T3Y.woff2) format('woff2');
+  unicode-range: U+0370-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 400;
+  src: local('Open Sans Italic'), local('OpenSans-Italic'), url(https://fonts.gstatic.com/s/opensans/v13/xjAJXh38I15wypJXxuGMBr6up8jxqWt8HVA3mDhkV_0.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 400;
+  src: local('Open Sans Italic'), local('OpenSans-Italic'), url(https://fonts.gstatic.com/s/opensans/v13/xjAJXh38I15wypJXxuGMBiYE0-AqJ3nfInTTiDXDjU4.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 400;
+  src: local('Open Sans Italic'), local('OpenSans-Italic'), url(https://fonts.gstatic.com/s/opensans/v13/xjAJXh38I15wypJXxuGMBo4P5ICox8Kq3LLUNMylGO4.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 600;
+  src: local('Open Sans Semibold Italic'), local('OpenSans-SemiboldItalic'), url(https://fonts.gstatic.com/s/opensans/v13/PRmiXeptR36kaC0GEAetxmgpAmOCqD37_tyH_8Ri5MM.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+20B4, U+2DE0-2DFF, U+A640-A69F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 600;
+  src: local('Open Sans Semibold Italic'), local('OpenSans-SemiboldItalic'), url(https://fonts.gstatic.com/s/opensans/v13/PRmiXeptR36kaC0GEAetxsPNMTLbnS9uQzHQlYieHUU.woff2) format('woff2');
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 600;
+  src: local('Open Sans Semibold Italic'), local('OpenSans-SemiboldItalic'), url(https://fonts.gstatic.com/s/opensans/v13/PRmiXeptR36kaC0GEAetxgyhumQnPMBCoGYhRaNxyyY.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 600;
+  src: local('Open Sans Semibold Italic'), local('OpenSans-SemiboldItalic'), url(https://fonts.gstatic.com/s/opensans/v13/PRmiXeptR36kaC0GEAetxhUVAXEdVvYDDqrz3aeR0Yc.woff2) format('woff2');
+  unicode-range: U+0370-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 600;
+  src: local('Open Sans Semibold Italic'), local('OpenSans-SemiboldItalic'), url(https://fonts.gstatic.com/s/opensans/v13/PRmiXeptR36kaC0GEAetxlf4y_3s5bcYyyLIFUSWYUU.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 600;
+  src: local('Open Sans Semibold Italic'), local('OpenSans-SemiboldItalic'), url(https://fonts.gstatic.com/s/opensans/v13/PRmiXeptR36kaC0GEAetxnywqdtBbUHn3VPgzuFrCy8.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 600;
+  src: local('Open Sans Semibold Italic'), local('OpenSans-SemiboldItalic'), url(https://fonts.gstatic.com/s/opensans/v13/PRmiXeptR36kaC0GEAetxl2umOyRU7PgRiv8DXcgJjk.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 700;
+  src: local('Open Sans Bold Italic'), local('OpenSans-BoldItalic'), url(https://fonts.gstatic.com/s/opensans/v13/PRmiXeptR36kaC0GEAetxp6iIh_FvlUHQwED9Yt5Kbw.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+20B4, U+2DE0-2DFF, U+A640-A69F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 700;
+  src: local('Open Sans Bold Italic'), local('OpenSans-BoldItalic'), url(https://fonts.gstatic.com/s/opensans/v13/PRmiXeptR36kaC0GEAetxi_vZmeiCMnoWNN9rHBYaTc.woff2) format('woff2');
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 700;
+  src: local('Open Sans Bold Italic'), local('OpenSans-BoldItalic'), url(https://fonts.gstatic.com/s/opensans/v13/PRmiXeptR36kaC0GEAetxiFaMxiho_5XQnyRZzQsrZs.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 700;
+  src: local('Open Sans Bold Italic'), local('OpenSans-BoldItalic'), url(https://fonts.gstatic.com/s/opensans/v13/PRmiXeptR36kaC0GEAetxgalQocB-__pDVGhF3uS2Ks.woff2) format('woff2');
+  unicode-range: U+0370-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 700;
+  src: local('Open Sans Bold Italic'), local('OpenSans-BoldItalic'), url(https://fonts.gstatic.com/s/opensans/v13/PRmiXeptR36kaC0GEAetxmhQUTDJGru-0vvUpABgH8I.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 700;
+  src: local('Open Sans Bold Italic'), local('OpenSans-BoldItalic'), url(https://fonts.gstatic.com/s/opensans/v13/PRmiXeptR36kaC0GEAetxujkDdvhIIFj_YMdgqpnSB0.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 700;
+  src: local('Open Sans Bold Italic'), local('OpenSans-BoldItalic'), url(https://fonts.gstatic.com/s/opensans/v13/PRmiXeptR36kaC0GEAetxolIZu-HDpmDIZMigmsroc4.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 800;
+  src: local('Open Sans Extrabold Italic'), local('OpenSans-ExtraboldItalic'), url(https://fonts.gstatic.com/s/opensans/v13/PRmiXeptR36kaC0GEAetxiU8QAtQT9M0M1_mbVWrUPc.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+20B4, U+2DE0-2DFF, U+A640-A69F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 800;
+  src: local('Open Sans Extrabold Italic'), local('OpenSans-ExtraboldItalic'), url(https://fonts.gstatic.com/s/opensans/v13/PRmiXeptR36kaC0GEAetxkNaUOL0oYRolx8sebiIY9k.woff2) format('woff2');
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 800;
+  src: local('Open Sans Extrabold Italic'), local('OpenSans-ExtraboldItalic'), url(https://fonts.gstatic.com/s/opensans/v13/PRmiXeptR36kaC0GEAetxooGEx1DzoxsbCRd2IM2afI.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 800;
+  src: local('Open Sans Extrabold Italic'), local('OpenSans-ExtraboldItalic'), url(https://fonts.gstatic.com/s/opensans/v13/PRmiXeptR36kaC0GEAetxnPzCMEhbIaaYiFY6KPniws.woff2) format('woff2');
+  unicode-range: U+0370-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 800;
+  src: local('Open Sans Extrabold Italic'), local('OpenSans-ExtraboldItalic'), url(https://fonts.gstatic.com/s/opensans/v13/PRmiXeptR36kaC0GEAetxmqi69zMYkLa7XwlUIemKB4.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 800;
+  src: local('Open Sans Extrabold Italic'), local('OpenSans-ExtraboldItalic'), url(https://fonts.gstatic.com/s/opensans/v13/PRmiXeptR36kaC0GEAetxowYyzpnB4tyYboSwKGmD2g.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 800;
+  src: local('Open Sans Extrabold Italic'), local('OpenSans-ExtraboldItalic'), url(https://fonts.gstatic.com/s/opensans/v13/PRmiXeptR36kaC0GEAetxnibbpXgLHK_uTT48UMyjSM.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+/* thai */
+@font-face {
+  font-family: 'Trirong';
+  font-style: normal;
+  font-weight: 100;
+  src: local('Trirong Thin'), local('Trirong-Thin'), url(https://fonts.gstatic.com/s/trirong/v1/NfSNMaMN4kf6703rd0JeLBJtnKITppOI_IvcXXDNrsc.woff2) format('woff2');
+  unicode-range: U+0E01-0E5B, U+200B-200D, U+25CC;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Trirong';
+  font-style: normal;
+  font-weight: 100;
+  src: local('Trirong Thin'), local('Trirong-Thin'), url(https://fonts.gstatic.com/s/trirong/v1/CZmZxe1gpu7DiZ08PMgFqhJtnKITppOI_IvcXXDNrsc.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Trirong';
+  font-style: normal;
+  font-weight: 100;
+  src: local('Trirong Thin'), local('Trirong-Thin'), url(https://fonts.gstatic.com/s/trirong/v1/bWEaINHc2x1iTRU0gnFllRJtnKITppOI_IvcXXDNrsc.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Trirong';
+  font-style: normal;
+  font-weight: 100;
+  src: local('Trirong Thin'), local('Trirong-Thin'), url(https://fonts.gstatic.com/s/trirong/v1/qdgKII8LqBa9LVgdj-tLoVtXRa8TVwTICgirnJhmVJw.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+/* thai */
+@font-face {
+  font-family: 'Trirong';
+  font-style: normal;
+  font-weight: 200;
+  src: local('Trirong ExtraLight'), local('Trirong-ExtraLight'), url(https://fonts.gstatic.com/s/trirong/v1/jBemu7pkM1JOiMz8rYsK7CEAvth_LlrfE80CYdSH47w.woff2) format('woff2');
+  unicode-range: U+0E01-0E5B, U+200B-200D, U+25CC;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Trirong';
+  font-style: normal;
+  font-weight: 200;
+  src: local('Trirong ExtraLight'), local('Trirong-ExtraLight'), url(https://fonts.gstatic.com/s/trirong/v1/SokQJg9RBlvlTwsrcgQkkiEAvth_LlrfE80CYdSH47w.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Trirong';
+  font-style: normal;
+  font-weight: 200;
+  src: local('Trirong ExtraLight'), local('Trirong-ExtraLight'), url(https://fonts.gstatic.com/s/trirong/v1/-dU-fRda2WHOQGxVAMHE0yEAvth_LlrfE80CYdSH47w.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Trirong';
+  font-style: normal;
+  font-weight: 200;
+  src: local('Trirong ExtraLight'), local('Trirong-ExtraLight'), url(https://fonts.gstatic.com/s/trirong/v1/n1RSIKrqOQ6p0SZUKLYN2vk_vArhqVIZ0nv9q090hN8.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+/* thai */
+@font-face {
+  font-family: 'Trirong';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Trirong Light'), local('Trirong-Light'), url(https://fonts.gstatic.com/s/trirong/v1/-Psj1KIo86I1b3ZSLwWRIyEAvth_LlrfE80CYdSH47w.woff2) format('woff2');
+  unicode-range: U+0E01-0E5B, U+200B-200D, U+25CC;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Trirong';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Trirong Light'), local('Trirong-Light'), url(https://fonts.gstatic.com/s/trirong/v1/RAC9EsHoECWF1xJIQhboWyEAvth_LlrfE80CYdSH47w.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Trirong';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Trirong Light'), local('Trirong-Light'), url(https://fonts.gstatic.com/s/trirong/v1/wwElEPHd-Ecw4njvQQvXVyEAvth_LlrfE80CYdSH47w.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Trirong';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Trirong Light'), local('Trirong-Light'), url(https://fonts.gstatic.com/s/trirong/v1/dE1_uFXuaeskga5DHjtiCvk_vArhqVIZ0nv9q090hN8.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+/* thai */
+@font-face {
+  font-family: 'Trirong';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Trirong'), local('Trirong-Regular'), url(https://fonts.gstatic.com/s/trirong/v1/9ral2ynWdm-gU9xBJ3XfufY6323mHUZFJMgTvxaG2iE.woff2) format('woff2');
+  unicode-range: U+0E01-0E5B, U+200B-200D, U+25CC;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Trirong';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Trirong'), local('Trirong-Regular'), url(https://fonts.gstatic.com/s/trirong/v1/HgJImb0A0mibs8qbN9Un2PY6323mHUZFJMgTvxaG2iE.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Trirong';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Trirong'), local('Trirong-Regular'), url(https://fonts.gstatic.com/s/trirong/v1/Xn0JiMD4KyYYq0-1n4bIcvY6323mHUZFJMgTvxaG2iE.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Trirong';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Trirong'), local('Trirong-Regular'), url(https://fonts.gstatic.com/s/trirong/v1/XBaDEcwEYQS_hYkoepMU7g.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+/* thai */
+@font-face {
+  font-family: 'Trirong';
+  font-style: normal;
+  font-weight: 500;
+  src: local('Trirong Medium'), local('Trirong-Medium'), url(https://fonts.gstatic.com/s/trirong/v1/Bl8SUbbRPrQDfw7TIbX-XiEAvth_LlrfE80CYdSH47w.woff2) format('woff2');
+  unicode-range: U+0E01-0E5B, U+200B-200D, U+25CC;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Trirong';
+  font-style: normal;
+  font-weight: 500;
+  src: local('Trirong Medium'), local('Trirong-Medium'), url(https://fonts.gstatic.com/s/trirong/v1/EsLITv-mL74c6lxK9HHFtCEAvth_LlrfE80CYdSH47w.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Trirong';
+  font-style: normal;
+  font-weight: 500;
+  src: local('Trirong Medium'), local('Trirong-Medium'), url(https://fonts.gstatic.com/s/trirong/v1/AravEUIBBY5M0AZTpt2zoCEAvth_LlrfE80CYdSH47w.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Trirong';
+  font-style: normal;
+  font-weight: 500;
+  src: local('Trirong Medium'), local('Trirong-Medium'), url(https://fonts.gstatic.com/s/trirong/v1/inkREz9TTtA-v1LykaD9-_k_vArhqVIZ0nv9q090hN8.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+/* thai */
+@font-face {
+  font-family: 'Trirong';
+  font-style: normal;
+  font-weight: 600;
+  src: local('Trirong SemiBold'), local('Trirong-SemiBold'), url(https://fonts.gstatic.com/s/trirong/v1/gSNsE4U1_sen-3KWslVX7yEAvth_LlrfE80CYdSH47w.woff2) format('woff2');
+  unicode-range: U+0E01-0E5B, U+200B-200D, U+25CC;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Trirong';
+  font-style: normal;
+  font-weight: 600;
+  src: local('Trirong SemiBold'), local('Trirong-SemiBold'), url(https://fonts.gstatic.com/s/trirong/v1/6_wxsTNH1rIv8J_2vMUvrSEAvth_LlrfE80CYdSH47w.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Trirong';
+  font-style: normal;
+  font-weight: 600;
+  src: local('Trirong SemiBold'), local('Trirong-SemiBold'), url(https://fonts.gstatic.com/s/trirong/v1/66_Wq3XQzsvkXQVzm8utTiEAvth_LlrfE80CYdSH47w.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Trirong';
+  font-style: normal;
+  font-weight: 600;
+  src: local('Trirong SemiBold'), local('Trirong-SemiBold'), url(https://fonts.gstatic.com/s/trirong/v1/5CcCL_LCmLu6d_O1HEemVPk_vArhqVIZ0nv9q090hN8.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+/* thai */
+@font-face {
+  font-family: 'Trirong';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Trirong Bold'), local('Trirong-Bold'), url(https://fonts.gstatic.com/s/trirong/v1/1w1f0NWTNdu-4c2BpVVm9yEAvth_LlrfE80CYdSH47w.woff2) format('woff2');
+  unicode-range: U+0E01-0E5B, U+200B-200D, U+25CC;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Trirong';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Trirong Bold'), local('Trirong-Bold'), url(https://fonts.gstatic.com/s/trirong/v1/BCXKl8QkVfYV6WlDiCjDUCEAvth_LlrfE80CYdSH47w.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Trirong';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Trirong Bold'), local('Trirong-Bold'), url(https://fonts.gstatic.com/s/trirong/v1/p2hcSmKd3NwzGvJyTy03YiEAvth_LlrfE80CYdSH47w.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Trirong';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Trirong Bold'), local('Trirong-Bold'), url(https://fonts.gstatic.com/s/trirong/v1/0KkcdNa49hXaiBFcGFXf1vk_vArhqVIZ0nv9q090hN8.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+/* thai */
+@font-face {
+  font-family: 'Trirong';
+  font-style: normal;
+  font-weight: 800;
+  src: local('Trirong ExtraBold'), local('Trirong-ExtraBold'), url(https://fonts.gstatic.com/s/trirong/v1/_Z3EkiZS2aszgCeMC38y5CEAvth_LlrfE80CYdSH47w.woff2) format('woff2');
+  unicode-range: U+0E01-0E5B, U+200B-200D, U+25CC;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Trirong';
+  font-style: normal;
+  font-weight: 800;
+  src: local('Trirong ExtraBold'), local('Trirong-ExtraBold'), url(https://fonts.gstatic.com/s/trirong/v1/-U5lUxxKq5Q9B9oWSkUKWCEAvth_LlrfE80CYdSH47w.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Trirong';
+  font-style: normal;
+  font-weight: 800;
+  src: local('Trirong ExtraBold'), local('Trirong-ExtraBold'), url(https://fonts.gstatic.com/s/trirong/v1/pk98DB--kqzhdTKDUNoPBiEAvth_LlrfE80CYdSH47w.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Trirong';
+  font-style: normal;
+  font-weight: 800;
+  src: local('Trirong ExtraBold'), local('Trirong-ExtraBold'), url(https://fonts.gstatic.com/s/trirong/v1/Z6S1NnZuUh0WnjdCiC9cvPk_vArhqVIZ0nv9q090hN8.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+/* thai */
+@font-face {
+  font-family: 'Trirong';
+  font-style: normal;
+  font-weight: 900;
+  src: local('Trirong Black'), local('Trirong-Black'), url(https://fonts.gstatic.com/s/trirong/v1/ZVMMz1O8y4FQ3RM5YB8q9SEAvth_LlrfE80CYdSH47w.woff2) format('woff2');
+  unicode-range: U+0E01-0E5B, U+200B-200D, U+25CC;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Trirong';
+  font-style: normal;
+  font-weight: 900;
+  src: local('Trirong Black'), local('Trirong-Black'), url(https://fonts.gstatic.com/s/trirong/v1/5O7Kv3PzCYfN03kgeHSmliEAvth_LlrfE80CYdSH47w.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Trirong';
+  font-style: normal;
+  font-weight: 900;
+  src: local('Trirong Black'), local('Trirong-Black'), url(https://fonts.gstatic.com/s/trirong/v1/NHM-pnUpYM2A_MdIrY26vSEAvth_LlrfE80CYdSH47w.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Trirong';
+  font-style: normal;
+  font-weight: 900;
+  src: local('Trirong Black'), local('Trirong-Black'), url(https://fonts.gstatic.com/s/trirong/v1/2jzt4lEEga-L3HAkUHdR6fk_vArhqVIZ0nv9q090hN8.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+/* thai */
+@font-face {
+  font-family: 'Trirong';
+  font-style: italic;
+  font-weight: 100;
+  src: local('Trirong Thin Italic'), local('Trirong-ThinItalic'), url(https://fonts.gstatic.com/s/trirong/v1/7Ut1lzbLgP19CG_lHobbH-FY7tQMqA7htllgKUPga3w.woff2) format('woff2');
+  unicode-range: U+0E01-0E5B, U+200B-200D, U+25CC;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Trirong';
+  font-style: italic;
+  font-weight: 100;
+  src: local('Trirong Thin Italic'), local('Trirong-ThinItalic'), url(https://fonts.gstatic.com/s/trirong/v1/7Ut1lzbLgP19CG_lHobbH76up8jxqWt8HVA3mDhkV_0.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Trirong';
+  font-style: italic;
+  font-weight: 100;
+  src: local('Trirong Thin Italic'), local('Trirong-ThinItalic'), url(https://fonts.gstatic.com/s/trirong/v1/7Ut1lzbLgP19CG_lHobbHyYE0-AqJ3nfInTTiDXDjU4.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Trirong';
+  font-style: italic;
+  font-weight: 100;
+  src: local('Trirong Thin Italic'), local('Trirong-ThinItalic'), url(https://fonts.gstatic.com/s/trirong/v1/7Ut1lzbLgP19CG_lHobbH44P5ICox8Kq3LLUNMylGO4.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+/* thai */
+@font-face {
+  font-family: 'Trirong';
+  font-style: italic;
+  font-weight: 200;
+  src: local('Trirong ExtraLight Italic'), local('Trirong-ExtraLightItalic'), url(https://fonts.gstatic.com/s/trirong/v1/TLnptEEWKdIVHKJYBO592znLaWgLxsEwX72EbqUjsQ0.woff2) format('woff2');
+  unicode-range: U+0E01-0E5B, U+200B-200D, U+25CC;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Trirong';
+  font-style: italic;
+  font-weight: 200;
+  src: local('Trirong ExtraLight Italic'), local('Trirong-ExtraLightItalic'), url(https://fonts.gstatic.com/s/trirong/v1/TLnptEEWKdIVHKJYBO592_8zf_FOSsgRmwsS7Aa9k2w.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Trirong';
+  font-style: italic;
+  font-weight: 200;
+  src: local('Trirong ExtraLight Italic'), local('Trirong-ExtraLightItalic'), url(https://fonts.gstatic.com/s/trirong/v1/TLnptEEWKdIVHKJYBO592z0LW-43aMEzIO6XUTLjad8.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Trirong';
+  font-style: italic;
+  font-weight: 200;
+  src: local('Trirong ExtraLight Italic'), local('Trirong-ExtraLightItalic'), url(https://fonts.gstatic.com/s/trirong/v1/TLnptEEWKdIVHKJYBO592-gdm0LZdjqr5-oayXSOefg.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+/* thai */
+@font-face {
+  font-family: 'Trirong';
+  font-style: italic;
+  font-weight: 300;
+  src: local('Trirong Light Italic'), local('Trirong-LightItalic'), url(https://fonts.gstatic.com/s/trirong/v1/RnkK09k5OfEHFxd_smcYuDnLaWgLxsEwX72EbqUjsQ0.woff2) format('woff2');
+  unicode-range: U+0E01-0E5B, U+200B-200D, U+25CC;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Trirong';
+  font-style: italic;
+  font-weight: 300;
+  src: local('Trirong Light Italic'), local('Trirong-LightItalic'), url(https://fonts.gstatic.com/s/trirong/v1/RnkK09k5OfEHFxd_smcYuP8zf_FOSsgRmwsS7Aa9k2w.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Trirong';
+  font-style: italic;
+  font-weight: 300;
+  src: local('Trirong Light Italic'), local('Trirong-LightItalic'), url(https://fonts.gstatic.com/s/trirong/v1/RnkK09k5OfEHFxd_smcYuD0LW-43aMEzIO6XUTLjad8.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Trirong';
+  font-style: italic;
+  font-weight: 300;
+  src: local('Trirong Light Italic'), local('Trirong-LightItalic'), url(https://fonts.gstatic.com/s/trirong/v1/RnkK09k5OfEHFxd_smcYuOgdm0LZdjqr5-oayXSOefg.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+/* thai */
+@font-face {
+  font-family: 'Trirong';
+  font-style: italic;
+  font-weight: 400;
+  src: local('Trirong Italic'), local('Trirong-Italic'), url(https://fonts.gstatic.com/s/trirong/v1/FzvaWVv5Cpmm-od0KXCzJhJtnKITppOI_IvcXXDNrsc.woff2) format('woff2');
+  unicode-range: U+0E01-0E5B, U+200B-200D, U+25CC;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Trirong';
+  font-style: italic;
+  font-weight: 400;
+  src: local('Trirong Italic'), local('Trirong-Italic'), url(https://fonts.gstatic.com/s/trirong/v1/GCo_0nb0GNqgFlvLaw3CNRJtnKITppOI_IvcXXDNrsc.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Trirong';
+  font-style: italic;
+  font-weight: 400;
+  src: local('Trirong Italic'), local('Trirong-Italic'), url(https://fonts.gstatic.com/s/trirong/v1/qpRR2egNrq2iaAdT2p_fHRJtnKITppOI_IvcXXDNrsc.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Trirong';
+  font-style: italic;
+  font-weight: 400;
+  src: local('Trirong Italic'), local('Trirong-Italic'), url(https://fonts.gstatic.com/s/trirong/v1/vEEvDXpulF0LuWdtFo9c2ltXRa8TVwTICgirnJhmVJw.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+/* thai */
+@font-face {
+  font-family: 'Trirong';
+  font-style: italic;
+  font-weight: 500;
+  src: local('Trirong Medium Italic'), local('Trirong-MediumItalic'), url(https://fonts.gstatic.com/s/trirong/v1/I7H5Vf-5oH45BHkyxaUodTnLaWgLxsEwX72EbqUjsQ0.woff2) format('woff2');
+  unicode-range: U+0E01-0E5B, U+200B-200D, U+25CC;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Trirong';
+  font-style: italic;
+  font-weight: 500;
+  src: local('Trirong Medium Italic'), local('Trirong-MediumItalic'), url(https://fonts.gstatic.com/s/trirong/v1/I7H5Vf-5oH45BHkyxaUodf8zf_FOSsgRmwsS7Aa9k2w.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Trirong';
+  font-style: italic;
+  font-weight: 500;
+  src: local('Trirong Medium Italic'), local('Trirong-MediumItalic'), url(https://fonts.gstatic.com/s/trirong/v1/I7H5Vf-5oH45BHkyxaUodT0LW-43aMEzIO6XUTLjad8.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Trirong';
+  font-style: italic;
+  font-weight: 500;
+  src: local('Trirong Medium Italic'), local('Trirong-MediumItalic'), url(https://fonts.gstatic.com/s/trirong/v1/I7H5Vf-5oH45BHkyxaUodegdm0LZdjqr5-oayXSOefg.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+/* thai */
+@font-face {
+  font-family: 'Trirong';
+  font-style: italic;
+  font-weight: 600;
+  src: local('Trirong SemiBold Italic'), local('Trirong-SemiBoldItalic'), url(https://fonts.gstatic.com/s/trirong/v1/BXLhSV51vCWUiACSqyWe6jnLaWgLxsEwX72EbqUjsQ0.woff2) format('woff2');
+  unicode-range: U+0E01-0E5B, U+200B-200D, U+25CC;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Trirong';
+  font-style: italic;
+  font-weight: 600;
+  src: local('Trirong SemiBold Italic'), local('Trirong-SemiBoldItalic'), url(https://fonts.gstatic.com/s/trirong/v1/BXLhSV51vCWUiACSqyWe6v8zf_FOSsgRmwsS7Aa9k2w.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Trirong';
+  font-style: italic;
+  font-weight: 600;
+  src: local('Trirong SemiBold Italic'), local('Trirong-SemiBoldItalic'), url(https://fonts.gstatic.com/s/trirong/v1/BXLhSV51vCWUiACSqyWe6j0LW-43aMEzIO6XUTLjad8.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Trirong';
+  font-style: italic;
+  font-weight: 600;
+  src: local('Trirong SemiBold Italic'), local('Trirong-SemiBoldItalic'), url(https://fonts.gstatic.com/s/trirong/v1/BXLhSV51vCWUiACSqyWe6ugdm0LZdjqr5-oayXSOefg.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+/* thai */
+@font-face {
+  font-family: 'Trirong';
+  font-style: italic;
+  font-weight: 700;
+  src: local('Trirong Bold Italic'), local('Trirong-BoldItalic'), url(https://fonts.gstatic.com/s/trirong/v1/CEBv6IoZawJuRHdATx4LQjnLaWgLxsEwX72EbqUjsQ0.woff2) format('woff2');
+  unicode-range: U+0E01-0E5B, U+200B-200D, U+25CC;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Trirong';
+  font-style: italic;
+  font-weight: 700;
+  src: local('Trirong Bold Italic'), local('Trirong-BoldItalic'), url(https://fonts.gstatic.com/s/trirong/v1/CEBv6IoZawJuRHdATx4LQv8zf_FOSsgRmwsS7Aa9k2w.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Trirong';
+  font-style: italic;
+  font-weight: 700;
+  src: local('Trirong Bold Italic'), local('Trirong-BoldItalic'), url(https://fonts.gstatic.com/s/trirong/v1/CEBv6IoZawJuRHdATx4LQj0LW-43aMEzIO6XUTLjad8.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Trirong';
+  font-style: italic;
+  font-weight: 700;
+  src: local('Trirong Bold Italic'), local('Trirong-BoldItalic'), url(https://fonts.gstatic.com/s/trirong/v1/CEBv6IoZawJuRHdATx4LQugdm0LZdjqr5-oayXSOefg.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+/* thai */
+@font-face {
+  font-family: 'Trirong';
+  font-style: italic;
+  font-weight: 800;
+  src: local('Trirong ExtraBold Italic'), local('Trirong-ExtraBoldItalic'), url(https://fonts.gstatic.com/s/trirong/v1/lGUgSzOvjUqrsrJfnROivDnLaWgLxsEwX72EbqUjsQ0.woff2) format('woff2');
+  unicode-range: U+0E01-0E5B, U+200B-200D, U+25CC;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Trirong';
+  font-style: italic;
+  font-weight: 800;
+  src: local('Trirong ExtraBold Italic'), local('Trirong-ExtraBoldItalic'), url(https://fonts.gstatic.com/s/trirong/v1/lGUgSzOvjUqrsrJfnROivP8zf_FOSsgRmwsS7Aa9k2w.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Trirong';
+  font-style: italic;
+  font-weight: 800;
+  src: local('Trirong ExtraBold Italic'), local('Trirong-ExtraBoldItalic'), url(https://fonts.gstatic.com/s/trirong/v1/lGUgSzOvjUqrsrJfnROivD0LW-43aMEzIO6XUTLjad8.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Trirong';
+  font-style: italic;
+  font-weight: 800;
+  src: local('Trirong ExtraBold Italic'), local('Trirong-ExtraBoldItalic'), url(https://fonts.gstatic.com/s/trirong/v1/lGUgSzOvjUqrsrJfnROivOgdm0LZdjqr5-oayXSOefg.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+/* thai */
+@font-face {
+  font-family: 'Trirong';
+  font-style: italic;
+  font-weight: 900;
+  src: local('Trirong Black Italic'), local('Trirong-BlackItalic'), url(https://fonts.gstatic.com/s/trirong/v1/EtuLHyx5DS9oX5NoKhYlkDnLaWgLxsEwX72EbqUjsQ0.woff2) format('woff2');
+  unicode-range: U+0E01-0E5B, U+200B-200D, U+25CC;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Trirong';
+  font-style: italic;
+  font-weight: 900;
+  src: local('Trirong Black Italic'), local('Trirong-BlackItalic'), url(https://fonts.gstatic.com/s/trirong/v1/EtuLHyx5DS9oX5NoKhYlkP8zf_FOSsgRmwsS7Aa9k2w.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Trirong';
+  font-style: italic;
+  font-weight: 900;
+  src: local('Trirong Black Italic'), local('Trirong-BlackItalic'), url(https://fonts.gstatic.com/s/trirong/v1/EtuLHyx5DS9oX5NoKhYlkD0LW-43aMEzIO6XUTLjad8.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Trirong';
+  font-style: italic;
+  font-weight: 900;
+  src: local('Trirong Black Italic'), local('Trirong-BlackItalic'), url(https://fonts.gstatic.com/s/trirong/v1/EtuLHyx5DS9oX5NoKhYlkOgdm0LZdjqr5-oayXSOefg.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}

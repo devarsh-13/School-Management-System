@@ -1,0 +1,36 @@
+
+.upload form {
+    padding: 15px 0;
+    display: flex;
+    flex-flow: column;
+    width: 400px;
+}
+.upload form label {
+    display: inline-flex;
+    width: 100%;
+    padding: 10px 0;
+    margin-right: 25px;
+}
+.upload form input {
+    padding: 10px;
+    width: 100%;
+    margin-right: 25px;
+    margin-bottom: 15px;
+    border: 1px solid #cccccc;
+}
+.upload form input[type="submit"] {
+    display: block;
+    background-color: #38b673;
+    border: 0;
+    font-weight: bold;
+    font-size: 14px;
+    color: #FFFFFF;
+    cursor: pointer;
+    width: 200px;
+    margin-top: 15px;
+    border-radius: 5px;
+    margin-bottom: 0px;
+}
+.upload form input[type="submit"]:hover {
+    background-color: #32a367;
+}
