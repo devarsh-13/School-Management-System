@@ -46,6 +46,7 @@ $flag=0;
 		}
 		
 	}
+
 		
 ?>
 
@@ -94,7 +95,8 @@ $flag=0;
         
         <div class="content">
           
-          <div class="pass-link"><a href="#">Forgot password?</a></div>
+          <div class="pass-link" ><a href="getOtp.php" >forgot password?</a></div>
+		
         </div>
         
         <div class="field">
