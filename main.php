@@ -81,7 +81,7 @@ Purchase: http://themeforest.net/user/kamleshyadav
 							<li><a href="main.php">Home</a></li>
 							<li><a href="#event">events</a></li>
 							<li><a href="gallery.php">Gallery</a></li>
-							<li><a href="courses.html">Reasources</a></li>
+							<li><a href="courses.html">Resources</a></li>
 							<li><a href="dashboard.html">Profile</a></li>
 							<li><a href="contact.html">Chat</a></li>
 							<li><a href="about.html">about us</a></li>
@@ -185,16 +185,14 @@ Purchase: http://themeforest.net/user/kamleshyadav
           
            						while($r=mysqli_fetch_array($q))
           						{
-            
-            						echo " 
+                   						echo " 
             								<div class='ed_item_description'>
 												<h4>".$r['Sr_n']."</h4>
 												<p> ".$r['Event_text']."</p>
-												<p>".$r['created_on']."</p>
-												<p>".$r['created_by']."</p>		
+																									
 												</div>
 											
-            							";
+            								";
           						}
       							?>     
 					</div>
@@ -375,8 +373,7 @@ Purchase: http://themeforest.net/user/kamleshyadav
             								<div class='ed_item_description'>
 												<h4>".$r['Sr_n']."</h4>
 												<p> ".$r['Notification_text']."</p>
-												<p>".$r['created_on']."</p>
-												<p>".$r['created_by']."</p>	
+													
 												</div>
 											
             							";
