@@ -1,8 +1,8 @@
 <?php
 session_start();
 error_reporting(0);
-include('includes/config.php');
-if(strlen($_SESSION['alogin'])=="")
+include('connection.php');
+if(strlen($_SESSION['id'])=="")
     {   
     header("Location: index.php"); 
     }
@@ -44,7 +44,7 @@ $msg="Data has been updated successfully";
             <!-- ========== TOP NAVBAR ========== -->
             <?php include('includes/topbar.php');?>   
           <!-----End Top bar>
-            <!-- ========== WRAPPER FOR BOTH SIDEBARS & MAIN CONTENT ========== -->
+         ========== WRAPPER FOR BOTH SIDEBARS & MAIN CONTENT ========== -->
             <div class="content-wrapper">
                 <div class="content-container">
 

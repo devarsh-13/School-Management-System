@@ -18,7 +18,7 @@
                                     </li>
 
                                     <li class="nav-header">
-                                        <span class="">Appearance</span>
+                                        <span class="">Options</span>
                                     </li>
                                     <li class="has-children">
                                         <a href="#"><i class="fa fa-users"></i> <span>Students</span> <i class="fa fa-angle-right arrow"></i></a>

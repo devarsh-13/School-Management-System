@@ -1,6 +1,7 @@
 
 <?php
 session_start();
+$_SESSION['page']='2';  
 error_reporting(0);
 include('connection.php');
 if(strlen($_SESSION['id'])=="")
@@ -15,7 +16,7 @@ if(strlen($_SESSION['id'])=="")
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
     	<meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Admin Manage Classes</title>
+        <title>Admin Manage Notifications</title>
         <link rel="stylesheet" href="css/bootstrap.min.css" media="screen" >
         <link rel="stylesheet" href="css/font-awesome.min.css" media="screen" >
         <link rel="stylesheet" href="css/animate-css/animate.min.css" media="screen" >
@@ -57,7 +58,7 @@ if(strlen($_SESSION['id'])=="")
                         <div class="container-fluid">
                             <div class="row page-title-div">
                                 <div class="col-md-6">
-                                    <h2 class="title">Manage Classes</h2>
+                                    <h2 class="title">Manage Notification</h2>
                                 
                                 </div>
                                 
@@ -67,9 +68,9 @@ if(strlen($_SESSION['id'])=="")
                             <div class="row breadcrumb-div">
                                 <div class="col-md-6">
                                     <ul class="breadcrumb">
-            							<li><a href="dashboard.php"><i class="fa fa-home"></i> Home</a></li>
-                                        <li> Classes</li>
-            							<li class="active">Manage Classes</li>
+            							<li><a href="dashboard.php"><i class="fa fa-home"></i>Admin Dashboard</a></li>
+                                        <li> Notifications</li>
+            							<li class="active">Manage Notifications</li>
             						</ul>
                                 </div>
                              
@@ -89,7 +90,7 @@ if(strlen($_SESSION['id'])=="")
                                         <div class="panel">
                                             <div class="panel-heading">
                                                 <div class="panel-title">
-                                                    <h5>View Classes Info</h5>
+                                                    <h5>View Notices</h5>
                                                 </div>
                                             </div>
 <?php if($msg){?>
@@ -113,6 +114,7 @@ else if($error){?>
                                                             <th>Status</th>
                                                             <th>Created By</th>
                                                             <th>Action</th>
+                                                            <th>Dis/Ena</th>
                                                         </tr>
                                                     
                                                    
@@ -127,13 +129,45 @@ if($row > 0)
 {
     while($result=mysqli_fetch_array($query))
     {       ?>
-                    <tr>
+                    <tr align="center">
                         <td><?php echo $result['Sr_n'];?></td>
                         <td><?php echo $result['Notification_text'];?></td>
                         <td><?php echo $result['created_on'];?></td>
-                        <td><?php echo $result['is_deleted'];?></td>
-                        <td><?php echo $result['created_by'];?></td>
+                        <td><?php if($result['is_deleted']==0)
+                                    {
+                                        echo "Visible";
+                                    }
+                                    else
+                                    {
+                                        echo"Disabled";
+                                    }
+                        ?>
+                            
+                        </td>
+                        <td><?php
+                                 $id=$result['created_by'];
+                                 $q=mysqli_query($Conn,"SELECT `A_name` FROM `admin` WHERE `A_id` = '$id' ");
+                                 $name=mysqli_fetch_array($q);
+                                echo $name[0];
+                           ?></td>
                         <td><a href="edit-notif.php?classid=<?php echo $result['id'];?>"><i class="fa fa-edit" title="Edit Record"></i> </a> </td>
+                        <td>
+                        <?php
+                            if($result['is_deleted']==0)
+                            {
+                        ?>
+                                <a href="disable_record.php?notif_id=<?php echo $result['Sr_n'];?>"><img src="images/disable.jpg" width='30px'/></a>
+                        <?php
+                            }
+                            else
+                            {
+                        ?>
+                                <a href="enable_record.php?notif_id=<?php echo $result['Sr_n'];?>"><img src="images/enable.jpg" width='30px'/></a>   
+                        <?php
+                            }
+                        ?>
+
+                        </td>
                     </tr>
 <?php 
     }

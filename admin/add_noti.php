@@ -12,7 +12,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Contact us</title>
+    <title>Add Notices</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
     <style>
       * {
