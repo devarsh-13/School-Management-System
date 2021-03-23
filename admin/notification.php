@@ -1,7 +1,7 @@
 <?php
 
 if (isset($_POST["back"])) {
-    header("location:http://localhost/Sem6Project/admin/admin_main.php");
+    header("location:http://localhost/Sem6CollegeProject/admin/admin_main.php");
 } 
 
 if (isset($_POST["submit"])) { 

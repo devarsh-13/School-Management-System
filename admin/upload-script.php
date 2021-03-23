@@ -4,7 +4,7 @@ session_start();
 
 include "connection.php";
 if (isset($_POST["back"])) {
-    header("location:http://localhost/Sem6Project/admin/admin_main.php");
+    header("location:http://localhost/Sem6CollegeProject/admin/admin_main.php");
 }
 
 if (isset($_POST['uploadImageBtn'])) {
@@ -16,8 +16,9 @@ if (isset($_POST['uploadImageBtn'])) {
         $result = move_uploaded_file($imageTmpName,$uploadFolder.$imageName);
 
         $a_id = $_SESSION['id'];
+         $d = date("Y-m-d");
         // save to database
-        $query = "INSERT INTO images SET image='$imageName',Uploaded_by=$a_id ";
+        $query = "INSERT INTO images SET image='$imageName',Uploaded_by=$a_id,Uploaded_on='$d' ";
         $run = $Conn->query($query) or die("Error in saving image".$Conn->error);
     
     }
