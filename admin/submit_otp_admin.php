@@ -8,7 +8,7 @@ $flag=0;
 	if(isset($_POST['verify']))
 	{
 
-        header("location:change_password.php");
+        header("location:change_password_admin.php");
   }
     ?>
 
@@ -17,8 +17,8 @@ $flag=0;
     <head>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet" />
    
-<link rel="stylesheet" href="css/otp.css">
-<script src="js/otp.js"></script>
+<link rel="stylesheet" href="../css/otp.css">
+<script src="../js/otp.js"></script>
 
     </head>
 

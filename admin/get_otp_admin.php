@@ -1,5 +1,5 @@
 <?php 
-require "Database/Create_db.php";
+require "../Database/Create_db.php";
 
 $flag=0;
 
@@ -26,8 +26,8 @@ $flag=0;
 			$error_msg['C']='Please enter proper 10 Digit number!! ';
 			$error=true;
 		}
-		$query = mysqli_query($Conn,"SELECT `S_srn` FROM `Students` WHERE
-			`S_contact` = '$Contact'") or die(mysqli_connect_error());
+		$query = mysqli_query($Conn,"SELECT `A_id` FROM `admin` WHERE
+			`A_mobile` = '$Contact'") or die(mysqli_connect_error());
 		
 		$row = mysqli_num_rows($query);
 		$arr=mysqli_fetch_row($query);
@@ -37,7 +37,7 @@ $flag=0;
 			session_start();
 			
 			$_SESSION['id']=$arr[0];
-			header("location:submit_otp.php");
+			header("location:submit_otp_admin.php");
 		}
 		else
 		{

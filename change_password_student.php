@@ -7,28 +7,37 @@ $flag=0;
 
 	if(isset($_POST['Submit']))
 	{
+	
 		
 		$Password=$_POST['Password'];
 
         $Password2=$_POST['Password2'];
         $S_srn= $_SESSION['id'];
+	
 
 		$error = false;
 
 
         if($Password==$Password2)
         {
-
+				
            
-            $query = mysqli_query($Conn,"SELECT * FROM `Students` WHERE
-			`S_srn` = '$S_srn'") or die(mysqli_connect_error());
+            $query = mysqli_query($Conn,"SELECT S_password FROM  Students WHERE
+			 S_srn = '$S_srn'") or die(mysqli_connect_error());
+
+			 if(mysqli_num_rows($query)==1)
+			 {
+
+				$result= mysqli_query($Conn, "UPDATE Students SET S_password ='$Password' WHERE S_srn ='$S_srn' ") or die(mysqli_connect_error());
+				  header("location:login.php");
+			 }
              
 
-             $query= mysqli_query($Conn, "UPDATE `Students` set 'S_password '='$Password' WHERE 'S_srn'='$S_srn' ") or die(mysqli_connect_error());
+            
         
              
 
-                // header("location:login.php");
+               
 
         }
 
@@ -103,9 +112,7 @@ $flag=0;
 						$flag=0;
 					}
 
-                    else{
-                        echo"<div class='invalid'><p>password changed successfully</p></div>";
-                    }
+                   
 					?>
      
         
