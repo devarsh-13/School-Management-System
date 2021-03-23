@@ -179,7 +179,7 @@ Purchase: http://themeforest.net/user/kamleshyadav
 							<?php
           						require "Database/connection.php";
 
-         						$sql = ("SELECT * FROM `Event`") or die(mysqli_error());
+         						$sql = ("SELECT * FROM `Event` WHERE `is_deleted`='0'") or die(mysqli_error());
     
            						$q=mysqli_query($Conn,$sql);
           
@@ -362,7 +362,7 @@ Purchase: http://themeforest.net/user/kamleshyadav
 							<?php
           						require "Database/connection.php";
 
-         						$sql = ("SELECT * FROM `notification`") or die(mysqli_error());
+         						$sql = ("SELECT * FROM `notification` WHERE `is_deleted`='0'") or die(mysqli_error());
     
            						$q=mysqli_query($Conn,$sql);
           
