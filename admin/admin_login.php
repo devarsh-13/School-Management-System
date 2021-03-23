@@ -34,7 +34,7 @@ $flag=0;
 			session_start();
 			$_SESSION['id']=$arr[0];
 			
-			header("location:http://localhost/Sem6CollegeProject/admin/admin_main.php");
+			header("location:dashboard.php");
 		}
 		else
 		{

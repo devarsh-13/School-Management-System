@@ -26,7 +26,7 @@
 
       <input type="submit" name="uploadImageBtn" value="Upload Images" id="uploadImageBtn" class="btn btn-success">
       <!--<input type="submit" name="back" value="Back" -->
-      <a href="admin_main.php">back</a>
+      <a href="dashboard.php">back</a>
 
     </form>
 </div>
