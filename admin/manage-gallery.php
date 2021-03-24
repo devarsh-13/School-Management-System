@@ -1,4 +1,5 @@
 
+
 <?php
 session_start();
 error_reporting(0);
@@ -8,7 +9,6 @@ if(strlen($_SESSION['id'])=="")
     header("Location: index.php"); 
     }
     else{
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,7 +16,7 @@ if(strlen($_SESSION['id'])=="")
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
     	<meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Admin Manage Students</title>
+        <title>IGHS Admin | Manage Classes</title>
         <link rel="stylesheet" href="css/bootstrap.min.css" media="screen" >
         <link rel="stylesheet" href="css/font-awesome.min.css" media="screen" >
         <link rel="stylesheet" href="css/animate-css/animate.min.css" media="screen" >
@@ -42,21 +42,6 @@ if(strlen($_SESSION['id'])=="")
     -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
     box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
 }
-
-
-
-div.scrollmenu {
-  overflow: auto;
-}
-
-div.scrollmenu table {
-  display: inline-block;
-  text-align: center;
-  padding: 14px;
-  text-decoration: none;
-}
-
-
         </style>
     </head>
     <body class="top-navbar-fixed">
@@ -73,7 +58,7 @@ div.scrollmenu table {
                         <div class="container-fluid">
                             <div class="row page-title-div">
                                 <div class="col-md-6">
-                                    <h2 class="title">Manage Students</h2>
+                                    <h2 class="title">Manage Gallery</h2>
                                 
                                 </div>
                                 
@@ -84,8 +69,8 @@ div.scrollmenu table {
                                 <div class="col-md-6">
                                     <ul class="breadcrumb">
             							<li><a href="dashboard.php"><i class="fa fa-home"></i> Home</a></li>
-                                        <li> Students</li>
-            							<li class="active">Manage Students</li>
+                                        <li> Gallery</li>
+            							<li class="active">Manage Gallery</li>
             						</ul>
                                 </div>
                              
@@ -105,7 +90,7 @@ div.scrollmenu table {
                                         <div class="panel">
                                             <div class="panel-heading">
                                                 <div class="panel-title">
-                                                    <h5>View Students Info</h5>
+                                                    <h5>View Gallery Info</h5>
                                                 </div>
                                             </div>
 <?php if($msg){?>
@@ -117,94 +102,46 @@ else if($error){?>
                                             <strong>Oh snap!</strong> <?php echo htmlentities($error); ?>
                                         </div>
                                         <?php } ?>
-                                            <div class="scrollmenu">
+                                            <div class="panel-body p-20">
 
                                                 <table id="example" class="display table table-striped table-bordered" cellspacing="0" width="100%">
-                                                
-                                                                                                             <tr>
-                                                            <th>#</th>
-                                                            <th>Sr. No.</th>
-                                                            <th>Gr. NO.</th>
-                                                            <th>Uid. No.</th>
-                                                            <th>Student Nmae</th>
-                                                            <th>Cast</th>
-                                                            <th>Category</th>
-                                                            <th>Dob</th>
-                                                            <th>Contact</th>
-                                                            <th>Admission Date</th>
-                                                            <th>Class</th>
-                                                            <th>Stream</th>
-                                                            <th>Adhar NO.</th>
-                                                            <th>Hostel Address</th>
-                                                            <th>Home Address</th>
-                                                            <th>Handicapped</th>
-                                                            <th>Describe</th>
-                                                            <th>Password</th>
-                                                            <th>Remarks</th>
+                                                    
+                                                        <tr>
+                                                            
+                                                            <th>id</th>
+                                                            <th>image</th>
                                                             <th>Created Date</th>
-                                                            <th>Status</th>
-                                                            <th>action</th>
+                                                            <th>Created By</th>
+                                                            <th>Action</th>
                                                         </tr>
-                                                                                                          
-                                                
-<?php 
+                                                    
+                                                   
+                                                    
+<?php
 include 'connection.php';
- $sql = "SELECT * from `students` join Class on students.Class_id=Class.Class_id ORDER BY Created_on DESC";
+ $sql = "SELECT * from `images` ORDER BY Uploaded_on DESC";
 $query = mysqli_query($Conn,$sql);
 $row = mysqli_num_rows($query);
-$cnt=1;
+
 if($row > 0)
 {
+     $path="img/";
     while($result=mysqli_fetch_array($query))
-    {       ?>
-                    <tr align="center">
-                        <td><?php echo htmlentities($cnt);?></td>
-                        <td><?php echo $result['S_srn'];?></td>
-                        <td><?php echo $result['S_grn'];?></td>
-                        <td><?php echo $result['S_uidn'];?></td>
-                        <td><?php echo $result['S_name'];?></td>
-                        <td><?php echo $result['S_caste'];?></td>
-                        <td><?php echo $result['S_category'];?></td>
-                        <td><?php echo $result['S_dob'];?></td>
-                        <td><?php echo $result['S_contact'];?></td>
-                        <td><?php echo $result['S_ad_date'];?></td>
+    {       $full = $path.$result['Image']; ?>
+                    <tr>
+                        <td><?php echo $result['Id'];?></td>
+                        <td> <img src="<?php echo $full; ?>" height="100px" width="100px"></img></td>
+                        <td><?php echo $result['Uploaded_on'];?></td>
                         <td><?php
-                                $id=$result['Class_id'];
-                                 $q=mysqli_query($Conn,"SELECT `C_no` FROM `class` WHERE `Class_id` = '$id' ");
+                                $id=$result['Uploaded_by'];
+                                 $q=mysqli_query($Conn,"SELECT `A_name` FROM `admin` WHERE `A_id` = '$id' ");
                                  $name=mysqli_fetch_array($q);
                                 echo $name[0];
                             ?></td>
-                        
-                        <td><?php echo $result['Stream'];?></td>
-                        <td><?php echo $result['S_adharn'];?></td>
-                        <td><?php echo $result['S_hostel'];?></td>
-                        <td><?php echo $result['S_home'];?></td>
-                        <td><?php echo $result['S_handicapped'];?></td>
-                        <td><?php echo $result['S_describe'];?></td>
-                        <td><?php echo $result['S_password'];?></td>
-                        <td><?php echo $result['S_remarks'];?></td>
-                        <td><?php echo $result['Created_on'];?></td>
-                        <td><?php if($result['is_deleted']==0)
-                                    {
-                                        echo "Visible";
-                                    }
-                                    else
-                                    {
-                                        echo"Disabled";
-                                    }
-                        ?>
-                            
-                        </td>
-                    
-                        <td>
-                            <a href="edit-student.php?classid=<?php echo $result['id'];?>">
-                                    <img src="images/edit.png" height="18px" width='18px'/> Edit
-                            </a> 
-                        </td>
-                       
+                        <td><a href="edit-event.php?classid=<?php echo $result['id'];?>"><i class="fa fa-edit" title="Edit Record"></i> </a> </td>
                     </tr>
 <?php 
- $cnt=$cnt+1;}
+    }
 }
 else
 {
@@ -281,4 +218,3 @@ else
     </body>
 </html>
 <?php } ?>
-

@@ -68,7 +68,7 @@ $row = mysqli_num_rows($query1);
                                     <!-- /.col-lg-3 col-md-3 col-sm-6 col-xs-12 -->
 
                                     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                                        <a class="dashboard-stat bg-danger" href="manage-.php">
+                                        <a class="dashboard-stat bg-danger" href="manage-teachers.php">
 <?php 
 $sql1 ="SELECT T_srn from teachers";
 $query1 = $Conn -> query($sql1);
@@ -125,7 +125,7 @@ $row = mysqli_num_rows($query1);
                             <!-- /.section -->
 
                           <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                                        <a class="dashboard-stat bg-info" href="manage-results.php">
+                                        <a class="dashboard-stat bg-info" href="manage-gallery.php">
                                         <?php 
 $sql1 ="SELECT id from images";
 $query1 = $Conn -> query($sql1);

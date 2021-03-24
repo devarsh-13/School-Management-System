@@ -68,7 +68,7 @@ if(strlen($_SESSION['id'])=="")
                             <div class="row breadcrumb-div">
                                 <div class="col-md-6">
                                     <ul class="breadcrumb">
-            							<li><a href="dashboard.php"><i class="fa fa-home"></i>Admin Dashboard</a></li>
+            							<li><a href="dashboard.php"><i class="fa fa-home"></i>Home</a></li>
                                         <li> Notifications</li>
             							<li class="active">Manage Notifications</li>
             						</ul>
@@ -107,7 +107,7 @@ else if($error){?>
                                                 <table id="example" class="display table table-striped table-bordered" cellspacing="0" width="100%">
                                                     
                                                         <tr>
-                                                            
+                                                            <th>#</th>
                                                             <th>Sr. NO.</th>
                                                             <th>Notification Text</th>
                                                             <th>Created Date</th>
@@ -124,12 +124,13 @@ include 'connection.php';
  $sql = "SELECT * from `notification` ORDER BY created_on DESC";
 $query = mysqli_query($Conn,$sql);
 $row = mysqli_num_rows($query);
-
+$cnt=1;
 if($row > 0)
 {
     while($result=mysqli_fetch_array($query))
     {       ?>
                     <tr align="center">
+                         <td><?php echo htmlentities($cnt);?></td>
                         <td><?php echo $result['Sr_n'];?></td>
                         <td><?php echo $result['Notification_text'];?></td>
                         <td><?php echo $result['created_on'];?></td>
@@ -150,7 +151,8 @@ if($row > 0)
                                  $name=mysqli_fetch_array($q);
                                 echo $name[0];
                            ?></td>
-                        <td><a href="edit-notif.php?classid=<?php echo $result['id'];?>"><i class="fa fa-edit" title="Edit Record"></i> </a> </td>
+                        <td><a href="edit-notif.php?classid=<?php echo $result['id'];?>">
+                              <img src="images/edit.png" height="18px" width='18px'/> Edit</a> </td>
                         <td>
                         <?php
                             if($result['is_deleted']==0)
@@ -170,7 +172,7 @@ if($row > 0)
                         </td>
                     </tr>
 <?php 
-    }
+    $cnt=$cnt+1;}
 }
 else
 {

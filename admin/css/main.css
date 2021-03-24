@@ -380,6 +380,7 @@ body {
   text-rendering: optimizeLegibility !important;
   letter-spacing: 0.5px;
   overflow-x: hidden;
+
 }
 
 ::-moz-selection {
@@ -3413,8 +3414,13 @@ code:not(.language-html) {
 
 .sidebar-internal .sidebar {
   width: 260px;
+
   background: #fff;
   padding: 15px;
+}
+.sidebar-nav
+{
+  position: relative;
 }
 
 /*--------------------------------------------------------------

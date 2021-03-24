@@ -15,7 +15,6 @@ $q=mysqli_query($Conn,$table);
 $table = "CREATE TABLE `Subjects`(
 `Sub_id` INT NOT NULL AUTO_INCREMENT ,
 `Sub_name` VARCHAR(40) NOT NULL ,
-`T_srn` INT(3),
 `Class_id` INT  NOT NULL ,
 PRIMARY KEY (`Sub_id`)
 )";
@@ -108,6 +107,7 @@ $table = "CREATE TABLE `Event` (
 	`Event_text` VARCHAR(120) NOT NULL , 
 	`is_deleted` BOOLEAN NOT NULL,
 	`created_on` DATE NOT NULL,
+	`event_date` DATE NOT NULL,
 	`created_by` INT NOT NULL,
 	PRIMARY KEY (`Sr_n`)
 )";
@@ -142,8 +142,6 @@ $Sql="ALTER TABLE `Subjects` ADD FOREIGN KEY (`Class_id`) REFERENCES `Class`(`Cl
 $q=mysqli_query($Conn,$Sql);
 
 
-$Sql="ALTER TABLE `Subjects` ADD FOREIGN KEY (`T_srn`) REFERENCES `Teachers`(`T_srn`)  ON DELETE CASCADE ON UPDATE CASCADE";
-$q=mysqli_query($Conn,$Sql);
 
 $SQL="ALTER TABLE `Students` ADD FOREIGN KEY (`Class_id`) REFERENCES `Class`(`Class_id`)ON DELETE CASCADE ON UPDATE CASCADE "; 
 $q=mysqli_query($Conn,$Sql);

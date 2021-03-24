@@ -10,70 +10,42 @@ if(strlen($_SESSION['id'])=="")
 if(isset($_POST['submit']))
 {
     require "connection.php";
-$gr=$_POST['gr'];
-$ui=$_POST['ui']; 
-$sn=$_POST['sn']; 
-$cast=$_POST['cast']; 
-$cat=$_POST['cat']; 
+
+$tn=$_POST['tn']; 
 $dob=$_POST['dob']; 
 $con=$_POST['con']; 
 $adate=$_POST['adate'];
-$adhar=$_POST['adhar'];
-$hostel=$_POST['hostel'];  
-$home=$_POST['home']; 
-$hand=$_POST['hand']; 
-$des=$_POST['des'];
+$jdate=$_POST['jdate'];
+$rdate=$_POST['rdate'];
+$deg=$_POST['deg'];
 $pass=$_POST['pass'];  
-$re=$_POST['re']; 
-$class=$_POST['class'];
-$stream=$_POST['stream'];
 $d = date("Y-m-d");
-$s="SELECT `Class_id` FROM `class` WHERE `C_no` = '$class' AND `Stream`='$stream'";
-$q=mysqli_query($Conn,$s);
-$ci=mysqli_fetch_array($q);
 
-$c=$ci[0];
 
-$Sql="INSERT INTO `students` 
+$Sql="INSERT INTO `teachers` 
                             (
-                                `S_grn`, 
-                                `S_uidn`, 
-                                `S_name`, 
-                                `S_caste`, 
-                                `S_category`, 
-                                `S_dob`, 
-                                `S_contact`, 
-                                `S_ad_date`, 
-                                `Class_id`, 
-                                `S_adharn`, 
-                                `S_hostel`, 
-                                `S_home`, 
-                                `S_handicapped`, 
-                                `S_describe`, 
-                                `S_password`, 
-                                `S_remarks`, 
+                                `T_name`, 
+                                `DOB`, 
+                                `Degree`, 
+                                `A_date`,
+                                `Joining_date`, 
+                                `Retire_date`, 
+                                `Contact`, 
+                                `Password`, 
                                 `is_deleted`, 
                                 `Created_on`) 
 
                             VALUES 
                             (
-                                '$gr', 
-                                '$ui', 
-                                '$sn',
-                                '$cast', 
-                                '$cat', 
+                                '$tn', 
                                 '$dob', 
-                                '$con', 
+                                '$deg',
                                 '$adate', 
-                                '$c', 
-                                '$adhar', 
-                                '$hostel', 
-                                '$home', 
-                                '$hand', 
-                                '$des', 
+                                '$jdate', 
+                                '$rdate', 
+                                '$con', 
                                 '$pass', 
-                                '$re', 
-                                '0', 
+                                '0',
                                 '$d')";
 
 
@@ -97,7 +69,7 @@ $error="Something went wrong. Please try again";
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>IGHS Admin| ADD Student </title>
+    <title>IGHS Admin| ADD Teacher </title>
     <link rel="stylesheet" href="css/bootstrap.min.css" media="screen">
     <link rel="stylesheet" href="css/font-awesome.min.css" media="screen">
     <link rel="stylesheet" href="css/animate-css/animate.min.css" media="screen">
@@ -126,7 +98,7 @@ $error="Something went wrong. Please try again";
                     <div class="container-fluid">
                         <div class="row page-title-div">
                             <div class="col-md-6">
-                                <h2 class="title">ADD Student</h2>
+                                <h2 class="title">ADD Teacher</h2>
 
                             </div>
 
@@ -137,8 +109,8 @@ $error="Something went wrong. Please try again";
                             <div class="col-md-6">
                                 <ul class="breadcrumb">
                                     <li><a href="dashboard.php"><i class="fa fa-home"></i> Home</a></li>
-                                    <li> Students</li>
-                                    <li class="active">ADD Student</li>
+                                    <li>Teachers</li>
+                                    <li class="active">ADD Teacher</li>
                                 </ul>
                             </div>
 
@@ -152,7 +124,7 @@ $error="Something went wrong. Please try again";
                                 <div class="panel">
                                     <div class="panel-heading">
                                         <div class="panel-title">
-                                            <h5>Fill The Student Info</h5>
+                                            <h5>Fill The Teacher Info</h5>
                                         </div>
                                     </div>
                                     <div class="panel-body">
@@ -171,37 +143,9 @@ else if($error){?>
                                         <form class="form-horizontal" method="post">
 
                                             <div class="form-group">
-                                                <label for="default" class="col-sm-2 control-label">Gr Number</label>
+                                                <label for="default" class="col-sm-2 control-label">Teacher Nmae</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" name="gr" class="form-control" maxlength="6" id="gr" required="required" autocomplete="off">
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label for="default" class="col-sm-2 control-label">UID Number</label>
-                                                <div class="col-sm-10">
-                                                    <input type="text" name="ui" class="form-control" id="ui" maxlength="12" required="required" autocomplete="off">
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label for="default" class="col-sm-2 control-label">Student Nmae</label>
-                                                <div class="col-sm-10">
-                                                    <input type="text" name="sn" class="form-control" id="sn" required="required" autocomplete="off">
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label for="default" class="col-sm-2 control-label">Cast</label>
-                                                <div class="col-sm-10">
-                                                    <input type="text" name="cast" class="form-control" id="cast" required="required" autocomplete="off">
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label for="default" class="col-sm-2 control-label">Category</label>
-                                                <div class="col-sm-10">
-                                                    <input type="text" name="cat" class="form-control" id="cat" required="required" autocomplete="off">
+                                                    <input type="text" name="tn" class="form-control" id="tn" required="required" autocomplete="off">
                                                 </div>
                                             </div>
 
@@ -213,83 +157,47 @@ else if($error){?>
                                             </div>
 
                                             <div class="form-group">
-                                                <label for="default" class="col-sm-2 control-label">Contact</label>
+                                                <label for="default" class="col-sm-2 control-label">Degree</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" name="con" class="form-control" id="con" maxlength="10" required="required" autocomplete="off">
+                                                    <input type="text" name="deg" class="form-control" id="deg" required="required" autocomplete="off">
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
-                                                <label for="default" class="col-sm-2 control-label">Admission Date</label>
+                                                <label for="default" class="col-sm-2 control-label">Appointment Date</label>
                                                 <div class="col-sm-10">
                                                     <input type="date" name="adate" class="form-control" id="adate" required="required" autocomplete="off">
                                                 </div>
                                             </div>
 
-                                            <div class="form-group">
-                                                <label for="default" class="col-sm-2 control-label">Class</label>
+                                             <div class="form-group">
+                                                <label for="default" class="col-sm-2 control-label">Joining Date</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" name="class" class="form-control" id="class" required="required" autocomplete="off">
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label for="default" class="col-sm-2 control-label">Stream</label>
-                                                <div class="col-sm-10">
-                                                    <input type="text" name="stream" class="form-control" id="stream" required="required" autocomplete="off">
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label for="default" class="col-sm-2 control-label">Adhar Number</label>
-                                                <div class="col-sm-10">
-                                                    <input type="text" name="adhar" class="form-control" id="adhar" required="required" autocomplete="off">
-                                                </div>
-                                            </div>
-
-                                              <div class="form-group">
-                                                <label for="default" class="col-sm-2 control-label">Home Address</label>
-                                                <div class="col-sm-10">
-                                                     <textarea rows="5"  name="home" class="form-control" id="home" required="required" autocomplete="off"></textarea>
-                                                </div>
-                                            </div>
-
-
-
-                                            <div class="form-group">
-                                                <label for="default" class="col-sm-2 control-label">Hostel Address</label>
-                                                <div class="col-sm-10">
-                                                     <textarea rows="5"  name="hostel" class="form-control" id="hostel" required="required" autocomplete="off"></textarea>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label for="default" class="col-sm-2 control-label">Handicapped</label>
-                                                <div class="col-sm-10">
-                                                    <input type="radio" name="hand" value="Yes" required="required" checked="">Yes <input type="radio" name="hand" value="No" required="required">No 
+                                                    <input type="date" name="jdate" class="form-control" id="jdate" required="required" autocomplete="off">
                                                 </div>
                                             </div>
 
 
                                             <div class="form-group">
-                                                <label for="default" class="col-sm-2 control-label">If Yes Describe</label>
+                                                <label for="default" class="col-sm-2 control-label">Retire Date</label>
                                                 <div class="col-sm-10">
-                                                     <textarea rows="5"  name="des" class="form-control" id="des" required="required" autocomplete="off"></textarea>
+                                                    <input type="date" name="rdate" class="form-control" id="rdate" required="required" autocomplete="off">
                                                 </div>
                                             </div>
+
+
+                                            <div class="form-group">
+                                                <label for="default" class="col-sm-2 control-label">Contact</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" name="con" class="form-control" id="con" maxlength="10" required="required" autocomplete="off">
+                                                </div>
+                                            </div>
+                                             
 
                                                <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Password</label>
                                                 <div class="col-sm-10">
                                                     <input type="text" name="pass" class="form-control" id="pass" required="required" autocomplete="off">
-                                                </div>
-                                            </div>
-
-
-                                            <div class="form-group">
-                                                <label for="default" class="col-sm-2 control-label">Re marks</label>
-                                                <div class="col-sm-10">
-                                                     <textarea rows="5"  name="re" class="form-control" id="re" required="required" autocomplete="off"></textarea>
                                                 </div>
                                             </div>
 

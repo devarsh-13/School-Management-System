@@ -16,7 +16,7 @@ if(strlen($_SESSION['id'])=="")
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
     	<meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Admin Manage Events</title>
+        <title>IGHS Admin | Manage Events</title>
         <link rel="stylesheet" href="css/bootstrap.min.css" media="screen" >
         <link rel="stylesheet" href="css/font-awesome.min.css" media="screen" >
         <link rel="stylesheet" href="css/animate-css/animate.min.css" media="screen" >
@@ -68,7 +68,7 @@ if(strlen($_SESSION['id'])=="")
                             <div class="row breadcrumb-div">
                                 <div class="col-md-6">
                                     <ul class="breadcrumb">
-            							<li><a href="dashboard.php"><i class="fa fa-home"></i>Admin Dashboard</a></li>
+            							<li><a href="dashboard.php"><i class="fa fa-home"></i>Home</a></li>
                                         <li> Events</li>
             							<li class="active">Manage Events</li>
             						</ul>
@@ -107,7 +107,7 @@ else if($error){?>
                                                 <table id="example" class="display table table-striped table-bordered" cellspacing="0" width="100%">
                                                     
                                                         <tr>
-                                                            
+                                                              <th>#</th>
                                                             <th>Sr. NO.</th>
                                                             <th>Event Text</th>
                                                             <th>Created Date</th>
@@ -124,12 +124,13 @@ include 'connection.php';
  $sql = "SELECT * from `event` ORDER BY created_on DESC";
 $query = mysqli_query($Conn,$sql);
 $row = mysqli_num_rows($query);
-
+$cnt=1;
 if($row > 0)
 {
     while($result=mysqli_fetch_array($query))
     {       ?>
                     <tr align="center">
+                         <td><?php echo htmlentities($cnt);?></td>
                         <td><?php echo $result['Sr_n'];?></td>
                         <td><?php echo $result['Event_text'];?></td>
                         <td><?php echo $result['created_on'];?></td>
@@ -152,8 +153,9 @@ if($row > 0)
                             ?>
                         </td>
                         <td>
-                            <a href="edit-event.php?classid=<?php echo $result['id'];?>"><i class="fa fa-edit" title="Edit Record"></i> 
-                            </a> 
+                            <a href="edit-event.php?classid=<?php echo $result['id'];?>">
+                              <img src="images/edit.png" height="18px" width='18px'/> Edit</a>
+                            
                         </td>
                         <td>
                         <?php
@@ -174,7 +176,7 @@ if($row > 0)
                         </td>
                     </tr>
 <?php 
-    }
+    $cnt=$cnt+1;}
 }
 else
 {

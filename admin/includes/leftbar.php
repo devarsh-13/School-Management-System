@@ -31,15 +31,15 @@
                                       <li class="has-children">
                                         <a href="#"><i class="fa fa-users"></i> <span>Teachers</span> <i class="fa fa-angle-right arrow"></i></a>
                                         <ul class="child-nav">
-                                            <li><a href="add-students.php"><i class="fa fa-bars"></i> <span>Add Teachers</span></a></li>
-                                            <li><a href="manage-students.php"><i class="fa fa fa-server"></i> <span>Manage Teachers</span></a></li>
+                                            <li><a href="add-teachers.php"><i class="fa fa-bars"></i> <span>Add Teachers</span></a></li>
+                                            <li><a href="manage-teachers.php"><i class="fa fa fa-server"></i> <span>Manage Teachers</span></a></li>
                                            
                                         </ul>
                                     </li>
                                       <li class="has-children">
                                         <a href="#"><i class="fa fa-file-text"></i> <span>Events</span> <i class="fa fa-angle-right arrow"></i></a>
                                         <ul class="child-nav">
-                                            <li><a href="add_event.php"><i class="fa fa-bars"></i> <span>Create Events</span></a></li>
+                                            <li><a href="add-event.php"><i class="fa fa-bars"></i> <span>Create Events</span></a></li>
                                             <li><a href="manage-events.php"><i class="fa fa fa-server"></i> <span>Manage Event</span></a></li>
                                            
                                         </ul>
@@ -47,7 +47,7 @@
                                       <li class="has-children">
                                         <a href="#"><i class="fa fa-file-text"></i> <span>Notification</span> <i class="fa fa-angle-right arrow"></i></a>
                                         <ul class="child-nav">
-                                            <li><a href="add_noti.php"><i class="fa fa-bars"></i> <span>Create Notification</span></a></li>
+                                            <li><a href="add-notification.php"><i class="fa fa-bars"></i> <span>Create Notification</span></a></li>
                                             <li><a href="manage-notif.php"><i class="fa fa fa-server"></i> <span>Manage Notification</span></a></li>
                                            
                                         </ul>
@@ -56,8 +56,8 @@
                                      <li class="has-children">
                                         <a href="#"><i class="fa fa-file-text"></i> <span>Gallery</span> <i class="fa fa-angle-right arrow"></i></a>
                                         <ul class="child-nav">
-                                            <li><a href="img_h.php"><i class="fa fa-bars"></i> <span>Upload Images</span></a></li>
-                                            <li><a href="manage-classes.php"><i class="fa fa fa-server"></i> <span>Manage Gallery</span></a></li>
+                                            <li><a href="add-gallery.php"><i class="fa fa-bars"></i> <span>Upload Images</span></a></li>
+                                            <li><a href="manage-gallery.php"><i class="fa fa fa-server"></i> <span>Manage Gallery</span></a></li>
                                            
                                         </ul>
                                     </li>

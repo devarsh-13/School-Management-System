@@ -16,7 +16,7 @@ if(strlen($_SESSION['id'])=="")
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
     	<meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Admin Manage Students</title>
+        <title>Admin Manage Teacher</title>
         <link rel="stylesheet" href="css/bootstrap.min.css" media="screen" >
         <link rel="stylesheet" href="css/font-awesome.min.css" media="screen" >
         <link rel="stylesheet" href="css/animate-css/animate.min.css" media="screen" >
@@ -73,7 +73,7 @@ div.scrollmenu table {
                         <div class="container-fluid">
                             <div class="row page-title-div">
                                 <div class="col-md-6">
-                                    <h2 class="title">Manage Students</h2>
+                                    <h2 class="title">Manage Teachers</h2>
                                 
                                 </div>
                                 
@@ -84,8 +84,8 @@ div.scrollmenu table {
                                 <div class="col-md-6">
                                     <ul class="breadcrumb">
             							<li><a href="dashboard.php"><i class="fa fa-home"></i> Home</a></li>
-                                        <li> Students</li>
-            							<li class="active">Manage Students</li>
+                                        <li> Teachers</li>
+            							<li class="active">Manage Teachers</li>
             						</ul>
                                 </div>
                              
@@ -105,7 +105,7 @@ div.scrollmenu table {
                                         <div class="panel">
                                             <div class="panel-heading">
                                                 <div class="panel-title">
-                                                    <h5>View Students Info</h5>
+                                                    <h5>View Teachers Info</h5>
                                                 </div>
                                             </div>
 <?php if($msg){?>
@@ -124,23 +124,14 @@ else if($error){?>
                                                                                                              <tr>
                                                             <th>#</th>
                                                             <th>Sr. No.</th>
-                                                            <th>Gr. NO.</th>
-                                                            <th>Uid. No.</th>
-                                                            <th>Student Nmae</th>
-                                                            <th>Cast</th>
-                                                            <th>Category</th>
-                                                            <th>Dob</th>
+                                                            <th>Teacher Nmae</th>
+                                                            <th>Date of Birth</th>
+                                                            <th>Degree</th>
+                                                            <th>Appointment Date</th>
+                                                            <th>Joning Date</th>
+                                                            <th>Retire Date</th>
                                                             <th>Contact</th>
-                                                            <th>Admission Date</th>
-                                                            <th>Class</th>
-                                                            <th>Stream</th>
-                                                            <th>Adhar NO.</th>
-                                                            <th>Hostel Address</th>
-                                                            <th>Home Address</th>
-                                                            <th>Handicapped</th>
-                                                            <th>Describe</th>
                                                             <th>Password</th>
-                                                            <th>Remarks</th>
                                                             <th>Created Date</th>
                                                             <th>Status</th>
                                                             <th>action</th>
@@ -149,7 +140,7 @@ else if($error){?>
                                                 
 <?php 
 include 'connection.php';
- $sql = "SELECT * from `students` join Class on students.Class_id=Class.Class_id ORDER BY Created_on DESC";
+ $sql = "SELECT * from `teachers` ORDER BY Created_on DESC";
 $query = mysqli_query($Conn,$sql);
 $row = mysqli_num_rows($query);
 $cnt=1;
@@ -159,30 +150,15 @@ if($row > 0)
     {       ?>
                     <tr align="center">
                         <td><?php echo htmlentities($cnt);?></td>
-                        <td><?php echo $result['S_srn'];?></td>
-                        <td><?php echo $result['S_grn'];?></td>
-                        <td><?php echo $result['S_uidn'];?></td>
-                        <td><?php echo $result['S_name'];?></td>
-                        <td><?php echo $result['S_caste'];?></td>
-                        <td><?php echo $result['S_category'];?></td>
-                        <td><?php echo $result['S_dob'];?></td>
-                        <td><?php echo $result['S_contact'];?></td>
-                        <td><?php echo $result['S_ad_date'];?></td>
-                        <td><?php
-                                $id=$result['Class_id'];
-                                 $q=mysqli_query($Conn,"SELECT `C_no` FROM `class` WHERE `Class_id` = '$id' ");
-                                 $name=mysqli_fetch_array($q);
-                                echo $name[0];
-                            ?></td>
-                        
-                        <td><?php echo $result['Stream'];?></td>
-                        <td><?php echo $result['S_adharn'];?></td>
-                        <td><?php echo $result['S_hostel'];?></td>
-                        <td><?php echo $result['S_home'];?></td>
-                        <td><?php echo $result['S_handicapped'];?></td>
-                        <td><?php echo $result['S_describe'];?></td>
-                        <td><?php echo $result['S_password'];?></td>
-                        <td><?php echo $result['S_remarks'];?></td>
+                        <td><?php echo $result['T_srn'];?></td>
+                        <td><?php echo $result['T_name'];?></td>
+                        <td><?php echo $result['DOB'];?></td>
+                        <td><?php echo $result['Degree'];?></td>
+                        <td><?php echo $result['A_date'];?></td>
+                        <td><?php echo $result['Joining_date'];?></td>
+                        <td><?php echo $result['Retire_date'];?></td>
+                        <td><?php echo $result['Contact'];?></td>
+                        <td><?php echo $result['Password'];?></td>
                         <td><?php echo $result['Created_on'];?></td>
                         <td><?php if($result['is_deleted']==0)
                                     {
