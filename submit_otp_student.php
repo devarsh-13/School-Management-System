@@ -1,50 +1,68 @@
+<?php
 
 
-<?php 
+$flag = 0;
+
+if (isset($_POST['verify'])) {
+  $otp = $_POST['otp1'] . $_POST['otp2'] . $_POST['otp3'] . $_POST['otp4'];
 
 
-$flag=0;
 
-	if(isset($_POST['verify']))
-	{
 
-        header("location:change_password_student.php");
+
+
+  if ($_COOKIE['otp'] == $otp) {
+    header("location:change_password_student.php");
+  } else {
+
+    $error_msg['C'] = 'Please enter correct OTP';
   }
-    ?>
+}
+?>
 
 
 <html>
-    <head>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet" />
-   
-<link rel="stylesheet" href="css/otp.css">
-<script src="js/otp.js"></script>
 
-    </head>
+<head>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="css/log_style.css">
 
-    <div class="container">
+  <link rel="stylesheet" href="css/otp.css">
+  <script src="js/otp.js"></script>
+
+</head>
+
+<div class="container">
   <div class="row justify-content-md-center">
-      <div class="col-md-4 text-center">
-        <div class="row">
-          <div class="col-sm-12 mt-5 bgWhite">
-            <div class="title">
-              Verify OTP
-            </div>
-            
-            <form action="#" class="mt-5" method="Post">
-              <input class="otp" type="text" oninput='digitValidate(this)' onkeyup='tabChange(1)' maxlength=1 >
-              <input class="otp" type="text" oninput='digitValidate(this)' onkeyup='tabChange(2)' maxlength=1 >
-              <input class="otp" type="text" oninput='digitValidate(this)' onkeyup='tabChange(3)' maxlength=1 >
-              <input class="otp" type="text" oninput='digitValidate(this)'onkeyup='tabChange(4)' maxlength=1 >
-              <input class="otp" type="text" oninput='digitValidate(this)'onkeyup='tabChange(5)' maxlength=1 >
-              <input class="otp" type="text" oninput='digitValidate(this)'onkeyup='tabChange(6)' maxlength=1 >
-              <button class='btn btn-primary btn-block mt-4 mb-4 customBtn' name="verify">Verify</button>
-          </form>
-            <hr class="mt-4">
-           
+    <div class="col-md-4 text-center">
+      <div class="row">
+        <div class="col-sm-12 mt-5 bgWhite">
+          <div class="title">
+            Verify OTP
           </div>
+
+          <form action="#" class="mt-5" method="Post">
+            <input class="otp" type="number" name="otp1" oninput='digitValidate(this)' onkeyup='tabChange(1)' maxlength=1>
+            <input class="otp" type="number" name="otp2" oninput='digitValidate(this)' onkeyup='tabChange(2)' maxlength=1>
+            <input class="otp" type="number" name="otp3" oninput='digitValidate(this)' onkeyup='tabChange(3)' maxlength=1>
+            <input class="otp" type="number" name="otp4" oninput='digitValidate(this)' onkeyup='tabChange(4)' maxlength=1>
+
+            <button class='btn btn-primary btn-block mt-4 mb-4 customBtn' name="verify">Verify</button>
+            <?php
+
+            if (isset($error_msg['C'])) {
+              echo "<div class='invalid'><p>" . $error_msg['C'] . "</p></div>";
+            }
+
+
+            ?>
+          </form>
+          <hr class="mt-4">
+
         </div>
       </div>
+    </div>
   </div>
 </div>
+
 </html>
