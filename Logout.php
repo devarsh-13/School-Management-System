@@ -2,5 +2,5 @@
 	session_start();
 	session_unset();
 	session_destroy();
-	header("location:http://localhost/Sem6Project/");
+	header("location:index.php");
 ?>

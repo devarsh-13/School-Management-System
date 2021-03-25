@@ -1,7 +1,7 @@
 <?php 
 session_start();
 
-require "../Database/Create_db.php";
+require "connection.php";
 
 $flag=0;
 

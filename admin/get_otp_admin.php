@@ -1,5 +1,5 @@
 <?php
-require "../Database/Create_db.php";
+require "connection.php";
 
 $flag = 0;
 
