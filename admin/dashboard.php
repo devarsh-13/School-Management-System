@@ -218,7 +218,7 @@ $row = mysqli_num_rows($query1);
   }
   else
   {
-    echo "PLEASE LOGIN TO CONTINUE <a href='http://localhost/project6/'> Login </a>";
+    echo "PLEASE LOGIN TO CONTINUE <a href='http://localhost/Sem6CollegeProject/admin/'> Login </a>";
   }
   
 ?>
