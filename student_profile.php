@@ -151,7 +151,7 @@ Purchase:
 									<li><a href="gallery.php">Gallery</a></li>
 									<li><a href="courses.html">Resources</a></li>
 									<li><a href="student_profile.php">Profile</a></li>
-									<li><a href="contact.html">Chat</a></li>
+									<li><a href="student_chat.php">Chat</a></li>
 									<li><a href="about.html">about us</a></li>
 								</ul>
 							</div>
@@ -165,25 +165,7 @@ Purchase:
 		</header>
 		<!--header end -->
 		<!--Breadcrumb start-->
-		<div class="ed_pagetitle">
-			<div class="ed_img_overlay"></div>
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-6 col-md-4 col-sm-6">
-						<div class="page_title">
-							<h2>Educo Student</h2>
-						</div>
-					</div>
-					<div class="col-lg-6 col-md-8 col-sm-6">
-						<ul class="breadcrumb">
-							<li><a href="main.php">home</a></li>
-							<li><i class="fa fa-chevron-left"></i></li>
-							<li><a href="student_profile.php">Educo Student</a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
+		
 		<!--Breadcrumb end-->
 		<!--single student detail start-->
 		<div class="ed_dashboard_wrapper">
