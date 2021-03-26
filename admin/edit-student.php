@@ -7,7 +7,9 @@ if(strlen($_SESSION['id'])=="")
     header("Location: index.php"); 
     }
     else{
-if(isset($_POST['submit']))
+        $stid=$_GET['S_id'];
+
+if(isset($_POST['update']))
 {
     require "connection.php";
 $gr=$_POST['gr'];
@@ -34,48 +36,9 @@ $ci=mysqli_fetch_array($q);
 
 $c=$ci[0];
 
-$Sql="INSERT INTO `students` 
-                            (
-                                `S_grn`, 
-                                `S_uidn`, 
-                                `S_name`, 
-                                `S_caste`, 
-                                `S_category`, 
-                                `S_dob`, 
-                                `S_contact`, 
-                                `S_ad_date`, 
-                                `Class_id`, 
-                                `S_adharn`, 
-                                `S_hostel`, 
-                                `S_home`, 
-                                `S_handicapped`, 
-                                `S_describe`, 
-                                `S_password`, 
-                                `S_remarks`, 
-                                `is_deleted`, 
-                                `Created_on`) 
+$Sql="UPDATE `students` SET `S_grn`='$gr',`S_uidn`='$ui',`S_name`='$sn',`S_caste`='$cast', `S_category`= '$cat', `S_dob`= '$dob',`S_contact`='$con',`S_ad_date`='$adate',`Class_id`= '$c',`S_adharn`='$adhar',`S_hostel`='$hostel',`S_home`='$home',`S_handicapped`='$hand',`S_describe`='$des',`S_password`='$pass',`S_remarks`='$re',`is_deleted`='0',`Created_on`='$d' WHERE `S_srn`='$stid'";
 
-                            VALUES 
-                            (
-                                '$gr', 
-                                '$ui', 
-                                '$sn',
-                                '$cast', 
-                                '$cat', 
-                                '$dob', 
-                                '$con', 
-                                '$adate', 
-                                '$c', 
-                                '$adhar', 
-                                '$hostel', 
-                                '$home', 
-                                '$hand', 
-                                '$des', 
-                                '$pass', 
-                                '$re', 
-                                '0', 
-                                '$d')";
-
+                             
 
 $q=mysqli_query($Conn,$Sql);
 
@@ -169,88 +132,103 @@ else if($error){?>
                                         </div>
                                         <?php } ?>
                                         <form class="form-horizontal" method="post">
+<?php 
+ $sql = "SELECT * from `students` join Class on students.Class_id=Class.Class_id WHERE `S_srn`='$stid'";
+$query = mysqli_query($Conn,$sql);
+
+$row = mysqli_num_rows($query);
+$cnt=1;
+if($row > 0)
+{
+ while($result=mysqli_fetch_array($query))
+    {   ?>
+
 
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Gr Number</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" name="gr" class="form-control" maxlength="6" id="gr" required="required" autocomplete="off">
+                                                    <input type="text" name="gr" value="<?php echo htmlentities($result['S_grn'])?>" class="form-control" maxlength="6" id="gr" required="required" autocomplete="off">
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">UID Number</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" name="ui" class="form-control" id="ui" maxlength="12" required="required" autocomplete="off">
+                                                    <input type="text" name="ui" value="<?php echo htmlentities($result['S_uidn']);?>" class="form-control" id="ui" maxlength="12" required="required" autocomplete="off">
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Student Nmae</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" name="sn" class="form-control" id="sn" required="required" autocomplete="off">
+                                                    <input type="text" name="sn" value="<?php echo htmlentities($result['S_name']);?>" class="form-control" id="sn" required="required" autocomplete="off">
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Cast</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" name="cast" class="form-control" id="cast" required="required" autocomplete="off">
+                                                    <input type="text" name="cast" value="<?php echo htmlentities($result['S_caste']);?>" class="form-control" id="cast" required="required" autocomplete="off">
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Category</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" name="cat" class="form-control" id="cat" required="required" autocomplete="off">
+                                                    <input type="text" name="cat" value="<?php echo htmlentities($result['S_category'])?>" class="form-control" id="cat" required="required" autocomplete="off">
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Date of Birth</label>
                                                 <div class="col-sm-10">
-                                                    <input type="date" name="dob" class="form-control" id="dob" required="required" autocomplete="off">
+                                                    <input type="date" name="dob" value="<?php echo htmlentities($result['S_dob'])?>" class="form-control" id="dob" required="required" autocomplete="off">
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Contact</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" name="con" class="form-control" id="con" maxlength="10" required="required" autocomplete="off">
+                                                    <input type="text" name="con" value="<?php echo htmlentities($result['S_contact'])?>" class="form-control" id="con" maxlength="10" required="required" autocomplete="off">
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Admission Date</label>
                                                 <div class="col-sm-10">
-                                                    <input type="date" name="adate" class="form-control" id="adate" required="required" autocomplete="off">
+                                                    <input type="date" name="adate" value="<?php echo htmlentities($result['S_ad_date'])?>" class="form-control" id="adate" required="required" autocomplete="off">
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Class</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" name="class" class="form-control" id="class" required="required" autocomplete="off">
+                                                    <input type="text" name="class" value="<?php  $id=$result['Class_id'];
+                                 $q=mysqli_query($Conn,"SELECT `C_no` FROM `class` WHERE `Class_id` = '$id' ");
+                                 $name=mysqli_fetch_array($q);
+                                echo $name[0];?>"  class="form-control" id="class" required="required" autocomplete="off">
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Stream</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" name="stream" class="form-control" id="stream"  autocomplete="off">
+                                                    <input type="text" name="stream" value="<?php echo htmlentities($result['Stream'])?>" class="form-control" id="stream" required="required" autocomplete="off">
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Adhar Number</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" name="adhar" class="form-control" id="adhar" required="required" autocomplete="off">
+                                                    <input type="text" name="adhar" value="<?php echo htmlentities($result['S_adharn'])?>" class="form-control" id="adhar" required="required" autocomplete="off">
                                                 </div>
                                             </div>
 
                                               <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Home Address</label>
                                                 <div class="col-sm-10">
-                                                     <textarea rows="5"  name="home" class="form-control" id="home" required="required" autocomplete="off"></textarea>
+                                                     <textarea rows="5"  name="home"  class="form-control" id="home" required="required" autocomplete="off"><?php echo htmlentities($result['S_home'])?>
+                                                     </textarea>
                                                 </div>
                                             </div>
 
@@ -259,14 +237,27 @@ else if($error){?>
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Hostel Address</label>
                                                 <div class="col-sm-10">
-                                                     <textarea rows="5"  name="hostel" class="form-control" id="hostel" required="required" autocomplete="off"></textarea>
+                                                     <textarea rows="5"  name="hostel"  class="form-control" id="hostel" required="required" autocomplete="off"><?php echo htmlentities($result['S_hostel'])?></textarea>
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Handicapped</label>
                                                 <div class="col-sm-10">
-                                                    <input type="radio" name="hand" value="Yes" required="required" >Yes <input type="radio" name="hand" value="No" required="required">No 
+                                                    <?php  $hd=$result['S_handicapped'];
+                                                    if($hd=="Yes")
+                                                    {
+                                                    ?>
+                                                    <input type="radio" name="hand" value="Yes" required="required" checked="">Yes 
+                                                    <input type="radio" name="hand" value="No" required="required">No 
+                                                    <?php }?>
+                                                    <?php  
+                                                    if($hd=="No")
+                                                    {
+                                                    ?>
+                                                    <input type="radio" name="hand" value="Yes" required="required">Yes 
+                                                    <input type="radio" name="hand" value="No" required="required"  checked="">No 
+                                                    <?php }?>
                                                 </div>
                                             </div>
 
@@ -274,14 +265,14 @@ else if($error){?>
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">If Yes Describe</label>
                                                 <div class="col-sm-10">
-                                                     <textarea rows="5"  name="des" class="form-control" id="des" required="required" autocomplete="off"></textarea>
+                                                     <textarea rows="5"  name="des"  class="form-control" id="des" required="required" autocomplete="off"><?php echo htmlentities($result['S_describe'])?></textarea>
                                                 </div>
                                             </div>
 
                                                <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Password</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" name="pass" class="form-control" id="pass" required="required" autocomplete="off">
+                                                    <input type="text" name="pass" value="<?php echo htmlentities($result['S_password'])?>" class="form-control" id="pass" required="required" autocomplete="off">
                                                 </div>
                                             </div>
 
@@ -289,15 +280,17 @@ else if($error){?>
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Re marks</label>
                                                 <div class="col-sm-10">
-                                                     <textarea rows="5"  name="re" class="form-control" id="re" required="required" autocomplete="off"></textarea>
+                                                     <textarea rows="5"  name="re"  class="form-control" id="re" required="required" autocomplete="off"><?php echo htmlentities($result['S_remarks'])?></textarea>
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <div class="col-sm-offset-2 col-sm-10">
-                                                    <button type="submit" name="submit" class="btn btn-primary">Add</button>
+                                                    <button type="submit" name="update" class="btn btn-primary">Update</button>
                                                 </div>
                                             </div>
+
+                                            <?php }}?>
                                         </form>
 
                                     </div>

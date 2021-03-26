@@ -8,7 +8,49 @@ if(strlen($_SESSION['id'])=="")
     header("Location: index.php"); 
     }
     else{
+            if(isset($_POST['delt']))
+            {
 
+                $tid=$_POST['recordsCheckBox'];
+
+                   foreach ( $tid as $id ) 
+                   { 
+                          $query = "UPDATE `teachers` SET `is_deleted`='1' WHERE `T_srn`='$id'";
+                        $result = $Conn->query($query) or die("Error in query".$Conn->error);
+                   }
+
+if($result)
+{
+$msg="Student info added successfully";
+}
+else 
+{
+$error="Something went wrong. Please try again";
+}
+            }
+
+
+
+
+
+
+if (isset($_GET['T_id']))
+{
+    $tid = $_GET['T_id'];
+
+    $Sql="UPDATE `teachers` SET `is_deleted`='1' WHERE `T_srn`='$tid'";
+    
+   
+        $delete = $Conn->query($Sql) or die("Error in query2".$connection->error);
+    if ($delete){
+        
+$msg="Student info added successfully";
+}
+else 
+{
+$error="Something went wrong. Please try again";
+}
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -43,7 +85,12 @@ if(strlen($_SESSION['id'])=="")
     box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
 }
 
+input.chh
+{
+    width: 20px;
+    height: 20px;
 
+}
 
 div.scrollmenu {
   overflow: auto;
@@ -54,6 +101,13 @@ div.scrollmenu table {
   text-align: center;
   padding: 14px;
   text-decoration: none;
+}
+.dl button
+{
+
+    float: right;
+    margin-top: 10px;
+    margin-right: 10px;
 }
 
 
@@ -100,13 +154,21 @@ div.scrollmenu table {
                              
 
                                 <div class="row">
+
                                     <div class="col-md-12">
 
                                         <div class="panel">
+
                                             <div class="panel-heading">
+                                                  <div class="dl">
+                                                    <form method="post" action="manage-teachers.php">
+                                                          <button type="submit" name="delt" class="dl">Delete</button>
+                                                    
+                                                </div>
                                                 <div class="panel-title">
                                                     <h5>View Teachers Info</h5>
                                                 </div>
+                                              
                                             </div>
 <?php if($msg){?>
 <div class="alert alert-success left-icon-alert" role="alert">
@@ -123,7 +185,7 @@ else if($error){?>
                                                 
                                                                                                              <tr>
                                                             <th>#</th>
-                                                            <th>Sr. No.</th>
+                                                            <th>action</th>
                                                             <th>Teacher Nmae</th>
                                                             <th>Date of Birth</th>
                                                             <th>Degree</th>
@@ -131,16 +193,14 @@ else if($error){?>
                                                             <th>Joning Date</th>
                                                             <th>Retire Date</th>
                                                             <th>Contact</th>
-                                                            <th>Password</th>
                                                             <th>Created Date</th>
-                                                            <th>Status</th>
-                                                            <th>action</th>
+                                                            
                                                         </tr>
                                                                                                           
                                                 
 <?php 
 include 'connection.php';
- $sql = "SELECT * from `teachers` ORDER BY Created_on DESC";
+ $sql = "SELECT * from `teachers` WHERE `is_deleted`='0' ORDER BY T_srn";
 $query = mysqli_query($Conn,$sql);
 $row = mysqli_num_rows($query);
 $cnt=1;
@@ -150,7 +210,17 @@ if($row > 0)
     {       ?>
                     <tr align="center">
                         <td><?php echo htmlentities($cnt);?></td>
-                        <td><?php echo $result['T_srn'];?></td>
+
+                        <td>
+                            <a href="edit-teacher.php?T_id=<?php echo $result['T_srn'];?>">
+                                    <img src="images/edit-icon.jpg" height="25px" width='25px'/> Edit
+                            </a> 
+                              &nbsp;
+                            <a href="manage-teachers.php?T_id=<?php echo $result['T_srn'];?>">
+                              <img src="images/delete-icon.jpg" height="25px" width='25px'/>&nbsp;Delete</a>&nbsp;
+                              <input type="checkbox" name="recordsCheckBox[]" id="recordsCheckBox" class="chh" value="<?php echo $result['T_srn'];?>">
+
+                        </td>
                         <td><?php echo $result['T_name'];?></td>
                         <td><?php echo $result['DOB'];?></td>
                         <td><?php echo $result['Degree'];?></td>
@@ -158,25 +228,9 @@ if($row > 0)
                         <td><?php echo $result['Joining_date'];?></td>
                         <td><?php echo $result['Retire_date'];?></td>
                         <td><?php echo $result['Contact'];?></td>
-                        <td><?php echo $result['Password'];?></td>
                         <td><?php echo $result['Created_on'];?></td>
-                        <td><?php if($result['is_deleted']==0)
-                                    {
-                                        echo "Visible";
-                                    }
-                                    else
-                                    {
-                                        echo"Disabled";
-                                    }
-                        ?>
-                            
-                        </td>
+                       
                     
-                        <td>
-                            <a href="edit-student.php?classid=<?php echo $result['id'];?>">
-                                    <img src="images/edit.png" height="18px" width='18px'/> Edit
-                            </a> 
-                        </td>
                        
                     </tr>
 <?php 
@@ -191,7 +245,7 @@ else
                                                     
                                                 </table>
 
-                                         
+                                         </form>
                                                 <!-- /.col-md-12 -->
                                             </div>
                                         </div>

@@ -53,8 +53,8 @@
                                         <a class="dashboard-stat bg-primary" href="manage-students.php">
 <?php 
 require "connection.php";
-$sql1 ="SELECT S_srn from students";
-$query1 = $Conn -> query($sql1);
+$sql1 ="SELECT S_srn from students WHERE `is_deleted`='0'";
+$query1 = $Conn -> query($sql1); 
 $row = mysqli_num_rows($query1);
 
 ?>
@@ -68,9 +68,9 @@ $row = mysqli_num_rows($query1);
                                     <!-- /.col-lg-3 col-md-3 col-sm-6 col-xs-12 -->
 
                                     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                                        <a class="dashboard-stat bg-danger" href="manage-teachers.php">
+                                        <a class="dashboard-stat bg-success" href="manage-teachers.php">
 <?php 
-$sql1 ="SELECT T_srn from teachers";
+$sql1 ="SELECT T_srn from teachers WHERE `is_deleted`='0'";
 $query1 = $Conn -> query($sql1);
 $row = mysqli_num_rows($query1);
 ?>
@@ -135,6 +135,39 @@ $row = mysqli_num_rows($query1);
                                             <span class="number counter"><?php echo $row;?></span>
                                             <span class="name">Gallery</span>
                                             <span class="bg-icon"><i class="fa fa-picture-o"></i></span>
+                                        </a>
+                                        <!-- /.dashboard-stat -->
+                                    </div>
+
+
+                                     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                        <a class="dashboard-stat bg-danger" href="bin-students.php">
+                                        <?php 
+$sql1 ="SELECT S_srn from students WHERE `is_deleted`='1'";
+$query1 = $Conn -> query($sql1);
+$row = mysqli_num_rows($query1);
+?>
+
+                                            <span class="number counter"><?php echo $row;?></span>
+                                            <span class="name">Deleted Students</span>
+                                            <span class="bg-icon"><i class="fa fa-trash"></i></span>
+                                        </a>
+                                        <!-- /.dashboard-stat -->
+                                    </div>
+
+
+
+                                     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                        <a class="dashboard-stat bg-primary" href="bin-teachers.php">
+                                        <?php 
+$sql1 ="SELECT T_srn from teachers WHERE `is_deleted`='1'";
+$query1 = $Conn -> query($sql1);
+$row = mysqli_num_rows($query1);
+?>
+
+                                            <span class="number counter"><?php echo $row;?></span>
+                                            <span class="name">Deleted Teachers</span>
+                                            <span class="bg-icon"><i class="fa fa-trash"></i></span>
                                         </a>
                                         <!-- /.dashboard-stat -->
                                     </div>

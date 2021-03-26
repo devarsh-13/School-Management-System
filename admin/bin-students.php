@@ -8,47 +8,7 @@ if(strlen($_SESSION['id'])=="")
     header("Location: index.php"); 
     }
     else{
-        if(isset($_POST['delt']))
-            {
 
-                $sid=$_POST['recordsCheckBox'];
-
-                   foreach ( $sid as $id ) 
-                   { 
-                          $query = "UPDATE `students` SET `is_deleted`='1' WHERE `S_srn`='$id'";
-                        $result = $Conn->query($query) or die("Error in query".$Conn->error);
-                   }
-
-if($result)
-{
-$msg="Student info added successfully";
-}
-else 
-{
-$error="Something went wrong. Please try again";
-}
-            }
-
-
-
-
-if (isset($_GET['S_id']))
-{
-    $stid = $_GET['S_id'];
-
-    $Sql="UPDATE `students` SET `is_deleted`='1' WHERE `S_srn`='$stid'";
-    
-   
-        $delete = $Conn->query($Sql) or die("Error in query2".$connection->error);
-    if ($delete){
-       $msg="Student info added successfully";
-}
-else 
-{
-$error="Something went wrong. Please try again";
-}
-
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -83,19 +43,7 @@ $error="Something went wrong. Please try again";
     box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
 }
 
-.dl button
-{
 
-    float: right;
-    margin-top: 10px;
-    margin-right: 10px;
-}
-input.chh
-{
-    width: 20px;
-    height: 20px;
-    
-}
 
 .scrollmenu {
   overflow: auto;
@@ -132,7 +80,7 @@ border: 1px solid black;
                         <div class="container-fluid">
                             <div class="row page-title-div">
                                 <div class="col-md-6">
-                                    <h2 class="title">Manage Students</h2>
+                                    <h2 class="title">Deleted Students</h2>
                                 
                                 </div>
                                 
@@ -144,7 +92,7 @@ border: 1px solid black;
                                     <ul class="breadcrumb">
             							<li><a href="dashboard.php"><i class="fa fa-home"></i> Home</a></li>
                                         <li> Students</li>
-            							<li class="active">Manage Students</li>
+            							<li class="active">Deleted Students</li>
             						</ul>
                                 </div>
                              
@@ -163,11 +111,6 @@ border: 1px solid black;
 
                                         <div class="panel">
                                             <div class="panel-heading">
-                                                 <div class="dl">
-                                                    <form method="post" action="manage-students.php">
-                                                          <button type="submit" name="delt" class="dl">Delete</button>
-                                                    
-                                                </div>
                                                 <div class="panel-title">
                                                     <h5>View Students Info</h5>
                                                 </div>
@@ -215,7 +158,7 @@ else if($error){?>
                                                 
 <?php 
 include 'connection.php';
- $sql = "SELECT * from `students` join Class on students.Class_id=Class.Class_id WHERE `is_deleted`='0' ORDER BY S_srn";
+ $sql = "SELECT * from `students` join Class on students.Class_id=Class.Class_id WHERE `is_deleted`='1' ORDER BY S_srn";
 $query = mysqli_query($Conn,$sql);
 $row = mysqli_num_rows($query);
 $cnt=1;
@@ -230,9 +173,8 @@ if($row > 0)
                                     <img src="images/edit-icon.jpg" height="25px" width='25px'/> Edit
                             </a> 
                              &nbsp;
-                            <a href="manage-students.php?S_id=<?php echo $result['S_srn'];?>">
-                              <img src="images/delete-icon.jpg" height="25px" width='25px'/>&nbsp;Delete</a>&nbsp;
-                              <input type="checkbox" name="recordsCheckBox[]" id="recordsCheckBox" class="chh" value="<?php echo $result['S_srn'];?>">
+                            <a href="delete-student.php?S_id=<?php echo $result['S_srn'];?>">
+                              <img src="images/delete-icon.jpg" height="25px" width='25px'/>&nbsp;Delete</a>
                         </td>
                     
                         <td><?php echo $result['S_grn'];?></td>
@@ -273,7 +215,7 @@ else
                                                     
                                                     
                                                 </table>
-</form>
+
                                          
                                                 <!-- /.col-md-12 -->
                                             </div>

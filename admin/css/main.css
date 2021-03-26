@@ -4925,9 +4925,11 @@ div.tagsinput span.tag a {
   min-height: 250px;
 }
 
+
 .wizard > .content > .body label.error {
   color: #e74c3c;
   font-size: 90%;
+
   font-weight: normal;
 }
 

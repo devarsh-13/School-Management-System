@@ -9,6 +9,51 @@ if(strlen($_SESSION['id'])=="")
     header("Location: index.php"); 
     }
     else{
+
+ if(isset($_POST['delt']))
+            {
+
+                $nid=$_POST['recordsCheckBox'];
+
+                   foreach ( $nid as $id ) 
+                   { 
+                          $query = "DELETE FROM `notification` WHERE `Sr_n`='$id'";
+                        $result = $Conn->query($query) or die("Error in query".$Conn->error);
+                   }
+
+if($result)
+{
+$msg="Student info added successfully";
+}
+else 
+{
+$error="Something went wrong. Please try again";
+}
+            }
+
+
+
+
+
+        if (isset($_GET['N_id']))
+{
+    $nid = $_GET['N_id'];
+
+    $Sql="DELETE FROM `notification` WHERE `Sr_n`='$nid'";
+    
+   
+        $delete = $Conn->query($Sql) or die("Error in query2".$connection->error);
+   
+if($delete)
+{
+$msg="Student info added successfully";
+}
+else 
+{
+$error="Something went wrong. Please try again";
+}
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -41,6 +86,20 @@ if(strlen($_SESSION['id'])=="")
     border-left: 4px solid #5cb85c;
     -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
     box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
+}
+
+.dl button
+{
+
+    float: right;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+input.chh
+{
+    width: 20px;
+    height: 20px;
+    
 }
         </style>
     </head>
@@ -89,6 +148,11 @@ if(strlen($_SESSION['id'])=="")
 
                                         <div class="panel">
                                             <div class="panel-heading">
+                                                 <div class="dl">
+                                                    <form method="post" action="manage-notif.php">
+                                                          <button type="submit" name="delt" class="dl">Delete</button>
+                                                    
+                                                </div>
                                                 <div class="panel-title">
                                                     <h5>View Notices</h5>
                                                 </div>
@@ -108,13 +172,13 @@ else if($error){?>
                                                     
                                                         <tr>
                                                             <th>#</th>
-                                                            <th>Sr. NO.</th>
+                                                             <th>Action</th>
+                                                            <th>Dis/Ena</th>
                                                             <th>Notification Text</th>
                                                             <th>Created Date</th>
                                                             <th>Status</th>
                                                             <th>Created By</th>
-                                                            <th>Action</th>
-                                                            <th>Dis/Ena</th>
+                                                          
                                                         </tr>
                                                     
                                                    
@@ -131,7 +195,33 @@ if($row > 0)
     {       ?>
                     <tr align="center">
                          <td><?php echo htmlentities($cnt);?></td>
-                        <td><?php echo $result['Sr_n'];?></td>
+
+                          <td><a href="edit-notif.php?N_id=<?php echo $result['Sr_n'];?>">
+                              <img src="images/edit-icon.jpg" height="25px" width='25px'/> Edit</a> 
+                                 &nbsp;
+                            <a href="manage-notif.php?N_id=<?php echo $result['Sr_n'];?>">
+                              <img src="images/delete-icon.jpg" height="25px" width='25px'/>&nbsp;Delete</a>
+                              &nbsp;
+                              <input type="checkbox" name="recordsCheckBox[]" id="recordsCheckBox" class="chh" value="<?php echo $result['Sr_n'];?>">
+
+                          </td>
+                        <td>  <?php
+                            if($result['is_deleted']==0)
+                            {
+                        ?>
+                                <a href="disable_record.php?notif_id=<?php echo $result['Sr_n'];?>"><img src="images/disable.jpg" width='30px'/></a>
+                        <?php
+                            }
+                            else
+                            {
+                        ?>
+                                <a href="enable_record.php?notif_id=<?php echo $result['Sr_n'];?>"><img src="images/enable.jpg" width='30px'/></a>   
+                        <?php
+                            }
+                        ?>
+
+                        </td>
+                      
                         <td><?php echo $result['Notification_text'];?></td>
                         <td><?php echo $result['created_on'];?></td>
                         <td><?php if($result['is_deleted']==0)
@@ -151,25 +241,8 @@ if($row > 0)
                                  $name=mysqli_fetch_array($q);
                                 echo $name[0];
                            ?></td>
-                        <td><a href="edit-notif.php?classid=<?php echo $result['id'];?>">
-                              <img src="images/edit.png" height="18px" width='18px'/> Edit</a> </td>
-                        <td>
-                        <?php
-                            if($result['is_deleted']==0)
-                            {
-                        ?>
-                                <a href="disable_record.php?notif_id=<?php echo $result['Sr_n'];?>"><img src="images/disable.jpg" width='30px'/></a>
-                        <?php
-                            }
-                            else
-                            {
-                        ?>
-                                <a href="enable_record.php?notif_id=<?php echo $result['Sr_n'];?>"><img src="images/enable.jpg" width='30px'/></a>   
-                        <?php
-                            }
-                        ?>
-
-                        </td>
+                       
+                      
                     </tr>
 <?php 
     $cnt=$cnt+1;}
@@ -182,7 +255,7 @@ else
                                                     
                                                     
                                                 </table>
-
+</form>
                                          
                                                 <!-- /.col-md-12 -->
                                             </div>

@@ -108,11 +108,12 @@ else if($error){?>
                                                     
                                                         <tr>
                                                             
-                                                            <th>id</th>
+                                                            <th>Sr.No</th>
+                                                            <th>Action</th>
                                                             <th>image</th>
                                                             <th>Created Date</th>
                                                             <th>Created By</th>
-                                                            <th>Action</th>
+                                                            
                                                         </tr>
                                                     
                                                    
@@ -122,14 +123,16 @@ include 'connection.php';
  $sql = "SELECT * from `images` ORDER BY Uploaded_on DESC";
 $query = mysqli_query($Conn,$sql);
 $row = mysqli_num_rows($query);
-
+$cnt=1;
 if($row > 0)
 {
      $path="img/";
     while($result=mysqli_fetch_array($query))
     {       $full = $path.$result['Image']; ?>
                     <tr>
-                        <td><?php echo $result['Id'];?></td>
+                          <td><?php echo htmlentities($cnt);?></td>
+                          <td> <a href="delete-gallery.php?G_id=<?php echo $result['Id'];?>">
+                              <img src="images/delete-icon.jpg" height="25px" width='25px'/>&nbsp;Delete</a></td>
                         <td> <img src="<?php echo $full; ?>" height="100px" width="100px"></img></td>
                         <td><?php echo $result['Uploaded_on'];?></td>
                         <td><?php
@@ -138,10 +141,10 @@ if($row > 0)
                                  $name=mysqli_fetch_array($q);
                                 echo $name[0];
                             ?></td>
-                        <td><a href="edit-event.php?classid=<?php echo $result['id'];?>"><i class="fa fa-edit" title="Edit Record"></i> </a> </td>
+                       
                     </tr>
 <?php 
-    }
+   $cnt=$cnt+1; }
 }
 else
 {
