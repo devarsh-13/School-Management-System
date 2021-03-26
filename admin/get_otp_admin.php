@@ -1,6 +1,6 @@
 <?php
 require "connection.php";
-
+session_start();
 $flag = 0;
 
 if (isset($_POST['getOtp'])) {
@@ -27,7 +27,7 @@ if (isset($_POST['getOtp'])) {
 	$arr = mysqli_fetch_row($query);
 
 	if ($row == 1) {
-		session_start();
+		
 
 		$_SESSION['id'] = $arr[0];
 
@@ -40,7 +40,8 @@ if (isset($_POST['getOtp'])) {
 
 		$otp = mt_rand(1000, 9999);
 
-		setcookie('otp', $otp);
+		$_SESSION['otp']=$otp;
+		
 
 
 

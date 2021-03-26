@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 
 
 $flag = 0;
@@ -11,7 +13,7 @@ if (isset($_POST['verify'])) {
 
 
 
-  if ($_COOKIE['otp'] == $otp) {
+  if ($_SESSION['otp'] == $otp) {
     header("location:change_password_student.php");
   } else {
 
