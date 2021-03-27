@@ -173,13 +173,22 @@ $Sql="ALTER TABLE `Notification` ADD FOREIGN KEY (`Created_by`) REFERENCES `Admi
 $q=mysqli_query($Conn,$Sql);
 
 //Inserts
-$Sql="INSERT INTO `Class` (C_no,Stream)VALUES('11','Science')";
+$Sql="INSERT INTO `class` (`Class_id`, `C_no`, `Stream`) VALUES (NULL, '9', ''), 
+																(NULL, '10', ''),
+																(NULL, '11', 'Arts'), 
+																(NULL, '12', 'Arts'), 
+																(NULL, '11', 'Commerce'), 
+																(NULL, '12', 'Commerce'), 
+																(NULL, '11', 'Science'), 
+																(NULL, '12', 'Science')
+	";
+	 
 $q=mysqli_query($Conn,$Sql);
 
 $Sql="INSERT INTO `Subjects` (Sub_name,Class_id)VALUES('Physics','1')";
 $q=mysqli_query($Conn,$Sql);
 
-$Sql="INSERT INTO `students` (`S_srn`, `S_grn`, `S_uidn`, `S_name`, `S_caste`, `S_category`, `S_dob`, `S_contact`, `S_ad_date`, `Class_id`, `S_adharn`, `S_hostel`, `S_home`, `S_handicapped`, `S_describe`, `S_password`, `S_remarks`, `is_deleted`, `Created_on`) VALUES (NULL, '123', '123456789098765432', 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 'asdsds', 'xaxax', '2021-03-01', '1234567890', '2021-03-04', '1', '1111111111', 'aqaqaqaqaq', '', 'q', 'qqqqqq', '123_123', '1aaaaaaaaaaaaa', '0', '2021-03-19')";
+$Sql="INSERT INTO `students` (`S_srn`, `S_grn`, `S_uidn`, `S_name`, `S_caste`, `S_category`, `S_dob`, `S_contact`, `S_ad_date`, `Class_id`, `S_adharn`, `S_hostel`, `S_home`, `S_handicapped`, `S_describe`, `S_password`, `S_remarks`, `is_deleted`, `Created_on`) VALUES (NULL, '123', '123456789098765432', 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 'asdsds', 'xaxax', '2021-03-01', '1234567890', '01-12-2921', '1', '123456789012', 'aqaqaqaqaq', '', 'q', 'qqqqqq', '123_123', '1aaaaaaaaaaaaa', '0', '19-3-2021')";
 $q=mysqli_query($Conn,$Sql);
 
 $Sql="INSERT INTO `Teachers` (`T_name`, `DOB`, `Degree`, `A_date`, `Joining_date`, `Retire_date`,`Contact`,`Password`) VALUES ('abc', '2020-07-14', 'alpha beta gama', '2021-01-24', '2021-01-30', '2021-02-01','1212121212','123')";
