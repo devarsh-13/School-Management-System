@@ -1,3 +1,28 @@
+<?php
+
+include 'Database/connection.php';
+session_start();
+
+
+// $S_srn = $_SESSION['id'];
+// $sql = "SELECT * from `students` join Class on students.Class_id=Class.Class_id WHERE
+//  S_srn = '$S_srn' ORDER BY Created_on DESC";
+$sql = "SELECT 'T_name' from `teachers` ";
+
+
+
+
+$query = mysqli_query($Conn, $sql);
+$row = mysqli_num_rows($query);
+
+
+$result = mysqli_fetch_array($query);
+
+
+?>
+
+
+
 <!DOCTYPE html>
 <!-- 
 Template Name: Educo
@@ -108,9 +133,20 @@ Purchase:
 					<aside class="chat-rooms">
 						<form class="new-chatroom-form"><label for="new-chat">Create New Chat</label><input type="text" id="new-chat" placeholder="chatroom-name" value=""><input type="submit" value="Create"></form>
 						<ul>
-							<li class=""><a href="/chat/chat-1">chat-1</a></li>
-							<li class="selected"><a href="/chat/chat-2">chat-2</a></li>
-							<li class=""><a href="/chat/chat-3">chat-3</a></li>
+
+							<?php
+
+							
+
+								echo '<li class=""><a href="/chat/chat-1">' .$result['T_name']. ' </a></li>';
+							
+
+
+
+
+
+							?>
+
 						</ul>
 					</aside>
 					<main class="chat">
