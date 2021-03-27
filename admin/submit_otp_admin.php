@@ -46,10 +46,10 @@ if (isset($_POST['verify'])) {
           </div>
 
           <form action="#" class="mt-5" method="Post">
-            <input class="otp1" type="number" oninput='digitValidate(this)' onkeyup='tabChange(1)' maxlength=1>
-            <input class="otp2" type="number" oninput='digitValidate(this)' onkeyup='tabChange(2)' maxlength=1>
-            <input class="otp3" type="number" oninput='digitValidate(this)' onkeyup='tabChange(3)' maxlength=1>
-            <input class="otp4" type="number" oninput='digitValidate(this)' onkeyup='tabChange(4)' maxlength=1>
+            <input class="otp" name="otp1" type="number" oninput='digitValidate(this)' onkeyup='tabChange(1)' maxlength=1>
+            <input class="otp" name="otp2" type="number" oninput='digitValidate(this)' onkeyup='tabChange(2)' maxlength=1>
+            <input class="otp" name="otp3" type="number" oninput='digitValidate(this)' onkeyup='tabChange(3)' maxlength=1>
+            <input class="otp" name="otp4" type="number" oninput='digitValidate(this)' onkeyup='tabChange(4)' maxlength=1>
            
             <button class='btn btn-primary btn-block mt-4 mb-4 customBtn' name="verify">Verify</button>
             <?php
