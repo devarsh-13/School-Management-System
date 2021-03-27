@@ -9,6 +9,89 @@ if(strlen($_SESSION['id'])=="")
     header("Location: index.php"); 
     }
     else{
+
+$gid = $_GET['G_id'];
+
+    if (isset($gid))
+    {
+
+
+        
+ $sql = "SELECT * from `images`  WHERE `Id`='$gid' ";
+$query = mysqli_query($Conn,$sql);
+$row = mysqli_num_rows($query);
+
+if($row > 0)
+{
+     $path="img/";
+    while($result=mysqli_fetch_array($query))
+    {       $full = $path.$result['Image']; 
+          $d=  unlink($full);
+    }
+}
+        $query = "DELETE FROM `images` WHERE `Id`='$gid'";
+        $delet = mysqli_query($Conn,$query) or die("Error in query2".$Conn->error);
+
+if($d)
+{
+    
+$msg="Student info added successfully";
+}
+else 
+{
+    
+$error="Something went wrong. Please try again";
+}
+
+}
+
+
+
+
+
+ if(isset($_POST['delt']))
+            {
+
+                $gid=$_POST['recordsCheckBox'];
+  foreach ( $gid as $id ) 
+{ 
+ $sql = "SELECT * from `images`  WHERE `Id`='$id' ";
+$query = mysqli_query($Conn,$sql);
+
+
+     $path="img/";
+    while($result=mysqli_fetch_array($query))
+    {       $full = $path.$result['Image']; 
+          $d=  unlink($full);
+    }
+
+}
+
+
+                   foreach ( $gid as $id ) 
+                   { 
+                          $query = "DELETE FROM `images` WHERE `Id`='$id'";
+                        $result = $Conn->query($query) or die("Error in query".$Conn->error);
+                   }
+
+
+if($d)
+{
+$msg="Student info added successfully";
+}
+else 
+{
+$error="Something went wrong. Please try again";
+}
+            }
+
+
+
+
+
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -41,6 +124,20 @@ if(strlen($_SESSION['id'])=="")
     border-left: 4px solid #5cb85c;
     -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
     box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
+}
+
+.dl button
+{
+
+    float: right;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+input.chh
+{
+    width: 20px;
+    height: 20px;
+    
 }
         </style>
     </head>
@@ -89,6 +186,11 @@ if(strlen($_SESSION['id'])=="")
 
                                         <div class="panel">
                                             <div class="panel-heading">
+                                                 <div class="dl">
+                                                    <form method="post" action="manage-gallery.php">
+                                                          <button type="submit" name="delt" class="dl">Delete</button>
+                                                    
+                                                </div>
                                                 <div class="panel-title">
                                                     <h5>View Gallery Info</h5>
                                                 </div>
@@ -131,8 +233,9 @@ if($row > 0)
     {       $full = $path.$result['Image']; ?>
                     <tr>
                           <td><?php echo htmlentities($cnt);?></td>
-                          <td> <a href="delete-gallery.php?G_id=<?php echo $result['Id'];?>">
-                              <img src="images/delete-icon.jpg" height="25px" width='25px'/>&nbsp;Delete</a></td>
+                          <td> <a href="manage-gallery.php?G_id=<?php echo $result['Id'];?>">
+                              <img src="images/delete-icon.jpg" height="25px" width='25px'/>&nbsp;Delete</a>  &nbsp;
+                              <input type="checkbox" name="recordsCheckBox[]" id="recordsCheckBox" class="chh" value="<?php echo $result['Id'];?>"></td>
                         <td> <img src="<?php echo $full; ?>" height="100px" width="100px"></img></td>
                         <td><?php echo $result['Uploaded_on'];?></td>
                         <td><?php

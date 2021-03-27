@@ -9,6 +9,91 @@ if(strlen($_SESSION['id'])=="")
     }
     else{
 
+         if(isset($_POST['delt']))
+            {
+
+                $tid=$_POST['recordsCheckBox'];
+
+                   foreach ( $tid as $id ) 
+                   { 
+                          $query = "DELETE FROM `teachers` WHERE `T_srn`='$id'";
+                        $result = $Conn->query($query) or die("Error in query".$Conn->error);
+                   }
+
+if($result)
+{
+$msg="Student info added successfully";
+}
+else 
+{
+$error="Something went wrong. Please try again";
+}
+            }
+
+
+
+
+if (isset($_GET['T_id']))
+{
+    $tid = $_GET['T_id'];
+
+    $Sql="DELETE FROM `teachers` WHERE `T_srn`='$tid'";
+    
+   
+        $delete = $Conn->query($Sql) or die("Error in query2".$connection->error);
+    if ($delete){
+$msg="Student info added successfully";
+}
+else 
+{
+$error="Something went wrong. Please try again";
+}
+}
+
+
+
+
+         if(isset($_POST['re']))
+            {
+
+                $tid=$_POST['recordsCheckBox'];
+
+                   foreach ( $tid as $id ) 
+                   { 
+                         $query = "UPDATE `teachers` SET `is_deleted`='0' WHERE `T_srn`='$id'";
+                        $result = $Conn->query($query) or die("Error in query".$Conn->error);
+                   }
+
+if($result)
+{
+$msg="Student info added successfully";
+}
+else 
+{
+$error="Something went wrong. Please try again";
+}
+            }
+
+
+
+
+if (isset($_GET['Tr_id']))
+{
+    $tid = $_GET['Tr_id'];
+
+    $query = "UPDATE `teachers` SET `is_deleted`='0' WHERE `T_srn`='$tid'";
+                        $delete = $Conn->query($query) or die("Error in query".$Conn->error);
+    if ($delete){
+$msg="Student info added successfully";
+}
+else 
+{
+$error="Something went wrong. Please try again";
+}
+}
+    
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -44,6 +129,20 @@ if(strlen($_SESSION['id'])=="")
 }
 
 
+
+.dl button
+{
+
+    float: right;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+input.chh
+{
+    width: 20px;
+    height: 20px;
+    
+}
 
 div.scrollmenu {
   overflow: auto;
@@ -104,6 +203,12 @@ div.scrollmenu table {
 
                                         <div class="panel">
                                             <div class="panel-heading">
+                                                <div class="dl">
+                                                    <form method="post" action="bin-teachers.php">
+                                                          <button type="submit" name="delt" class="dl">Delete</button>
+                                                          <button type="submit" name="re" class="dl">Restore</button>
+                                                    
+                                                </div>
                                                 <div class="panel-title">
                                                     <h5>View Teachers Info</h5>
                                                 </div>
@@ -124,6 +229,7 @@ else if($error){?>
                                                                                                              <tr>
                                                             <th>#</th>
                                                             <th>action</th>
+                                                            <th>Restore</th>
                                                             <th>Teacher Nmae</th>
                                                             <th>Date of Birth</th>
                                                             <th>Degree</th>
@@ -154,9 +260,15 @@ if($row > 0)
                                     <img src="images/edit-icon.jpg" height="25px" width='25px'/> Edit
                             </a> 
                               &nbsp;
-                            <a href="delete-teacher.php?T_id=<?php echo $result['T_srn'];?>">
+                            <a href="bin-teachers.php?T_id=<?php echo $result['T_srn'];?>">
                               <img src="images/delete-icon.jpg" height="25px" width='25px'/>&nbsp;Delete</a>
+                                 &nbsp;
+                              <input type="checkbox" name="recordsCheckBox[]" id="recordsCheckBox" class="chh" value="<?php echo $result['T_srn'];?>">
                         </td>
+                        <td>  <a href="bin-teachers.php?Tr_id=<?php echo $result['T_srn'];?>">
+                              <img src="images/restore-icon.png" height="25px" width='25px'/>&nbsp;Restore</a>
+                                 &nbsp;
+                              <input type="checkbox" name="recordsCheckBox[]" id="recordsCheckBox" class="chh" value="<?php echo $result['T_srn'];?>"></td>
                         <td><?php echo $result['T_name'];?></td>
                         <td><?php echo $result['DOB'];?></td>
                         <td><?php echo $result['Degree'];?></td>
