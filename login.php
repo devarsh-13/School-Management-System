@@ -1,6 +1,6 @@
 <?php 
-require "Database/Create_db.php";
-
+//require "Database/Create_db.php";
+require "Database/connection.php";
 $flag=0;
 
 	if(isset($_POST['Submit']))
