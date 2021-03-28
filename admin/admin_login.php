@@ -49,13 +49,13 @@ $flag=0;
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Login Form Design | CodeLab</title>
+    <title>Admin Login Form</title>
    	<link rel="stylesheet" href="css/log_style.css">
   </head>
   <body>
     <div class="wrapper">
       
-      <div class="title">Login Form</div>	
+      <div class="title">Admin Login Form</div>	
       
       <form action="#" method="Post">
         

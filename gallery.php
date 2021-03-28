@@ -17,6 +17,7 @@
    <!-- end theme style -->
    <!-- favicon links -->
    <link rel="shortcut icon" type="image/png" href="images/header/favicon.png" />
+
 </head>
 <!-- body -->
 
@@ -89,6 +90,7 @@
       <!--Breadcrumb end-->
 
       <div class="images">
+         
 
          <?php
          require 'Database/connection.php';
@@ -207,23 +209,6 @@
       <!--Footer Bottom section end-->
 
 
-
-      <script>
-         $(document).ready(function() {
-            $(".fancybox").fancybox({
-               openEffect: "none",
-               closeEffect: "none"
-            });
-
-            $(".zoom").hover(function() {
-
-               $(this).addClass('transition');
-            }, function() {
-
-               $(this).removeClass('transition');
-            });
-         });
-      </script>
 </body>
 
 </html>

@@ -1,6 +1,6 @@
 <?php 
-require "Database/Create_db.php";
-require "Database/connection.php";
+require "connection.php";
+
 $flag=0;
 
 	if(isset($_POST['Submit']))
@@ -21,13 +21,9 @@ $flag=0;
 			$error_msg['C']='Please enter proper 10 Digit number!! ';
 			$error=true;
 		}
-		elseif(strlen($mo)>10)
-		{
-			$error_msg['C']='Please enter proper 10 Digit number!! ';
-			$error=true;
-		}
-		$query = mysqli_query($Conn,"SELECT `S_srn` FROM `Students` WHERE
-			`S_contact` = '$Contact' && `S_password` = '$Password'
+		
+		$query = mysqli_query($Conn,"SELECT * FROM `teachers` WHERE
+			`Contact` = '$Contact' && `Password` = '$Password'
 			") or die(mysqli_connect_error());
 		
 		$row = mysqli_num_rows($query);
@@ -36,9 +32,9 @@ $flag=0;
 		if($row == 1)
 		{
 			session_start();
-			
 			$_SESSION['id']=$arr[0];
-			header("location:http://localhost/Sem6CollegeProject/main.php");
+			
+			header("location:dashboard.php");
 		}
 		else
 		{
@@ -46,7 +42,6 @@ $flag=0;
 		}
 		
 	}
-
 		
 ?>
 
@@ -54,13 +49,13 @@ $flag=0;
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Student Login Form</title>
+    <title>Teacher Login Form</title>
    	<link rel="stylesheet" href="css/log_style.css">
   </head>
   <body>
     <div class="wrapper">
       
-      <div class="title">Student Login Form</div>	
+      <div class="title">Teacher Login Form</div>	
       
       <form action="#" method="Post">
         
@@ -95,8 +90,7 @@ $flag=0;
         
         <div class="content">
           
-          <div class="pass-link" ><a href="get_otp_student.php" >forgot password?</a></div>
-		
+          <div class="pass-link"><a href="get_otp_admin.php">Forgot password?</a></div>
         </div>
         
         <div class="field">

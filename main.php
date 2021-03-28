@@ -187,7 +187,7 @@ Purchase: http://themeforest.net/user/kamleshyadav
 									while ($r = mysqli_fetch_array($q)) {
 										echo " 
             								<div class='ed_item_description'>
-												<h4>" . $r['Sr_n'] . "</h4>
+												<h4>" . $r['event_date'] . "</h4>
 												<p> " . $r['Event_text'] . "</p>
 																									
 												</div>	";

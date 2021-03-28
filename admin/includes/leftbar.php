@@ -16,6 +16,10 @@
                                         <a href="dashboard.php"><i class="fa fa-dashboard"></i> <span>Dashboard</span> </a>
                                      
                                     </li>
+                                     <li>
+                                        <a href="view-profile.php"><i class="fa fa-user"></i> <span>Profile</span> </a>
+                                     
+                                    </li>
 
                                     <li class="nav-header">
                                         <span class="">Options</span>
