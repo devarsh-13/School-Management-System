@@ -1,22 +1,19 @@
 <?php
 
-include 'Database/connection.php';
+require 'Database/connection.php';
 session_start();
 
 
 // $S_srn = $_SESSION['id'];
 // $sql = "SELECT * from `students` join Class on students.Class_id=Class.Class_id WHERE
 //  S_srn = '$S_srn' ORDER BY Created_on DESC";
-$sql = "SELECT 'T_name' from `teachers` ";
-
-
+$sql = "SELECT * FROM `teachers` where 'is_deleted'=0";
 
 
 $query = mysqli_query($Conn, $sql);
 $row = mysqli_num_rows($query);
 
-
-$result = mysqli_fetch_array($query);
+// $result = mysqli_fetch_array($query);
 
 
 ?>
@@ -122,27 +119,45 @@ Purchase:
 		<div class="ed_transprentbg ed_toppadder80 ed_bottompadder80">
 			<div id="root">
 				<header>
-					<h1 class="main-title" title="Ghetto Chat">Chat App</h1>
+				
 					<nav>
 						<ul>
-							<li><a href="/">Logout as "Computer"</a></li>
+							
 						</ul>
 					</nav>
 				</header>
 				<section class="main-view"><label for="toggle">&lt; Chatrooms</label><input id="toggle" type="checkbox" checked="">
 					<aside class="chat-rooms">
-						<form class="new-chatroom-form"><label for="new-chat">Create New Chat</label><input type="text" id="new-chat" placeholder="chatroom-name" value=""><input type="submit" value="Create"></form>
+						
 						<ul>
 
 							<?php
 
+
+							// // foreach ($result as  $key => $value) {
+
+
+								while($result=mysqli_fetch_array($query))
+								{  
+								echo '<li class=><a href="/chat/chat-1">'.$result['T_name']. ' </a></li>';
+
+
+								}
+							// // 
+							// echo $row;
+							// echo sizeof($result);
+
+							// echo '<pre>'; print_r($result); echo '</pre>';
+
+
 							
-
-								echo '<li class=""><a href="/chat/chat-1">' .$result['T_name']. ' </a></li>';
-							
+	
 
 
 
+
+
+						
 
 
 							?>
