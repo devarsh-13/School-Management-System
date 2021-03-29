@@ -82,7 +82,7 @@ Purchase: http://themeforest.net/user/kamleshyadav
 										<li><a href="main.php">Home</a></li>
 										<li><a href="#event">events</a></li>
 										<li><a href="gallery.php">Gallery</a></li>
-										<li><a href="courses.html">Resources</a></li>
+										<li><a href="resource-download.php">Resources</a></li>
 										<li><a href="student_profile.php">Profile</a></li>
 										<li><a href="student_chat.php">Chat</a></li>
 										<li><a href="about.html">about us</a></li>

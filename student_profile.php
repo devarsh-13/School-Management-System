@@ -104,10 +104,16 @@ Purchase:
 
 	<!--srart theme style -->
 	<link href="css/main.css" rel="stylesheet" type="text/css" />
-	<link rel="stylesheet" href="css/log_style.css">
+	
 	<!-- end theme style -->
 	<!-- favicon links -->
 	<link rel="shortcut icon" type="image/png" href="images/header/favicon.png" />
+	<style type="text/css">
+		            .ed_footer_wrapper
+            {
+         		padding-top: 10%;
+            }
+	</style>
 </head>
 
 <body>

@@ -29,8 +29,6 @@ $Sql="INSERT INTO `resources`(`R_path`, `Created_on`, `Created_by`, `Sub_id`) VA
 $q=mysqli_query($Conn,$Sql);
     }
 
-       
-
 if($q)
 {
 $msg="Student info added successfully";
@@ -41,6 +39,48 @@ $error="Something went wrong. Please try again";
 }
 
 }
+
+
+
+
+$rid = $_GET['r_id'];
+
+    if (isset($rid))
+    {
+
+
+        
+ $sql = "SELECT * from `resources`  WHERE `R_id`='$rid' ";
+$query = mysqli_query($Conn,$sql);
+$row = mysqli_num_rows($query);
+
+if($row > 0)
+{
+     $path="resource/";
+    while($result=mysqli_fetch_array($query))
+    {       $full = $path.$result['R_path']; 
+          $d=  unlink($full);
+    }
+}
+        $query = "DELETE FROM `resources` WHERE `R_id`='$rid'";
+        $delet = mysqli_query($Conn,$query) or die("Error in query2".$Conn->error);
+
+if($d)
+{
+    
+$msg="Student info added successfully";
+}
+else 
+{
+    
+$error="Something went wrong. Please try again";
+}
+
+}
+
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -139,6 +179,81 @@ else if($error){?>
                                         </form>
 
                                     </div>
+
+
+                                 
+
+                                     <table id="example" class="display table table-striped table-bordered" cellspacing="0" width="100%">
+                                                    
+                                                        <tr>
+                                                            <th>#</th>
+                                                            <th>Action</th>
+                                                            <th>Resource Name</th>
+                                                            <th>Created by</th>
+                                                            <th>Created On</th>
+                                                        </tr>
+                                                    
+                                                   
+<?php 
+require "connection.php";
+session_start();
+
+$sub_id=$_GET['sub_id'];
+
+$sql1 ="SELECT * from `resources` WHERE `Sub_id`='$sub_id' ";
+$query= $Conn -> query($sql1); 
+$row = mysqli_num_rows($query);
+ $path = "resource/";
+$cnt=1;
+
+
+if($row > 0)
+{
+while ($query1=mysqli_fetch_array($query)) {
+    $full = $path . $query1['R_path'];
+   ?>
+                    <tr align="center">
+                        <td><?php echo htmlentities($cnt);?></td>
+                        <td>
+                            <a href="resource-add.php?r_id=<?php echo  $query1['R_id'];?>">
+                              <img src="images/delete-icon.jpg" height="25px" width='25px'/>&nbsp;Delete</a>
+                              &nbsp;
+                               <a href="<?php echo $full; ?>" download="<?php echo $full; ?>"><img src="images/download.png" height="25px" width='25px'/>&nbsp;Download</a>
+                        </td>
+                        
+                        <td><?php echo $query1['R_path'];?></td>
+
+                         <td><?php
+                                $id=$query1['Created_by'];
+                                 $q=mysqli_query($Conn,"SELECT `T_name` FROM `teachers` WHERE `T_srn` = '$id' ");
+                                 $name=mysqli_fetch_array($q);
+                                echo $name[0];
+                            ?>
+                        </td>
+                        
+                        <td><?php echo $query1['Created_on'];?></td>
+                       
+                       
+                   
+                    </tr>
+<?php 
+    $cnt=$cnt+1;}
+}
+ ?>
+                                                       
+                                                    
+                                                    
+                                                </table>
+                                  
+
+
+
+
+
+
+
+
+
                                 </div>
                             </div>
                             <!-- /.col-md-12 -->
@@ -170,6 +285,7 @@ else if($error){?>
             });
 
         </script>
+}
 </body>
 
 </html>
