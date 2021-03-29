@@ -27,6 +27,13 @@ if(strlen($_SESSION['id'])=="")
         <link rel="stylesheet" href="css/icheck/skins/line/green.css" >
         <link rel="stylesheet" href="css/main.css" media="screen" >
         <script src="js/modernizr/modernizr.min.js"></script>
+
+        <style type="text/css">
+            #c
+            {
+                padding-bottom: 10px;
+            }
+        </style>
     </head>
     <body class="top-navbar-fixed">
         <div class="main-wrapper">
@@ -85,7 +92,7 @@ while ($query1=mysqli_fetch_array($query)) {
     
 
    ?>
-                                    <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                                    <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12" id="c">
                                         <a class="dashboard-stat bg-primary" href="resource-sub.php?C_id=<?php echo $query1['Class_id'];?>">
                                             <span class="name"><?php echo $query1['C_no']." ".$query1['Stream'];?></span>
                                             <span class="bg-icon"><i class="fa fa-folder"></i></span>

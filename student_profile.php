@@ -18,7 +18,14 @@ $result = mysqli_fetch_array($query);
 
 
 
-if (isset($_POST['submit'])) {
+?>
+
+<script type="text/javascript">
+
+	function pass()
+	{
+
+<?php
 
 
 	$Password = $_POST['Password'];
@@ -57,12 +64,14 @@ if (isset($_POST['submit'])) {
 		$error_msg['C'] = ' Your old password is incorrect';
 		$error = true;
 	}
+?>
+location.href = "#general";
 }
+</script>
 
 
 
-
-
+<?php
 
 
 
@@ -269,7 +278,7 @@ Purchase:
 											<!-- Tab panes -->
 											<div class="tab-content">
 												<div role="tabpanel" class="tab-pane active" id="general">
-													<div class="ed_dashboard_inner_tab">
+													<div class="ed_dashboard_inner_tab" >
 
 														<form class="ed_tabpersonal" method="POST">
 
@@ -304,7 +313,7 @@ Purchase:
 																?>
 															</div>
 															<div class="form-group">
-																<input type="submit" class="btn ed_btn ed_green" name="submit" value="save changes">
+																<button onclick="pass();">Submit</button>
 															</div>
 														</form>
 													</div>

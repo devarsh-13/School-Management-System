@@ -116,7 +116,7 @@ Purchase:
 
 		<!--Breadcrumb end-->
 		<!--Section fourteen Contact form start-->
-		<div class="ed_transprentbg ed_toppadder80 ed_bottompadder80">
+		<div class="ed_transprentbg ed_bottompadder80">
 			<div id="root">
 				<header>
 				
