@@ -78,6 +78,17 @@ $error="Something went wrong. Please try again";
     <link rel="stylesheet" href="css/select2/select2.min.css">
     <link rel="stylesheet" href="css/main.css" media="screen">
     <script src="js/modernizr/modernizr.min.js"></script>
+    <style type="text/css">
+        
+.add button
+{
+
+   float: right;
+    margin-top: 10px;
+    margin-right: 10px;
+
+}
+    </style>
 </head>
 
 <body class="top-navbar-fixed">
@@ -101,6 +112,10 @@ $error="Something went wrong. Please try again";
                                 <h2 class="title">ADD Teacher</h2>
 
                             </div>
+                             <div class="add">
+                                
+                                 <button type="submit" name="add" class="btn btn-primary"><a href="">Import</a></button>       
+                                </div>
 
                             <!-- /.col-md-6 text-right -->
                         </div>

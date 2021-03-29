@@ -82,7 +82,14 @@ $error="Something went wrong. Please try again";
     -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
     box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
 }
+.add button
+{
 
+   float: right;
+    margin-top: 10px;
+    margin-right: 10px;
+
+}
 .dl button
 {
 
@@ -135,6 +142,10 @@ border: 1px solid black;
                                     <h2 class="title">Manage Students</h2>
                                 
                                 </div>
+                                 <div class="add">
+                                
+                                 <button type="submit" name="add" class="btn btn-primary"><a href="">Promote</a></button>       
+                                </div>
                                 
                                 <!-- /.col-md-6 text-right -->
                             </div>
@@ -165,7 +176,7 @@ border: 1px solid black;
                                             <div class="panel-heading">
                                                  <div class="dl">
                                                     <form method="post" action="manage-students.php">
-                                                          <button type="submit" name="delt" class="dl">Delete</button>
+                                                          <button type="submit" name="delt" class="btn btn-danger">Delete</button>
                                                     
                                                 </div>
                                                 <div class="panel-title">

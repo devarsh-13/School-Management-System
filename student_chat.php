@@ -77,80 +77,32 @@ Purchase:
 	<!--srart theme style -->
 	<link href="css/main.css" rel="stylesheet" type="text/css" />
 	<link href="css/chat.css" rel="stylesheet" type="text/css" />
+
 	<script src="js/chat.js"></script>
 	<!-- end theme style -->
 	<!-- favicon links -->
 	<link rel="shortcut icon" type="image/png" href="images/header/favicon.png" />
+
+
+	<style type="text/css">
+		#n a
+		{
+		  font-size: 15px;
+		}
+	</style>
 </head>
 
 <body>
 	<!--Page main section start-->
 	<div id="educo_wrapper">
-		<!--Header start-->
-		<header id="ed_header_wrapper">
-			<!--<div class="ed_header_top">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12 col-md-12 col-sm-12">
-					<p>welcome to our new session of education</p>
-					<div class="ed_info_wrapper">
-						<a href="#" id="login_button">Login</a>
-							<div id="login_one" class="ed_login_form">
-								<h3>log in</h3>
-								<form class="form">
-									<div class="form-group">
-										<label class="control-label">Email :</label>
-										<input type="text" class="form-control" >
-									</div>
-									<div class="form-group">
-										<label  class="control-label">Password :</label>
-										<input type="password" class="form-control">
-									</div>
-									<div class="form-group">
-										<button type="submit">login</button>
-										<a href="signup.html">registration</a>	
-									</div>
-								</form>
-							</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>-->
-			<div class="ed_header_bottom">
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-2 col-md-2 col-sm-2">
-							<div class="educo_logo"> <a href="index.html"><img src="images/header/Logo.png" alt="logo" /></a> </div>
-						</div>
-						<div class="col-lg-8 col-md-8 col-sm-8">
-							<div class="edoco_menu_toggle navbar-toggle" data-toggle="collapse" data-target="#ed_menu">Menu <i class="fa fa-bars"></i>
-							</div>
-							<div class="edoco_menu">
-								<ul class="collapse navbar-collapse" id="ed_menu">
-									<li><a href="main.php">Home</a></li>
-									<li><a href="#event">events</a></li>
-									<li><a href="gallery.php">Gallery</a></li>
-									<li><a href="courses.html">Resources</a></li>
-									<li><a href="student_profile.php">Profile</a></li>
-									<li><a href="contact.html">Chat</a></li>
-									<li><a href="about.html">about us</a></li>
-								</ul>
-							</div>
-						</div>
-						<div class="col-lg-2 col-md-2 col-sm-2">
-							<div class="educo_call"><i class="fa fa-phone"></i><a href="#">1-220-090</a></div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</header>
-		<!--header end -->
+		 <?php
+    include "header.php";
+    ?>
 		<!--Breadcrumb start-->
 
 		<!--Breadcrumb end-->
 		<!--Section fourteen Contact form start-->
-		<div class="ed_transprentbg ">
+		<div class="ed_transprentbg ed_bottompadder70 ed_toppadder70 ">
 			<div id="root">
 				<header>
 
@@ -276,62 +228,10 @@ Purchase:
 	</div>
 </div>
 <!-Newsletter Section six end-->
-		<!--Footer Top section start-->
-		<div class="ed_footer_wrapper">
-			<div class="ed_footer_top">
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-4 col-md-4 col-sm-12">
-							<div class="widget text-widget">
-								<p><a href="index.html"><img src="images/footer/F_Logo.png" alt="Footer Logo" /></a></p>
-								<p>Edution is an outstanding PSD template targeting educational institutions, helping them establish strong identity on the internet without any real developing knowledge.
-								</p>
-								<div class="ed_sociallink">
-
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-4 col-sm-12">
-							<div class="widget text-widget">
-								<h4 class="widget-title">find us</h4>
-								<p><i class="fa fa-safari"></i>Wimbledon Street 42a, 45290 Wimbledon, <br />United Kingdom</p>
-								<p><i class="fa fa-envelope-o"></i><a href="#">info@edutioncollege.gov.co.uk</a> <a href="#">public@edutioncollege.gov.co.uk</a></p>
-								<p><i class="fa fa-phone"></i> 1-220-090-080</p>
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-4 col-sm-12">
-							<div class="widget text-widget">
-
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!--Footer Top section end-->
-		<!--Footer Bottom section start-->
-		<div class="ed_footer_bottom">
-			<div class="container">
-				<div class="col-lg-12 col-md-12 col-sm-12">
-					<div class="row">
-						<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-
-						</div>
-						<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-							<div class="ed_footer_menu">
-								<ul>
-									<li><a href="index.html">home</a></li>
-									<li><a href="private_policy.html">private policy</a></li>
-									<li><a href="about.html">about</a></li>
-									<li><a href="contact.html">contact us</a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!--Footer Bottom section end-->
+		
+<?php
+include "footer.php";
+?>
 	</div>
 	<!--Page main section end-->
 

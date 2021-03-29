@@ -84,7 +84,7 @@ $error="Something went wrong. Please try again";
     -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
     box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
 }
-
+   
 input.chh
 {
     width: 20px;
@@ -130,6 +130,7 @@ div.scrollmenu table {
                                     <h2 class="title">Manage Teachers</h2>
                                 
                                 </div>
+                               
                                 
                                 <!-- /.col-md-6 text-right -->
                             </div>
@@ -162,7 +163,7 @@ div.scrollmenu table {
                                             <div class="panel-heading">
                                                   <div class="dl">
                                                     <form method="post" action="manage-teachers.php">
-                                                          <button type="submit" name="delt" class="dl">Delete</button>
+                                                          <button type="submit" name="delt" class="btn btn-danger">Delete</button>
                                                     
                                                 </div>
                                                 <div class="panel-title">

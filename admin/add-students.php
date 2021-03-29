@@ -151,6 +151,17 @@ if(isset($_POST['submit']))
     <link rel="stylesheet" href="css/select2/select2.min.css">
     <link rel="stylesheet" href="css/main.css" media="screen">
     <script src="js/modernizr/modernizr.min.js"></script>
+    <style type="text/css">
+        
+.add button
+{
+
+   float: right;
+    margin-top: 10px;
+    margin-right: 10px;
+
+}
+    </style>
 </head>
 
 <body class="top-navbar-fixed">
@@ -174,6 +185,11 @@ if(isset($_POST['submit']))
                                 <h2 class="title">ADD Student</h2>
 
                             </div>
+                              <div class="add">
+                                
+                                 <button type="submit" name="add" class="btn btn-primary"><a href="">Import</a></button>       
+                                </div>
+                             
 
                             <!-- /.col-md-6 text-right -->
                         </div>
@@ -185,7 +201,9 @@ if(isset($_POST['submit']))
                                     <li> Students</li>
                                     <li class="active">ADD Student</li>
                                 </ul>
+                               
                             </div>
+                           
 
                         </div>
                         <!-- /.row -->
