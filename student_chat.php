@@ -4,16 +4,50 @@ require 'Database/connection.php';
 session_start();
 
 
-// $S_srn = $_SESSION['id'];
+$S_srn = $_SESSION['id'];
+
+
+
 // $sql = "SELECT * from `students` join Class on students.Class_id=Class.Class_id WHERE
 //  S_srn = '$S_srn' ORDER BY Created_on DESC";
-$sql = "SELECT * FROM `teachers` where 'is_deleted'=0";
+$sql = "SELECT * FROM `teachers` where 'is_deleted'= 0";
 
 
 $query = mysqli_query($Conn, $sql);
 $row = mysqli_num_rows($query);
 
-// $result = mysqli_fetch_array($query);
+//$result = mysqli_fetch_array($query);
+
+$d = date("Y-m-d");
+
+
+if (isset($_POST['send'])) {
+
+
+	if (isset($_SESSION['t_id'])) {
+
+		$chat = $_POST['chat'];
+		$s = $_SESSION['t_id'];
+		echo $s;
+		echo $d;
+		echo $S_srn;
+
+		$insert = "INSERT INTO `conversation` (`chat_text`,`created_on`,`S_srn`,`T_srn`,`sender_id`) VALUES ('$chat','$d','$S_srn','$s','$S_srn')";
+
+
+		$q = mysqli_query($Conn, $insert) or die(mysqli_error($Conn));;
+
+		echo $q;
+		if ($q) {
+			$msg = "Chat info added successfully";
+		} else {
+			$error = "Something went wrong. Please try again";
+		}
+	}
+}
+
+
+
 
 
 ?>
@@ -116,19 +150,19 @@ Purchase:
 
 		<!--Breadcrumb end-->
 		<!--Section fourteen Contact form start-->
-		<div class="ed_transprentbg ed_bottompadder80">
+		<div class="ed_transprentbg ">
 			<div id="root">
 				<header>
-				
+
 					<nav>
 						<ul>
-							
+
 						</ul>
 					</nav>
 				</header>
 				<section class="main-view"><label for="toggle">&lt; Chatrooms</label><input id="toggle" type="checkbox" checked="">
 					<aside class="chat-rooms">
-						
+
 						<ul>
 
 							<?php
@@ -137,12 +171,9 @@ Purchase:
 							// // foreach ($result as  $key => $value) {
 
 
-								while($result=mysqli_fetch_array($query))
-								{  
-								echo '<li class=><a href="/chat/chat-1">'.$result['T_name']. ' </a></li>';
-
-
-								}
+							while ($result = mysqli_fetch_array($query)) {
+								echo '<form method="post" action="#" ><li class=><button name="teacher" value=' . $result['T_srn'] . '>' . $result['T_name'] . '</button> </li></form>';
+							}
 							// // 
 							// echo $row;
 							// echo sizeof($result);
@@ -150,23 +181,15 @@ Purchase:
 							// echo '<pre>'; print_r($result); echo '</pre>';
 
 
-							
-	
-
-
-
-
-
-						
-
 
 							?>
+
 
 						</ul>
 					</aside>
 					<main class="chat">
 						<ul class="messages-container">
-							<li class=" system">
+							<!-- <li class=" system">
 								<div class="content">Phone joined the chat</div>
 								<div class="time-stamp">6 days ago</div>
 							</li>
@@ -178,14 +201,41 @@ Purchase:
 							<li class=" system">
 								<div class="content">Computer joined the chat</div>
 								<div class="time-stamp">6 days ago</div>
-							</li>
-							<li class="own">
-								<div class="sender">Computer</div>
-								<div class="content">I am here!</div>
+							</li> -->
+							<!-- <li class="own">
+								<div class="sender">Student</div>
+								<div class="content"> -->
+
+									<?php
+											if (isset($_POST['teacher'])) {
+												$_SESSION['t_id'] = $_POST['teacher'];
+											
+												$s = $_SESSION['t_id'];
+											
+												$chat_query = mysqli_query($Conn, "SELECT * FROM `conversation` WHERE `S_srn`='$S_srn' && `T_srn`='$s'");
+											
+											
+												//$chat_result = mysqli_fetch_array($chat_query);
+											
+											
+												while ($chat_result = mysqli_fetch_array($chat_query)) {
+													
+													echo  	'<li class="own">
+													<div class="sender">Student</div>
+													<div class="content">'.$chat_result["chat_text"].'
+													</div></li>';
+					
+												}
+											}
+											
+											
+									?>
+
+								<!-- </div>
 								<div class="time-stamp">6 days ago</div>
-							</li>
+							</li> -->
 						</ul>
-						<form class="new-message"><input type="text" placeholder="message..." value=""><input type="submit" value="Send"></form>
+						<form method="POST" class="new-message"><input type="text" placeholder="message..." value="" name="chat"><input name="send" type="submit" value="Send"></form>
 					</main>
 				</section>
 			</div>

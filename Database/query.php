@@ -131,7 +131,8 @@ $table="CREATE TABLE `conversation` (
 `chat_text` VARCHAR(255) NOT NULL ,
 `created_on` date NOT NULL,
 `S_srn` INT(5) NOT NULL,
-`T_srn` INT(3) NOT NULL
+`T_srn` INT(3) NOT NULL,
+`sender_id` INT(5) NOT NULL
 )"; 
 $q=mysqli_query($Conn,$table);
 
