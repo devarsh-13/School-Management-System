@@ -32,6 +32,32 @@ Purchase: http://themeforest.net/user/kamleshyadav
 		<!-- end theme style -->
 		<!-- favicon links -->
 		<link rel="shortcut icon" type="image/png" href="images/header/favicon.png" />
+		<style type="text/css">
+		
+.scrolling-wrapper {
+	height: 300px;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+
+
+}
+  .card {
+  	border: 2px solid black;
+    display: inline-block;
+    height: 100%;
+    text-align: center;
+    width: 50%;
+    padding: 9px;
+
+  }
+  .card h4
+  {
+  	margin-top: 20%;
+  }
+
+
+	</style>
 	</head>
 
 	<body>
@@ -143,8 +169,8 @@ Purchase: http://themeforest.net/user/kamleshyadav
 							</div>
 						</div>
 						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-							<div class="ed_latest_news_slider">
-								<div id="owl-demo2" class="owl-carousel owl-theme">
+						
+								<div id="owl-demo2"class="scrolling-wrapper">
 
 
 
@@ -157,7 +183,7 @@ Purchase: http://themeforest.net/user/kamleshyadav
 
 									while ($r = mysqli_fetch_array($q)) {
 										echo " 
-            								<div class='ed_item_description'>
+            								<div class='card'>
 												<h4>" . $r['event_date'] . "</h4>
 												<p> " . $r['Event_text'] . "</p>
 																									
@@ -377,7 +403,7 @@ Purchase: http://themeforest.net/user/kamleshyadav
 						</div>
 						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 							<div class="ed_latest_news_slider">
-								<div id="owl-demo2" class="owl-carousel owl-theme">
+								<div id="owl-demo2"class="scrolling-wrapper">
 
 
 
@@ -391,7 +417,7 @@ Purchase: http://themeforest.net/user/kamleshyadav
 									while ($r = mysqli_fetch_array($q)) {
 
 										echo " 
-            								<div class='ed_item_description'>
+            								<div class='card'>
 												<h4>" . $r['Sr_n'] . "</h4>
 												<p> " . $r['Notification_text'] . "</p>
 													

@@ -1,11 +1,15 @@
+.images
+{
+    margin-top: 3%;
+    display: inline-flex;
+    flex-flow: wrap;
+    margin-left: 8.8%;
+    
+}
 
-.images a {
-    display: block;
-    text-decoration: none;
-    position: relative;
-    overflow: hidden;
- 
-    margin: 0 20px 20px 0;
+.slide {
+   
+   padding: 5px;
 }
 .images a:hover span {
     opacity: 1;

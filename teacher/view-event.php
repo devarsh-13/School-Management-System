@@ -43,6 +43,28 @@ if(strlen($_SESSION['id'])=="")
     -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
     box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
 }
+        
+.scrolling-wrapper {
+    height: 300px;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+
+
+}
+  .card {
+    border: 2px solid black;
+    display: inline-block;
+    height: 100%;
+    text-align: center;
+    width: 50%;
+    padding: 9px;
+
+  }
+  .card h4
+  {
+    margin-top: 20%;
+  }
 
         </style>
     </head>
@@ -89,7 +111,7 @@ if(strlen($_SESSION['id'])=="")
                                 <div class="row">
                                     <div class="col-md-12">
                                        
-                  
+                  <div id="owl-demo2"class="scrolling-wrapper">
 
                   <?php
                   require "connection.php";
@@ -100,14 +122,14 @@ if(strlen($_SESSION['id'])=="")
 
                   while ($r = mysqli_fetch_array($q)) {
                     echo " 
-                            <div class='ed_item_description'>
+                            <div class='card'>
                         <h4>" . $r['event_date'] . "</h4>
                         <p> " . $r['Event_text'] . "</p>
                                                   
                         </div>  ";
                   }
                   ?>
-
+</div>
 
                                  </div>
                                            

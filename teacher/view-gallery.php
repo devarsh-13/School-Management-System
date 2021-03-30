@@ -67,12 +67,13 @@ if(strlen($_SESSION['id'])=="")
 .slide
 {
     display: inline-flex;
+     
 }
 .slide a
 {   height:300px; width:300px;
      
     text-decoration: none;
-    border: 6px solid red;
+    
     position: relative;
     overflow: hidden;
 }
