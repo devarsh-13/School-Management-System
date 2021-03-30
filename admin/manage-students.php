@@ -103,7 +103,7 @@ input.chh
     height: 20px;
     
 }
-
+/*
 .scrollmenu {
   overflow: auto;
   border: 1px solid black;
@@ -121,7 +121,26 @@ border: 1px solid black;
 
 .t1 td{
     width: 50%;
-}
+}*/
+.scrollmenu
+    {
+        max-height: 520px;
+        border: 1px solid #ddd;
+        display: flex;
+        overflow-x: auto;
+    }
+
+  
+    .scrollmenu table
+    {
+        min-width: 100%;
+        background-color: #ddd;
+        
+    }
+    .scrollmenu th,td
+    {
+        border: 1px solid black;
+    }
 
         </style>
     </head>
@@ -146,6 +165,11 @@ border: 1px solid black;
                                 
                                  <button type="submit" name="add" class="btn btn-primary"><a href="">Promote</a></button>       
                                 </div>
+                                 <div class="dl">
+                                                    <form method="post" action="manage-students.php">
+                                                          <button type="submit" name="delt" class="btn btn-danger">Delete</button>
+                                                    
+                                                </div>
                                 
                                 <!-- /.col-md-6 text-right -->
                             </div>
@@ -164,7 +188,7 @@ border: 1px solid black;
                         </div>
                         <!-- /.container-fluid -->
 
-                        <section class="section">
+                        
                             <div class="container-fluid">
 
                              
@@ -174,11 +198,7 @@ border: 1px solid black;
 
                                         <div class="panel">
                                             <div class="panel-heading">
-                                                 <div class="dl">
-                                                    <form method="post" action="manage-students.php">
-                                                          <button type="submit" name="delt" class="btn btn-danger">Delete</button>
-                                                    
-                                                </div>
+                                                
                                                 <div class="panel-title">
                                                     <h5>View Students Info</h5>
                                                 </div>
@@ -306,7 +326,7 @@ else
 
                             </div>
                             <!-- /.container-fluid -->
-                        </section>
+                        
                         <!-- /.section -->
 
                     </div>

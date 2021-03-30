@@ -98,6 +98,25 @@ $error="Something went wrong. Please try again";
     margin-top: 10px;
     margin-right: 10px;
 }
+.scrollmenu
+    {
+        max-height: 520px;
+        border: 1px solid #ddd;
+        display: flex;
+        overflow-x: auto;
+    }
+
+  
+    .scrollmenu table
+    {
+        min-width: 100%;
+        background-color: #ddd;
+        
+    }
+    .scrollmenu th,td
+    {
+        border: 1px solid black;
+    }
 input.chh
 {
     width: 20px;
@@ -123,6 +142,11 @@ input.chh
                                     <h2 class="title">Manage Events</h2>
                                 
                                 </div>
+                                  <div class="dl">
+                                                    <form method="post" action="manage-events.php">
+                                                          <button type="submit" name="delt" class="btn btn-danger">Delete</button>
+                                                    
+                                                </div>
                                 
                                 <!-- /.col-md-6 text-right -->
                             </div>
@@ -151,11 +175,7 @@ input.chh
 
                                         <div class="panel">
                                             <div class="panel-heading">
-                                                 <div class="dl">
-                                                    <form method="post" action="manage-events.php">
-                                                          <button type="submit" name="delt" class="dl">Delete</button>
-                                                    
-                                                </div>
+                                               
                                                 <div class="panel-title">
                                                     <h5>View Events</h5>
                                                 </div>
@@ -169,7 +189,7 @@ else if($error){?>
                                             <strong>Oh snap!</strong> <?php echo htmlentities($error); ?>
                                         </div>
                                         <?php } ?>
-                                            <div class="panel-body p-20">
+                                            <div class="scrollmenu">
 
                                                 <table id="example" class="display table table-striped table-bordered" cellspacing="0" width="100%">
                                                     
@@ -255,10 +275,6 @@ if($row > 0)
                     </tr>
 <?php 
     $cnt=$cnt+1;}
-}
-else
-{
-     echo "no data";
 } ?>
                                                        
                                                     

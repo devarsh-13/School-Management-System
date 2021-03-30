@@ -91,17 +91,25 @@ input.chh
     height: 20px;
 
 }
+.scrollmenu
+    {
+        max-height: 520px;
+        border: 1px solid #ddd;
+        display: flex;
+        overflow-x: auto;
+    }
 
-div.scrollmenu {
-  overflow: auto;
-}
-
-div.scrollmenu table {
-  display: inline-block;
-  text-align: center;
-  padding: 14px;
-  text-decoration: none;
-}
+  
+    .scrollmenu table
+    {
+        min-width: 100%;
+        background-color: #ddd;
+        
+    }
+    .scrollmenu th,td
+    {
+        border: 1px solid black;
+    }
 .dl button
 {
 
@@ -130,6 +138,11 @@ div.scrollmenu table {
                                     <h2 class="title">Manage Teachers</h2>
                                 
                                 </div>
+                                  <div class="dl">
+                                                    <form method="post" action="manage-teachers.php">
+                                                          <button type="submit" name="delt" class="btn btn-danger">Delete</button>
+                                                    
+                                                </div>
                                
                                 
                                 <!-- /.col-md-6 text-right -->
@@ -143,13 +156,14 @@ div.scrollmenu table {
             							<li class="active">Manage Teachers</li>
             						</ul>
                                 </div>
+
                              
                             </div>
                             <!-- /.row -->
                         </div>
                         <!-- /.container-fluid -->
 
-                        <section class="section">
+                        
                             <div class="container-fluid">
 
                              
@@ -161,11 +175,7 @@ div.scrollmenu table {
                                         <div class="panel">
 
                                             <div class="panel-heading">
-                                                  <div class="dl">
-                                                    <form method="post" action="manage-teachers.php">
-                                                          <button type="submit" name="delt" class="btn btn-danger">Delete</button>
-                                                    
-                                                </div>
+                                                
                                                 <div class="panel-title">
                                                     <h5>View Teachers Info</h5>
                                                 </div>
@@ -267,7 +277,7 @@ else
 
                             </div>
                             <!-- /.container-fluid -->
-                        </section>
+                        
                         <!-- /.section -->
 
                     </div>
