@@ -30,7 +30,7 @@ if(isset($_POST['submit']))
 
 if($insert)
 {
-$msg="Student info added successfully";
+$msg="Event Added Successfully";
 }
 else 
 {
@@ -107,13 +107,13 @@ $error="Something went wrong. Please try again";
                                     <div class="panel-body">
                                         <?php if($msg){?>
                                         <div class="alert alert-success left-icon-alert" role="alert">
-                                            <strong>Well done!</strong>
+                                            
                                             <?php echo htmlentities($msg); ?>
                                         </div>
                                         <?php } 
 else if($error){?>
                                         <div class="alert alert-danger left-icon-alert" role="alert">
-                                            <strong>Oh snap!</strong>
+                                            
                                             <?php echo htmlentities($error); ?>
                                         </div>
                                         <?php } ?>

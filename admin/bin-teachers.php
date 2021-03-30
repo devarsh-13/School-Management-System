@@ -22,7 +22,7 @@ if(strlen($_SESSION['id'])=="")
 
 if($result)
 {
-$msg="Student info added successfully";
+$msg="Teacher Info Deleted Successfully";
 }
 else 
 {
@@ -42,7 +42,7 @@ if (isset($_GET['T_id']))
    
         $delete = $Conn->query($Sql) or die("Error in query2".$connection->error);
     if ($delete){
-$msg="Student info added successfully";
+$msg="Teacher Info Deleted Successfully";
 }
 else 
 {
@@ -66,7 +66,7 @@ $error="Something went wrong. Please try again";
 
 if($result)
 {
-$msg="Student info added successfully";
+$msg="Teacher Info Restore Successfully";
 }
 else 
 {
@@ -84,7 +84,7 @@ if (isset($_GET['Tr_id']))
     $query = "UPDATE `teachers` SET `is_deleted`='0' WHERE `T_srn`='$tid'";
                         $delete = $Conn->query($query) or die("Error in query".$Conn->error);
     if ($delete){
-$msg="Student info added successfully";
+$msg="Teacher Info Restore Successfully";
 }
 else 
 {
@@ -215,11 +215,11 @@ div.scrollmenu table {
                                             </div>
 <?php if($msg){?>
 <div class="alert alert-success left-icon-alert" role="alert">
- <strong>Well done!</strong><?php echo htmlentities($msg); ?>
+ <?php echo htmlentities($msg); ?>
  </div><?php } 
 else if($error){?>
     <div class="alert alert-danger left-icon-alert" role="alert">
-                                            <strong>Oh snap!</strong> <?php echo htmlentities($error); ?>
+                                             <?php echo htmlentities($error); ?>
                                         </div>
                                         <?php } ?>
                                             <div class="scrollmenu">

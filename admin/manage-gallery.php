@@ -35,7 +35,7 @@ if($row > 0)
 if($d)
 {
     
-$msg="Student info added successfully";
+$msg="Image Deleted Successfully";
 }
 else 
 {
@@ -77,7 +77,7 @@ $query = mysqli_query($Conn,$sql);
 
 if($d)
 {
-$msg="Student info added successfully";
+$msg="Image Deleted Successfully";
 }
 else 
 {
@@ -197,11 +197,11 @@ input.chh
                                             </div>
 <?php if($msg){?>
 <div class="alert alert-success left-icon-alert" role="alert">
- <strong>Well done!</strong><?php echo htmlentities($msg); ?>
+ <?php echo htmlentities($msg); ?>
  </div><?php } 
 else if($error){?>
     <div class="alert alert-danger left-icon-alert" role="alert">
-                                            <strong>Oh snap!</strong> <?php echo htmlentities($error); ?>
+                                         <?php echo htmlentities($error); ?>
                                         </div>
                                         <?php } ?>
                                             <div class="panel-body p-20">

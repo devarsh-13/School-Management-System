@@ -23,7 +23,7 @@ if(strlen($_SESSION['id'])=="")
 
 if($result)
 {
-$msg="Student info added successfully";
+$msg="Notification Deleted Successfully";
 }
 else 
 {
@@ -46,7 +46,7 @@ $error="Something went wrong. Please try again";
    
 if($delete)
 {
-$msg="Student info added successfully";
+$msg="Notification Deleted Successfully";
 }
 else 
 {
@@ -179,11 +179,11 @@ input.chh
                                             </div>
 <?php if($msg){?>
 <div class="alert alert-success left-icon-alert" role="alert">
- <strong>Well done!</strong><?php echo htmlentities($msg); ?>
+ <?php echo htmlentities($msg); ?>
  </div><?php } 
 else if($error){?>
     <div class="alert alert-danger left-icon-alert" role="alert">
-                                            <strong>Oh snap!</strong> <?php echo htmlentities($error); ?>
+                                        <?php echo htmlentities($error); ?>
                                         </div>
                                         <?php } ?>
                                             <div class="scrollmenu">

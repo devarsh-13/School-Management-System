@@ -23,7 +23,7 @@ if(strlen($_SESSION['id'])=="")
 
 if($result)
 {
-$msg="Student info added successfully";
+$msg="Student Info Deleted successfully";
 }
 else 
 {
@@ -43,7 +43,7 @@ if (isset($_GET['S_id']))
    
         $delete = $Conn->query($Sql) or die("Error in query2".$connection->error);
     if ($delete){
-$msg="Student info added successfully";
+$msg="Student Info Deleted Successfully";
 }
 else 
 {
@@ -68,7 +68,7 @@ $error="Something went wrong. Please try again";
 
 if($result)
 {
-$msg="Student info added successfully";
+$msg="Student Info Restore Successfully";
 }
 else 
 {
@@ -86,7 +86,7 @@ if (isset($_GET['Sr_id']))
     $query = "UPDATE `students` SET `is_deleted`='0' WHERE `S_srn`='$tid'";
                         $delete = $Conn->query($query) or die("Error in query".$Conn->error);
     if ($delete){
-$msg="Student info added successfully";
+$msg="Student Info Restore Successfully";
 }
 else 
 {
@@ -227,11 +227,11 @@ border: 1px solid black;
                                             </div>
 <?php if($msg){?>
 <div class="alert alert-success left-icon-alert" role="alert">
- <strong>Well done!</strong><?php echo htmlentities($msg); ?>
+ <?php echo htmlentities($msg); ?>
  </div><?php } 
 else if($error){?>
     <div class="alert alert-danger left-icon-alert" role="alert">
-                                            <strong>Oh snap!</strong> <?php echo htmlentities($error); ?>
+                                        <?php echo htmlentities($error); ?>
                                         </div>
                                         <?php } ?>
                                         

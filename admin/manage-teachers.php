@@ -21,7 +21,7 @@ if(strlen($_SESSION['id'])=="")
 
 if($result)
 {
-$msg="Student info added successfully";
+$msg="Teacher Deleted Successfully";
 }
 else 
 {
@@ -44,7 +44,7 @@ if (isset($_GET['T_id']))
         $delete = $Conn->query($Sql) or die("Error in query2".$connection->error);
     if ($delete){
         
-$msg="Student info added successfully";
+$msg="Teacher Deleted successfully";
 }
 else 
 {
@@ -183,11 +183,11 @@ input.chh
                                             </div>
 <?php if($msg){?>
 <div class="alert alert-success left-icon-alert" role="alert">
- <strong>Well done!</strong><?php echo htmlentities($msg); ?>
+ <?php echo htmlentities($msg); ?>
  </div><?php } 
 else if($error){?>
     <div class="alert alert-danger left-icon-alert" role="alert">
-                                            <strong>Oh snap!</strong> <?php echo htmlentities($error); ?>
+                                         <?php echo htmlentities($error); ?>
                                         </div>
                                         <?php } ?>
                                             <div class="scrollmenu">
