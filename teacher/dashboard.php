@@ -62,7 +62,7 @@ require "connection.php";
                                     <!-- /.col-lg-3 col-md-3 col-sm-6 col-xs-12 -->
 
                                     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                                        <a class="dashboard-stat bg-success" href=".php">
+                                        <a class="dashboard-stat bg-success" href="teacher_chat.php">
 
                                             
                                             <span class="name">Chat</span>
