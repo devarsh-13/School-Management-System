@@ -148,26 +148,25 @@ input.chh
 }
 
 
+.scrollmenu
+    {
+        max-height: 520px;
+        border: 1px solid #ddd;
+        display: flex;
+        overflow-x: auto;
+    }
 
-.scrollmenu {
-  overflow: auto;
-  border: 1px solid black;
-}
-
-.scrollmenu table {
-  display: inline-block;
-  text-align: center;
-  padding: 14px;
-  text-decoration: none;
-}
-.scrollmenu th,td{
-border: 1px solid black;
-}
-
-.t1 td{
-    width: 50%;
-}
-
+  
+    .scrollmenu table
+    {
+        min-width: 100%;
+        background-color: #ddd;
+        
+    }
+    .scrollmenu th,td
+    {
+        border: 1px solid black;
+    }
         </style>
     </head>
     <body class="top-navbar-fixed">
@@ -187,6 +186,13 @@ border: 1px solid black;
                                     <h2 class="title">Deleted Students</h2>
                                 
                                 </div>
+                                 <div class="dl">
+                                                    <form method="post" action="bin-students.php">
+                                                         <button type="submit" name="re"  class="btn btn-primary">Restore</button>
+                                                          <button type="submit" name="delt"  class="btn btn-danger">Delete</button>
+                                                          
+                                                    
+                                                </div>
                                 
                                 <!-- /.col-md-6 text-right -->
                             </div>
@@ -205,7 +211,7 @@ border: 1px solid black;
                         </div>
                         <!-- /.container-fluid -->
 
-                        <section class="section">
+                        
                             <div class="container-fluid">
 
                              
@@ -215,12 +221,7 @@ border: 1px solid black;
 
                                         <div class="panel">
                                             <div class="panel-heading">
-                                                 <div class="dl">
-                                                    <form method="post" action="bin-students.php">
-                                                          <button type="submit" name="delt" class="dl">Delete</button>
-                                                           <button type="submit" name="re" class="dl">Restore</button>
-                                                    
-                                                </div>
+                                                
                                                 <div class="panel-title">
                                                     <h5>View Students Info</h5>
                                                 </div>
@@ -351,7 +352,7 @@ else
 
                             </div>
                             <!-- /.container-fluid -->
-                        </section>
+            
                         <!-- /.section -->
 
                     </div>
