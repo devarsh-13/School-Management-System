@@ -11,45 +11,13 @@ $T_srn = $_SESSION['id'];
 // $sql = "SELECT * from `students` join Class on students.Class_id=Class.Class_id WHERE
 //  S_srn = '$S_srn' ORDER BY Created_on DESC";
 //$sql = "SELECT * FROM `coversation` join `students` ON `conversation.S_srn`=`students.S_srn` WHERE `T_srn`='$T_srn' ORDER BY Created_on DESC" ;
-$sql = "SELECT * FROM `conversation` inner join `students` ON conversation.S_srn=students.S_srn WHERE `T_srn`='$T_srn'" ;
+$sql = "SELECT * FROM `conversation` inner join `students` ON conversation.S_srn=students.S_srn WHERE `T_srn`='$T_srn' GROUP BY conversation.S_srn";
 
 
 $query = mysqli_query($Conn, $sql) or die(mysqli_error($Conn));
 // $row = mysqli_num_rows($query);
 
 //$result = mysqli_fetch_array($query);
-
-$d = date("Y-m-d");
-
-
-if (isset($_POST['send'])) {
-
-
-	if (isset($_SESSION['s_id'])) {
-
-		$chat = $_POST['chat'];
-		$s = $_SESSION['s_id'];
-
-	
-
-		$insert = "INSERT INTO `conversation` (`chat_text`,`created_on`,`S_srn`,`T_srn`,`sender_id`) VALUES ('$chat','$d','$s','$T_srn','$T_srn')";
-
-
-		$q = mysqli_query($Conn, $insert) or die(mysqli_error($Conn));
-
-		echo $q;
-		if ($q) {
-			$msg = "Chat info added successfully";
-		} else {
-			$error = "Something went wrong. Please try again";
-		}
-	}
-}
-
-
-
-
-
 ?>
 
 
@@ -88,7 +56,7 @@ Purchase:
 	<div id="educo_wrapper">
 		<!--Header start-->
 		<!-- <header id="ed_header_wrapper"> -->
-			<!--<div class="ed_header_top">
+		<!--<div class="ed_header_top">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12 col-md-12 col-sm-12">
@@ -117,7 +85,7 @@ Purchase:
 			</div>
 		</div>
 	</div>-->
-			<!-- <div class="ed_header_bottom">
+		<!-- <div class="ed_header_bottom">
 				<div class="container">
 					<div class="row">
 						<div class="col-lg-2 col-md-2 col-sm-2">
@@ -168,13 +136,13 @@ Purchase:
 							<?php
 
 
-							
+
 
 
 							while ($result = mysqli_fetch_array($query)) {
-								echo '<form method="post"  ><li class=><button name="student" value=' . $result['S_name'] . '>' . $result['S_name'] . '</button> </li></form>';
+								echo '<form method="post"  ><li class=><button name="student" value=' . $result['S_srn'] . '>' . $result['S_name'] . '</button> </li></form>';
 							}
-							
+
 
 
 
@@ -202,36 +170,111 @@ Purchase:
 								<div class="sender">Student</div>
 								<div class="content"> -->
 
-									<?php
-											if (isset($_POST['student'])) {
-												$_SESSION['s_id'] = $_POST['student'];
-											
-												$s = $_SESSION['s_id'];
-											
-												$chat_query = mysqli_query($Conn, "SELECT * FROM `conversation` WHERE `S_srn`='$s' && `T_srn`='$T_srn'");
-											
-											
-												//$chat_result = mysqli_fetch_array($chat_query);
-											
-											
-												while ($chat_result = mysqli_fetch_array($chat_query)) {
-													
-													echo  	'<li class="own">
-													<div class="sender">Teacher</div>
-													<div class="content">'.$chat_result["chat_text"].'
-													</div></li>';
-					
-												}
-											}
-											
-											
-									?>
+							<?php
+							if (isset($_POST['student'])) {
+								$_SESSION['s_id'] = $_POST['student'];
 
-								<!-- </div>
+								$s = $_SESSION['s_id'];
+								$chat_query = mysqli_query($Conn, "SELECT * FROM `conversation` WHERE `S_srn`='$s' && `T_srn`='$T_srn'");
+
+
+								//$chat_result = mysqli_fetch_array($chat_query);
+
+
+								while ($chat_result = mysqli_fetch_array($chat_query)) {
+
+									if ($chat_result["sender_type"] == "t") {
+										echo  	'<li class="own">
+														<div class="sender">Student</div>
+														<div class="content">' . $chat_result["chat_text"] . '
+														</div></li>';
+									} else {
+										echo  	'<li class="">
+														<div class="sender">Student</div>
+														<div class="content">' . $chat_result["chat_text"] . '
+														</div></li>';
+									}
+								}
+							} else if (isset($_POST['send'])) {
+								$d = date("Y-m-d");
+
+								if (isset($_SESSION['s_id'])) {
+
+									$chat = $_POST['chat'];
+									$s = $_SESSION['s_id'];
+
+									$sender_type = "t";
+
+									$insert = "INSERT INTO `conversation` (`chat_text`,`created_on`,`S_srn`,`T_srn`,`sender_type`) VALUES ('$chat','$d','$s','$T_srn','$sender_type')";
+
+
+									$q = mysqli_query($Conn, $insert) or die(mysqli_error($Conn));
+
+									echo $q;
+									if ($q) {
+										$msg = "Chat info added successfully";
+
+										$s = $_SESSION['s_id'];
+										$chat_query = mysqli_query($Conn, "SELECT * FROM `conversation` WHERE `S_srn`='$s' && `T_srn`='$T_srn'");
+
+
+										//$chat_result = mysqli_fetch_array($chat_query);
+
+
+										while ($chat_result = mysqli_fetch_array($chat_query)) {
+
+											if ($chat_result["sender_type"] == "t") {
+												echo  	'<li class="own">
+																<div class="sender">Teacher</div>
+																<div class="content">' . $chat_result["chat_text"] . '
+																</div></li>';
+											} else {
+												echo  	'<li class="">
+																<div class="sender">Student</div>
+																<div class="content">' . $chat_result["chat_text"] . '
+																</div></li>';
+											}
+										}
+									} else {
+										$error = "Something went wrong. Please try again";
+									}
+								}
+							}
+
+
+							?>
+
+							<!-- </div>
 								<div class="time-stamp">6 days ago</div>
 							</li> -->
 						</ul>
-						<form method="POST" class="new-message"><input type="text" placeholder="message..." value="" name="chat"><input name="send" type="submit" value="Send"></form>
+						<?php
+						if (isset($_SESSION['s_id'])) {
+							echo '<form method="POST" class="new-message"><input type="text" placeholder="message..." value="" name="chat"><input name="send" type="submit" value="Send"></form>';
+							// $s = $_SESSION['s_id'];
+							// $chat_query = mysqli_query($Conn, "SELECT * FROM `conversation` WHERE `S_srn`='$s' && `T_srn`='$T_srn'");
+
+
+							// //$chat_result = mysqli_fetch_array($chat_query);
+
+
+							// while ($chat_result = mysqli_fetch_array($chat_query)) {
+
+							// 	if ($chat_result["sender_type"] == "t") {
+							// 		echo  	'<li class="own">
+							// 						<div class="sender">Teacher</div>
+							// 						<div class="content">' . $chat_result["chat_text"] . '
+							// 						</div></li>';
+							// 	} else {
+							// 		echo  	'<li class="">
+							// 						<div class="sender">Student</div>
+							// 						<div class="content">' . $chat_result["chat_text"] . '
+							// 						</div></li>';
+							// 	}
+							// }
+						}
+						?>
+
 					</main>
 				</section>
 			</div>

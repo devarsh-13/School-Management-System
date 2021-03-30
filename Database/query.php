@@ -132,7 +132,7 @@ $table="CREATE TABLE `conversation` (
 `created_on` date NOT NULL,
 `S_srn` INT(5) NOT NULL,
 `T_srn` INT(3) NOT NULL,
-`sender_id` INT(5) NOT NULL
+`sender_type` VARCHAR(10) NOT NULL
 )"; 
 $q=mysqli_query($Conn,$table);
 
