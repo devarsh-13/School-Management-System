@@ -1,5 +1,7 @@
 <?php
 
+use PhpOffice\PhpSpreadsheet\Shared\Font;
+
 require 'connection.php';
 session_start();
 
@@ -137,19 +139,23 @@ Purchase:
 
 					<nav>
 						<ul>
-
+						<b style="padding: 30px ; font-size:20px; color:aliceblue" >Students</b>
 						</ul>
 					</nav>
 				</header>
 				<section class="main-view">
 					<aside class="chat-rooms">
 
+					
+
 						<ul>
+
+					
 
 							<?php
 
 
-
+								
 
 
 							while ($result = mysqli_fetch_array($query)) {
@@ -198,7 +204,7 @@ Purchase:
 
 									if ($chat_result["sender_type"] == "t") {
 										echo  	'<li class="own">
-														<div class="sender">Student</div>
+														<div class="sender">Teacher</div>
 														<div class="content">' . $chat_result["chat_text"] . '
 														</div></li>';
 									} else {
@@ -263,28 +269,12 @@ Purchase:
 						</ul>
 						<?php
 						if (isset($_SESSION['s_id'])) {
+							if(isset($_POST['student']) || isset($_POST['send']))
+							{
+							
+
 							echo '<form method="POST" class="new-message"><input type="text" placeholder="message..." value="" name="chat"><input name="send" type="submit" value="Send"></form>';
-							// $s = $_SESSION['s_id'];
-							// $chat_query = mysqli_query($Conn, "SELECT * FROM `conversation` WHERE `S_srn`='$s' && `T_srn`='$T_srn'");
-
-
-							// //$chat_result = mysqli_fetch_array($chat_query);
-
-
-							// while ($chat_result = mysqli_fetch_array($chat_query)) {
-
-							// 	if ($chat_result["sender_type"] == "t") {
-							// 		echo  	'<li class="own">
-							// 						<div class="sender">Teacher</div>
-							// 						<div class="content">' . $chat_result["chat_text"] . '
-							// 						</div></li>';
-							// 	} else {
-							// 		echo  	'<li class="">
-							// 						<div class="sender">Student</div>
-							// 						<div class="content">' . $chat_result["chat_text"] . '
-							// 						</div></li>';
-							// 	}
-							// }
+							}
 						}
 						?>
 

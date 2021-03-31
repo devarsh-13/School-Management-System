@@ -71,17 +71,24 @@ Purchase:
 		<div class="ed_transprentbg ed_bottompadder0 ed_toppadder0 ">
 			<div id="root">
 				<header>
-
+				<b style="padding:10px ; font-size:20px; color:aliceblue" >Teachers</b>
 					<nav>
 						<ul>
 
 						</ul>
 					</nav>
+
+				
 				</header>
+
+				
 				<section class="main-view">
+				
 					<aside class="chat-rooms">
+					
 
 						<ul>
+						
 
 							<?php
 
@@ -169,7 +176,7 @@ Purchase:
 
 									echo $q;
 									if ($q) {
-										$msg = "Chat info added successfully";
+										
 
 										$s = $_SESSION['t_id'];
 
@@ -196,6 +203,7 @@ Purchase:
 										$error = "Something went wrong. Please try again";
 									}
 								}
+							
 							}
 
 
@@ -207,30 +215,9 @@ Purchase:
 						</ul>
 						<?php
 						if (isset($_SESSION['t_id'])) {
-							// $s = $_SESSION['t_id'];
-
-							// $chat_query = mysqli_query($Conn, "SELECT * FROM `conversation` WHERE `S_srn`='$S_srn' && `T_srn`='$s'");
 
 
-							// //$chat_result = mysqli_fetch_array($chat_query);
-							// echo	'<ul class="messages-container">';
-
-							// while ($chat_result = mysqli_fetch_array($chat_query)) {
-							// 	if ($chat_result["sender_type"] == "s") {
-							// 		echo  	'<li class="own">
-							// 				<div class="sender">Student</div>
-							// 				<div class="content">' . $chat_result["chat_text"] . '
-							// 				</div></li>';
-							// 	} else {
-							// 		echo  	'<li class="">
-							// 				<div class="sender">Student</div>
-							// 				<div class="content">' . $chat_result["chat_text"] . '
-							// 				</div></li>';
-							// 	}
-							// }
-							// echo	'</ul>';
-
-							echo '<form method="POST" class="new-message"><input type="text" placeholder="message..." value="" name="chat"><input name="send" type="submit" value="Send"></form>';
+							
 						}
 						?>
 					</main>
