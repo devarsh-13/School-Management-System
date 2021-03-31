@@ -114,7 +114,7 @@ $error="Something went wrong. Please try again";
                             </div>
                              <div class="add">
                                 
-                                 <button type="submit" name="add" class="btn btn-primary"><a href="">Import</a></button>       
+                                 <a href=""><button type="submit" name="add" class="btn btn-primary">Import</button></a>       
                                 </div>
 
                             <!-- /.col-md-6 text-right -->
