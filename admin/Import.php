@@ -80,8 +80,6 @@ if(isset($_SESSION['id']))
                         $pass   =$Conn->real_escape_string($pass);
                         $remarks=$Conn->real_escape_string($t[15]);
 
-                        echo"$gr,$uid,$name,$cast,$cate,$dob,$cont,$ad_date,$cid,$adhar,$hos,$hom,$handi,$des,$pass,$remarks";
-
                         $s= new Upload ();
                         $ok=$s->Store($gr,$uid,$name,$cast,$cate,$dob,$cont,$ad_date,$cid,$adhar,$hos,$hom,$handi,$des,$pass,$remarks,$Conn);
 
