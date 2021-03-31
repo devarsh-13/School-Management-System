@@ -163,7 +163,7 @@ border: 1px solid black;
                                 </div>
                                  <div class="add">
                                 
-                                 <button type="submit" name="add" class="btn btn-primary"><a href="">Promote</a></button>       
+                                 <button type="submit" name="add" class="btn btn-primary"><a href="Export.php">Promote</a></button>       
                                 </div>
                                  <div class="dl">
                                                     <form method="post" action="manage-students.php">
