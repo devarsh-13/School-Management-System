@@ -46,12 +46,25 @@ Purchase:
 	<link href="../css/main.css" rel="stylesheet" type="text/css" />
 	<link href="../css/chat.css" rel="stylesheet" type="text/css" />
 	<script src="js/chat.js"></script>
+	<link rel="stylesheet" href="css/main.css" media="screen">
 	<!-- end theme style -->
 	<!-- favicon links -->
 	<link rel="shortcut icon" type="image/png" href="images/header/favicon.png" />
 </head>
 
 <body>
+	 <div class="main-wrapper">
+
+        <!-- ========== TOP NAVBAR ========== -->
+        <?php include('includes/topbar.php');?>
+        <!-- ========== WRAPPER FOR BOTH SIDEBARS & MAIN CONTENT ========== -->
+        <div class="content-wrapper">
+            <div class="content-container">
+
+                <!-- ========== LEFT SIDEBAR ========== -->
+                <?php include('includes/leftbar.php');?>
+                <!-- /.left-sidebar -->
+
 	<!--Page main section start-->
 	<div id="educo_wrapper">
 		<!--Header start-->
@@ -315,62 +328,6 @@ Purchase:
 	</div>
 </div>
 <!-Newsletter Section six end-->
-		<!--Footer Top section start-->
-		<div class="ed_footer_wrapper">
-			<div class="ed_footer_top">
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-4 col-md-4 col-sm-12">
-							<div class="widget text-widget">
-								<p><a href="index.html"><img src="images/footer/F_Logo.png" alt="Footer Logo" /></a></p>
-								<p>Edution is an outstanding PSD template targeting educational institutions, helping them establish strong identity on the internet without any real developing knowledge.
-								</p>
-								<div class="ed_sociallink">
-
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-4 col-sm-12">
-							<div class="widget text-widget">
-								<h4 class="widget-title">find us</h4>
-								<p><i class="fa fa-safari"></i>Wimbledon Street 42a, 45290 Wimbledon, <br />United Kingdom</p>
-								<p><i class="fa fa-envelope-o"></i><a href="#">info@edutioncollege.gov.co.uk</a> <a href="#">public@edutioncollege.gov.co.uk</a></p>
-								<p><i class="fa fa-phone"></i> 1-220-090-080</p>
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-4 col-sm-12">
-							<div class="widget text-widget">
-
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!--Footer Top section end-->
-		<!--Footer Bottom section start-->
-		<div class="ed_footer_bottom">
-			<div class="container">
-				<div class="col-lg-12 col-md-12 col-sm-12">
-					<div class="row">
-						<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-
-						</div>
-						<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-							<div class="ed_footer_menu">
-								<ul>
-									<li><a href="index.html">home</a></li>
-									<li><a href="private_policy.html">private policy</a></li>
-									<li><a href="about.html">about</a></li>
-									<li><a href="contact.html">contact us</a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!--Footer Bottom section end-->
 	</div>
 	<!--Page main section end-->
 
