@@ -7,31 +7,30 @@ if(strlen($_SESSION['id'])=="")
     header("Location: index.php"); 
     }
     else{
-$sub_id=$_GET['sub_id'];
-
 if(isset($_POST['submit']))
-{  session_start();
+{
     require "connection.php";
-  
+    session_start();
+        require "connection.php";   
+       
+        
+        $event_text = $_POST["event"];
+        $edate=$_POST["edate"];
 
-    $uploadFolder = 'resources/';
-    
-    foreach ($_FILES['imageFile']['tmp_name'] as $key => $image) 
-    {
-        $imageTmpName = $_FILES['imageFile']['tmp_name'][$key];
-        $imageName = $_FILES['imageFile']['name'][$key];
-        $result = move_uploaded_file($imageTmpName,$uploadFolder.$imageName);
+         $a = $_SESSION['id'];  
 
-        $a_id = $_SESSION['id'];
-         $d = date("Y-m-d");
+         
+          $d = date("Y-m-d");
+        
+        //Insert image content into database
+        $insert = $Conn->query("INSERT INTO Event SET Event_text='$event_text',created_on='$d' ,created_by='$a',event_date='$edate'");
 
-$Sql="INSERT INTO `resources`(`R_path`, `Created_on`, `Created_by`, `Sub_id`) VALUES ('$imageName','$d','$a_id','$sub_id')";
-$q=mysqli_query($Conn,$Sql);
-    }
 
-if($q)
+       
+
+if($insert)
 {
-$msg="Resource ADD Successfully";
+$msg="Event Added Successfully";
 }
 else 
 {
@@ -39,44 +38,6 @@ $error="Something went wrong. Please try again";
 }
 
 }
-
-
-
-if(isset($_POST['dlt']))
-{
-
-    $rid=$_POST['rid'];
- $sql = "SELECT * from `resources`  WHERE `R_id`='$rid' ";
-$query = mysqli_query($Conn,$sql);
-$row = mysqli_num_rows($query);
-
-if($row > 0)
-{
-     $path="resources/";
-    while($result=mysqli_fetch_array($query))
-    {       $full = $path.$result['R_path']; 
-          $d=  unlink($full);
-    }
-}
-        $query = "DELETE FROM `resources` WHERE `R_id`='$rid'";
-        $delet = mysqli_query($Conn,$query) or die("Error in query2".$Conn->error);
-
-if($d)
-{
-    
-$msg="Resource Deleted Successfully";
-}
-else 
-{
-    
-$error="Something went wrong. Please try again";
-}
-
-}
-
-
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -85,7 +46,7 @@ $error="Something went wrong. Please try again";
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>IGHS Admin| reasource </title>
+    <title>IGHS Admin| ADD Event </title>
     <link rel="stylesheet" href="css/bootstrap.min.css" media="screen">
     <link rel="stylesheet" href="css/font-awesome.min.css" media="screen">
     <link rel="stylesheet" href="css/animate-css/animate.min.css" media="screen">
@@ -114,7 +75,7 @@ $error="Something went wrong. Please try again";
                     <div class="container-fluid">
                         <div class="row page-title-div">
                             <div class="col-md-6">
-                                <h2 class="title">Resource</h2>
+                                <h2 class="title">ADD Event</h2>
 
                             </div>
 
@@ -125,7 +86,8 @@ $error="Something went wrong. Please try again";
                             <div class="col-md-6">
                                 <ul class="breadcrumb">
                                     <li><a href="dashboard.php"><i class="fa fa-home"></i> Home</a></li>
-                                    <li class="active">Resource</li>
+                                    <li>Events</li>
+                                    <li class="active">ADD Event</li>
                                 </ul>
                             </div>
 
@@ -139,13 +101,13 @@ $error="Something went wrong. Please try again";
                                 <div class="panel">
                                     <div class="panel-heading">
                                         <div class="panel-title">
-                                            <h5>Fill The Subject Info</h5>
+                                            <h5>Fill The Event Info</h5>
                                         </div>
                                     </div>
                                     <div class="panel-body">
                                         <?php if($msg){?>
                                         <div class="alert alert-success left-icon-alert" role="alert">
-                                        
+                                            
                                             <?php echo htmlentities($msg); ?>
                                         </div>
                                         <?php } 
@@ -155,16 +117,22 @@ else if($error){?>
                                             <?php echo htmlentities($error); ?>
                                         </div>
                                         <?php } ?>
-                                        <form class="form-horizontal" method="post"  enctype="multipart/form-data">
+                                        <form class="form-horizontal" method="post">
 
                                             <div class="form-group">
-                                                <label for="default" class="col-sm-2 control-label">Upload File</label>
+                                                <label for="default" class="col-sm-2 control-label">Enter Event</label>
                                                 <div class="col-sm-10">
-                                                      <input type="file" name="imageFile[]"  multiple class="form-control"\>
+                                                     <textarea rows="5"  name="event" class="form-control" id="event" required="required" autocomplete="off"></textarea>
                                                 </div>
                                             </div>
 
-                                         
+                                               <div class="form-group">
+                                                <label for="default" class="col-sm-2 control-label">Event Date</label>
+                                                <div class="col-sm-10">
+                                                    <input type="date" name="edate" class="form-control" id="edate" required="required" autocomplete="off">
+                                                </div>
+                                            </div>
+
 
 
                                             <div class="form-group">
@@ -172,87 +140,9 @@ else if($error){?>
                                                     <button type="submit" name="submit" class="btn btn-primary">Add</button>
                                                 </div>
                                             </div>
-                                        
+                                        </form>
 
                                     </div>
-
-
-                                 
-
-                                     <table id="example" class="display table table-striped table-bordered" cellspacing="0" width="100%">
-                                                    
-                                                        <tr>
-                                                            <th>#</th>
-                                                            <th>Action</th>
-                                                            <th>Resource Name</th>
-                                                            <th>Created by</th>
-                                                            <th>Created On</th>
-                                                        </tr>
-                                                    
-                                                   
-<?php 
-require "connection.php";
-session_start();
-
-$sub_id=$_GET['sub_id'];
-
-$sql1 ="SELECT * from `resources` WHERE `Sub_id`='$sub_id' ";
-
-$query= $Conn -> query($sql1); 
-$row = mysqli_num_rows($query);
- $path = "resource/";
-$cnt=1;
-
-
-if($row > 0)
-{
-while ($query1=mysqli_fetch_array($query)) {
-    $full = $path . $query1['R_path'];
-   ?>
-                    <tr align="center">
-                        <td><?php echo htmlentities($cnt);?></td>
-                        <td>
-                           <!-- <a href="resource-add.php?r_id=<?php //echo  $query1['R_id'];?>">
-                              <img src="images/delete-icon.jpg" height="25px" width='25px'/>&nbsp;Delete</a>-->
-                              <input type="hidden" name="rid" value="<?php echo $query1['R_id']; ?>">
-                              <input type="submit" name="dlt" value="Delete" class="btn btn-danger">
-                              &nbsp;
-                               <a href="<?php echo $full; ?>" download="<?php echo $full; ?>"><img src="images/download.png" height="25px" width='25px'/>&nbsp;Download</a>
-                        </td>
-                        
-                        <td><?php echo $query1['R_path'];?></td>
-
-                         <td><?php
-                                $id=$query1['Created_by'];
-                                 $q=mysqli_query($Conn,"SELECT `T_name` FROM `teachers` WHERE `T_srn` = '$id' ");
-                                 $name=mysqli_fetch_array($q);
-                                echo $name[0];
-                            ?>
-                        </td>
-                        
-                        <td><?php echo $query1['Created_on'];?></td>
-                       
-                       
-                   
-                    </tr>
-<?php 
-    $cnt=$cnt+1;}
-}
- ?>
-                                                       
-                                                    
-                                                    
-                                                </table>
-                                  
-
-
-
-
-
-
-
-
-</form>
                                 </div>
                             </div>
                             <!-- /.col-md-12 -->
@@ -284,7 +174,6 @@ while ($query1=mysqli_fetch_array($query)) {
             });
 
         </script>
-}
 </body>
 
 </html>
