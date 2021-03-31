@@ -1,5 +1,5 @@
 <?php
-
+ob_start();
     function char_only($string)
     {
       $numbers = array("1", "2", "3", "4", "5", "6", "7", "8", "9", "0", " ");
@@ -7,7 +7,7 @@
       return $string;
      }
                 
-require 'vendor/autoload.php';
+require '../vendor/autoload.php';
 
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\IOFactory;
@@ -29,7 +29,7 @@ for($i=0;$i<=sizeof($details)-1;$i++)
 	}
 }
 
-
+ob_clean();
 
 $filename="Student_details.Xlsx";
 header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
@@ -37,5 +37,6 @@ header('Content-Disposition: attachment;filename='.$filename);
 
 $writer = IOFactory::createWriter($spreadsheet, 'Xlsx');
 $writer->save('php://output');
+
 
 ?>

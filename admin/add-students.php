@@ -187,7 +187,7 @@ if(isset($_POST['submit']))
                             </div>
                               <div class="add">
                                 
-                                 <button type="submit" name="add" class="btn btn-primary"><a href="">Import</a></button>       
+                                 <button type="submit" name="add" class="btn btn-primary"><a href="Import.php">Import</a></button>       
                                 </div>
                              
 
