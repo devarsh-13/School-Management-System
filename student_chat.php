@@ -45,6 +45,8 @@ Purchase:
 	<link href="css/main.css" rel="stylesheet" type="text/css" />
 	<link href="css/chat.css" rel="stylesheet" type="text/css" />
 
+	
+
 	<script src="js/chat.js"></script>
 	<!-- end theme style -->
 	<!-- favicon links -->
@@ -214,9 +216,15 @@ Purchase:
 							</li> -->
 						</ul>
 						<?php
-						if (isset($_SESSION['t_id'])) {
+						if (isset($_POST['teacher'])) {
 
 
+
+
+							if(isset($_SESSION['t_id'])||isset($_POST['submit']))
+							{
+								echo '<form method="POST" class="new-message"><input type="text" placeholder="message..." value="" name="chat"><input name="send" type="submit" value="Send"></form>';
+							}
 							
 						}
 						?>
