@@ -45,7 +45,7 @@ Purchase:
 	<link href="css/main.css" rel="stylesheet" type="text/css" />
 	<link href="css/chat.css" rel="stylesheet" type="text/css" />
 
-	
+	<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 
 	<script src="js/chat.js"></script>
 	<!-- end theme style -->
@@ -73,24 +73,24 @@ Purchase:
 		<div class="ed_transprentbg ed_bottompadder0 ed_toppadder0 ">
 			<div id="root">
 				<header>
-				<b style="padding:10px ; font-size:20px; color:aliceblue" >Teachers</b>
+					<b style="padding:10px ; font-size:20px; color:aliceblue">Teachers</b>
 					<nav>
 						<ul>
 
 						</ul>
 					</nav>
 
-				
+
 				</header>
 
-				
+
 				<section class="main-view">
-				
+
 					<aside class="chat-rooms">
-					
+
 
 						<ul>
-						
+
 
 							<?php
 
@@ -98,9 +98,9 @@ Purchase:
 							// // foreach ($result as  $key => $value) {
 
 
-							while ($result = mysqli_fetch_array($query)) {
-								echo '<form method="post" action="#" ><li class=><button name="teacher" value=' . $result['T_srn'] . '>' . $result['T_name'] . '</button> </li></form>';
-							}
+							// while ($result = mysqli_fetch_array($query)) {
+							// 	echo '<form method="post" action="#" ><li class=><button name="teacher" value=' . $result['T_srn'] . '>' . $result['T_name'] . '</button> </li></form>';
+							// }
 							// // 
 							// echo $row;
 							// echo sizeof($result);
@@ -158,54 +158,6 @@ Purchase:
 														</div></li>';
 									}
 								}
-							} else if (isset($_POST['send'])) {
-
-								$d = date("Y-m-d");
-								if (isset($_SESSION['t_id'])) {
-
-									$chat = $_POST['chat'];
-									$s = $_SESSION['t_id'];
-									echo $s;
-									echo $d;
-									echo $S_srn;
-
-									$sender_type = "s";
-
-									$insert = "INSERT INTO `conversation` (`chat_text`,`created_on`,`S_srn`,`T_srn`,`sender_type`) VALUES ('$chat','$d','$S_srn','$s','$sender_type')";
-
-
-									$q = mysqli_query($Conn, $insert) or die(mysqli_error($Conn));;
-
-									echo $q;
-									if ($q) {
-										
-
-										$s = $_SESSION['t_id'];
-
-										$chat_query = mysqli_query($Conn, "SELECT * FROM `conversation` WHERE `S_srn`='$S_srn' && `T_srn`='$s'");
-
-
-										//$chat_result = mysqli_fetch_array($chat_query);
-
-
-										while ($chat_result = mysqli_fetch_array($chat_query)) {
-											if ($chat_result["sender_type"] == "s") {
-												echo  	'<li class="own">
-														<div class="sender">Student</div>
-														<div class="content">' . $chat_result["chat_text"] . '
-														</div></li>';
-											} else {
-												echo  	'<li class="">
-														<div class="sender">Student</div>
-														<div class="content">' . $chat_result["chat_text"] . '
-														</div></li>';
-											}
-										}
-									} else {
-										$error = "Something went wrong. Please try again";
-									}
-								}
-							
 							}
 
 
@@ -216,58 +168,53 @@ Purchase:
 							</li> -->
 						</ul>
 						<?php
-						if (isset($_POST['teacher'])) {
+						
+
+
+						?>
 
 
 
 
-							if(isset($_SESSION['t_id'])||isset($_POST['submit']))
-							{
-								echo '<form method="POST" class="new-message"><input type="text" placeholder="message..." value="" name="chat"><input name="send" type="submit" value="Send"></form>';
-							}
-							
-						}
+
+							<form method="POST" class="new-message"><textarea class="textarea" style="width: 100%;  height: 50px; "  placeholder="message..." value="" name="chat"></textarea></form>
+
+
+
+						<?php
+						
 						?>
 					</main>
 				</section>
 			</div>
 		</div>
-		<!--Section fourteen Contact form start-->
-		<!--Section fifteen Contact form start-->
 
-		<!--Section fifteen Contact form start-->
-		<!--Newsletter Section six start--
-<div class="ed_newsletter_section">
-<div class="ed_img_overlay"></div>
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-12 col-md-12 col-sm-12">
-				<div class="row">
-					<div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
-						<div class="ed_newsletter_section_heading">
-							<h4>Let us inform you about everything important directly.</h4>
-						</div>
-					</div>
-					<div class="col-lg-5 col-md-5 col-sm-6 col-xs-6 col-lg-offset-0 col-md-offset-0 col-sm-offset-3 col-xs-offset-3">
-						<div class="row">
-							<div class="ed_newsletter_section_form">
-								<form class="form">
-									<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
-										<input class="form-control" type="text" placeholder="Newsletter Email" />
-									</div>
-									<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-										<button class="btn ed_btn ed_green">confirm</button>
-									</div>
-								</form>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-        </div>
-	</div>
-</div>
-<!-Newsletter Section six end-->
+
+		<script>
+			$('.textarea').keyup(function(e){
+
+				if( e.which==13)
+				{
+						$('.form').submit();
+				}
+			});
+
+
+			$('form').submit(function(){
+					alert("form is submitted through j query");
+
+					return false;
+
+			});
+
+			
+			
+		
+		</script>
+
+
+
+
 
 		<?php
 		include "footer.php";
