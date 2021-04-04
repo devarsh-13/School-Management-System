@@ -9,7 +9,6 @@ if(strlen($_SESSION['id'])=="")
     else{
 if(isset($_POST['submit']))
 {
-    require "connection.php";
         $gr=$_POST['gr'];
         $ui=$_POST['ui']; 
         $sn=$_POST['sn']; 
@@ -24,7 +23,10 @@ if(isset($_POST['submit']))
         $hand=$_POST['hand']; 
         $des=$_POST['des'];
         $pass=$_POST['pass'];  
-        $re=$_POST['re']; 
+        $re=$_POST['re'];
+
+        $ay=date('Y').'-'.(date('Y')+1); 
+
         $class=$_POST['class'];
         $stream=$_POST['stream'];
         $d = date("Y-m-d");
@@ -64,7 +66,8 @@ if(isset($_POST['submit']))
                                         `S_handicapped`, 
                                         `S_describe`, 
                                         `S_password`, 
-                                        `S_remarks`, 
+                                        `S_remarks`,
+                                        `Academic_year`, 
                                         `is_deleted`, 
                                         `Created_on`) 
 
@@ -85,7 +88,8 @@ if(isset($_POST['submit']))
                                         '$hand', 
                                         '$des', 
                                         '$pass', 
-                                        '$re', 
+                                        '$re',
+                                        '$ay', 
                                         '0', 
                                         '$d')";
 
@@ -271,7 +275,7 @@ else if($error){?>
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Date of Birth</label>
                                                 <div class="col-sm-10">
-                                                    <input type="Date" name="dob" class="form-control" id="dob"   autocomplete="off">
+                                                    <input type="date" name="dob" class="form-control" id="dob"   autocomplete="off">
                                                 </div>
                                             </div>
 

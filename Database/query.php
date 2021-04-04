@@ -126,7 +126,8 @@ $table="CREATE TABLE `Admin` (
 `A_dob` date NOT NULL,
 `Created_on` DATE NOT NULL DEFAULT CURRENT_DATE ,
 `Created_by` INT NOT NULL,
-PRIMARY KEY (`A_id`)
+PRIMARY KEY (`A_id`),
+UNIQUE (A_mobile)
 )"; 
 $q=mysqli_query($Conn,$table);
 
@@ -195,23 +196,25 @@ $Sql="INSERT INTO `Subjects` (Sub_name,Class_id)VALUES('Physics','1')";
 $q=mysqli_query($Conn,$Sql);
 
 $Sql="INSERT INTO `students` (`S_srn`, `S_grn`, `S_uidn`, `S_name`, `S_caste`, `S_category`, `S_dob`, `S_contact`, `S_ad_date`, `Class_id`, `S_adharn`, `S_hostel`, `S_home`, `S_handicapped`, `S_describe`, `S_password`, `S_remarks`,`Academic_year`, `is_deleted`) VALUES (NULL, '123', '123456789098765432', 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 'asdsds', 'xaxax', '2021-03-01', '1234567890', '2021-01-12-', '1', '123456789012', 'aqaqaqaqaq', '', 'YES', 'qqqqqq', '123', '1aaaaaaaaaaaaa','$ay','0')";
-$q=mysqli_query($Conn,$Sql)OR die(mysqli_error($Conn));
+$q=mysqli_query($Conn,$Sql);
 
-$Sql="INSERT INTO `Teachers` (`T_name`, `DOB`, `Degree`, `A_date`, `Joining_date`, `Retire_date`,`Contact`,`Password`) VALUES ('abc', '2020-07-14', 'alpha beta gama', '2021-01-24', '2021-01-30', '2021-02-01','1212121212','123')";
-$q=mysqli_query($Conn,$Sql)OR die(mysqli_error($Conn));
-
-$sql="INSERT INTO `admin`(`A_id`, `A_name`, `A_mobile`, `A_address`,`A_password`, `A_dob`,`Created_by`) VALUES ('2','mayank','8980462257','anjar','123','20/2/2000')";
-$q=mysqli_query($Conn,$sql)OR die(mysqli_error($Conn));
+$Sql="INSERT INTO `Teachers` (`T_name`, `DOB`, `Degree`, `A_date`, `Joining_date`, `Retire_date`,`Contact`,`Password`,`is_deleted`) VALUES ('abc', '2020-07-14', 'alpha beta gama', '2021-01-24', '2021-01-30', '2021-02-01','1212121212','123','0')";
+$q=mysqli_query($Conn,$Sql);
 
 
-$sql="INSERT INTO `admin`(`A_id`, `A_name`, `A_mobile`, `A_address`,`A_password`, `A_dob`) VALUES ('3','jay','9638435147','bhuj','890','2000-02-22')";
-$q=mysqli_query($Conn,$sql)OR die(mysqli_error($Conn));
+$sql="INSERT INTO `admin`(`A_name`, `A_mobile`, `A_address`,`A_password`, `A_dob`,`Created_by`) VALUES ('mayank','8980462257','anjar','123','2000-02-20','0')";
+$q=mysqli_query($Conn,$sql);
 
-$Sql="INSERT INTO `Notification` (`Sr_n`, `Notification_text`) VALUES (NULL, 'DUMMY NOTIFICATION') ";
-$q=mysqli_query($Conn,$Sql)OR die(mysqli_error($Conn));
 
-$Sql="INSERT INTO `Event` (`Sr_n`, `Event_text`, `0`, `1-11-2000`) VALUES (NULL,'the  proper dummy data')  ";
-$q=mysqli_query($Conn,$Sql)OR die(mysqli_error($Conn));
+$sql="INSERT INTO `admin`(`A_name`, `A_mobile`, `A_address`,`A_password`, `A_dob`,`Created_by`) VALUES ('jay','9638435147','bhuj','890','2000-02-22','0')";
+$q=mysqli_query($Conn,$sql);
+
+
+$Sql="INSERT INTO `Notification` (`Sr_n`, `Notification_text`,`Created_by`) VALUES (NULL, 'DUMMY NOTIFICATION','1') ";
+$q=mysqli_query($Conn,$Sql);
+
+$Sql="INSERT INTO `event` (`Event_text`, `is_deleted`,`event_date`,`created_by`) VALUES ('DUmmy event', '0', 'curdate()','2')";
+$q=mysqli_query($Conn,$Sql);
 
 
 ?>

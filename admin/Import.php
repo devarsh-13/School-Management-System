@@ -50,27 +50,7 @@ session_start();
                 $q=mysqli_query($Conn,"SELECT Class_id FROM `Class` WHERE `C_no`='$t[3]' AND `Stream`='$t[4]'")or die(mysqli_error($Conn));
                 $c_id=mysqli_fetch_array($q);
                 $pass = get_pass($t[0]);
-                
-             // echo" :<br>---------------------<br>
-             //            't[0]  $t[0]'<br>, 
-             //            't[1]  $t[1]'<br>, 
-             //            't[2]  $t[2]'<br>, 
-             //            't[5]  $t[5]'<br>,    
-             //            't[6]  $t[6]'<br>, 
-             //            't[7]  $t[7]'<br>, 
-             //            't[9]  $t[9]'<br>, 
-             //            't[8]  $t[8]'<br>, 
-             //            'class_id  $c_id[0]'<br>, 
-             //            't[10]  $t[10]'<br>, 
-             //            't[12]  $t[12]'<br>, 
-             //            't[11]  $t[11]'<br>, 
-             //            't[13]  $t[13]'<br>, 
-             //            't[14]  $t[14]'<br>, 
-             //            'pass  $pass'<br>, 
-             //            't[15]  $t[15]'<br>, 
-                                               
-             //           ) ";
-             //    echo"<br>-------------------------<br><br>";    
+        
                         $gr     =$Conn->real_escape_string($t[0]);
                         $uid    =$Conn->real_escape_string($t[1]);
                         $name   =$Conn->real_escape_string($t[2]);
@@ -87,12 +67,10 @@ session_start();
                         $des    =$Conn->real_escape_string($t[14]);
                         $pass   =$Conn->real_escape_string($pass);
                         $remarks=$Conn->real_escape_string($t[15]);
+                        $ay     =$Conn->reat_escape_string($t[16]);
 
                         $s= new Upload ();
-                        $ok=$s->Store($gr,$uid,$name,$cast,$cate,$dob,$cont,$ad_date,$cid,$adhar,$hos,$hom,$handi,$des,$pass,$remarks,$Conn);
-
-               
-
+                        $ok=$s->Store($gr,$uid,$name,$cast,$cate,$dob,$cont,$ad_date,$cid,$adhar,$hos,$hom,$handi,$des,$pass,$remarks,$ay,$Conn);
             }
             $i++;
 
