@@ -14,18 +14,18 @@ $S_srn = $_SESSION['id'];
 <body>
     <div class="wrapper">
         <section class="users">
-            <header>
+            <!-- <header>
                 <div class="content">
-                    <?php
+                  //  <?php
 
-                    $sql = "SELECT * FROM `teachers` where 'is_deleted'= 0";
+                    // $sql = "SELECT * FROM `teachers` where 'is_deleted'= 0";
 
-                    $query = mysqli_query($Conn, $sql);
+                    // $query = mysqli_query($Conn, $sql);
 
 
-                    if (mysqli_num_rows($query) > 0) {
-                        $row = mysqli_fetch_assoc($query);
-                    }
+                    // if (mysqli_num_rows($query) > 0) {
+                    //     $row = mysqli_fetch_assoc($query);
+                    // }
                     ?>
                     <img src="php/images/" alt="">
                     <div class="details">
@@ -34,17 +34,20 @@ $S_srn = $_SESSION['id'];
                 </div>
                 <a href="php/logout.php?logout_id=<?php //echo $row['unique_id']; 
                                                     ?>" class="logout">Logout</a>
-            </header>
+            </header> -->
+
+            <!-- <span><?php 
+            //  echo $row['T_name'];
+                        ?></span>
+                <p><?php //echo $row['status']; 
+                    ?></p> -->
             <div class="search">
                 <span class="text">Select an user to start chat</span>
                 <input type="text" placeholder="Enter name to search...">
                 <button><i class="fas fa-search"></i></button>
             </div>
             <div class="users-list">
-                <span><?php echo $row['T_name'];
-                        ?></span>
-                <p><?php //echo $row['status']; 
-                    ?></p>
+          
             </div>
         </section>
     </div>
