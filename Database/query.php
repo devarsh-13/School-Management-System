@@ -1,6 +1,8 @@
 <?php
 
 require "connection.php";
+$ay=date('Y').'-'.(date('Y')+1);
+//$d=date('Y-m-d');
 
 
 $table = "CREATE TABLE `Class`(
@@ -25,7 +27,7 @@ $table="CREATE TABLE `Resources`(
 `R_id` INT NOT NULL AUTO_INCREMENT ,
 `R_Name` VARCHAR(60) NOT NULL , 
 `R_path` VARCHAR(250) NOT NULL,
-`Created_on` DATE NOT NULL,
+`Created_on` DATE NOT NULL DEFAULT CURRENT_DATE ,
 `Created_by` INT NOT NULL,	
 `Sub_id` INT NOT NULL , 
 PRIMARY KEY (`R_id`)
@@ -51,8 +53,9 @@ $table = "CREATE TABLE `Students`(
 `S_describe` varchar(80) NOT NUll,
 `S_password` varchar(20) NOT NULL,
 `S_remarks` varchar(50) NOT NUll,
+`Academic_year` VARCHAR(15) NOT NUll,
 `is_deleted` BOOLEAN NOT NUll,
-`Created_on` DATE NOT NULL ,
+`Created_on` DATE NOT NULL DEFAULT CURRENT_DATE ,
 UNIQUE (`S_contact`),
 UNIQUE (`S_grn`),
 UNIQUE (`S_uidn`),
@@ -73,7 +76,7 @@ $table = "CREATE TABLE `Teachers` (
 	`Contact` int(10) NOT NULL ,
 	`Password` varchar(20)NOT NULL,
 	`is_deleted` BOOLEAN NOT NUll,
-	`Created_on` DATE NOT NULL,
+	`Created_on` DATE NOT NULL DEFAULT CURRENT_DATE ,
 	PRIMARY KEY (`T_srn`),
 	UNIQUE (`Contact`)
 	
@@ -85,7 +88,7 @@ $table = "CREATE TABLE `Images` (
   `Id` int(11) NOT NULL AUTO_INCREMENT,
   `Image` VARCHAR(255) NOT NULL,
   `Uploaded_by` INT NOT NULL,
-  `Uploaded_on` DATE NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `Uploaded_on` DATE NOT NULL DEFAULT CURRENT_DATE,
   PRIMARY KEY (`id`)
 )";
 $Conn->query($table);
@@ -95,7 +98,7 @@ $table = "CREATE TABLE `Notification` (
 	`Sr_n` INT NOT NULL AUTO_INCREMENT , 
 	`Notification_text` VARCHAR(120) NOT NULL , 
 	`is_deleted` BOOLEAN NOT NULL,
-	`created_on` DATE NOT NULL,
+	`Created_on` DATE NOT NULL DEFAULT CURRENT_DATE ,
 	`created_by` INT NOT NULL,
 	PRIMARY KEY (`Sr_n`)
 	)";
@@ -106,7 +109,7 @@ $table = "CREATE TABLE `Event` (
 	`Sr_n` INT NOT NULL AUTO_INCREMENT , 
 	`Event_text` VARCHAR(120) NOT NULL , 
 	`is_deleted` BOOLEAN NOT NULL,
-	`created_on` DATE NOT NULL,
+	`Created_on` DATE NOT NULL DEFAULT CURRENT_DATE ,
 	`event_date` DATE NOT NULL,
 	`created_by` INT NOT NULL,
 	PRIMARY KEY (`Sr_n`)
@@ -121,6 +124,8 @@ $table="CREATE TABLE `Admin` (
 `A_address` VARCHAR(255) NOT NULL ,
 `A_password` varchar(20) NOT NULL,
 `A_dob` date NOT NULL,
+`Created_on` DATE NOT NULL DEFAULT CURRENT_DATE ,
+`Created_by` INT NOT NULL,
 PRIMARY KEY (`A_id`)
 )"; 
 $q=mysqli_query($Conn,$table);
@@ -129,7 +134,7 @@ $q=mysqli_query($Conn,$table);
 $table="CREATE TABLE `conversation` ( 
 `chat_id` INT NOT NULL,
 `chat_text` VARCHAR(255) NOT NULL ,
-`created_on` date NOT NULL,
+`Created_on` DATE NOT NULL DEFAULT CURRENT_DATE ,
 `S_srn` INT(5) NOT NULL,
 `T_srn` INT(3) NOT NULL,
 `sender_type` VARCHAR(10) NOT NULL
@@ -189,24 +194,24 @@ $q=mysqli_query($Conn,$Sql);
 $Sql="INSERT INTO `Subjects` (Sub_name,Class_id)VALUES('Physics','1')";
 $q=mysqli_query($Conn,$Sql);
 
-$Sql="INSERT INTO `students` (`S_srn`, `S_grn`, `S_uidn`, `S_name`, `S_caste`, `S_category`, `S_dob`, `S_contact`, `S_ad_date`, `Class_id`, `S_adharn`, `S_hostel`, `S_home`, `S_handicapped`, `S_describe`, `S_password`, `S_remarks`, `is_deleted`, `Created_on`) VALUES (NULL, '123', '123456789098765432', 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 'asdsds', 'xaxax', '2021-03-01', '1234567890', '01-12-2921', '1', '123456789012', 'aqaqaqaqaq', '', 'q', 'qqqqqq', '123_123', '1aaaaaaaaaaaaa', '0', '19-3-2021')";
-$q=mysqli_query($Conn,$Sql);
+$Sql="INSERT INTO `students` (`S_srn`, `S_grn`, `S_uidn`, `S_name`, `S_caste`, `S_category`, `S_dob`, `S_contact`, `S_ad_date`, `Class_id`, `S_adharn`, `S_hostel`, `S_home`, `S_handicapped`, `S_describe`, `S_password`, `S_remarks`,`Academic_year`, `is_deleted`) VALUES (NULL, '123', '123456789098765432', 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 'asdsds', 'xaxax', '2021-03-01', '1234567890', '2021-01-12-', '1', '123456789012', 'aqaqaqaqaq', '', 'YES', 'qqqqqq', '123', '1aaaaaaaaaaaaa','$ay','0')";
+$q=mysqli_query($Conn,$Sql)OR die(mysqli_error($Conn));
 
 $Sql="INSERT INTO `Teachers` (`T_name`, `DOB`, `Degree`, `A_date`, `Joining_date`, `Retire_date`,`Contact`,`Password`) VALUES ('abc', '2020-07-14', 'alpha beta gama', '2021-01-24', '2021-01-30', '2021-02-01','1212121212','123')";
-$q=mysqli_query($Conn,$Sql);
+$q=mysqli_query($Conn,$Sql)OR die(mysqli_error($Conn));
 
-$sql="INSERT INTO `admin`(`A_id`, `A_name`, `A_mobile`, `A_address`,`A_password`, `A_dob`) VALUES ('2','mayank','8980462257','anjar','123','20/2/2000')";
-$q=mysqli_query($Conn,$sql);
+$sql="INSERT INTO `admin`(`A_id`, `A_name`, `A_mobile`, `A_address`,`A_password`, `A_dob`,`Created_by`) VALUES ('2','mayank','8980462257','anjar','123','20/2/2000')";
+$q=mysqli_query($Conn,$sql)OR die(mysqli_error($Conn));
 
 
-$sql="INSERT INTO `admin`(`A_id`, `A_name`, `A_mobile`, `A_address`,`A_password`, `A_dob`) VALUES ('3','jay','9638435147','bhuj','890','22/22/2000')";
-$q=mysqli_query($Conn,$sql);
+$sql="INSERT INTO `admin`(`A_id`, `A_name`, `A_mobile`, `A_address`,`A_password`, `A_dob`) VALUES ('3','jay','9638435147','bhuj','890','2000-02-22')";
+$q=mysqli_query($Conn,$sql)OR die(mysqli_error($Conn));
 
 $Sql="INSERT INTO `Notification` (`Sr_n`, `Notification_text`) VALUES (NULL, 'DUMMY NOTIFICATION') ";
-$q=mysqli_query($Conn,$Sql);
+$q=mysqli_query($Conn,$Sql)OR die(mysqli_error($Conn));
 
 $Sql="INSERT INTO `Event` (`Sr_n`, `Event_text`, `0`, `1-11-2000`) VALUES (NULL,'the  proper dummy data')  ";
-$q=mysqli_query($Conn,$Sql);
+$q=mysqli_query($Conn,$Sql)OR die(mysqli_error($Conn));
 
 
 ?>
