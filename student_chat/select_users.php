@@ -1,9 +1,20 @@
 <?php
 session_start();
-include_once "./Database/connection.php";
+include_once "../Database/connection.php";
 
 $S_srn = $_SESSION['id'];
 
+$sql = "SELECT * from `students` WHERE
+ S_srn = '$S_srn'";
+
+ 
+$query = mysqli_query($Conn, $sql);
+$row = mysqli_num_rows($query);
+
+
+$result = mysqli_fetch_array($query);
+
+$update = mysqli_query($Conn, "UPDATE students SET s_status ='active' WHERE S_srn ='$S_srn' ") or die(mysqli_connect_error());
 
 //   if(!isset($_SESSION['unique_id'])){
 //     header("location: login.php");
@@ -52,7 +63,7 @@ $S_srn = $_SESSION['id'];
         </section>
     </div>
 
-    <script src="js/show_users.js"></script>
+    <script src="../js/show_users.js"></script>
 
 </body>
 

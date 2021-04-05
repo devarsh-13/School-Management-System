@@ -25,7 +25,11 @@
         //             </div>
         //             <div class="status-dot '. $offline .'"><i class="fas fa-circle"></i></div>
         //         </a>';
-        $offline = "offline";
+       
+       
+       
+       // $offline = "offline";
+       ($row['t_status'] == "inactive") ? $offline = "offline" : $offline = "";
         $output .= '<a href="chat.php?user_id='. $row['T_srn'] .'">
         <div class="content">
         <div class="details">

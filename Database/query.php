@@ -56,6 +56,7 @@ $table = "CREATE TABLE `Students`(
 `Academic_year` VARCHAR(15) NOT NUll,
 `is_deleted` BOOLEAN NOT NUll,
 `Created_on` DATE NOT NULL DEFAULT CURRENT_DATE ,
+`s_status` VARCHAR(20) NOT NULL,
 UNIQUE (`S_contact`),
 UNIQUE (`S_grn`),
 UNIQUE (`S_uidn`),
@@ -77,6 +78,7 @@ $table = "CREATE TABLE `Teachers` (
 	`Password` varchar(20)NOT NULL,
 	`is_deleted` BOOLEAN NOT NUll,
 	`Created_on` DATE NOT NULL DEFAULT CURRENT_DATE ,
+	`t_status` VARCHAR(20) NOT NULL,
 	PRIMARY KEY (`T_srn`),
 	UNIQUE (`Contact`)
 	
@@ -195,10 +197,10 @@ $q=mysqli_query($Conn,$Sql);
 $Sql="INSERT INTO `Subjects` (Sub_name,Class_id)VALUES('Physics','1')";
 $q=mysqli_query($Conn,$Sql);
 
-$Sql="INSERT INTO `students` (`S_srn`, `S_grn`, `S_uidn`, `S_name`, `S_caste`, `S_category`, `S_dob`, `S_contact`, `S_ad_date`, `Class_id`, `S_adharn`, `S_hostel`, `S_home`, `S_handicapped`, `S_describe`, `S_password`, `S_remarks`,`Academic_year`, `is_deleted`) VALUES (NULL, '123', '123456789098765432', 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 'asdsds', 'xaxax', '2021-03-01', '1234567890', '2021-01-12-', '1', '123456789012', 'aqaqaqaqaq', '', 'YES', 'qqqqqq', '123', '1aaaaaaaaaaaaa','$ay','0')";
+$Sql="INSERT INTO `students` (`S_srn`, `S_grn`, `S_uidn`, `S_name`, `S_caste`, `S_category`, `S_dob`, `S_contact`, `S_ad_date`, `Class_id`, `S_adharn`, `S_hostel`, `S_home`, `S_handicapped`, `S_describe`, `S_password`, `S_remarks`,`Academic_year`, `is_deleted`,`s_status`) VALUES (NULL, '123', '123456789098765432', 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 'asdsds', 'xaxax', '2021-03-01', '1234567890', '2021-01-12-', '1', '123456789012', 'aqaqaqaqaq', '', 'YES', 'qqqqqq', '123', '1aaaaaaaaaaaaa','$ay','0','inactive')";
 $q=mysqli_query($Conn,$Sql);
 
-$Sql="INSERT INTO `Teachers` (`T_name`, `DOB`, `Degree`, `A_date`, `Joining_date`, `Retire_date`,`Contact`,`Password`,`is_deleted`) VALUES ('abc', '2020-07-14', 'alpha beta gama', '2021-01-24', '2021-01-30', '2021-02-01','1212121212','123','0')";
+$Sql="INSERT INTO `Teachers` (`T_name`, `DOB`, `Degree`, `A_date`, `Joining_date`, `Retire_date`,`Contact`,`Password`,`is_deleted`,`t_status`) VALUES ('abc', '2020-07-14', 'alpha beta gama', '2021-01-24', '2021-01-30', '2021-02-01','1212121212','123','0','active')";
 $q=mysqli_query($Conn,$Sql);
 
 
