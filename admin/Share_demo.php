@@ -15,19 +15,22 @@ use PhpOffice\PhpSpreadsheet\IOFactory;
 $spreadsheet = new Spreadsheet();
 $sheet = $spreadsheet->getActiveSheet();
 
-$details=["Gr no.","UID no.","Name","Class","Stream","Caste","Category","DOB","Admission date","Contact no.","Adhar no.","Home Address","Hostel Address","Handicapped","Describe","Remarks"];
-$cols=["A1","B1","C1","D1","E1","F1","G1","H1","I1","J1","K1","L1","M1","N1","O1","P1","Q1"];
+$details=["Gr no.","UID no.","Name","Class","Stream","Caste","Category","DOB","Admission date","Contact no.","Adhar no.","Home Address","Hostel Address","Handicapped","Describe","Remarks","Academic year","Photo"];
+$cols=["A1","B1","C1","D1","E1","F1","G1","H1","I1","J1","K1","L1","M1","N1","O1","P1","Q1","R1","S1"];
 
 for($i=0;$i<=sizeof($details)-1;$i++)
 {
 	$sheet->setCellValue($cols[$i],$details[$i]);
 	$row=char_only($cols[$i]);
 	
-	if($i>=8 && $i<=13)
+	if($i>=8 && $i<=17)
 	{
 		$spreadsheet->getActiveSheet()->getColumnDimension($row)->setAutoSize(True);	
 	}
 }
+
+$spreadsheet->getActiveSheet()->getStyle('H')->getNumberFormat()->setFormatCode('YYYY-MM-DD');
+$spreadsheet->getActiveSheet()->getStyle('I')->getNumberFormat()->setFormatCode('YYYY-MM-DD');
 
 ob_clean();
 
@@ -39,4 +42,4 @@ $writer = IOFactory::createWriter($spreadsheet, 'Xlsx');
 $writer->save('php://output');
 
 
-?>
+?>	

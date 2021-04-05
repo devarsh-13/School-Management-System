@@ -37,6 +37,7 @@ $q=mysqli_query($Conn,$table);
 
 $table = "CREATE TABLE `Students`(
 `S_srn` int(5) NOT NULL AUTO_INCREMENT,
+`S_photo` VARCHAR(50),
 `S_grn` int(5) NOT NULL,
 `S_uidn` VARCHAR(18) NOT NULL,
 `S_name` varchar(50) NOT NULL,
@@ -67,7 +68,8 @@ $Conn->query($table);
 
 
 $table = "CREATE TABLE `Teachers` ( 
-	`T_srn` INT(3)  AUTO_INCREMENT NOT NULL , 
+	`T_srn` INT(3)  AUTO_INCREMENT NOT NULL ,
+	`Photo` VARCHAR(50), 
 	`T_name` VARCHAR(50) NOT NULL , 
 	`DOB` DATE NOT NULL , 
 	`Degree` VARCHAR(50) NOT NULL , 
@@ -121,6 +123,7 @@ $Conn->query($table);
 
 $table="CREATE TABLE `Admin` ( 
 `A_id` INT NOT NULL AUTO_INCREMENT ,
+`A_Photo` VARCHAR(50),
 `A_name` VARCHAR(60) NOT NULL ,
 `A_mobile` VARCHAR(10) NOT NULL ,
 `A_address` VARCHAR(255) NOT NULL ,
@@ -182,8 +185,8 @@ $Sql="ALTER TABLE `Notification` ADD FOREIGN KEY (`Created_by`) REFERENCES `Admi
 $q=mysqli_query($Conn,$Sql);
 
 //Inserts
-$Sql="INSERT INTO `class` (`Class_id`, `C_no`, `Stream`) VALUES (NULL, '9', ''), 
-																(NULL, '10', ''),
+$Sql="INSERT INTO `class` (`Class_id`, `C_no`, `Stream`) VALUES (NULL, '9', NULL), 
+																(NULL, '10', NULL),
 																(NULL, '11', 'Arts'), 
 																(NULL, '12', 'Arts'), 
 																(NULL, '11', 'Commerce'), 

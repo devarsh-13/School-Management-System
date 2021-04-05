@@ -40,14 +40,19 @@ session_start();
 
         $i=0;
        // unset($sheetData[0]);
-
+     
         foreach ($d as $t) 
         {
             // process element here;
 
             if($i>0)
             {
-                $q=mysqli_query($Conn,"SELECT Class_id FROM `Class` WHERE `C_no`='$t[3]' AND `Stream`='$t[4]'")or die(mysqli_error($Conn));
+                if($t[4]=='-')
+                {
+                    $t[4]=NULL;
+                }
+                
+                $q=mysqli_query($Conn,"SELECT Class_id FROM `Class` WHERE `C_no`='$t[3]' AND `Stream`='$t[4]' ")or die(mysqli_error($Conn));
                 $c_id=mysqli_fetch_array($q);
                 $pass = get_pass($t[0]);
         
@@ -60,6 +65,8 @@ session_start();
                         $cont   =$Conn->real_escape_string($t[9]);
                         $ad_date=$Conn->real_escape_string($t[8]);
                         $cid    =$Conn->real_escape_string($c_id[0]);
+                        echo "----".$t[3]."----".$t[4]."----";
+                        
                         $adhar  =$Conn->real_escape_string($t[10]);
                         $hos    =$Conn->real_escape_string($t[12]);
                         $hom    =$Conn->real_escape_string($t[11]);
@@ -67,10 +74,12 @@ session_start();
                         $des    =$Conn->real_escape_string($t[14]);
                         $pass   =$Conn->real_escape_string($pass);
                         $remarks=$Conn->real_escape_string($t[15]);
-                        $ay     =$Conn->reat_escape_string($t[16]);
 
+                        $ay     =$Conn->real_escape_string($t[16]);
+                        $ph     =$Conn->real_escape_string($t[17]);
+                        
                         $s= new Upload ();
-                        $ok=$s->Store($gr,$uid,$name,$cast,$cate,$dob,$cont,$ad_date,$cid,$adhar,$hos,$hom,$handi,$des,$pass,$remarks,$ay,$Conn);
+                        $ok=$s->Store($gr,$uid,$name,$cast,$cate,$dob,$cont,$ad_date,$cid,$adhar,$hos,$hom,$handi,$des,$pass,$remarks,$ay,$ph,$Conn);
             }
             $i++;
 

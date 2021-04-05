@@ -24,9 +24,9 @@ if(isset($_POST['submit']))
         $des=$_POST['des'];
         $pass=$_POST['pass'];  
         $re=$_POST['re'];
+       // $ay=date('Y').'-'.(date('Y')+1);
 
-        $ay=date('Y').'-'.(date('Y')+1); 
-
+       $ay=$_POST['AY']; 
         $class=$_POST['class'];
         $stream=$_POST['stream'];
         $d = date("Y-m-d");
@@ -318,6 +318,14 @@ else if($error){?>
                                                     </SELECT> 
                                                 </div>
                                             </div>
+
+                                            <div class="form-group">
+                                                <label for="default" class="col-sm-2 control-label">Academic Year</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" name="AY" class="form-control" id="AY" maxlength='9'   autocomplete="off">
+                                                </div>
+                                            </div>
+
 
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Adhar Number</label>
