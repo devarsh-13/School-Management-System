@@ -35,8 +35,9 @@ searchBar.onkeyup = ()=>{
 
 setInterval(() =>{
   let xhr = new XMLHttpRequest();
-  xhr.open("GET", "../student_chat/select_teachers.php", true);
+  xhr.open("GET", "select_teachers.php", true);
   xhr.onload = ()=>{
+   
     if(xhr.readyState === XMLHttpRequest.DONE){
         if(xhr.status === 200){
           let data = xhr.response;
