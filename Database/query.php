@@ -200,28 +200,11 @@ $q=mysqli_query($Conn,$Sql);
 $Sql="INSERT INTO `Subjects` (Sub_name,Class_id)VALUES('Physics','1')";
 $q=mysqli_query($Conn,$Sql);
 
-<<<<<<< Updated upstream
 $Sql="INSERT INTO `students` (`S_srn`, `S_grn`, `S_uidn`, `S_name`, `S_caste`, `S_category`, `S_dob`, `S_contact`, `S_ad_date`, `Class_id`, `S_adharn`, `S_hostel`, `S_home`, `S_handicapped`, `S_describe`, `S_password`, `S_remarks`,`Academic_year`, `is_deleted`,`s_status`) VALUES (NULL, '123', '123456789098765432', 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 'asdsds', 'xaxax', '2021-03-01', '1234567890', '2021-01-12-', '1', '123456789012', 'aqaqaqaqaq', '', 'YES', 'qqqqqq', '123', '1aaaaaaaaaaaaa','$ay','0','inactive')";
 $q=mysqli_query($Conn,$Sql);
 
 $Sql="INSERT INTO `Teachers` (`T_name`, `DOB`, `Degree`, `A_date`, `Joining_date`, `Retire_date`,`Contact`,`Password`,`is_deleted`,`t_status`) VALUES ('abc', '2020-07-14', 'alpha beta gama', '2021-01-24', '2021-01-30', '2021-02-01','1212121212','123','0','active')";
 $q=mysqli_query($Conn,$Sql);
-
-=======
-<<<<<<< HEAD
-$Sql="INSERT INTO `students` (`S_srn`, `S_grn`, `S_uidn`, `S_name`, `S_caste`, `S_category`, `S_dob`, `S_contact`, `S_ad_date`, `Class_id`, `S_adharn`, `S_hostel`, `S_home`, `S_handicapped`, `S_describe`, `S_password`, `S_remarks`, `is_deleted`, `Created_on`) VALUES (NULL, '123', '123456789098765432', 'Mayank Rathod', 'asdsds', 'xaxax', '2021-03-01', '1234567890', '01-12-2921', '1', '123456789012', 'aqaqaqaqaq', '', 'q', 'qqqqqq', '123_123', '1aaaaaaaaaaaaa', '0', '19-3-2021')";
-$q=mysqli_query($Conn,$Sql);
-
-$Sql="INSERT INTO `Teachers` (`T_name`, `DOB`, `Degree`, `A_date`, `Joining_date`, `Retire_date`,`Contact`,`Password`) VALUES ('ABC', '2020-07-14', 'alpha beta gama', '2021-01-24', '2021-01-30', '2021-02-01','1212121212','123')";
-=======
-$Sql="INSERT INTO `students` (`S_srn`, `S_grn`, `S_uidn`, `S_name`, `S_caste`, `S_category`, `S_dob`, `S_contact`, `S_ad_date`, `Class_id`, `S_adharn`, `S_hostel`, `S_home`, `S_handicapped`, `S_describe`, `S_password`, `S_remarks`,`Academic_year`, `is_deleted`,`s_status`) VALUES (NULL, '123', '123456789098765432', 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 'asdsds', 'xaxax', '2021-03-01', '1234567890', '2021-01-12-', '1', '123456789012', 'aqaqaqaqaq', '', 'YES', 'qqqqqq', '123', '1aaaaaaaaaaaaa','$ay','0','inactive')";
-$q=mysqli_query($Conn,$Sql);
-
-$Sql="INSERT INTO `Teachers` (`T_name`, `DOB`, `Degree`, `A_date`, `Joining_date`, `Retire_date`,`Contact`,`Password`,`is_deleted`,`t_status`) VALUES ('abc', '2020-07-14', 'alpha beta gama', '2021-01-24', '2021-01-30', '2021-02-01','1212121212','123','0','active')";
->>>>>>> f2c5b15e61745157b1f2407baf55c1a702ff06a7
-$q=mysqli_query($Conn,$Sql);
-
->>>>>>> Stashed changes
 
 $sql="INSERT INTO `admin`(`A_name`, `A_mobile`, `A_address`,`A_password`, `A_dob`,`Created_by`) VALUES ('mayank','8980462257','anjar','123','2000-02-20','0')";
 $q=mysqli_query($Conn,$sql);
