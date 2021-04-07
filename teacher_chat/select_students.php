@@ -8,19 +8,21 @@ session_start();
 include_once "../teacher/connection.php";
 
 $T_srn = $_SESSION['id'];
-echo $T_srn;
+
 
 $sql = "SELECT * from `teachers` WHERE
  T_srn = '$T_srn'";
 
  
 $query = mysqli_query($Conn, $sql);
+
+
 $row = mysqli_num_rows($query);
 
 
 $result = mysqli_fetch_array($query);
 
-$update = mysqli_query($Conn, "UPDATE teachers SET t_status ='active' WHERE S_srn ='$T_srn' ") or die(mysqli_connect_error());
+// $update = mysqli_query($Conn, "UPDATE teachers SET t_status ='active' WHERE S_srn ='$T_srn' ") or die(mysqli_connect_error());
 
 
 ?>
