@@ -160,6 +160,17 @@ Purchase:
 								}
 							}
 
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+									$chat = $_POST['chat'];
+									$s = $_SESSION['t_id'];
+									echo $s;
+									
+									echo $S_srn;
+=======
+>>>>>>> f2c5b15e61745157b1f2407baf55c1a702ff06a7
+>>>>>>> Stashed changes
 
 							?>
 
@@ -182,7 +193,18 @@ Purchase:
 
 
 						<?php
+<<<<<<< Updated upstream
 						
+=======
+<<<<<<< HEAD
+						if (isset($_SESSION['t_id'])) {
+
+
+						}
+=======
+						
+>>>>>>> f2c5b15e61745157b1f2407baf55c1a702ff06a7
+>>>>>>> Stashed changes
 						?>
 					</main>
 				</section>
