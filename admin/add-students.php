@@ -7,6 +7,8 @@ if(strlen($_SESSION['id'])=="")
     header("Location: index.php"); 
     }
     else{
+
+        echo $_SESSION['id'];
 if(isset($_POST['submit']))
 {
         $gr=$_POST['gr'];
@@ -24,6 +26,7 @@ if(isset($_POST['submit']))
         $des=$_POST['des'];
         $pass=$_POST['pass'];  
         $re=$_POST['re'];
+        $stat="offline";
        // $ay=date('Y').'-'.(date('Y')+1);
 
        $ay=$_POST['AY']; 
@@ -69,7 +72,8 @@ if(isset($_POST['submit']))
                                         `S_remarks`,
                                         `Academic_year`, 
                                         `is_deleted`, 
-                                        `Created_on`) 
+                                        `Created_on`,
+                                        `s_status`) 
 
                                     VALUES 
                                     (
@@ -91,7 +95,9 @@ if(isset($_POST['submit']))
                                         '$re',
                                         '$ay', 
                                         '0', 
-                                        '$d')";
+                                        '$d',
+                                        '$stat'
+                                    )";
 
         $q=mysqli_query($Conn,$Sql)or die(mysqli_error($Conn));
 
