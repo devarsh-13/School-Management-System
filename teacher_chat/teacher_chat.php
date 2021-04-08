@@ -1,7 +1,7 @@
 <?php 
   session_start();
   include_once "../Database/connection.php";
-  if(!isset($_SESSION['id'])){
+  if(!isset($_SESSION['t_id'])){
     header("location: ../login.php");
   }
 ?>
@@ -24,7 +24,7 @@
           }
         ?>
         <a href=" select_students.php" class="back-icon"><i class="fas fa-arrow-left"></i></a>
-        <!-- <img src="php/images/<?php// echo $row['img']; ?>" alt=""> -->
+        <img src="../user_photos/<?php echo $row['S_photo']; ?>" alt="">
         <div class="details">
           <span><?php echo $row['S_name'] ?></span>
           <p><?php echo $row['s_status']; ?></p>

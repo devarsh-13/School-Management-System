@@ -1,10 +1,10 @@
 <?php
 session_start();
-if (isset($_SESSION['id'])) {
+if (isset($_SESSION['s_id'])) {
 
     include_once "../Database/connection.php";
 
-    $S_srn = $_SESSION['id'];
+    $S_srn = $_SESSION['s_id'];
 
     $T_srn = $_SESSION['t_id'];
     

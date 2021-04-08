@@ -127,9 +127,9 @@ Purchase:
 				<div class="row">
 					<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
 						<div class="ed_sidebar_wrapper">
-							<!-- <div class="ed_profile_img">
-								<img src="http://placehold.it/263X263" alt="Dashboard Image" />
-							</div> -->
+							<div class="ed_profile_img">
+							<img src="../user_photos/<?php echo $result['T_photo']; ?>" alt="">
+							</div>
 							<h3><?php echo $result['T_name'];  ?></h3>
 							<div class="ed_tabs_left">
 								<ul class="nav nav-tabs">

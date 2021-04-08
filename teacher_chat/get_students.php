@@ -1,7 +1,7 @@
 <?php
     session_start();
 
-    $T_srn = $_SESSION['id'];
+    $T_srn = $_SESSION['t_id'];
    // include_once "config.php";
    include_once "../Database/connection.php";
    $sql = "SELECT * FROM `conversation` inner join `students` ON conversation.S_srn=students.S_srn WHERE `T_srn`='$T_srn' GROUP BY conversation.S_srn";

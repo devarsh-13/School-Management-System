@@ -7,7 +7,7 @@
 session_start();
 include_once "../teacher/connection.php";
 
-$T_srn = $_SESSION['id'];
+$T_srn = $_SESSION['t_id'];
 
 
 $sql = "SELECT * from `teachers` WHERE
