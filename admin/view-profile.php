@@ -4,7 +4,7 @@ include 'connection.php';
 session_start();
 
 
-$a_srn = $_SESSION['id'];
+$a_srn = $_SESSION['a_id'];
 $sql = "SELECT * from `admin` WHERE A_id = '$a_srn'";
 
 
