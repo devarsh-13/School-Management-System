@@ -15,7 +15,7 @@
 										<li><a href="gallery.php">Gallery</a></li>
 										<li><a href="resource-download.php">Resources</a></li>
 										<li><a href="student_profile.php">Profile</a></li>
-										<li><a href="show_teacher.php">Chat</a></li>
+										<li><a href="student_chat/select_users.php">Chat</a></li>
 										<li><a href="about.html">about us</a></li>
 									</ul>
 								</div>

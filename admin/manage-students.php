@@ -196,6 +196,7 @@ $error="Something went wrong. Please try again";
                             colCount.push('*'); 
                         }
                     });
+                    doc.content[1].table.widths = colCount;
                     },
         
                      exportOptions: {
