@@ -1,7 +1,7 @@
 <?php
     while($row = mysqli_fetch_assoc($query)){
       
-       ($row['t_status'] == "inactive") ? $offline = "offline" : $offline = "";
+       ($row['t_status'] == "offline") ? $offline = "offline" : $offline = "";
         $output .= '<a href="chat.php?teacher_id='. $row['T_srn'] .'">
         <div class="content">
         <div class="details">

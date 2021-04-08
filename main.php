@@ -1,8 +1,13 @@
 <?php
+
+require "Database/connection.php";
+
 session_start();
 
 if (isset($_SESSION['id'])) {
-
+	
+	$S_srn = $_SESSION['id'];
+	$update = mysqli_query($Conn, "UPDATE students SET s_status ='offline' WHERE S_srn ='$S_srn' ") or die(mysqli_connect_error());
 
 ?>
 
@@ -175,9 +180,9 @@ Purchase: http://themeforest.net/user/kamleshyadav
 
 
 									<?php
-									require "Database/connection.php";
+									
 
-									$sql = ("SELECT * FROM `Event` WHERE `is_deleted`='0'") or die(mysqli_error());
+									$sql = ("SELECT * FROM `Event` WHERE `is_deleted`='0'") or die (mysqli_connect_error());
 
 									$q = mysqli_query($Conn, $sql);
 
@@ -408,9 +413,9 @@ Purchase: http://themeforest.net/user/kamleshyadav
 
 
 									<?php
-									require "Database/connection.php";
+									
 
-									$sql = ("SELECT * FROM `notification` WHERE `is_deleted`='0'") or die(mysqli_error());
+									$sql = ("SELECT * FROM `notification` WHERE `is_deleted`='0'") or die(mysqli_connect_error());
 
 									$q = mysqli_query($Conn, $sql);
 

@@ -2,8 +2,7 @@
     session_start();
    // include_once "config.php";
    include_once "../Database/connection.php";
-    // $outgoing_id = $_SESSION['unique_id'];
-  //  $sql = "SELECT * FROM users WHERE NOT unique_id = {$outgoing_id} ORDER BY user_id DESC";
+   
     $sql = "SELECT * FROM `teachers` where 'is_deleted'= 0";
     $query = mysqli_query($Conn, $sql);
     $output = "";
