@@ -20,54 +20,54 @@ $result = mysqli_fetch_array($query);
 
 ?>
 
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 
 	function pass()
 	{
 
-<?php
+ <?php
 
 
-	$Password = $_POST['Password'];
+	// $Password = $_POST['Password'];
 
-	$Password2 = $_POST['Password2'];
+	// $Password2 = $_POST['Password2'];
 
-	$OldPassword = $_POST['OldPassword'];
+	// $OldPassword = $_POST['OldPassword'];
 	
-	$op=$result['S_password'];
+	// $op=$result['S_password'];
 
 
-	$error = false;
+	// $error = false;
 
 
-	if ($OldPassword == $op) {
+	// if ($OldPassword == $op) {
 
 
-		if ($Password == $Password2) {
+	// 	if ($Password == $Password2) {
 
 
 
 
-			if ($row == 1) {
+	// 		if ($row == 1) {
 
-				$update = mysqli_query($Conn, "UPDATE students SET S_password ='$Password' WHERE S_srn ='$S_srn' ") or die(mysqli_connect_error());
-			}
-		} else {
+	// 			$update = mysqli_query($Conn, "UPDATE students SET S_password ='$Password' WHERE S_srn ='$S_srn' ") or die(mysqli_connect_error());
+	// 		}
+	// 	} else {
 
-			$error_msg['d'] = 'Please Enter same passwords';
-		$error = true;
+	// 		$error_msg['d'] = 'Please Enter same passwords';
+	// 	$error = true;
 
 
-		}
-	} else {
+	// 	}
+	// } else {
 
-		$error_msg['C'] = ' Your old password is incorrect';
-		$error = true;
-	}
+	// 	$error_msg['C'] = ' Your old password is incorrect';
+	// 	$error = true;
+	// } -->
 ?>
 location.href = "#general";
 }
-</script>
+</script> -->
 
 
 
@@ -262,33 +262,27 @@ Purchase:
 																?>
 															</div>
 															<div class="form-group">
-																<button onclick="pass();">Submit</button>
+																<button >Submit</button>
 															</div>
 														</form>
 													</div>
 												</div>
-
-
 											</div>
-
 										</div>
 										<!--tab End-->
 									</div>
 								</div>
-
 								<!--tab End-->
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-
-
 		</div>
 	</div>
 	</div>
 	<!--single student detail end-->
-	
+	<script src="./js//profile.js"></script>
 <?php
 include "footer.php";
 ?>

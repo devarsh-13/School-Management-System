@@ -12,7 +12,7 @@ $flag=0;
 		$Password=$_POST['Password'];
 
         $Password2=$_POST['Password2'];
-        $S_srn= $_SESSION['id'];
+        $S_srn= $_SESSION['s_id'];
 	
 
 		$error = false;
@@ -52,24 +52,7 @@ $flag=0;
 
 
 	
-		// $query = mysqli_query($Conn,"SELECT `S_srn` FROM `Students` WHERE
-		// 	`S_contact` = '$Contact' && `S_password` = '$Password'
-		// 	") or die(mysqli_connect_error());
 		
-		// $row = mysqli_num_rows($query);
-		// $arr=mysqli_fetch_row($query);
-		
-		// if($row == 1)
-		// {
-		// 	session_start();
-			
-		// 	$_SESSION['id']=$arr[0];
-		// 	header("location:http://localhost/Sem6Project/main.php");
-		// }
-		// else
-		// {
-		// 	$flag=1;
-		// }
 		
 	}
 
