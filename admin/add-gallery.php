@@ -2,7 +2,7 @@
 session_start();
 error_reporting(0);
 include('connection.php');
-if(strlen($_SESSION['id'])=="")
+if(strlen($_SESSION['a_id'])=="")
     {   
     header("Location: index.php"); 
     }
@@ -20,7 +20,7 @@ if(isset($_POST['submit']))
         $imageName = $_FILES['imageFile']['name'][$key];
         $result = move_uploaded_file($imageTmpName,$uploadFolder.$imageName);
 
-        $a_id = $_SESSION['id'];
+        $a_id = $_SESSION['a_id'];
          $d = date("Y-m-d");
 
 

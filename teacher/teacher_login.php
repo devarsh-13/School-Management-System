@@ -32,7 +32,7 @@ $flag=0;
 		if($row == 1)
 		{
 			session_start();
-			$_SESSION['id']=$arr[0];
+			$_SESSION['t_id']=$arr[0];
 			
 			header("location:dashboard.php");
 		}

@@ -4,7 +4,7 @@ require "Database/connection.php";
 
 session_start();
 
-if (isset($_SESSION['id'])) {
+if (isset($_SESSION['s_id'])) {
 	
 	$S_srn = $_SESSION['id'];
 	$update = mysqli_query($Conn, "UPDATE students SET s_status ='offline' WHERE S_srn ='$S_srn' ") or die(mysqli_connect_error());

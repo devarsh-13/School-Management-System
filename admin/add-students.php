@@ -2,13 +2,13 @@
 session_start();
 error_reporting(0);
 include('connection.php');
-if(strlen($_SESSION['id'])=="")
+if(strlen($_SESSION['a_id'])=="")
     {   
     header("Location: index.php"); 
     }
     else{
 
-        echo $_SESSION['id'];
+        
 if(isset($_POST['submit']))
 {
         $gr=$_POST['gr'];

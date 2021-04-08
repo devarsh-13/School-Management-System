@@ -37,7 +37,7 @@ $flag=0;
 		{
 			session_start();
 			
-			$_SESSION['id']=$arr[0];
+			$_SESSION['s_id']=$arr[0];
 			header("location:http://localhost/Sem6CollegeProject/main.php");
 		}
 		else

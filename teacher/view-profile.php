@@ -4,7 +4,7 @@ include 'connection.php';
 session_start();
 
 
-$T_srn = $_SESSION['id'];
+$T_srn = $_SESSION['t_id'];
 $sql = "SELECT * from `teachers` WHERE T_srn = '$T_srn'";
 
 

@@ -4,7 +4,7 @@
 session_start();
 error_reporting(0);
 include('connection.php');
-if(strlen($_SESSION['id'])=="")
+if(strlen($_SESSION['t_id'])=="")
     {   
     header("Location: index.php"); 
     }

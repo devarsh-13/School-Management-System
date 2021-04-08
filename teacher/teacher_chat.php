@@ -6,7 +6,7 @@ require 'connection.php';
 session_start();
 
 
-$T_srn = $_SESSION['id'];
+$T_srn = $_SESSION['t_id'];
 
 
 

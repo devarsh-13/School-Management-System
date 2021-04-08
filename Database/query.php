@@ -147,7 +147,24 @@ $table="CREATE TABLE `conversation` (
 )"; 
 $q=mysqli_query($Conn,$table);
 
+$table="CREATE TABLE `log` ( 
 
+`Date` DATE NOT NULL DEFAULT CURRENT_DATE,
+`Time` TIME NOT NULL DEFAULT CURRENT_TIMESTAMP , 
+`Name` VARCHAR(100) NOT NULL , 
+`Authority` VARCHAR(10) NOT NULL,
+`Contact` VARCHAR(10) NOT NULL , 
+`Action` VARCHAR(255) NOT NULL , 
+`Status` TEXT NOT NULL , 
+`IP_address` VARCHAR(35) NOT NULL , 
+`Device` VARCHAR(100) NOT NULL , 
+`State` VARCHAR(50) NOT NULL , 
+`Country` VARCHAR(100) NOT NULL ,
+PRIMARY KEY(`Time`,`Contact`)
+)";
+
+
+$q=mysqli_query($Conn,$table);
 //Alters
 
 $Sql="ALTER TABLE `Subjects` ADD FOREIGN KEY (`Class_id`) REFERENCES `Class`(`Class_id`)  ON DELETE CASCADE ON UPDATE CASCADE";
@@ -220,5 +237,6 @@ $q=mysqli_query($Conn,$Sql);
 $Sql="INSERT INTO `event` (`Event_text`, `is_deleted`,`event_date`,`created_by`) VALUES ('DUmmy event', '0', 'curdate()','2')";
 $q=mysqli_query($Conn,$Sql);
 
-
+$Sql="INSERT INTO `log` (`Date`, `Time`, `Name`, `Contact`, `Action`, `Status`, `IP_address`, `Device`, `State`, `Country`) VALUES (CURRENT_DATE(), CURRENT_TIME(), '', '', '', '', '', '', '', '')";
+$q=mysqli_query($Conn,$Sql);
 ?>

@@ -2,7 +2,7 @@
 session_start();
 error_reporting(0);
 include('connection.php');
-if(strlen($_SESSION['id'])=="")
+if(strlen($_SESSION['a_id'])=="")
     {   
     header("Location: index.php"); 
     }
@@ -14,7 +14,7 @@ if(isset($_POST['submit']))
     session_start();
         
         $notification_text = $_POST["notification"];
-          $a = $_SESSION['id'];  
+          $a = $_SESSION['a_id'];  
           $d = date("Y-m-d");
         
 $Sql="UPDATE `notification` SET `Notification_text`='$notification_text',`is_deleted`='0',`created_on`='$d',`created_by`='$a' WHERE `Sr_n`='$nid'";

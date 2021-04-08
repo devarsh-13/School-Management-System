@@ -4,7 +4,7 @@ include 'Database/connection.php';
 session_start();
 
 
-$S_srn = $_SESSION['id'];
+$S_srn = $_SESSION['s_id'];
 $sql = "SELECT * from `students` join Class on students.Class_id=Class.Class_id WHERE
  S_srn = '$S_srn' ORDER BY Created_on DESC";
 

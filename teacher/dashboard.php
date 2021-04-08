@@ -3,9 +3,9 @@
 require "connection.php";
 session_start();
 
-if (isset($_SESSION['id'])) {
+if (isset($_SESSION['t_id'])) {
 
-    $T_srn = $_SESSION['id'];
+    $T_srn = $_SESSION['t_id'];
     $update = mysqli_query($Conn, "UPDATE teachers SET t_status ='offline' WHERE T_srn ='$T_srn' ") or die(mysqli_connect_error());
 }
 

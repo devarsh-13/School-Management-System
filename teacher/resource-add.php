@@ -2,7 +2,7 @@
 session_start();
 error_reporting(0);
 include('connection.php');
-if(strlen($_SESSION['id'])=="")
+if(strlen($_SESSION['t_id'])=="")
     {   
     header("Location: index.php"); 
     }
@@ -22,10 +22,10 @@ if(isset($_POST['submit']))
         $imageName = $_FILES['imageFile']['name'][$key];
         $result = move_uploaded_file($imageTmpName,$uploadFolder.$imageName);
 
-        $a_id = $_SESSION['id'];
+        $t_id = $_SESSION['t_id'];
          $d = date("Y-m-d");
 
-$Sql="INSERT INTO `resources`(`R_path`, `Created_on`, `Created_by`, `Sub_id`) VALUES ('$imageName','$d','$a_id','$sub_id')";
+$Sql="INSERT INTO `resources`(`R_path`, `Created_on`, `Created_by`, `Sub_id`) VALUES ('$imageName','$d','$t_id','$sub_id')";
 $q=mysqli_query($Conn,$Sql);
     }
 
