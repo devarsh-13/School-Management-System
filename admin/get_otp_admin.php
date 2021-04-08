@@ -29,7 +29,7 @@ if (isset($_POST['getOtp'])) {
 	if ($row == 1) {
 		
 
-		$_SESSION['id'] = $arr[0];
+		$_SESSION['a_id'] = $arr[0];
 
 
 
