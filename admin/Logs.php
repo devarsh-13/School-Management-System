@@ -1,6 +1,9 @@
 <?php
 session_start();
+
 require'connection.php';
+require'Store_data.php';
+
 if(isset($_SESSION['a_id']))
 {
 
@@ -14,7 +17,7 @@ if(isset($_SESSION['a_id']))
 <body>
 	<table border="1"> 
 		
-		<tr>
+		<tr align="center">
 			<td>DATE</td>
 			<td>Time</td>
 			<td>Name</td>
@@ -32,7 +35,7 @@ if(isset($_SESSION['a_id']))
 		$q=mysqli_query($Conn,"SELECT * FROM `Log`");
 		while($data = mysqli_fetch_assoc($q))
 		{
-			echo "<tr>";
+			echo "<tr align='center'>";
 			foreach ($data as $key => $value) 
 			{	
 				echo "<td>$value</td>";

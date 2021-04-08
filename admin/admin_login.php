@@ -1,10 +1,13 @@
 <?php 
 require "connection.php";
+require "store_data.php";
 
 $flag=0;
 
 	if(isset($_POST['Submit']))
 	{
+		$action="Admin Login";
+
 		$Contact=	$_POST['Contact_no'];
 		$Password=$_POST['Password'];
 		$error = false;
@@ -31,13 +34,22 @@ $flag=0;
 		
 		if($row == 1)
 		{
+			$flag=0;
 			session_start();
 			$_SESSION['a_id']=$arr[0];
-			
+
+			//log
+								
+			$log= new Log();
+			$log->success_entry($action,$Conn);
+
 			header("location:dashboard.php");
 		}
 		else
 		{
+			$contact=$_POST['Contact_no'];	
+			$log= new Log();
+			$log->wrong_login($contact,$action,$Conn);
 			$flag=1;
 		}
 		
