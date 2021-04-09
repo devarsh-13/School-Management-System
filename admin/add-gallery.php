@@ -7,50 +7,9 @@ if(strlen($_SESSION['a_id'])=="")
     header("Location: index.php"); 
     }
     else{
-if(isset($_POST['submit']))
-{  session_start();
-    require "connection.php";
-  
 
-    $uploadFolder = 'img/';
-    
-    foreach ($_FILES['imageFile']['tmp_name'] as $key => $image) 
-    {
-        $imageTmpName = $_FILES['imageFile']['tmp_name'][$key];
-        $imageName = $_FILES['imageFile']['name'][$key];
-        $result = move_uploaded_file($imageTmpName,$uploadFolder.$imageName);
+        
 
-        $a_id = $_SESSION['a_id'];
-         $d = date("Y-m-d");
-
-
-$Sql="INSERT INTO `images` 
-                            (
-                                `Image`, 
-                                `Uploaded_by`, 
-                                `Uploaded_on`) 
-
-                            VALUES 
-                            (
-                                '$imageName', 
-                                '$a_id', 
-                                '$d')";
-
-$q=mysqli_query($Conn,$Sql);
-    }
-
-       
-
-if($q)
-{
-$msg="Image Added Successfully";
-}
-else 
-{
-$error="Something went wrong. Please try again";
-}
-
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -68,6 +27,9 @@ $error="Something went wrong. Please try again";
     <link rel="stylesheet" href="css/select2/select2.min.css">
     <link rel="stylesheet" href="css/main.css" media="screen">
     <script src="js/modernizr/modernizr.min.js"></script>
+
+
+      <link rel="stylesheet" href="ssi-uploader/styles/ssi-uploader.css"/>
 </head>
 
 <body class="top-navbar-fixed">
@@ -130,12 +92,77 @@ else if($error){?>
                                             <?php echo htmlentities($error); ?>
                                         </div>
                                         <?php } ?>
-                                        <form class="form-horizontal" method="post"  enctype="multipart/form-data">
+                                        <form class="form-horizontal" method="post" action="up.php" id="myForm"   enctype="multipart/form-data">
 
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Upload Image</label>
                                                 <div class="col-sm-10">
-                                                      <input type="file" name="imageFile[]" required multiple class="form-control"\>
+                                                    
+<table class="ie table">
+    <tr>
+        <td>
+           
+                <input type="file" name="file[]" multiple id="ssi-upload"/>
+                
+            
+        </td>
+    </tr>
+   <script src="https://code.jquery.com/jquery-1.12.3.min.js"
+        integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ=" crossorigin="anonymous"></script>
+<script src="ssi-uploader/js/ssi-uploader.js"></script>
+<script src="bower_components\ssi-modal\dist\ssi-modal\js\ssi-modal.js"></script>
+<script>
+    var notifyOptions = {
+        iconButtons: {
+            className: 'fa fa-question about',
+            method: function (e, modal) {
+                ssi_modal.closeAll('notify');
+                var btn = $(this).addClass('disabled');
+                ssi_modal.dialog({
+                    onClose: function () 
+                    {
+                        btn.removeClass('disabled');
+                    },
+                    onShow: function () 
+                    {
+                    },
+                    okBtn: {className: 'btn btn-primary btn-sm'},
+                    title: 'ssi-modal',
+                    content: 'ssi-modal is an open source modal window plugin that only depends on jquery. It has many options and it\'s super flexible, maybe the most flexible modal out there... For more details click <a class="sss" href="http://ssbeefeater.github.io/#ssi-modal" target="_blank">here</a>',
+                    sizeClass: 'small',
+                    animation: true,
+                });
+            }
+        }
+    };
+
+    // option 1
+
+
+    $('#ssi-upload').ssi_uploader({
+        url: 'up.php',
+        inForm:true,
+    });
+
+    // option 2
+
+    var uploader = $('#ssi-upload').ssi_uploader({
+        url: 'up.php',
+    });
+
+    $( "#myForm" ).on( "submit", function( event ) {
+        event.preventDefault();
+        uploader.data('ssi_upload').uploadFiles();
+        
+        uploader.on('onUpload.ssi-uploader',function(){
+            console.log('complete');
+            $( "#myForm" ).submit();
+        });
+    });
+ 
+</script>
+
+</table>
                                                 </div>
                                             </div>
 
@@ -144,7 +171,7 @@ else if($error){?>
 
                                             <div class="form-group">
                                                 <div class="col-sm-offset-2 col-sm-10">
-                                                    <button type="submit" name="submit" class="btn btn-primary">Add</button>
+                                                   <button id="upBtn" class="btn btn-primary">Upload</button>
                                                 </div>
                                             </div>
                                         </form>
