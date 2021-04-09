@@ -149,10 +149,9 @@ $table="CREATE TABLE `conversation` (
 )"; 
 $q=mysqli_query($Conn,$table);
 
-$table="CREATE TABLE `log` ( 
-
+$table="CREATE TABLE `log` (
 `L_Date` DATE NOT NULL DEFAULT CURRENT_DATE,
-`L_Time` TIME NOT NULL DEFAULT CURRENT_TIMESTAMP , 
+`L_Time` TIME NOT NULL DEFAULT CURRENT_TIMESTAMP, 
 `Name` VARCHAR(100) NOT NULL , 
 `Authority` VARCHAR(10) NOT NULL,
 `Contact` VARCHAR(10) NOT NULL , 
@@ -162,11 +161,10 @@ $table="CREATE TABLE `log` (
 `Device` VARCHAR(100) NOT NULL , 
 `State` VARCHAR(50) NOT NULL , 
 `Country` VARCHAR(100) NOT NULL ,
-PRIMARY KEY(`Time`,`Contact`)
+PRIMARY KEY(`L_Time`,`Contact`)
 )";
-
-
 $q=mysqli_query($Conn,$table);
+
 //Alters
 
 $Sql="ALTER TABLE `Subjects` ADD FOREIGN KEY (`Class_id`) REFERENCES `Class`(`Class_id`)  ON DELETE CASCADE ON UPDATE CASCADE";

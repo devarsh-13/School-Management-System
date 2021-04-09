@@ -2,11 +2,17 @@
 session_start();
 error_reporting(0);
 include('connection.php');
+include('store_data.php');
+
 if(strlen($_SESSION['a_id'])=="")
     {   
     header("Location: index.php"); 
     }
-    else{
+    else
+    {
+        $action="In Add Gallery";
+        $log=new Log();
+        $log->success_entry($action,$Conn);
 
         
 
@@ -111,7 +117,8 @@ else if($error){?>
         integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ=" crossorigin="anonymous"></script>
 <script src="ssi-uploader/js/ssi-uploader.js"></script>
 <script src="bower_components\ssi-modal\dist\ssi-modal\js\ssi-modal.js"></script>
-<script>
+
+    <script>
     var notifyOptions = {
         iconButtons: {
             className: 'fa fa-question about',
@@ -159,7 +166,7 @@ else if($error){?>
             $( "#myForm" ).submit();
         });
     });
- 
+  
 </script>
 
 </table>

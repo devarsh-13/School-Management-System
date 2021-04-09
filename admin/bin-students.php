@@ -3,60 +3,22 @@
 session_start();
 error_reporting(0);
 include('connection.php');
+include('store_data.php');
+
 if(strlen($_SESSION['a_id'])=="")
     {   
     header("Location: index.php"); 
     }
     else{
+        $action="In Recycle Students";
+        $log=new Log();
+        $log->success_entry($action,$Conn); 
 
+        $action="Student data Restored";
 
-         if(isset($_POST['delt']))
+if(isset($_POST['re']))
             {
 
-                $sid=$_POST['recordsCheckBox'];
-
-                   foreach ( $sid as $id ) 
-                   { 
-                          $query = "DELETE FROM `students` WHERE `S_srn`='$id'";
-                        $result = $Conn->query($query) or die("Error in query".$Conn->error);
-                   }
-
-if($result)
-{
-$msg="Student Info Deleted successfully";
-}
-else 
-{
-$error="Something went wrong. Please try again";
-}
-            }
-
-
-
-
-if (isset($_GET['S_id']))
-{
-    $sid = $_GET['S_id'];
-
-    $Sql="DELETE FROM `students` WHERE `S_srn`='$sid'";
-    
-   
-        $delete = $Conn->query($Sql) or die("Error in query2".$connection->error);
-    if ($delete){
-$msg="Student Info Deleted Successfully";
-}
-else 
-{
-$error="Something went wrong. Please try again";
-}
-}
-
-
-
-
-
-         if(isset($_POST['re']))
-            {
 
                 $tid=$_POST['recordsCheckBox'];
 
@@ -68,10 +30,18 @@ $error="Something went wrong. Please try again";
 
 if($result)
 {
+
+        $log=new Log();
+        $log->success_entry($action,$Conn); 
+
 $msg="Student Info Restore Successfully";
 }
 else 
 {
+
+        $log=new Log();
+        $log->success_entry($action,$Conn,"Unsuccessful"); 
+
 $error="Something went wrong. Please try again";
 }
             }
@@ -84,12 +54,21 @@ if (isset($_GET['Sr_id']))
     $tid = $_GET['Sr_id'];
 
     $query = "UPDATE `students` SET `is_deleted`='0' WHERE `S_srn`='$tid'";
-                        $delete = $Conn->query($query) or die("Error in query".$Conn->error);
-    if ($delete){
-$msg="Student Info Restore Successfully";
+    $delete = $Conn->query($query) or die("Error in query".$Conn->error);
+    if ($delete)
+    {
+
+        $log=new Log();
+        $log->success_entry($action,$Conn); 
+
+        $msg="Student Info Restore Successfully";
 }
 else 
 {
+
+        $log=new Log();
+        $log->success_entry($action,$Conn,"Unsuccessful"); 
+
 $error="Something went wrong. Please try again";
 }
 }
@@ -189,7 +168,7 @@ input.chh
                                  <div class="dl">
                                                     <form method="post" action="bin-students.php">
                                                          <button type="submit" name="re"  class="btn btn-primary">Restore</button>
-                                                          <button type="submit" name="delt"  class="btn btn-danger">Delete</button>
+                                                          
                                                           
                                                     
                                                 </div>
@@ -242,7 +221,7 @@ else if($error){?>
                                                 
                                                                                                              <tr>
                                                             <th>#</th>
-                                                            <th>action</th>
+                                                           
                                                             <th>Restore</th>
                                                             <th>Gr. NO.</th>
                                                             <th>Uid. No.</th>
@@ -279,15 +258,7 @@ if($row > 0)
     {       ?>
                     <tr align="center">
                         <td><?php echo htmlentities($cnt);?></td>
-                         <td>
-                            <a href="edit-student.php?S_id=<?php echo $result['S_srn'];?>">
-                                    <img src="images/edit-icon.jpg" height="25px" width='25px'/> Edit
-                            </a> 
-                             &nbsp;
-                            <a href="bin-students.php?S_id=<?php echo $result['S_srn'];?>">
-                              <img src="images/delete-icon.jpg" height="25px" width='25px'/>&nbsp;Delete</a> &nbsp;
-                              <input type="checkbox" name="recordsCheckBox[]" id="recordsCheckBox" class="chh" value="<?php echo $result['S_srn'];?>">
-                        </td>
+                         
                           <td>  <a href="bin-students.php?Sr_id=<?php echo $result['S_srn'];?>">
                               <img src="images/restore-icon.png" height="25px" width='25px'/>&nbsp;Restore</a>
                                  &nbsp;
@@ -324,7 +295,7 @@ if($row > 0)
 }
 else
 {
-     echo "no data";
+   
 } ?>
                                                        
                                                     
