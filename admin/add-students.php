@@ -13,6 +13,15 @@ else{
         
 if(isset($_POST['submit']))
 {
+
+       $uploadFolder = 'student_image/';
+    
+    
+        $imageTmpName = $_FILES['file']['tmp_name'];
+        $imageName = $_FILES['file']['name'];
+        $result = move_uploaded_file($imageTmpName,$uploadFolder.$imageName);
+
+     
         $gr=$_POST['gr'];
         $ui=$_POST['ui']; 
         $sn=$_POST['sn']; 
@@ -56,6 +65,7 @@ if(isset($_POST['submit']))
 
         $Sql="INSERT INTO `students` 
                                     (
+                                        `S_photo`,
                                         `S_grn`, 
                                         `S_uidn`, 
                                         `S_name`, 
@@ -79,6 +89,7 @@ if(isset($_POST['submit']))
 
                                     VALUES 
                                     (
+                                        '$imageName',
                                         '$gr', 
                                         '$ui', 
                                         '$sn',
@@ -248,7 +259,7 @@ else if($error){?>
                                             <?php echo htmlentities($error); ?>
                                         </div>
                                         <?php } ?>
-                                        <form class="form-horizontal" method="post">
+                                        <form class="form-horizontal" method="post" enctype="multipart/form-data">
 
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Gr Number</label>
@@ -336,6 +347,13 @@ else if($error){?>
                                                 <label for="default" class="col-sm-2 control-label">Academic Year</label>
                                                 <div class="col-sm-10">
                                                     <input type="text" name="AY" class="form-control" id="AY" maxlength='9'   autocomplete="off">
+                                                </div>
+                                            </div>
+
+                                               <div class="form-group">
+                                                <label for="default" class="col-sm-2 control-label">Student Image</label>
+                                                <div class="col-sm-10">
+                                                    <input type="file" name="file" class="form-control" id="img" >
                                                 </div>
                                             </div>
 
