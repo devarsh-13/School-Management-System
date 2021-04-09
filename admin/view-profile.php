@@ -3,6 +3,7 @@
 include 'connection.php';
 session_start();
 
+include'store_data.php';
 
 $a_srn = $_SESSION['a_id'];
 $sql = "SELECT * from `admin` WHERE A_id = '$a_srn'";
@@ -15,46 +16,57 @@ $row = mysqli_num_rows($query);
 
 $result = mysqli_fetch_array($query);
 
+if(!(isset($_POST['submit'])))
+{
+	$action="Profile";
+	$log= new Log();
+	$log->success_entry($action,$Conn);
+}
 
-
-if (isset($_POST['submit'])) {
-
-
+if (isset($_POST['submit'])) 
+{
 	$Password = $_POST['Password'];
-
 	$Password2 = $_POST['Password2'];
-
 	$OldPassword = $_POST['OldPassword'];
 	
 	$op=$result['A_password'];
-
-
+	
 	$error = false;
+	if ($OldPassword == $op) 
+	{
+		if ($Password == $Password2) 
+		{
+			if ($row == 1) 
+			{
+				
+			    $update = mysqli_query($Conn, "UPDATE `admin` SET A_password ='$Password' WHERE A_id ='$a_srn' ") or die(mysqli_connect_error());
+			    if($update)
+			    {
+			    	$action="Change Password";
+			    	$log= new Log();
+    				$log->success_entry($action,$Conn);
 
-
-	if ($OldPassword == $op) {
-
-
-		if ($Password == $Password2) {
-
-
-
-
-			if ($row == 1) {
-
-				$update = mysqli_query($Conn, "UPDATE `admin` SET A_password ='$Password' WHERE A_id ='$a_srn' ") or die(mysqli_connect_error());
+			    }
 			}
-		} else {
+		} 
+		else 
+		{
+			$action="Change Password";
+			$log= new Log();
+    		$log->success_entry($action,$Conn,"Unchanged");
 
-			$error_msg['d'] = 'Please Enter same passwords';
-		$error = true;
-
-
+    		$error_msg['d'] = 'Please Enter same passwords';
+			$error = true;
 		}
-	} else {
-
+	} 
+	else 
+	{
+		$action="Change Password";
 		$error_msg['C'] = ' Your old password is incorrect';
 		$error = true;
+
+		$log= new Log();
+    	$log->success_entry($action,$Conn,"Unchanged");
 	}
 }
 
@@ -226,7 +238,7 @@ Purchase:
 																<p>Change Password <strong>(leave blank for no change)</strong></p>
 															</div>
 															<div class="form-group">
-																<input type="password" name="OldPassword" class="form-control" placeholder="Old Password">
+																<input type="password" name="OldPassword" class="form-control" placeholder="Old Password" required="true">
 																<?php
 
 																if (isset($error_msg['C'])) {
@@ -239,10 +251,10 @@ Purchase:
 
 
 															<div class="form-group">
-																<input type="password" name="Password" class="form-control" placeholder="New Password">
+																<input type="password" name="Password" class="form-control" placeholder="New Password" required="true">
 															</div>
 															<div class="form-group">
-																<input type="password" name="Password2" class="form-control" placeholder="Repeat New Password">
+																<input type="password" name="Password2" class="form-control" placeholder="Repeat New Password" required="true">
 																<?php
 
 																if (isset($error_msg['d'])) {

@@ -2,6 +2,7 @@
 session_start();
 error_reporting(0);
 include('connection.php');
+include('store_data.php');
 if(strlen($_SESSION['a_id'])=="")
     {   
     header("Location: index.php"); 
@@ -30,10 +31,16 @@ $q=mysqli_query($Conn,$Sql);
 
 if($q)
 {
+    $action="Edit Teacher data";
+        $log=new Log();
+        $log->success_entry($action,$Conn);
 $msg="Teacher Info Edit Successfully";
 }
 else 
 {
+    $action="Delete Teacher data";
+        $log=new Log();
+        $log->success_entry($action,$Conn,"Unsuccessful");
 $error="Something went wrong. Please try again";
 }
 

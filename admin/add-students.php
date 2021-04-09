@@ -2,11 +2,13 @@
 session_start();
 error_reporting(0);
 include('connection.php');
+include('store_data.php');
+
 if(strlen($_SESSION['a_id'])=="")
-    {   
+{   
     header("Location: index.php"); 
-    }
-    else{
+}
+else{
 
         
 if(isset($_POST['submit']))
@@ -99,15 +101,20 @@ if(isset($_POST['submit']))
                                         '$stat'
                                     )";
 
-        $q=mysqli_query($Conn,$Sql)or die(mysqli_error($Conn));
-
+        $q=mysqli_query($Conn,$Sql);
+        $action="Add Student";
         if($q)
         {
-             $msg="Student Info Added Successfully";
+            $log= new Log();
+            $log->success_entry($action,$Conn);
+            $msg="Student Info Added Successfully";
         }
         else 
         {
-             $error="Something went wrong. Please try again";
+            $log= new Log();
+            $log->success_entry($action,$Conn,"Unsuccessful");
+             
+            $error="Something went wrong. Please try again";
         }
 
     }

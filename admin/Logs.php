@@ -33,6 +33,7 @@ if(isset($_SESSION['a_id']))
 	<?php
 		
 		$q=mysqli_query($Conn,"SELECT * FROM `Log`");
+		
 		while($data = mysqli_fetch_assoc($q))
 		{
 			echo "<tr align='center'>";

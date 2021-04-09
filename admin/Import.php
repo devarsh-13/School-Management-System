@@ -86,14 +86,19 @@ session_start();
         }
         //unlink($targetPath);
 
-            
+$action="Import student data";
 if($ok)
 {
-$msg="Import Successfully";
+
+    $log= new Log();
+    $log->success_entry($action,$Conn);
+    $msg="Import Successfully";
 }
 else 
 {
-$error="Something went wrong. Please try again";
+    $log= new Log();
+    $log->success_entry($action,$Conn,"Unsuccessful");
+    $error="Something went wrong. Please try again";
 }
 
     }

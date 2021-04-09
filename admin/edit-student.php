@@ -2,6 +2,8 @@
 session_start();
 error_reporting(0);
 include('connection.php');
+include('store_data.php');
+
 if(strlen($_SESSION['a_id'])=="")
     {   
     header("Location: index.php"); 
@@ -11,7 +13,7 @@ if(strlen($_SESSION['a_id'])=="")
 
 if(isset($_POST['update']))
 {
-    require "connection.php";
+   
 $gr=$_POST['gr'];
 $ui=$_POST['ui']; 
 $sn=$_POST['sn']; 
@@ -41,13 +43,18 @@ $Sql="UPDATE `students` SET `S_grn`='$gr',`S_uidn`='$ui',`S_name`='$sn',`S_caste
                              
 
 $q=mysqli_query($Conn,$Sql);
-
+$action="Edit Student data";
 if($q)
 {
+$log=new Log();
+$log->success_entry($action,$Conn);
 $msg="Student Info Edit Successfully";
 }
 else 
 {
+$log=new Log();
+$log->success_entry($action,$Conn,"Unsuccessful");
+
 $error="Something went wrong. Please try again";
 }
 
@@ -69,6 +76,40 @@ $error="Something went wrong. Please try again";
     <link rel="stylesheet" href="css/select2/select2.min.css">
     <link rel="stylesheet" href="css/main.css" media="screen">
     <script src="js/modernizr/modernizr.min.js"></script>
+
+        <script type="text/javascript">
+
+            function Check_class()
+            {
+                
+                if(document.getElementById("clas").value==11 || document.getElementById("clas").value==12)
+                {
+                    document.getElementById("stream").required = true;
+                    document.getElementById("stream").disabled = false;
+                }
+                else
+                {
+                    document.getElementById("stream").required = false;
+                    document.getElementById("stream").disabled = true;
+                    document.getElementById("stream").VALUES="NULL";
+                }
+            }
+            function Des(i)
+            {
+                    if(i==1)
+                    {
+                        document.getElementById("des").required = true;
+                        document.getElementById("des").disabled = false;
+                    }
+                    else
+                    {
+                        document.getElementById("des").required = false;   
+                        document.getElementById("des").disabled = true;
+                    } 
+
+            }
+           
+    </script>
 </head>
 
 <body class="top-navbar-fixed">
@@ -131,7 +172,7 @@ else if($error){?>
                                             <?php echo htmlentities($error); ?>
                                         </div>
                                         <?php } ?>
-                                        <form class="form-horizontal" method="post">
+                                        <form class="form-horizontal" method="post" onmouseenter="Check_class()">
 <?php 
  $sql = "SELECT * from `students` join Class on students.Class_id=Class.Class_id WHERE `S_srn`='$stid'";
 $query = mysqli_query($Conn,$sql);
@@ -203,10 +244,10 @@ if($row > 0)
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Class</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" name="class" value="<?php  $id=$result['Class_id'];
+                                                    <input type="text" name="class"value="<?php  $id=$result['Class_id'];
                                  $q=mysqli_query($Conn,"SELECT `C_no` FROM `class` WHERE `Class_id` = '$id' ");
                                  $name=mysqli_fetch_array($q);
-                                echo $name[0];?>"  class="form-control" id="class" required="required" autocomplete="off">
+                                echo $name[0];?>"  class="form-control" id="clas" required="required" autocomplete="off" onkeyup="Check_class()">
                                                 </div>
                                             </div>
 
@@ -244,20 +285,26 @@ if($row > 0)
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Handicapped</label>
                                                 <div class="col-sm-10">
-                                                    <?php  $hd=$result['S_handicapped'];
-                                                    if($hd=="Yes")
-                                                    {
-                                                    ?>
-                                                    <input type="radio" name="hand" value="Yes" required="required" checked="">Yes 
-                                                    <input type="radio" name="hand" value="No" required="required">No 
-                                                    <?php }?>
                                                     <?php  
-                                                    if($hd=="No")
-                                                    {
+                                                        $hd=$result['S_handicapped'];
+                                                        if(strcmp($hd,"Yes"))  
+                                                        {
+                                                            echo'
+                                                                <input type="radio" name="hand" value="Yes" required="" checked="">Yes</input> 
+
+                                                                <input type="radio" name="hand" value="No" required="required">No</input>
+                                                                ';
+                                                        }
+                                                        else
+                                                        {
+                                                            echo'
+                                                                <input type="radio" name="hand" value="Yes" required="">Yes</input> 
+
+                                                                <input type="radio" name="hand" value="No"  checked="" required="required">No</input>
+                                                                ';
+                                                        }
                                                     ?>
-                                                    <input type="radio" name="hand" value="Yes" required="required">Yes 
-                                                    <input type="radio" name="hand" value="No" required="required"  checked="">No 
-                                                    <?php }?>
+                                                   
                                                 </div>
                                             </div>
 

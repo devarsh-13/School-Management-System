@@ -3,52 +3,41 @@
 session_start();
 error_reporting(0);
 include('connection.php');
+include('store_data.php');
+
 if(strlen($_SESSION['a_id'])=="")
     {   
-    header("Location: index.php"); 
+        header("Location: index.php"); 
     }
-    else{
-        if(isset($_POST['delt']))
+    else
+    {
+        $action="In manage-students";
+        $log=new Log();
+        $log->success_entry($action,$Conn);
+
+        if (isset($_GET['S_id']))
+        {
+            $stid = $_GET['S_id'];
+
+            $Sql="UPDATE `students` SET `is_deleted`='1' WHERE `S_srn`='$stid'";
+            
+           
+            $delete = $Conn->query($Sql) or die("Error in query2".$connection->error);
+            $action="Delete Student Row";
+            if ($delete)
             {
-
-                $sid=$_POST['recordsCheckBox'];
-
-                   foreach ( $sid as $id ) 
-                   { 
-                          $query = "UPDATE `students` SET `is_deleted`='1' WHERE `S_srn`='$id'";
-                        $result = $Conn->query($query) or die("Error in query".$Conn->error);
-                   }
-
-if($result)
-{
-$msg="Student Info Deleted Successfully";
-}
-else 
-{
-$error="Something went wrong. Please try again";
-}
+                $log=new Log();
+                $log->success_entry($action,$Conn);
+               $msg="Student Info Deleted Successfully";
+            }
+            else 
+            {
+                $log=new Log();
+                $log->success_entry($action,$Conn,"Unsuccessful");
+                $error="Something went wrong. Please try again";
             }
 
-
-
-
-if (isset($_GET['S_id']))
-{
-    $stid = $_GET['S_id'];
-
-    $Sql="UPDATE `students` SET `is_deleted`='1' WHERE `S_srn`='$stid'";
-    
-   
-        $delete = $Conn->query($Sql) or die("Error in query2".$connection->error);
-    if ($delete){
-       $msg="Student Info Deleted Successfully";
-}
-else 
-{
-$error="Something went wrong. Please try again";
-}
-
-}
+        }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -276,8 +265,7 @@ $error="Something went wrong. Please try again";
                                  <button type="submit" name="add" class="btn btn-primary"><a href="Export.php">Promote</a></button>       
                                 </div>
                                  <div class="dl">
-                                                    <form method="post" action="manage-students.php">
-                                                          <button type="submit" name="delt" class="btn btn-danger">Delete</button>
+                                                   
                                                     
                                                 </div>
                                 
@@ -333,7 +321,7 @@ else if($error){?>
                     
                                                             <th>Gr. NO.</th>
                                                             <th>Uid. No.</th>
-                                                            <th>Student Nmae</th>
+                                                            <th>Student Name</th>
                                                             <th>Cast</th>
                                                             <th>Category</th>
                                                             <th>Dob</th>
@@ -373,8 +361,7 @@ if($row > 0)
                              &nbsp;
                             <a href="manage-students.php?S_id=<?php echo $result['S_srn'];?>">
                               <img src="images/delete-icon.jpg" height="25px" width='25px'/>&nbsp;Delete</a>&nbsp;
-                              <input type="checkbox" name="recordsCheckBox[]" id="recordsCheckBox" class="chh" value="<?php echo $result['S_srn'];?>">
-                        </td>
+                                                     </td>
                     
                         <td><?php echo $result['S_grn'];?></td>
                         <td><?php echo $result['S_uidn'];?></td>
@@ -415,7 +402,7 @@ else
                                                     
                                                     
                                                 </table>
-</form>
+
                                          
                                                 <!-- /.col-md-12 -->
                                             </div>

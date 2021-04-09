@@ -3,36 +3,13 @@
 session_start();
 error_reporting(0);
 include('connection.php');
+include('store_data.php');
 if(strlen($_SESSION['a_id'])=="")
     {   
     header("Location: index.php"); 
     }
     else{
-            if(isset($_POST['delt']))
-            {
-
-                $tid=$_POST['recordsCheckBox'];
-
-                   foreach ( $tid as $id ) 
-                   { 
-                          $query = "UPDATE `teachers` SET `is_deleted`='1' WHERE `T_srn`='$id'";
-                        $result = $Conn->query($query) or die("Error in query".$Conn->error);
-                   }
-
-if($result)
-{
-$msg="Teacher Deleted Successfully";
-}
-else 
-{
-$error="Something went wrong. Please try again";
-}
-            }
-
-
-
-
-
+           
 
 if (isset($_GET['T_id']))
 {
@@ -42,13 +19,19 @@ if (isset($_GET['T_id']))
     
    
         $delete = $Conn->query($Sql) or die("Error in query2".$connection->error);
-    if ($delete){
-        
-$msg="Teacher Deleted successfully";
-}
+    if ($delete)
+    {
+        $action="Delete Teacher data";
+        $log=new Log();
+        $log->success_entry($action,$Conn);       
+        $msg="Teacher Deleted successfully";
+    }
 else 
 {
-$error="Something went wrong. Please try again";
+    $action="Delete Teacher data";
+        $log=new Log();
+        $log->success_entry($action,$Conn,"Unsuccessful");
+    $error="Something went wrong. Please try again";
 }
 }
 ?>
@@ -300,8 +283,7 @@ input.chh
                                 
                                 </div>
                                   <div class="dl">
-                                                    <form method="post" action="manage-teachers.php">
-                                                          <button type="submit" name="delt" class="btn btn-danger">Delete</button>
+                                                    
                                                     
                                                 </div>
                                
@@ -391,8 +373,7 @@ if($row > 0)
                               &nbsp;
                             <a href="manage-teachers.php?T_id=<?php echo $result['T_srn'];?>">
                               <img src="images/delete-icon.jpg" height="25px" width='25px'/>&nbsp;Delete</a>&nbsp;
-                              <input type="checkbox" name="recordsCheckBox[]" id="recordsCheckBox" class="chh" value="<?php echo $result['T_srn'];?>">
-
+                             
                         </td>
                         <td><?php echo $result['T_name'];?></td>
                         <td><?php echo $result['DOB'];?></td>
@@ -418,7 +399,7 @@ else
                                                     
                                                 </table>
 
-                                         </form>
+                                        
                                                 <!-- /.col-md-12 -->
                                             </div>
                                         </div>

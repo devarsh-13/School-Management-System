@@ -4,6 +4,7 @@ session_start();
 $_SESSION['page']='1';
 error_reporting(0);
 include('connection.php');
+include('store_data.php');
 if(strlen($_SESSION['a_id'])=="")
     {   
     header("Location: index.php"); 
@@ -13,7 +14,8 @@ if(strlen($_SESSION['a_id'])=="")
 
  if(isset($_POST['delt']))
             {
-
+                $action="Delete Teacher data";
+                
                 $eid=$_POST['recordsCheckBox'];
 
                    foreach ( $eid as $id ) 
@@ -24,10 +26,16 @@ if(strlen($_SESSION['a_id'])=="")
 
 if($result)
 {
+    $log=new Log();
+    $log->success_entry($action,$Conn);
+
 $msg="Event Deleted Successfully";
 }
 else 
 {
+    $log=new Log();
+    $log->success_entry($action,$Conn,"Unsuccessful");
+
 $error="Something went wrong. Please try again";
 }
             }
@@ -43,13 +51,21 @@ if (isset($_GET['E_id']))
     
    
         $delete = $Conn->query($Sql) or die("Error in query2".$connection->error);
-    if ($delete){
-$msg="Event Deleted Successfully";
-}
-else 
-{
-$error="Something went wrong. Please try again";
-}
+    if ($delete)
+    {   
+        $action="Delete Teacher data";
+        $log=new Log();
+        $log->success_entry($action,$Conn);
+         $msg="Event Deleted Successfully";
+    }
+    else 
+    {
+
+        $action="Delete Teacher data";
+        $log=new Log();
+        $log->success_entry($action,$Conn,"Unsuccessful");
+    $error="Something went wrong. Please try again";
+    }
 }
 
 

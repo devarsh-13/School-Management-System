@@ -2,11 +2,16 @@
 session_start();
 error_reporting(0);
 include('connection.php');
+include('store_data.php');
+
 if(strlen($_SESSION['a_id'])=="")
     {   
     header("Location: index.php"); 
     }
-    else{
+    else
+    {
+
+        $action="Edit Event data";
          $eid=$_GET['E_id'];
 if(isset($_POST['submit']))
 {
@@ -28,10 +33,16 @@ $q=mysqli_query($Conn,$Sql);
 
 if($q)
 {
+    $log=new Log();
+    $log->success_entry($action,$Conn);
+        
 $msg="Event Edit Successfully";
 }
 else 
 {
+    $log=new Log();
+    $log->success_entry($action,$Conn,"Unsuccessful");
+        
 $error="Something went wrong. Please try again";
 }
 

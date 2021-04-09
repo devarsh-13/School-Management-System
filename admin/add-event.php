@@ -1,40 +1,45 @@
 <?php
 session_start();
 error_reporting(0);
+
 include('connection.php');
+include('store_data.php');
+
 if(strlen($_SESSION['a_id'])=="")
-    {   
+{   
     header("Location: index.php"); 
-    }
-    else{
+}
+else{
+
 if(isset($_POST['submit']))
 {
-    require "connection.php";
-    session_start();
-        require "connection.php";   
-       
-        
-        $event_text = $_POST["event"];
-        $edate=$_POST["edate"];
+    $action="ADD Event";   
+           
+    $event_text = $_POST["event"];
+    $edate=$_POST["edate"];
 
-         $a = $_SESSION['a_id'];  
+    $a = $_SESSION['a_id'];  
+  
+    $d = date("Y-m-d");
 
-         
-          $d = date("Y-m-d");
-        
-        //Insert image content into database
-        $insert = $Conn->query("INSERT INTO Event SET Event_text='$event_text',created_on='$d' ,created_by='$a',event_date='$edate'");
+    //Insert image content into database
+    $insert = $Conn->query("INSERT INTO Event SET Event_text='$event_text',created_on='$d' ,created_by='$a',event_date='$edate'");
 
 
        
 
 if($insert)
 {
-$msg="Event Added Successfully";
+    $log= new Log();
+    $log->success_entry($action,$Conn);
+
+    $msg="Event Added Successfully";
 }
 else 
 {
-$error="Something went wrong. Please try again";
+    $log= new Log();
+    $log->success_entry($action,$Conn,"Unsuccessful");
+    $error="Something went wrong. Please try again";
 }
 
 }

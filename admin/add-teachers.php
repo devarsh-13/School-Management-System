@@ -2,6 +2,8 @@
 session_start();
 error_reporting(0);
 include('connection.php');
+include('store_data.php');
+
 if(strlen($_SESSION['a_id'])=="")
     {   
     header("Location: index.php"); 
@@ -50,14 +52,19 @@ $Sql="INSERT INTO `teachers`
 
 
 $q=mysqli_query($Conn,$Sql);
-
+$action="Add teacher data";
 if($q)
 {
-$msg="Teacher Info Added Successfully";
+    $log=new Log();
+    $log->success_entry($action,$Conn);
+
+    $msg="Teacher Info Added Successfully";
 }
 else 
 {
-$error="Something went wrong. Please try again";
+    $log=new Log();
+    $log->success_entry($action,$Conn,"Unsuccessful");
+    $error="Something went wrong. Please try again";
 }
 
 }

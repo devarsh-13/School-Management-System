@@ -3,6 +3,12 @@
   
   if(isset($_SESSION['a_id']))
   {
+    require "connection.php";
+    
+    require "store_data.php";
+    $action="IN Dashboard";
+    $log= new Log();
+    $log->success_entry($action,$Conn);
 
 
 ?> 
@@ -52,7 +58,7 @@
                                     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                                         <a class="dashboard-stat bg-primary" href="manage-students.php">
 <?php 
-require "connection.php";
+
 $sql1 ="SELECT S_srn from students WHERE `is_deleted`='0'";
 $query1 = $Conn -> query($sql1); 
 $row = mysqli_num_rows($query1);
