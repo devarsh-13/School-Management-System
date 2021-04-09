@@ -78,7 +78,7 @@ $table = "CREATE TABLE `Teachers` (
 	`A_date` DATE NOT NULL , 
 	`Joining_date` DATE NOT NULL , 
 	`Retire_date` DATE NOT NULL ,
-	`Contact` int(10) NOT NULL ,
+	`Contact` VARCHAR(10) NOT NULL ,
 	`Password` varchar(20)NOT NULL,
 	`is_deleted` BOOLEAN NOT NUll,
 	`Created_on` DATE NOT NULL DEFAULT CURRENT_DATE ,
@@ -222,7 +222,7 @@ $q=mysqli_query($Conn,$Sql);
 $Sql="INSERT INTO `students` (`S_photo`, `S_grn`, `S_uidn`, `S_name`, `S_caste`, `S_category`, `S_dob`, `S_contact`, `S_ad_date`, `Class_id`, `S_adharn`, `S_hostel`, `S_home`, `S_handicapped`, `S_describe`, `S_password`, `S_remarks`,`Academic_year`, `is_deleted`,`s_status`) VALUES ('student_default.jpg', '123', '123456789098765432', 'Kratos', 'asdsds', 'xaxax', '2021-03-01', '1234567890', '2021-01-12-', '1', '123456789012', 'aqaqaqaqaq', '', 'YES', 'qqqqqq', '123', '1aaaaaaaaaaaaa','$ay','0','offline')";
 $q=mysqli_query($Conn,$Sql);
 
-$Sql="INSERT INTO `Teachers` (`T_photo`, `T_name`, `DOB`, `Degree`, `A_date`, `Joining_date`, `Retire_date`,`Contact`,`Password`,`is_deleted`,`t_status`) VALUES ('teacher_default.jpg', 'abc', '2020-07-14', 'alpha beta gama', '2021-01-24', '2021-01-30', '2021-02-01','1212121212','123','0','offline')";
+$Sql="INSERT INTO `Teachers` (`T_photo`, `T_name`, `DOB`, `Degree`, `A_date`, `Joining_date`, `Retire_date`,`Contact`,`Password`,`is_deleted`,`t_status`) VALUES ('teacher_default.jpg', 'abc', '2020-07-14', 'alpha beta gama', '2021-01-24', '2021-01-30', '2021-02-01','7359817926','123','0','offline')";
 $q=mysqli_query($Conn,$Sql);
 
 $sql="INSERT INTO `admin`(`A_name`, `A_mobile`, `A_address`,`A_password`, `A_dob`,`Created_by`) VALUES ('mayank','8980462257','anjar','123','2000-02-20','0')";
