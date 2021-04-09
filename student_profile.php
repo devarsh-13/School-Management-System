@@ -18,14 +18,7 @@ $result = mysqli_fetch_array($query);
 
 
 
-?>
-
-<script type="text/javascript">
-
-	function pass()
-	{
-
-<?php
+if (isset($_POST['submit'])) {
 
 
 	$Password = $_POST['Password'];
@@ -33,8 +26,8 @@ $result = mysqli_fetch_array($query);
 	$Password2 = $_POST['Password2'];
 
 	$OldPassword = $_POST['OldPassword'];
-	
-	$op=$result['S_password'];
+
+	$op = $result['S_password'];
 
 
 	$error = false;
@@ -55,29 +48,14 @@ $result = mysqli_fetch_array($query);
 		} else {
 
 			$error_msg['d'] = 'Please Enter same passwords';
-		$error = true;
-
-
+			$error = true;
 		}
 	} else {
 
 		$error_msg['C'] = ' Your old password is incorrect';
 		$error = true;
 	}
-?>
-location.href = "#general";
 }
-</script>
-
-
-
-<?php
-
-
-
-
-
-
 
 ?>
 
@@ -104,26 +82,25 @@ Purchase:
 
 	<!--srart theme style -->
 	<link href="css/main.css" rel="stylesheet" type="text/css" />
-	
+
 	<!-- end theme style -->
 	<!-- favicon links -->
 	<link rel="shortcut icon" type="image/png" href="images/header/favicon.png" />
 	<style type="text/css">
-		            .ed_footer_wrapper
-            {
-         		padding-top: 10%;
-            }
+		.ed_footer_wrapper {
+			padding-top: 10%;
+		}
 	</style>
 </head>
 
 <body>
 	<!--Page main section start-->
 	<div id="educo_wrapper">
-		 <?php
-    include "header.php";
-    ?>
+		<?php
+		include "header.php";
+		?>
 		<!--Breadcrumb start-->
-		
+
 		<!--Breadcrumb end-->
 		<!--single student detail start-->
 		<div class="ed_dashboard_wrapper">
@@ -132,7 +109,7 @@ Purchase:
 					<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
 						<div class="ed_sidebar_wrapper">
 							<div class="ed_profile_img">
-							<img src="user_photos/<?php echo $result['S_photo']; ?>" alt="">
+								<img src="user_photos/<?php echo $result['S_photo']; ?>" alt="">
 							</div>
 							<h3><?php echo $result['S_name'];  ?></h3>
 							<div class="ed_tabs_left">
@@ -227,7 +204,7 @@ Purchase:
 											<!-- Tab panes -->
 											<div class="tab-content">
 												<div role="tabpanel" class="tab-pane active" id="general">
-													<div class="ed_dashboard_inner_tab" >
+													<div class="ed_dashboard_inner_tab">
 
 														<form class="ed_tabpersonal" method="POST">
 
@@ -262,36 +239,30 @@ Purchase:
 																?>
 															</div>
 															<div class="form-group">
-																<button onclick="pass();">Submit</button>
+																<input type="submit" class="btn ed_btn ed_green" name="submit" value="save changes">
 															</div>
 														</form>
 													</div>
 												</div>
-
-
 											</div>
-
 										</div>
 										<!--tab End-->
 									</div>
 								</div>
-
 								<!--tab End-->
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-
-
 		</div>
 	</div>
 	</div>
 	<!--single student detail end-->
 	
-<?php
-include "footer.php";
-?>
+	<?php
+	include "footer.php";
+	?>
 	</div>
 	<!--Page main section end-->
 	<!--main js file start-->

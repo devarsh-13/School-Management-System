@@ -95,7 +95,7 @@ $flag=0;
         
         <div class="content">
           
-          <div class="pass-link" ><a href="get_otp_student.php" >forgot password?</a></div>
+          <div class="pass-link" ><a href="get_otp_student.php" >Forgot password?</a></div>
 		
         </div>
         

@@ -12,7 +12,7 @@ $flag=0;
 		$Password=$_POST['Password'];
 
         $Password2=$_POST['Password2'];
-        $A_id= $_SESSION['a_id'];
+        $T_id= $_SESSION['t_id'];
 	
 
 		$error = false;
@@ -22,13 +22,13 @@ $flag=0;
         {
 				
            
-            $query = mysqli_query($Conn,"SELECT `A_password` FROM  `admin` WHERE
-			 `A_id` = '$A_id'") or die(mysqli_connect_error());
+            $query = mysqli_query($Conn,"SELECT `Password` FROM  `teacher` WHERE
+			 `T_srn` = '$T_id'") or die(mysqli_connect_error());
 
 			 if(mysqli_num_rows($query)==1)
 			 {
 
-				$result= mysqli_query($Conn, "UPDATE `admin` SET `A_password` ='$Password' WHERE `A_id` ='$A_id' ") or die(mysqli_connect_error());
+				$result= mysqli_query($Conn, "UPDATE `teacher` SET `Password` ='$Password' WHERE `T_srn` ='$T_id' ") or die(mysqli_connect_error());
 				  header("location:admin_login.php");
 			 }
              
