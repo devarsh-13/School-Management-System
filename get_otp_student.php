@@ -6,18 +6,14 @@ require "Database/connection.php";
 
 $flag = 0;
 
-if (isset($_GET['getOtp'])) {
-
-
-
-
+if (isset($_POST['getOtp'])) {
 
 
 
 
 	$error = false;
 
-	$mo = $_GET['Contact_no'];
+	$mo = $_POST['Contact_no'];
 	if (!preg_match("/^[0-9]*$/", $mo)) {
 
 		$error_msg['C'] = ' Enter Only number!!';
@@ -37,7 +33,7 @@ if (isset($_GET['getOtp'])) {
 
 	if ($row == 1) {
 		
-		$_SESSION['id'] = $arr[0];
+		$_SESSION['s_id'] = $arr[0];
 
 
 
@@ -86,6 +82,8 @@ if (isset($_GET['getOtp'])) {
 			header("location:submit_otp_student.php");
 		}
 	} else {
+		$error_msg['C'] = 'Please enter valid number!! ';
+		$error = true;
 		$flag = 1;
 	}
 }
@@ -107,7 +105,7 @@ if (isset($_GET['getOtp'])) {
 
 		<div class="title"></div>
 
-		<form action="#" method="GET">
+		<form action="#" method="POST">
 
 			<div class="field">
 				<input title="Please do not enter Country Code " type="text" name="Contact_no" maxlength='10' required>

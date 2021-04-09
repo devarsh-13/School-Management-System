@@ -3,8 +3,9 @@ require "connection.php";
 session_start();
 $flag = 0;
 
-if (isset($_POST['getOtp'])) {
-	$Contact =	$_POST['Contact_no'];
+
+if(isset($_POST['getOtp'])) {
+	echo "GR";
 
 	$error = false;
 
@@ -20,16 +21,17 @@ if (isset($_POST['getOtp'])) {
 		$error_msg['C'] = 'Please enter proper 10 Digit number!! ';
 		$error = true;
 	}
-	$query = mysqli_query($Conn, "SELECT `A_id` FROM `admin` WHERE
-			`A_mobile` = '$Contact'") or die(mysqli_connect_error());
+	$query = mysqli_query($Conn, "SELECT `T_srn` FROM `teacher` WHERE
+			`Contact` = '$mo'") or die(mysqli_connect_error());
 
 	$row = mysqli_num_rows($query);
 	$arr = mysqli_fetch_row($query);
+	echo $arr;
 
 	if ($row == 1) {
 		
 
-		$_SESSION['a_id'] = $arr[0];
+		$_SESSION['t_id'] = $arr[0];
 
 
 
@@ -73,12 +75,10 @@ if (isset($_POST['getOtp'])) {
 			echo "cURL Error #:" . $err;
 		} else {
 			echo $response;
-			header("location:submit_otp_admin.php");
+			header("location: submit_otp_teacher.php");
 		}
 	} else {
 		$flag = 1;
-		$error_msg['C'] = 'Please enter valid number!! ';
-		$error = true;
 	}
 }
 
@@ -99,7 +99,7 @@ if (isset($_POST['getOtp'])) {
 
 		<div class="title"></div>
 
-		<form action="#" method="Post">
+		<form  method="Post">
 
 			<div class="field">
 				<input title="Please do not enter Country Code " type="text" name="Contact_no" maxlength='10' required>
