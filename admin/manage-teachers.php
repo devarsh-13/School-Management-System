@@ -67,6 +67,167 @@ $error="Something went wrong. Please try again";
         <link rel="stylesheet" type="text/css" href="js/DataTables/datatables.min.css"/>
         <link rel="stylesheet" href="css/main.css" media="screen" >
         <script src="js/modernizr/modernizr.min.js"></script>
+
+
+
+
+
+
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.7.0/js/dataTables.buttons.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.7.0/js/buttons.html5.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.7.0/js/buttons.print.min.js"></script>
+
+ <style>
+        :after, :before {
+            box-sizing: border-box;
+        }
+        a {
+            color: #337ab7;
+            text-decoration: none;
+        }
+        i{
+        margin-bottom:4px;
+        }
+        .btn {
+            display: inline-block;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 1.42857143;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: middle;
+            cursor: pointer;
+            user-select: none;
+            background-image: none;
+            border: 1px solid transparent;
+            border-radius: 4px;
+        }
+        .btn-app {
+            color: white;
+            box-shadow: none;
+            border-radius: 3px;
+            position: relative;
+            padding: 10px 15px;
+            margin: 0;
+            min-width: 60px;
+            max-width: 80px;
+            text-align: center;
+            border: 1px solid #ddd;
+            background-color: #f4f4f4;
+            font-size: 12px;
+            transition: all .2s;
+            background-color: steelblue !important;
+        }
+        .btn-app > .fa, .btn-app > .glyphicon, .btn-app > .ion {
+            font-size: 30px;
+            display: block;
+        }
+        .btn-app:hover {
+            border-color: #aaa;
+            transform: scale(1.1);
+        }
+        .pdf {
+        background-color: #dc2f2f !important;
+        }
+        .excel {
+            background-color: #3ca23c !important;
+        }
+        .csv {
+            background-color: #e86c3a !important;
+        }
+        .imprimir {
+            background-color: #8766b1 !important;
+        }
+      
+    
+
+    </style>
+
+
+<script type="text/javascript">
+    $(document).ready(function() {
+    $('#example').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            { extend:    'copy',
+                text:      '<i class="fa fa-clipboard "></i>Copy',
+                className: 'btn btn-app export barras',
+                 exportOptions: {
+                        columns: [ 0, 2, 3, 4, 5,6,7,8,9 ]
+                    }
+            },
+            { extend:    'csv',
+              text:      '<i class="fa fa-file-text-o"></i>CSV',
+                    className: 'btn btn-app export csv',
+                 exportOptions: {
+                        columns: [ 0, 2, 3, 4, 5,6,7,8,9 ]
+                    }
+            },
+
+             { extend:    'excel',
+               text:      '<i class="fa fa-file-excel-o"></i>Excel',
+               className: 'btn btn-app export excel',
+                 exportOptions: {
+                        columns: [ 0, 2, 3, 4, 5,6,7,8,9 ]
+                    }
+            },
+
+            {     extend:    'pdf',
+                  orientation: 'landscape',
+                  pageSize: 'LEGAL',
+                    text:      '<i class="fa fa-file-pdf-o"></i>PDF',
+                     className: 'btn btn-app export pdf',
+                  
+
+
+                  customize : function(doc)
+                    {
+                    var colCount = new Array();
+                    $('#example').find('tbody tr:first-child td').each(function()
+                    {
+                        if($(this).attr('colspan'))
+                        {
+                            for(var i=1;i<=$(this).attr('colspan');$i++)
+                            {
+                                colCount.push('*');
+                            }
+                        }
+                        else
+                        {    
+                            colCount.push('*'); 
+                        }
+                    });
+                    doc.content[1].table.widths = colCount;
+                    },
+        
+                     exportOptions: {
+                        columns: [ 0, 2, 3, 4, 5,6,7,8,9 ]
+                    }
+            },
+
+
+             { extend:    'print',
+                text:      '<i class="fa fa-print"></i>Print',
+                 className: 'btn btn-app export imprimir',
+                 exportOptions: {
+                        columns: [ 0, 2, 3, 4, 5,6,7,8,9 ]
+                    }
+            },
+            
+        ]
+    } );
+} );
+</script>
+
+
+<link href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
+<link href="https://cdn.datatables.net/buttons/1.7.0/css/buttons.dataTables.min.css" rel="stylesheet" type="text/css" />
           <style>
         .errorWrap {
     padding: 10px;
@@ -192,8 +353,9 @@ else if($error){?>
                                         <?php } ?>
                                             <div class="scrollmenu">
 
-                                                <table id="example" class="display table table-striped table-bordered" cellspacing="0" width="100%">
-                                                
+                                             <!--   <table id="example" class="display table table-striped table-bordered" cellspacing="0" width="100%">-->
+                                                 <table id="example" class="display nowrap"  style="width:100%">
+                                                      <thead>
                                                                                                              <tr>
                                                             <th>#</th>
                                                             <th>action</th>
@@ -207,7 +369,7 @@ else if($error){?>
                                                             <th>Created Date</th>
                                                             
                                                         </tr>
-                                                                                                          
+                                                        </thead>                                     
                                                 
 <?php 
 include 'connection.php';
