@@ -191,7 +191,7 @@ else if($error){?>
 
     });
 
-
+// option 2
     var uploader = $('#ssi-upload').ssi_uploader({
         url: 'up.php?sub_id=<?php echo $sub_id;?>',
 

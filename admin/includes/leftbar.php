@@ -20,6 +20,14 @@
                                         <a href="view-profile.php"><i class="fa fa-user"></i> <span>Profile</span> </a>
                                      
                                     </li>
+                                     <li>
+                                        <a href="add-admin.php"><i class="fa fa-bars"></i> <span>Add Admin</span></a>
+                                     
+                                    </li>
+                                     <li>
+                                        <a href="manage-admin.php"><i class="fa fa-server"></i> <span>Manage Admin</span> </a>
+                                     
+                                    </li>
 
                                     <li class="nav-header">
                                         <span class="">Options</span>
