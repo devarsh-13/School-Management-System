@@ -16,7 +16,7 @@ if(isset($_POST['submit']))
 {
     require "connection.php";
 
-     $uploadFolder = 'teacher_image/';
+     $uploadFolder = '../user_photos/';
     
     
         $imageTmpName = $_FILES['file']['tmp_name'];
