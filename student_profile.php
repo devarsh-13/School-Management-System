@@ -16,7 +16,7 @@ $row = mysqli_num_rows($query);
 
 $result = mysqli_fetch_array($query);
 
-
+$is_active;
 
 if (isset($_POST['submit'])) {
 
@@ -49,11 +49,13 @@ if (isset($_POST['submit'])) {
 
 			$error_msg['d'] = 'Please Enter same passwords';
 			$error = true;
+			$is_active='active';
 		}
 	} else {
 
 		$error_msg['C'] = ' Your old password is incorrect';
 		$error = true;
+		$is_active='active';
 	}
 }
 
@@ -203,7 +205,7 @@ Purchase:
 
 											<!-- Tab panes -->
 											<div class="tab-content">
-												<div role="tabpanel" class="tab-pane active" id="general">
+												<div role="tabpanel" class="tab-pane <?php echo($is_active);?>" id="general">
 													<div class="ed_dashboard_inner_tab">
 
 														<form class="ed_tabpersonal" method="POST">

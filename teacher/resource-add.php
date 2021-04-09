@@ -2,11 +2,9 @@
 session_start();
 error_reporting(0);
 include('connection.php');
-if(strlen($_SESSION['t_id'])=="")
+if(isset($_SESSION['t_id']))
     {   
-    header("Location: index.php"); 
-    }
-    else{
+    
 $sub_id=$_GET['sub_id'];
 
 
@@ -353,4 +351,8 @@ while ($query1=mysqli_fetch_array($query)) {
 </body>
 
 </html>
-<?PHP } ?>
+<?PHP }
+else{
+header("Location: index.php"); 
+    }
+     ?>

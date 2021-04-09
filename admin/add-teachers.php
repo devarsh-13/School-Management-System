@@ -32,6 +32,7 @@ $rdate=$_POST['rdate'];
 $deg=$_POST['deg'];
 $pass=$_POST['pass'];  
 $d = date("Y-m-d");
+$stat="offline";
 
 
 $Sql="INSERT INTO `teachers` 
@@ -46,7 +47,9 @@ $Sql="INSERT INTO `teachers`
                                 `Contact`, 
                                 `Password`, 
                                 `is_deleted`, 
-                                `Created_on`) 
+                                 `Created_on`,
+                                `t_status`
+                                    ) 
 
                             VALUES 
                             (
@@ -60,7 +63,9 @@ $Sql="INSERT INTO `teachers`
                                 '$con', 
                                 '$pass', 
                                 '0',
-                                '$d')";
+                                '$d',
+                                '$stat'
+                            )";
 
 
 $q=mysqli_query($Conn,$Sql);

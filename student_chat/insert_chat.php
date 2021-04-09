@@ -1,5 +1,5 @@
 <?php 
-  
+include('../admin/store_data.php');  
 
     session_start();
     if(isset($_SESSION['s_id'])){
@@ -20,6 +20,10 @@
 
             $d = date("Y-m-d");
             $sql = mysqli_query($Conn, "INSERT INTO `conversation` (`chat_text`,`created_on`,`S_srn`,`T_srn`,`sender_type`) VALUES ('$message','$d','$S_srn','$T_srn','$sender_type')") or die();
+
+            $action="Message sended";
+            $log=new Log();
+            $log->success_entry($action,$Conn);
         }
     }else{
         header("location: login.php");
