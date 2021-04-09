@@ -4,11 +4,16 @@ session_start();
 $_SESSION['page']='2';  
 error_reporting(0);
 include('connection.php');
+include('store_data.php');
+
 if(strlen($_SESSION['a_id'])=="")
     {   
     header("Location: index.php"); 
     }
     else{
+            $action="In Manage Notifications";
+            $log=new Log();
+            $log->success_entry($action,$Conn);
 
  if(isset($_POST['delt']))
             {

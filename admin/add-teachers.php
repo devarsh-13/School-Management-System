@@ -9,6 +9,9 @@ if(strlen($_SESSION['a_id'])=="")
     header("Location: index.php"); 
     }
     else{
+        $action=" In ADD Techers";
+        $log=new Log();
+        $log->success_entry($action,$Conn);
 if(isset($_POST['submit']))
 {
     require "connection.php";

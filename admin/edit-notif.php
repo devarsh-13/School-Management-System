@@ -2,11 +2,17 @@
 session_start();
 error_reporting(0);
 include('connection.php');
+include('store_data.php');
+
 if(strlen($_SESSION['a_id'])=="")
     {   
     header("Location: index.php"); 
     }
     else{
+            $action="In Edit Notifications";
+            $log=new Log();
+            $log->success_entry($action,$Conn);
+
           $nid=$_GET['N_id'];
 if(isset($_POST['submit']))
 {
@@ -19,13 +25,18 @@ if(isset($_POST['submit']))
         
 $Sql="UPDATE `notification` SET `Notification_text`='$notification_text',`is_deleted`='0',`created_on`='$d',`created_by`='$a' WHERE `Sr_n`='$nid'";
 $q=mysqli_query($Conn,$Sql);
-
+$action="Edit Manage Notifications";
+            
 if($q)
 {
+    $log=new Log();
+    $log->success_entry($action,$Conn);
 $msg="Notification Edit Successfully";
 }
 else 
 {
+    $log=new Log();
+    $log->success_entry($action,$Conn,"Unsuccessful");
 $error="Something went wrong. Please try again";
 }
 
@@ -38,7 +49,7 @@ $error="Something went wrong. Please try again";
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>IGHS Admin | ADD Notification </title>
+    <title>IGHS Admin | Edit Notification </title>
     <link rel="stylesheet" href="css/bootstrap.min.css" media="screen">
     <link rel="stylesheet" href="css/font-awesome.min.css" media="screen">
     <link rel="stylesheet" href="css/animate-css/animate.min.css" media="screen">
@@ -67,7 +78,7 @@ $error="Something went wrong. Please try again";
                     <div class="container-fluid">
                         <div class="row page-title-div">
                             <div class="col-md-6">
-                                <h2 class="title">ADD Notification</h2>
+                                <h2 class="title">Edit Notification</h2>
 
                             </div>
 
@@ -79,7 +90,7 @@ $error="Something went wrong. Please try again";
                                 <ul class="breadcrumb">
                                     <li><a href="dashboard.php"><i class="fa fa-home"></i> Home</a></li>
                                     <li>Notification</li>
-                                    <li class="active">ADD Notification</li>
+                                    <li class="active">Edit Notification</li>
                                 </ul>
                             </div>
 
@@ -93,7 +104,7 @@ $error="Something went wrong. Please try again";
                                 <div class="panel">
                                     <div class="panel-heading">
                                         <div class="panel-title">
-                                            <h5>Fill The Notification Info</h5>
+                                            <h5>Edit The Notification Info</h5>
                                         </div>
                                     </div>
                                     <div class="panel-body">

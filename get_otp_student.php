@@ -10,7 +10,6 @@ if (isset($_POST['getOtp'])) {
 
 
 
-
 	$error = false;
 
 	$mo = $_POST['Contact_no'];

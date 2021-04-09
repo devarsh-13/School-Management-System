@@ -10,11 +10,13 @@ if(strlen($_SESSION['a_id'])=="")
     header("Location: index.php"); 
     }
     else{
-
+            $action="In Manage Events";
+        $log=new Log();
+        $log->success_entry($action,$Conn);
 
  if(isset($_POST['delt']))
             {
-                $action="Delete Teacher data";
+                $action="Delete Event data";
                 
                 $eid=$_POST['recordsCheckBox'];
 

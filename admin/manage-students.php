@@ -23,15 +23,17 @@ if(strlen($_SESSION['a_id'])=="")
             
            
             $delete = $Conn->query($Sql) or die("Error in query2".$connection->error);
-            $action="Delete Student Row";
+            
             if ($delete)
             {
-                $log=new Log();
-                $log->success_entry($action,$Conn);
+                $action="Delete Student Row";
+                $log1=new Log();
+                $log1->success_entry($action,$Conn);
                $msg="Student Info Deleted Successfully";
             }
             else 
             {
+                $action="Delete Student Row";
                 $log=new Log();
                 $log->success_entry($action,$Conn,"Unsuccessful");
                 $error="Something went wrong. Please try again";
@@ -395,7 +397,7 @@ if($row > 0)
 }
 else
 {
-     echo "no data";
+    
 } ?>
                                                                            
                                                     

@@ -4,11 +4,16 @@
 session_start();
 error_reporting(0);
 include('connection.php');
+include('store_data.php');
+
 if(strlen($_SESSION['a_id'])=="")
     {   
     header("Location: index.php"); 
     }
     else{
+        $action="In Manage Gallery";
+        $log=new Log();
+        $log->success_entry($action,$Conn); 
 
 $gid = $_GET['G_id'];
 
@@ -32,14 +37,22 @@ if($row > 0)
         $query = "DELETE FROM `images` WHERE `Id`='$gid'";
         $delet = mysqli_query($Conn,$query) or die("Error in query2".$Conn->error);
 
+        $action="Delete Photo";
+
+
 if($d)
 {
+
+        $log=new Log();
+        $log->success_entry($action,$Conn); 
     
 $msg="Image Deleted Successfully";
 }
 else 
 {
-    
+        $log=new Log();
+        $log->success_entry($action,$Conn,"Unsuccessful"); 
+
 $error="Something went wrong. Please try again";
 }
 
@@ -51,6 +64,7 @@ $error="Something went wrong. Please try again";
 
  if(isset($_POST['delt']))
             {
+                $action="Delete Photos in Gallery";
 
                 $gid=$_POST['recordsCheckBox'];
   foreach ( $gid as $id ) 
@@ -77,10 +91,17 @@ $query = mysqli_query($Conn,$sql);
 
 if($d)
 {
+
+    $log=new Log();
+    $log->success_entry($action,$Conn); 
+
 $msg="Image Deleted Successfully";
 }
 else 
 {
+        $log=new Log();
+        $log->success_entry($action,$Conn,"Unsuccessful"); 
+
 $error="Something went wrong. Please try again";
 }
             }
@@ -99,7 +120,7 @@ $error="Something went wrong. Please try again";
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
     	<meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>IGHS Admin | Manage Classes</title>
+        <title>IGHS Admin | Manage Gallery</title>
         <link rel="stylesheet" href="css/bootstrap.min.css" media="screen" >
         <link rel="stylesheet" href="css/font-awesome.min.css" media="screen" >
         <link rel="stylesheet" href="css/animate-css/animate.min.css" media="screen" >

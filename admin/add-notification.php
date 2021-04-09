@@ -2,17 +2,18 @@
 session_start();
 error_reporting(0);
 include('connection.php');
+include('store_data.php');
 if(strlen($_SESSION['a_id'])=="")
     {   
     header("Location: index.php"); 
     }
     else{
+        $action="In Add Notifications";
+            $log=new Log();
+            $log->success_entry($action,$Conn);
 if(isset($_POST['submit']))
 {
-    require "connection.php";
-    session_start();
-        
-       
+    $action="Add Notification";       
         
         $notification_text = $_POST["notification"];
           $a = $_SESSION['a_id'];  
@@ -24,11 +25,16 @@ if(isset($_POST['submit']))
 
 if($insert)
 {
-$msg="Notification Added Successfully";
+    $log=new Log();
+    $log->success_entry($action,$Conn);
+    $msg="Notification Added Successfully";
 }
 else 
 {
-$error="Something went wrong. Please try again";
+
+    $log=new Log();
+    $log->success_entry($action,$Conn,"Unsucessful");
+    $error="Something went wrong. Please try again";
 }
 
 }

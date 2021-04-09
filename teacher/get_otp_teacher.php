@@ -1,11 +1,14 @@
 <?php
-require "connection.php";
+
 session_start();
+
+require "../Database/connection.php";
+
 $flag = 0;
 
+if (isset($_POST['getOtp'])) {
 
-if(isset($_POST['getOtp'])) {
-	echo "GR";
+
 
 	$error = false;
 
@@ -21,16 +24,14 @@ if(isset($_POST['getOtp'])) {
 		$error_msg['C'] = 'Please enter proper 10 Digit number!! ';
 		$error = true;
 	}
-	$query = mysqli_query($Conn, "SELECT `T_srn` FROM `teacher` WHERE
+	$query = mysqli_query($Conn, "SELECT `T_srn` FROM `Students` WHERE
 			`Contact` = '$mo'") or die(mysqli_connect_error());
 
 	$row = mysqli_num_rows($query);
 	$arr = mysqli_fetch_row($query);
-	echo $arr;
 
 	if ($row == 1) {
 		
-
 		$_SESSION['t_id'] = $arr[0];
 
 
@@ -38,11 +39,13 @@ if(isset($_POST['getOtp'])) {
 		// Account details
 
 		// Message details
-		$numbers = $mo;
+		 $numbers = $mo;
 
-		$otp = mt_rand(1000, 9999);
+		 $otp = mt_rand(1000, 9999);
 
-		$_SESSION['otp']=$otp;
+
+		 $_SESSION['otp']=$otp;
+
 		
 
 
@@ -75,9 +78,11 @@ if(isset($_POST['getOtp'])) {
 			echo "cURL Error #:" . $err;
 		} else {
 			echo $response;
-			header("location: submit_otp_teacher.php");
+			header("location:submit_otp_student.php");
 		}
 	} else {
+		$error_msg['C'] = 'Please enter valid number!! ';
+		$error = true;
 		$flag = 1;
 	}
 }
@@ -99,7 +104,7 @@ if(isset($_POST['getOtp'])) {
 
 		<div class="title"></div>
 
-		<form  method="Post">
+		<form action="#" method="POST">
 
 			<div class="field">
 				<input title="Please do not enter Country Code " type="text" name="Contact_no" maxlength='10' required>

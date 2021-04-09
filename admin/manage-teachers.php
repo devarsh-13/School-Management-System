@@ -9,6 +9,10 @@ if(strlen($_SESSION['a_id'])=="")
     header("Location: index.php"); 
     }
     else{
+
+        $action="In manage-Teachers";
+        $log=new Log();
+        $log->success_entry($action,$Conn);
            
 
 if (isset($_GET['T_id']))
