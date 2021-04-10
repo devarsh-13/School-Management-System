@@ -2,7 +2,7 @@
 
 session_start();
 
-require "../Database/connection.php";
+require "connection.php";
 
 $flag = 0;
 
@@ -24,8 +24,7 @@ if (isset($_POST['getOtp'])) {
 		$error_msg['C'] = 'Please enter proper 10 Digit number!! ';
 		$error = true;
 	}
-	$query = mysqli_query($Conn, "SELECT `T_srn` FROM `Students` WHERE
-			`Contact` = '$mo'") or die(mysqli_connect_error());
+	$query = mysqli_query($Conn, "SELECT `T_srn` FROM `Teachers` WHERE `Contact` = '$mo'") or die(mysqli_connect_error());
 
 	$row = mysqli_num_rows($query);
 	$arr = mysqli_fetch_row($query);
@@ -78,7 +77,7 @@ if (isset($_POST['getOtp'])) {
 			echo "cURL Error #:" . $err;
 		} else {
 			echo $response;
-			header("location:submit_otp_student.php");
+			header("location:submit_otp_teacher.php");
 		}
 	} else {
 		$error_msg['C'] = 'Please enter valid number!! ';
