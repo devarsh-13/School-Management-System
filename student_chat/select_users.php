@@ -2,7 +2,9 @@
 session_start();
 include_once "../Database/connection.php";
 
-$S_srn = $_SESSION['s_id'];
+if (isset($_SESSION['s_id']))
+{
+    $S_srn = $_SESSION['s_id'];
 
 $sql = "SELECT * from `students` WHERE
  S_srn = '$S_srn'";
@@ -50,3 +52,12 @@ $update = mysqli_query($Conn, "UPDATE students SET s_status ='online' WHERE S_sr
 </body>
 
 </html>
+<?php
+
+}
+else{
+    header("location:../login.php");
+    
+}
+
+?>
