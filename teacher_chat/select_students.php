@@ -6,6 +6,9 @@
 <?php
 session_start();
 include_once "../teacher/connection.php";
+if(!isset($_SESSION['t_id'])){
+    header("location: ../login.php");
+  }
 
 $T_srn = $_SESSION['t_id'];
 

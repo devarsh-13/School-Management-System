@@ -1,10 +1,11 @@
 <?php
 session_start();
 include_once "../Database/connection.php";
+if (!isset($_SESSION['s_id'])) {
+    header("location: ../login.php");
+}
 
-if (isset($_SESSION['s_id']))
-{
-    $S_srn = $_SESSION['s_id'];
+$S_srn = $_SESSION['s_id'];
 
 $sql = "SELECT * from `students` WHERE
  S_srn = '$S_srn'";
@@ -29,21 +30,21 @@ $update = mysqli_query($Conn, "UPDATE students SET s_status ='online' WHERE S_sr
         <section class="users">
             <header>
                 <div class="content">
-                <a href="../main.php" class="logout">Back</a>
+                    <a href="../main.php" class="logout">Back</a>
 
 
                 </div>
-               
+
             </header>
 
-                    <div class="search">
-                        <span class="text">Select an user to start chat</span>
-                        <input type="text" placeholder="Enter name to search...">
-                        <button><i class="fas fa-search"></i></button>
-                    </div>
-                    <div class="users-list">
+            <div class="search">
+                <span class="text">Select an user to start chat</span>
+                <input type="text" placeholder="Enter name to search...">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+            <div class="users-list">
 
-                    </div>
+            </div>
         </section>
     </div>
 
@@ -53,11 +54,3 @@ $update = mysqli_query($Conn, "UPDATE students SET s_status ='online' WHERE S_sr
 
 </html>
 <?php
-
-}
-else{
-    header("location:../login.php");
-    
-}
-
-?>

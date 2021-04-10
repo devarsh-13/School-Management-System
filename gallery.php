@@ -1,3 +1,9 @@
+<?php
+session_start();
+if (!isset($_SESSION['s_id'])) {
+   header("location:login.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,16 +31,16 @@
    <!-- header -->
    <div id="educo_wrapper">
       <!--Header start-->
-    <?php
-    include "header.php";
-    ?>
+      <?php
+      include "header.php";
+      ?>
 
       <!--Breadcrumb start-->
-     
+
       <!--Breadcrumb end-->
 
       <div class="images">
-         
+
 
          <?php
          require 'Database/connection.php';
@@ -95,9 +101,9 @@
 
 
 
-<?php
-include "footer.php";
-?>
+      <?php
+      include "footer.php";
+      ?>
 
 </body>
 

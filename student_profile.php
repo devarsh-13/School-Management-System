@@ -4,6 +4,11 @@ include 'Database/connection.php';
 session_start();
 
 
+if (!isset($_SESSION['s_id'])) {
+	header("location:login.php");
+}
+
+
 $S_srn = $_SESSION['s_id'];
 $sql = "SELECT * from `students` join Class on students.Class_id=Class.Class_id WHERE
  S_srn = '$S_srn' ORDER BY Created_on DESC";
@@ -49,13 +54,13 @@ if (isset($_POST['submit'])) {
 
 			$error_msg['d'] = 'Please Enter same passwords';
 			$error = true;
-			$is_active='active';
+			$is_active = 'active';
 		}
 	} else {
 
 		$error_msg['C'] = ' Your old password is incorrect';
 		$error = true;
-		$is_active='active';
+		$is_active = 'active';
 	}
 }
 
@@ -205,7 +210,7 @@ Purchase:
 
 											<!-- Tab panes -->
 											<div class="tab-content">
-												<div role="tabpanel" class="tab-pane <?php echo($is_active);?>" id="general">
+												<div role="tabpanel" class="tab-pane <?php echo ($is_active); ?>" id="general">
 													<div class="ed_dashboard_inner_tab">
 
 														<form class="ed_tabpersonal" method="POST">
@@ -261,7 +266,7 @@ Purchase:
 	</div>
 	</div>
 	<!--single student detail end-->
-	
+
 	<?php
 	include "footer.php";
 	?>
