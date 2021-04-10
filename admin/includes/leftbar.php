@@ -12,12 +12,12 @@
                                     <li class="nav-header">
                                         <span class="">Main Category</span>
                                     </li>
-                                    <li>
-                                        <a href="dashboard.php"><i class="fa fa-dashboard"></i> <span>Dashboard</span> </a>
-                                     
-                                    </li>
 
-                                     <li>
+                                    <li class="has-children">
+                                        <a href="dashboard.php"><i class="fa fa-dashboard"></i> <span>Dashboard</span><i class="fa fa-angle-right arrow"></i> </a>
+
+                                        <ul class="child-nav">
+                                             <li>
                                         <a href="view-profile.php"><i class="fa fa-user"></i> <span>Profile</span> </a>
                                      
                                     </li>
@@ -33,6 +33,11 @@
                                         <a href="manage-admin.php"><i class="fa fa-server"></i> <span>Manage Admin</span> </a>
                                      
                                     </li>
+                                        </ul>
+                                     
+                                    </li>
+
+                                    
 
                                     <li class="nav-header">
                                         <span class="">Options</span>

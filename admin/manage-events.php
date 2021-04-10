@@ -373,19 +373,7 @@ if($row > 0)
 
         <!-- ========== THEME JS ========== -->
         <script src="js/main.js"></script>
-        <script>
-            $(function($) {
-                $('#example').DataTable();
-
-                $('#example2').DataTable( {
-                    "scrollY":        "300px",
-                    "scrollCollapse": true,
-                    "paging":         false
-                } );
-
-                $('#example3').DataTable();
-            });
-        </script>
+       
     </body>
 </html>
 <?php } ?>
