@@ -43,7 +43,7 @@ setInterval(() =>{
     let xhr = new XMLHttpRequest();
     xhr.open("POST", "get_chat.php", true);
     xhr.onload = ()=>{
-        console.log("TEST1","Test")
+      
       if(xhr.readyState === XMLHttpRequest.DONE){
           if(xhr.status === 200){
             let data = xhr.response;
