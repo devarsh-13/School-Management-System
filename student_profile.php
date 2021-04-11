@@ -3,7 +3,8 @@
 include 'Database/connection.php';
 session_start();
 
-
+      unset($_SESSION['d']);
+      unset($_SESSION['c']);
 $S_srn = $_SESSION['s_id'];
 $sql = "SELECT * from `students` join Class on students.Class_id=Class.Class_id WHERE
  S_srn = '$S_srn' ORDER BY Created_on DESC";
@@ -16,46 +17,6 @@ $row = mysqli_num_rows($query);
 
 $result = mysqli_fetch_array($query);
 
-
-
-if (isset($_POST['submit'])) {
-
-
-	$Password = $_POST['Password'];
-
-	$Password2 = $_POST['Password2'];
-
-	$OldPassword = $_POST['OldPassword'];
-
-	$op = $result['S_password'];
-
-
-	$error = false;
-
-
-	if ($OldPassword == $op) {
-
-
-		if ($Password == $Password2) {
-
-
-
-
-			if ($row == 1) {
-
-				$update = mysqli_query($Conn, "UPDATE students SET S_password ='$Password' WHERE S_srn ='$S_srn' ") or die(mysqli_connect_error());
-			}
-		} else {
-
-			$error_msg['d'] = 'Please Enter same passwords';
-			$error = true;
-		}
-	} else {
-
-		$error_msg['C'] = ' Your old password is incorrect';
-		$error = true;
-	}
-}
 
 ?>
 
@@ -212,36 +173,24 @@ Purchase:
 																<p>Change Password <strong>(leave blank for no change)</strong></p>
 															</div>
 															<div class="form-group">
-																<input type="password" name="OldPassword" class="form-control" placeholder="Old Password">
-																<?php
-
-																if (isset($error_msg['C'])) {
-																	echo "<div class='invalid'><p>" . $error_msg['C'] . "</p></div>";
-																}
-
-
-																?>
+																<input type="password" name="OldPassword" id="oldpassword" class="form-control" placeholder="Old Password">
+																<input  id="error1" disabled style=" background-color:transparent;border:none;width: 100%; color: #ff0000;";>
 															</div>
 
 
 															<div class="form-group">
-																<input type="password" name="Password" class="form-control" placeholder="New Password">
+																<input type="password" name="Password" id="password" class="form-control" placeholder="New Password">
+																<input disabled style=" background-color:transparent;border:none;width: 100%";>
 															</div>
 															<div class="form-group">
-																<input type="password" name="Password2" class="form-control" placeholder="Repeat New Password">
-																<?php
-
-																if (isset($error_msg['d'])) {
-																	echo "<div class='invalid'><p>" . $error_msg['d'] . "</p></div>";
-																}
-
-
-																?>
+																<input type="password" name="Password2" id="password2" class="form-control" placeholder="Repeat New Password">
+																<input  id="error2" disabled style=" background-color:transparent;border:none;width: 100%; color: #ff0000;";>
 															</div>
 															<div class="form-group">
-																<input type="submit" class="btn ed_btn ed_green" name="submit" value="save changes">
+																<input type="button" id="submit" class="btn ed_btn ed_green" value="SAVE CHANGE">
 															</div>
 														</form>
+														<script src="profile_student.js"></script>
 													</div>
 												</div>
 											</div>
