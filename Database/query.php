@@ -223,11 +223,11 @@ $q=mysqli_query($Conn,$Sql);
 $Sql="INSERT INTO `Teachers` (`T_photo`, `T_name`, `DOB`, `Degree`, `A_date`, `Joining_date`, `Retire_date`,`Contact`,`Password`,`is_deleted`,`t_status`) VALUES ('teacher_default.jpg', 'abc', '2020-07-14', 'alpha beta gama', '2021-01-24', '2021-01-30', '2021-02-01','7359817926','123','0','offline')";
 $q=mysqli_query($Conn,$Sql);
 
-$sql="INSERT INTO `admin`(`A_name`, `A_mobile`, `A_address`,`A_password`, `A_dob`,`Created_by`) VALUES ('mayank','8980462257','anjar','123','2000-02-20','0')";
+$sql="INSERT INTO `admin`(`A_Photo`,`A_name`, `A_mobile`, `A_address`,`A_password`, `A_dob`,`Created_by`) VALUES ('admin_default.jpg','mayank','8980462257','anjar','123','2000-02-20','0')";
 $q=mysqli_query($Conn,$sql);
 
 
-$sql="INSERT INTO `admin`(`A_name`, `A_mobile`, `A_address`,`A_password`, `A_dob`,`Created_by`) VALUES ('jay','9638435147','bhuj','890','2000-02-22','0')";
+$sql="INSERT INTO `admin`(`A_Photo`,`A_name`, `A_mobile`, `A_address`,`A_password`, `A_dob`,`Created_by`) VALUES ('admin_default.jpg','jay','9638435147','bhuj','890','2000-02-22','0')";
 $q=mysqli_query($Conn,$sql);
 
 
