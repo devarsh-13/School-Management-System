@@ -11,108 +11,82 @@ if(strlen($_SESSION['a_id'])=="")
     header("Location: index.php"); 
     }
     else{
-        $action="In Manage Gallery";
-        $log=new Log();
-        $log->success_entry($action,$Conn); 
 
-$gid = $_GET['G_id'];
-
+        if(!(isset($_GET['G_id']))) 
+        {
+            if(!(isset($_POST['delt'])))
+            {
+                $action="In Manage Gallery";
+                $log=new Log();
+                $log->success_entry($action,$Conn); 
+            }
+        }
+    $gid = $_GET['G_id'];
+    
     if (isset($gid))
     {
+        $query = mysqli_query($Conn,"SELECT * from `images`  WHERE `Id`='$gid' ");
+        $row = mysqli_num_rows($query);
 
+        if($row == 1)
+        {
+            $path="img/";
+            $result=mysqli_fetch_array($query);
+            $full = $path.$result['Image']; 
+                    
+            $delete = mysqli_query($Conn,"DELETE FROM `images` WHERE `Id`='$gid'") or die("Error in query2".$Conn->error);
+            
+            $action="Photo Deleted";
+            $log=new Log();
 
-        
- $sql = "SELECT * from `images`  WHERE `Id`='$gid' ";
-$query = mysqli_query($Conn,$sql);
-$row = mysqli_num_rows($query);
-
-if($row > 0)
-{
-     $path="img/";
-    while($result=mysqli_fetch_array($query))
-    {       $full = $path.$result['Image']; 
-          $d=  unlink($full);
-    }
-}
-        $query = "DELETE FROM `images` WHERE `Id`='$gid'";
-        $delet = mysqli_query($Conn,$query) or die("Error in query2".$Conn->error);
-
-        $action="Delete Photo";
-
-
-if($d)
-{
-
-        $log=new Log();
-        $log->success_entry($action,$Conn); 
-    
-$msg="Image Deleted Successfully";
-}
-else 
-{
-        $log=new Log();
-        $log->success_entry($action,$Conn,"Unsuccessful"); 
-
-$error="Something went wrong. Please try again";
-}
-
-}
-
-
-
-
-
- if(isset($_POST['delt']))
+            if($delete)
             {
-                $action="Delete Photos in Gallery";
-
-                $gid=$_POST['recordsCheckBox'];
-  foreach ( $gid as $id ) 
-{ 
- $sql = "SELECT * from `images`  WHERE `Id`='$id' ";
-$query = mysqli_query($Conn,$sql);
-
-
-     $path="img/";
-    while($result=mysqli_fetch_array($query))
-    {       $full = $path.$result['Image']; 
-          $d=  unlink($full);
+                $d=  unlink($full);
+                $msg="Image Deleted Successfully";
+                $log->success_entry($action,$Conn); 
+                unset($_GET['G_id']);
+            }
+            else 
+            {
+                $error="Something went wrong. Please try again";
+                $log->success_entry($action,$Conn,"Unsuccessful"); 
+            }
+        }
     }
-
-}
-
-
-                   foreach ( $gid as $id ) 
-                   { 
-                          $query = "DELETE FROM `images` WHERE `Id`='$id'";
-                        $result = $Conn->query($query) or die("Error in query".$Conn->error);
-                   }
-
-
-if($d)
-{
-
-    $log=new Log();
-    $log->success_entry($action,$Conn); 
-
-$msg="Image Deleted Successfully";
-}
-else 
-{
+    if(isset($_POST['delt']))
+    {
+        $action="Photos Deleted";
         $log=new Log();
-        $log->success_entry($action,$Conn,"Unsuccessful"); 
 
-$error="Something went wrong. Please try again";
-}
+        $gid=$_POST['recordsCheckBox'];
+        
+        foreach($gid as $id ) 
+        { 
+            echo "$id";
+            $query = mysqli_query($Conn,"SELECT * from `images`  WHERE `Id`='$id' ");
+            $path="img/";
+            
+            while($result=mysqli_fetch_array($query))
+            {
+                $result = mysqli_query($Conn,"DELETE FROM `images` WHERE `Id`='$id'") or die("Error in query".$Conn->error);
+                $full = $path.$result['Image']; 
+                $d=unlink($full);
+             
             }
 
+        }
+        if($d)
+        {
+            $msg="Image Deleted Successfully";
+            $log->success_entry($action,$Conn); 
 
-
-
-
-
-
-
+        }
+        else 
+        {
+            $error="Something went wrong. Please try again";
+            $log->success_entry($action,$Conn,"Unsuccessful"); 
+        }
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -220,7 +194,7 @@ input.chh
                                                     <form method="post" action="manage-gallery.php">
                                                           <button type="submit" name="delt" class="btn btn-danger">Delete</button>
                                                     
-                                                </div>s
+                                                </div>
                                 
                                 <!-- /.col-md-6 text-right -->
                             </div>

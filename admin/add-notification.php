@@ -8,13 +8,18 @@ if(strlen($_SESSION['a_id'])=="")
     header("Location: index.php"); 
     }
     else{
-        $action="In Add Notifications";
-            $log=new Log();
-            $log->success_entry($action,$Conn);
+            if(!(isset($_POST['submit'])))
+            {
+                $action="In Add Notifications";
+                $log=new Log();
+                $log->success_entry($action,$Conn);    
+            }
+            
 if(isset($_POST['submit']))
 {
-    $action="Add Notification";       
-        
+    $action="Notification added";       
+    $log=new Log();
+
         $notification_text = $_POST["notification"];
           $a = $_SESSION['a_id'];  
           $d = date("Y-m-d");
@@ -25,14 +30,11 @@ if(isset($_POST['submit']))
 
 if($insert)
 {
-    $log=new Log();
     $log->success_entry($action,$Conn);
     $msg="Notification Added Successfully";
 }
 else 
 {
-
-    $log=new Log();
     $log->success_entry($action,$Conn,"Unsucessful");
     $error="Something went wrong. Please try again";
 }

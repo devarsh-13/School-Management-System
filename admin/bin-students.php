@@ -10,49 +10,21 @@ if(strlen($_SESSION['a_id'])=="")
     header("Location: index.php"); 
     }
     else{
-        $action="In Recycle Students";
-        $log=new Log();
-        $log->success_entry($action,$Conn); 
 
-        $action="Student data Restored";
+        if(!(isset($_GET['Sr_id'])))
+        {
 
-if(isset($_POST['re']))
-            {
-
-
-                $tid=$_POST['recordsCheckBox'];
-
-                   foreach ( $tid as $id ) 
-                   { 
-                         $query = "UPDATE `students` SET `is_deleted`='0' WHERE `S_srn`='$id'";
-                        $result = $Conn->query($query) or die("Error in query".$Conn->error);
-                   }
-
-if($result)
-{
-
-        $log=new Log();
-        $log->success_entry($action,$Conn); 
-
-$msg="Student Info Restore Successfully";
-}
-else 
-{
-
-        $log=new Log();
-        $log->success_entry($action,$Conn,"Unsuccessful"); 
-
-$error="Something went wrong. Please try again";
-}
-            }
-
-
-
-
+            $action="In Recycle Students";
+            $log=new Log();
+            $log->success_entry($action,$Conn); 
+        }
+        
 if (isset($_GET['Sr_id']))
 {
-    $tid = $_GET['Sr_id'];
+    $log=new Log();
+    $action="Student data Restored";
 
+    $tid = $_GET['Sr_id'];
     $query = "UPDATE `students` SET `is_deleted`='0' WHERE `S_srn`='$tid'";
     $delete = $Conn->query($query) or die("Error in query".$Conn->error);
     if ($delete)
@@ -165,13 +137,7 @@ input.chh
                                     <h2 class="title">Deleted Students</h2>
                                 
                                 </div>
-                                 <div class="dl">
-                                                    <form method="post" action="bin-students.php">
-                                                         <button type="submit" name="re"  class="btn btn-primary">Restore</button>
-                                                          
-                                                          
-                                                    
-                                                </div>
+                                 
                                 
                                 <!-- /.col-md-6 text-right -->
                             </div>
@@ -259,10 +225,10 @@ if($row > 0)
                     <tr align="center">
                         <td><?php echo htmlentities($cnt);?></td>
                          
-                          <td>  <a href="bin-students.php?Sr_id=<?php echo $result['S_srn'];?>">
+                        <td>  <a href="bin-students.php?Sr_id=<?php echo $result['S_srn'];?>">
                               <img src="images/restore-icon.png" height="25px" width='25px'/>&nbsp;Restore</a>
                                  &nbsp;
-                              <input type="checkbox" name="recordsCheckBox[]" id="recordsCheckBox" class="chh" value="<?php echo $result['S_srn'];?>"></td>
+                        </td>
                         <td><?php echo $result['S_grn'];?></td>
                         <td><?php echo $result['S_uidn'];?></td>
                         <td><?php echo $result['S_name'];?></td>

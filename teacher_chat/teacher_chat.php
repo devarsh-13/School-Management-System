@@ -1,12 +1,12 @@
 <?php 
   session_start();
   include_once "../Database/connection.php";
-  if(!isset($_SESSION['t_id'])){
-    header("location: ../login.php");
-  }
-?>
-<?php include_once "teacher_head.php"; ?>
-<body>
+  
+  if(isset($_SESSION['t_id']))
+  {
+    include_once "teacher_head.php";   
+  ?>
+  <body>
   <div class="wrapper">
     <section class="chat-area">
       <header>
@@ -45,3 +45,12 @@
 
 </body>
 </html>
+
+
+<?php
+  }
+  else
+  {
+    header("location: ../teacher/");
+  }  
+?>

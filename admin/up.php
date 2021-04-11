@@ -1,6 +1,7 @@
-<?php //session_start();
+<?php
+    
     require "connection.php";
-session_start();
+    session_start();
     $uploadFolder = 'img/';
     
     foreach ($_FILES['file']['tmp_name'] as $key => $image) 
@@ -27,6 +28,8 @@ $Sql="INSERT INTO `images`
 
 $q=mysqli_query($Conn,$Sql);
 }
+
+header("location:manage-gallery.php");
 
 
 ?>
