@@ -2,95 +2,42 @@
 <?php
 session_start();
 error_reporting(0);
+
 include('connection.php');
+include('store_data.php');
+
 if(strlen($_SESSION['a_id'])=="")
     {   
     header("Location: index.php"); 
     }
     else{
-
-         if(isset($_POST['delt']))
+            if(!(isset($_GET['Tr_id'])))        
             {
-
-                $tid=$_POST['recordsCheckBox'];
-
-                   foreach ( $tid as $id ) 
-                   { 
-                          $query = "DELETE FROM `teachers` WHERE `T_srn`='$id'";
-                        $result = $Conn->query($query) or die("Error in query".$Conn->error);
-                   }
-
-if($result)
-{
-$msg="Teacher Info Deleted Successfully";
-}
-else 
-{
-$error="Something went wrong. Please try again";
-}
+                $action="In Restore Teacher";
+                $log=new Log();
+                $log->success_entry($action,$Conn);
             }
 
-
-
-
-if (isset($_GET['T_id']))
-{
-    $tid = $_GET['T_id'];
-
-    $Sql="DELETE FROM `teachers` WHERE `T_srn`='$tid'";
-    
-   
-        $delete = $Conn->query($Sql) or die("Error in query2".$connection->error);
-    if ($delete){
-$msg="Teacher Info Deleted Successfully";
-}
-else 
-{
-$error="Something went wrong. Please try again";
-}
-}
-
-
-
-
-         if(isset($_POST['re']))
+            if(isset($_GET['Tr_id']))
             {
+                $log=new Log();
+                $action="Teacher Data Restored";
 
-                $tid=$_POST['recordsCheckBox'];
-
-                   foreach ( $tid as $id ) 
-                   { 
-                         $query = "UPDATE `teachers` SET `is_deleted`='0' WHERE `T_srn`='$id'";
-                        $result = $Conn->query($query) or die("Error in query".$Conn->error);
-                   }
-
-if($result)
-{
-$msg="Teacher Info Restore Successfully";
-}
-else 
-{
-$error="Something went wrong. Please try again";
-}
+                $tid = $_GET['Tr_id'];
+                $query = "UPDATE `teachers` SET `is_deleted`='0' WHERE `T_srn`='$tid'";
+                $delete = $Conn->query($query) or die("Error in query".$Conn->error);
+                
+                if($delete)
+                {
+                    $msg="Teacher Info Restore Successfully";
+                    $log->success_entry($action,$Conn);
+                }
+                else 
+                {
+                    $error="Something went wrong. Please try again";
+                    $log->success_entry($action,$Conn,"Unsuccessful");
+                }
             }
-
-
-
-
-if (isset($_GET['Tr_id']))
-{
-    $tid = $_GET['Tr_id'];
-
-    $query = "UPDATE `teachers` SET `is_deleted`='0' WHERE `T_srn`='$tid'";
-                        $delete = $Conn->query($query) or die("Error in query".$Conn->error);
-    if ($delete){
-$msg="Teacher Info Restore Successfully";
-}
-else 
-{
-$error="Something went wrong. Please try again";
-}
-}
     
 
 
@@ -182,13 +129,7 @@ input.chh
                                     <h2 class="title">Deleted Teachers</h2>
                                 
                                 </div>
-                                 <div class="dl">
-                                                    <form method="post" action="bin-teachers.php">
-                                                         <button type="submit" name="re" class="btn btn-primary">Restore</button>
-                                                          <button type="submit" name="delt" class="btn btn-danger">Delete</button>
-                                                         
-                                                    
-                                                </div>
+                                 
                                 <!-- /.col-md-6 text-right -->
                             </div>
                             <!-- /.row -->
@@ -236,7 +177,7 @@ else if($error){?>
                                                 
                                                                                                              <tr>
                                                             <th>#</th>
-                                                            <th>action</th>
+                                                                    
                                                             <th>Restore</th>
                                                             <th>Teacher Nmae</th>
                                                             <th>Date of Birth</th>
@@ -263,20 +204,12 @@ if($row > 0)
                     <tr align="center">
                         <td><?php echo htmlentities($cnt);?></td>
 
-                        <td>
-                            <a href="edit-teacher.php?T_id=<?php echo $result['T_srn'];?>">
-                                    <img src="images/edit-icon.jpg" height="25px" width='25px'/> Edit
-                            </a> 
-                              &nbsp;
-                            <a href="bin-teachers.php?T_id=<?php echo $result['T_srn'];?>">
-                              <img src="images/delete-icon.jpg" height="25px" width='25px'/>&nbsp;Delete</a>
-                                 &nbsp;
-                              <input type="checkbox" name="recordsCheckBox[]" id="recordsCheckBox" class="chh" value="<?php echo $result['T_srn'];?>">
-                        </td>
+                        
                         <td>  <a href="bin-teachers.php?Tr_id=<?php echo $result['T_srn'];?>">
                               <img src="images/restore-icon.png" height="25px" width='25px'/>&nbsp;Restore</a>
                                  &nbsp;
-                              <input type="checkbox" name="recordsCheckBox[]" id="recordsCheckBox" class="chh" value="<?php echo $result['T_srn'];?>"></td>
+                        </td>
+
                         <td><?php echo $result['T_name'];?></td>
                         <td><?php echo $result['DOB'];?></td>
                         <td><?php echo $result['Degree'];?></td>

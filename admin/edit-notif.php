@@ -5,42 +5,44 @@ include('connection.php');
 include('store_data.php');
 
 if(strlen($_SESSION['a_id'])=="")
-    {   
+{   
     header("Location: index.php"); 
+}
+else
+{
+    if(!(isset($_POST['submit'])))
+    {
+        $action="In Edit Notifications";
+        $log=new Log();
+        $log->success_entry($action,$Conn);
     }
-    else{
-            $action="In Edit Notifications";
-            $log=new Log();
+
+    $nid=$_GET['N_id'];
+    if(isset($_POST['submit']))
+    {
+        $notification_text = $_POST["notification"];
+        $a = $_SESSION['a_id'];  
+        $d = date("Y-m-d");
+    
+        $Sql="UPDATE `notification` SET `Notification_text`='$notification_text',`is_deleted`='0',`created_on`='$d',`created_by`='$a' WHERE `Sr_n`='$nid'";
+
+        $q=mysqli_query($Conn,$Sql);
+        
+        $log=new Log();        
+        $action="Notifications Edited";
+        if($q)
+        {
+            $msg="Notification Edit Successfully";
             $log->success_entry($action,$Conn);
 
-          $nid=$_GET['N_id'];
-if(isset($_POST['submit']))
-{
-    require "connection.php";
-    session_start();
-        
-        $notification_text = $_POST["notification"];
-          $a = $_SESSION['a_id'];  
-          $d = date("Y-m-d");
-        
-$Sql="UPDATE `notification` SET `Notification_text`='$notification_text',`is_deleted`='0',`created_on`='$d',`created_by`='$a' WHERE `Sr_n`='$nid'";
-$q=mysqli_query($Conn,$Sql);
-$action="Edit Manage Notifications";
-            
-if($q)
-{
-    $log=new Log();
-    $log->success_entry($action,$Conn);
-$msg="Notification Edit Successfully";
-}
-else 
-{
-    $log=new Log();
-    $log->success_entry($action,$Conn,"Unsuccessful");
-$error="Something went wrong. Please try again";
-}
+        }
+        else 
+        {
+            $error="Something went wrong. Please try again";
+            $log->success_entry($action,$Conn,"Unsuccessful");
+        }
 
-}
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -89,7 +91,7 @@ $error="Something went wrong. Please try again";
                             <div class="col-md-6">
                                 <ul class="breadcrumb">
                                     <li><a href="dashboard.php"><i class="fa fa-home"></i> Home</a></li>
-                                    <li>Notification</li>
+                                    <li><a href="manage-notif.php">Manage Notification</a></li>
                                     <li class="active">Edit Notification</li>
                                 </ul>
                             </div>

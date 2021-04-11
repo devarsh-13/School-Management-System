@@ -11,8 +11,16 @@ if(strlen($_SESSION['a_id'])=="")
 }
 else{
 
+    if(!(isset($_POST['submit'])))
+    {
+        $action="In add Event";
+        $log=new Log();
+        $log->success_entry($action,$Conn);
+    }
+
 if(isset($_POST['submit']))
 {
+    $log=new Log();
     $action="ADD Event";   
            
     $event_text = $_POST["event"];
@@ -24,20 +32,13 @@ if(isset($_POST['submit']))
 
     //Insert image content into database
     $insert = $Conn->query("INSERT INTO Event SET Event_text='$event_text',created_on='$d' ,created_by='$a',event_date='$edate'");
-
-
-       
-
 if($insert)
 {
-    $log= new Log();
     $log->success_entry($action,$Conn);
-
     $msg="Event Added Successfully";
 }
 else 
 {
-    $log= new Log();
     $log->success_entry($action,$Conn,"Unsuccessful");
     $error="Something went wrong. Please try again";
 }

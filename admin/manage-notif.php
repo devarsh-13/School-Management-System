@@ -11,52 +11,60 @@ if(strlen($_SESSION['a_id'])=="")
     header("Location: index.php"); 
     }
     else{
-            $action="In Manage Notifications";
-            $log=new Log();
-            $log->success_entry($action,$Conn);
-
- if(isset($_POST['delt']))
+            if(!(isset($_GET['N_id'])))
             {
-
-                $nid=$_POST['recordsCheckBox'];
-
-                   foreach ( $nid as $id ) 
-                   { 
-                          $query = "DELETE FROM `notification` WHERE `Sr_n`='$id'";
-                        $result = $Conn->query($query) or die("Error in query".$Conn->error);
-                   }
-
-if($result)
-{
-$msg="Notification Deleted Successfully";
-}
-else 
-{
-$error="Something went wrong. Please try again";
-}
+                if(!($_POST['delt']))
+                {
+                    $action="In Manage Notifications";
+                    $log=new Log();
+                    $log->success_entry($action,$Conn);
+                }
             }
+            
+ if(isset($_POST['delt']))
+ {
+    $log=new Log();
+    $action="Notifications deleted";
 
-
-
-
-
-        if (isset($_GET['N_id']))
-{
-    $nid = $_GET['N_id'];
-
-    $Sql="DELETE FROM `notification` WHERE `Sr_n`='$nid'";
+    $nid=$_POST['recordsCheckBox'];
     
-   
-        $delete = $Conn->query($Sql) or die("Error in query2".$connection->error);
-   
-if($delete)
-{
-$msg="Notification Deleted Successfully";
+    foreach ( $nid as $id ) 
+    { 
+        $query = "DELETE FROM `notification` WHERE `Sr_n`='$id'";
+        $result = $Conn->query($query) or die("Error in query".$Conn->error);
+    }
+
+    if($result)
+    {
+        $msg="Notification Deleted Successfully";
+        $log->success_entry($action,$Conn);
+    }
+    else 
+    {
+        $error="Something went wrong. Please try again";
+        $log->success_entry($action,$Conn,"Unsuccessful");
+    }
 }
-else 
+if (isset($_GET['N_id']))
 {
-$error="Something went wrong. Please try again";
-}
+    $log=new Log();
+    $action="Notification deleted";
+
+    $nid = $_GET['N_id'];
+    $Sql="DELETE FROM `notification` WHERE `Sr_n`='$nid'";
+   
+    $delete = $Conn->query($Sql) or die("Error in query2".$connection->error);
+   
+    if($delete)
+    {
+        $msg="Notification Deleted Successfully";
+        $log->success_entry($action,$Conn);
+    }
+    else 
+    {
+        $error="Something went wrong. Please try again";
+        $log->success_entry($action,$Conn,"Unsuccessful");
+    }
 }
 
 ?>

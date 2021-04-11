@@ -10,14 +10,18 @@ if(strlen($_SESSION['a_id'])=="")
     header("Location: index.php"); 
     }
     else{
+        if(!(isset($_GET['E_id'])))
+        {
             $action="In Manage Events";
-        $log=new Log();
-        $log->success_entry($action,$Conn);
-
- if(isset($_POST['delt']))
+            $log=new Log();
+            $log->success_entry($action,$Conn);
+    
+        }
+        
+            if(isset($_POST['delt']))
             {
+
                 $action="Delete Event data";
-                
                 $eid=$_POST['recordsCheckBox'];
 
                    foreach ( $eid as $id ) 
@@ -28,14 +32,13 @@ if(strlen($_SESSION['a_id'])=="")
 
 if($result)
 {
-    $log=new Log();
     $log->success_entry($action,$Conn);
-
-$msg="Event Deleted Successfully";
+    $msg="Event Deleted Successfully";
+    unset($_GET['E_id']);
+    header("location:manage-events.php");
 }
 else 
 {
-    $log=new Log();
     $log->success_entry($action,$Conn,"Unsuccessful");
 
 $error="Something went wrong. Please try again";
@@ -55,15 +58,16 @@ if (isset($_GET['E_id']))
         $delete = $Conn->query($Sql) or die("Error in query2".$connection->error);
     if ($delete)
     {   
-        $action="Delete Teacher data";
+        $action="Delete Event data";
         $log=new Log();
         $log->success_entry($action,$Conn);
-         $msg="Event Deleted Successfully";
+        $msg="Event Deleted Successfully";
+        unset($_GET);
     }
     else 
     {
 
-        $action="Delete Teacher data";
+        $action="Delete Event data";
         $log=new Log();
         $log->success_entry($action,$Conn,"Unsuccessful");
     $error="Something went wrong. Please try again";

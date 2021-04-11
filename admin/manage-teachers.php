@@ -9,10 +9,12 @@ if(strlen($_SESSION['a_id'])=="")
     header("Location: index.php"); 
     }
     else{
-
-        $action="In manage-Teachers";
-        $log=new Log();
-        $log->success_entry($action,$Conn);
+        if(!(isset($_GET['T_id'])))
+        {
+            $action="In manage-Teachers";
+            $log=new Log();
+            $log->success_entry($action,$Conn);
+        }
            
 
 if (isset($_GET['T_id']))
@@ -20,23 +22,24 @@ if (isset($_GET['T_id']))
     $tid = $_GET['T_id'];
 
     $Sql="UPDATE `teachers` SET `is_deleted`='1' WHERE `T_srn`='$tid'";
-    
+    $action="Delete Teacher data";
+    $log=new Log();
    
-        $delete = $Conn->query($Sql) or die("Error in query2".$connection->error);
+    $delete = $Conn->query($Sql) or die("Error in query2".$connection->error);
+    
     if ($delete)
     {
-        $action="Delete Teacher data";
-        $log=new Log();
         $log->success_entry($action,$Conn);       
         $msg="Teacher Deleted successfully";
+
+        unset($_GET['T_id']);
+        header("Location:manage-teachers.php");
     }
-else 
-{
-    $action="Delete Teacher data";
-        $log=new Log();
+    else 
+    {
         $log->success_entry($action,$Conn,"Unsuccessful");
-    $error="Something went wrong. Please try again";
-}
+        $error="Something went wrong. Please try again";
+    }
 }
 ?>
 <!DOCTYPE html>
