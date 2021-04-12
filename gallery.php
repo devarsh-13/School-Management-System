@@ -1,3 +1,16 @@
+<?php
+require 'Database/connection.php';
+
+
+$images = mysqli_query($Conn, "select * from images");
+
+$path = "admin/img/";
+
+$row = mysqli_num_rows($images);
+
+?>
+
+
 <!DOCTYPE html>
 
 <head>
@@ -39,6 +52,9 @@
 
       <div class="ed_courses ed_toppadder80 ed_bottompadder80">
          <div class="container">
+            <?php if ($row == 0) {
+               echo "<center><h1> No image to show</h1></center>";
+            } ?>
             <div class="row">
 
 
@@ -46,14 +62,11 @@
 
 
                   <?php
-                  require 'Database/connection.php';
 
 
-                  $images = mysqli_query($Conn, "select * from images");
-
-                  $path = "admin/img/";
 
                   while ($res = mysqli_fetch_array($images)) {
+
                      $full = $path . $res[1];
                      echo "
                       <div class='slide'>
@@ -62,6 +75,7 @@
                          </div>
                         </a>";
                   }
+
 
                   ?>
 
@@ -149,6 +163,6 @@
    <script type="text/javascript" src="js/plugins/countto/jquery.appear.js"></script>
    <script type="text/javascript" src="js/custom.js"></script>
    <!--main js file end-->
-   </body>
+</body>
 
 </html>
