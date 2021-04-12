@@ -170,6 +170,7 @@ $result = mysqli_fetch_array($query);
 															</div>
 															<div class="form-group">
 																<input type="button" id="submit" class="btn ed_btn ed_green" value="SAVE CHANGE">
+																<input id="change_done" disabled style=" background-color:transparent;border:none;width: 100%; color: #228B22;" ;>
 															</div>
 														</form>
 														<script src="profile_admin.js"></script>
