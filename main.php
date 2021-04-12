@@ -19,7 +19,6 @@ $update = mysqli_query($Conn, "UPDATE students SET s_status ='offline' WHERE S_s
 
 ?>
 
-
 <!DOCTYPE html>
 <!-- 
 Template Name: Educo
@@ -37,11 +36,20 @@ Purchase: http://themeforest.net/user/kamleshyadav
 <!-- Begin Head -->
 
 <head>
-
-	<title>ighs</title>
+	<meta charset="utf-8" />
+	<title>Educo Multipurpose Responsive HTML Template</title>
+	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+	<meta name="description" content="Educo" />
+	<meta name="keywords" content="Educo, html template, Education template" />
+	<meta name="author" content="Kamleshyadav" />
+	<meta name="MobileOptimized" content="320" />
 
 	<!--srart theme style -->
 	<link href="css/main.css" rel="stylesheet" type="text/css" />
+	<!-- end theme style -->
+	<!-- favicon links -->
+	<link rel="shortcut icon" type="image/png" href="images/header/favicon.png" />
+
 	<!-- end theme style -->
 	<!-- favicon links -->
 	<link rel="shortcut icon" type="image/png" href="images/header/favicon.png" />
@@ -145,9 +153,9 @@ Purchase: http://themeforest.net/user/kamleshyadav
 			</section>
 			<!--Slider end-->
 			<!--Slider form start--
-<div class="ed_form_box">
-<div class="container">
-	<div class="ed_search_form">
+				<div class="ed_form_box">
+		<div class="container">
+		<div class="ed_search_form">
 		<form class="form-inline">
 		  <div class="form-group">
 			<input type="text" placeholder="Course Name" class="form-control" id="course">
@@ -165,10 +173,10 @@ Purchase: http://themeforest.net/user/kamleshyadav
 		  <button type="button" class="btn ed_btn pull-right ed_orange">search</button>
 		  </div>
 		</form>
-	</div>
-</div>
-</div>
-<--Slider form end-->
+		</div>
+		</div>
+		</div>
+		<--Slider form end-->
 		</div>
 		<!--Latest news start -->
 		<div class="ed_graysection ed_toppadder80 ed_bottompadder80" id="event">
@@ -206,65 +214,9 @@ Purchase: http://themeforest.net/user/kamleshyadav
 				</div>
 			</div>
 		</div><!-- /.container -->
+
 	</div>
-	<!--Latest news end -->
 
-
-
-
-	<!--skill section start --
-
-<div class="ed_graysection ed_toppadder90 ed_bottompadder90">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-				<div class="skill_section">
-					<h4><a href="#">See our best skills</a></h4>
-					<p>We excell in multiple areas, but there are some in which we are absolutely rocking.</p>
-					<span><i class="fa fa-tachometer"></i></span>
-				</div>
-			</div>
-			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-				<div class="skill_section">
-					<h4><a href="#">Recieve a sign-in sheet <i class="fa fa-long-arrow-right"></i></a></h4>
-					<p>Not a member yet? You need to download this sign-in sheet and make sure you become one.</p>
-					<span><i class="fa fa-file-text-o"></i></span>
-				</div>
-			</div>
-        </div>
-	</div>
-</div>
-<!-skill section end --
-<--video_section Section three start --
-<div class="ed_parallax_section">
-<div class="ed_img_overlay"></div>
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-6 col-md-6 col-sm-12">
-				<div class="ed_video_section">
-					<div class="embed-responsive embed-responsive-16by9">
-						<div class="ed_video">
-							<img src="http://placehold.it/544X334" style="cursor:pointer"  alt="1" />
-							<div class="ed_img_overlay">
-								<a href="#"><i class="fa fa-chevron-right"></i></a>
-							</div>
-						</div>
-						<iframe id="educo_video" class="embed-responsive-item" src="https://www.youtube.com/embed/8mb-0qbq984" allowfullscreen></iframe>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-6 col-md-6 col-sm-12">
-				<div class="ed_video_section_discription">
-					<h4>Daily life of studying at Educo</h4>
-					<p>Nam cursus imperdiet elit. Fusce sollicitudin eget nulla in condimentum. Nullam dignissim id magna non tempus. Vivamus molestie nulla nec pharetra dignissim. Suspendisse auctor nisi et neque vehicula pulvinar. Quisque quis tempus magna. Quisque sed luctus nunc sapien.</p>
-					<span><a href="#" class="btn ed_btn ed_orange">see more</a></span>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-<!-video_section Section three end -->
-	<!-- Most recomended Courses Section four start -->
 	<div class="ed_transprentbg ed_toppadder80 ed_bottompadder80">
 		<div class="container">
 			<div class="row">
@@ -402,8 +354,7 @@ Purchase: http://themeforest.net/user/kamleshyadav
 			</div>
 		</div><!-- /.container -->
 	</div>
-	<!--Most recomended Courses Section four end -->
-	<!--Latest news start -->
+
 	<div class="ed_graysection ed_toppadder80 ed_bottompadder80">
 		<div class="container">
 			<div class="row">
@@ -442,44 +393,10 @@ Purchase: http://themeforest.net/user/kamleshyadav
 				</div>
 			</div>
 		</div><!-- /.container -->
-	</div>
-	<!--Latest news end -->
-	<!--Newsletter Section six start--
-<div class="ed_newsletter_section">
-<div class="ed_img_overlay"></div>
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-12 col-md-12 col-sm-12">
-				<div class="row">
-					<div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
-						<div class="ed_newsletter_section_heading">
-							<h4>Let us inform you about everything important directly.</h4>
-						</div>
-					</div>
-					<div class="col-lg-5 col-md-5 col-sm-6 col-xs-6 col-lg-offset-0 col-md-offset-0 col-sm-offset-3 col-xs-offset-3">
-						<div class="row">
-							<div class="ed_newsletter_section_form">
-								<form class="form">
-									<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
-										<input class="form-control" type="text" placeholder="Newsletter Email" />
-									</div>
-									<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-										<button class="btn ed_btn ed_green">confirm</button>
-									</div>
-								</form>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-        </div>
-	</div>
-</div>
-<--Newsletter Section six end-->
 
-	<?php
-	include "footer.php";
-	?>
+	</div>
+	<div class="ed_footer_wrapper">
+		<?php include "footer.php"; ?>
 	</div>
 	<!--Page main section end-->
 	<!--main js file start-->
@@ -493,6 +410,9 @@ Purchase: http://themeforest.net/user/kamleshyadav
 	<script type="text/javascript" src="js/plugins/revel/revolution.extension.layeranimation.min.js"></script>
 	<script type="text/javascript" src="js/plugins/revel/revolution.extension.navigation.min.js"></script>
 	<script type="text/javascript" src="js/plugins/revel/revolution.extension.slideanims.min.js"></script>
+	<script type="text/javascript" src="js/plugins/revel/revolution.extension.actions.min.js"></script>
+	<script type="text/javascript" src="js/plugins/revel/revolution.extension.parallax.min.js"></script>
+	<script type="text/javascript" src="js/plugins/revel/revolution.extension.video.min.js"></script>
 	<script type="text/javascript" src="js/plugins/countto/jquery.countTo.js"></script>
 	<script type="text/javascript" src="js/plugins/countto/jquery.appear.js"></script>
 	<script type="text/javascript" src="js/custom.js"></script>
@@ -500,4 +420,4 @@ Purchase: http://themeforest.net/user/kamleshyadav
 	<!--main js file end-->
 </body>
 
-</html>
+</html

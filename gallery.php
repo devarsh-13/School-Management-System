@@ -1,6 +1,10 @@
 <?php
 require 'Database/connection.php';
 
+if (!isset($_SESSION['s_id'])) {
+	header("location:login.php");
+}
+
 
 $images = mysqli_query($Conn, "select * from images");
 
@@ -53,7 +57,7 @@ $row = mysqli_num_rows($images);
       <div class="ed_courses ed_toppadder80 ed_bottompadder80">
          <div class="container">
             <?php if ($row == 0) {
-               echo "<center><h1> No image to show</h1></center>";
+               echo "<center><h1> No images to show</h1></center>";
             } ?>
             <div class="row">
 
