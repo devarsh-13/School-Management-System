@@ -4286,7 +4286,7 @@ code:not(.language-html) {
 
 .dashboard-stat .bg-icon {
   position: absolute;
-  font-size: 80px;
+  font-size: 60px;
   opacity: 0.4;
   left: 0;
   bottom: 0;
