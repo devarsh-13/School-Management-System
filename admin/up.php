@@ -29,7 +29,6 @@ $Sql="INSERT INTO `images`
 $q=mysqli_query($Conn,$Sql);
 }
 
-header("location:manage-gallery.php");
 
 
 ?>
