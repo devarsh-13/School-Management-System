@@ -12,72 +12,77 @@ if(strlen($_SESSION['t_id'])=="")
 ?> 
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    	<meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Teacher | Resources</title>
-        <link rel="stylesheet" href="css/bootstrap.min.css" media="screen" >
+ 
+<head>
+    
+    <title>Teacher | Dashboard</title>
+ <link rel="stylesheet" href="css/bootstrap.min.css" media="screen" >
         <link rel="stylesheet" href="css/font-awesome.min.css" media="screen" >
         <link rel="stylesheet" href="css/animate-css/animate.min.css" media="screen" >
-        <link rel="stylesheet" href="css/lobipanel/lobipanel.min.css" media="screen" >
-        <link rel="stylesheet" href="css/toastr/toastr.min.css" media="screen" >
-        <link rel="stylesheet" href="css/icheck/skins/line/blue.css" >
-        <link rel="stylesheet" href="css/icheck/skins/line/red.css" >
-        <link rel="stylesheet" href="css/icheck/skins/line/green.css" >
         <link rel="stylesheet" href="css/main.css" media="screen" >
         <script src="js/modernizr/modernizr.min.js"></script>
 
-        <style type="text/css">
+
+          <link rel="shortcut icon" type="image/png" href="assets/images/icon/favicon.ico">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/themify-icons.css">
+    <link rel="stylesheet" href="assets/css/metisMenu.css">
+    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="assets/css/slicknav.min.css">
+    <!-- amchart css -->
+    <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
+    <!-- others css -->
+    <link rel="stylesheet" href="assets/css/typography.css">
+    <link rel="stylesheet" href="assets/css/default-css.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <!-- modernizr css -->
+    <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
+     <style type="text/css">
             #c
             {
                 padding-bottom: 10px;
             }
         </style>
-    </head>
-    <body class="top-navbar-fixed">
-        <div class="main-wrapper">
-              <?php include('includes/topbar.php');?>
-            <div class="content-wrapper">
-                <div class="content-container">
+</head>
 
-                    <?php include('includes/leftbar.php');?>  
+<body >
+    <div id="preloader">
+        <div class="loader"></div>
+    </div>
+    <div class="page-container">
+       <?php include('leftbar.php'); ?>
+    <div class="main-content">
+         <?php include('topbar.php'); ?>
 
-                    <div class="main-page">
-                        <div class="container-fluid">
-                            <div class="row page-title-div">
-                                <div class="col-sm-6">
-                                    <h2 class="title">Resource</h2>
-                                  
-                                </div>
-                                <!-- /.col-sm-6 -->
-                            </div>
-                            <!-- /.row -->
-                             <div class="row breadcrumb-div">
-                                <div class="col-md-6">
-                                    <ul class="breadcrumb">
-                                        <li><a href="dashboard.php"><i class="fa fa-home"></i> Home</a></li>
-                                        
-                                        <li class="active">Resources</li>
-                                    </ul>
-                                </div>
-                             
-                            </div>
-                            <!-- /.row -->
-                      
-                        </div>
-                          <div class="container-fluid">
 
-                        <div class="row">
+
+
+        <!-- page title area start -->
+            <div class="header-area">
+                <div class="row align-items-center">
+                    <ul class="breadcrumbs pull-left">
+                          <h4 class="page-title pull-left">Resources</h4>
+                                <li><a href="dashboard.php">Home</a></li>
+                                <li><a><span>Resource</span></a></li>
+                                <li><span>Class</span></li>
+                            </ul>
+                   
+                </div>
+            </div>
+              <div class="row">
                             <div class="col-md-12">
                                 <div class="panel">
                                     <div class="panel-heading">
                                         <div class="panel-title">
-                                            <h5>Select Class</h5>
+                                            <span>Select Class</span>
                                         </div>
                                     </div>
-                        <!-- /.container-fluid -->
-
+            <!-- page title area end -->
+            <div class="main-content-inner">
+                <!-- MAIN CONTENT GOES HERE -->
+            
                         <section class="section">
                             <div class="container-fluid">
                                 <div class="row">
@@ -141,6 +146,33 @@ while ($query1=mysqli_fetch_array($query))
     </body>
 </html>
 
+   <!-- jquery latest version -->
+    <script src="assets/js/vendor/jquery-2.2.4.min.js"></script>
+    <!-- bootstrap 4 js -->
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/owl.carousel.min.js"></script>
+    <script src="assets/js/metisMenu.min.js"></script>
+    <script src="assets/js/jquery.slimscroll.min.js"></script>
+    <script src="assets/js/jquery.slicknav.min.js"></script>
+
+    <!-- start chart js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+    <!-- start highcharts js -->
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <!-- start zingchart js -->
+    <script src="https://cdn.zingchart.com/zingchart.min.js"></script>
+    <script>
+        zingchart.MODULESDIR = "https://cdn.zingchart.com/modules/";
+        ZC.LICENSE = ["569d52cefae586f634c54f86dc99e6a9", "ee6b7db5b51705a13dc2339db3edaf6d"];
+    </script>
+    <!-- all line chart activation -->
+    <script src="assets/js/line-chart.js"></script>
+    <!-- all pie chart -->
+    <script src="assets/js/pie-chart.js"></script>
+    <!-- others plugins -->
+    <script src="assets/js/plugins.js"></script>
+    <script src="assets/js/scripts.js"></script>
 
 
 
