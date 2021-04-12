@@ -158,7 +158,7 @@ $result = mysqli_fetch_array($query);
 																<input type="button" id="submit" class="btn ed_btn ed_green" value="SAVE CHANGE">
 															</div>
 														</form>
-														<script src="profile_student.js"></script>
+														<script src="profile_teacher.js"></script>
 													</div>
 												</div>
 											</div>
