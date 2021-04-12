@@ -21,58 +21,29 @@ $result = mysqli_fetch_array($query);
 
 ?>
 
-
 <!DOCTYPE html>
-<!-- 
-Template Name: Educo
-Version: 3.0.0
-Author: 
-Website: 
-Purchase: 
--->
-<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
-<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
-<!--[if !IE]><!-->
-<html lang="en">
-<!--<![endif]-->
 
-<!-- Begin Head -->
+<html lang="en">
+
 
 <head>
+	<meta charset="utf-8" />
+	<title>Educo Multipurpose Responsive HTML Template</title>
+	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+	<meta name="description" content="Educo" />
+	<meta name="keywords" content="Educo, html template, Education template" />
+	<meta name="author" content="Kamleshyadav" />
+	<meta name="MobileOptimized" content="320" />
 
-	<title>ighs</title>
-
-	<!--srart theme style -->
 	<link href="css/main.css" rel="stylesheet" type="text/css" />
 
-
-	<link rel="stylesheet" href="css/bootstrap.min.css" media="screen">
-	<link rel="stylesheet" href="css/font-awesome.min.css" media="screen">
-	<link rel="stylesheet" href="css/animate-css/animate.min.css" media="screen">
-	<link rel="stylesheet" href="css/lobipanel/lobipanel.min.css" media="screen">
-	<link rel="stylesheet" href="css/prism/prism.css" media="screen">
-	<script src="js/modernizr/modernizr.min.js"></script>
-
-	<!-- end theme style -->
-	<!-- favicon links -->
 	<link rel="shortcut icon" type="image/png" href="images/header/favicon.png" />
-	<style type="text/css">
-		.ed_footer_wrapper {
-			padding-top: 10%;
-		}
-	</style>
 </head>
 
 <body>
-	<!--Page main section start-->
+
 	<div id="educo_wrapper">
-		<?php
-		include "header.php";
-		?>
-
-		<div class="ed_pagetitle">
-
-		</div>
+		<?php include('header.php'); ?>
 
 		<div class="ed_dashboard_wrapper">
 			<div class="container">
@@ -90,7 +61,6 @@ Purchase:
 									<li><a href="#profile" data-toggle="tab">profile</a></li>
 									<li><a href="#setting" data-toggle="tab">setting</a></li>
 									<li><a href="Logout.php">Logout</a></li>
-
 								</ul>
 							</div>
 						</div>
@@ -105,18 +75,10 @@ Purchase:
 										<p>Hi <strong> <?php echo $result['S_name'];  ?></strong>, here you have to see your profile, notifications and change your password.</p>
 									</div>
 								</div>
-
-
 								<div class="tab-pane" id="profile">
 									<div class="ed_dashboard_inner_tab">
 										<div role="tabpanel">
-											<!-- Nav tabs -->
-											<!-- <ul class="nav nav-tabs" role="tablist">
-												<li role="presentation" class="active"><a href="#view" aria-controls="view" role="tab" data-toggle="tab">view</a></li>
-												<li role="presentation"><a href="#edit" aria-controls="edit" role="tab" data-toggle="tab">edit</a></li>
-												<li role="presentation"><a href="#change" aria-controls="change" role="tab" data-toggle="tab">change profile photo</a></li>
-											</ul> -->
-											<!-- Tab panes -->
+
 											<div class="tab-content">
 												<div role="tabpanel" class="tab-pane active" id="view">
 													<div class="ed_dashboard_inner_tab">
@@ -163,16 +125,13 @@ Purchase:
 
 											</div>
 										</div>
-										<!--tab End-->
+
 									</div>
 								</div>
 								<div class="tab-pane" id="setting">
 									<div class="ed_dashboard_inner_tab">
 										<div role="tabpanel">
-											<!-- Nav tabs -->
 
-
-											<!-- Tab panes -->
 											<div class="tab-content">
 												<div role="tabpanel" class="tab-pane active" id="general">
 													<div class="ed_dashboard_inner_tab">
@@ -205,26 +164,25 @@ Purchase:
 												</div>
 											</div>
 										</div>
-										<!--tab End-->
+
 									</div>
 								</div>
-								<!--tab End-->
+
 							</div>
 						</div>
 					</div>
+
+
 				</div>
 			</div>
 		</div>
-	</div>
-	</div>
-	<!--single student detail end-->
 
-	<?php
-	include "footer.php";
-	?>
+		<?php
+		include "footer.php";
+		?>
+
 	</div>
-	<!--Page main section end-->
-	<!--main js file start-->
+
 	<script type="text/javascript" src="js/jquery-1.12.2.js"></script>
 	<script type="text/javascript" src="js/bootstrap.js"></script>
 	<script type="text/javascript" src="js/modernizr.js"></script>
@@ -239,7 +197,7 @@ Purchase:
 	<script type="text/javascript" src="js/plugins/countto/jquery.appear.js"></script>
 	<script type="text/javascript" src="js/custom.js"></script>
 
-	<!--main js file end-->
+
 </body>
 
 </html>
