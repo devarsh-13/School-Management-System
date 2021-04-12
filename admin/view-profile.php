@@ -237,36 +237,24 @@ Purchase:
 																		<p>Change Password <strong>(leave blank for no change)</strong></p>
 																	</div>
 																	<div class="form-group">
-																		<input type="password" name="OldPassword" class="form-control" placeholder="Old Password" required="true">
-																		<?php
-
-																		if (isset($error_msg['C'])) {
-																			echo "<div class='invalid'><p>" . $error_msg['C'] . "</p></div>";
-																		}
-
-
-																		?>
+																		<input type="password" name="OldPassword" id="oldpassword" class="form-control" placeholder="Old Password">
+																		<input id="error1" disabled style=" background-color:transparent;border:none;width: 100%; color: #ff0000;" ;>
 																	</div>
 
 
 																	<div class="form-group">
-																		<input type="password" name="Password" class="form-control" placeholder="New Password" required="true">
+																		<input type="password" name="Password" id="password" class="form-control" placeholder="New Password">
+																		<input disabled style=" background-color:transparent;border:none;width: 100%" ;>
 																	</div>
 																	<div class="form-group">
-																		<input type="password" name="Password2" class="form-control" placeholder="Repeat New Password" required="true">
-																		<?php
-
-																		if (isset($error_msg['d'])) {
-																			echo "<div class='invalid'><p>" . $error_msg['d'] . "</p></div>";
-																		}
-
-
-																		?>
+																		<input type="password" name="Password2" id="password2" class="form-control" placeholder="Repeat New Password">
+																		<input id="error2" disabled style=" background-color:transparent;border:none;width: 100%; color: #ff0000;" ;>
 																	</div>
 																	<div class="form-group">
-																		<input type="submit" class="btn ed_btn ed_green" name="submit" value="save changes">
+																		<input type="button" id="submit" class="btn ed_btn ed_green" value="SAVE CHANGE">
 																	</div>
 																</form>
+																<script src="profile_admin.js"></script>
 															</div>
 														</div>
 

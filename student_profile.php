@@ -2,9 +2,10 @@
 
 include 'Database/connection.php';
 session_start();
+if (!isset($_SESSION['s_id'])) {
+	header("location:login.php");
+}
 
-      unset($_SESSION['d']);
-      unset($_SESSION['c']);
 $S_srn = $_SESSION['s_id'];
 $sql = "SELECT * from `students` join Class on students.Class_id=Class.Class_id WHERE
  S_srn = '$S_srn' ORDER BY Created_on DESC";
@@ -44,6 +45,14 @@ Purchase:
 	<!--srart theme style -->
 	<link href="css/main.css" rel="stylesheet" type="text/css" />
 
+
+	<link rel="stylesheet" href="css/bootstrap.min.css" media="screen">
+	<link rel="stylesheet" href="css/font-awesome.min.css" media="screen">
+	<link rel="stylesheet" href="css/animate-css/animate.min.css" media="screen">
+	<link rel="stylesheet" href="css/lobipanel/lobipanel.min.css" media="screen">
+	<link rel="stylesheet" href="css/prism/prism.css" media="screen">
+	<script src="js/modernizr/modernizr.min.js"></script>
+
 	<!-- end theme style -->
 	<!-- favicon links -->
 	<link rel="shortcut icon" type="image/png" href="images/header/favicon.png" />
@@ -60,10 +69,11 @@ Purchase:
 		<?php
 		include "header.php";
 		?>
-		<!--Breadcrumb start-->
 
-		<!--Breadcrumb end-->
-		<!--single student detail start-->
+		<div class="ed_pagetitle">
+
+		</div>
+
 		<div class="ed_dashboard_wrapper">
 			<div class="container">
 				<div class="row">
@@ -174,17 +184,17 @@ Purchase:
 															</div>
 															<div class="form-group">
 																<input type="password" name="OldPassword" id="oldpassword" class="form-control" placeholder="Old Password">
-																<input  id="error1" disabled style=" background-color:transparent;border:none;width: 100%; color: #ff0000;";>
+																<input id="error1" disabled style=" background-color:transparent;border:none;width: 100%; color: #ff0000;" ;>
 															</div>
 
 
 															<div class="form-group">
 																<input type="password" name="Password" id="password" class="form-control" placeholder="New Password">
-																<input disabled style=" background-color:transparent;border:none;width: 100%";>
+																<input disabled style=" background-color:transparent;border:none;width: 100%" ;>
 															</div>
 															<div class="form-group">
 																<input type="password" name="Password2" id="password2" class="form-control" placeholder="Repeat New Password">
-																<input  id="error2" disabled style=" background-color:transparent;border:none;width: 100%; color: #ff0000;";>
+																<input id="error2" disabled style=" background-color:transparent;border:none;width: 100%; color: #ff0000;" ;>
 															</div>
 															<div class="form-group">
 																<input type="button" id="submit" class="btn ed_btn ed_green" value="SAVE CHANGE">
@@ -208,7 +218,7 @@ Purchase:
 	</div>
 	</div>
 	<!--single student detail end-->
-	
+
 	<?php
 	include "footer.php";
 	?>
