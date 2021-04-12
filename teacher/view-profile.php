@@ -262,9 +262,6 @@ $result = mysqli_fetch_array($query);
 	<script type="text/javascript" src="../js/custom.js"></script>
 
 
-
-   <!-- jquery latest version -->
-    <script src="../teacher/assets/js/vendor/jquery-2.2.4.min.js"></script>
     <!-- bootstrap 4 js -->
     <script src="../teacher/assets/js/popper.min.js"></script>
     <script src="../teacher/assets/js/bootstrap.min.js"></script>
