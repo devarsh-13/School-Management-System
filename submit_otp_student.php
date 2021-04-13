@@ -31,6 +31,11 @@ if (isset($_POST['verify'])) {
 
   <link rel="stylesheet" href="css/otp.css">
   <script src="js/otp.js"></script>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+	<meta name="description" content="Educo" />
+	<meta name="keywords" content="Educo, html template, Education template" />
+	<meta name="author" content="Kamleshyadav" />
+	<meta name="MobileOptimized" content="320" />
 
 </head>
 
@@ -44,10 +49,10 @@ if (isset($_POST['verify'])) {
           </div>
 
           <form action="#" class="mt-5" method="Post">
-            <input class="otp" type="number" name="otp1" oninput='digitValidate(this)' onkeyup='tabChange(1)' maxlength=1>
-            <input class="otp" type="number" name="otp2" oninput='digitValidate(this)' onkeyup='tabChange(2)' maxlength=1>
-            <input class="otp" type="number" name="otp3" oninput='digitValidate(this)' onkeyup='tabChange(3)' maxlength=1>
-            <input class="otp" type="number" name="otp4" oninput='digitValidate(this)' onkeyup='tabChange(4)' maxlength=1>
+            <input class="otp" type="text" name="otp1" oninput='digitValidate(this)' onkeyup='tabChange(1)' maxlength=1>
+            <input class="otp" type="text" name="otp2" oninput='digitValidate(this)' onkeyup='tabChange(2)' maxlength=1>
+            <input class="otp" type="text" name="otp3" oninput='digitValidate(this)' onkeyup='tabChange(3)' maxlength=1>
+            <input class="otp" type="text" name="otp4" oninput='digitValidate(this)' onkeyup='tabChange(4)' maxlength=1>
 
             <button class='btn btn-primary btn-block mt-4 mb-4 customBtn' name="verify">Verify</button>
             <?php

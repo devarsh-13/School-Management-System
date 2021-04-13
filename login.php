@@ -54,7 +54,14 @@ $flag=0;
 <!DOCTYPE html>
 <html>
   <head>
+	  <meta charset="utf-8" />
     <title>Student Login Form</title>
+
+	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+	<meta name="description" content="Educo" />
+	<meta name="keywords" content="Educo, html template, Education template" />
+	<meta name="author" content="Kamleshyadav" />
+	<meta name="MobileOptimized" content="320" />
    	<link rel="stylesheet" href="css/log_style.css">
   </head>
   <body>
