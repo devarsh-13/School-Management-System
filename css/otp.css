@@ -1,13 +1,15 @@
 body{
-    background:#eee;
+  background: linear-gradient(-135deg, #c850c0, #4158d0); 
   }
   
   .bgWhite{
+    
     background:white;
-    box-shadow:0px 3px 6px 0px #cacaca;
+
   }
   
   .title{
+
     font-weight:600;
     margin-top:20px;
     font-size:24px
@@ -16,11 +18,12 @@ body{
   .customBtn{
     border-radius:0px;
     padding:10px;
+    background: linear-gradient(-135deg, #c850c0, #4158d0);
   }
   
   form input{
     display:inline-block;
-    width:60px;
-    height:60px;
+    width:35px;
+    height:35px;
     text-align:center;
   }

@@ -31,10 +31,7 @@ if (isset($_POST['verify'])) {
 
   <link rel="stylesheet" href="css/otp.css">
   <script src="js/otp.js"></script>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-	<meta name="description" content="Educo" />
-	<meta name="keywords" content="Educo, html template, Education template" />
-	<meta name="author" content="Kamleshyadav" />
+  
 	<meta name="MobileOptimized" content="320" />
 
 </head>
