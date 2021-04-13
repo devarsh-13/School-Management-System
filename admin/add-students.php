@@ -21,6 +21,12 @@ if(isset($_POST['submit']))
         $imageName = $_FILES['file']['name'];
         $result = move_uploaded_file($imageTmpName,$uploadFolder.$imageName);
 
+        if ($result == null) {
+
+            $imageName="student_default.jpg";
+
+        }
+
      
         $gr=$_POST['gr'];
         $ui=$_POST['ui']; 
