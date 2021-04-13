@@ -28,6 +28,13 @@ Purchase:
 	<!-- Begin Head -->
 
 	<head>
+	<meta charset="utf-8" />
+      <title>Resources</title>
+      <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+      <meta name="description" content="Educo" />
+      <meta name="keywords" content="Educo, html template, Education template" />
+      <meta name="author" content="Kamleshyadav" />
+      <meta name="MobileOptimized" content="320" />
 
 		<title>ighs</title>
 
@@ -59,11 +66,11 @@ Purchase:
 			include "header.php";
 			?>
 			<!--Breadcrumb start-->
-		</div>
-		<!--single student detail end-->
+	
+			<!--single student detail end-->
 
 
-		<section class="section">
+			<section class="section">
 			<div class="container-fluid">
 				<div class="row">
 					<?php
@@ -96,14 +103,14 @@ Purchase:
 			</div>
 
 			<!-- /.container-fluid -->
-		</section>
-		<!-- /.section -->
+			</section>
+			<!-- /.section -->
 
 
 
-		<?php
-		include "footer.php";
-		?>
+			<?php
+			include "footer.php";
+			?>
 
 
 		</div>
