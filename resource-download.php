@@ -70,7 +70,7 @@ Purchase:
 					require "Database/connection.php";
 
 
-					$S_srn = $_SESSION['id'];
+					$S_srn = $_SESSION['s_id'];
 
 
 					$sql1 = "SELECT * from `subjects` join `students` on subjects.Class_id=students.Class_id WHERE `S_srn`='$S_srn' ";
