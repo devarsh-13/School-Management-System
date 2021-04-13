@@ -4,9 +4,9 @@ require "connection.php";
 session_start();
 
 
-if (!isset($_SESSION['t_id'])) {
-    header("location:login.php");
-}
+if (isset($_SESSION['t_id'])) {
+   
+
 
 
 $T_srn = $_SESSION['t_id'];
@@ -172,5 +172,12 @@ $update = mysqli_query($Conn, "UPDATE teachers SET t_status ='offline' WHERE T_s
     <script src="assets/js/plugins.js"></script>
     <script src="assets/js/scripts.js"></script>
 
+<?php
+}
+else{
 
+    header("location:teacher_login.php");
+    
+}
+?>
 
