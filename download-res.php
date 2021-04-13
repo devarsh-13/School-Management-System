@@ -106,7 +106,7 @@ $sub_id=$_GET['sub_id'];
 $sql1 ="SELECT * from `resources` WHERE `Sub_id`='$sub_id' ";
 $query= $Conn -> query($sql1); 
 $row = mysqli_num_rows($query);
-   $path = "teacher/resource/";
+   $path = "teacher/resources/";
 
 $cnt=1;
 if($row > 0)

@@ -1,6 +1,6 @@
 
 
-logs = document.getElementById("printLogs")
+logs = document.getElementById("example")
 setInterval(() => {
   let xhr = new XMLHttpRequest();
   xhr.open("GET", "printLogs.php", true);

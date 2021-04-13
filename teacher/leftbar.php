@@ -23,7 +23,12 @@
                                     </li>
 
                                           <li class="has-children">
-                                       <a href="../teacher_chat/select_students.php"><i class="fa fa-comment"></i> <span>Chat</span></a>    
+                                        <a href="#"><i class="fa fa-users"></i> <span>Chat</span> </i></a>
+                                        <ul class="child-nav">
+                                            <li><a href="../teacher_chat/select_students.php"><i class="fa fa-bars"></i> <span>Chat</span></a></li>
+                                            <li><a href=""><i class="fa fa fa-server"></i> <span>Manage Chat</span></a></li>
+                                           
+                                        </ul>
                                     </li>
                                      
                                     <li class="has-children">

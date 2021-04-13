@@ -15,22 +15,24 @@ if (isset($_SESSION['a_id'])) {
 ?>
 
     <html>
+<body>
 
-    <body>
-
+                                         
+    <thead>
         <tr align="center">
-            <td>DATE</td>
-            <td>Time</td>
-            <td>Name</td>
-            <td>Authority</td>
-            <td>Contact</td>
-            <td>Action</td>
-            <td>Status</td>
-            <td>IP Address</td>
-            <td>Device</td>
-            <td>State</td>
-            <td>Country</td>
+            <th>DATE</th>
+            <th>Time</th>
+            <th>Name</th>
+            <th>Authority</th>
+            <th>Contact</th>
+            <th>Action</th>
+            <th>Status</th>
+            <th>IP Address</th>
+            <th>Device</th>
+            <th>State</th>
+            <th>Country</th>
         </tr>
+    </thead>
     <?php
 
 
@@ -43,6 +45,7 @@ if (isset($_SESSION['a_id'])) {
     }
 }
     ?>
+
     </body>
 
     </html>
