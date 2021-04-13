@@ -19,6 +19,15 @@ if (isset($_SESSION['s_id'])) {
    <!DOCTYPE html>
 
    <head>
+
+    
+    <link rel="stylesheet" href="teacher/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="teacher/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="teacher/assets/css/themify-icons.css">
+    <link rel="stylesheet" href="teacher/assets/css/metisMenu.css">
+    <link rel="stylesheet" href="teacher/assets/css/default-css.css">
+    <link rel="stylesheet" href="teacher/assets/css/styles.css">
+
       <meta charset="utf-8" />
       <title>Educo Multipurpose Responsive HTML Template</title>
       <meta content="width=device-width, initial-scale=1.0" name="viewport" />
@@ -102,7 +111,7 @@ if (isset($_SESSION['s_id'])) {
                               // Create the pop out image
                               image_popup.innerHTML = `
                            <div class="con">
-                         <img src="${img.src}" width="700" height="600">
+                         <img src="${img.src}" >
                          </div> `;
                               image_popup.style.display = 'flex';
                            };
@@ -168,6 +177,14 @@ if (isset($_SESSION['s_id'])) {
       <script type="text/javascript" src="js/plugins/countto/jquery.appear.js"></script>
       <script type="text/javascript" src="js/custom.js"></script>
       <!--main js file end-->
+
+      
+    <script src="teacher/assets/js/metisMenu.min.js"></script>
+    <script src="teacher/assets/js/jquery.slimscroll.min.js"></script>
+    <script src="teacher/assets/js/jquery.slicknav.min.js"></script>
+    <script src="teacher/assets/js/plugins.js"></script>
+    <script src="teacher/assets/js/scripts.js"></script>
+
    </body>
 
    </html>

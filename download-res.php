@@ -1,15 +1,15 @@
 <?php
 session_start();
+
+if (!isset($_SESSION['s_id'])) {
+	header("location:login.php");
+}
 error_reporting(0);
 include('connection.php');
 if (strlen($_SESSION['s_id']) == "") {
 	header("Location: index.php");
 } else {
-
-
-
 ?>
-
 
 	<!DOCTYPE html>
 	<!-- 
@@ -32,19 +32,27 @@ Purchase:
 		<title>ighs</title>
 
 		<!--srart theme style -->
-		<meta content="width=device-width, initial-scale=1.0" name="viewport" />
-		<meta name="description" content="Educo" />
-		<meta name="keywords" content="Educo, html template, Education template" />
-		<meta name="author" content="Kamleshyadav" />
-		<meta name="MobileOptimized" content="320" />
-		<link href="css/main.css" rel="stylesheet" type="text/css" />
+		
+    
+    <link rel="stylesheet" href="teacher/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="teacher/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="teacher/assets/css/themify-icons.css">
+    <link rel="stylesheet" href="teacher/assets/css/metisMenu.css">
+    <link rel="stylesheet" href="teacher/assets/css/default-css.css">
+    <link rel="stylesheet" href="teacher/assets/css/styles.css">
+   
+	<meta charset="utf-8" />
+	<title>Educo Multipurpose Responsive HTML Template</title>
+	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+	<meta name="description" content="Educo" />
+	<meta name="keywords" content="Educo, html template, Education template" />
+	<meta name="author" content="Kamleshyadav" />
+	<meta name="MobileOptimized" content="320" />
 
-		<!-- end theme style -->
-		<!-- favicon links -->
-		<link rel="shortcut icon" type="image/png" href="images/header/favicon.png" />
+	<link href="css/main.css" rel="stylesheet" type="text/css" />
 
-		<link rel="stylesheet" href="teacher/css/main.css" media="screen">
-
+	<link rel="shortcut icon" type="image/png" href="images/header/favicon.png" />
+		
 
 		<style type="text/css">
 			#s {
@@ -55,6 +63,7 @@ Purchase:
 			.ed_footer_wrapper {
 				padding-top: 30%;
 			}
+
 		</style>
 	</head>
 
@@ -64,150 +73,96 @@ Purchase:
 			<?php
 			include "header.php";
 			?>
+			<!--Breadcrumb start-->
+		</div>
+		<!--single student detail end-->
 
 
 
-
-			<section class="section">
-				<div class="container-fluid">
-					<div class="row">
-
-
-						<table id="example" class="display table table-striped table-bordered" cellspacing="0" width="100%">
-
-							<tr>
-								<th>#</th>
-								<th>Action</th>
-								<th>Resource Name</th>
-								<th>Created by</th>
-								<th>Created On</th>
-							</tr>
+ <section class="section">
+                            <div class="container-fluid">
+                                <div class="row">
 
 
-
-							<?php
-							require "Database/connection.php";
-							session_start();
-
-							$S_srn = $_SESSION['id'];
-							$sub_id = $_GET['sub_id'];
-
-							$sql1 = "SELECT * from `resources` WHERE `Sub_id`='$sub_id' ";
-							$query = $Conn->query($sql1);
-							$row = mysqli_num_rows($query);
-							$path = "teacher/resource/";
-
-							$cnt = 1;
-							if ($row > 0) {
-								while ($query1 = mysqli_fetch_array($query)) {
-									$full = $path . $query1['R_path'];
-							?>
-									<tr align="center">
-										<td><?php echo htmlentities($cnt); ?></td>
-										<td>
-											<a href="<?php echo $full; ?>" download="<?php echo $full; ?>"><img src="teacher/images/download.png" height="25px" width='25px' />&nbsp;Download</a>
-										</td>
-
-										<td><?php echo $query1['R_path']; ?></td>
-
-										<td><?php
-											$id = $query1['Created_by'];
-											$q = mysqli_query($Conn, "SELECT `T_name` FROM `teachers` WHERE `T_srn` = '$id' ");
-											$name = mysqli_fetch_array($q);
-											echo $name[0];
-											?>
-										</td>
-
-										<td><?php echo $query1['Created_on']; ?></td>
+                                     <table id="example" class="display table table-striped table-bordered" cellspacing="0" width="100%">
+                                                    
+                                                        <tr>
+                                                            <th>#</th>
+                                                            <th>Action</th>
+                                                            <th>Resource Name</th>
+                                                            <th>Created by</th>
+                                                            <th>Created On</th>
+                                                        </tr>
 
 
 
-									</tr>
-							<?php
-									$cnt = $cnt + 1;
-								}
-							}
-							else
-							{
+<?php 
+require "Database/connection.php";
+session_start();
 
-								echo "<center><h1> No images to show</h1></center>";
-							}
-							?>
+$S_srn = $_SESSION['id'];
+$sub_id=$_GET['sub_id'];
 
+$sql1 ="SELECT * from `resources` WHERE `Sub_id`='$sub_id' ";
+$query= $Conn -> query($sql1); 
+$row = mysqli_num_rows($query);
+   $path = "teacher/resource/";
 
+$cnt=1;
+if($row > 0)
+{
+while ($query1=mysqli_fetch_array($query)) {
+    $full = $path . $query1['R_path'];
+   ?>
+                    <tr align="center">
+                        <td><?php echo htmlentities($cnt);?></td>
+                        <td>
+                               <a href="<?php echo $full; ?>" download="<?php echo $full; ?>"><img src="teacher/images/download.png" height="25px" width='25px'/>&nbsp;Download</a>
+                        </td>
+                        
+                        <td><?php echo $query1['R_path'];?></td>
 
-						</table>
+                         <td><?php
+                                $id=$query1['Created_by'];
+                                 $q=mysqli_query($Conn,"SELECT `T_name` FROM `teachers` WHERE `T_srn` = '$id' ");
+                                 $name=mysqli_fetch_array($q);
+                                echo $name[0];
+                            ?>
+                        </td>
+                        
+                        <td><?php echo $query1['Created_on'];?></td>
+                       
+                       
+                   
+                    </tr>
+<?php 
+    $cnt=$cnt+1;}
+}
+ ?>
+                                                       
+                                                    
+                                                    
+                                                </table>
+                                  
+                                  
 
+                                </div>
+                                <!-- /.row -->
+                            </div>
 
-
-					</div>
-					<!-- /.row -->
-				</div>
-
-				<!-- /.container-fluid -->
-			</section>
-			<!-- /.section -->
+                            <!-- /.container-fluid -->
+                        </section>
+                            <!-- /.section -->
 
 
 
 
 
-			<!--Footer Top section start-->
-			<div class="ed_footer_wrapper">
-				<div class="ed_footer_top">
-					<div class="container">
-						<div class="row">
-							<div class="col-lg-4 col-md-4 col-sm-12">
-								<div class="widget text-widget">
-									<p><a href="index.html"><img src="images/footer/F_Logo.png" alt="Footer Logo" /></a></p>
-									<p>Edution is an outstanding PSD template targeting educational institutions, helping them establish strong identity on the internet without any real developing knowledge.
-									</p>
-									<div class="ed_sociallink">
+		<?php
+		include "footer.php";
+		?>
 
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-4 col-md-4 col-sm-12">
-								<div class="widget text-widget">
-									<h4 class="widget-title">find us</h4>
-									<p><i class="fa fa-safari"></i>Wimbledon Street 42a, 45290 Wimbledon, <br />United Kingdom</p>
-									<p><i class="fa fa-envelope-o"></i><a href="#">info@edutioncollege.gov.co.uk</a> <a href="#">public@edutioncollege.gov.co.uk</a></p>
-									<p><i class="fa fa-phone"></i> 1-220-090-080</p>
-								</div>
-							</div>
-							<div class="col-lg-4 col-md-4 col-sm-12">
-								<div class="widget text-widget">
 
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!--Footer Top section end-->
-			<!--Footer Bottom section start-->
-			<div class="ed_footer_bottom">
-				<div class="container">
-					<div class="col-lg-12 col-md-12 col-sm-12">
-						<div class="row">
-							<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-
-							</div>
-							<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-								<div class="ed_footer_menu">
-									<ul>
-										<li><a href="index.html">home</a></li>
-										<li><a href="private_policy.html">private policy</a></li>
-										<li><a href="about.html">about</a></li>
-										<li><a href="contact.html">contact us</a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!--Footer Bottom section end-->
 		</div>
 		<!--Page main section end-->
 		<!--main js file start-->
@@ -226,6 +181,13 @@ Purchase:
 		<script type="text/javascript" src="js/custom.js"></script>
 
 		<!--main js file end-->
+
+
+    <script src="teacher/assets/js/metisMenu.min.js"></script>
+    <script src="teacher/assets/js/jquery.slimscroll.min.js"></script>
+    <script src="teacher/assets/js/jquery.slicknav.min.js"></script>
+    <script src="teacher/assets/js/plugins.js"></script>
+    <script src="teacher/assets/js/scripts.js"></script>
 	</body>
 <?php  } ?>
 

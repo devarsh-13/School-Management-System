@@ -377,6 +377,10 @@ textarea:focus {
 	display: inline-block;
 }
 .educo_call{
+	padding-top: 32px;
+
+}/*
+.educo_call{
     float: left;
     width: 100%;
     padding-top: 32px;
@@ -391,7 +395,7 @@ textarea:focus {
 	color: #202020;
 	font-weight: 700;
     cursor: text;
-}
+}*/
 .menu_fixed{
 	position: fixed;
 	z-index:1000;

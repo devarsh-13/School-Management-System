@@ -20,12 +20,13 @@ if(isset($_POST['submit']))
     $action="Notification added";       
     $log=new Log();
 
+        $nt = $_POST["nt"];
         $notification_text = $_POST["notification"];
           $a = $_SESSION['a_id'];  
           $d = date("Y-m-d");
         
         //Insert image content into database
-      $insert = $Conn->query("INSERT INTO notification SET Notification_text='$notification_text',created_on='$d' ,created_by='$a'");
+      $insert = $Conn->query("INSERT INTO notification SET Notification_topic='$nt', Notification_text='$notification_text',created_on='$d' ,created_by='$a'");
        
 
 if($insert)
@@ -116,7 +117,7 @@ else
             <!-- page title area end -->
             <div class="main-content-inner">
                 <!-- MAIN CONTENT GOES HERE -->
-
+ 
                                     <div class="panel-body">
                                         <?php if($msg){?>
                                         <div class="alert alert-success left-icon-alert" role="alert">
@@ -131,6 +132,14 @@ else if($error){?>
                                         </div>
                                         <?php } ?>
                                         <form class="form-horizontal" method="post">
+
+
+                                            <div class="form-group">
+                                                <label for="default" class="col-sm-2 control-label">Enter Notification Topic</label>
+                                                <div class="col-sm-10">
+                                             <input type="text" name="nt" class="form-control" id="nt" required="required"  autocomplete="off">
+                                                </div>
+                                            </div>
 
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Enter Notification</label>

@@ -39,13 +39,27 @@ Purchase:
 		<title>ighs</title>
 
 		<!--srart theme style -->
-		<link href="css/main.css" rel="stylesheet" type="text/css" />
+		
+    
+    <link rel="stylesheet" href="teacher/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="teacher/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="teacher/assets/css/themify-icons.css">
+    <link rel="stylesheet" href="teacher/assets/css/metisMenu.css">
+    <link rel="stylesheet" href="teacher/assets/css/default-css.css">
+    <link rel="stylesheet" href="teacher/assets/css/styles.css">
+   
+	<meta charset="utf-8" />
+	<title>Educo Multipurpose Responsive HTML Template</title>
+	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+	<meta name="description" content="Educo" />
+	<meta name="keywords" content="Educo, html template, Education template" />
+	<meta name="author" content="Kamleshyadav" />
+	<meta name="MobileOptimized" content="320" />
 
-		<!-- end theme style -->
-		<!-- favicon links -->
-		<link rel="shortcut icon" type="image/png" href="images/header/favicon.png" />
+	<link href="css/main.css" rel="stylesheet" type="text/css" />
 
-		<link rel="stylesheet" href="teacher/css/main.css" media="screen">
+	<link rel="shortcut icon" type="image/png" href="images/header/favicon.png" />
+		
 
 		<style type="text/css">
 			#s {
@@ -56,6 +70,73 @@ Purchase:
 			.ed_footer_wrapper {
 				padding-top: 30%;
 			}
+
+			.dashboard-stat {
+  display: block;
+  padding: 30px 15px;
+  text-align: right;
+  position: relative;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+
+.dashboard-stat .number {
+  font-size: 28px;
+  display: block;
+}
+
+.dashboard-stat .bg-icon {
+  position: absolute;
+  font-size: 60px;
+  opacity: 0.4;
+  left: 0;
+  bottom: 0;
+}
+
+.dashboard-stat:hover {
+  background: #292929 !important;
+}
+
+.dashboard-stat-2 {
+  display: block;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e5e5e5;
+  border-radius: 4px;
+}
+
+.dashboard-stat-2 .stat-content {
+  padding: 20px 15px 15px;
+  text-align: center;
+  position: relative;
+}
+
+.dashboard-stat-2 .number {
+  font-size: 28px;
+  display: block;
+}
+
+.dashboard-stat-2 .stat-footer {
+  background: #fff;
+  color: #292929;
+  text-align: center;
+  display: block;
+  padding: 8px;
+  font-size: 90%;
+}
+
+.dashboard-stat-2:hover {
+  background: #292929 !important;
+}
+
+@media (max-width: 768px) {
+  .dashboard-stat {
+    margin-bottom: 10px;
+  }
+  .dashboard-stat-2 {
+    margin-bottom: 10px;
+  }
+}
+
 		</style>
 	</head>
 
@@ -131,6 +212,13 @@ Purchase:
 		<script type="text/javascript" src="js/custom.js"></script>
 
 		<!--main js file end-->
+
+
+    <script src="teacher/assets/js/metisMenu.min.js"></script>
+    <script src="teacher/assets/js/jquery.slimscroll.min.js"></script>
+    <script src="teacher/assets/js/jquery.slicknav.min.js"></script>
+    <script src="teacher/assets/js/plugins.js"></script>
+    <script src="teacher/assets/js/scripts.js"></script>
 	</body>
 <?php  } ?>
 

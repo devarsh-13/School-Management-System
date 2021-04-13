@@ -139,8 +139,9 @@ if(strlen($_SESSION['t_id'])=="")
                   while ($r = mysqli_fetch_array($q)) {
                     echo " 
                             <div class='card'>
-                        <h4>" . $r['event_date'] . "</h4>
+                        <h4>" . $r['Event_topic'] . "</h4>
                         <p> " . $r['Event_text'] . "</p>
+                        <span>" . $r['event_date'] . "</span>
                                                   
                         </div>  ";
                   }

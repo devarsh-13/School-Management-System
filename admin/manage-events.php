@@ -236,6 +236,7 @@ else if($error){?>
                                                              <th>#</th>
                                                                <th>Action</th>
                                                             <th>Dis/Ena</th>
+                                                            <th>Event Topic</th>
                                                             <th>Event Text</th>
                                                             <th>Event Date</th>
                                                             <th>Status</th>
@@ -289,7 +290,7 @@ if($row > 0)
                         ?>
 
                         </td>
-                         
+                        <td><?php echo $result['Event_topic'];?></td> 
                         <td><?php echo $result['Event_text'];?></td>
                         <td><?php echo $result['event_date'];?></td>
                          <td><?php if($result['is_deleted']==0)

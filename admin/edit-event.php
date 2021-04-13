@@ -1,4 +1,4 @@
-<?php
+ <?php
 session_start();
 error_reporting(0);
 include('connection.php');
@@ -19,7 +19,7 @@ if(isset($_POST['submit']))
     session_start();
         require "connection.php";   
        
-        
+        $et = $_POST["et"];
         $event_text = $_POST["event"];
         $edate=$_POST["edate"];
 
@@ -28,7 +28,7 @@ if(isset($_POST['submit']))
          
           $d = date("Y-m-d");
       
-$Sql="UPDATE `event` SET `Event_text`='$event_text',`is_deleted`='0',`created_on`='$d',`event_date`='$edate',`created_by`='$a' WHERE `Sr_n`='$eid'";
+$Sql="UPDATE `event` SET `Event_topic`='$et', `Event_text`='$event_text',`is_deleted`='0',`created_on`='$d',`event_date`='$edate',`created_by`='$a' WHERE `Sr_n`='$eid'";
 $q=mysqli_query($Conn,$Sql);
 
 if($q)
@@ -149,6 +149,13 @@ if($row > 0)
 {
  while($result=mysqli_fetch_array($query))
     {   ?>
+                                             <div class="form-group">
+                                                <label for="default" class="col-sm-2 control-label">Enter Event Topic</label>
+                                                <div class="col-sm-10">
+                                             <input type="text" name="et" class="form-control" id="et" value="<?php echo htmlentities($result['Event_topic'])?>" required="required"  autocomplete="off">
+                                                </div>
+                                            </div>
+
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Enter Event</label>
                                                 <div class="col-sm-10">

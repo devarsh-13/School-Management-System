@@ -20,11 +20,12 @@ else
     $nid=$_GET['N_id'];
     if(isset($_POST['submit']))
     {
+        $nt = $_POST["nt"];
         $notification_text = $_POST["notification"];
         $a = $_SESSION['a_id'];  
         $d = date("Y-m-d");
     
-        $Sql="UPDATE `notification` SET `Notification_text`='$notification_text',`is_deleted`='0',`created_on`='$d',`created_by`='$a' WHERE `Sr_n`='$nid'";
+        $Sql="UPDATE `notification` SET `Notification_topic`='$nt', `Notification_text`='$notification_text',`is_deleted`='0',`created_on`='$d',`created_by`='$a' WHERE `Sr_n`='$nid'";
 
         $q=mysqli_query($Conn,$Sql);
         
@@ -145,6 +146,13 @@ if($row > 0)
 {
  while($result=mysqli_fetch_array($query))
     {   ?>
+                                             <div class="form-group">
+                                                <label for="default" class="col-sm-2 control-label">Enter Notification Topic</label>
+                                                <div class="col-sm-10">
+                                             <input type="text" name="nt" class="form-control" id="nt" required="required" value="<?php echo htmlentities($result['Notification_topic']);?>" autocomplete="off">
+                                                </div>
+                                            </div>
+
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Enter Notification</label>
                                                 <div class="col-sm-10">

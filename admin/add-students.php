@@ -278,63 +278,63 @@ else if($error){?>
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Gr Number</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" name="gr" class="form-control" maxlength="5" id="gr"   autocomplete="off">
+                                                    <input type="text" name="gr" class="form-control" required="required" maxlength="5" id="gr"   autocomplete="off">
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">UID Number</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" name="ui" class="form-control" id="ui" maxlength="18"   autocomplete="off">
+                                                    <input type="text" name="ui" class="form-control" required="required" id="ui" maxlength="18"   autocomplete="off">
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Student Name</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" name="sn" class="form-control" id="sn"   autocomplete="off">
+                                                    <input type="text" name="sn" class="form-control" required="required" id="sn"   autocomplete="off">
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Caste</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" name="cast" class="form-control" id="cast"   autocomplete="off">
+                                                    <input type="text" name="cast" class="form-control" required="required" id="cast"   autocomplete="off">
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Category</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" name="cat" class="form-control" id="cat"   autocomplete="off">
+                                                    <input type="text" name="cat" class="form-control" required="required" id="cat"   autocomplete="off">
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Date of Birth</label>
                                                 <div class="col-sm-10">
-                                                    <input type="date" name="dob" class="form-control" id="dob"   autocomplete="off">
+                                                    <input type="date" name="dob" class="form-control" required="required" id="dob"   autocomplete="off">
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Contact</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" name="con" class="form-control" id="con" maxlength="10"   autocomplete="off">
+                                                    <input type="text" name="con" class="form-control" required="required"  id="con" maxlength="10"   autocomplete="off">
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Admission Date</label>
                                                 <div class="col-sm-10">
-                                                    <input type="date" name="adate" class="form-control" id="adate"   autocomplete="off">
+                                                    <input type="date" name="adate" class="form-control" required="required" id="adate"   autocomplete="off">
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Class</label>
                                                 <div class="col-sm-10">
-                                                    <select type="text" name="class" class="form-control" id="clas" onclick="Check_class()">
+                                                    <select type="text" name="class" class="form-control" required="required" id="clas" onclick="Check_class()">
                                                         <option value="NULL">-- SELECT --</option>
                                                         <option value="9">9</option>
                                                         <option value="10">10</option>
@@ -360,14 +360,14 @@ else if($error){?>
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Academic Year</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" name="AY" class="form-control" id="AY" maxlength='9'   autocomplete="off">
+                                                    <input type="text" name="AY" class="form-control" required="required" id="AY" maxlength='9'   autocomplete="off">
                                                 </div>
                                             </div>
 
                                                <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Student Image</label>
                                                 <div class="col-sm-10">
-                                                    <input type="file" name="file" class="form-control" id="img" >
+                                                    <input type="file" name="file" required="required" class="form-control" id="img" >
                                                 </div>
                                             </div>
 
@@ -375,14 +375,14 @@ else if($error){?>
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Adhar Number</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" name="adhar" class="form-control" id="adhar" maxlength='12'   autocomplete="on">
+                                                    <input type="text" name="adhar" class="form-control" required="required" id="adhar" maxlength='12'   autocomplete="on">
                                                 </div>
                                             </div>
 
                                               <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Home Address</label>
                                                 <div class="col-sm-10">
-                                                     <textarea rows="5"  name="home" class="form-control" id="home" autocomplete="off"></textarea>
+                                                     <textarea rows="5"  name="home" class="form-control" required="required" id="home" autocomplete="off"></textarea>
                                                 </div>
                                             </div>
 
@@ -399,8 +399,8 @@ else if($error){?>
                                                 <label for="default" class="col-sm-2 control-label">Handicapped</label>
                                                 <div class="col-sm-10">
 
-                                                    <input type="radio" name="hand" value="Yes" onclick="Des(1)" >Yes
-                                                    <input type="radio" name="hand" value="No"  onclick="Des(0)">No 
+                                                    <input type="radio" name="hand" value="Yes" required="required" onclick="Des(1)" >Yes
+                                                    <input type="radio" name="hand" value="No" required="required" onclick="Des(0)">No 
                                                 </div>
                                             </div>
 
@@ -415,7 +415,7 @@ else if($error){?>
                                                <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Password</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" name="pass" class="form-control" id="pass"   autocomplete="off">
+                                                    <input type="text" name="pass" required="required" class="form-control" id="pass"   autocomplete="off">
                                                 </div>
                                             </div>
 

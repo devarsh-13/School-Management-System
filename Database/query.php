@@ -102,6 +102,7 @@ $Conn->query($table);
 
 $table = "CREATE TABLE `Notification` ( 
 	`Sr_n` INT NOT NULL AUTO_INCREMENT , 
+	`Notification_topic` VARCHAR(120) NOT NULL ,
 	`Notification_text` VARCHAR(120) NOT NULL , 
 	`is_deleted` BOOLEAN NOT NULL,
 	`Created_on` DATE NOT NULL DEFAULT CURRENT_DATE ,
@@ -113,6 +114,7 @@ $Conn->query($table);
 
 $table = "CREATE TABLE `Event` ( 
 	`Sr_n` INT NOT NULL AUTO_INCREMENT , 
+	`Event_topic` VARCHAR(120) NOT NULL , 
 	`Event_text` VARCHAR(120) NOT NULL , 
 	`is_deleted` BOOLEAN NOT NULL,
 	`Created_on` DATE NOT NULL DEFAULT CURRENT_DATE ,
@@ -231,10 +233,10 @@ $sql="INSERT INTO `admin`(`A_Photo`,`A_name`, `A_mobile`, `A_address`,`A_passwor
 $q=mysqli_query($Conn,$sql);
 
 
-$Sql="INSERT INTO `Notification` (`Sr_n`, `Notification_text`,`Created_by`) VALUES (NULL, 'DUMMY NOTIFICATION','1') ";
+$Sql="INSERT INTO `Notification` (`Sr_n`,`Notification_topic`, `Notification_text`,`Created_by`) VALUES (NULL,'For Fees','Fees Vadharvama ave che lol','1') ";
 $q=mysqli_query($Conn,$Sql);
 
-$Sql="INSERT INTO `event` (`Event_text`, `is_deleted`,`event_date`,`created_by`) VALUES ('DUmmy event', '0', 'curdate()','2')";
+$Sql="INSERT INTO `event` (`Event_topic`,`Event_text`, `is_deleted`,`event_date`,`created_by`) VALUES ('Anual Function','Koi e avu nai corona che lol', '0', 'curdate()','2')";
 $q=mysqli_query($Conn,$Sql);
 
 $Sql="INSERT INTO `log` (`Date`, `Time`, `Name`, `Contact`, `Action`, `Status`, `IP_address`, `Device`, `State`, `Country`) VALUES (CURRENT_DATE(), CURRENT_TIME(), '', '', '', '', '', '', '', '')";

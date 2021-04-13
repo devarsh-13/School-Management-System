@@ -30,9 +30,7 @@
                                       <a href="view-event.php"><i class="fa fa-file-text"></i> <span>Events</span></a>
                                     </li>
 
-                                    <li class="has-children">
-                                      <a href="view-notif.php"><i class="fa fa-bell"></i> <span>Notifications</span></a>
-                                    </li>
+                                  
 
                                     <li class="has-children">
                                        <a href="view-gallery.php"><i class="fa fa-picture-o"></i> <span>Gallery</span></a>    

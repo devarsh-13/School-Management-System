@@ -22,7 +22,8 @@ if(isset($_POST['submit']))
 {
     $log=new Log();
     $action="ADD Event";   
-           
+    
+    $et = $_POST["et"];
     $event_text = $_POST["event"];
     $edate=$_POST["edate"];
 
@@ -31,7 +32,7 @@ if(isset($_POST['submit']))
     $d = date("Y-m-d");
 
     //Insert image content into database
-    $insert = $Conn->query("INSERT INTO Event SET Event_text='$event_text',created_on='$d' ,created_by='$a',event_date='$edate'");
+    $insert = $Conn->query("INSERT INTO Event SET Event_topic='$et', Event_text='$event_text',created_on='$d' ,created_by='$a',event_date='$edate'");
 if($insert)
 {
     $log->success_entry($action,$Conn);
@@ -136,16 +137,24 @@ else if($error){?>
                                         </div>
                                         <?php } ?>
                                         <form class="form-horizontal" method="post">
+                                             
 
                                             <div class="form-group">
-                                                <label for="default" class="col-sm-2 control-label">Enter Event</label>
+                                                <label for="default" class="col-sm-2 control-label">Enter Event Topic</label>
+                                                <div class="col-sm-10">
+                                             <input type="text" name="et" class="form-control" id="et" required="required"  autocomplete="off">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="default" class="col-sm-2 control-label">Enter Event Info.</label>
                                                 <div class="col-sm-10">
                                                      <textarea rows="5"  name="event" class="form-control" id="event" required="required" autocomplete="off"></textarea>
                                                 </div>
                                             </div>
 
                                                <div class="form-group">
-                                                <label for="default" class="col-sm-2 control-label">Event Date</label>
+                                                <label for="default" class="col-sm-2 control-label">Enter Event Date</label>
                                                 <div class="col-sm-10">
                                                     <input type="date" name="edate" class="form-control" id="edate" required="required" autocomplete="off">
                                                 </div>

@@ -176,7 +176,7 @@ if(strlen($_SESSION['t_id'])=="")
                   // Create the pop out image
                   image_popup.innerHTML = `
             <div class="con">
-               <img src="${img.src}" width="700" height="600">
+               <img src="${img.src}">
             </div>
          `;
                   image_popup.style.display = 'flex';

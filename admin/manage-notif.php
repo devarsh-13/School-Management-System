@@ -217,6 +217,7 @@ else if($error){?>
                                                             <th>#</th>
                                                              <th>Action</th>
                                                             <th>Dis/Ena</th>
+                                                            <th>Notification Topic</th>
                                                             <th>Notification Text</th>
                                                             <th>Created Date</th>
                                                             <th>Status</th>
@@ -265,7 +266,7 @@ if($row > 0)
                         ?>
 
                         </td>
-                      
+                        <td><?php echo $result['Notification_topic'];?></td>
                         <td><?php echo $result['Notification_text'];?></td>
                         <td><?php echo $result['created_on'];?></td>
                         <td><?php if($result['is_deleted']==0)

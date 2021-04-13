@@ -36,6 +36,16 @@ Purchase: http://themeforest.net/user/kamleshyadav
 <!-- Begin Head -->
 
 <head>
+
+
+    
+    <link rel="stylesheet" href="teacher/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="teacher/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="teacher/assets/css/themify-icons.css">
+    <link rel="stylesheet" href="teacher/assets/css/metisMenu.css">
+    <link rel="stylesheet" href="teacher/assets/css/default-css.css">
+    <link rel="stylesheet" href="teacher/assets/css/styles.css">
+   
 	<meta charset="utf-8" />
 	<title>Educo Multipurpose Responsive HTML Template</title>
 	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
@@ -83,7 +93,8 @@ Purchase: http://themeforest.net/user/kamleshyadav
 	<!--Page main section start-->
 	<div id="educo_wrapper">
 		<!--Header start-->
-
+ 
+    
 		<?php
 		include "header.php";
 		?>
@@ -179,8 +190,9 @@ Purchase: http://themeforest.net/user/kamleshyadav
 							while ($r = mysqli_fetch_array($q)) {
 								echo " 
             								<div class='card'>
-												<h4>" . $r['event_date'] . "</h4>
-												<p> " . $r['Event_text'] . "</p>
+            									  <h4>" . $r['Event_topic'] . "</h4>
+                        <p> " . $r['Event_text'] . "</p>
+                        <span>" . $r['event_date'] . "</span>
 																									
 												</div>	";
 							}
@@ -394,6 +406,13 @@ Purchase: http://themeforest.net/user/kamleshyadav
 	<script type="text/javascript" src="js/custom.js"></script>
 
 	<!--main js file end-->
+
+    <script src="teacher/assets/js/metisMenu.min.js"></script>
+    <script src="teacher/assets/js/jquery.slimscroll.min.js"></script>
+    <script src="teacher/assets/js/jquery.slicknav.min.js"></script>
+    <script src="teacher/assets/js/plugins.js"></script>
+    <script src="teacher/assets/js/scripts.js"></script>
+
 </body>
 
 </html>

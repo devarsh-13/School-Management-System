@@ -27,6 +27,16 @@ $result = mysqli_fetch_array($query);
 
 
 <head>
+	
+ 
+    
+    <link rel="stylesheet" href="teacher/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="teacher/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="teacher/assets/css/themify-icons.css">
+    <link rel="stylesheet" href="teacher/assets/css/metisMenu.css">
+    <link rel="stylesheet" href="teacher/assets/css/default-css.css">
+    <link rel="stylesheet" href="teacher/assets/css/styles.css">
+   
 	<meta charset="utf-8" />
 	<title>Educo Multipurpose Responsive HTML Template</title>
 	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
@@ -199,6 +209,11 @@ $result = mysqli_fetch_array($query);
 	<script type="text/javascript" src="js/custom.js"></script>
 
 
+    <script src="teacher/assets/js/metisMenu.min.js"></script>
+    <script src="teacher/assets/js/jquery.slimscroll.min.js"></script>
+    <script src="teacher/assets/js/jquery.slicknav.min.js"></script>
+    <script src="teacher/assets/js/plugins.js"></script>
+    <script src="teacher/assets/js/scripts.js"></script>
 </body>
 
 </html>
