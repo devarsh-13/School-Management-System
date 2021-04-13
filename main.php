@@ -4,9 +4,9 @@ require "Database/connection.php";
 
 session_start();
 
-if (!isset($_SESSION['s_id'])) {
-	header("location:login.php");
-}
+if (isset($_SESSION['s_id'])) {
+
+
 
 
 
@@ -396,4 +396,13 @@ Purchase: http://themeforest.net/user/kamleshyadav
 	<!--main js file end-->
 </body>
 
-</html
+</html>
+
+<?php
+}
+else
+{
+	header("location:login.php");
+
+}
+?>
