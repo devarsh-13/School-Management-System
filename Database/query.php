@@ -134,6 +134,7 @@ $table="CREATE TABLE `Admin` (
 `A_mobile` VARCHAR(10) NOT NULL ,
 `A_address` VARCHAR(255) NOT NULL ,
 `A_password` varchar(20) NOT NULL,
+`is_deleted` BOOLEAN NOT NUll,
 `A_dob` date NOT NULL,
 `Created_on` DATE NOT NULL DEFAULT CURRENT_DATE ,
 `Created_by` INT NOT NULL,
@@ -149,6 +150,7 @@ $table="CREATE TABLE `conversation` (
 `Created_on` DATE NOT NULL DEFAULT CURRENT_DATE ,
 `S_srn` INT(5) NOT NULL,
 `T_srn` INT(3) NOT NULL,
+`is_c_deleted` BOOLEAN NOT NUll,
 `sender_type` VARCHAR(10) NOT NULL
 )"; 
 $q=mysqli_query($Conn,$table);

@@ -204,6 +204,24 @@ $row = mysqli_num_rows($query1);
                                         </a>
                                         <!-- /.dashboard-stat -->
                                     </div>
+
+
+
+
+                                      <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                        <a class="dashboard-stat bg-primary" href="bin-admin.php">
+                                        <?php 
+$sql1 ="SELECT A_id from admin WHERE `is_deleted`='1'";
+$query1 = $Conn -> query($sql1);
+$row = mysqli_num_rows($query1);
+?>
+
+                                            <span class="number counter"><?php echo $row;?></span>
+                                            <span class="name">Deleted Admin</span>
+                                            <span class="bg-icon"><i class="fa fa-trash"></i></span>
+                                        </a>
+                                        <!-- /.dashboard-stat -->
+                                    </div>
                     
 
                     </div>
