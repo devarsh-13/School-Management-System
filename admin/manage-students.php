@@ -33,8 +33,8 @@ if(strlen($_SESSION['a_id'])=="")
                 $log1=new Log();
                 $log1->success_entry($action,$Conn);
                $msg="Student Info Deleted Successfully";
-               unset($_GET['S_id']);
-               header("location:manage-students.php");
+              // unset($_GET['S_id']);
+               //header("location:manage-students.php");
             }
             else 
             {
