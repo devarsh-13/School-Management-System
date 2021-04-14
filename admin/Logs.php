@@ -286,16 +286,7 @@ require 'Store_data.php';
 
 </div></div></div></div></div></div>
 
-</body>
-</html>
-
-
-
-
-
-
-
-    <!-- bootstrap 4 js -->
+<!-- bootstrap 4 js -->
     <script src="../teacher/assets/js/popper.min.js"></script>
     <script src="../teacher/assets/js/bootstrap.min.js"></script>
     <script src="../teacher/assets/js/owl.carousel.min.js"></script>
@@ -320,4 +311,5 @@ require 'Store_data.php';
     <!-- others plugins -->
     <script src="../teacher/assets/js/plugins.js"></script>
     <script src="../teacher/assets/js/scripts.js"></script>
-       
+</body>
+</html>

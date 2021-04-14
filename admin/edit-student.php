@@ -6,9 +6,14 @@ include('store_data.php');
 
 if(strlen($_SESSION['a_id'])=="")
     {   
-    header("Location: index.php"); 
+        header("Location: index.php"); 
     }
-    else{
+        else
+    {
+        $action="in Edit Student";
+        $log=new Log();
+        $log->success_entry($action,$Conn);
+
         $stid=$_GET['S_id'];
 
 if(isset($_POST['update']))
@@ -113,21 +118,31 @@ $error="Something went wrong. Please try again";
                 {
                     document.getElementById("stream").required = false;
                     document.getElementById("stream").disabled = true;
-                    document.getElementById("stream").VALUES="NULL";
+                    document.getElementById("stream").value="NULL";
                 }
             }
-            function Des(i)
+             function desc(i)
             {
-                    if(i==1)
+                var c=document.getElementById("hand1").checked;
+                if(c==true)
+                {
+                    document.getElementById("des").required = true;
+                    document.getElementById("des").disabled = false;
+                    var s=document.getElementById("des").value;
+
+                    if(s.localeCompare("NULL")==0)
                     {
-                        document.getElementById("des").required = true;
-                        document.getElementById("des").disabled = false;
+                       document.getElementById("des").value="";
                     }
-                    else
-                    {
-                        document.getElementById("des").required = false;   
-                        document.getElementById("des").disabled = true;
-                    } 
+
+                }
+                else
+                {
+                    document.getElementById("des").required = false;   
+                    document.getElementById("des").value="NULL";
+                    document.getElementById("des").disabled = true;
+                }
+
 
             }
            
@@ -183,7 +198,7 @@ else if($error){?>
                                             <?php echo htmlentities($error); ?>
                                         </div>
                                         <?php } ?>
-                                        <form class="form-horizontal" method="post" onmouseenter="Check_class()">
+                                        <form class="form-horizontal" method="post" onmouseenter="Check_class()" onkeyup="Check_class()" onkeyup="desc()" onmousemove="desc()" onscroll="desc()" >
 <?php 
  $sql = "SELECT * from `students` join Class on students.Class_id=Class.Class_id WHERE `S_srn`='$stid'";
 $query = mysqli_query($Conn,$sql);
@@ -192,8 +207,8 @@ $row = mysqli_num_rows($query);
 $cnt=1;
 if($row > 0)
 {
- while($result=mysqli_fetch_array($query))
-    {   ?>
+ $result=mysqli_fetch_array($query)
+?>
 
 
                                             <div class="form-group">
@@ -255,17 +270,33 @@ if($row > 0)
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Class</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" name="class"value="<?php  $id=$result['Class_id'];
-                                 $q=mysqli_query($Conn,"SELECT `C_no` FROM `class` WHERE `Class_id` = '$id' ");
-                                 $name=mysqli_fetch_array($q);
-                                echo $name[0];?>"  class="form-control" id="clas" required="required" autocomplete="off" onkeyup="Check_class()">
-                                                </div>
+                                                    <Select name="class" class="form-control" id="clas" required="required" autocomplete="off" onkeyup="Check_class()" >
+                                                    <?php  $id=$result['Class_id'];
+                                                    $q=mysqli_query($Conn,"SELECT `C_no`,`Stream` FROM `class` WHERE `Class_id` = '$id' ");
+                                                    $da_ta=mysqli_fetch_array($q);
+
+                                                    ?>
+
+                                                    <option id=9 value="9" <?php if($da_ta[0]==9){echo "Selected";}?> >  9</option>
+                                                    <option id=10 value="10"<?php if($da_ta[0]==10){echo "Selected";}?> > 10</option>
+                                                    <option id=11 value="11" <?php if($da_ta[0]==10){echo "Selected";}?> >11</option>
+                                                    <option id=12 value="12"<?php if($da_ta[0]==12){echo "Selected";}?> > 12</option>
+                                                </Select>
+
+                                            </div>
+
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Stream</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" name="stream" value="<?php echo htmlentities($result['Stream'])?>" class="form-control" id="stream" required="required" autocomplete="off">
+                                                    <select name="stream" class="form-control" id="stream" required="required" autocomplete="off">
+                                                        <option value="">---Select---</option>
+                                                        <option value="Arts" <?php if($da_ta[1]=="Arts"){echo "Selected"; }?> >Arts</option>
+                                                        <option value="Commerce" <?php if($da_ta[1]=="Commerce"){echo "Selected"; }?>> Commerce</option>
+                                                        <option value="Science" <?php if($da_ta[1]=="Science"){echo "Selected"; }?>> Science</option>
+
+                                                    </select>
                                                 </div>
                                             </div>
 
@@ -297,25 +328,14 @@ if($row > 0)
                                                 <label for="default" class="col-sm-2 control-label">Handicapped</label>
                                                 <div class="col-sm-10">
                                                     <?php  
-                                                        $hd=$result['S_handicapped'];
-                                                        if(strcmp($hd,"YES"))  
-                                                        {
-                                                            echo'
-                                                                <input type="radio" name="hand" value="Yes" required="" checked="">Yes</input> 
-
-                                                                <input type="radio" name="hand" value="No" required="required">No</input>
-                                                                ';
-                                                        }
-                                                        else
-                                                        {
-                                                            echo'
-                                                                <input type="radio" name="hand" value="Yes" required="">Yes</input> 
-
-                                                                <input type="radio" name="hand" value="No"  checked="" required="required">No</input>
-                                                                ';
-                                                        }
+                                                       $result['S_handicapped']
                                                     ?>
-                                                   
+                                                    
+                                                    <input type="radio" name="hand" value="Yes" required <?php if($result['S_handicapped']=="Yes"){echo "checked"; }?>  onclick="desc()"  id="hand1">Yes</input> 
+                                                    
+                                                    <input type="radio" name="hand" value="No" required <?php if($result['S_handicapped']=="No"){echo "checked"; } ?> onclick="desc()"  id="hand2">No</input>
+                                                        
+                                                                                                    
                                                 </div>
                                             </div>
 
@@ -348,7 +368,7 @@ if($row > 0)
                                                 </div>
                                             </div>
 
-                                            <?php }}?>
+                                            <?php }?>
                                         </form>
 
                                     </div>
