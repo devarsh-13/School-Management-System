@@ -30,7 +30,7 @@ $a = $_SESSION['a_id'];
         $dob = $_POST['dob'];
         $con = $_POST['con'];
         $ad=$_POST['ad']; 
-        $pass = $_POST['pass'];
+        $pass = sha1($_POST['pass']);
         $d = date("Y-m-d");
 
 

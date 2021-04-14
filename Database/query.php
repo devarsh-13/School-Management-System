@@ -1,6 +1,10 @@
 <?php
 
 require "connection.php";
+$studentpass=sha1("123");
+$teacherpass=sha1("123");
+$admin1pass=sha1("123");
+$admin2pass=sha1("123");
 
 
 $ay=date('Y').'-'.(date('Y')+1);
@@ -54,7 +58,7 @@ $table = "CREATE TABLE `Students`(
 `S_home` varchar(50) NOT NUll,
 `S_handicapped` varchar(5) NOT NUll,
 `S_describe` varchar(80) NOT NUll,
-`S_password` varchar(20) NOT NULL,
+`S_password` varchar(50) NOT NULL,
 `S_remarks` varchar(50) NOT NUll,
 `Academic_year` VARCHAR(15) NOT NUll,
 `is_deleted` BOOLEAN NOT NUll,
@@ -79,7 +83,7 @@ $table = "CREATE TABLE `Teachers` (
 	`Joining_date` DATE NOT NULL , 
 	`Retire_date` DATE NOT NULL ,
 	`Contact` VARCHAR(10) NOT NULL ,
-	`Password` varchar(20)NOT NULL,
+	`Password` varchar(50)NOT NULL,
 	`is_deleted` BOOLEAN NOT NUll,
 	`Created_on` DATE NOT NULL DEFAULT CURRENT_DATE ,
 	`t_status` VARCHAR(20) NOT NULL,
@@ -133,7 +137,7 @@ $table="CREATE TABLE `Admin` (
 `A_name` VARCHAR(60) NOT NULL ,
 `A_mobile` VARCHAR(10) NOT NULL ,
 `A_address` VARCHAR(255) NOT NULL ,
-`A_password` varchar(20) NOT NULL,
+`A_password` varchar(50) NOT NULL,
 `is_deleted` BOOLEAN NOT NUll,
 `A_dob` date NOT NULL,
 `Created_on` DATE NOT NULL DEFAULT CURRENT_DATE ,
@@ -223,17 +227,25 @@ $q=mysqli_query($Conn,$Sql);
 $Sql="INSERT INTO `Subjects` (Sub_name,Class_id)VALUES('Physics','1')";
 $q=mysqli_query($Conn,$Sql);
 
-$Sql="INSERT INTO `students` (`S_photo`, `S_grn`, `S_uidn`, `S_name`, `S_caste`, `S_category`, `S_dob`, `S_contact`, `S_ad_date`, `Class_id`, `S_adharn`, `S_hostel`, `S_home`, `S_handicapped`, `S_describe`, `S_password`, `S_remarks`,`Academic_year`, `is_deleted`,`s_status`) VALUES ('student_default.jpg', '123', '123456789098765432', 'Kratos', 'asdsds', 'xaxax', '2021-03-01', '1234567890', '2021-01-12-', '1', '123456789012', 'aqaqaqaqaq', '', 'YES', 'qqqqqq', '123', '1aaaaaaaaaaaaa','$ay','0','offline')";
+
+
+$Sql="INSERT INTO `students` (`S_photo`, `S_grn`, `S_uidn`, `S_name`, `S_caste`, `S_category`, `S_dob`, `S_contact`, `S_ad_date`, `Class_id`, `S_adharn`, `S_hostel`, `S_home`, `S_handicapped`, `S_describe`, `S_password`, `S_remarks`,`Academic_year`, `is_deleted`,`s_status`) VALUES ('student_default.jpg', '40', '123456789098765432', 'Kratos', 'asdsds', 'xaxax', '2021-03-01', '1234567890', '2021-01-12-', '1', '123456789012', 'aqaqaqaqaq', '', 'YES', 'qqqqqq', '$studentpass', '1aaaaaaaaaaaaa','$ay','0','offline')";
 $q=mysqli_query($Conn,$Sql);
 
-$Sql="INSERT INTO `Teachers` (`T_photo`, `T_name`, `DOB`, `Degree`, `A_date`, `Joining_date`, `Retire_date`,`Contact`,`Password`,`is_deleted`,`t_status`) VALUES ('teacher_default.jpg', 'abc', '2020-07-14', 'alpha beta gama', '2021-01-24', '2021-01-30', '2021-02-01','7359817926','123','0','offline')";
+
+
+$Sql="INSERT INTO `Teachers` (`T_photo`, `T_name`, `DOB`, `Degree`, `A_date`, `Joining_date`, `Retire_date`,`Contact`,`Password`,`is_deleted`,`t_status`) VALUES ('teacher_default.jpg', 'abc', '2020-07-14', 'alpha beta gama', '2021-01-24', '2021-01-30', '2021-02-01','7359817926',$teacherpass','0','offline')";
 $q=mysqli_query($Conn,$Sql);
 
-$sql="INSERT INTO `admin`(`A_Photo`,`A_name`, `A_mobile`, `A_address`,`A_password`, `A_dob`,`Created_by`) VALUES ('admin_default.jpg','mayank','8980462257','anjar','123','2000-02-20','0')";
+
+
+$sql="INSERT INTO `admin`(`A_Photo`,`A_name`, `A_mobile`, `A_address`,`A_password`, `A_dob`,`Created_by`) VALUES ('admin_default.jpg','mayank','8980462257','anjar','$admin1pass','2000-02-20','0')";
 $q=mysqli_query($Conn,$sql);
 
 
-$sql="INSERT INTO `admin`(`A_Photo`,`A_name`, `A_mobile`, `A_address`,`A_password`, `A_dob`,`Created_by`) VALUES ('admin_default.jpg','jay','9638435147','bhuj','890','2000-02-22','0')";
+
+
+$sql="INSERT INTO `admin`(`A_Photo`,`A_name`, `A_mobile`, `A_address`,`A_password`, `A_dob`,`Created_by`) VALUES ('admin_default.jpg','jay','9638435147','bhuj','$admin2pass','2000-02-22','0')";
 $q=mysqli_query($Conn,$sql);
 
 

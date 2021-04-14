@@ -41,7 +41,7 @@ if(isset($_POST['submit']))
         $home=$_POST['home']; 
         $hand=$_POST['hand']; 
         $des=$_POST['des'];
-        $pass=$_POST['pass'];  
+        $pass=sha1($_POST['pass']);  
         $re=$_POST['re'];
         $stat="offline";
        // $ay=date('Y').'-'.(date('Y')+1);

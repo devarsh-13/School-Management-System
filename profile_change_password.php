@@ -18,12 +18,11 @@
     $result = mysqli_fetch_array($query);
 
 
-	$Password = $_POST['Password'];
+    $Password = sha1($_POST['Password']);
 
+    $Password2 = sha1($_POST['Password2']);
 
-	$Password2 = $_POST['Password2'];
-
-	$OldPassword = $_POST['OldPassword'];
+	$OldPassword =sha1($_POST['OldPassword']);
 
 	$op = $result['S_password'];
 
@@ -59,4 +58,3 @@
         http_response_code(500);
 	
 	}
-?>

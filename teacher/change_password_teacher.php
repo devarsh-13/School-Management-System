@@ -8,9 +8,9 @@ $flag = 0;
 if (isset($_POST['Submit'])) {
 
 
-  $Password = $_POST['Password'];
+  $Password = sha1($_POST['Password']);
 
-  $Password2 = $_POST['Password2'];
+  $Password2 = sha1($_POST['Password2']);
   $T_srn = $_SESSION['t_id'];
 
 

@@ -5,7 +5,8 @@ $flag = 0;
 
 if (isset($_POST['Submit'])) {
 	$Contact =	$_POST['Contact_no'];
-	$Password = $_POST['Password'];
+	$Password = sha1($_POST['Password']);
+
 	$error = false;
 
 	$mo = $_POST['Contact_no'];

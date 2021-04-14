@@ -33,7 +33,7 @@ if (strlen($_SESSION['a_id']) == "") {
         $jdate = $_POST['jdate'];
         $rdate = $_POST['rdate'];
         $deg = $_POST['deg'];
-        $pass = $_POST['pass'];
+        $pass = sha1($_POST['pass']);
         $d = date("Y-m-d");
         $stat = "offline";
 

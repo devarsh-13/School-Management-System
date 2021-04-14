@@ -19,12 +19,11 @@
          $result = mysqli_fetch_array($query);
 
 
-	    $Password = $_POST['Password'];
+         $Password = sha1($_POST['Password']);
 
-
-	    $Password2 = $_POST['Password2'];
-
-	    $OldPassword = $_POST['OldPassword'];
+         $Password2 = sha1($_POST['Password2']);
+     
+         $OldPassword =sha1($_POST['OldPassword']);
 
 	    $op = $result['A_password'];
 

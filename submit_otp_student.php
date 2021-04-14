@@ -13,12 +13,12 @@ if (isset($_POST['verify'])) {
 
 
 
-  if ($_SESSION['otp'] == $otp) {
+  // if ($_SESSION['otp'] == $otp) {
     header("location:change_password_student.php");
-  } else {
+  // } else {
 
     $error_msg['C'] = 'Please enter correct OTP';
-  }
+  
 }
 ?>
 

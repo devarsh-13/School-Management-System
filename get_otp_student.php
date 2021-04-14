@@ -53,33 +53,33 @@ if (isset($_POST['getOtp'])) {
 		// Prepare data for POST request
 
 		// Send the POST request with cURL
-		$curl = curl_init();
+		// $curl = curl_init();
 
-		curl_setopt_array($curl, array(
-			CURLOPT_URL => "http://2factor.in/API/V1/e047ac95-8cab-11eb-a9bc-0200cd936042/SMS/$numbers/$otp",
-			CURLOPT_RETURNTRANSFER => true,
-			CURLOPT_ENCODING => "",
-			CURLOPT_MAXREDIRS => 10,
-			CURLOPT_TIMEOUT => 30,
-			CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-			CURLOPT_CUSTOMREQUEST => "GET",
-			CURLOPT_POSTFIELDS => "",
-			CURLOPT_HTTPHEADER => array(
-				"content-type: application/x-www-form-urlencoded"
-			),
-		));
+		// curl_setopt_array($curl, array(
+		// 	// CURLOPT_URL => "http://2factor.in/API/V1/e047ac95-8cab-11eb-a9bc-0200cd936042/SMS/$numbers/$otp",
+		// 	CURLOPT_RETURNTRANSFER => true,
+		// 	CURLOPT_ENCODING => "",
+		// 	CURLOPT_MAXREDIRS => 10,
+		// 	CURLOPT_TIMEOUT => 30,
+		// 	CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+		// 	CURLOPT_CUSTOMREQUEST => "GET",
+		// 	CURLOPT_POSTFIELDS => "",
+		// 	CURLOPT_HTTPHEADER => array(
+		// 		"content-type: application/x-www-form-urlencoded"
+		// 	),
+		// ));
 
-		$response = curl_exec($curl);
-		$err = curl_error($curl);
+		// $response = curl_exec($curl);
+		// $err = curl_error($curl);
 
-		curl_close($curl);
+		// curl_close($curl);
 
-		if ($err) {
-			echo "cURL Error #:" . $err;
-		} else {
-			echo $response;
+		// if ($err) {
+		// 	echo "cURL Error #:" . $err;
+		// } else {
+		// 	echo $response;
 			header("location:submit_otp_student.php");
-		}
+		// }
 	} else {
 		$error_msg['C'] = 'Please enter valid number!! ';
 		$error = true;
