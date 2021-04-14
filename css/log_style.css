@@ -98,7 +98,7 @@ form .content{
   font-size: 16px;
   align-items: center;
   justify-content: space-around;
-  margin-left: -90px;
+  margin-left: -10px;
   margin-top: 10px;
 }
 
@@ -109,4 +109,3 @@ form .pass-link a{
 form .pass-link a:hover{
   text-decoration: underline;
 }
-
