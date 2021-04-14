@@ -225,7 +225,71 @@ $Sql="INSERT INTO `class` (`Class_id`, `C_no`, `Stream`) VALUES (NULL, '9', NULL
 $q=mysqli_query($Conn,$Sql);
 
 $Sql="INSERT INTO `Subjects` (Sub_name,Class_id)VALUES('Physics','1')";
-$q=mysqli_query($Conn,$Sql);
+
+$std9_10 = array("Gujarati","Hindi","Sanskrit","English","Maths","Science","P.T.","Music","Beauty","Health","Computer","Social Science","Drawing");
+
+$std11_12_sci = array("Biology","Physics","Chemistry","Maths","Gujarati","English","P.T.","Computer");
+
+$std11_12_com = array("Accountancy","Org. of Commerce","S.P. & C.C.","Economics","Statistics","Gujarati","English","Computer");
+
+$std11_12_art = array("Psychology","Sociology","Geography","Economics","Gujarati","English","Philosophy","Logic","Computer","Beauty","Health","Music","History");
+
+foreach ($std9_10 as $value) 
+{
+	$Sql="INSERT INTO `Subjects` (Sub_name,Class_id)VALUES('$value','1')";
+	$q=mysqli_query($Conn,$Sql);
+}
+
+foreach ($std9_10 as $value) 
+{
+	$Sql="INSERT INTO `Subjects` (Sub_name,Class_id)VALUES('$value','2')";
+	$q=mysqli_query($Conn,$Sql);
+}
+
+
+foreach ($std11_12_art as $value) 
+{
+	$Sql="INSERT INTO `Subjects` (Sub_name,Class_id)VALUES('$value','3')";
+	$q=mysqli_query($Conn,$Sql);
+}
+
+
+foreach ($std11_12_art as $value) 
+{
+	$Sql="INSERT INTO `Subjects` (Sub_name,Class_id)VALUES('$value','4')";
+	$q=mysqli_query($Conn,$Sql);
+}
+
+
+
+foreach ($std11_12_com as $value) 
+{
+	$Sql="INSERT INTO `Subjects` (Sub_name,Class_id)VALUES('$value','5')";
+	$q=mysqli_query($Conn,$Sql);
+}
+
+
+foreach ($std11_12_com as $value) 
+{
+	$Sql="INSERT INTO `Subjects` (Sub_name,Class_id)VALUES('$value','6')";
+	$q=mysqli_query($Conn,$Sql);
+}
+
+
+
+foreach ($std11_12_sci as $value) 
+{
+	$Sql="INSERT INTO `Subjects` (Sub_name,Class_id)VALUES('$value','7')";
+	$q=mysqli_query($Conn,$Sql);
+}
+
+
+foreach ($std11_12_sci as $value) 
+{
+	$Sql="INSERT INTO `Subjects` (Sub_name,Class_id)VALUES('$value','8')";
+	$q=mysqli_query($Conn,$Sql);
+}
+
 
 
 

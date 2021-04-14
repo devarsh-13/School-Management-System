@@ -8,14 +8,15 @@ if(strlen($_SESSION['a_id'])=="")
     {   
         header("Location: index.php"); 
     }
-        else
+    else
     {
-        $action="in Edit Student";
-        $log=new Log();
-        $log->success_entry($action,$Conn);
-
-        $stid=$_GET['S_id'];
-
+        if(!(isset($_POST['gr'])))
+        {
+            $action="in Edit Student";
+            $log=new Log();
+            $log->success_entry($action,$Conn);
+        }
+$stid=$_GET['S_id'];        
 if(isset($_POST['update']))
 {
    
@@ -54,6 +55,7 @@ if($q)
 $log=new Log();
 $log->success_entry($action,$Conn);
 $msg="Student Info Edit Successfully";
+unset($_POST);
 }
 else 
 {
@@ -176,11 +178,7 @@ $error="Something went wrong. Please try again";
               <div class="row">
                             <div class="col-md-12">
                                 <div class="panel">
-                                    <div class="panel-heading">
-                                        <div class="panel-title">
-                                            <span>Fill The Student Info.</span>
-                                        </div>
-                                    </div>
+                                    
             <!-- page title area end -->
             <div class="main-content-inner">
                 <!-- MAIN CONTENT GOES HERE -->
@@ -272,16 +270,17 @@ if($row > 0)
                                                 <div class="col-sm-10">
                                                     <Select name="class" class="form-control" id="clas" required="required" autocomplete="off" onkeyup="Check_class()" >
                                                     <?php  $id=$result['Class_id'];
-                                                    $q=mysqli_query($Conn,"SELECT `C_no`,`Stream` FROM `class` WHERE `Class_id` = '$id' ");
-                                                    $da_ta=mysqli_fetch_array($q);
-
+                                                        $q=mysqli_query($Conn,"SELECT `C_no`,`Stream` FROM `class` WHERE `Class_id` = '$id' ");
+                                                        $da_ta=mysqli_fetch_array($q);
+                                                        
                                                     ?>
 
-                                                    <option id=9 value="9" <?php if($da_ta[0]==9){echo "Selected";}?> >  9</option>
-                                                    <option id=10 value="10"<?php if($da_ta[0]==10){echo "Selected";}?> > 10</option>
-                                                    <option id=11 value="11" <?php if($da_ta[0]==10){echo "Selected";}?> >11</option>
-                                                    <option id=12 value="12"<?php if($da_ta[0]==12){echo "Selected";}?> > 12</option>
-                                                </Select>
+                                              <option value="NULL">---Select---</option>  
+                                                    <option value="9"  <?php if($da_ta[0]==9){echo "selected";} ?>>9</option>
+                                                    <option value="10" <?php if($da_ta[0]==10){echo "selected";} ?>>10</option>
+                                                    <option value="11" <?php if($da_ta[0]==11){echo "selected";} ?>>11</option>
+                                                    <option value="12" <?php if($da_ta[0]==12){echo "selected";} ?>>12</option>
+                                                </select>
 
                                             </div>
 
