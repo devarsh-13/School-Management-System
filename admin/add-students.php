@@ -40,6 +40,15 @@ if(isset($_POST['submit']))
         $hostel=$_POST['hostel'];  
         $home=$_POST['home']; 
         $hand=$_POST['hand']; 
+
+        if($hand=="Yes")
+        {
+            $hand="Yes";
+        }
+        else
+        {
+            $hand="No";
+        }
         $des=$_POST['des'];
         $pass=$_POST['pass'];  
         $re=$_POST['re'];

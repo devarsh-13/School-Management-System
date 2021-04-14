@@ -9,7 +9,7 @@ require 'Store_data.php';
 
 if (isset($_SESSION['a_id'])) {
 
-    $q = mysqli_query($Conn, "SELECT * FROM `Log`");
+    $q = mysqli_query($Conn, "SELECT * FROM `Log` ORDER BY L_Date");
 
 
 ?>
