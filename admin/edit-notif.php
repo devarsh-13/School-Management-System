@@ -4,6 +4,8 @@ error_reporting(0);
 include('connection.php');
 include('store_data.php');
 
+$log=new Log();
+
 if(strlen($_SESSION['a_id'])=="")
 {   
     header("Location: index.php"); 
@@ -13,7 +15,7 @@ else
     if(!(isset($_POST['submit'])))
     {
         $action="In Edit Notifications";
-        $log=new Log();
+        
         $log->success_entry($action,$Conn);
     }
 
@@ -29,12 +31,13 @@ else
 
         $q=mysqli_query($Conn,$Sql);
         
-        $log=new Log();        
+              
         $action="Notifications Edited";
         if($q)
         {
             $msg="Notification Edit Successfully";
             $log->success_entry($action,$Conn);
+            unset($_POST);
 
         }
         else 

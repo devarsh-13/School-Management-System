@@ -2,18 +2,15 @@
 session_start();
 error_reporting(0);
 include('connection.php');
+require "../vendor/autoload.php";
+require "store_data.php";
+
 if(strlen($_SESSION['a_id'])=="")
     {   
     header("Location: index.php"); 
     }
-    else{
-
-
-
-require "connection.php";
-require "../vendor/autoload.php";
-require "store_data.php";
-
+    else
+    {
 
 function get_pass($p2)
 {
@@ -22,8 +19,6 @@ function get_pass($p2)
     $p3 = $p1."_".$p2;
     return $p3;
 }
-
-session_start();
 
 //USE PhpOffice\PhpSpreadsheet\Spreadsheet;
 
@@ -86,17 +81,18 @@ session_start();
         }
         //unlink($targetPath);
 
-$action="Import student data";
+$action="Student data Imported";
+$log=new Log();
 if($ok)
 {
 
-    $log= new Log();
+   
     $log->success_entry($action,$Conn);
     $msg="Import Successfully";
 }
 else 
 {
-    $log= new Log();
+   
     $log->success_entry($action,$Conn,"Unsuccessful");
     $error="Something went wrong. Please try again";
 }

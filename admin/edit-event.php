@@ -10,15 +10,17 @@ if(strlen($_SESSION['a_id'])=="")
     }
     else
     {
+        if(!(isset($_POST['submit'])))
+        {
+            $action="In Edit Event";
+            $log->success_entry($action,$Conn);
+        }
 
         $action="Edit Event data";
-         $eid=$_GET['E_id'];
+        $eid=$_GET['E_id'];
+
 if(isset($_POST['submit']))
 {
-    require "connection.php";
-    session_start();
-        require "connection.php";   
-       
         $et = $_POST["et"];
         $event_text = $_POST["event"];
         $edate=$_POST["edate"];
@@ -33,17 +35,17 @@ $q=mysqli_query($Conn,$Sql);
 
 if($q)
 {
-    $log=new Log();
+   
     $log->success_entry($action,$Conn);
-        
-$msg="Event Edit Successfully";
+    $msg="Event Edit Successfully";
+    unset($_POST);
 }
 else 
 {
-    $log=new Log();
+   
     $log->success_entry($action,$Conn,"Unsuccessful");
-        
-$error="Something went wrong. Please try again";
+    $error="Something went wrong. Please try again";
+    
 }
 
 }
@@ -118,7 +120,7 @@ $error="Something went wrong. Please try again";
                                 <div class="panel">
                                     <div class="panel-heading">
                                         <div class="panel-title">
-                                            <span>Fill The Event Info.</span>
+                                            <span>Edit The Event Info.</span>
                                         </div>
                                     </div>
             <!-- page title area end -->

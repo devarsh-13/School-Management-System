@@ -4,15 +4,20 @@ error_reporting(0);
 include('connection.php');
 include('store_data.php');
 
+$log = new Log();
+
 if (strlen($_SESSION['a_id']) == "") {
     header("Location: index.php");
-} else {
-    $action = " In ADD Admin";
-    $log = new Log();
-    $log->success_entry($action, $Conn);
-    if (isset($_POST['submit'])) {
-        require "connection.php";
- 
+} 
+else 
+{   if(!(isset($_POST['an'])))
+    {
+        $action = " In ADD Admin";
+        $log->success_entry($action,$Conn);
+    }
+    
+    if (isset($_POST['submit'])) 
+    {
         $uploadFolder = '../user_photos/';
 
 
@@ -64,13 +69,15 @@ $a = $_SESSION['a_id'];
 
         $q = mysqli_query($Conn, $Sql);
         $action = "Add admin data";
-        if ($q) {
-            $log = new Log();
+        if ($q)
+        {
             $log->success_entry($action, $Conn);
-
             $msg = "Admin Info Added Successfully";
-        } else {
-            $log = new Log();
+            unset($_POST['an']);
+
+        } else 
+        {
+        
             $log->success_entry($action, $Conn, "Unsuccessful");
             $error = "Something went wrong. Please try again";
         }
@@ -179,7 +186,7 @@ $a = $_SESSION['a_id'];
                                         <form class="form-horizontal" method="post" enctype="multipart/form-data">
 
                                             <div class="form-group">
-                                                <label for="default" class="col-sm-2 control-label">Admin Nmae</label>
+                                                <label for="default" class="col-sm-2 control-label">Admin Name</label>
                                                 <div class="col-sm-10">
                                                     <input type="text" name="an" class="form-control" id="an" required="required" autocomplete="off">
                                                 </div>

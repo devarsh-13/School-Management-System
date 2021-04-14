@@ -3,12 +3,20 @@ session_start();
 error_reporting(0);
 include('connection.php');
 include('store_data.php');
+
 if(strlen($_SESSION['a_id'])=="")
     {   
     header("Location: index.php"); 
     }
-    else{
-         $tid=$_GET['T_id'];
+    else
+    {
+        if(!(isset($_POST['submit'])))
+        {
+            $action="In Edit Teacher";
+            $log->success_entry($action,$Conn);
+        }
+
+$tid=$_GET['T_id'];
 if(isset($_POST['update']))
 {
     require "connection.php";
@@ -28,20 +36,18 @@ $Sql="UPDATE `teachers` SET `T_name`='$tn',`DOB`='$dob',`Degree`='$deg',`A_date`
 
 
 $q=mysqli_query($Conn,$Sql);
-
+$action="Edit Teacher data";
 if($q)
 {
-    $action="Edit Teacher data";
-        $log=new Log();
-        $log->success_entry($action,$Conn);
-$msg="Teacher Info Edit Successfully";
+    
+    $log->success_entry($action,$Conn);
+    $msg="Teacher Info Edit Successfully";
+    unset($_POST);
 }
 else 
 {
-    $action="Delete Teacher data";
-        $log=new Log();
-        $log->success_entry($action,$Conn,"Unsuccessful");
-$error="Something went wrong. Please try again";
+    $log->success_entry($action,$Conn,"Unsuccessful");
+    $error="Something went wrong. Please try again";
 }
 
 }

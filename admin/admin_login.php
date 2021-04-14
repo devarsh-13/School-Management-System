@@ -22,7 +22,7 @@ if (isset($_POST['Submit'])) {
 	}
 
 	$query = mysqli_query($Conn, "SELECT * FROM `admin` WHERE
-			`A_mobile` = '$Contact' && `A_password` = '$Password'
+			`A_mobile` = '$Contact' && `A_password` = '$Password' AND `is_deleted`='0'
 			") or die(mysqli_connect_error());
 
 	$row = mysqli_num_rows($query);
@@ -50,12 +50,27 @@ if (isset($_POST['Submit'])) {
    		 setcookie('admin_password', null, -1, '/'); 
 		header("location:dashboard.php");
 		}
-	} else {
+	}
+
+	else 
+	{
 		$contact = $_POST['Contact_no'];
 		$log = new Log();
 		$log->wrong_login($contact, $action, $Conn);
 		$flag = 1;
+
+		$query = mysqli_query($Conn, "SELECT * FROM `admin` WHERE
+			`A_mobile` = '$Contact' && `A_password` = '$Password' AND `is_deleted`='1'
+			") or die(mysqli_connect_error());
+		$row = mysqli_num_rows($query);
+		$arr = mysqli_fetch_row($query);
+		if ($row == 1) 
+		{
+			$flag = 2;
+		}
 	}
+
+
 }
 
 ?>
@@ -97,9 +112,14 @@ if (isset($_POST['Submit'])) {
 			</div>
 
 			<?php
-			if ($flag) {
+			if ($flag==1) {
 				echo "<div class='invalid'><p>Incorrect Contact Number OR Password</p></div>";
 				$flag = 0;
+			}
+			elseif($flag==2)
+			{
+				echo "<div class='invalid'><p>This User is Blocked Please Contact Admin</p></div>";
+				$flag=0;
 			}
 			?>
 

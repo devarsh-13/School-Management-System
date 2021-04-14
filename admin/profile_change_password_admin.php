@@ -1,5 +1,9 @@
 <?php
     include 'connection.php';
+    include 'store_data.php';
+    $log=new Log();
+    $action="Admin Password Changed";
+
     session_start();
     if(isset($_SESSION['a_id']))
     {
@@ -36,6 +40,8 @@
 			    if ($row == 1) {
 
 				    $update = mysqli_query($Conn, "UPDATE `admin` SET `A_password` ='$Password' WHERE A_id ='$A_id' ") or die(mysqli_connect_error());
+
+                    $log->success_entry($action,$Conn);
                      $return = array(
                     'status' => 200
                  );
@@ -47,6 +53,7 @@
             $return = array(
                 'status' => 400
             );
+            $log->success_entry($action,$Conn,"Unsuccessful");
             http_response_code(400);
 			
 		}
@@ -56,6 +63,7 @@
         $return = array(
             'status' => 500
         );
+        $log->success_entry($action,$Conn,"Unsuccessful");
         http_response_code(500);
 	
 	}

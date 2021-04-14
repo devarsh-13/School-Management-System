@@ -4,16 +4,18 @@ error_reporting(0);
 include('connection.php');
 include('store_data.php');
 
+$log=new Log();
+
 if(strlen($_SESSION['a_id'])=="")
     {   
         header("Location: index.php"); 
     }
     else
     {
-        if(!(isset($_POST['gr'])))
+        if(!(isset($_POST['submit'])))
         {
             $action="in Edit Student";
-            $log=new Log();
+            
             $log->success_entry($action,$Conn);
         }
 $stid=$_GET['S_id'];        
@@ -52,14 +54,14 @@ $q=mysqli_query($Conn,$Sql);
 $action="Edit Student data";
 if($q)
 {
-$log=new Log();
+
 $log->success_entry($action,$Conn);
 $msg="Student Info Edit Successfully";
 unset($_POST);
 }
 else 
 {
-$log=new Log();
+
 $log->success_entry($action,$Conn,"Unsuccessful");
 
 $error="Something went wrong. Please try again";

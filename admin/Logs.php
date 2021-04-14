@@ -6,7 +6,12 @@ session_start();
 require 'connection.php';
 require 'Store_data.php';
 
+if(isset($_SESSION['a_id']))
+{
 
+$action="In View Log";
+$log=new Log();
+$log->success_entry($action,$Conn);
 
 ?>
 
@@ -313,3 +318,10 @@ require 'Store_data.php';
     <script src="../teacher/assets/js/scripts.js"></script>
 </body>
 </html>
+<?php 
+}
+else
+{
+	header("location:index.php");
+}
+?>

@@ -1,15 +1,12 @@
 <?php 
-  session_start();
+
+    require "connection.php";
+    require "store_data.php";
+    session_start();
   
   if(isset($_SESSION['a_id']))
   {
-    require "connection.php";
-    
-    require "store_data.php";
-    $action="IN Dashboard";
-    $log= new Log();
-    $log->success_entry($action,$Conn);
-
+      
 
 ?> 
 <!DOCTYPE html>
@@ -330,6 +327,8 @@ $row = mysqli_num_rows($query1);
 
 
 <?php
+    
+
   }
   else
   {

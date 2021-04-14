@@ -1,4 +1,4 @@
-
+    
 <?php
 session_start();
 error_reporting(0);
@@ -319,7 +319,7 @@ else if($error){?>
                                                         <tr>
                                                             <th>#</th>
                                                             <th>action</th>
-                                                            <th>Admin Nmae</th>
+                                                            <th>Admin Name</th>
                                                             <th>Contact</th>
                                                             <th>Date of Birth</th>
                                                             <th>Address</th>
@@ -331,14 +331,19 @@ else if($error){?>
                                                 
 <?php 
 include 'connection.php';
- $sql = "SELECT * from `admin` WHERE `is_deleted`='0' ORDER BY A_id";
+$sql = "SELECT * from `admin` WHERE `is_deleted`='0' ORDER BY A_id";
 $query = mysqli_query($Conn,$sql);
 $row = mysqli_num_rows($query);
 $cnt=1;
 if($row > 0)
 {
     while($result=mysqli_fetch_array($query))
-    {       ?>
+    {       
+            if($result['A_mobile']=="8980462257")
+            {
+                continue;
+            }
+        ?>
                     <tr align="center">
                         <td><?php echo htmlentities($cnt);?></td>
 

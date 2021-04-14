@@ -5,6 +5,8 @@ error_reporting(0);
 include('connection.php');
 include('store_data.php');
 
+$log=new Log();
+
 if(strlen($_SESSION['a_id'])=="")
     {   
     header("Location: index.php"); 
@@ -13,15 +15,13 @@ if(strlen($_SESSION['a_id'])=="")
 
         if(!(isset($_GET['a_id'])))
         {
-
             $action="In Recycle Admin";
-            $log=new Log();
             $log->success_entry($action,$Conn); 
         }
         
 if (isset($_GET['a_id']))
 {
-    $log=new Log();
+    
     $action="Admin data Restored";
 
     $aid = $_GET['a_id'];
@@ -29,19 +29,14 @@ if (isset($_GET['a_id']))
     $delete = $Conn->query($query) or die("Error in query".$Conn->error);
     if ($delete)
     {
-
-        $log=new Log();
+     
         $log->success_entry($action,$Conn); 
-
         $msg="Admin Info Restore Successfully";
 }
 else 
 {
-
-        $log=new Log();
-        $log->success_entry($action,$Conn,"Unsuccessful"); 
-
-$error="Something went wrong. Please try again";
+    $log->success_entry($action,$Conn,"Unsuccessful"); 
+    $error="Something went wrong. Please try again";
 }
 }
     
@@ -326,7 +321,7 @@ else if($error){?>
                                                         <tr>
                                                             <th>#</th>
                                                             <th>action</th>
-                                                            <th>Admin Nmae</th>
+                                                            <th>Admin Name</th>
                                                             <th>Contact</th>
                                                             <th>Date of Birth</th>
                                                             <th>Address</th>
