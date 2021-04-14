@@ -298,7 +298,7 @@ $q=mysqli_query($Conn,$Sql);
 
 
 
-$Sql="INSERT INTO `Teachers` (`T_photo`, `T_name`, `DOB`, `Degree`, `A_date`, `Joining_date`, `Retire_date`,`Contact`,`Password`,`is_deleted`,`t_status`) VALUES ('teacher_default.jpg', 'abc', '2020-07-14', 'alpha beta gama', '2021-01-24', '2021-01-30', '2021-02-01','7359817926',$teacherpass','0','offline')";
+$Sql="INSERT INTO `Teachers` (`T_photo`, `T_name`, `DOB`, `Degree`, `A_date`, `Joining_date`, `Retire_date`,`Contact`,`Password`,`is_deleted`,`t_status`) VALUES ('teacher_default.jpg', 'abc', '2020-07-14', 'alpha beta gama', '2021-01-24', '2021-01-30', '2021-02-01','7359817926','$teacherpass','0','offline')";
 $q=mysqli_query($Conn,$Sql);
 
 
