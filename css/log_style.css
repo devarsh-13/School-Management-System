@@ -1,4 +1,3 @@
-
 html,body{
   display: grid;
   height: 100%;
@@ -98,7 +97,7 @@ form .content{
   font-size: 16px;
   align-items: center;
   justify-content: space-around;
-  margin-left: -10px;
+  margin-left: -20px;
   margin-top: 10px;
 }
 
@@ -108,4 +107,9 @@ form .pass-link a{
 }
 form .pass-link a:hover{
   text-decoration: underline;
+}
+form .field-rem {
+  margin-left: 10px;
+
+
 }
