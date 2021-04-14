@@ -59,10 +59,10 @@ if(strlen($_SESSION['a_id'])=="")
         $log=new Log();
 
         $gid=$_POST['recordsCheckBox'];
-        
+        echo "<script>alert('$gid');</script>";
         foreach($gid as $id ) 
         { 
-            echo "$id";
+            
             $query = mysqli_query($Conn,"SELECT * from `images`  WHERE `Id`='$id' ");
             $path="img/";
             
@@ -176,6 +176,12 @@ if(strlen($_SESSION['a_id'])=="")
         border: 1px solid black;
     }
 
+.dlt button
+{
+    
+    margin-left: 100%;
+}
+
         </style>
     </head>
     <body class="top-navbar-fixed">
@@ -201,6 +207,10 @@ if(strlen($_SESSION['a_id'])=="")
 
 
                     </ul>
+                    <form action="manage-gallery.php" method="post" enctype="multipart/form-data" >
+                       <div class="dlt">
+                  <button type="submit" name="delt" class="btn btn-danger">Delete</button>
+                  </div>
                       
                 </div>
           </div>
@@ -256,9 +266,15 @@ if($row > 0)
     {       $full = $path.$result['Image']; ?>
                     <tr>
                           <td><?php echo htmlentities($cnt);?></td>
-                          <td> <a href="manage-gallery.php?G_id=<?php echo $result['Id'];?>">
-                              <img src="images/delete-icon.jpg" height="25px" width='25px'/>&nbsp;Delete</a>  &nbsp;
-                              <input type="checkbox" name="recordsCheckBox[]" id="recordsCheckBox" class="chh" value="<?php echo $result['Id'];?>"></td>
+                          <td> 
+                                <a href="manage-gallery.php?G_id=<?php echo $result['Id'];?>">
+                                    <img src="images/delete-icon.jpg" height="25px" width='25px'/>&nbsp;Delete
+                                </a>  &nbsp;
+
+
+                              <input type="checkbox" name="recordsCheckBox[]" id="recordsCheckBox" class="chh" value="<?php echo $result['Id'];?>">
+                          </td>
+                        
                         <td> <img src="<?php echo $full; ?>" height="100px" width="100px"></img></td>
                         <td><?php echo $result['Uploaded_on'];?></td>
                         <td><?php
@@ -277,7 +293,7 @@ if($row > 0)
                                                     
                                                 </table>
 
-                                         
+                                         </form>
                                                 <!-- /.col-md-12 -->
                                             </div>
                                         </div>

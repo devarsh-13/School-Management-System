@@ -32,8 +32,8 @@ if (isset($_GET['T_id']))
         $log->success_entry($action,$Conn);       
         $msg="Teacher Deleted successfully";
 
-        unset($_GET['T_id']);
-        header("Location:manage-teachers.php");
+        // unset($_GET['T_id']);
+        // header("Location:manage-teachers.php");
     }
     else 
     {
@@ -387,10 +387,7 @@ if($row > 0)
 <?php 
  $cnt=$cnt+1;}
 }
-else
-{
-     echo "no data";
-} ?>
+ ?>
                                                        
                                                     
                                                     

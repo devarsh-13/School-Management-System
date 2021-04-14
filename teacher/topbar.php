@@ -32,7 +32,10 @@
                             <li id="full-view-exit"><i class="ti-zoom-out"></i></li>
                             <li class="settings-btn">
                                 <i class="ti-bell">
-                                <span>2</span></i>
+                                <span>
+                                    2
+
+                                </span></i>
                             </li>
                               <li><a href="logout.php" class="color-danger text-center"><i class="fa fa-sign-out"></i> Logout</a></li>
                                     
@@ -48,6 +51,7 @@
     <!-- offset area start -->
     <div class="offset-area">
         <div class="offset-close"><i class="ti-close"></i></div>
+
         <ul class="nav offset-menu-tab">
             <li><a class="active" data-toggle="tab" href="#activity">Notification</a></li>
             <li></li>
@@ -76,7 +80,8 @@
 
                                                 
                                                 <h4>" . $r['Notification_topic'] . "</h4>
-                                                <span class='time'><i class='ti-time'></i>09:35</span>
+                                                
+                                                <span class='time'><i class='ti-time'></i>". $r['N_Time'] ."</span>
                                                 </div>
                                                 <p> " . $r['Notification_text'] . "</p>
                                             </div>

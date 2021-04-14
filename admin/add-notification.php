@@ -14,7 +14,7 @@ if(strlen($_SESSION['a_id'])=="")
                 $log=new Log();
                 $log->success_entry($action,$Conn);    
             }
-            
+        
 if(isset($_POST['submit']))
 {
     $action="Notification added";       
@@ -24,9 +24,10 @@ if(isset($_POST['submit']))
         $notification_text = $_POST["notification"];
           $a = $_SESSION['a_id'];  
           $d = date("Y-m-d");
-        
+
+
         //Insert image content into database
-      $insert = $Conn->query("INSERT INTO notification SET Notification_topic='$nt', Notification_text='$notification_text',created_on='$d' ,created_by='$a'");
+      $insert = $Conn->query("INSERT INTO notification SET Notification_topic='$nt', Notification_text='$notification_text',created_on='$d',N_Time=CURRENT_TIME() ,created_by='$a'");
        
 
 if($insert)

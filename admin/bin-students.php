@@ -54,52 +54,189 @@ $error="Something went wrong. Please try again";
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    	<meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Admin Manage Students</title>
-        <link rel="stylesheet" href="css/bootstrap.min.css" media="screen" >
-        <link rel="stylesheet" href="css/font-awesome.min.css" media="screen" >
-        <link rel="stylesheet" href="css/animate-css/animate.min.css" media="screen" >
-        <link rel="stylesheet" href="css/lobipanel/lobipanel.min.css" media="screen" >
-        <link rel="stylesheet" href="css/prism/prism.css" media="screen" > <!-- USED FOR DEMO HELP - YOU CAN REMOVE IT -->
-        <link rel="stylesheet" type="text/css" href="js/DataTables/datatables.min.css"/>
-        <link rel="stylesheet" href="css/main.css" media="screen" >
-        <script src="js/modernizr/modernizr.min.js"></script>
-          <style>
-        .errorWrap {
-    padding: 10px;
-    margin: 0 0 20px 0;
-    background: #fff;
-    border-left: 4px solid #dd3d36;
-    -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
-    box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
-}
-.succWrap{
-    padding: 10px;
-    margin: 0 0 20px 0;
-    background: #fff;
-    border-left: 4px solid #5cb85c;
-    -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
-    box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
-}
+        <title>Manage Student</title>
+   <link rel="stylesheet" href="../teacher/css/bootstrap.min.css" media="screen" >
+        <link rel="stylesheet" href="../teacher/css/font-awesome.min.css" media="screen" >
+        <link rel="stylesheet" href="../teacher/css/animate-css/animate.min.css" media="screen" >
+        <link rel="stylesheet" href="../teacher/css/main.css" media="screen" >
+        <script src="../teacher/js/modernizr/modernizr.min.js"></script>
 
-.dl button
-{
 
-    float: right;
-    margin-top: 10px;
-    margin-right: 10px;
-}
-input.chh
-{
-    width: 20px;
-    height: 20px;
+      <link rel="shortcut icon" type="image/png" href="assets/images/icon/favicon.ico">
+    <link rel="stylesheet" href="../teacher/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../teacher/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../teacher/assets/css/themify-icons.css">
+    <link rel="stylesheet" href="../teacher/assets/css/metisMenu.css">
+    <link rel="stylesheet" href="../teacher/assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="../teacher/assets/css/slicknav.min.css">
+    <!-- amchart css -->
+    <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
+    <!-- others css -->
+    <link rel="stylesheet" href="../teacher/assets/css/typography.css">
+    <link rel="stylesheet" href="../teacher/assets/css/default-css.css">
+    <link rel="stylesheet" href="../teacher/assets/css/styles.css">
+    <link rel="stylesheet" href="../teacher/assets/css/responsive.css">
+    <!-- modernizr css -->
+    <script src="../teacher/assets/js/vendor/modernizr-2.8.3.min.js"></script>
+
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.7.0/js/dataTables.buttons.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.7.0/js/buttons.html5.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.7.0/js/buttons.print.min.js"></script>
+
+ <style>
+        :after, :before {
+            box-sizing: border-box;
+        }
+        a {
+            color: #337ab7;
+            text-decoration: none;
+        }
+        i{
+        margin-bottom:4px;
+        }
+        .btn {
+            display: inline-block;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 1.42857143;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: middle;
+            cursor: pointer;
+            user-select: none;
+            background-image: none;
+            border: 1px solid transparent;
+            border-radius: 4px;
+        }
+        .btn-app {
+            color: white;
+            box-shadow: none;
+            border-radius: 3px;
+            position: relative;
+            padding: 10px 15px;
+            margin: 0;
+            min-width: 60px;
+            max-width: 80px;
+            text-align: center;
+            border: 1px solid #ddd;
+            background-color: #f4f4f4;
+            font-size: 12px;
+            transition: all .2s;
+            background-color: steelblue !important;
+        }
+        .btn-app > .fa, .btn-app > .glyphicon, .btn-app > .ion {
+            font-size: 30px;
+            display: block;
+        }
+        .btn-app:hover {
+            border-color: #aaa;
+            transform: scale(1.1);
+        }
+        .pdf {
+        background-color: #dc2f2f !important;
+        }
+        .excel {
+            background-color: #3ca23c !important;
+        }
+        .csv {
+            background-color: #e86c3a !important;
+        }
+        .imprimir {
+            background-color: #8766b1 !important;
+        }
+      
     
-}
+
+    </style>
 
 
-.scrollmenu
+<script type="text/javascript">
+    $(document).ready(function() {
+    $('#example').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            { extend:    'copy',
+                text:      '<i class="fa fa-clipboard "></i>Copy',
+                className: 'btn btn-app export barras',
+                 exportOptions: {
+                        columns: [ 0, 2, 3, 4, 5,6,7,8,9,10,11,12,13,14,15,16,17,18 ]
+                    }
+            },
+            { extend:    'csv',
+              text:      '<i class="fa fa-file-text-o"></i>CSV',
+                    className: 'btn btn-app export csv',
+                 exportOptions: {
+                        columns: [ 0, 2, 3, 4, 5,6,7,8,9,10,11,12,13,14,15,16,17,18 ]
+                    }
+            },
+
+             { extend:    'excel',
+               text:      '<i class="fa fa-file-excel-o"></i>Excel',
+               className: 'btn btn-app export excel',
+                 exportOptions: {
+                        columns: [ 0, 2, 3, 4, 5,6,7,8,9,10,11,12,13,14,15,16,17,18 ]
+                    }
+            },
+
+            {     extend:    'pdf',
+                  orientation: 'landscape',
+                  pageSize: 'LEGAL',
+                    text:      '<i class="fa fa-file-pdf-o"></i>PDF',
+                     className: 'btn btn-app export pdf',
+                  
+
+
+                  customize : function(doc)
+                    {
+                    var colCount = new Array();
+                    $('#example').find('tbody tr:first-child td').each(function()
+                    {
+                        if($(this).attr('colspan'))
+                        {
+                            for(var i=1;i<=$(this).attr('colspan');$i++)
+                            {
+                                colCount.push('*');
+                            }
+                        }
+                        else
+                        {    
+                            colCount.push('*'); 
+                        }
+                    });
+                    doc.content[1].table.widths = colCount;
+                    },
+        
+                     exportOptions: {
+                        columns: [ 0, 2, 3, 4, 5,6,7,8,9,10,11,12,13,14,15,16,17,18 ]
+                    }
+            },
+
+
+             { extend:    'print',
+                text:      '<i class="fa fa-print"></i>Print',
+                 className: 'btn btn-app export imprimir',
+                 exportOptions: {
+                        columns: [ 0, 2, 3, 4, 5,6,7,8,9,10,11,12,13,14,15,16,17,18 ]
+                    }
+            },
+            
+        ]
+    } );
+} );
+</script>
+
+
+<link href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
+<link href="https://cdn.datatables.net/buttons/1.7.0/css/buttons.dataTables.min.css" rel="stylesheet" type="text/css" />
+
+          <style>
+        .scrollmenu
     {
         max-height: 520px;
         border: 1px solid #ddd;
@@ -114,63 +251,61 @@ input.chh
         background-color: #ddd;
         
     }
-    .scrollmenu th,td
-    {
-        border: 1px solid black;
-    }
+.dl button
+{
+
+    float: right;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+.add button
+{
+
+    float: right;
+    margin-top: 10px;
+    margin-right: 10px;
+}
         </style>
     </head>
     <body class="top-navbar-fixed">
-        <div class="main-wrapper">
+         <div id="preloader">
+        <div class="loader"></div>
+    </div>
+    <div class="page-container">
+       <?php include('includes/leftbar.php'); ?>
+    <div class="main-content">
+         <?php include('includes/topbar.php'); ?>
 
-            <!-- ========== TOP NAVBAR ========== -->
-   <?php include('includes/topbar.php');?> 
-            <!-- ========== WRAPPER FOR BOTH SIDEBARS & MAIN CONTENT ========== -->
-            <div class="content-wrapper">
-                <div class="content-container">
-<?php include('includes/leftbar.php');?>  
 
-                    <div class="main-page">
-                        <div class="container-fluid">
-                            <div class="row page-title-div">
-                                <div class="col-md-6">
-                                    <h2 class="title">Deleted Students</h2>
+
+      
+        <!-- page title area start -->
+            <div class="header-area">
+                <div class="row align-items-center" >
+                    <ul class="breadcrumbs pull-left">
+                          <h4 class="page-title pull-left">Manage Student</h4>
+                                <li><a href="dashboard.php">Home</a></li>
                                 
-                                </div>
-                                 
-                                
-                                <!-- /.col-md-6 text-right -->
-                            </div>
-                            <!-- /.row -->
-                            <div class="row breadcrumb-div">
-                                <div class="col-md-6">
-                                    <ul class="breadcrumb">
-            							<li><a href="dashboard.php"><i class="fa fa-home"></i> Home</a></li>
-                                        <li> Students</li>
-            							<li class="active">Deleted Students</li>
-            						</ul>
-                                </div>
-                             
-                            </div>
-                            <!-- /.row -->
-                        </div>
-                        <!-- /.container-fluid -->
+                                <li><span>Manage Student</span></li>
 
-                        
-                            <div class="container-fluid">
 
-                             
+                    </ul>
+                      
+                </div>
+          </div>
 
-                                <div class="row">
-                                    <div class="col-md-12">
 
-                                        <div class="panel">
-                                            <div class="panel-heading">
-                                                
-                                                <div class="panel-title">
-                                                    <h5>View Students Info</h5>
-                                                </div>
-                                            </div>
+                                <div class="panel">
+                                    <div class="panel-heading">
+                                        <div class="panel-title">
+                                            <span></span>
+                                        </div>
+
+                                    </div>
+            <!-- page title area end -->
+            <div class="main-content-inner">
+                <!-- MAIN CONTENT GOES HERE -->
+                <div class="panel-body">
 <?php if($msg){?>
 <div class="alert alert-success left-icon-alert" role="alert">
  <?php echo htmlentities($msg); ?>
@@ -183,15 +318,15 @@ else if($error){?>
                                         
                                             <div class="scrollmenu">
 
-                                                <table id="exaple" class="disered" cellspacing="0" width="100%">
-                                                
-                                                                                                             <tr>
+                                          <table id="example" class="display nowrap"  style="width:100%">
+                                                <thead>
+                                                    <tr>
                                                             <th>#</th>
-                                                           
-                                                            <th>Restore</th>
+                                                            <th>action</th>
+                    
                                                             <th>Gr. NO.</th>
                                                             <th>Uid. No.</th>
-                                                            <th>Student Nmae</th>
+                                                            <th>Student Name</th>
                                                             <th>Cast</th>
                                                             <th>Category</th>
                                                             <th>Dob</th>
@@ -209,9 +344,10 @@ else if($error){?>
                                                             <th>Created Date</th>
                                                         
                                                             
-                                                        </tr>
-                                                                                                          
-                                                
+                                                    </tr>
+                                                </thead>
+                                                                                                
+                                                </thead>
 <?php 
 include 'connection.php';
  $sql = "SELECT * from `students` join Class on students.Class_id=Class.Class_id WHERE `is_deleted`='1' ORDER BY S_srn";
@@ -224,11 +360,11 @@ if($row > 0)
     {       ?>
                     <tr align="center">
                         <td><?php echo htmlentities($cnt);?></td>
-                         
-                        <td>  <a href="bin-students.php?Sr_id=<?php echo $result['S_srn'];?>">
+                         <td>  <a href="bin-students.php?Sr_id=<?php echo $result['S_srn'];?>">
                               <img src="images/restore-icon.png" height="25px" width='25px'/>&nbsp;Restore</a>
                                  &nbsp;
                         </td>
+                    
                         <td><?php echo $result['S_grn'];?></td>
                         <td><?php echo $result['S_uidn'];?></td>
                         <td><?php echo $result['S_name'];?></td>
@@ -261,9 +397,10 @@ if($row > 0)
 }
 else
 {
-   
+    
 } ?>
-                                                       
+                                                                           
+                                                    
                                                     
                                                     
                                                 </table>
@@ -289,7 +426,7 @@ else
 
                             </div>
                             <!-- /.container-fluid -->
-            
+                        
                         <!-- /.section -->
 
                     </div>
@@ -305,33 +442,34 @@ else
         </div>
         <!-- /.main-wrapper -->
 
-        <!-- ========== COMMON JS FILES ========== -->
-        <script src="js/jquery/jquery-2.2.4.min.js"></script>
-        <script src="js/bootstrap/bootstrap.min.js"></script>
-        <script src="js/pace/pace.min.js"></script>
-        <script src="js/lobipanel/lobipanel.min.js"></script>
-        <script src="js/iscroll/iscroll.js"></script>
-
-        <!-- ========== PAGE JS FILES ========== -->
-        <script src="js/prism/prism.js"></script>
-        <script src="js/DataTables/datatables.min.js"></script>
-
-        <!-- ========== THEME JS ========== -->
-        <script src="js/main.js"></script>
-        <script>
-            $(function($) {
-                $('#example').DataTable();
-
-                $('#example2').DataTable( {
-                    "scrollY":        "300px",
-                    "scrollCollapse": true,
-                    "paging":         false
-                } );
-
-                $('#example3').DataTable();
-            });
-        </script>
     </body>
 </html>
 <?php } ?>
 
+ 
+    <!-- bootstrap 4 js -->
+    <script src="../teacher/assets/js/popper.min.js"></script>
+    <script src="../teacher/assets/js/bootstrap.min.js"></script>
+    <script src="../teacher/assets/js/owl.carousel.min.js"></script>
+    <script src="../teacher/assets/js/metisMenu.min.js"></script>
+    <script src="../teacher/assets/js/jquery.slimscroll.min.js"></script>
+    <script src="../teacher/assets/js/jquery.slicknav.min.js"></script>
+
+    <!-- start chart js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+    <!-- start highcharts js -->
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <!-- start zingchart js -->
+    <script src="https://cdn.zingchart.com/zingchart.min.js"></script>
+    <script>
+        zingchart.MODULESDIR = "https://cdn.zingchart.com/modules/";
+        ZC.LICENSE = ["569d52cefae586f634c54f86dc99e6a9", "ee6b7db5b51705a13dc2339db3edaf6d"];
+    </script>
+    <!-- all line chart activation -->
+    <script src="../teacher/assets/js/line-chart.js"></script>
+    <!-- all pie chart -->
+    <script src="../teacher/assets/js/pie-chart.js"></script>
+    <!-- others plugins -->
+    <script src="../teacher/assets/js/plugins.js"></script>
+    <script src="../teacher/assets/js/scripts.js"></script>
+       
