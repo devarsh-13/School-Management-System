@@ -48,7 +48,6 @@
     <!-- offset area start -->
     <div class="offset-area">
         <div class="offset-close"><i class="ti-close"></i></div>
-
         <ul class="nav offset-menu-tab">
             <li><a class="active" data-toggle="tab" href="#activity">Notification</a></li>
             <li></li>
@@ -59,14 +58,13 @@
 
 
 
-                    
-
-                   
+                  
                    
                 </div>
             </div>
-            <script src="set_notification.js"></script>
+           
         </div>
+        <script src="set_notification.js"></script>
     </div>
     <!-- offset area end -->
  

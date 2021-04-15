@@ -314,7 +314,7 @@ $sql="INSERT INTO `admin`(`A_Photo`,`A_name`, `A_mobile`, `A_address`,`A_passwor
 $q=mysqli_query($Conn,$sql);
 
 
-$Sql="INSERT INTO `Notification` (`Sr_n`,`Notification_topic`, `Notification_text`,`Created_by`) VALUES (NULL,'For Fees','Fees Vadharvama ave che lol','1') ";
+$Sql="INSERT INTO `Notification` (`Sr_n`,`Notification_topic`, `Notification_text`,`Created_by`,`n_status`) VALUES (NULL,'For Fees','Fees Vadharvama ave che lol','1','0') ";
 $q=mysqli_query($Conn,$Sql);
 
 $Sql="INSERT INTO `event` (`Event_topic`,`Event_text`, `is_deleted`,`event_date`,`created_by`) VALUES ('Anual Function','Koi e avu nai corona che lol', '0', '2021-04-01','2')";

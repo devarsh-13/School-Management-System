@@ -163,9 +163,9 @@ if (isset($_GET['N_id']))
         <div class="loader"></div>
     </div>
     <div class="page-container">
-       <?php include('includes/leftbar.php'); ?>
+       <?php include('leftbar.php'); ?>
     <div class="main-content">
-         <?php include('includes/topbar.php'); ?>
+         <?php include('topbar.php'); ?>
 
 
 
