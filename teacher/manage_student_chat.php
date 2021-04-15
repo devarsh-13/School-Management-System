@@ -3,54 +3,29 @@ session_start();
 
 error_reporting(0);
 include 'connection.php';
-include('store_data.php');
+include('../admin/store_data.php');
 
 if (strlen($_SESSION['t_id']) == "") {
     header("Location: index.php");
 } else {
-        // if (!(isset($_GET['N_id']))) {
-        //     if (!($_POST['delt'])) {
-        //         $action = "In Manage Notifications";
-        //         $log = new Log();
-        //         $log->success_entry($action, $Conn);
-        //     }
-        // }
+        $log=new Log();
+        $action="Student deleted from chat";
 
-        if (isset($_POST['delt'])) {
-            // $log=new Log();
-            // $action="Student deleted from chat";
-
-            $sid = $_POST['recordsCheckBox'];
-
-            foreach ($sid as $id) {
-                $query = "DELETE FROM `conversation` WHERE `S_srn`='$id'";
-                $result = $Conn->query($query) or die("Error in query" . $Conn->error);
-            }
-
-            if ($result) {
-                $msg = "Student Deleted Successfully";
-                // $log->success_entry($action,$Conn);
-            } else {
-                $error = "Something went wrong. Please try again";
-                // $log->success_entry($action,$Conn,"Unsuccessful");
-            }
-        }
-        if (isset($_GET['s_id'])) {
+      if (isset($_GET['s_id'])) 
+        {
            
-            // $log=new Log();
-            // $action="message deleted";
-
             $sid = $_GET['s_id'];
-            $Sql = "DELETE  FROM `conversation` WHERE `S_srn`='$id'";
 
+            $Sql="UPDATE `conversation` SET `is_c_deleted`='1' WHERE `S_srn`='$sid'";
             $delete = $Conn->query($Sql) or die("Error in query2" . $connection->error);
 
             if ($delete) {
                 $msg = "student Deleted Successfully";
-                // $log->success_entry($action,$Conn);
+                 $action="Student deleted";
+                 $log->success_entry($action,$Conn);
             } else {
                 $error = "Something went wrong. Please try again";
-                // $log->success_entry($action,$Conn,"Unsuccessful");
+                $log->success_entry($action,$Conn,"Unsuccessful");
             }
         }
 
@@ -132,6 +107,11 @@ if (strlen($_SESSION['t_id']) == "") {
                 }
 
 
+.dlt button
+{
+    
+    margin-left: 100%;
+}
 
                 .scrollmenu table {
 
@@ -163,14 +143,18 @@ if (strlen($_SESSION['t_id']) == "") {
                     <div class="header-area">
                         <div class="row align-items-center">
                             <ul class="breadcrumbs pull-left">
-                                <h4 class="page-title pull-left">Manage Notification</h4>
+                                <h4 class="page-title pull-left">Manage Student Chat</h4>
                                 <li><a href="dashboard.php">Home</a></li>
 
-                                <li><span>Manage Notification</span></li>
+                                <li><span>Manage Student chat</span></li>
 
 
                             </ul>
-
+   <form  method="post" enctype="multipart/form-data" >
+                       <div class="dlt">
+                
+                  <button type="submit" name="btn_delete" id="btn_delete" class="btn btn-danger">Delete</button>
+                  </div>
                         </div>
                     </div>
 
@@ -223,7 +207,7 @@ if (strlen($_SESSION['t_id']) == "") {
 
                                                 $T_srn = $_SESSION['t_id'];
 
-                                                $sql = "SELECT * FROM `conversation` inner join `students` ON conversation.S_srn=students.S_srn WHERE `T_srn`='$T_srn'  GROUP BY conversation.S_srn";
+                                                $sql = "SELECT * FROM `conversation` inner join `students` ON conversation.S_srn=students.S_srn WHERE `T_srn`='$T_srn' and `is_c_deleted`='0'  GROUP BY conversation.S_srn";
                                                 $query = mysqli_query($Conn, $sql);
                                                 $row = mysqli_num_rows($query);
 
@@ -238,7 +222,8 @@ if (strlen($_SESSION['t_id']) == "") {
                                                                 <a href="manage_student_chat.php?s_id=<?php echo $result['S_srn']; ?>">
                                                                     <img src="images/delete-icon.jpg" height="25px" width='25px' />&nbsp;Delete</a>
                                                                 &nbsp;
-                                                                <input type="checkbox" name="recordsCheckBox[]" id="recordsCheckBox" class="chh" value="<?php echo $result['S_srn']; ?>">
+                                                                <input type="checkbox" name="customer_id[]" class="delete_customer" value="<?php echo $result['S_srn']; ?>">
+                                                                
 
                                                             </td>
 
@@ -328,3 +313,49 @@ if (strlen($_SESSION['t_id']) == "") {
         <?php
 
         } ?>
+
+
+
+<script>
+$(document).ready(function(){
+ 
+ $('#btn_delete').click(function(){
+  
+  if(confirm("Are you sure you want to delete this?"))
+  {
+   var id = [];
+   
+   $(':checkbox:checked').each(function(i){
+    id[i] = $(this).val();
+   });
+   
+   if(id.length === 0) //tell you if the array is empty
+   {
+    alert("Please Select atleast one checkbox");
+   }
+   else
+   { 
+    $.ajax({
+     url:'delete-student-chat.php',
+     method:'POST',
+     data:{id:id},
+     success:function()
+     {
+      for(var i=0; i<id.length; i++)
+      {
+       $('tr#'+id[i]+'').css('background-color', '#ccc');
+       $('tr#'+id[i]+'').fadeOut('slow');
+      }
+     }
+    });
+   }
+   
+  }
+  else
+  {
+   return false;
+  }
+ });
+ 
+});
+</script>

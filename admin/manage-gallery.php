@@ -175,8 +175,8 @@ if(strlen($_SESSION['a_id'])=="")
                     </ul>
                     <form  method="post" enctype="multipart/form-data" >
                        <div class="dlt">
-                  <!--<button type="submit" name="delt" class="btn btn-danger">Delete</button>-->
-                  <button type="submit" name="btn_delete" id="btn_delete" class="btn btn-success">Delete</button>
+                
+                  <button type="submit" name="btn_delete" id="btn_delete" class="btn btn-danger">Delete</button>
                   </div>
                       
                 </div>

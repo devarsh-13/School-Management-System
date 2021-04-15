@@ -49,7 +49,7 @@ function get_pass($p2)
                 
                 $q=mysqli_query($Conn,"SELECT Class_id FROM `Class` WHERE `C_no`='$t[3]' AND `Stream`='$t[4]' ")or die(mysqli_error($Conn));
                 $c_id=mysqli_fetch_array($q);
-                $pass = get_pass($t[0]);
+                $pass = sha1(get_pass($t[0]));
         
                         $gr     =$Conn->real_escape_string($t[0]);
                         $uid    =$Conn->real_escape_string($t[1]);
@@ -60,7 +60,7 @@ function get_pass($p2)
                         $cont   =$Conn->real_escape_string($t[9]);
                         $ad_date=$Conn->real_escape_string($t[8]);
                         $cid    =$Conn->real_escape_string($c_id[0]);
-                        echo "----".$t[3]."----".$t[4]."----";
+                     
                         
                         $adhar  =$Conn->real_escape_string($t[10]);
                         $hos    =$Conn->real_escape_string($t[12]);

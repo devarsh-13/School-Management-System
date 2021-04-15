@@ -4,8 +4,8 @@ include('connection.php');
 include('store_data.php');
 if(isset($_POST["id"]))
 {
-	   $action="Photos Deleted";
-        $log=new Log();
+	  
+       
 
  foreach($_POST["id"] as $id)
  {
@@ -22,12 +22,15 @@ if(isset($_POST["id"]))
  }
   if($d)
         {
+             $action="Photos Deleted";
+              $log=new Log();
             $msg="Image Deleted Successfully";
             $log->success_entry($action,$Conn); 
-            
+
         }
         else 
         {
+            $log=new Log();
             $error="Something went wrong. Please try again";
             $log->success_entry($action,$Conn,"Unsuccessful"); 
         }
