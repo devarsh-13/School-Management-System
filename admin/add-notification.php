@@ -24,10 +24,11 @@ if(isset($_POST['submit']))
         $notification_text = $_POST["notification"];
           $a = $_SESSION['a_id'];  
           $d = date("Y-m-d");
+          $n_status=0;
 
 
         //Insert image content into database
-      $insert = $Conn->query("INSERT INTO notification SET Notification_topic='$nt', Notification_text='$notification_text',created_on='$d',N_Time=CURRENT_TIME() ,created_by='$a'");
+      $insert = $Conn->query("INSERT INTO notification SET Notification_topic='$nt', Notification_text='$notification_text',created_on='$d',N_Time=CURRENT_TIME() ,created_by='$a',n_status='$n_status'");
        
 
 if($insert)

@@ -113,7 +113,8 @@ $table = "CREATE TABLE `Notification` (
 	`Created_on` DATE NOT NULL DEFAULT CURRENT_DATE ,
 	`N_Time` TIME NOT NULL DEFAULT CURRENT_TIMESTAMP, 
 	`created_by` INT NOT NULL,
-	PRIMARY KEY (`Sr_n`)
+	PRIMARY KEY (`Sr_n`),
+	`n_status` BOOLEAN NOT NULL
 	)";
 $Conn->query($table); 
 
