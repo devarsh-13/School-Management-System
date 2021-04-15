@@ -14,12 +14,11 @@ if(strlen($_SESSION['a_id'])=="")
 
         if(!(isset($_GET['G_id']))) 
         {
-            if(!(isset($_POST['delt'])))
-            {
+           
                 $action="In Manage Gallery";
                 $log=new Log();
                 $log->success_entry($action,$Conn); 
-            }
+            
         }
     $gid = $_GET['G_id'];
     
@@ -53,40 +52,7 @@ if(strlen($_SESSION['a_id'])=="")
             }
         }
     }
-    if(isset($_POST['delt']))
-    {
-        $action="Photos Deleted";
-        $log=new Log();
-
-        $gid=$_POST['recordsCheckBox'];
-        echo "<script>alert('$gid');</script>";
-        foreach($gid as $id ) 
-        { 
-            
-            $query = mysqli_query($Conn,"SELECT * from `images`  WHERE `Id`='$id' ");
-            $path="img/";
-            
-            while($result=mysqli_fetch_array($query))
-            {
-                $result = mysqli_query($Conn,"DELETE FROM `images` WHERE `Id`='$id'") or die("Error in query".$Conn->error);
-                $full = $path.$result['Image']; 
-                $d=unlink($full);
-             
-            }
-
-        }
-        if($d)
-        {
-            $msg="Image Deleted Successfully";
-            $log->success_entry($action,$Conn); 
-
-        }
-        else 
-        {
-            $error="Something went wrong. Please try again";
-            $log->success_entry($action,$Conn,"Unsuccessful"); 
-        }
-    }
+   
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -207,9 +173,10 @@ if(strlen($_SESSION['a_id'])=="")
 
 
                     </ul>
-                    <form action="manage-gallery.php" method="post" enctype="multipart/form-data" >
+                    <form  method="post" enctype="multipart/form-data" >
                        <div class="dlt">
-                  <button type="submit" name="delt" class="btn btn-danger">Delete</button>
+                
+                  <button type="submit" name="btn_delete" id="btn_delete" class="btn btn-danger">Delete</button>
                   </div>
                       
                 </div>
@@ -272,7 +239,7 @@ if($row > 0)
                                 </a>  &nbsp;
 
 
-                              <input type="checkbox" name="recordsCheckBox[]" id="recordsCheckBox" class="chh" value="<?php echo $result['Id'];?>">
+                              <input type="checkbox" name="customer_id[]" class="delete_customer" value="<?php echo $result['Id'];?>">
                           </td>
                         
                         <td> <img src="<?php echo $full; ?>" height="100px" width="100px"></img></td>
@@ -360,3 +327,47 @@ if($row > 0)
     </body>
 </html>
 <?php } ?>
+
+<script>
+$(document).ready(function(){
+ 
+ $('#btn_delete').click(function(){
+  
+  if(confirm("Are you sure you want to delete this?"))
+  {
+   var id = [];
+   
+   $(':checkbox:checked').each(function(i){
+    id[i] = $(this).val();
+   });
+   
+   if(id.length === 0) //tell you if the array is empty
+   {
+    alert("Please Select atleast one checkbox");
+   }
+   else
+   { 
+    $.ajax({
+     url:'delete_img.php',
+     method:'POST',
+     data:{id:id},
+     success:function()
+     {
+      for(var i=0; i<id.length; i++)
+      {
+       $('tr#'+id[i]+'').css('background-color', '#ccc');
+       $('tr#'+id[i]+'').fadeOut('slow');
+      }
+     }
+    });
+   }
+   
+  }
+  else
+  {
+   return false;
+  }
+ });
+ 
+});
+</script>

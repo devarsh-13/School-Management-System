@@ -222,7 +222,7 @@ else if($error){?>
                                             <div class="form-group">
                                                 <div class="col-sm-offset-2 col-sm-10">
                                                     <input type="hidden" name="sub_id" value="<?php echo '$sub_id'; ?>">
-                                                    <button id="upBtn"  class="btn btn-primary">Upload</button>
+                                                    <button id="upBtn" type="submit" class="btn btn-primary">Upload</button>
                                                 </div>
                                             </div>
                                         
@@ -252,7 +252,7 @@ $sql1 ="SELECT * from `resources` WHERE `Sub_id`='$sub_id' ";
 
 $query= $Conn -> query($sql1); 
 $row = mysqli_num_rows($query);
- $path = "resource/";
+ $path = "resources/";
 $cnt=1;
 
 
@@ -298,23 +298,6 @@ while ($query1=mysqli_fetch_array($query)) {
                                   
 
 
-
-
-<script type="text/javascript">
-
-     $(document).ready(function(){
-         $("#upBtn").click(function(){
-           
-           setInterval('reloadpage()',500);
-
-        });
-         });
-
-         function reloadpage()
-         {
-            location.reload(true);
-         }
-</script>
 
 
 
