@@ -11,10 +11,10 @@ $sub_id=$_GET['sub_id'];
 
 
 
-if(isset($_POST['dlt']))
+if(isset($_GET['r_id']))
 {
 
-    $rid=$_POST['rid'];
+    $rid=$_GET['r_id'];
  $sql = "SELECT * from `resources`  WHERE `R_id`='$rid' ";
 $query = mysqli_query($Conn,$sql);
 $row = mysqli_num_rows($query);
@@ -264,10 +264,10 @@ while ($query1=mysqli_fetch_array($query)) {
                     <tr align="center">
                         <td><?php echo htmlentities($cnt);?></td>
                         <td>
-                           <!-- <a href="resource-add.php?r_id=<?php //echo  $query1['R_id'];?>">
-                              <img src="images/delete-icon.jpg" height="25px" width='25px'/>&nbsp;Delete</a>-->
-                              <input type="hidden" name="rid" value="<?php echo $query1['R_id']-1; ?>">
-                              <input type="submit" name="dlt" value="Delete" class="btn btn-danger">
+                           <a href="resource-add.php?sub_id=<?php echo $sub_id;?>&r_id=<?php echo  $query1['R_id'];?>">
+                              <img src="images/delete-icon.jpg" height="25px" width='25px'/>&nbsp;Delete</a>
+                              <!-- <input type="hidden" name="rid" value="<?php //echo $query1['R_id']; ?>">
+                              <input type="submit" name="dlt" value="Delete" class="btn btn-danger">-->
                               &nbsp;
                                <a href="<?php echo $full; ?>" download="<?php echo $full; ?>"><img src="images/download.png" height="25px" width='25px'/>&nbsp;Download</a>
                         </td>
