@@ -8,8 +8,10 @@ include('../admin/store_data.php');
 if (strlen($_SESSION['t_id']) == "") {
     header("Location: index.php");
 } else {
-        $log=new Log();
-        $action="Student deleted from chat";
+     
+          $action="In Manage Student Chat";
+            $log=new Log();
+            $log->success_entry($action,$Conn);
 
       if (isset($_GET['s_id'])) 
         {
@@ -21,7 +23,7 @@ if (strlen($_SESSION['t_id']) == "") {
 
             if ($delete) {
                 $msg = "student Deleted Successfully";
-                 $action="Student deleted";
+                 $action=" one Student deleted";
                  $log->success_entry($action,$Conn);
             } else {
                 $error = "Something went wrong. Please try again";
