@@ -21,7 +21,7 @@ else{
 if(isset($_POST['submit']))
 {
     $log=new Log();
-    $action="ADD Event";   
+    $action="Event Added";   
     
     $et = $_POST["et"];
     $event_text = $_POST["event"];

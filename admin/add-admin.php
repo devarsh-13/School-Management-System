@@ -68,7 +68,7 @@ $a = $_SESSION['a_id'];
 
 
         $q = mysqli_query($Conn, $Sql);
-        $action = "Add admin data";
+        $action = "Admin data Added";
         if ($q)
         {
             $log->success_entry($action, $Conn);

@@ -1,5 +1,8 @@
 <?php
 require "connection.php";
+require "../admin/store_data.php";
+$action="Teacher Login";
+$log=new Log();
 
 $flag = 0;
 
@@ -28,12 +31,16 @@ if (isset($_POST['Submit'])) {
 	if ($row == 1) {
 		session_start();
 		$_SESSION['t_id'] = $arr[0];
+		$log->success_entry($action,$Conn);
 
 		if (isset($_POST["remember"])) {
 			setcookie("teacher_contact", $Contact, time() + (10 * 365 * 24 * 60 * 60), "/");
 			setcookie("teacher_password", $Password, time() + (10 * 365 * 24 * 60 * 60), "/");
 			header("location:dashboard.php");
-		} else {
+		}
+		else 
+		{
+			$log->success_entry($action,$Conn,"Unsuccessful");
 			unset($_COOKIE['teacher_contact']);
 			setcookie('teacher_contact', null, -1, '/');
 			unset($_COOKIE['teacher_password']);

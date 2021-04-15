@@ -15,11 +15,10 @@ $a_srn = $_SESSION['a_id'];
 $sql = "SELECT * from `admin` WHERE A_id = '$a_srn'";
 
 
+$log->success_entry($action,$Conn);
 
 $query = mysqli_query($Conn, $sql);
 $row = mysqli_num_rows($query);
-
-
 $result = mysqli_fetch_array($query);
 
 

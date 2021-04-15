@@ -1,21 +1,25 @@
 <?php
     
     require "connection.php";
+
     session_start();
-    $uploadFolder = 'img/';
-    
-    foreach ($_FILES['file']['tmp_name'] as $key => $image) 
+
+    if(isset($_POST))
     {
-        $imageTmpName = $_FILES['file']['tmp_name'][$key];
-        $imageName = $_FILES['file']['name'][$key];
-        $result = move_uploaded_file($imageTmpName,$uploadFolder.$imageName);
+        $uploadFolder = 'img/';
+        
+        foreach ($_FILES['file']['tmp_name'] as $key => $image) 
+        {
+            $imageTmpName = $_FILES['file']['tmp_name'][$key];
+            $imageName = $_FILES['file']['name'][$key];
+            $result = move_uploaded_file($imageTmpName,$uploadFolder.$imageName);
 
-        $a_id = $_SESSION['a_id'];
-         $d = date("Y-m-d");
+            $a_id = $_SESSION['a_id'];
+             $d = date("Y-m-d");
 
 
-$Sql="INSERT INTO `images` 
-                            (
+            $Sql="INSERT INTO `images` 
+                                (
                                 `Image`, 
                                 `Uploaded_by`, 
                                 `Uploaded_on`) 
@@ -25,10 +29,9 @@ $Sql="INSERT INTO `images`
                                 '$imageName', 
                                 '$a_id', 
                                 '$d')";
-
-$q=mysqli_query($Conn,$Sql);
+        $q=mysqli_query($Conn,$Sql);
+ 
+    }
 }
-
-
 
 ?>

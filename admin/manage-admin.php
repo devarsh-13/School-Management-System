@@ -22,7 +22,7 @@ if (isset($_GET['a_id']))
     $aid = $_GET['a_id'];
 
     $Sql="UPDATE `admin` SET `is_deleted`='1' WHERE `A_id`='$aid'";
-    $action="Delete Admin data";
+    $action="Admin data Deleted";
     $log=new Log();
    
     $delete = $Conn->query($Sql) or die("Error in query2".$connection->error);

@@ -274,7 +274,7 @@ $log->success_entry($action,$Conn);
     <?php
 
 
-    $q = mysqli_query($Conn, "SELECT * FROM `Log`");
+    $q = mysqli_query($Conn, "SELECT * FROM `Log` ORDER BY`L_Date`,`L_Time` DESC");
 
     while ($data = mysqli_fetch_assoc($q)) 
     {

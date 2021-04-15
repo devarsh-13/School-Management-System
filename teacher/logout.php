@@ -11,10 +11,15 @@
 // unset($_SESSION['login']);
 // session_destroy(); // destroy session
 // header("location:index.php"); 
+session_start();
+require"../admin/store_data.php";
+require"../Database/connection.php";
 
-	session_start();
-	session_unset();
-	session_destroy();
-	header("location:http://localhost/Sem6CollegeProject/teacher/");
-?>
+$action="Logout";
+$log= new Log();
+$log->success_entry($action,$Conn);
+
+session_unset();
+session_destroy();
+header("location:http://localhost/Sem6CollegeProject/teacher/");?>
 

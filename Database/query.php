@@ -317,7 +317,7 @@ $q=mysqli_query($Conn,$sql);
 $Sql="INSERT INTO `Notification` (`Sr_n`,`Notification_topic`, `Notification_text`,`Created_by`) VALUES (NULL,'For Fees','Fees Vadharvama ave che lol','1') ";
 $q=mysqli_query($Conn,$Sql);
 
-$Sql="INSERT INTO `event` (`Event_topic`,`Event_text`, `is_deleted`,`event_date`,`created_by`) VALUES ('Anual Function','Koi e avu nai corona che lol', '0', 'curdate()','2')";
+$Sql="INSERT INTO `event` (`Event_topic`,`Event_text`, `is_deleted`,`event_date`,`created_by`) VALUES ('Anual Function','Koi e avu nai corona che lol', '0', '2021-04-01','2')";
 $q=mysqli_query($Conn,$Sql);
 
 $Sql="INSERT INTO `log` (`Date`, `Time`, `Name`, `Contact`, `Action`, `Status`, `IP_address`, `Device`, `State`, `Country`) VALUES (CURRENT_DATE(), CURRENT_TIME(), '', '', '', '', '', '', '', '')";

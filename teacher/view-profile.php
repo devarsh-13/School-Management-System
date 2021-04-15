@@ -1,11 +1,17 @@
 <?php
 
 include  'connection.php';
+include '../admin/store_data.php';
+
+$action="In View Profile";
 session_start();
-if (!isset($_SESSION['t_id'])) {
+
+if (!isset($_SESSION['t_id'])) 
+{
+	success_entry($action,$Conn,"Unsuccessful");
 	header("location:teacher_login.php");
 }
-
+success_entry($action,$Conn);
 $T_srn = $_SESSION['t_id'];
 $sql = "SELECT * from `teachers` WHERE T_srn = '$T_srn'";
 
@@ -27,7 +33,7 @@ $result = mysqli_fetch_array($query);
 
 <head>
 	<meta charset="utf-8" />
-	<title>Educo Multipurpose Responsive HTML Template</title>
+	<title>IGHS | Teacher Profile</title>
 	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
 	<meta name="description" content="Educo" />
 	<meta name="keywords" content="Educo, html template, Education template" />
@@ -85,10 +91,10 @@ $result = mysqli_fetch_array($query);
             <div class="header-area">
                 <div class="row align-items-center">
                     <ul class="breadcrumbs pull-left">
-                          <h4 class="page-title pull-left">ADD Event</h4>
+                          <h4 class="page-title pull-left">Teacher Profile</h4>
                                 <li><a href="dashboard.php">Home</a></li>
                                 
-                                <li><span>Add Event</span></li>
+                                <li><span>Profile</span></li>
                             </ul>
                    
                 </div>
@@ -96,11 +102,7 @@ $result = mysqli_fetch_array($query);
               <div class="row">
                             <div class="col-md-12">
                                 <div class="panel">
-                                    <div class="panel-heading">
-                                        <div class="panel-title">
-                                            <span>Fill The Event Info.</span>
-                                        </div>
-                                    </div>
+                                 
             <!-- page title area end -->
             <div class="main-content-inner">
                 <!-- MAIN CONTENT GOES HERE -->

@@ -10,7 +10,13 @@ if(strlen($_SESSION['a_id'])=="")
 }
 else{
 
-        
+    $log= new Log();
+    if(!(isset($_POST['gr'])))
+    {
+        $action="In Add Student";
+        $log->success_entry($action,$Conn);
+    }
+  
 if(isset($_POST['submit']))
 {
 
@@ -119,16 +125,16 @@ if(isset($_POST['submit']))
                                     )";
 
         $q=mysqli_query($Conn,$Sql);
-        $action="Add Student";
+        $action="Student Added";
         if($q)
         {
-            $log= new Log();
+            
             $log->success_entry($action,$Conn);
             $msg="Student Info Added Successfully";
         }
         else 
         {
-            $log= new Log();
+            
             $log->success_entry($action,$Conn,"Unsuccessful");
              
             $error="Something went wrong. Please try again";

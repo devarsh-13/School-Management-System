@@ -60,8 +60,7 @@ function get_pass($p2)
                         $cont   =$Conn->real_escape_string($t[9]);
                         $ad_date=$Conn->real_escape_string($t[8]);
                         $cid    =$Conn->real_escape_string($c_id[0]);
-                     
-                        
+
                         $adhar  =$Conn->real_escape_string($t[10]);
                         $hos    =$Conn->real_escape_string($t[12]);
                         $hom    =$Conn->real_escape_string($t[11]);

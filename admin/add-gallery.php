@@ -10,14 +10,12 @@ if(strlen($_SESSION['a_id'])=="")
     }
     else
     {
-    
+        if(!(isset($_POST['submit'])))
+        {
             $action="In Add Gallery Image";
             $log=new Log();
             $log->success_entry($action,$Conn);
-        
-       
-        
-
+        }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -155,15 +153,7 @@ else if($error){?>
     };
 
 
-// option 1
-    $('#ssi-upload').ssi_uploader({
-        url: 'up.php',
-        inForm:true,
-    });
-
-    // option 2
-
-    var uploader = $('#ssi-upload').ssi_uploader({
+var uploader = $('#ssi-upload').ssi_uploader({
         url: 'up.php',
     });
 

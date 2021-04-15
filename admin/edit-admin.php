@@ -12,7 +12,7 @@ if (strlen($_SESSION['a_id']) == "")
 } 
 else 
 {
-    if(!(isset($_POST['submit'])))
+    if(!(isset($_POST['an'])))
     {
         $action = " In Edit Admin";
         $log->success_entry($action, $Conn);
@@ -47,14 +47,14 @@ $a = $_SESSION['a_id'];
 $Sql="UPDATE `admin` SET `A_Photo`='$imageName',`A_name`='$an',`A_mobile`='$con',`A_address`='$ad',`A_password`='$pass',`A_dob`='$dob',`Created_on`='$d',`is_deleted`='0',`Created_by`='a' WHERE `A_id`='$aid'";
 
         $q = mysqli_query($Conn, $Sql);
-        $action = "Edit admin data";
+        $action = "Admin data Edited";
         if ($q) 
         {
             
             $log->success_entry($action, $Conn);
 
             $msg = "Admin Info Edit Successfully";
-            unset($_POST);
+            unset($_POST['an']);
             
         } 
         else 
