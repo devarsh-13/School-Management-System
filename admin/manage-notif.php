@@ -268,7 +268,7 @@ if($row > 0)
                         </td>
                         <td><?php echo $result['Notification_topic'];?></td>
                         <td><?php echo $result['Notification_text'];?></td>
-                        <td><?php echo $result['created_on'];?></td>
+                        <td><?php echo $result['Created_on'];?></td>
                         <td><?php if($result['is_deleted']==0)
                                     {
                                         echo "Visible";
