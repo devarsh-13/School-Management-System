@@ -98,15 +98,29 @@ else{
 <?php
 
 
-$sub="SELECT * from `class` join teacherstd WHERE class.Class_id = teacherstd.id_class ";
+$sub="SELECT * from `Subjects` join teacherstd WHERE Subjects.Sub_id = teacherstd.is_sub ";
 $re= $Conn -> query($sub); 
 
 while ($query1=mysqli_fetch_array($re)) 
 {
+                           
+    
+
    ?>
                                     <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12" id="c">
                                         <a class="dashboard-stat bg-primary" href="resource-sub.php?C_id=<?php echo $query1['Class_id'];?>">
-                                            <span class="name"><?php echo $query1['C_no']." ".$query1['Stream'];?></span>
+<?php
+                                            $c="SELECT * from `class` WHERE `Class_id` = $query1[Class_id] "; 
+                                            $result= $Conn -> query($c); 
+
+                                            while ($query=mysqli_fetch_array($result)) 
+                                            {   
+
+?>
+                                            <span class="name"><?php echo $query['C_no']." ".$query['Stream'];?></span>
+                                            
+<?php  }  ?>
+
                                             <span class="bg-icon"><i class="fa fa-folder"></i></span>
                                         </a>
                                     </div>

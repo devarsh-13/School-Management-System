@@ -2,18 +2,17 @@
 session_start();
 error_reporting(0);
 include('connection.php');
-include('../admin/store_data.php');
+include('../ADMIN/store_data.php');
 $tid=$_SESSION['t_id'];
 mysqli_query($Conn, "UPDATE `teachers` SET `login_count` = '1' WHERE `T_srn`='$tid'");
 
 if(isset($_POST['submit']))
 {
     $s=$_POST['sub'];
-    $h=$_POST['h'];
-   
+
     for ($i=0; $i < sizeof($s); $i++) 
     { 
-        $Sql="INSERT INTO `teacherstd` (id_sub,id_teacher,id_class)VALUES('".$s[$i]."','$tid','".$h[$i]."')";
+        $Sql="INSERT INTO `teacherstd` (is_sub,id_teacher)VALUES('".$s[$i]."','$tid')";
         $q=mysqli_query($Conn,$Sql);    
     }
 
@@ -214,8 +213,8 @@ $query = mysqli_query($Conn,$sql);
                                 {?> 
                                         <li>
                                             <a href="#">
-                                                <span><input type="hidden" name="h[]" value="<?php echo $sub['Class_id']; ?>">
-                                                <input type="checkbox" name="sub[]" value="<?php echo $sub['Sub_id']; ?>">&nbsp;&nbsp;<?php echo $sub['Sub_name']; ?></span>
+                                                
+                                                <span><input type="checkbox" name="sub[]" value="<?php echo $sub['Sub_id']; ?>">&nbsp;&nbsp;<?php echo $sub['Sub_name']; ?></span>
                                             </a>
                                         </li>
                                 <?php } ?>
