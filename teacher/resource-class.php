@@ -1,12 +1,21 @@
 <?php 
  session_start();
-error_reporting(0);
+//error_reporting(0);
 include('connection.php');
+include('../admin/store_data.php');
+
+$action="In Upload Resources";
+$log=new Log();
+
 if(strlen($_SESSION['t_id'])=="")
-    {   
+{   
+
+    $log->success_entry($action,$Conn,"Unsuccessful");
+
     header("Location: index.php"); 
-    }
-    else{
+}
+else{
+        $log->success_entry($action,$Conn);
 
 
 ?> 
@@ -65,8 +74,8 @@ if(strlen($_SESSION['t_id'])=="")
                     <ul class="breadcrumbs pull-left">
                           <h4 class="page-title pull-left">Resources</h4>
                                 <li><a href="dashboard.php">Home</a></li>
-                                <li><a><span>Resource</span></a></li>
-                                <li><span>Class</span></li>
+                                <li><a ><span>Resource</span></a></li>
+                                
                             </ul>
                    
                 </div>
@@ -87,7 +96,7 @@ if(strlen($_SESSION['t_id'])=="")
                             <div class="container-fluid">
                                 <div class="row">
 <?php 
-require "connection.php";
+
 $sql1 ="SELECT * from `class`";
 $query= $Conn -> query($sql1); 
 $row = mysqli_num_rows($query);

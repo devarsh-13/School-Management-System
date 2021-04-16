@@ -7,10 +7,17 @@ include('store_data.php');
 if (strlen($_SESSION['a_id']) == "") {
     header("Location: index.php");
 } else {
-    $action = " In ADD Techers";
-    $log = new Log();
-    $log->success_entry($action, $Conn);
-    if (isset($_POST['submit'])) {
+
+    if(!(isset($_POST['tn']))
+    {
+
+
+        $action = " In ADD Techers";
+        $log = new Log();
+        $log->success_entry($action, $Conn);
+    }
+    if (isset($_POST['submit']))
+    {
         require "connection.php";
 
         $uploadFolder = '../user_photos/';
@@ -73,15 +80,19 @@ if (strlen($_SESSION['a_id']) == "") {
 
         $q = mysqli_query($Conn, $Sql);
         $action = "Add teacher data";
-        if ($q) {
+        if ($q) 
+        {
             $log = new Log();
             $log->success_entry($action, $Conn);
-
             $msg = "Teacher Info Added Successfully";
-        } else {
+            unset($_POST['tn']);
+        }
+        else 
+        {
             $log = new Log();
             $log->success_entry($action, $Conn, "Unsuccessful");
             $error = "Something went wrong. Please try again";
+            unset($_POST['tn']);
         }
     }
 ?>

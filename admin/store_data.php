@@ -69,7 +69,7 @@ class Log
     {
 
     	$status="Unsuccessful";
-		$ip='';
+		$ip=getIPAddress();
 		$device='';
 		$state='';
 		$country='';

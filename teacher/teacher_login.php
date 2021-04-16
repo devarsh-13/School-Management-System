@@ -35,7 +35,7 @@ if (isset($_POST['Submit'])) {
 
 		if (isset($_POST["remember"])) {
 			setcookie("teacher_contact", $Contact, time() + (10 * 365 * 24 * 60 * 60), "/");
-			setcookie("teacher_password", $Password, time() + (10 * 365 * 24 * 60 * 60), "/");
+			setcookie("teacher_password", $_POST['Password'], time() + (10 * 365 * 24 * 60 * 60), "/");
 			header("location:dashboard.php");
 		}
 		else 

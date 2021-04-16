@@ -80,6 +80,7 @@ $a = $_SESSION['a_id'];
         
             $log->success_entry($action, $Conn, "Unsuccessful");
             $error = "Something went wrong. Please try again";
+             unset($_POST['an']);
         }
     }
 ?>

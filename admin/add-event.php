@@ -32,7 +32,7 @@ if(isset($_POST['submit']))
     $d = date("Y-m-d");
 
     //Insert image content into database
-    $insert = $Conn->query("INSERT INTO Event SET Event_topic='$et', Event_text='$event_text',created_on='$d' ,created_by='$a',event_date='$edate'");
+    $insert = $Conn->query("INSERT INTO Event SET `Event_topic`='$et', `Event_text`='$event_text',`created_on`='$d' ,`created_by`='$a',`event_date`='$edate'");
 if($insert)
 {
     $log->success_entry($action,$Conn);

@@ -62,8 +62,7 @@ if(strlen($_SESSION['t_id'])=="")
                           <h4 class="page-title pull-left">Resources</h4>
                                 <li><a href="dashboard.php">Home</a></li>
                                 <li><a><span>Resource</span></a></li>
-                                <li><a><span>Class</span></a></li>
-                                <li><span>Subject</span></li>
+                                
                             </ul>
                    
                 </div>
