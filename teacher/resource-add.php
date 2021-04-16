@@ -240,10 +240,7 @@ while ($query1=mysqli_fetch_array($query))
 {
     $full = $path . $query1['R_path'];
 
-    if(file_exists($full))
-    {
-
-
+   
    ?>
                     <tr align="center">
                         <td><?php echo htmlentities($cnt);?></td>
@@ -264,8 +261,8 @@ while ($query1=mysqli_fetch_array($query))
 
                          <td><?php
                                 $id=$query1['Created_by'];
-                                 $q=mysqli_query($Conn,"SELECT `T_name` FROM `teachers` WHERE `T_srn` = '$id' ");
-                                 $name=mysqli_fetch_array($q);
+                                $q=mysqli_query($Conn,"SELECT `T_name` FROM `teachers` WHERE `T_srn` = '$id' ");
+                                $name=mysqli_fetch_array($q);
                                 echo $name[0];
                             ?>
                         </td>
@@ -276,7 +273,7 @@ while ($query1=mysqli_fetch_array($query))
                    
                     </tr>
 <?php 
-        }
+        
 
         $cnt=$cnt+1;
     }

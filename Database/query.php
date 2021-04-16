@@ -24,6 +24,7 @@ $table = "CREATE TABLE `Subjects`(
 `Sub_id` INT NOT NULL AUTO_INCREMENT ,
 `Sub_name` VARCHAR(40) NOT NULL ,
 `Class_id` INT  NOT NULL ,
+UNIQUE(`Sub_name`,`Class_id`),
 PRIMARY KEY (`Sub_id`)
 )";
 $q=mysqli_query($Conn,$table);
