@@ -10,20 +10,28 @@ session_start();
 
     $uploadFolder = 'resources/';
     $sub_id=$_GET['sub_id'];
+    $folder="$sub_id/";
     
     foreach ($_FILES['file']['tmp_name'] as $key => $image) 
     {
         $imageTmpName = $_FILES['file']['tmp_name'][$key];
         $imageName = $_FILES['file']['name'][$key];
-        $full= $uploadFolder.$imageName;
 
+        $dir=$uploadFolder.$folder;
+        
+        if(!(is_dir($dir)))
+        {
+            mkdir($dir);
+        }
+
+        $full= $dir.$imageName;
         if(file_exists($full))
         {
             continue;
         }
         else
         {
-            $result = move_uploaded_file($imageTmpName,$uploadFolder.$imageName);
+            $result = move_uploaded_file($imageTmpName,$full);
 
             $t_id = $_SESSION['t_id'];
              $d = date("Y-m-d");

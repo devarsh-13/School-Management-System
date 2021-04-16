@@ -15,31 +15,30 @@ if(isset($_GET['r_id']))
 {
 
     $action="Resources Deleted";
-    $log->success_entry($action,$Conn);
+    
 
     $rid=$_GET['r_id'];
-    $sql = "SELECT * from `resources`  WHERE `R_id`='$rid' ";
+    $sql = "SELECT `R_path` from `resources`  WHERE `R_id`='$rid' ";
+    
     $query = mysqli_query($Conn,$sql);
+    $result= mysqli_fetch_array($query);
+
     $row = mysqli_num_rows($query);
 
-    if($row > 0)
+    if($row >0)
     {
-        $path="resources/";
-        while($result=mysqli_fetch_array($query))
-        { 
-            $full = $path.$result['R_path']; 
-            $d=  unlink($full);
-        }
+        $path  ="resources/";
+        $folder="$sub_id/";
+        
+        $full  =$path.$folder.$result['R_path']; 
+        $d=  unlink($full);
+        $delet = mysqli_query($Conn,"DELETE FROM `resources` WHERE `R_id`='$rid'");
+        
     }
-    $query = "DELETE FROM `resources` WHERE `R_id`='$rid'";
-    $delet = mysqli_query($Conn,$query);
-
-   header("location:resource-add.php?sub_id=$sub_id");
+ 
+    header("location:resource-add.php?sub_id=$sub_id");
 
 }
-
-
-
 
 ?>
 <!DOCTYPE html>

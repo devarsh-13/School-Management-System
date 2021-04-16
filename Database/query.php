@@ -32,7 +32,6 @@ $q=mysqli_query($Conn,$table);
 
 $table="CREATE TABLE `Resources`(
 `R_id` INT NOT NULL AUTO_INCREMENT ,
-`R_Name` VARCHAR(60) NOT NULL , 
 `R_path` VARCHAR(250) NOT NULL,
 `Created_on` DATE NOT NULL DEFAULT CURRENT_DATE ,
 `Created_by` INT NOT NULL,	
