@@ -60,6 +60,7 @@ if (strlen($_SESSION['a_id']) == "") {
         } else {
             $s = "SELECT `Class_id` FROM `class` WHERE `C_no` = '$class'";
             $q = mysqli_query($Conn, $s);
+            
             $ci = mysqli_fetch_array($q);
         }
 
@@ -117,13 +118,13 @@ if (strlen($_SESSION['a_id']) == "") {
                                         '$stat'
                                     )";
 
-        $q = mysqli_query($Conn, $Sql);
+        $q = mysqli_query($Conn, $Sql)or die(mysqli_error($Conn));
         $action = "Student Added";
         if ($q) {
 
             $log->success_entry($action, $Conn);
             $msg = "Student Info Added Successfully";
-            $error="";
+            $_POST=array();
         } else {
 
             $log->success_entry($action, $Conn, "Unsuccessful");
@@ -137,34 +138,55 @@ if (strlen($_SESSION['a_id']) == "") {
 
     <head>
         <script type="text/javascript">
-            function Check_class() {
 
-                if (document.getElementById("clas").value == 11 || document.getElementById("clas").value == 12) {
+            function Check_class()
+            {
+                
+                if(document.getElementById("clas").value==11 || document.getElementById("clas").value==12)
+                {
                     document.getElementById("stream").required = true;
                     document.getElementById("stream").disabled = false;
-                } 
-                else 
+                    if(document.getElementById("stream").value=="NULL")
+                    {
+                        document.getElementById("stream").value="";
+                    }
+                }
+                else
                 {
                     document.getElementById("stream").required = false;
                     document.getElementById("stream").disabled = true;
-                    document.getElementById("stream").value = "NULL";
+                    document.getElementById("stream").value="NULL";
                 }
             }
-
-function Des(i)
+             function desc(i)
             {
-                    if(i==1)
+                var c=document.getElementById("hand1").checked;
+                var c2=document.getElementById("hand2").checked;
+                if(c==true)
+                {
+                    document.getElementById("des").required = true;
+                    document.getElementById("des").disabled = false;
+                    var s=document.getElementById("des").value;
+
+                    if(s.localeCompare("NULL")==0)
                     {
-                        document.getElementById("des").required = true;
-                        document.getElementById("des").disabled = false;
-                    }
-                    else
-                    {
-                        document.getElementById("des").required = false;   
-                        document.getElementById("des").disabled = true;
-                        document.getElementById("des").value ="";
+                       document.getElementById("des").value="";
                     }
 
+                }
+                else if(c2==true)
+                {
+                    document.getElementById("des").required = false;   
+                    document.getElementById("des").value="NULL";
+                    document.getElementById("des").disabled = true;
+                }
+                else
+                {
+
+                }
+
+
+            }
         </script>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -252,18 +274,8 @@ function Des(i)
                                 <div class="main-content-inner">
                                     <!-- MAIN CONTENT GOES HERE -->
                                     <div class="panel-body">
-                                        <?php if ($msg) { ?>
-                                            <div class="alert alert-success left-icon-alert" role="alert">
-
-                                                <?php echo htmlentities($msg); ?>
-                                            </div>
-                                        <?php } else if ($error) { ?>
-                                            <div class="alert alert-danger left-icon-alert" role="alert">
-
-                                                <?php echo htmlentities($error); ?>
-                                            </div>
-                                        <?php } ?>
-                                        <form class="form-horizontal" method="post" enctype="multipart/form-data">
+                                        
+                                         <form class="form-horizontal" method="post"  >
 
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Gr Number</label>
@@ -324,13 +336,13 @@ function Des(i)
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Class</label>
                                                 <div class="col-sm-10">
-                                                    <select type="text" name="class" class="form-control" required="required" id="clas" onclick="Check_class()">
-                                                        <option value="NULL">-- SELECT --</option>
-                                                        <option value="9">9</option>
-                                                        <option value="10">10</option>
-                                                        <option value="11">11</option>
-                                                        <option value="12">12</option>
-                                                    </select>
+                                                    <Select name="class" class="form-control" id="clas" required="required" autocomplete="off" onkeyup="Check_class()" onclick="Check_class()" >
+                                                    <option value="NULL">---Select---</option>  
+                                                    <option value="9">9</option>
+                                                    <option value="10">10</option>
+                                                    <option value="11">11</option>
+                                                    <option value="12">12</option>
+                                                </select>
                                                 </div>
                                             </div>
 
@@ -339,7 +351,8 @@ function Des(i)
                                                 <div class="col-sm-10">
 
                                                     <SELECT name="stream" class="form-control" id="stream">
-                                                        <option value="NULL">-- SELECT --</option>
+                                                        <option value="NULL" onkeypress="Check_class()" onclick="Check_class()">
+                                                        -- Select --</option>
                                                         <option value="Arts">Arts</option>
                                                         <option value="Commerce">Commerce</option>
                                                         <option value="Science">Science</option>
@@ -391,8 +404,8 @@ function Des(i)
                                                 <label for="default" class="col-sm-2 control-label">Handicapped</label>
                                                 <div class="col-sm-10">
 
-                                                    <input type="radio" name="hand" value="Yes" required="required" onclick="Des(1)">Yes
-                                                    <input type="radio" name="hand" value="No" required="required" onclick="Des(0)">No
+                                                    <input type="radio" name="hand" value="Yes" required onclick="desc()"  id="hand1">Yes</input> 
+                                                    <input type="radio" name="hand" value="No" required onclick="desc()"  id="hand2">No</input>
                                                 </div>
                                             </div>
 
