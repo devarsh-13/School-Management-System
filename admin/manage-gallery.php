@@ -35,7 +35,7 @@ if(strlen($_SESSION['a_id'])=="")
                     
             $delete = mysqli_query($Conn,"DELETE FROM `images` WHERE `Id`='$gid'") or die("Error in query2".$Conn->error);
             
-            $action="Photo Deleted";
+            $action="Image Deleted";
             $log=new Log();
 
             if($delete)

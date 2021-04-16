@@ -7,7 +7,7 @@
     $uploadFolder = 'img/';
     
     $log=new Log();
-    $action="Image Uploaded";
+    $action="Images Uploaded";
         
     foreach ($_FILES['file']['tmp_name'] as $key => $image) 
     {

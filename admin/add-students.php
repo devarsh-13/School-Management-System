@@ -142,24 +142,28 @@ if (strlen($_SESSION['a_id']) == "") {
                 if (document.getElementById("clas").value == 11 || document.getElementById("clas").value == 12) {
                     document.getElementById("stream").required = true;
                     document.getElementById("stream").disabled = false;
-                } else {
+                } 
+                else 
+                {
                     document.getElementById("stream").required = false;
                     document.getElementById("stream").disabled = true;
-                    document.getElementById("stream").VALUES = "NULL";
+                    document.getElementById("stream").value = "NULL";
                 }
             }
 
-            function Des(i) {
-                if (i == 1) {
-                    document.getElementById("des").required = true;
-                    document.getElementById("des").disabled = false;
-                } else {
-                    document.getElementById("des").required = false;
-                    document.getElementById("des").disabled = true;
-                }
-
-            }
-
+function Des(i)
+            {
+                    if(i==1)
+                    {
+                        document.getElementById("des").required = true;
+                        document.getElementById("des").disabled = false;
+                    }
+                    else
+                    {
+                        document.getElementById("des").required = false;   
+                        document.getElementById("des").disabled = true;
+                        document.getElementById("des").value ="";
+                    }
 
         </script>
         <meta charset="utf-8">

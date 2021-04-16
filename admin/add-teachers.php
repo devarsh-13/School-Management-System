@@ -8,7 +8,7 @@ if (strlen($_SESSION['a_id']) == "") {
     header("Location: index.php");
 } else {
 
-    if(!(isset($_POST['tn']))
+    if(!(isset($_POST['tn'])))
     {
 
 
