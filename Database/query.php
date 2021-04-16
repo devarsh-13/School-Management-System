@@ -21,7 +21,7 @@ $q=mysqli_query($Conn,$table);
 
 
 
-$table = "CREATE TABLE `teacherstd`(`ts_id` INT NOT NULL AUTO_INCREMENT,`is_sub` INT NOT NULL,`id_teacher` INT NOT NULL,`id_class` INT NOT NULL)";
+$table = "CREATE TABLE `teacherstd`(`ts_id` INT NOT NULL AUTO_INCREMENT,`id_sub` INT NOT NULL,`id_teacher` INT NOT NULL,`id_class` INT NOT NULL)";
 $q=mysqli_query($Conn,$table);
 
 
