@@ -169,7 +169,10 @@ if(isset($_GET['r_id']))
     };
 
    
+$('#ssi-upload').ssi_uploader({
+        url: 'up.php?sub_id=<?php echo $sub_id;?>',
 
+    });
 // option 2
     var uploader = $('#ssi-upload').ssi_uploader({
         url: 'up.php?sub_id=<?php echo $sub_id;?>',

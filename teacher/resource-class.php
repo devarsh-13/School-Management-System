@@ -95,23 +95,14 @@ else{
                         <section class="section">
                             <div class="container-fluid">
                                 <div class="row">
-<?php 
+<?php
 
-$sql1 ="SELECT * from `class`";
-$query= $Conn -> query($sql1); 
-$row = mysqli_num_rows($query);
-   
 
-while ($query1=mysqli_fetch_array($query)) 
+$sub="SELECT * from `class` join teacherstd WHERE class.Class_id = teacherstd.id_class ";
+$re= $Conn -> query($sub); 
+
+while ($query1=mysqli_fetch_array($re)) 
 {
-                            if(!($query1['C_no']==0))
-                                {
-                                    if($query1['Stream']=="NULL")
-                                    {
-                                        $query1['Stream']="";
-                                    }
-    
-
    ?>
                                     <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12" id="c">
                                         <a class="dashboard-stat bg-primary" href="resource-sub.php?C_id=<?php echo $query1['Class_id'];?>">
@@ -121,7 +112,7 @@ while ($query1=mysqli_fetch_array($query))
                                     </div>
 <?php 
     
-                                }
+                                
 }
 ?>
                                   
