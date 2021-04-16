@@ -2,7 +2,7 @@
 session_start();
 error_reporting(0);
 include('connection.php');
-include('../ADMIN/store_data.php');
+include('../admin/store_data.php');
 $tid=$_SESSION['t_id'];
 mysqli_query($Conn, "UPDATE `teachers` SET `login_count` = '1' WHERE `T_srn`='$tid'");
 
