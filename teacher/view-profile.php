@@ -1,17 +1,18 @@
 <?php
 
 include  'connection.php';
-include '../admin/store_data.php';
+include "../admin/store_data.php";
 
+$log=new Log();
 $action="In View Profile";
 session_start();
 
 if (!isset($_SESSION['t_id'])) 
 {
-	success_entry($action,$Conn,"Unsuccessful");
+	$log->success_entry($action,$Conn,"Unsuccessful");
 	header("location:teacher_login.php");
 }
-success_entry($action,$Conn);
+$log->success_entry($action,$Conn);
 $T_srn = $_SESSION['t_id'];
 $sql = "SELECT * from `teachers` WHERE T_srn = '$T_srn'";
 
@@ -166,6 +167,10 @@ $result = mysqli_fetch_array($query);
 																<tr>
 																	<td><b>Contact no</b></td>
 																	<td><?php echo $result['Contact'];  ?></td>
+																</tr>
+																<tr>
+																	<td><b>Degree</b></td>
+																	<td><?php echo $result['Degree']; ?></td>
 																</tr>
 
 																<tr>

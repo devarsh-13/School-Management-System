@@ -2,44 +2,39 @@
 session_start();
 error_reporting(0);
 include('connection.php');
+include('../admin/store_data.php');
+
+$log=new Log();
+
 if(isset($_SESSION['t_id']))
-    {   
+{   
     
-$sub_id=$_GET['sub_id'];
-
-
-
-
+    $sub_id=$_GET['sub_id'];
 
 if(isset($_GET['r_id']))
 {
 
+    $action="Resources Deleted";
+    $log->success_entry($action,$Conn);
+
     $rid=$_GET['r_id'];
- $sql = "SELECT * from `resources`  WHERE `R_id`='$rid' ";
-$query = mysqli_query($Conn,$sql);
-$row = mysqli_num_rows($query);
+    $sql = "SELECT * from `resources`  WHERE `R_id`='$rid' ";
+    $query = mysqli_query($Conn,$sql);
+    $row = mysqli_num_rows($query);
 
-if($row > 0)
-{
-     $path="resources/";
-    while($result=mysqli_fetch_array($query))
-    {       $full = $path.$result['R_path']; 
-          $d=  unlink($full);
+    if($row > 0)
+    {
+        $path="resources/";
+        while($result=mysqli_fetch_array($query))
+        { 
+            $full = $path.$result['R_path']; 
+            $d=  unlink($full);
+        }
     }
-}
-        $query = "DELETE FROM `resources` WHERE `R_id`='$rid'";
-        $delet = mysqli_query($Conn,$query) or die("Error in query2".$Conn->error);
+    $query = "DELETE FROM `resources` WHERE `R_id`='$rid'";
+    $delet = mysqli_query($Conn,$query);
 
-if($d)
-{
-    
-$msg="Resource Deleted Successfully";
-}
-else 
-{
-    
-$error="Something went wrong. Please try again";
-}
+   header("location:resource-add.php?sub_id=$sub_id");
 
 }
 
@@ -105,7 +100,7 @@ $error="Something went wrong. Please try again";
                           <h4 class="page-title pull-left">Resources</h4>
                                 <li><a href="dashboard.php">Home</a></li>
                                 <li><a><span>Resource</span></a></li>
-                                <li><span>Class</span></li>
+                               
                             </ul>
                    
                 </div>
@@ -124,18 +119,7 @@ $error="Something went wrong. Please try again";
             
                  
                                     <div class="panel-body">
-                                        <?php if($msg){?>
-                                        <div class="alert alert-success left-icon-alert" role="alert">
-                                        
-                                            <?php echo htmlentities($msg); ?>
-                                        </div>
-                                        <?php } 
-else if($error){?>
-                                        <div class="alert alert-danger left-icon-alert" role="alert">
-                                            
-                                            <?php echo htmlentities($error); ?>
-                                        </div>
-                                        <?php } ?>
+                                       
                                         <form class="form-horizontal" method="post" id="myForm" enctype="multipart/form-data">
 
                                             <div class="form-group">
@@ -184,14 +168,7 @@ else if($error){?>
         }
     };
 
-    // option 1
-
-
-    $('#ssi-upload').ssi_uploader({
-        url: 'up.php?sub_id=<?php echo $sub_id;?>',
-        inForm:true,
-
-    });
+   
 
 // option 2
     var uploader = $('#ssi-upload').ssi_uploader({
@@ -210,6 +187,7 @@ else if($error){?>
             console.log('complete');
             $( "#myForm" ).submit();
         });
+
     });
  
 </script>
@@ -258,8 +236,14 @@ $cnt=1;
 
 if($row > 0)
 {
-while ($query1=mysqli_fetch_array($query)) {
+while ($query1=mysqli_fetch_array($query)) 
+{
     $full = $path . $query1['R_path'];
+
+    if(file_exists($full))
+    {
+
+
    ?>
                     <tr align="center">
                         <td><?php echo htmlentities($cnt);?></td>
@@ -269,7 +253,11 @@ while ($query1=mysqli_fetch_array($query)) {
                               <!-- <input type="hidden" name="rid" value="<?php //echo $query1['R_id']; ?>">
                               <input type="submit" name="dlt" value="Delete" class="btn btn-danger">-->
                               &nbsp;
-                               <a href="<?php echo $full; ?>" download="<?php echo $full; ?>"><img src="images/download.png" height="25px" width='25px'/>&nbsp;Download</a>
+                               <a href="<?php echo $full; ?>" download="<?php echo $full; ?> " 
+
+                                <?php $action="File Downloaded"; $log->success_entry($action,$Conn); ?>
+
+                               ><img src="images/download.png" height="25px" width='25px'/>&nbsp;Download</a>
                         </td>
                         
                         <td><?php echo $query1['R_path'].$query1['R_id'];?></td>
@@ -288,7 +276,11 @@ while ($query1=mysqli_fetch_array($query)) {
                    
                     </tr>
 <?php 
-    $cnt=$cnt+1;}
+        }
+
+        $cnt=$cnt+1;
+    }
+    $_POST = array();
 }
  ?>
                                                        
@@ -349,7 +341,10 @@ while ($query1=mysqli_fetch_array($query)) {
 
 </html>
 <?PHP }
-else{
-header("Location: index.php"); 
-    }
+else
+{
+
+    $log->success_entry($action,$Conn,"Unsuccessful");
+    header("Location: index.php"); 
+}
      ?>

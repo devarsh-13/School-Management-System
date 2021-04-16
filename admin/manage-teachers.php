@@ -6,7 +6,7 @@ include('connection.php');
 include('store_data.php');
 if(strlen($_SESSION['a_id'])=="")
     {   
-    header("Location: index.php"); 
+        header("Location: index.php"); 
     }
     else{
         if(!(isset($_GET['T_id'])))
@@ -22,7 +22,7 @@ if (isset($_GET['T_id']))
     $tid = $_GET['T_id'];
 
     $Sql="UPDATE `teachers` SET `is_deleted`='1' WHERE `T_srn`='$tid'";
-    $action="Delete Teacher data";
+    $action="Teacher data Deleted";
     $log=new Log();
    
     $delete = $Conn->query($Sql) or die("Error in query2".$connection->error);
@@ -32,7 +32,7 @@ if (isset($_GET['T_id']))
         $log->success_entry($action,$Conn);       
         $msg="Teacher Deleted successfully";
 
-        // unset($_GET['T_id']);
+        unset($_GET['T_id']);
         // header("Location:manage-teachers.php");
     }
     else 
@@ -283,9 +283,9 @@ input.chh
         </style>
     </head>
     <body class="top-navbar-fixed">
-         <div id="preloader">
+         <!-- <div id="preloader">
         <div class="loader"></div>
-    </div>
+    </div> -->
     <div class="page-container">
        <?php include('leftbar.php'); ?>
     <div class="main-content">

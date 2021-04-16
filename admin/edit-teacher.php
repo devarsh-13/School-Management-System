@@ -10,7 +10,7 @@ if(strlen($_SESSION['a_id'])=="")
     }
     else
     {
-        if(!(isset($_POST['submit'])))
+        if(!(isset($_POST['tn'])))
         {
             $action="In Edit Teacher";
             $log->success_entry($action,$Conn);
@@ -36,18 +36,19 @@ $Sql="UPDATE `teachers` SET `T_name`='$tn',`DOB`='$dob',`Degree`='$deg',`A_date`
 
 
 $q=mysqli_query($Conn,$Sql);
-$action="Edit Teacher data";
+$action="Teacher data Edited";
 if($q)
 {
     
     $log->success_entry($action,$Conn);
     $msg="Teacher Info Edit Successfully";
-    unset($_POST);
+    unset($_POST['tn']);
 }
 else 
 {
     $log->success_entry($action,$Conn,"Unsuccessful");
     $error="Something went wrong. Please try again";
+    unset($_POST['tn']);
 }
 
 }

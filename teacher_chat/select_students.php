@@ -76,7 +76,7 @@ if (isset($_SESSION['t_id'])) {
                     <div class="row align-items-center">
                         <ul class="breadcrumbs pull-left">
                             <h4 class="page-title pull-left">Chat</h4>
-                            <li><a href="dashboard.php">Home</a></li>
+                            <li><a href="../teacher/dashboard.php">Home</a></li>
                             <li><a><span>Chat</span></a></li>
 
                         </ul>

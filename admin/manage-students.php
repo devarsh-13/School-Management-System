@@ -32,9 +32,9 @@ if(strlen($_SESSION['a_id'])=="")
                 $action="Delete Student Row";
                 $log1=new Log();
                 $log1->success_entry($action,$Conn);
-               $msg="Student Info Deleted Successfully";
-              // unset($_GET['S_id']);
-               //header("location:manage-students.php");
+                $msg="Student Info Deleted Successfully";
+                unset($_GET['S_id']);
+               
             }
             else 
             {
@@ -42,6 +42,7 @@ if(strlen($_SESSION['a_id'])=="")
                 $log=new Log();
                 $log->success_entry($action,$Conn,"Unsuccessful");
                 $error="Something went wrong. Please try again";
+                 unset($_GET['S_id']);
             }
 
         }

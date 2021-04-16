@@ -4,12 +4,18 @@
 session_start();
 error_reporting(0);
 include('connection.php');
-if(strlen($_SESSION['t_id'])=="")
-    {   
-    header("Location: index.php"); 
-    }
-    else{
+include('store_data.php');
 
+$log=new Log();
+$action="In View-Events";
+
+if(strlen($_SESSION['t_id'])=="")
+{   
+    $log->success_entry($action,$Conn,"Unsuccessful");
+    header("Location: index.php"); 
+}
+    else{
+            $log->success_entry($action,$Conn);
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -12,7 +12,7 @@ if(strlen($_SESSION['a_id'])=="")
     }
     else
     {
-        if(!(isset($_POST['submit'])))
+        if(!(isset($_POST['gr'])))
         {
             $action="in Edit Student";
             
@@ -35,7 +35,7 @@ $hostel=$_POST['hostel'];
 $home=$_POST['home']; 
 $hand=$_POST['hand']; 
 $des=$_POST['des'];
-$pass=$_POST['pass'];  
+$pass=sha1($_POST['pass']);  
 $re=$_POST['re']; 
 $class=$_POST['class'];
 $stream=$_POST['stream'];
@@ -57,7 +57,7 @@ if($q)
 
 $log->success_entry($action,$Conn);
 $msg="Student Info Edit Successfully";
-unset($_POST);
+unset($_POST['gr']);
 }
 else 
 {
@@ -65,6 +65,7 @@ else
 $log->success_entry($action,$Conn,"Unsuccessful");
 
 $error="Something went wrong. Please try again";
+unset($_POST['gr']);
 }
 
 }
@@ -332,9 +333,9 @@ if($row > 0)
                                                        $result['S_handicapped']
                                                     ?>
                                                     
-                                                    <input type="radio" name="hand" value="Yes" required <?php if($result['S_handicapped']=="Yes"){echo "checked"; }?>  onclick="desc()"  id="hand1">Yes</input> 
+                                                    <input type="radio" name="hand" value="Yes" required <?php if($result['S_handicapped']=="Yes" || $result['S_handicapped']=="YES" ){echo "checked"; }?>  onclick="desc()"  id="hand1">Yes</input> 
                                                     
-                                                    <input type="radio" name="hand" value="No" required <?php if($result['S_handicapped']=="No"){echo "checked"; } ?> onclick="desc()"  id="hand2">No</input>
+                                                    <input type="radio" name="hand" value="No" required <?php if($result['S_handicapped']=="No"|| $result['S_handicapped']=="NO"){echo "checked"; } ?> onclick="desc()"  id="hand2">No</input>
                                                         
                                                                                                     
                                                 </div>
