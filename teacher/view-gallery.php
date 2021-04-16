@@ -4,10 +4,10 @@
 session_start();
 error_reporting(0);
 include('connection.php');
-include('store_data.php');
+include('../admin/store_data.php');
 
 $log=new Log();
-$action="In View-Events";
+$action="In View-Gallery";
 
 if(strlen($_SESSION['t_id'])=="")
 {   
