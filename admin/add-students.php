@@ -307,7 +307,7 @@ if (strlen($_SESSION['a_id']) == "") {
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Student Name</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" name="sn" class="form-control" oninput='stringValidate(this)' required="required" id="sn" autocomplete="off">
+                                                    <input type="text" name="sn" class="form-control" oninput='stringValidate(this)' maxlength="15" required="required" id="sn" autocomplete="off">
                                                 </div>
                                             </div>
 
@@ -328,7 +328,7 @@ if (strlen($_SESSION['a_id']) == "") {
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Date of Birth</label>
                                                 <div class="col-sm-10">
-                                                    <input type="date" name="dob" class="form-control" required="required" id="dob" min="1990-01-01" max='<?php echo date('Y-m-d');?>' autocomplete="off">
+                                                    <input type="date" name="dob" class="form-control" required="required" id="dob" min="1900-01-01" max='<?php echo date('Y-m-d');?>' autocomplete="off">
                                                 </div>
                                             </div>
 

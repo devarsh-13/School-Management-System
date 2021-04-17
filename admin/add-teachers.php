@@ -132,6 +132,8 @@ if (strlen($_SESSION['a_id']) == "") {
         <link rel="stylesheet" href="../teacher/assets/css/default-css.css">
         <link rel="stylesheet" href="../teacher/assets/css/styles.css">
         <link rel="stylesheet" href="../teacher/assets/css/responsive.css">
+
+        <script src="../js/validate.js"></script>
         <!-- modernizr css -->
         <script src="../teacher/assets/js/vendor/modernizr-2.8.3.min.js"></script>
         <style type="text/css">
@@ -203,21 +205,21 @@ if (strlen($_SESSION['a_id']) == "") {
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Teacher Nmae</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" name="tn" class="form-control" id="tn" required="required" autocomplete="off">
+                                                    <input type="text" name="tn" class="form-control" id="tn" required="required" oninput='stringValidate(this)'  maxlength="15" autocomplete="off">
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Date of Birth</label>
                                                 <div class="col-sm-10">
-                                                    <input type="date" name="dob" class="form-control" id="dob" required="required" autocomplete="off">
+                                                    <input type="date" name="dob" class="form-control" id="dob" min="1900-01-01" max='<?php echo date('Y-m-d');?>' required="required" autocomplete="off">
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Degree</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" name="deg" class="form-control" id="deg" required="required" autocomplete="off">
+                                                    <input type="text" name="deg" class="form-control" id="deg" oninput='stringValidate(this)' maxlength="10"  required="required" autocomplete="off">
                                                 </div>
                                             </div>
 
@@ -232,14 +234,14 @@ if (strlen($_SESSION['a_id']) == "") {
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Appointment Date</label>
                                                 <div class="col-sm-10">
-                                                    <input type="date" name="adate" class="form-control" id="adate" required="required" autocomplete="off">
+                                                    <input type="date" name="adate" class="form-control" id="adate" min="1990-01-01" max='<?php echo date('Y-m-d');?>' required="required" autocomplete="off">
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Joining Date</label>
                                                 <div class="col-sm-10">
-                                                    <input type="date" name="jdate" class="form-control" id="jdate" required="required" autocomplete="off">
+                                                    <input type="date" name="jdate" class="form-control" id="jdate" min="1990-01-01" max='<?php echo date('Y-m-d');?>' required="required" autocomplete="off">
                                                 </div>
                                             </div>
 
@@ -247,7 +249,7 @@ if (strlen($_SESSION['a_id']) == "") {
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Retire Date</label>
                                                 <div class="col-sm-10">
-                                                    <input type="date" name="rdate" class="form-control" id="rdate" required="required" autocomplete="off">
+                                                    <input type="date" name="rdate" class="form-control" id="rdate" min='<?php echo date('Y-m-d');?>' max="2099-01-01" required="required" autocomplete="off">
                                                 </div>
                                             </div>
 
@@ -255,7 +257,7 @@ if (strlen($_SESSION['a_id']) == "") {
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Contact</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" name="con" class="form-control" id="con" maxlength="10" required="required" autocomplete="off">
+                                                    <input type="text" name="con" class="form-control" id="con" oninput='digitValidate(this)' pattern=".{10}" required title=" 10 numbers" maxlength="10" required="required" autocomplete="off">
                                                 </div>
                                             </div>
 
@@ -263,7 +265,7 @@ if (strlen($_SESSION['a_id']) == "") {
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Password</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" name="pass" class="form-control" id="pass" required="required" autocomplete="off">
+                                                    <input type="text" name="pass" class="form-control" id="pass" required="required" maxlength="15" minlength="4" autocomplete="off">
                                                 </div>
                                             </div>
 
