@@ -147,8 +147,8 @@ if (strlen($_SESSION['a_id']) == "") {
         if ($q) {
 
             $log->success_entry($action, $Conn);
-            $msg = "Student Info Added Successfully";
-            $_POST=array();
+        echo"<script>alert('Student Info Added Successfully');window.location.href='add-students.php';</script>";
+            
         } else {
 
             $log->success_entry($action, $Conn, "Unsuccessful");

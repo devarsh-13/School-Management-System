@@ -33,10 +33,22 @@ if (isset($_POST['Submit'])) {
 		$_SESSION['t_id'] = $arr[0];
 		$log->success_entry($action,$Conn);
 
-		if (isset($_POST["remember"])) {
+		if (isset($_POST["remember"])) 
+		{
 			setcookie("teacher_contact", $Contact, time() + (10 * 365 * 24 * 60 * 60), "/");
 			setcookie("teacher_password", $_POST['Password'], time() + (10 * 365 * 24 * 60 * 60), "/");
-			header("location:dashboard.php");
+			
+			$c = mysqli_query($Conn, "SELECT * FROM `teachers`");			
+			$count = mysqli_fetch_array($c);
+			if($count['login_count'] == 0)
+			{	
+				
+				header("location:teacher_info.php");	
+			}
+			else
+			{
+				header("location:dashboard.php");
+			}
 		}
 		else 
 		{
@@ -45,7 +57,17 @@ if (isset($_POST['Submit'])) {
 			setcookie('teacher_contact', null, -1, '/');
 			unset($_COOKIE['teacher_password']);
 			setcookie('teacher_password', null, -1, '/');
-			header("location:dashboard.php");
+			$c = mysqli_query($Conn, "SELECT * FROM `teachers`");			
+			$count = mysqli_fetch_array($c);
+			if($count['login_count'] == 0)
+			{	
+				
+				header("location:teacher_info.php");	
+			}
+			else
+			{
+				header("location:dashboard.php");
+			}
 		}
 	} else {
 		$flag = 1;

@@ -15,31 +15,30 @@ if(isset($_GET['r_id']))
 {
 
     $action="Resources Deleted";
-    $log->success_entry($action,$Conn);
+    
 
     $rid=$_GET['r_id'];
-    $sql = "SELECT * from `resources`  WHERE `R_id`='$rid' ";
+    $sql = "SELECT `R_path` from `resources`  WHERE `R_id`='$rid' ";
+    
     $query = mysqli_query($Conn,$sql);
+    $result= mysqli_fetch_array($query);
+
     $row = mysqli_num_rows($query);
 
-    if($row > 0)
+    if($row >0)
     {
-        $path="resources/";
-        while($result=mysqli_fetch_array($query))
-        { 
-            $full = $path.$result['R_path']; 
-            $d=  unlink($full);
-        }
+        $path  ="resources/";
+        $folder="$sub_id/";
+        
+        $full  =$path.$folder.$result['R_path']; 
+        $d=  unlink($full);
+        $delet = mysqli_query($Conn,"DELETE FROM `resources` WHERE `R_id`='$rid'");
+        
     }
-    $query = "DELETE FROM `resources` WHERE `R_id`='$rid'";
-    $delet = mysqli_query($Conn,$query);
-
-   header("location:resource-add.php?sub_id=$sub_id");
+ 
+    header("location:resource-add.php?sub_id=$sub_id");
 
 }
-
-
-
 
 ?>
 <!DOCTYPE html>
@@ -169,7 +168,10 @@ if(isset($_GET['r_id']))
     };
 
    
+$('#ssi-upload').ssi_uploader({
+        url: 'up.php?sub_id=<?php echo $sub_id;?>',
 
+    });
 // option 2
     var uploader = $('#ssi-upload').ssi_uploader({
         url: 'up.php?sub_id=<?php echo $sub_id;?>',
@@ -240,10 +242,7 @@ while ($query1=mysqli_fetch_array($query))
 {
     $full = $path . $query1['R_path'];
 
-    if(file_exists($full))
-    {
-
-
+   
    ?>
                     <tr align="center">
                         <td><?php echo htmlentities($cnt);?></td>
@@ -264,8 +263,8 @@ while ($query1=mysqli_fetch_array($query))
 
                          <td><?php
                                 $id=$query1['Created_by'];
-                                 $q=mysqli_query($Conn,"SELECT `T_name` FROM `teachers` WHERE `T_srn` = '$id' ");
-                                 $name=mysqli_fetch_array($q);
+                                $q=mysqli_query($Conn,"SELECT `T_name` FROM `teachers` WHERE `T_srn` = '$id' ");
+                                $name=mysqli_fetch_array($q);
                                 echo $name[0];
                             ?>
                         </td>
@@ -276,7 +275,7 @@ while ($query1=mysqli_fetch_array($query))
                    
                     </tr>
 <?php 
-        }
+        
 
         $cnt=$cnt+1;
     }

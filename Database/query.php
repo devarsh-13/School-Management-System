@@ -19,11 +19,18 @@ PRIMARY KEY (`Class_id`)
 )";
 $q=mysqli_query($Conn,$table);
 
- 
+
+
+$table = "CREATE TABLE `teacherstd`(`ts_id` INT NOT NULL AUTO_INCREMENT,`id_sub` INT NOT NULL,`id_teacher` INT NOT NULL,`id_class` INT NOT NULL)";
+$q=mysqli_query($Conn,$table);
+
+
+
 $table = "CREATE TABLE `Subjects`(
 `Sub_id` INT NOT NULL AUTO_INCREMENT ,
 `Sub_name` VARCHAR(40) NOT NULL ,
 `Class_id` INT  NOT NULL ,
+UNIQUE(`Sub_name`,`Class_id`),
 PRIMARY KEY (`Sub_id`)
 )";
 $q=mysqli_query($Conn,$table);
@@ -31,7 +38,6 @@ $q=mysqli_query($Conn,$table);
 
 $table="CREATE TABLE `Resources`(
 `R_id` INT NOT NULL AUTO_INCREMENT ,
-`R_Name` VARCHAR(60) NOT NULL , 
 `R_path` VARCHAR(250) NOT NULL,
 `Created_on` DATE NOT NULL DEFAULT CURRENT_DATE ,
 `Created_by` INT NOT NULL,	
@@ -75,6 +81,7 @@ $Conn->query($table);
 
 $table = "CREATE TABLE `Teachers` ( 
 	`T_srn` INT(3)  AUTO_INCREMENT NOT NULL ,
+	`login_count` INT NOT NULL ,
 	`T_photo` VARCHAR(50), 
 	`T_name` VARCHAR(50) NOT NULL , 
 	`DOB` DATE NOT NULL , 
@@ -225,7 +232,7 @@ $Sql="INSERT INTO `class` (`Class_id`, `C_no`, `Stream`) VALUES (NULL, '9', NULL
 	 
 $q=mysqli_query($Conn,$Sql);
 
-$Sql="INSERT INTO `Subjects` (Sub_name,Class_id)VALUES('Physics','1')";
+
 
 $std9_10 = array("Gujarati","Hindi","Sanskrit","English","Maths","Science","P.T.","Music","Beauty","Health","Computer","Social Science","Drawing");
 
