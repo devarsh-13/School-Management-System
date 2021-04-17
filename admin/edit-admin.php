@@ -102,6 +102,8 @@ $Sql="UPDATE `admin` SET `A_Photo`='$imageName',`A_name`='$an',`A_mobile`='$con'
         <link rel="stylesheet" href="../teacher/assets/css/default-css.css">
         <link rel="stylesheet" href="../teacher/assets/css/styles.css">
         <link rel="stylesheet" href="../teacher/assets/css/responsive.css">
+
+        <script src="../js/validate.js"></script>
         <!-- modernizr css -->
         <script src="../teacher/assets/js/vendor/modernizr-2.8.3.min.js"></script>
         <style type="text/css">
@@ -181,14 +183,14 @@ if($row > 0)
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Admin Nmae</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" name="an" value="<?php echo htmlentities($result['A_name'])?>" class="form-control"  id="an" required="required" autocomplete="off">
+                                                    <input type="text" name="an" value="<?php echo htmlentities($result['A_name'])?>" class="form-control"  id="an" oninput='stringValidate(this)'  maxlength="15" required="required" autocomplete="off">
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Date of Birth</label>
                                                 <div class="col-sm-10">
-                                                    <input type="date" name="dob" value="<?php echo htmlentities($result['A_dob'])?>" class="form-control" id="dob" required="required" autocomplete="off">
+                                                    <input type="date" name="dob" value="<?php echo htmlentities($result['A_dob'])?>" class="form-control" id="dob" min="1900-01-01" max='<?php echo date('Y-m-d');?>' required="required" autocomplete="off">
                                                 </div>
                                             </div>
 
@@ -196,14 +198,14 @@ if($row > 0)
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Contact Number</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" name="con" value="<?php echo htmlentities($result['A_mobile'])?>" class="form-control" id="con" maxlength="10" required="required" autocomplete="off">
+                                                    <input type="text" name="con" value="<?php echo htmlentities($result['A_mobile'])?>" class="form-control" id="con" oninput='digitValidate(this)' pattern=".{10}" required title=" 10 numbers" maxlength="10" required="required" autocomplete="off">
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Address</label>
                                                 <div class="col-sm-10">
-                                                     <textarea rows="5"  name="ad" class="form-control" required="required" id="ad" autocomplete="off"><?php echo htmlentities($result['A_address'])?></textarea>
+                                                     <textarea rows="5"  name="ad"  maxlength="40" class="form-control" required="required" id="ad" autocomplete="off"><?php echo htmlentities($result['A_address'])?></textarea>
                                                 </div>
                                             </div>
 
@@ -218,7 +220,7 @@ if($row > 0)
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Password</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" name="pass" value="<?php echo htmlentities($result['A_password'])?>" class="form-control" id="pass" required="required" autocomplete="off"> 
+                                                    <input type="text" name="pass" value="<?php echo htmlentities($result['A_password'])?>" class="form-control" id="pass"  maxlength="15" minlength="4" required="required" autocomplete="off"> 
                                                 </div>
                                             </div>
 
