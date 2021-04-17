@@ -40,7 +40,7 @@ if (isset($_POST['Submit'])) {
 			setcookie("teacher_contact", $Contact, time() + (10 * 365 * 24 * 60 * 60), "/");
 			setcookie("teacher_password", $_POST['Password'], time() + (10 * 365 * 24 * 60 * 60), "/");
 			
-			$c = mysqli_query($Conn, "SELECT * FROM `teachers`");			
+			$c = mysqli_query($Conn, "SELECT * FROM `teachers` WHERE `Contact` = '$Contact' && `Password` = '$Password'");			
 			$count = mysqli_fetch_array($c);
 			
 			if($count['login_count'] == 0)
@@ -55,6 +55,9 @@ if (isset($_POST['Submit'])) {
 		}
 		else 
 		{
+			$c = mysqli_query($Conn, "SELECT * FROM `teachers` WHERE `Contact` = '$Contact' && `Password` = '$Password'");			
+			$count = mysqli_fetch_array($c);
+			
 			if($count['login_count'] == 0)
 			{	
 				

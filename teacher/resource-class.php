@@ -96,10 +96,11 @@ else{
                             <div class="container-fluid">
                                 <div class="row">
 <?php
+$t=$_SESSION['t_id'];
 
-
-$sub="SELECT * from `Subjects` join teacherstd WHERE Subjects.Sub_id = teacherstd.id_sub ";
+$sub="SELECT * from `Subjects` join teacherstd WHERE Subjects.Sub_id = teacherstd.id_sub AND teacherstd.id_teacher= $t";
 $re= $Conn -> query($sub); 
+
 
             $array=array()     ;
 while ($query1=mysqli_fetch_array($re)) 

@@ -82,9 +82,9 @@ if(strlen($_SESSION['t_id'])=="")
                                 <div class="row">
 <?php 
 require "connection.php";
-
+$t=$_SESSION['t_id'];
 $cid = $_GET['C_id'];
-$sql1 ="SELECT * from `subjects` join teacherstd WHERE subjects.Class_id='$cid' AND subjects.Sub_id=teacherstd.id_sub ";
+$sql1 ="SELECT * from `subjects` join teacherstd WHERE subjects.Class_id='$cid' AND subjects.Sub_id=teacherstd.id_sub AND teacherstd.id_teacher= $t ";
 $query= $Conn -> query($sql1); 
 $row = mysqli_num_rows($query);
    
