@@ -376,7 +376,7 @@ if (strlen($_SESSION['a_id']) == "") {
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Academic Year</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" name="AY" class="form-control" required="required" id="AY" autocomplete="off">
+                                                    <input type="text" name="AY" class="form-control"  pattern="[0-9]{4}-[0-9]{4}" required title="pattern should be yyyy-yyyy "   required="required" id="AY" autocomplete="off">
                                                 </div>
                                             </div>
 

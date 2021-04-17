@@ -65,58 +65,42 @@ if (isset($_SESSION['t_id'])) {
         <div id="preloader">
             <div class="loader"></div>
         </div>
-        <div class="page-container">
-            <?php include('../teacher/leftbar.php'); ?>
-            <div class="main-content">
-                <?php include('../teacher/topbar.php'); ?>
 
 
-                <!-- page title area start -->
-                <div class="header-area">
-                    <div class="row align-items-center">
-                        <ul class="breadcrumbs pull-left">
-                            <h4 class="page-title pull-left">Chat</h4>
-                            <li><a href="../teacher/dashboard.php">Home</a></li>
-                            <li><a><span>Chat</span></a></li>
+        <!-- page title area start -->
 
-                        </ul>
+        <div class="row">
+            <div class="col-md-12">
 
-                    </div>
+                <div class="panel-heading">
+
                 </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="panel">
-                            <div class="panel-heading">
-                                <div class="panel-title">
-                                    <span>Select Student</span>
+                <!-- page title area end -->
+                <div class="main-content-inner">
+
+                    <!-- MAIN CONTENT GOES HERE -->
+                    <div class="wrapper">
+                        <section class="users">
+                            <header>
+                                <div class="content">
+                                    <a href="../teacher/dashboard.php" class="logout">Back</a>
                                 </div>
+
+                            </header>
+
+
+                            <div class="search">
+                                <span class="text">Select an user to start chat</span>
+                                <input type="text" placeholder="Enter name to search...">
+                                <button><i class="fas fa-search"></i></button>
                             </div>
-                            <!-- page title area end -->
-                            <div class="main-content-inner">
+                            <div class="users-list">
 
-                                <!-- MAIN CONTENT GOES HERE -->
-                                <div class="wrapper">
-                                    <section class="users">
-                                        <header>
-                                            <div class="content">
-                                                <a href="../teacher/dashboard.php" class="logout">Back</a>
-                                            </div>
+                            </div>
+                        </section>
+                    </div>
 
-                                        </header>
-
-
-                                        <div class="search">
-                                            <span class="text">Select an user to start chat</span>
-                                            <input type="text" placeholder="Enter name to search...">
-                                            <button><i class="fas fa-search"></i></button>
-                                        </div>
-                                        <div class="users-list">
-
-                                        </div>
-                                    </section>
-                                </div>
-
-                                <script src="show_students.js"></script>
+                    <script src="show_students.js"></script>
 
     </body>
 
@@ -153,11 +137,9 @@ if (isset($_SESSION['t_id'])) {
 
 <?php
 
-}
-else{
+} else {
 
     header("location:../teacher/teacher_login.php");
-    
 }
 
 ?>

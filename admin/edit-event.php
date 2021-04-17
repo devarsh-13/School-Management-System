@@ -168,7 +168,7 @@ if($row > 0)
                                                <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Event Date</label>
                                                 <div class="col-sm-10">
-                                                    <input type="date" name="edate" value="<?php echo htmlentities($result['event_date'])?>" class="form-control" id="edate" required="required" autocomplete="off">
+                                                    <input type="date" name="edate" value="<?php echo htmlentities($result['event_date'])?>" class="form-control" id="edate" min='<?php echo date('Y-m-d');?>' max="2099-01-01"  required="required" autocomplete="off">
                                                 </div>
                                             </div>
 
