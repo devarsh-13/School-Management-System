@@ -247,20 +247,8 @@ if(strlen($_SESSION['a_id'])=="")
         background-color: #ddd;
         
     }
-.dl button
-{
 
-    float: right;
-    margin-top: 10px;
-    margin-right: 10px;
-}
-.add button
-{
 
-    float: right;
-    margin-top: 10px;
-    margin-right: 10px;
-}
         </style>
     </head>
     <body class="top-navbar-fixed">
@@ -283,10 +271,18 @@ if(strlen($_SESSION['a_id'])=="")
                                 <li><a href="dashboard.php">Home</a></li>
                                 
                                 <li><span>Manage Student</span></li>
-
+ 
 
                     </ul>
-                      
+                      <style>.add button {margin-left: 60%;}.dlt button{margin-left: 100%;}</style>
+                       <div class="add">
+                            <a href="add-students.php" id="b"> <button type="submit" name="add" class="btn btn-success">Add Student</button></a>
+                        </div> 
+                    
+                       <div class="dlt">
+                
+                    <a href="#" ><button type="submit" name="btn_delete" id="btn_delete" class="btn btn-primary">Promote</button></a>
+                  </div>
                 </div>
           </div>
 

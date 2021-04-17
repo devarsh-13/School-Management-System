@@ -40,11 +40,18 @@
     <!-- modernizr css -->
     <script src="../teacher/assets/js/vendor/modernizr-2.8.3.min.js"></script>
     <style type="text/css">
-        .section
+        .section 
         {
             background-color: white;
             margin-top: 3%;
         }
+
+         #a 
+        {
+            background-color: white;
+            margin-bottom:  2%
+        }
+
     </style>
 </head>
 
@@ -112,6 +119,22 @@ $row = mysqli_num_rows($query1);
                                     </div>
                                     <!-- /.col-lg-3 col-md-3 col-sm-6 col-xs-12 -->
 
+                                     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" id="a">
+                                        <a class="dashboard-stat bg-primary" href="manage-admin.php">
+<?php 
+
+$sql1 ="SELECT A_id from Admin WHERE `is_deleted`='0'";
+$query1 = $Conn -> query($sql1); 
+$row = mysqli_num_rows($query1);
+
+?>
+
+                                            <span class="number counter"><?php echo $row;?></span>
+                                            <span class="name">Admin</span>
+                                            <span class="bg-icon"><i class="fa fa-users"></i></span>
+                                        </a>
+                                        <!-- /.dashboard-stat -->
+                                    </div>
                                     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                                         <a class="dashboard-stat bg-warning" href="manage-events.php">
                                         <?php 
@@ -143,19 +166,8 @@ $row = mysqli_num_rows($query1);
                                     </div>
                                     <!-- /.col-lg-3 col-md-3 col-sm-6 col-xs-12 -->
 
-
-                                  
-
-                                </div>
-                                <!-- /.row -->
-                            </div>
-
-                            <!-- /.container-fluid -->
-                        </section>
-                            <!-- /.section -->
-
-                          <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                                        <a class="dashboard-stat bg-info" href="manage-gallery.php">
+ <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                        <a class="dashboard-stat bg-warning" href="manage-gallery.php">
                                         <?php 
 $sql1 ="SELECT id from images";
 $query1 = $Conn -> query($sql1);
@@ -188,7 +200,7 @@ $row = mysqli_num_rows($query1);
 
 
                                      <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                                        <a class="dashboard-stat bg-primary" href="bin-teachers.php">
+                                        <a class="dashboard-stat bg-danger" href="bin-teachers.php">
                                         <?php 
 $sql1 ="SELECT T_srn from teachers WHERE `is_deleted`='1'";
 $query1 = $Conn -> query($sql1);
@@ -204,9 +216,20 @@ $row = mysqli_num_rows($query1);
 
 
 
+                                  
+
+                                </div>
+                                <!-- /.row -->
+                            </div>
+
+                            <!-- /.container-fluid -->
+                        </section>
+                            <!-- /.section -->
+
+                         
 
                                       <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                                        <a class="dashboard-stat bg-primary" href="bin-admin.php">
+                                        <a class="dashboard-stat bg-danger" href="bin-admin.php">
                                         <?php 
 $sql1 ="SELECT A_id from admin WHERE `is_deleted`='1'";
 $query1 = $Conn -> query($sql1);
@@ -219,6 +242,9 @@ $row = mysqli_num_rows($query1);
                                         </a>
                                         <!-- /.dashboard-stat -->
                                     </div>
+
+
+                                    
                     
 
                     </div>

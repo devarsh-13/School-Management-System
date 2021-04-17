@@ -200,7 +200,10 @@ if (isset($_GET['E_id']))
 
 
                     </ul>
-                      
+                     <style>.add button {margin-left: 100%;}</style>
+                       <div class="add">
+                            <a href="add-event.php" id="b"> <button type="submit" name="add" class="btn btn-success">Add Event</button></a>
+                        </div> 
                 </div>
             </div>
 

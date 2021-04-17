@@ -181,7 +181,10 @@ if (isset($_GET['N_id']))
 
 
                     </ul>
-                      
+                        <style>.add button {margin-left: 100%;}</style>
+                       <div class="add">
+                            <a href="add-notification.php" id="b"> <button type="submit" name="add" class="btn btn-success">Add Notification</button></a>
+                        </div>
                 </div>
           </div>
 
