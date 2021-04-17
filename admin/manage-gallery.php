@@ -173,6 +173,10 @@ if(strlen($_SESSION['a_id'])=="")
 
 
                     </ul>
+                      <style>.add button {margin-left: 60%;}</style>
+                       <div class="add">
+                            <a href="add-gallery.php" id="b"> <button type="submit" name="add" class="btn btn-success">Add Image</button></a>
+                        </div> 
                     <form  method="post" enctype="multipart/form-data" >
                        <div class="dlt">
                 

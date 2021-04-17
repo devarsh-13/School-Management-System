@@ -8,8 +8,12 @@
                 <div class="menu-inner">
                     <nav>
                         <ul class="metismenu" id="menu">
+                             <li >
+                                <a href="dashboard.php" aria-expanded="true"><i class="ti-home"></i><span>Dashboard</span>
+                            </a>
+                        </li>
                             <li >
-                                <a href="javascript:void(0)" aria-expanded="true"><i class="ti-dashboard"></i><span>dashboard</span></a>
+                                <a href="javascript:void(0)" aria-expanded="true"><i class="ti-dashboard"></i><span>Admin</span></a>
  <ul class="child-nav">
                                              <li>
                                         <a href="view-profile.php"><i class="fa fa-user"></i> <span>Profile</span> </a>

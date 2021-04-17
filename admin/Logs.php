@@ -2,7 +2,7 @@
 <?php
 
 session_start();
-
+error_reporting(0);
 require 'connection.php';
 require 'Store_data.php';
 

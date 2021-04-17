@@ -260,7 +260,6 @@ input.chh
     margin-right: 10px;
 }
 
-
         </style>
     </head>
     <body class="top-navbar-fixed">
@@ -286,7 +285,10 @@ input.chh
 
 
                     </ul>
-                      
+                    <style>.add button {margin-left: 100%;}</style>
+                       <div class="add">
+                            <a href="add-admin.php" id="b"> <button type="submit" name="add" class="btn btn-success">Add Admin</button></a>
+                        </div>
                 </div>
           </div>
 
