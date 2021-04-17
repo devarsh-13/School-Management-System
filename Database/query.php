@@ -176,7 +176,6 @@ $table="CREATE TABLE `log` (
 `Action` VARCHAR(255) NOT NULL , 
 `Status` TEXT NOT NULL , 
 `IP_address` VARCHAR(35) NOT NULL , 
-`Device` VARCHAR(100) NOT NULL , 
 `City` VARCHAR(100) NOT NULL ,
 `Region` VARCHAR(100) NOT NULL ,
 `Country` VARCHAR(100) NOT NULL ,

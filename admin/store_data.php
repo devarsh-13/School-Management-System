@@ -1,5 +1,5 @@
 <?php
-
+error_reporting(0);
 class Upload
 {
     public function Store($gr,$uid,$name,$cast,$cate,$dob,$con,$ad_date,$cid,$adhar,$hos,$hom,$handi,$des,$pass,$remarks,$ay,$ph,$Conn)
@@ -68,7 +68,7 @@ class Log
     	$contact=	$data[1];
     	
 		$ip 	=getIPAddress();
-		$device ='';//get_browser()
+		
 		
         $Loc = getLocation($ip);
       
@@ -76,7 +76,7 @@ class Log
         $city=$Loc['city'];
 		$country=$Loc['country'];
 
-    	$q=mysqli_query($Conn,"INSERT INTO `log` (`L_Date`, `L_Time`, `Name`, `Authority`, `Contact`, `Action`, `Status`, `IP_address`, `Device`, `City`,`Region`,`Country`) VALUES (CURRENT_DATE(), CURRENT_TIME(), '$name', '$auth', '$contact', '$action', '$status', '$ip', '$device', '$city','$region','$country')") or die (mysqli_error($Conn));
+    	$q=mysqli_query($Conn,"INSERT INTO `log` (`L_Date`, `L_Time`, `Name`, `Authority`, `Contact`, `Action`, `Status`, `IP_address`,`City`,`Region`,`Country`) VALUES (CURRENT_DATE(), CURRENT_TIME(), '$name', '$auth', '$contact', '$action', '$status', '$ip','$city','$region','$country')") or die (mysqli_error($Conn));
     }
 
     public function wrong_login($contact,$action,$Conn)
@@ -85,7 +85,7 @@ class Log
     	$status="Unsuccessful";
 		$ip=getIPAddress();
 		
-        $device='';
+     
 		
         $Loc = getLocation($ip);
         $region=$Loc['region'];
@@ -127,7 +127,7 @@ class Log
 			}
 		}
 
-		$q=mysqli_query($Conn,"INSERT INTO `log` (`L_Date`, `L_Time`, `Name`, `Authority`, `Contact`, `Action`, `Status`, `IP_address`, `Device`, `City`,`Region`,`Country`) VALUES (CURRENT_DATE(), CURRENT_TIME(), '$name', '$auth', '$contact', '$action', '$status', '$ip', '$device', '$city','$region','$country')") or die (mysqli_error($Conn));
+		$q=mysqli_query($Conn,"INSERT INTO `log` (`L_Date`, `L_Time`, `Name`, `Authority`, `Contact`, `Action`, `Status`, `IP_address`,   `City`,`Region`,`Country`) VALUES (CURRENT_DATE(), CURRENT_TIME(), '$name', '$auth', '$contact', '$action', '$status', '$ip', '$city','$region','$country')") or die (mysqli_error($Conn));
 	}
 }
 ?>
