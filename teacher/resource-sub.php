@@ -44,9 +44,7 @@ if(strlen($_SESSION['t_id'])=="")
         </style>
     </head>
     <body class="top-navbar-fixed">
-      <div id="preloader">
-        <div class="loader"></div>
-    </div>
+     
     <div class="page-container">
        <?php include('leftbar.php'); ?>
     <div class="main-content">
@@ -86,7 +84,7 @@ if(strlen($_SESSION['t_id'])=="")
 require "connection.php";
 
 $cid = $_GET['C_id'];
-$sql1 ="SELECT * from `subjects` WHERE `Class_id`='$cid' ";
+$sql1 ="SELECT * from `subjects` join teacherstd WHERE subjects.Class_id='$cid' AND subjects.Sub_id=teacherstd.id_sub ";
 $query= $Conn -> query($sql1); 
 $row = mysqli_num_rows($query);
    

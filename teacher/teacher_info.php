@@ -12,7 +12,7 @@ if(isset($_POST['submit']))
 
     for ($i=0; $i < sizeof($s); $i++) 
     { 
-        $Sql="INSERT INTO `teacherstd` (is_sub,id_teacher)VALUES('".$s[$i]."','$tid')";
+        $Sql="INSERT INTO `teacherstd` (id_sub,id_teacher)VALUES('".$s[$i]."','$tid')";
         $q=mysqli_query($Conn,$Sql);    
     }
 
