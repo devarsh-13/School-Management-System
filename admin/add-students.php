@@ -17,6 +17,9 @@ if (strlen($_SESSION['a_id']) == "") {
 
     if (isset($_POST['submit'])) {
 
+
+        
+
         $uploadFolder = '../user_photos/';
 
 
@@ -63,6 +66,27 @@ if (strlen($_SESSION['a_id']) == "") {
             
             $ci = mysqli_fetch_array($q);
         }
+
+
+
+
+
+	$error5 = false;
+
+	$mo = $_POST['con'];
+	if (!preg_match("/^[0-9]*$/", $mo)) {
+
+	echo '<script>alert(" Enter Only number!!")';
+		$error5 = true;
+	} elseif (strlen($mo) < 10) {
+	echo '<script>alert(" Please enter proper 10 Digit number!!") ';
+		$error5 = true;
+	} elseif (strlen($mo) > 10) {
+		echo '<script>alert(" Please enter proper 10 Digit number!!") ';
+		$error5 = true;
+	}
+
+
 
 
 
@@ -322,7 +346,7 @@ if (strlen($_SESSION['a_id']) == "") {
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Contact</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" name="con" class="form-control" required="required" oninput='digitValidate(this)' id="con" maxlength="10" autocomplete="off">
+                                                    <input type="text" name="con" class="form-control" required="required"  id="con" oninput='digitValidate(this)' maxlength="10"  autocomplete="off">
                                                 </div>
                                             </div>
 
@@ -420,7 +444,7 @@ if (strlen($_SESSION['a_id']) == "") {
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Password</label>
                                                 <div class="col-sm-10">
-                                                    <input type="password" name="pass" required="required" class="form-control" id="pass" maxlength="15" minlength="8" autocomplete="off">
+                                                    <input type="password" name="pass" required="required" class="form-control" id="pass" maxlength="8" minlength="8" autocomplete="off">
                                                 </div>
                                             </div>
 
