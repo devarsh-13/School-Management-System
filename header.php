@@ -15,7 +15,7 @@ if (isset($_SESSION['s_id'])) {
         <div class="container">
             <div class="row">
                 <div class="col-lg-2 col-md-2 col-sm-2">
-                    <div class="educo_logo"> <a href="index.html"><img src="images/header/Logo.png" alt="logo" /></a> </div>
+                    <div class="educo_logo"> <a href="index.html"><img src="images/header/IGHS.png" style="width: 100px;  height="10px" alt="logo" /></a> </div>
                 </div>
                 <div class="col-lg-8 col-md-8 col-sm-8">
                     <div class="edoco_menu_toggle navbar-toggle" data-toggle="collapse" data-target="#ed_menu">Menu <i class="fa fa-bars"></i>

@@ -40,11 +40,11 @@ if (isset($_SESSION['s_id']))
 	<link href="css/main.css" rel="stylesheet" type="text/css" />
 	<!-- end theme style -->
 	<!-- favicon links -->
-	<link rel="shortcut icon" type="image/png" href="images/header/favicon.png" />
+	<link rel="shortcut icon" type="image/png" href="images/header/IGHS(1).png" />
 
 	<!-- end theme style -->
 	<!-- favicon links -->
-	<link rel="shortcut icon" type="image/png" href="images/header/favicon.png" />
+
 	<style type="text/css">
 		.scrolling-wrapper {
 			height: 300px;
