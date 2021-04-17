@@ -1,15 +1,16 @@
 <?php
     include 'Database/connection.php';
+    include('admin/store_data.php');
     session_start();
 
+    $action="Change Student Password";
+    $log=new Log();
+
+    if(isset($_SESSION['s_id']))
+    {
 
     $S_srn = $_SESSION['s_id'];
-    $sql = "SELECT * from `students` WHERE
- S_srn = '$S_srn'";
-
-
-   // unset($_SESSION['d']);
-   // unset($_SESSION['c']);
+    $sql = "SELECT * from `students` WHERE S_srn = '$S_srn'";
 
     $query = mysqli_query($Conn, $sql);
     $row = mysqli_num_rows($query);
@@ -32,16 +33,19 @@
 
 		if ($Password == $Password2) {
 
-			if ($row == 1) {
+			if ($row == 1) 
+            {
 
+                $log->success->entry($action,$Conn);
 				$update = mysqli_query($Conn, "UPDATE students SET S_password ='$Password' WHERE S_srn ='$S_srn' ") or die(mysqli_connect_error());
                 $return = array(
                     'status' => 200
                 );
                 http_response_code(200);
 			}
-		} else {
-
+		} else 
+        {
+            $log->success->entry($action,$Conn,"Unsuccessful");
 		//	$_SESSION['d'] = 'Please Enter same passwords';
             $return = array(
                 'status' => 400
@@ -49,7 +53,10 @@
             http_response_code(400);
 			
 		}
-	} else {
+	}
+    else 
+    {
+        $log->success->entry($action,$Conn,"Unsuccessful");
 
 	//	$_SESSION['c'] = ' Your old password is incorrect';
         $return = array(
@@ -58,3 +65,9 @@
         http_response_code(500);
 	
 	}
+}
+else
+{
+    $log->success->entry($action,$Conn,"Unsuccessful");
+    header("location:index.php");
+}

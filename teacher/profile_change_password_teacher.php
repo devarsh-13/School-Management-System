@@ -1,7 +1,10 @@
 <?php
     include 'connection.php';
+    include ('../admin/store_data.php');
     session_start();
 
+    $log=new Log();
+    $action="Teacher Password Changed";
 
     $T_srn = $_SESSION['t_id'];
     $sql = "SELECT * from `teachers` WHERE
@@ -31,7 +34,9 @@
 
 		if ($Password == $Password2) {
 
-			if ($row == 1) {
+			if ($row == 1) 
+            {
+                $log->success_entry($action,$Conn);
 
 				$update = mysqli_query($Conn, "UPDATE `teachers` SET `Password` ='$Password' WHERE T_srn ='$T_srn' ") or die(mysqli_connect_error());
                 $return = array(
@@ -39,18 +44,20 @@
                 );
                 http_response_code(200);
 			}
-		} else {
-
-	
+		}
+        else 
+        {
+            $log->success_entry($action,$Conn,"Unsuccessful");	
             $return = array(
                 'status' => 400
             );
             http_response_code(400);
 			
 		}
-	} else {
-
-
+	} 
+    else 
+    {
+        $log->success_entry($action,$Conn,"Unsuccessful");  
         $return = array(
             'status' => 500
         );

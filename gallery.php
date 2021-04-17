@@ -1,16 +1,18 @@
 <?php
 require 'Database/connection.php';
+include('admin/store_data.php');
 session_start();
 
+$action="In View Gallery";
+$log=new Log();
 
-if (isset($_SESSION['s_id'])) {
 
-
+if (isset($_SESSION['s_id'])) 
+{
+  $log->success_entry($action,$Conn);
 
    $images = mysqli_query($Conn, "select * from images");
-
    $path = "admin/img/";
-
    $row = mysqli_num_rows($images);
 
    ?>
@@ -192,9 +194,9 @@ if (isset($_SESSION['s_id'])) {
 <?php
 }
 else
-
 {
- header("location:login.php");
+  $log->success_entry($action,$Conn,"Unsuccessful");
+  header("location:login.php");
 
 }?>
 

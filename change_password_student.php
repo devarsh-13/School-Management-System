@@ -2,6 +2,9 @@
 session_start();
 
 require "Database/connection.php";
+include('admin/store_data.php');
+$action="Student password Changed";
+$log=new Log();
 
 $flag = 0;
 
@@ -17,20 +20,25 @@ if (isset($_POST['Submit'])) {
   $error = false;
 
 
-  if ($Password == $Password2) {
-
-
+  if ($Password == $Password2) 
+  {
     $query = mysqli_query($Conn, "SELECT S_password FROM  Students WHERE
 			 S_srn = '$S_srn'") or die(mysqli_connect_error());
 
     if (mysqli_num_rows($query) == 1) {
 
       $result = mysqli_query($Conn, "UPDATE Students SET S_password ='$Password' WHERE S_srn ='$S_srn' ") or die(mysqli_connect_error());
+      $log->success_entry($action,$Conn);
       header("location:login.php");
     }
-  } else {
-
-
+    else
+    {
+      $log->success_entry($action,$Conn,"Unsuccessfull");  
+    }
+  } 
+  else 
+  {
+    $log->success_entry($action,$Conn,"Unsuccessfull");
     $flag = 1;
   }
 }

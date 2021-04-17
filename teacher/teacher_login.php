@@ -1,6 +1,7 @@
 <?php
 require "connection.php";
 require "../admin/store_data.php";
+
 $action="Teacher Login";
 $log=new Log();
 
@@ -28,7 +29,8 @@ if (isset($_POST['Submit'])) {
 	$row = mysqli_num_rows($query);
 	$arr = mysqli_fetch_row($query);
 
-	if ($row == 1) {
+	if ($row == 1) 
+	{
 		session_start();
 		$_SESSION['t_id'] = $arr[0];
 		$log->success_entry($action,$Conn);
@@ -40,6 +42,7 @@ if (isset($_POST['Submit'])) {
 			
 			$c = mysqli_query($Conn, "SELECT * FROM `teachers`");			
 			$count = mysqli_fetch_array($c);
+			
 			if($count['login_count'] == 0)
 			{	
 				
@@ -52,13 +55,6 @@ if (isset($_POST['Submit'])) {
 		}
 		else 
 		{
-			$log->success_entry($action,$Conn,"Unsuccessful");
-			unset($_COOKIE['teacher_contact']);
-			setcookie('teacher_contact', null, -1, '/');
-			unset($_COOKIE['teacher_password']);
-			setcookie('teacher_password', null, -1, '/');
-			$c = mysqli_query($Conn, "SELECT * FROM `teachers`");			
-			$count = mysqli_fetch_array($c);
 			if($count['login_count'] == 0)
 			{	
 				
@@ -68,8 +64,19 @@ if (isset($_POST['Submit'])) {
 			{
 				header("location:dashboard.php");
 			}
+			
+			unset($_COOKIE['teacher_contact']);
+			setcookie('teacher_contact', null, -1, '/');
+			unset($_COOKIE['teacher_password']);
+			setcookie('teacher_password', null, -1, '/');
+			$c = mysqli_query($Conn, "SELECT * FROM `teachers`");			
+			$count = mysqli_fetch_array($c);
+			
 		}
-	} else {
+	}
+	else 
+	{
+		$log->wrong_login($_POST['Contact_no'],$action,$Conn);
 		$flag = 1;
 	}
 }

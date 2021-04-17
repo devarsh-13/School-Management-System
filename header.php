@@ -27,7 +27,7 @@ if (isset($_SESSION['s_id'])) {
                             <li><a href="resource-download.php">Resources</a></li>
                             <li><a href="student_profile.php">Profile</a></li>
                             <li><a href="student_chat/select_users.php">Chat</a></li>
-                            <li><a href="about.html">about us</a></li>
+                            <li><a href="about.php">about us</a></li>
 
                         </ul>
                     </div>

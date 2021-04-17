@@ -4,9 +4,10 @@ error_reporting(0);
 include('connection.php');
 include('store_data.php');
 
+$log=new Log();
 if(strlen($_SESSION['a_id'])=="")
     {   
-    header("Location: index.php"); 
+        header("Location: index.php"); 
     }
     else
     {

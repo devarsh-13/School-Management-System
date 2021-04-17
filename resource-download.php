@@ -36,8 +36,6 @@ Purchase:
       <meta name="author" content="Kamleshyadav" />
       <meta name="MobileOptimized" content="320" />
 
-		<title>ighs</title>
-
 		<!--srart theme style -->
 		
     
@@ -49,7 +47,7 @@ Purchase:
     <link rel="stylesheet" href="teacher/assets/css/styles.css">
    
 	<meta charset="utf-8" />
-	<title>Educo Multipurpose Responsive HTML Template</title>
+	<title>IGHS | Download Resources </title>
 	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
 	<meta name="description" content="Educo" />
 	<meta name="keywords" content="Educo, html template, Education template" />

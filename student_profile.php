@@ -1,19 +1,28 @@
 <?php
 
 include 'Database/connection.php';
+include('admin/store_data.php');
+
 session_start();
-if (!isset($_SESSION['s_id'])) {
+
+$log=new Log();
+$action="In Student Profile";
+
+if (!isset($_SESSION['s_id'])) 
+{
+	$log->success_entry($action,$Conn,"Unsuccessful");
 	header("location:login.php");
 }
+else
+{
+	$log->success_entry($action,$Conn);
 
-$S_srn = $_SESSION['s_id'];
-$sql = "SELECT * from `students` join Class on students.Class_id=Class.Class_id WHERE
- S_srn = '$S_srn' ORDER BY Created_on DESC";
+	$S_srn = $_SESSION['s_id'];
+	$sql = "SELECT * from `students` join Class on students.Class_id=Class.Class_id WHERE
+	S_srn = '$S_srn' ORDER BY Created_on DESC";
 
-
-
-$query = mysqli_query($Conn, $sql);
-$row = mysqli_num_rows($query);
+	$query = mysqli_query($Conn, $sql);
+	$row = mysqli_num_rows($query);
 
 
 $result = mysqli_fetch_array($query);
@@ -38,7 +47,7 @@ $result = mysqli_fetch_array($query);
     <link rel="stylesheet" href="teacher/assets/css/styles.css">
    
 	<meta charset="utf-8" />
-	<title>Educo Multipurpose Responsive HTML Template</title>
+	<title>IGHS | Student Profile</title>
 	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
 	<meta name="description" content="Educo" />
 	<meta name="keywords" content="Educo, html template, Education template" />
@@ -217,3 +226,8 @@ $result = mysqli_fetch_array($query);
 </body>
 
 </html>
+
+<?php
+
+}
+?>

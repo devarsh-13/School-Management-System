@@ -14,20 +14,31 @@ class Upload
 
     }
 }
-  function getIPAddress() {  
+function getIPAddress() 
+{  
     //whether ip is from the share internet  
-     if(!empty($_SERVER['HTTP_CLIENT_IP'])) {  
-                $ip = $_SERVER['HTTP_CLIENT_IP'];  
-        }  
+    if(!empty($_SERVER['HTTP_CLIENT_IP'])) 
+    {  
+        $ip = $_SERVER['HTTP_CLIENT_IP'];  
+    }  
     //whether ip is from the proxy  
-    elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {  
-                $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];  
-     }  
+    elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) 
+    {  
+        $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];  
+    }  
 //whether ip is from the remote address  
-    else{  
-             $ip = $_SERVER['REMOTE_ADDR'];  
-     }  
-     return $ip;  
+    else
+    {  
+        $ip = $_SERVER['REMOTE_ADDR'];  
+    }  
+return $ip;  
+}
+
+function getLocation($ip)
+{
+    
+
+   
 }
 
 class Log
@@ -49,7 +60,7 @@ class Log
     	elseif(isset($_SESSION['s_id']))
     	{	
     		$id=$_SESSION['s_id'];
-    		$data=mysqli_query($Conn,"SELECT `S_name`,`S_contact` FROM `Students` WHERE `S_srn`='$id'")or die(mysqli_error($Conn));
+    		$q=mysqli_query($Conn,"SELECT `S_name`,`S_contact` FROM `Students` WHERE `S_srn`='$id'")or die(mysqli_error($Conn));
 	   		$auth="Student";
     	}
     	$data=mysqli_fetch_row($q);
@@ -59,10 +70,13 @@ class Log
     	
 		$ip 	=	getIPAddress();
 		$device = '';//get_browser()
-		$state  =   '';
-		$country= 	'';
+		
+        $Loc = @json_decode(file_get_contents("http://www.geoplugin.net/json.gp?ip=".$ip));
 
-    	$q=mysqli_query($Conn,"INSERT INTO `log` (`L_Date`, `L_Time`, `Name`, `Authority`, `Contact`, `Action`, `Status`, `IP_address`, `Device`, `State`, `Country`) VALUES (CURRENT_DATE(), CURRENT_TIME(), '$name', '$auth', '$contact', '$action', '$status', '$ip', '$device', '$state', '$country')");
+        $city= $Loc->geoplugin_city;
+		$country=$Loc->geoplugin_countryName;
+
+    	$q=mysqli_query($Conn,"INSERT INTO `log` (`L_Date`, `L_Time`, `Name`, `Authority`, `Contact`, `Action`, `Status`, `IP_address`, `Device`, `City`, `Country`) VALUES (CURRENT_DATE(), CURRENT_TIME(), '$name', '$auth', '$contact', '$action', '$status', '$ip', '$device', '$city', '$country')");
     }
 
     public function wrong_login($contact,$action,$Conn)

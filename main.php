@@ -1,43 +1,25 @@
 <?php
 
 require "Database/connection.php";
+require "admin/store_data.php";
 
 session_start();
 
-if (isset($_SESSION['s_id'])) {
+$action="In Student Home page";
+$log=new Log();
 
+if (isset($_SESSION['s_id'])) 
+{
+	$log->success_entry($action,$Conn);
 
-
-
-
-$S_srn = $_SESSION['s_id'];
-$update = mysqli_query($Conn, "UPDATE students SET s_status ='offline' WHERE S_srn ='$S_srn' ") or die(mysqli_connect_error());
-
-
-
-
+	$S_srn = $_SESSION['s_id'];
+	$update = mysqli_query($Conn, "UPDATE students SET s_status ='offline' WHERE S_srn ='$S_srn' ") or die(mysqli_connect_error());
 
 ?>
 
 <!DOCTYPE html>
-<!-- 
-Template Name: Educo
-Version: 3.0.0
-Author: Kamleshyadav
-Website: http://himanshusofttech.com/
-Purchase: http://themeforest.net/user/kamleshyadav
--->
-<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
-<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
-<!--[if !IE]><!-->
 <html lang="en">
-<!--<![endif]-->
-
-<!-- Begin Head -->
-
 <head>
-
-
     
     <link rel="stylesheet" href="teacher/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="teacher/assets/css/font-awesome.min.css">
@@ -47,7 +29,7 @@ Purchase: http://themeforest.net/user/kamleshyadav
     <link rel="stylesheet" href="teacher/assets/css/styles.css">
    
 	<meta charset="utf-8" />
-	<title>Educo Multipurpose Responsive HTML Template</title>
+	<title>IGHS | Home </title>
 	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
 	<meta name="description" content="Educo" />
 	<meta name="keywords" content="Educo, html template, Education template" />
@@ -421,6 +403,7 @@ Purchase: http://themeforest.net/user/kamleshyadav
 }
 else
 {
+	$log->success_entry($action,$Conn,"Unsuccessful");
 	header("location:login.php");
 
 }

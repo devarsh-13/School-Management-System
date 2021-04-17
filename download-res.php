@@ -1,32 +1,25 @@
 <?php
 session_start();
+error_reporting(0);
 
-if (!isset($_SESSION['s_id'])) {
+include('Database/connection.php');
+include('admin/store_data.php');
+
+$action="In Download Resource";
+$log=new Log();
+
+if(!isset($_SESSION['s_id'])) 
+{
+	$log->success_entry($action,$Conn,"Unsuccessful");
 	header("location:login.php");
 }
-error_reporting(0);
-include('connection.php');
-if (strlen($_SESSION['s_id']) == "") {
-	header("Location: index.php");
-} else {
+else 
+{
+
 ?>
 
 	<!DOCTYPE html>
-	<!-- 
-Template Name: Educo
-Version: 3.0.0
-Author: 
-Website: 
-Purchase: 
--->
-	<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
-	<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
-	<!--[if !IE]><!-->
 	<html lang="en">
-	<!--<![endif]-->
-
-	<!-- Begin Head -->
-
 	<head>
 
 		<title>ighs</title>
@@ -42,7 +35,7 @@ Purchase:
     <link rel="stylesheet" href="teacher/assets/css/styles.css">
    
 	<meta charset="utf-8" />
-	<title>Educo Multipurpose Responsive HTML Template</title>
+	<title>IGHS | Download Resources</title>
 	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
 	<meta name="description" content="Educo" />
 	<meta name="keywords" content="Educo, html template, Education template" />
@@ -189,6 +182,6 @@ while ($query1=mysqli_fetch_array($query)) {
     <script src="teacher/assets/js/plugins.js"></script>
     <script src="teacher/assets/js/scripts.js"></script>
 	</body>
-<?php  } ?>
-
 	</html>
+
+<?php  } ?>

@@ -1,6 +1,11 @@
 <?php
 require_once "Database/Create_db.php";
 require_once "Database/connection.php";
+
+include('admin/store_data.php');
+$action="Student Login";
+$log=new Log();
+
 $flag = 0;
 
 if (isset($_POST['Submit'])) {
@@ -30,10 +35,9 @@ if (isset($_POST['Submit'])) {
 
 	if ($row == 1) {
 		session_start();
-
 		$_SESSION['s_id'] = $arr[0];
 
-
+		$log->success_entry($action,$Conn);
 
 		if (isset($_POST["remember"])) {
 			setcookie("contact_no", $Contact, time() + (10 * 365 * 24 * 60 * 60), "/");
@@ -46,7 +50,10 @@ if (isset($_POST['Submit'])) {
 			setcookie('password', null, -1, '/');
 			header("location:http://localhost/Sem6CollegeProject/main.php");
 		}
-	} else {
+	}
+	else 
+	{
+		$log->wrong_login($_POST[$Contact_no],$action,$Conn);
 		$flag = 1;
 	}
 }

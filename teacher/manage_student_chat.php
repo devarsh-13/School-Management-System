@@ -5,31 +5,38 @@ error_reporting(0);
 include 'connection.php';
 include('../admin/store_data.php');
 
-if (strlen($_SESSION['t_id']) == "") {
+
+$action="In Manage Student Chat";
+$log=new Log();
+
+if (strlen($_SESSION['t_id']) == "") 
+{
+    $log->success_entry($action,$Conn,"Unsuccessful");
     header("Location: index.php");
-} else {
-     
-          $action="In Manage Student Chat";
-            $log=new Log();
-            $log->success_entry($action,$Conn);
-
-      if (isset($_GET['s_id'])) 
-        {
+} 
+else 
+{
+    $log->success_entry($action,$Conn);
+    if (isset($_GET['s_id'])) 
+    {
            
-            $sid = $_GET['s_id'];
+        $sid = $_GET['s_id'];
 
-            $Sql="UPDATE `conversation` SET `is_c_deleted`='1' WHERE `S_srn`='$sid'";
-            $delete = $Conn->query($Sql) or die("Error in query2" . $connection->error);
+        $Sql="UPDATE `conversation` SET `is_c_deleted`='1' WHERE `S_srn`='$sid'";
+        $delete = $Conn->query($Sql) or die("Error in query2" . $connection->error);
 
-            if ($delete) {
-                $msg = "student Deleted Successfully";
-                 $action=" one Student deleted";
-                 $log->success_entry($action,$Conn);
-            } else {
+        if ($delete) 
+        {
+            $msg = "student Deleted Successfully";
+            $action=" one Student deleted";
+            $log->success_entry($action,$Conn);
+        } 
+        else 
+        {
                 $error = "Something went wrong. Please try again";
                 $log->success_entry($action,$Conn,"Unsuccessful");
-            }
         }
+    }
 
         ?>
         <!DOCTYPE html>
@@ -39,7 +46,7 @@ if (strlen($_SESSION['t_id']) == "") {
             <meta charset="utf-8">
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
             <meta name="viewport" content="width=device-width, initial-scale=1">
-            <title> Manage chat</title>
+            <title>IGHS | Manage chat</title>
             <link rel="stylesheet" href="css/bootstrap.min.css" media="screen">
             <link rel="stylesheet" href="css/font-awesome.min.css" media="screen">
             <link rel="stylesheet" href="css/animate-css/animate.min.css" media="screen">

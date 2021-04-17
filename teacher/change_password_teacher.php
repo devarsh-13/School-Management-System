@@ -2,12 +2,15 @@
 session_start();
 
 require "connection.php";
+include ('../admin/store_data.php');
+
+$log=new Log();
+$action="Teacher Password Changed";
 
 $flag = 0;
 
-if (isset($_POST['Submit'])) {
-
-
+if (isset($_POST['Submit'])) 
+{
   $Password = sha1($_POST['Password']);
 
   $Password2 = sha1($_POST['Password2']);
@@ -17,21 +20,27 @@ if (isset($_POST['Submit'])) {
   $error = false;
 
 
-  if ($Password == $Password2) {
-
-
+  if ($Password == $Password2) 
+  {
     $query = mysqli_query($Conn, "SELECT `Password` FROM `Teachers` WHERE `T_srn` = '$T_srn'") or die(mysqli_connect_error());
 
-
-
-    if (mysqli_num_rows($query) == 1) {
-
+    if (mysqli_num_rows($query) == 1) 
+    {
       $result = mysqli_query($Conn, "UPDATE `Teachers` SET `Password` = '$Password' WHERE `T_srn` = '$T_srn' ") or die(mysqli_connect_error());
-      header("location:teacher_login.php");
+      if($result)
+      {
+        $log->success_entry($action,$Conn);
+        header("location:teacher_login.php");  
+      }
     }
-  } else {
-
-
+    else
+      {
+        $log->success_entry($action,$Conn,"Unsuccessful");
+      }
+  }
+  else
+  {
+    $log->success_entry($action,$Conn,"Unsuccessful");
     $flag = 1;
   }
 }

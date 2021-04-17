@@ -1,3 +1,22 @@
+<?php
+
+include('Database/connection.php');
+include('admin/store_data.php');
+session_start();
+
+$log=new Log();
+$action="In About Us";
+
+if(isset($_SESSION['s_id']))
+{
+
+	$log->success_entry($action,$Conn);
+
+?>
+
+
+
+
 <!DOCTYPE html>
 <!-- 
 Template Name: Educo
@@ -71,9 +90,9 @@ Purchase:
 							<li><a href="main.php">Home</a></li>
 							<li><a href="#event">events</a></li>
 							<li><a href="gallery.php">Gallery</a></li>
-							<li><a href="courses.html">Resources</a></li>
-							<li><a href="dashboard.html">Profile</a></li>
-							<li><a href="contact.html">Chat</a></li>
+							<li><a href="resource-download.php">Resources</a></li>
+							<li><a href="student_profile.php">Profile</a></li>
+							<li><a href="student_chat/select_users.php">Chat</a></li>
 							<li><a href="about.html">about us</a></li>
 						</ul>
 					</div>
@@ -353,3 +372,12 @@ Purchase:
 <!--main js file end-->
 </body>
 </html>
+
+<?php
+
+}
+else
+{
+	$log->success_entry($action,$Conn,"Unsuccessful");
+	header("location:index.php");
+}

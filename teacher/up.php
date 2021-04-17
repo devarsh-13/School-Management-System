@@ -5,7 +5,7 @@ session_start();
         
         include('../admin/store_data.php');
         $log=new Log();
-        $action="File Uploaded";
+        $action="File Upload";
         
 
     $uploadFolder = 'resources/';
@@ -25,22 +25,22 @@ session_start();
         }
 
         $full= $dir.$imageName;
-        if(file_exists($full))
-        {
-            continue;
-        }
-        else
+        if(file_exists($full) == 0)
         {
             $result = move_uploaded_file($imageTmpName,$full);
 
             $t_id = $_SESSION['t_id'];
-             $d = date("Y-m-d");
+            $d = date("Y-m-d");
 
 
             $Sql="INSERT INTO `resources`(`R_path`, `Created_on`, `Created_by`, `Sub_id`) VALUES ('$imageName','$d','$t_id','$sub_id')";
             $q=mysqli_query($Conn,$Sql);
             
             $log->success_entry($action,$Conn);
+        }
+        else
+        {
+            $log->success_entry($action,$Conn,"Unsuccessful");
         } 
     }       
 
