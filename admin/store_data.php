@@ -33,12 +33,11 @@ function getIPAddress()
     }  
 return $ip;  
 }
-
 function getLocation($ip)
 {
-    
-
-   
+    $json = file_get_contents("http://ipinfo.io/$ip/geo");
+    $json = json_decode($json, true);    
+    return $json;
 }
 
 class Log
@@ -68,15 +67,16 @@ class Log
     	$name 	= 	$data[0];
     	$contact=	$data[1];
     	
-		$ip 	=	getIPAddress();
-		$device = '';//get_browser()
+		$ip 	=getIPAddress();
+		$device ='';//get_browser()
 		
-        $Loc = @json_decode(file_get_contents("http://www.geoplugin.net/json.gp?ip=".$ip));
+        $Loc = getLocation($ip);
+      
+        $region=$Loc['region'];
+        $city=$Loc['city'];
+		$country=$Loc['country'];
 
-        $city= $Loc->geoplugin_city;
-		$country=$Loc->geoplugin_countryName;
-
-    	$q=mysqli_query($Conn,"INSERT INTO `log` (`L_Date`, `L_Time`, `Name`, `Authority`, `Contact`, `Action`, `Status`, `IP_address`, `Device`, `City`, `Country`) VALUES (CURRENT_DATE(), CURRENT_TIME(), '$name', '$auth', '$contact', '$action', '$status', '$ip', '$device', '$city', '$country')");
+    	$q=mysqli_query($Conn,"INSERT INTO `log` (`L_Date`, `L_Time`, `Name`, `Authority`, `Contact`, `Action`, `Status`, `IP_address`, `Device`, `City`,`Region`,`Country`) VALUES (CURRENT_DATE(), CURRENT_TIME(), '$name', '$auth', '$contact', '$action', '$status', '$ip', '$device', '$city','$region','$country')") or die (mysqli_error($Conn));
     }
 
     public function wrong_login($contact,$action,$Conn)
@@ -84,9 +84,13 @@ class Log
 
     	$status="Unsuccessful";
 		$ip=getIPAddress();
-		$device='';
-		$state='';
-		$country='';
+		
+        $device='';
+		
+        $Loc = getLocation($ip);
+        $region=$Loc['region'];
+        $city=$Loc['city'];
+        $country=$Loc['country'];
 
 
 		$q=mysqli_query($Conn,"SELECT `A_name` FROM `Admin` WHERE `A_mobile`='$contact'");
@@ -123,7 +127,7 @@ class Log
 			}
 		}
 
-		$q=mysqli_query($Conn,"INSERT INTO `log` (`L_Date`, `L_Time`, `Name`, `Authority`, `Contact`, `Action`, `Status`, `IP_address`, `Device`, `State`, `Country`) VALUES (CURRENT_DATE(), CURRENT_TIME(), '$name', '$auth', '$contact', '$action', '$status', '$ip', '$device', '$state', '$country')");
+		$q=mysqli_query($Conn,"INSERT INTO `log` (`L_Date`, `L_Time`, `Name`, `Authority`, `Contact`, `Action`, `Status`, `IP_address`, `Device`, `City`,`Region`,`Country`) VALUES (CURRENT_DATE(), CURRENT_TIME(), '$name', '$auth', '$contact', '$action', '$status', '$ip', '$device', '$city','$region','$country')") or die (mysqli_error($Conn));
 	}
 }
 ?>

@@ -177,7 +177,8 @@ $table="CREATE TABLE `log` (
 `Status` TEXT NOT NULL , 
 `IP_address` VARCHAR(35) NOT NULL , 
 `Device` VARCHAR(100) NOT NULL , 
-`City` VARCHAR(50) NOT NULL , 
+`City` VARCHAR(100) NOT NULL ,
+`Region` VARCHAR(100) NOT NULL ,
 `Country` VARCHAR(100) NOT NULL ,
 PRIMARY KEY(`L_Time`,`Contact`)
 )";
