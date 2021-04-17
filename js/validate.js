@@ -14,12 +14,10 @@ let digitValidate = function (ele) {
   };
 
 
-  function validateContact(ele){
+  let dateValidate = function(){
 
 
-    if (el.value.length != 10) {
-      alert("length must be exactly 10 characters")
-    }
+    document.getElementById("dob") = Date();
 
   }
 

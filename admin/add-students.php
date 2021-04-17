@@ -18,7 +18,7 @@ if (strlen($_SESSION['a_id']) == "") {
     if (isset($_POST['submit'])) {
 
 
-        
+
 
         $uploadFolder = '../user_photos/';
 
@@ -63,7 +63,7 @@ if (strlen($_SESSION['a_id']) == "") {
         } else {
             $s = "SELECT `Class_id` FROM `class` WHERE `C_no` = '$class'";
             $q = mysqli_query($Conn, $s);
-            
+
             $ci = mysqli_fetch_array($q);
         }
 
@@ -71,20 +71,20 @@ if (strlen($_SESSION['a_id']) == "") {
 
 
 
-	$error5 = false;
+        $error5 = false;
 
-	$mo = $_POST['con'];
-	if (!preg_match("/^[0-9]*$/", $mo)) {
+        $mo = $_POST['con'];
+        if (!preg_match("/^[0-9]*$/", $mo)) {
 
-	echo '<script>alert(" Enter Only number!!")';
-		$error5 = true;
-	} elseif (strlen($mo) < 10) {
-	echo '<script>alert(" Please enter proper 10 Digit number!!") ';
-		$error5 = true;
-	} elseif (strlen($mo) > 10) {
-		echo '<script>alert(" Please enter proper 10 Digit number!!") ';
-		$error5 = true;
-	}
+            echo '<script>alert(" Enter Only number!!")';
+            $error5 = true;
+        } elseif (strlen($mo) < 10) {
+            echo '<script>alert(" Please enter proper 10 Digit number!!") ';
+            $error5 = true;
+        } elseif (strlen($mo) > 10) {
+            echo '<script>alert(" Please enter proper 10 Digit number!!") ';
+            $error5 = true;
+        }
 
 
 
@@ -142,13 +142,12 @@ if (strlen($_SESSION['a_id']) == "") {
                                         '$stat'
                                     )";
 
-        $q = mysqli_query($Conn, $Sql)or die(mysqli_error($Conn));
+        $q = mysqli_query($Conn, $Sql) or die(mysqli_error($Conn));
         $action = "Student Added";
         if ($q) {
 
             $log->success_entry($action, $Conn);
-        echo"<script>alert('Student Info Added Successfully');window.location.href='add-students.php';</script>";
-            
+            echo "<script>alert('Student Info Added Successfully');window.location.href='add-students.php';</script>";
         } else {
 
             $log->success_entry($action, $Conn, "Unsuccessful");
@@ -162,50 +161,38 @@ if (strlen($_SESSION['a_id']) == "") {
 
     <head>
         <script type="text/javascript">
+            function Check_class() {
 
-            function Check_class()
-            {
-                
-                if(document.getElementById("clas").value==11 || document.getElementById("clas").value==12)
-                {
+                if (document.getElementById("clas").value == 11 || document.getElementById("clas").value == 12) {
                     document.getElementById("stream").required = true;
                     document.getElementById("stream").disabled = false;
-                    if(document.getElementById("stream").value=="NULL")
-                    {
-                        document.getElementById("stream").value="";
+                    if (document.getElementById("stream").value == "NULL") {
+                        document.getElementById("stream").value = "";
                     }
-                }
-                else
-                {
+                } else {
                     document.getElementById("stream").required = false;
                     document.getElementById("stream").disabled = true;
-                    document.getElementById("stream").value="NULL";
+                    document.getElementById("stream").value = "NULL";
                 }
             }
-             function desc(i)
-            {
-                var c=document.getElementById("hand1").checked;
-                var c2=document.getElementById("hand2").checked;
-                if(c==true)
-                {
+
+            function desc(i) {
+                var c = document.getElementById("hand1").checked;
+                var c2 = document.getElementById("hand2").checked;
+                if (c == true) {
                     document.getElementById("des").required = true;
                     document.getElementById("des").disabled = false;
-                    var s=document.getElementById("des").value;
+                    var s = document.getElementById("des").value;
 
-                    if(s.localeCompare("NULL")==0)
-                    {
-                       document.getElementById("des").value="";
+                    if (s.localeCompare("NULL") == 0) {
+                        document.getElementById("des").value = "";
                     }
 
-                }
-                else if(c2==true)
-                {
-                    document.getElementById("des").required = false;   
-                    document.getElementById("des").value="NULL";
+                } else if (c2 == true) {
+                    document.getElementById("des").required = false;
+                    document.getElementById("des").value = "NULL";
                     document.getElementById("des").disabled = true;
-                }
-                else
-                {
+                } else {
 
                 }
 
@@ -222,6 +209,8 @@ if (strlen($_SESSION['a_id']) == "") {
                 margin-left: 100%;
             }
         </style>
+
+
 
         <link rel="stylesheet" href="../teacher/css/bootstrap.min.css" media="screen">
         <link rel="stylesheet" href="../teacher/css/font-awesome.min.css" media="screen">
@@ -298,20 +287,20 @@ if (strlen($_SESSION['a_id']) == "") {
                                 <div class="main-content-inner">
                                     <!-- MAIN CONTENT GOES HERE -->
                                     <div class="panel-body">
-                                        
-                                         <form class="form-horizontal" method="post"  >
+
+                                        <form class="form-horizontal" method="post">
 
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Gr Number</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" name="gr" class="form-control" required="required" oninput='digitValidate(this)' maxlength="5" id="gr" autocomplete="off">
+                                                    <input type="text" name="gr" class="form-control" required="required" oninput='digitValidate(this)' pattern=".{5}" required title=" 5 numbers" maxlength="5" id="gr" autocomplete="off">
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">UID Number</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" name="ui" class="form-control" required="required" id="ui" oninput='digitValidate(this)' maxlength="18" autocomplete="off">
+                                                    <input type="text" name="ui" class="form-control" required="required" id="ui" oninput='digitValidate(this)' pattern=".{18}" required title=" 18 numbers" maxlength="18" autocomplete="off">
                                                 </div>
                                             </div>
 
@@ -339,34 +328,34 @@ if (strlen($_SESSION['a_id']) == "") {
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Date of Birth</label>
                                                 <div class="col-sm-10">
-                                                    <input type="date" name="dob" class="form-control" required="required" id="dob" maxlength="  <?php echo date('Y-m-d') ?>" autocomplete="off">
+                                                    <input type="date" name="dob" class="form-control" required="required" id="dob" min="1990-01-01" max='<?php echo date('Y-m-d');?>' autocomplete="off">
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Contact</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" name="con" class="form-control" required="required"  id="con" oninput='digitValidate(this)' maxlength="10"  autocomplete="off">
+                                                    <input type="text" name="con" class="form-control" required="required" id="con" oninput='digitValidate(this)' pattern=".{10}" required title=" 10 numbers" maxlength="10" autocomplete="off">
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Admission Date</label>
                                                 <div class="col-sm-10">
-                                                    <input type="date" name="adate" class="form-control" required="required" id="adate" autocomplete="off">
+                                                    <input type="date" name="adate" class="form-control" required="required" id="adate"  min="1990-01-01" max='<?php echo date('Y-m-d');?>' autocomplete="off">
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Class</label>
                                                 <div class="col-sm-10">
-                                                    <Select name="class" class="form-control" id="clas" required="required" autocomplete="off" onkeyup="Check_class()" onclick="Check_class()" >
-                                                    <option value="NULL">---Select---</option>  
-                                                    <option value="9">9</option>
-                                                    <option value="10">10</option>
-                                                    <option value="11">11</option>
-                                                    <option value="12">12</option>
-                                                </select>
+                                                    <Select name="class" class="form-control" id="clas" required="required" autocomplete="off" onkeyup="Check_class()" onclick="Check_class()">
+                                                        <option value="NULL">---Select---</option>
+                                                        <option value="9">9</option>
+                                                        <option value="10">10</option>
+                                                        <option value="11">11</option>
+                                                        <option value="12">12</option>
+                                                    </select>
                                                 </div>
                                             </div>
 
@@ -376,7 +365,7 @@ if (strlen($_SESSION['a_id']) == "") {
 
                                                     <SELECT name="stream" class="form-control" id="stream">
                                                         <option value="NULL" onkeypress="Check_class()" onclick="Check_class()">
-                                                        -- Select --</option>
+                                                            -- Select --</option>
                                                         <option value="Arts">Arts</option>
                                                         <option value="Commerce">Commerce</option>
                                                         <option value="Science">Science</option>
@@ -395,7 +384,7 @@ if (strlen($_SESSION['a_id']) == "") {
                                                 <label for="default" class="col-sm-2 control-label">Student Image</label>
                                                 <div class="col-sm-10">
 
-                                                    <input type="file" name="file" class="form-control" id="img" >
+                                                    <input type="file" name="file" class="form-control" id="img">
 
                                                 </div>
                                             </div>
@@ -404,14 +393,14 @@ if (strlen($_SESSION['a_id']) == "") {
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Adhar Number</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" name="adhar" class="form-control" oninput='digitValidate(this)' required="required" id="adhar" maxlength='12' autocomplete="on">
+                                                    <input type="text" name="adhar" class="form-control" oninput='digitValidate(this)' required="required" id="adhar" pattern=".{12}" required title=" 12 numbers" maxlength='12' autocomplete="on">
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Home Address</label>
                                                 <div class="col-sm-10">
-                                                    <textarea rows="5" name="home" class="form-control" required="required" id="home" autocomplete="off"></textarea>
+                                                    <textarea rows="5" name="home" class="form-control" required="required" id="home" autocomplete="off" maxlength="40"></textarea>
                                                 </div>
                                             </div>
 
@@ -420,7 +409,7 @@ if (strlen($_SESSION['a_id']) == "") {
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Hostel Address</label>
                                                 <div class="col-sm-10">
-                                                    <textarea rows="5" name="hostel" class="form-control" id="hostel" autocomplete="off"></textarea>
+                                                    <textarea rows="5" name="hostel" class="form-control" id="hostel" autocomplete="off" maxlength="40"></textarea>
                                                 </div>
                                             </div>
 
@@ -428,8 +417,8 @@ if (strlen($_SESSION['a_id']) == "") {
                                                 <label for="default" class="col-sm-2 control-label">Handicapped</label>
                                                 <div class="col-sm-10">
 
-                                                    <input type="radio" name="hand" value="Yes" required onclick="desc()"  id="hand1">Yes</input> 
-                                                    <input type="radio" name="hand" value="No" required onclick="desc()"  id="hand2">No</input>
+                                                    <input type="radio" name="hand" value="Yes" required onclick="desc()" id="hand1">Yes</input>
+                                                    <input type="radio" name="hand" value="No" required onclick="desc()" id="hand2">No</input>
                                                 </div>
                                             </div>
 
@@ -444,7 +433,7 @@ if (strlen($_SESSION['a_id']) == "") {
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Password</label>
                                                 <div class="col-sm-10">
-                                                    <input type="password" name="pass" required="required" class="form-control" id="pass" maxlength="8" minlength="8" autocomplete="off">
+                                                    <input type="password" name="pass" required="required" class="form-control" id="pass" maxlength="15" minlength="4" autocomplete="off">
                                                 </div>
                                             </div>
 
@@ -452,7 +441,7 @@ if (strlen($_SESSION['a_id']) == "") {
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Re marks</label>
                                                 <div class="col-sm-10">
-                                                    <textarea rows="5" name="re" class="form-control" id="re" autocomplete="off"></textarea>
+                                                    <textarea rows="5" name="re" class="form-control" id="re" maxlength="20" autocomplete="off"></textarea>
                                                 </div>
                                             </div>
 
