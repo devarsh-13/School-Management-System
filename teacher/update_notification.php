@@ -1,36 +1,44 @@
 
              <?php
-           
-             require "connection.php";
 
-                $sql = ("SELECT * FROM `notification` WHERE `is_deleted`='0'") or die(mysqli_connect_error());
+session_start();
 
-                $q = mysqli_query($Conn, $sql);
+$T_srn = $_SESSION['t_id'];
+if (isset($T_srn)) {
 
-                $result = mysqli_query($Conn, "UPDATE `notification` SET n_status ='1' WHERE n_status ='0' ") or die(mysqli_connect_error());
+    require "connection.php";
+
+    $sql = ("SELECT * FROM `notification` WHERE `is_deleted`='0'") or die(mysqli_connect_error());
+
+    $q = mysqli_query($Conn, $sql);
 
 
-                $output = "";
+   // $result = mysqli_query($Conn, "UPDATE `notification` SET n_status ='1' WHERE n_status ='0' ") or die(mysqli_connect_error());
 
-                while ($r = mysqli_fetch_array($q)) {
+    $output = "";
 
-                    $output =  " 
-                                            <div class='timeline-task'>
-                                                 <div class='icon bg1'>
-                                                	<h4>" . $r['Sr_n'] . "</h4>
-                                                </div>
+    $notification_count = 0;
+    while ($r = mysqli_fetch_array($q)) {
+        $notification_count = $notification_count+1;
+        $output =  " 
+                            <div class='timeline-task'>
+                                 <div class='icon bg1'>
+                                    <h4>" . $r['Sr_n'] . "</h4>
+                                </div>
 
-                                                <div class='tm-title'>
-                                                	<h4>" . $r['Notification_topic'] . "</h4>
-                                                	<span class='time'><i class='ti-time'></i>09:35</span>
-                                                </div>
-                                                <p> " . $r['Notification_text'] . "</p>
-                                            </div>
-                                                
-                                            
-                                        ";
+                                <div class='tm-title'>
+                                    <h4>" . $r['Notification_topic'] . "</h4>
+                                    <span class='time'><i class='ti-time'></i>09:35</span>
+                                </div>
+                                <p> " . $r['Notification_text'] . "</p>
+                            </div>
+                                
+                            
+                        ";
 
-                                        echo $output;
-                }
-          
-                ?>
+        echo $output;
+    }
+    $result_students = mysqli_query($Conn, "UPDATE `teachers` SET notification_count = '$notification_count' WHERE `T_srn`='$T_srn' ") or die(mysqli_connect_error());
+}
+
+?>

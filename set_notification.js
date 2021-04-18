@@ -8,7 +8,6 @@ recentActivity=document.querySelector(".recent-activity");
 function isNumeric(num){
   return !isNaN(num)
 }
-currentNotificationNumber=0;
 
 setInterval(() =>{
   let xhr = new XMLHttpRequest();
@@ -18,19 +17,15 @@ setInterval(() =>{
     if(xhr.readyState === XMLHttpRequest.DONE){
         if(xhr.status === 200){
           let data = xhr.response;
+          console.log("data ",""+data)
           if(isNumeric(data))
           {
-            if(parseInt(data)>currentNotificationNumber || currentNotificationNumber == 0)
-            {
+     
               notifyList.innerHTML = data;
-              currentNotificationNumber = parseInt(data)
-            }
           }
           else{
             notifyList.innerHTML = 0;
           }
-          
-           
         }
     }
   }
@@ -46,7 +41,6 @@ setInterval(() =>{
       if(xhr.readyState === XMLHttpRequest.DONE){
           if(xhr.status === 200){
             notifyList.innerHTML = 0;
-            currentNotificationNumber=0;
              // var data_array = $.parseJSON(xhr.response);
              // console.log(xhr.response);
               recentActivity.innerHTML = xhr.response

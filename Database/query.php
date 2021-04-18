@@ -71,6 +71,7 @@ $table = "CREATE TABLE `Students`(
 `Created_on` DATE NOT NULL DEFAULT CURRENT_DATE ,
 `s_status` VARCHAR(20) NOT NULL,
 `updated` INT(2) NOT NULL,
+`notification_count` INT(20) NOT NULL,
 PRIMARY KEY (`S_srn`)
 )";
 $Conn->query($table);
@@ -91,6 +92,7 @@ $table = "CREATE TABLE `Teachers` (
 	`is_deleted` BOOLEAN NOT NUll,
 	`Created_on` DATE NOT NULL DEFAULT CURRENT_DATE ,
 	`t_status` VARCHAR(20) NOT NULL,
+	`notification_count` INT(20) NOT NULL,
 	PRIMARY KEY (`T_srn`),
 	UNIQUE (`Contact`)
 	
@@ -147,6 +149,7 @@ $table="CREATE TABLE `Admin` (
 `A_dob` date NOT NULL,
 `Created_on` DATE NOT NULL DEFAULT CURRENT_DATE ,
 `Created_by` INT NOT NULL,
+`notification_count` INT(20) NOT NULL,
 PRIMARY KEY (`A_id`),
 UNIQUE (A_mobile)
 )"; 

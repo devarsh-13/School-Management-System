@@ -13,6 +13,9 @@
         <!-- main content area start -->
         
             <!-- header area start -->
+            <?php
+if (isset($_SESSION['t_id'])) {
+?>
             <div class="header-area">
                 <div class="row align-items-center">
                     <!-- nav and search button -->
@@ -72,3 +75,7 @@
 </body>
 
 </html>
+<?php
+
+}?>
+

@@ -1,19 +1,25 @@
 
              <?php
-              
+
+                session_start();
+
+                $S_srn = $_SESSION['s_id'];
+                if (isset($S_srn)) {
+
                     require "database/connection.php";
 
                     $sql = ("SELECT * FROM `notification` WHERE `is_deleted`='0'") or die(mysqli_connect_error());
 
                     $q = mysqli_query($Conn, $sql);
 
-                    $result = mysqli_query($Conn, "UPDATE `notification` SET n_status ='1' WHERE n_status ='0' ") or die(mysqli_connect_error());
-
+    
+                   // $result = mysqli_query($Conn, "UPDATE `notification` SET n_status ='1' WHERE n_status ='0' ") or die(mysqli_connect_error());
 
                     $output = "";
 
+                    $notification_count = 0;
                     while ($r = mysqli_fetch_array($q)) {
-
+                        $notification_count = $notification_count+1;
                         $output =  " 
                                             <div class='timeline-task'>
                                                  <div class='icon bg1'>
@@ -32,6 +38,7 @@
 
                         echo $output;
                     }
-                
+                    $result_students = mysqli_query($Conn, "UPDATE `students` SET notification_count = '$notification_count' WHERE `S_srn`='$S_srn' ") or die(mysqli_connect_error());
+                }
 
                 ?>
