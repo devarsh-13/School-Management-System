@@ -34,40 +34,28 @@ function get_pass($p2)
         $d=$spreadsheet->getSheet(0)->toArray();
 
         $i=0;
-       // unset($sheetData[0]);
-     
         foreach ($d as $t) 
         {
-            // process element here;
-
             if($i>0)
             {
-                if($t[4]=='-')
-                {
-                    $t[4]=NULL;
-                }
-                
-                
                 $pass = get_pass($t[0]);
 
-               
                         $tn     =$Conn->real_escape_string($t[0]);
                         $dob    =$Conn->real_escape_string($t[1]);
                         $deg    =$Conn->real_escape_string($t[2]);
-                        $adate   =$Conn->real_escape_string($t[3]);
-                        $jdate   =$Conn->real_escape_string($t[4]);
-                        $rdate    =$Conn->real_escape_string($t[5]);
+                        $adate  =$Conn->real_escape_string($t[3]);
+                        $jdate  =$Conn->real_escape_string($t[4]);
+                        $rdate  =$Conn->real_escape_string($t[5]);
                         $con    =$Conn->real_escape_string($t[6]);
                         $ph     =$Conn->real_escape_string($t[7]);
-                      
                         
                         $s= new Upload ();
-                        $ok=$s->Store_teacher($tn,$dob,$deg,$adate,$jdate,$rdate,$con,$ph,$pass,$Conn);
+                        $ok=$s->Store_teacher($tn,$dob,$deg,$adate,$jdate,$rdate,$con,$pass,$Conn,$ph);
             }
             $i++;
 
         }
-        //unlink($targetPath);
+        unlink($targetPath);
 
 $action="Teacher data Imported";
 $log=new Log();

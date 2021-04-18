@@ -2,7 +2,7 @@
 error_reporting(0);
 class Upload
 {
-    public function Store_student($gr,$uid,$name,$cast,$cate,$dob,$con,$ad_date,$cid,$adhar,$hos,$hom,$handi,$des,$pass,$remarks,$ay,$ph,$Conn)
+    public function Store_student($gr,$uid,$name,$cast,$cate,$dob,$con,$ad_date,$cid,$adhar,$hos,$hom,$handi,$des,$pass,$remarks,$ay,$Conn,$ph="student_default.jpg")
     {
         $d=date("Y-m-d");
         $status="offline";
@@ -14,10 +14,41 @@ class Upload
 
     }
 
+    public function Check_repeatation($d,$Conn)
+    {
+        
+        $i=0;
+        foreach ($d as $t) 
+        {
+            if($i>0)
+            {
+                
+                        $name   =$Conn->real_escape_string($t[2]);
+                        
+                        $cont   =$Conn->real_escape_string($t[9]);
+                        
+                        $ay     =$Conn->real_escape_string($t[16]);
+                       
+                        $repeat=mysqli_query($Conn,"SELECT `S_srn`FROM `Students` WHERE `S_name`='$name'AND`S_contact`='$cont'AND`Academic_year`='$ay'");
+
+                            
+                        $r=mysqli_num_rows($repeat);
+                               
+                        if($r>=1)
+                        {
+                            return $i;
+                        }
+            }
+            $i++;
+            // var_dump($repeat);
+        }
+        return 0;
+    }
 
 
 
-    public function Store_teacher($tn,$dob,$deg,$adate,$jdate,$rdate,$con,$ph,$pass,$Conn)
+
+    public function Store_teacher($tn,$dob,$deg,$adate,$jdate,$rdate,$con,$pass,$Conn,$ph="teacher_default.jpg")
     {
         $d=date("Y-m-d");
         $status="offline";

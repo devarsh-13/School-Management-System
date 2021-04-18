@@ -32,73 +32,79 @@ function get_pass($p2)
 
         $spreadsheet = $reader->load("$targetPath");
         $d=$spreadsheet->getSheet(0)->toArray();
+    
+        $obj=new Upload();
+        
+        $i=$obj->Check_repeatation($d,$Conn);
 
-        $i=0;
-       // unset($sheetData[0]);
-     
-        foreach ($d as $t) 
+        if($i)
         {
-            // process element here;
-
-            if($i>0)
-            {
-                if($t[4]=='-')
-                {
-                    $t[4]=NULL;
-                }
-                
-                $q=mysqli_query($Conn,"SELECT Class_id FROM `Class` WHERE `C_no`='$t[3]' AND `Stream`='$t[4]' ")or die(mysqli_error($Conn));
-                $c_id=mysqli_fetch_array($q);
-                $pass = sha1(get_pass($t[0]));
-
-               
-                        $gr     =$Conn->real_escape_string($t[0]);
-                        $uid    =$Conn->real_escape_string($t[1]);
-                        $name   =$Conn->real_escape_string($t[2]);
-                        $cast   =$Conn->real_escape_string($t[5]);
-                        $cate   =$Conn->real_escape_string($t[6]);
-                        $dob    =$Conn->real_escape_string($t[7]);
-                        $cont   =$Conn->real_escape_string($t[9]);
-                        $ad_date=$Conn->real_escape_string($t[8]);
-                        $cid    =$Conn->real_escape_string($c_id[0]);
-
-                        $adhar  =$Conn->real_escape_string($t[10]);
-                        $hos    =$Conn->real_escape_string($t[12]);
-                        $hom    =$Conn->real_escape_string($t[11]);
-                        $handi  =$Conn->real_escape_string($t[13]);
-                        $des    =$Conn->real_escape_string($t[14]);
-                        $pass   =$Conn->real_escape_string($pass);
-                        $remarks=$Conn->real_escape_string($t[15]);
-
-                        $ay     =$Conn->real_escape_string($t[16]);
-                        $ph     =$Conn->real_escape_string($t[17]);
-                        
-                        $s= new Upload ();
-                        $ok=$s->Store_student($gr,$uid,$name,$cast,$cate,$dob,$cont,$ad_date,$cid,$adhar,$hos,$hom,$handi,$des,$pass,$remarks,$ay,$ph,$Conn);
-            }
-            $i++;
+          $error="Data is not updated please check at row : $i in uploaded file ";  
 
         }
-        //unlink($targetPath);
+        else
+        {
+            $i=0;
+            foreach ($d as $t) 
+            {
+                if($i>0)
+                {
+                    if($t[4]=='-')
+                    {
+                        $t[4]=NULL;
+                    }
+                    
+                    $q=mysqli_query($Conn,"SELECT `Class_id` FROM `Class` WHERE `C_no`='$t[3]' AND `Stream`='$t[4]' ")or die(mysqli_error($Conn));
+                    $c_id=mysqli_fetch_array($q);
+                    $pass = sha1(get_pass($t[0]));
+
+                   
+                            $gr     =$Conn->real_escape_string($t[0]);
+                            $uid    =$Conn->real_escape_string($t[1]);
+                            $name   =$Conn->real_escape_string($t[2]);
+                            $cast   =$Conn->real_escape_string($t[5]);
+                            $cate   =$Conn->real_escape_string($t[6]);
+                            $dob    =$Conn->real_escape_string($t[7]);
+                            $cont   =$Conn->real_escape_string($t[9]);
+                            $ad_date=$Conn->real_escape_string($t[8]);
+                            $cid    =$Conn->real_escape_string($c_id[0]);
+
+                            $adhar  =$Conn->real_escape_string($t[10]);
+                            $hos    =$Conn->real_escape_string($t[12]);
+                            $hom    =$Conn->real_escape_string($t[11]);
+                            $handi  =$Conn->real_escape_string($t[13]);
+                            $des    =$Conn->real_escape_string($t[14]);
+                            $pass   =$Conn->real_escape_string($pass);
+                            $remarks=$Conn->real_escape_string($t[15]);
+
+                            $ay     =$Conn->real_escape_string($t[16]);
+                            $ph     =$Conn->real_escape_string($t[17]);
+                            
+                            $ok=$obj->Store_student($gr,$uid,$name,$cast,$cate,$dob,$cont,$ad_date,$cid,$adhar,$hos,$hom,$handi,$des,$pass,$remarks,$ay,$Conn,$ph);
+                }
+                $i++;
+            }   
+        }
+        unlink($targetPath);
+
 
 $action="Student data Imported";
 $log=new Log();
-if($ok)
+if(isset($ok))
 {
-
-   
-    $log->success_entry($action,$Conn);
-    echo "<script>alert('Student Data Stored Successfully');window.location.href='manage-students.php';</script>";
-    
-}
-else 
-{
-   
-    $log->success_entry($action,$Conn,"Unsuccessful");
-    $error="Something went wrong. Please try again";
-}
-
+    if($ok)
+    {
+        $log->success_entry($action,$Conn);
+        echo "<script>alert('Student Data Stored Successfully');window.location.href='manage-students.php';</script>";
     }
+    else 
+    {
+       $str=$log->success_entry($action,$Conn,"Unsuccessful");
+       $error="Something went wrong. Please try again";
+    }
+}
+
+}
 
 
 ?>
@@ -181,13 +187,9 @@ else
                 <!-- MAIN CONTENT GOES HERE -->
 
                                     <div class="panel-body">
-                                        <?php if($msg){?>
-                                        <div class="alert alert-success left-icon-alert" role="alert">
-                                            
-                                            <?php echo htmlentities($msg); ?>
-                                        </div>
-                                        <?php } 
-else if($error){?>
+                                        <?php if(isset($error))
+                                                {
+                                        ?>
                                         <div class="alert alert-danger left-icon-alert" role="alert">
                                             
                                             <?php echo htmlentities($error); ?>

@@ -9,7 +9,7 @@
 
   require_once "../vendor/autoload.php";
   require "connection.php"; 
-   
+  ob_start();   
   use PhpOffice\PhpSpreadsheet\Spreadsheet;
   use PhpOffice\PhpSpreadsheet\IOFactory;
 
@@ -32,7 +32,7 @@
     $activeSheet->setCellValue($cols[$i],$details[$i]);
   }
 
-  $query = $Conn->query("SELECT * FROM `Students` WHERE `updated`='1' AND `is_deleted`='0' ORDER BY Class_id");
+  $query = $Conn->query("SELECT * FROM `Students` WHERE `updated`='1' AND `is_deleted`='0' AND `updated`='1' ORDER BY Class_id");
 
   $writer = new \PhpOffice\PhpSpreadsheet\Writer\Xlsx($spreadsheet);
 
@@ -105,5 +105,8 @@
   header('Content-Disposition: attachment;filename='."Student_details.xlsx");
   header('Cache-Control: max-age=0');
   $Excel_writer->save('php://output');
+
+ob_flush();
+ob_clean();
 
 ?>
