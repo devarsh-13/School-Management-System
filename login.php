@@ -27,7 +27,7 @@ if (isset($_POST['Submit'])) {
 		$error = true;
 	}
 	$query = mysqli_query($Conn, "SELECT `S_srn` FROM `Students` WHERE
-			`S_contact` = '$Contact' && `S_password` = '$Password'
+			`S_contact` = '$Contact' && `S_password` = '$Password' AND `updated`='0' AND `is_deleted`='0'
 			") or die(mysqli_connect_error());
 
 	$row = mysqli_num_rows($query);

@@ -72,6 +72,7 @@ $table = "CREATE TABLE `Students`(
 `s_status` VARCHAR(20) NOT NULL,
 `updated` INT(2) NOT NULL,
 `notification_count` INT(20) NOT NULL,
+UNIQUE(S_name,S_contact,Academic_year),
 PRIMARY KEY (`S_srn`)
 )";
 $Conn->query($table);
