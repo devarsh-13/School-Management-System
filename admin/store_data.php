@@ -13,6 +13,50 @@ class Upload
         return $q;
 
     }
+
+
+
+
+    public function Store_teacher($tn,$dob,$deg,$adate,$jdate,$rdate,$con,$ph,$pass,$Conn)
+    {
+        $d=date("Y-m-d");
+        $status="offline";
+        $sql = "INSERT INTO `teachers` 
+                            (   
+                                `T_photo`,
+                                `T_name`, 
+                                `DOB`, 
+                                `Degree`, 
+                                `A_date`,
+                                `Joining_date`, 
+                                `Retire_date`, 
+                                `Contact`, 
+                                `Password`, 
+                                `is_deleted`, 
+                                 `Created_on`,
+                                `t_status`
+                                    ) 
+
+                            VALUES 
+                            (
+                                '$ph',
+                                '$tn', 
+                                '$dob', 
+                                '$deg',
+                                '$adate', 
+                                '$jdate', 
+                                '$rdate', 
+                                '$con', 
+                                '$pass', 
+                                '0',
+                                '$d',
+                                '$status'
+                            )";
+
+        $q=mysqli_query($Conn,$sql)or die(mysqli_error($Conn));
+        return $q;
+
+    }
 }
 function getIPAddress() 
 {  

@@ -169,7 +169,7 @@ if (strlen($_SESSION['a_id']) == "") {
                         </ul>
 
                         <div class="add">
-                            <a href="Import.php" id="b"> <button type="submit" name="add" class="btn btn-primary">Import</button></a>
+                            <a href="teacher_import.php" id="b"> <button type="submit" name="add" class="btn btn-primary">Import</button></a>
                         </div>
 
                     </div>

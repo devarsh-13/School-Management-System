@@ -47,48 +47,36 @@ function get_pass($p2)
                     $t[4]=NULL;
                 }
                 
-                $q=mysqli_query($Conn,"SELECT Class_id FROM `Class` WHERE `C_no`='$t[3]' AND `Stream`='$t[4]' ")or die(mysqli_error($Conn));
-                $c_id=mysqli_fetch_array($q);
-                $pass = sha1(get_pass($t[0]));
+                
+                $pass = get_pass($t[0]);
 
                
-                        $gr     =$Conn->real_escape_string($t[0]);
-                        $uid    =$Conn->real_escape_string($t[1]);
-                        $name   =$Conn->real_escape_string($t[2]);
-                        $cast   =$Conn->real_escape_string($t[5]);
-                        $cate   =$Conn->real_escape_string($t[6]);
-                        $dob    =$Conn->real_escape_string($t[7]);
-                        $cont   =$Conn->real_escape_string($t[9]);
-                        $ad_date=$Conn->real_escape_string($t[8]);
-                        $cid    =$Conn->real_escape_string($c_id[0]);
-
-                        $adhar  =$Conn->real_escape_string($t[10]);
-                        $hos    =$Conn->real_escape_string($t[12]);
-                        $hom    =$Conn->real_escape_string($t[11]);
-                        $handi  =$Conn->real_escape_string($t[13]);
-                        $des    =$Conn->real_escape_string($t[14]);
-                        $pass   =$Conn->real_escape_string($pass);
-                        $remarks=$Conn->real_escape_string($t[15]);
-
-                        $ay     =$Conn->real_escape_string($t[16]);
-                        $ph     =$Conn->real_escape_string($t[17]);
+                        $tn     =$Conn->real_escape_string($t[0]);
+                        $dob    =$Conn->real_escape_string($t[1]);
+                        $deg    =$Conn->real_escape_string($t[2]);
+                        $adate   =$Conn->real_escape_string($t[3]);
+                        $jdate   =$Conn->real_escape_string($t[4]);
+                        $rdate    =$Conn->real_escape_string($t[5]);
+                        $con    =$Conn->real_escape_string($t[6]);
+                        $ph     =$Conn->real_escape_string($t[7]);
+                      
                         
                         $s= new Upload ();
-                        $ok=$s->Store_student($gr,$uid,$name,$cast,$cate,$dob,$cont,$ad_date,$cid,$adhar,$hos,$hom,$handi,$des,$pass,$remarks,$ay,$ph,$Conn);
+                        $ok=$s->Store_teacher($tn,$dob,$deg,$adate,$jdate,$rdate,$con,$ph,$pass,$Conn);
             }
             $i++;
 
         }
         //unlink($targetPath);
 
-$action="Student data Imported";
+$action="Teacher data Imported";
 $log=new Log();
 if($ok)
 {
 
    
     $log->success_entry($action,$Conn);
-    echo "<script>alert('Student Data Stored Successfully');window.location.href='manage-students.php';</script>";
+    echo "<script>alert('Teacher Data Stored Successfully');window.location.href='manage-teachers.php';</script>";
     
 }
 else 
@@ -160,10 +148,10 @@ else
             <div class="header-area">
                 <div class="row align-items-center">
                     <ul class="breadcrumbs pull-left">
-                          <h4 class="page-title pull-left">Student Import</h4>
+                          <h4 class="page-title pull-left">Teacher Import</h4>
                                 <li><a href="dashboard.php">Home</a></li>
                                 
-                                <li><span>Student Import</span></li>
+                                <li><span>Teacher Import</span></li>
                             </ul>
                    
                 </div>

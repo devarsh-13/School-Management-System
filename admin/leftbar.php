@@ -38,7 +38,7 @@
                                         <ul class="child-nav">
                                             <li><a href="add-students.php"><i class="fa fa-bars"></i> <span>Add Students</span></a></li>
                                             <li><a href="manage-students.php"><i class="fa fa fa-server"></i> <span>Manage Students</span></a></li>
-                                           
+                                            <li><a href="Export_stu_pass.php"><i class="fa fa-bars"></i> <span>Export Password</span></a></li>
                                         </ul>
                                     </li>
                                       <li class="has-children">
@@ -46,7 +46,7 @@
                                         <ul class="child-nav">
                                             <li><a href="add-teachers.php"><i class="fa fa-bars"></i> <span>Add Teachers</span></a></li>
                                             <li><a href="manage-teachers.php"><i class="fa fa fa-server"></i> <span>Manage Teachers</span></a></li>
-                                           
+                                            <li><a href="Export_tea_pass.php"><i class="fa fa-bars"></i> <span>Export Password</span></a></li>
                                         </ul>
                                     </li>
                                       <li class="has-children">
