@@ -33,7 +33,7 @@ if (isset($_POST['Submit'])) {
 	$row = mysqli_num_rows($query);
 	$arr = mysqli_fetch_row($query);
 
-	if ($row == 1) {
+	if ($row >= 1) {
 		session_start();
 		$_SESSION['s_id'] = $arr[0];
 

@@ -3,32 +3,31 @@ require 'Database/connection.php';
 include('admin/store_data.php');
 session_start();
 
-$action="In View Gallery";
-$log=new Log();
+$action = "In View Gallery";
+$log = new Log();
 
 
-if (isset($_SESSION['s_id'])) 
-{
-  $log->success_entry($action,$Conn);
+if (isset($_SESSION['s_id'])) {
+   $log->success_entry($action, $Conn);
 
    $images = mysqli_query($Conn, "select * from images");
    $path = "admin/img/";
    $row = mysqli_num_rows($images);
 
-   ?>
+?>
 
 
    <!DOCTYPE html>
 
    <head>
 
-    
-    <link rel="stylesheet" href="teacher/assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="teacher/assets/css/font-awesome.min.css">
-    <link rel="stylesheet" href="teacher/assets/css/themify-icons.css">
-    <link rel="stylesheet" href="teacher/assets/css/metisMenu.css">
-    <link rel="stylesheet" href="teacher/assets/css/default-css.css">
-    <link rel="stylesheet" href="teacher/assets/css/styles.css">
+
+      <link rel="stylesheet" href="teacher/assets/css/bootstrap.min.css">
+      <link rel="stylesheet" href="teacher/assets/css/font-awesome.min.css">
+      <link rel="stylesheet" href="teacher/assets/css/themify-icons.css">
+      <link rel="stylesheet" href="teacher/assets/css/metisMenu.css">
+      <link rel="stylesheet" href="teacher/assets/css/default-css.css">
+      <link rel="stylesheet" href="teacher/assets/css/styles.css">
 
       <meta charset="utf-8" />
       <title>Educo Multipurpose Responsive HTML Template</title>
@@ -134,18 +133,7 @@ if (isset($_SESSION['s_id']))
 
 
 
-                  <div class="col-lg-12">
-                     <div class="ed_blog_bottom_pagination">
-                        <nav>
-                           <ul class="pagination">
-                              <li><a href="#">1</a></li>
-                              <li><a href="#">2</a></li>
-                              <li><a href="#">3</a></li>
-                              <li class="active"><a href="#">Next <span class="sr-only">(current)</span></a></li>
-                           </ul>
-                        </nav>
-                     </div>
-                  </div>
+
                </div>
             </div><!-- /.container -->
          </div>
@@ -180,23 +168,19 @@ if (isset($_SESSION['s_id']))
       <script type="text/javascript" src="js/custom.js"></script>
       <!--main js file end-->
 
-      
-    <script src="teacher/assets/js/metisMenu.min.js"></script>
-    <script src="teacher/assets/js/jquery.slimscroll.min.js"></script>
-    <script src="teacher/assets/js/jquery.slicknav.min.js"></script>
-    <script src="teacher/assets/js/plugins.js"></script>
-    <script src="teacher/assets/js/scripts.js"></script>
+
+      <script src="teacher/assets/js/metisMenu.min.js"></script>
+      <script src="teacher/assets/js/jquery.slimscroll.min.js"></script>
+      <script src="teacher/assets/js/jquery.slicknav.min.js"></script>
+      <script src="teacher/assets/js/plugins.js"></script>
+      <script src="teacher/assets/js/scripts.js"></script>
 
    </body>
 
    </html>
 
 <?php
-}
-else
-{
-  $log->success_entry($action,$Conn,"Unsuccessful");
-  header("location:login.php");
-
-}?>
-
+} else {
+   $log->success_entry($action, $Conn, "Unsuccessful");
+   header("location:login.php");
+} ?>
