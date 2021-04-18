@@ -33,9 +33,6 @@ if (isset($_POST['Submit'])) {
 	$row = mysqli_num_rows($query);
 	$arr = mysqli_fetch_row($query);
 
-var_dump($row);
-echo "<script>alert('Student Data Stored Successfully');window.location.href='login.php';</script>";
-
 	if ($row == 1) {
 		session_start();
 		$_SESSION['s_id'] = $arr[0];
