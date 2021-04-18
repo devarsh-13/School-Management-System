@@ -265,8 +265,8 @@ $log->success_entry($action,$Conn);
             <th>Action</th>
             <th>Status</th>
             <th>IP Address</th>
-            <th>Device</th>
-            <th>State</th>
+            <th>City</th>
+            <th>Region</th>
             <th>Country</th>
         </tr>
     </thead>

@@ -41,5 +41,7 @@ header('Content-Disposition: attachment;filename='.$filename);
 $writer = IOFactory::createWriter($spreadsheet, 'Xlsx');
 $writer->save('php://output');
 
+die();
+
 
 ?>	

@@ -3,14 +3,14 @@ session_start();
 error_reporting(0);
 
 include('Database/connection.php');
-include('admin/store_data.php');
+// include('admin/store_data.php');
 
-$action="In Download Resource";
-$log=new Log();
+// $action="In Download Resource";
+// $log=new Log();
 
 if(!isset($_SESSION['s_id'])) 
 {
-	$log->success_entry($action,$Conn,"Unsuccessful");
+	//$log->success_entry($action,$Conn,"Unsuccessful");
 	header("location:login.php");
 }
 else 

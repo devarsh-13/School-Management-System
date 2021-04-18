@@ -50,7 +50,8 @@ function get_pass($p2)
                 $q=mysqli_query($Conn,"SELECT Class_id FROM `Class` WHERE `C_no`='$t[3]' AND `Stream`='$t[4]' ")or die(mysqli_error($Conn));
                 $c_id=mysqli_fetch_array($q);
                 $pass = sha1(get_pass($t[0]));
-        
+
+               
                         $gr     =$Conn->real_escape_string($t[0]);
                         $uid    =$Conn->real_escape_string($t[1]);
                         $name   =$Conn->real_escape_string($t[2]);
@@ -73,7 +74,7 @@ function get_pass($p2)
                         $ph     =$Conn->real_escape_string($t[17]);
                         
                         $s= new Upload ();
-                        $ok=$s->Store($gr,$uid,$name,$cast,$cate,$dob,$cont,$ad_date,$cid,$adhar,$hos,$hom,$handi,$des,$pass,$remarks,$ay,$ph,$Conn);
+                        $ok=$s->Store_student($gr,$uid,$name,$cast,$cate,$dob,$cont,$ad_date,$cid,$adhar,$hos,$hom,$handi,$des,$pass,$remarks,$ay,$ph,$Conn);
             }
             $i++;
 
@@ -87,7 +88,8 @@ if($ok)
 
    
     $log->success_entry($action,$Conn);
-    $msg="Import Successfully";
+    echo "<script>alert('Student Data Stored Successfully');window.location.href='manage-students.php';</script>";
+    
 }
 else 
 {

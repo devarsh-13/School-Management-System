@@ -90,7 +90,7 @@
                                         <a class="dashboard-stat bg-primary" href="manage-students.php">
 <?php 
 
-$sql1 ="SELECT S_srn from students WHERE `is_deleted`='0'";
+$sql1 ="SELECT S_srn from students WHERE `is_deleted`='0'AND `updated`='0'";
 $query1 = $Conn -> query($sql1); 
 $row = mysqli_num_rows($query1);
 

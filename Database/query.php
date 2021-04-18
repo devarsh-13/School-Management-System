@@ -70,10 +70,7 @@ $table = "CREATE TABLE `Students`(
 `is_deleted` BOOLEAN NOT NUll,
 `Created_on` DATE NOT NULL DEFAULT CURRENT_DATE ,
 `s_status` VARCHAR(20) NOT NULL,
-UNIQUE (`S_contact`),
-UNIQUE (`S_grn`),
-UNIQUE (`S_uidn`),
-UNIQUE (`S_adharn`),
+`updated` INT(2) NOT NULL,
 PRIMARY KEY (`S_srn`)
 )";
 $Conn->query($table);
@@ -301,7 +298,7 @@ foreach ($std11_12_sci as $value)
 
 
 
-$Sql="INSERT INTO `students` (`S_photo`, `S_grn`, `S_uidn`, `S_name`, `S_caste`, `S_category`, `S_dob`, `S_contact`, `S_ad_date`, `Class_id`, `S_adharn`, `S_hostel`, `S_home`, `S_handicapped`, `S_describe`, `S_password`, `S_remarks`,`Academic_year`, `is_deleted`,`s_status`) VALUES ('student_default.jpg', '40', '123456789098765432', 'Kratos', 'asdsds', 'xaxax', '2021-03-01', '1234567890', '2021-01-12-', '1', '123456789012', 'aqaqaqaqaq', '', 'YES', 'qqqqqq', '$studentpass', '1aaaaaaaaaaaaa','$ay','0','offline')";
+$Sql="INSERT INTO `students` (`S_photo`, `S_grn`, `S_uidn`, `S_name`, `S_caste`, `S_category`, `S_dob`, `S_contact`, `S_ad_date`, `Class_id`, `S_adharn`, `S_hostel`, `S_home`, `S_handicapped`, `S_describe`, `S_password`, `S_remarks`,`Academic_year`, `is_deleted`,`s_status`,`updated`) VALUES ('student_default.jpg', '40', '123456789098765432', 'Kratos', 'asdsds', 'xaxax', '2021-03-01', '1234567890', '2021-01-12-', '1', '123456789012', 'aqaqaqaqaq', '', 'YES', 'qqqqqq', '$studentpass', '1aaaaaaaaaaaaa','$ay','0','offline','0')";
 $q=mysqli_query($Conn,$Sql);
 
 

@@ -281,7 +281,7 @@ if(strlen($_SESSION['a_id'])=="")
                     
                        <div class="dlt">
                 
-                    <a href="#" ><button type="submit" name="btn_delete" id="btn_delete" class="btn btn-primary">Promote</button></a>
+                    <a href="Promote_stu.php" ><button type="submit" name="btn_delete" id="btn_delete" class="btn btn-primary">Promote</button></a>
                   </div>
                 </div>
           </div>
@@ -342,7 +342,7 @@ else if($error){?>
                                                                                                 
 <?php 
 include 'connection.php';
- $sql = "SELECT * from `students` join Class on students.Class_id=Class.Class_id WHERE `is_deleted`='0' ORDER BY S_srn";
+ $sql = "SELECT * from `students` join Class on students.Class_id=Class.Class_id WHERE `is_deleted`='0' AND `updated`='0' ORDER BY S_srn";
 $query = mysqli_query($Conn,$sql);
 $row = mysqli_num_rows($query);
 $cnt=1;

@@ -115,10 +115,9 @@ if (strlen($_SESSION['a_id']) == "") {
                                         `Academic_year`, 
                                         `is_deleted`, 
                                         `Created_on`,
-                                        `s_status`) 
-
-                                    VALUES 
-                                    (
+                                        `s_status`,
+                                        `updated`
+                                    )VALUES(
                                         '$imageName',
                                         '$gr', 
                                         '$ui', 
@@ -139,7 +138,8 @@ if (strlen($_SESSION['a_id']) == "") {
                                         '$ay', 
                                         '0', 
                                         '$d',
-                                        '$stat'
+                                        '$stat',
+                                        '0'
                                     )";
 
         $q = mysqli_query($Conn, $Sql) or die(mysqli_error($Conn));
