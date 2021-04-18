@@ -27,7 +27,7 @@ $update = mysqli_query($Conn, "UPDATE teachers SET t_status ='offline' WHERE T_s
         <script src="js/modernizr/modernizr.min.js"></script>
 
 
-    <link rel="shortcut icon" type="image/png" href="assets/images/icon/favicon.ico">
+    
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/font-awesome.min.css">
     <link rel="stylesheet" href="assets/css/themify-icons.css">

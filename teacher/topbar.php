@@ -28,8 +28,7 @@
                     <!-- profile info & task notification -->
                     <div class="col-md-6 col-sm-4 ">
                         <ul class="notification-area pull-right">
-                            <li id="full-view"><i class="ti-fullscreen"></i></li>
-                            <li id="full-view-exit"><i class="ti-zoom-out"></i></li>
+                            
                             <li class="settings-btn">
                                 <i class="ti-bell">
                                 <span class="bellgg"></span></i>

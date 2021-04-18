@@ -1,7 +1,7 @@
  <div class="sidebar-menu">
             <div class="sidebar-header">
                 <div class="logo">
-                    <a href="#"><img src="assets/images/icon/logo.png" alt="logo"></a>
+                    <a href="dashboard.php"><img src="../images/header/ighs.png" style="color: white;"  height= "80%" width="80%" alt="logo"  /></a>
                 </div>
             </div>
             <div class="main-menu">
