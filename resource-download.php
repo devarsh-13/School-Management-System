@@ -39,20 +39,14 @@ Purchase:
 		<!--srart theme style -->
 		
     
-    <link rel="stylesheet" href="teacher/assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="teacher/assets/css/font-awesome.min.css">
-    <link rel="stylesheet" href="teacher/assets/css/themify-icons.css">
-    <link rel="stylesheet" href="teacher/assets/css/metisMenu.css">
-    <link rel="stylesheet" href="teacher/assets/css/default-css.css">
-    <link rel="stylesheet" href="teacher/assets/css/styles.css">
+    <link rel="stylesheet" href="teacher/assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="teacher/assets/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="teacher/assets/css/themify-icons.css" />
+    <link rel="stylesheet" href="teacher/assets/css/metisMenu.css" />
+    <link rel="stylesheet" href="teacher/assets/css/default-css.css" />
+    <link rel="stylesheet" href="teacher/assets/css/styles.css" />
    
-	<meta charset="utf-8" />
-	<title>IGHS | Download Resources </title>
-	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
-	<meta name="description" content="Educo" />
-	<meta name="keywords" content="Educo, html template, Education template" />
-	<meta name="author" content="Kamleshyadav" />
-	<meta name="MobileOptimized" content="320" />
+
 
 	<link href="css/main.css" rel="stylesheet" type="text/css" />
 
@@ -193,6 +187,13 @@ Purchase:
 
 
 		</div>
+
+	
+	</body>
+<?php  } ?>
+
+	</html>
+
 		<!--Page main section end-->
 		<!--main js file start-->
 		<script type="text/javascript" src="js/jquery-1.12.2.js"></script>
@@ -217,7 +218,3 @@ Purchase:
     <script src="teacher/assets/js/jquery.slicknav.min.js"></script>
     <script src="teacher/assets/js/plugins.js"></script>
     <script src="teacher/assets/js/scripts.js"></script>
-	</body>
-<?php  } ?>
-
-	</html>

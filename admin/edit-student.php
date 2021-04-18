@@ -38,10 +38,10 @@ if (strlen($_SESSION['a_id']) == "") {
         $s = "SELECT `Class_id` FROM `class` WHERE `C_no` = '$class' AND `Stream`='$stream'";
         $q = mysqli_query($Conn, $s);
         $ci = mysqli_fetch_array($q);
-
+        $ay = $_POST['AY'];
         $c = $ci[0];
 
-        $Sql = "UPDATE `students` SET `S_grn`='$gr',`S_uidn`='$ui',`S_name`='$sn',`S_caste`='$cast', `S_category`= '$cat', `S_dob`= '$dob',`S_contact`='$con',`S_ad_date`='$adate',`Class_id`= '$c',`S_adharn`='$adhar',`S_hostel`='$hostel',`S_home`='$home',`S_handicapped`='$hand',`S_describe`='$des',`S_password`='$pass',`S_remarks`='$re',`is_deleted`='0',`Created_on`='$d' WHERE `S_srn`='$stid'";
+        $Sql = "UPDATE `students` SET `S_grn`='$gr',`S_uidn`='$ui',`S_name`='$sn',`S_caste`='$cast', `S_category`= '$cat', `S_dob`= '$dob',`S_contact`='$con',`S_ad_date`='$adate',`Class_id`= '$c',`S_adharn`='$adhar',`S_hostel`='$hostel',`S_home`='$home',`S_handicapped`='$hand',`S_describe`='$des',`S_password`='$pass',`Academic_year`='$ay',`S_remarks`='$re',`is_deleted`='0',`Created_on`='$d' WHERE `S_srn`='$stid'";
 
 
 
@@ -292,6 +292,13 @@ if (strlen($_SESSION['a_id']) == "") {
                                                                                 } ?>> Science</option>
 
                                                     </select>
+                                                </div>
+                                            </div>
+
+                                                 <div class="form-group">
+                                                <label for="default" class="col-sm-2 control-label">Academic Year</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" name="AY" class="form-control"  pattern="[0-9]{4}-[0-9]{4}" required title="pattern should be yyyy-yyyy "   required="required" id="AY"  value="<?php echo htmlentities($result['Academic_year']) ?>" autocomplete="off">
                                                 </div>
                                             </div>
 

@@ -161,14 +161,14 @@ if(strlen($_SESSION['a_id'])=="")
                 text:      '<i class="fa fa-clipboard "></i>Copy',
                 className: 'btn btn-app export barras',
                  exportOptions: {
-                        columns: [ 0, 2, 3, 4, 5,6,7,8,9,10,11,12,13,14,15,16,17,18 ]
+                        columns: [ 0, 2, 3, 4, 5,6,7,8,9,10,11,12,13,14,15,16,17,18,19 ]
                     }
             },
             { extend:    'csv',
               text:      '<i class="fa fa-file-text-o"></i>CSV',
                     className: 'btn btn-app export csv',
                  exportOptions: {
-                        columns: [ 0, 2, 3, 4, 5,6,7,8,9,10,11,12,13,14,15,16,17,18 ]
+                        columns: [ 0, 2, 3, 4, 5,6,7,8,9,10,11,12,13,14,15,16,17,18,19 ]
                     }
             },
 
@@ -176,7 +176,7 @@ if(strlen($_SESSION['a_id'])=="")
                text:      '<i class="fa fa-file-excel-o"></i>Excel',
                className: 'btn btn-app export excel',
                  exportOptions: {
-                        columns: [ 0, 2, 3, 4, 5,6,7,8,9,10,11,12,13,14,15,16,17,18 ]
+                        columns: [ 0, 2, 3, 4, 5,6,7,8,9,10,11,12,13,14,15,16,17,18,19 ]
                     }
             },
 
@@ -209,7 +209,7 @@ if(strlen($_SESSION['a_id'])=="")
                     },
         
                      exportOptions: {
-                        columns: [ 0, 2, 3, 4, 5,6,7,8,9,10,11,12,13,14,15,16,17,18 ]
+                        columns: [ 0, 2, 3, 4, 5,6,7,8,9,10,11,12,13,14,15,16,17,18,19 ]
                     }
             },
 
@@ -218,7 +218,7 @@ if(strlen($_SESSION['a_id'])=="")
                 text:      '<i class="fa fa-print"></i>Print',
                  className: 'btn btn-app export imprimir',
                  exportOptions: {
-                        columns: [ 0, 2, 3, 4, 5,6,7,8,9,10,11,12,13,14,15,16,17,18 ]
+                        columns: [ 0, 2, 3, 4, 5,6,7,8,9,10,11,12,13,14,15,16,17,18,19 ]
                     }
             },
             
@@ -324,6 +324,7 @@ else if($error){?>
                                                             <th>Dob</th>
                                                             <th>Contact</th>
                                                             <th>Admission Date</th>
+                                                            <th>Academic Year</th>
                                                             <th>Class</th>
                                                             <th>Stream</th>
                                                             <th>Adhar NO.</th>
@@ -368,6 +369,7 @@ if($row > 0)
                         <td><?php echo $result['S_dob'];?></td>
                         <td><?php echo $result['S_contact'];?></td>
                         <td><?php echo $result['S_ad_date'];?></td>
+                        <td><?php echo $result['Academic_year'];?></td>
                         <td><?php
                                 $id=$result['Class_id'];
                                  $q=mysqli_query($Conn,"SELECT `C_no` FROM `class` WHERE `Class_id` = '$id' ");
