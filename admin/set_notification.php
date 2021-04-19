@@ -32,7 +32,15 @@ if ($row == 1) {
     //     echo $count_notification;
     //   }
     $remaining_not = $count - $count_notification;
-    echo $remaining_not;
+    if($remaining_not<=-1)
+    {
+        
+        echo $remaining_not+$count_notification;
+    }
+    else{
+        echo $remaining_not;
+    }
+
 
 }
 
