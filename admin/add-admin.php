@@ -190,7 +190,7 @@ $a = $_SESSION['a_id'];
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Admin Name</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" name="an" class="form-control" id="an"  oninput='stringValidate(this)'  maxlength="15" required="required" autocomplete="off">
+                                                    <input type="text" name="an" class="form-control" id="an"  oninput='stringValidate(this)'  maxlength="50" required="required" autocomplete="off">
                                                 </div>
                                             </div>
 

@@ -205,7 +205,7 @@ if (strlen($_SESSION['a_id']) == "") {
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Teacher Nmae</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" name="tn" class="form-control" id="tn" required="required" oninput='stringValidate(this)'  maxlength="15" autocomplete="off">
+                                                    <input type="text" name="tn" class="form-control" id="tn" required="required" oninput='stringValidate(this)'  maxlength="50" autocomplete="off">
                                                 </div>
                                             </div>
 

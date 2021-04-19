@@ -158,7 +158,7 @@ $q=mysqli_query($Conn,$table);
 
 
 $table="CREATE TABLE `conversation` ( 
-`chat_id` INT NOT NULL,
+`chat_id` SERIAL NOT NULL,
 `chat_text` VARCHAR(255) NOT NULL ,
 `Created_on` DATE NOT NULL DEFAULT CURRENT_DATE ,
 `S_srn` INT(5) NOT NULL,
@@ -323,8 +323,6 @@ $sql="INSERT INTO `admin`(`A_Photo`,`A_name`, `A_mobile`, `A_address`,`A_passwor
 $q=mysqli_query($Conn,$sql);
 
 
-$Sql="INSERT INTO `Notification` (`Sr_n`,`Notification_topic`, `Notification_text`,`Created_by`,`n_status`) VALUES (NULL,'For Fees','Fees Vadharvama ave che lol','1','0') ";
-$q=mysqli_query($Conn,$Sql);
 
 $Sql="INSERT INTO `event` (`Event_topic`,`Event_text`, `is_deleted`,`event_date`,`created_by`) VALUES ('Anual Function','Koi e avu nai corona che lol', '0', '2021-04-01','2')";
 $q=mysqli_query($Conn,$Sql);
