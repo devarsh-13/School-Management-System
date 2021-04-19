@@ -4,7 +4,7 @@ error_reporting(0);
 include('connection.php');
 require "../vendor/autoload.php";
 require "store_data.php";
-
+require "../ec_dc.php";
 if(strlen($_SESSION['a_id'])=="")
     {   
     header("Location: index.php"); 
@@ -29,7 +29,7 @@ function get_pass($p2)
         move_uploaded_file($_FILES['file']['tmp_name'], $targetPath);
 
         $reader = new \PhpOffice\PhpSpreadsheet\Reader\Xlsx();
-
+$ec = new ecdc();
         $spreadsheet = $reader->load("$targetPath");
         $d=$spreadsheet->getSheet(0)->toArray();
 
@@ -38,7 +38,8 @@ function get_pass($p2)
         {
             if($i>0)
             {
-                $pass = get_pass($t[0]);
+                $pass = $ec->encrypt(get_pass($t[0]));
+                
 
                         $tn     =$Conn->real_escape_string($t[0]);
                         $dob    =$Conn->real_escape_string($t[1]);
@@ -117,6 +118,10 @@ else
             background-color: white;
             margin-top: 3%;
         }
+          .add button {
+
+                margin-left: 100%;
+            }
     </style>
 </head>
 
@@ -141,7 +146,9 @@ else
                                 
                                 <li><span>Teacher Import</span></li>
                             </ul>
-                   
+                    <div class="add">
+                            <a href="Share_teacher_demo.php" id="b"> <button type="submit" name="add" class="btn btn-primary">Demo Sheet</button></a>
+                        </div>
                 </div>
             </div>
               <div class="row">

@@ -278,7 +278,7 @@ if(strlen($_SESSION['a_id'])=="")
                      <style type="text/css">
                          .add
                          {
-                            border: 3px solid red;
+                            
                             width: 100%;
                             margin-left: 5%;
                          }

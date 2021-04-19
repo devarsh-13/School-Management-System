@@ -1,14 +1,23 @@
 <?php
 require "connection.php";
 require "store_data.php";
+require "../ec_dc.php";
+error_reporting(0);
 
 $flag = 0;
+ $obj = new ecdc();
 
 if (isset($_POST['Submit'])) {
 	$action = "Admin Login";
 
 	$Contact =	$_POST['Contact_no'];
-	$Password = sha1($_POST['Password']);
+//	$Password = sha1($_POST['Password']);
+
+ $os=$_POST['Password'];
+$Password= $obj->encrypt($os);
+
+echo $Password;
+echo $os;
 	$error = false;
 
 	$mo = $_POST['Contact_no'];
@@ -40,7 +49,8 @@ if (isset($_POST['Submit'])) {
 
 		if (isset($_POST["remember"])) {
 			setcookie("admin_contact", $Contact, time() + (10 * 365 * 24 * 60 * 60), "/");
-			setcookie("admin_password", $Password, time() + (10 * 365 * 24 * 60 * 60), "/");
+			$Pa= $obj->decrypt($Password);
+			setcookie("admin_password", $Pa, time() + (10 * 365 * 24 * 60 * 60), "/");
 			header("location:dashboard.php");
 		}
 		else{

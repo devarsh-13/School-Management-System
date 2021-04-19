@@ -1,15 +1,20 @@
 <?php
 require "connection.php";
 require "../admin/store_data.php";
-
+require "../ec_dc.php";
+error_reporting(0);
 $action="Teacher Login";
 $log=new Log();
-
+$obj = new ecdc();
 $flag = 0;
 
 if (isset($_POST['Submit'])) {
 	$Contact =	$_POST['Contact_no'];
-	$Password = sha1($_POST['Password']);
+	//$Password = sha1($_POST['Password']);
+
+	$os=$_POST['Password'];
+$Password= $obj->encrypt($os);
+
 	$error = false;
 
 	$mo = $_POST['Contact_no'];
@@ -38,7 +43,10 @@ if (isset($_POST['Submit'])) {
 		if (isset($_POST["remember"])) 
 		{
 			setcookie("teacher_contact", $Contact, time() + (10 * 365 * 24 * 60 * 60), "/");
-			setcookie("teacher_password", $_POST['Password'], time() + (10 * 365 * 24 * 60 * 60), "/");
+			
+			$Pa= $obj->decrypt($Password);
+
+			setcookie("teacher_password", $pa, time() + (10 * 365 * 24 * 60 * 60), "/");
 			
 			$c = mysqli_query($Conn, "SELECT * FROM `teachers` WHERE `Contact` = '$Contact' && `Password` = '$Password'");			
 			$count = mysqli_fetch_array($c);
@@ -103,7 +111,8 @@ if (isset($_POST['Submit'])) {
 		<form action="#" method="Post">
 
 			<div class="field">
-				<input title="Please do not enter Country Code " type="text" name="Contact_no" value="<?php if (isset($_COOKIE["teacher_contact"])) {
+				<input title="Please do not enter Country Code " type="text" name="Contact_no" value="<?php if (isset($_COOKIE["teacher_contact"])) 
+				{
 																											echo $_COOKIE["teacher_contact"];
 																										} ?>" maxlength='10' required>
 				<label>Contact Number</label>
@@ -120,8 +129,8 @@ if (isset($_POST['Submit'])) {
 
 
 			<div class="field">
-				<input type="password" name="Password" value="<?php if (isset($_COOKIE["teacher_password"])) {
-																	echo $_COOKIE["teacher_password"];
+				<input type="password" name="Password" value="<?php if (isset($_COOKIE['teacher_password'])) {
+																	echo $_COOKIE['teacher_password'];
 																} ?>" required>
 				<label>Password</label>
 			</div>

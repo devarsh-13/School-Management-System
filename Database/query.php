@@ -1,10 +1,15 @@
 <?php
 
 require "connection.php";
-$studentpass=sha1("123");
-$teacherpass=sha1("123");
-$admin1pass=sha1("123");
-$admin2pass=sha1("123");
+require "ec_dc.php";
+error_reporting(0);
+$obj = new ecdc();
+
+$os="123";
+$admin1pass=$obj->encrypt($os);
+$admin2pass=$obj->encrypt($os);
+$teacherpass=$obj->encrypt($os);
+$studentpass=$obj->encrypt($os);
 
 
 $ay=date('Y').'-'.(date('Y')+1);

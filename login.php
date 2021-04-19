@@ -10,8 +10,26 @@ $flag = 0;
 
 if (isset($_POST['Submit'])) {
 	$Contact =	$_POST['Contact_no'];
-	$Password = sha1($_POST['Password']);
+	
+$simple_string = $_POST['Password'];
+// Store the cipher method
+$ciphering = "AES-128-CTR";
 
+// Use OpenSSl Encryption method
+$iv_length = openssl_cipher_iv_length($ciphering);
+$options = 0;
+
+// Non-NULL Initialization Vector for encryption
+$encryption_iv = '1234567891011121';
+
+// Store the encryption key
+$encryption_key = "GeeksforGeeks";
+
+// Use openssl_encrypt() function to encrypt the data
+$encryption = openssl_encrypt($simple_string, $ciphering,
+			$encryption_key, $options, $encryption_iv);
+ 
+$Password = $encryption;
 	$error = false;
 
 	$mo = $_POST['Contact_no'];
@@ -41,7 +59,18 @@ if (isset($_POST['Submit'])) {
 
 		if (isset($_POST["remember"])) {
 			setcookie("contact_no", $Contact, time() + (10 * 365 * 24 * 60 * 60), "/");
-			setcookie("password", $Password, time() + (10 * 365 * 24 * 60 * 60), "/");
+			$decryption_iv = '1234567891011121';
+$ciphering = "AES-128-CTR";
+$options = 0;
+$en=$Password;
+// Store the decryption key
+$decryption_key = "GeeksforGeeks";
+
+// Use openssl_decrypt() function to decrypt the data
+$decryption=openssl_decrypt ($en, $ciphering,
+		$decryption_key, $options, $decryption_iv);
+			$Pa= $decryption;
+			setcookie("password", $Pa, time() + (10 * 365 * 24 * 60 * 60), "/");
 			header("location:http://localhost/Sem6CollegeProject/main.php");
 		} else {
 			unset($_COOKIE['contact_no']);

@@ -4,7 +4,7 @@ session_start();
 error_reporting(0);
 include('connection.php');
 include('store_data.php');
-
+require "../ec_dc.php";
 if(strlen($_SESSION['a_id'])=="")
     {   
         header("Location: index.php"); 
@@ -278,9 +278,17 @@ if($row > 0)
                         <td><?php echo htmlentities($cnt);?></td>
                         <td><?php echo $result['S_name'];?></td>
                         <td><?php echo $result['S_contact'];?></td>
-                        <td><?php echo $result['S_password'];?></td>
-                   
-                      
+                        
+                         <?php
+                        $obj = new ecdc();
+                        $os=$result['S_password'];
+                        $Password= $obj->decrypt($os);
+
+                        ?>
+
+                        <td><?php echo $Password;?></td>
+                        
+                        
                        
                     </tr>
 <?php 

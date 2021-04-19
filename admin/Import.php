@@ -4,6 +4,9 @@ error_reporting(0);
 include('connection.php');
 require "../vendor/autoload.php";
 require "store_data.php";
+require "../ec_dc.php";
+
+
 
 if(strlen($_SESSION['a_id'])=="")
     {   
@@ -34,13 +37,15 @@ function get_pass($p2)
         $d=$spreadsheet->getSheet(0)->toArray();
     
         $obj=new Upload();
+
+        $ec = new ecdc();
         
         $i=$obj->Check_repeatation($d,$Conn);
 
         if($i)
         {
           $error="Data is not updated please check at row : $i in uploaded file ";  
-
+ 
         }
         else
         {
@@ -56,7 +61,8 @@ function get_pass($p2)
                     
                     $q=mysqli_query($Conn,"SELECT `Class_id` FROM `Class` WHERE `C_no`='$t[3]' AND `Stream`='$t[4]' ")or die(mysqli_error($Conn));
                     $c_id=mysqli_fetch_array($q);
-                    $pass = sha1(get_pass($t[0]));
+                    $pass = $ec->encrypt(get_pass($t[0]));
+                     
 
                    
                             $gr     =$Conn->real_escape_string($t[0]);
@@ -147,6 +153,10 @@ if(isset($ok))
             background-color: white;
             margin-top: 3%;
         }
+         .add button {
+
+                margin-left: 100%;
+            }
     </style>
 </head>
 
@@ -160,7 +170,7 @@ if(isset($ok))
          <?php include('topbar.php'); ?>
 
 
-
+  
       
         <!-- page title area start -->
             <div class="header-area">
@@ -171,7 +181,10 @@ if(isset($ok))
                                 
                                 <li><span>Student Import</span></li>
                             </ul>
-                   
+                          <div class="add">
+                            <a href="Share_student_demo.php" id="b"> <button type="submit" name="add" class="btn btn-primary">Demo Sheet</button></a>
+                        </div>
+                        
                 </div>
             </div>
               <div class="row">
