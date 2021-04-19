@@ -23,11 +23,11 @@
          $result = mysqli_fetch_array($query);
 
 
-         $Password = sha1($_POST['Password']);
+         $Password = ($_POST['Password']);
 
-         $Password2 = sha1($_POST['Password2']);
+         $Password2 = ($_POST['Password2']);
      
-         $OldPassword =sha1($_POST['OldPassword']);
+         $OldPassword =($_POST['OldPassword']);
 
 	    $op = $result['A_password'];
 

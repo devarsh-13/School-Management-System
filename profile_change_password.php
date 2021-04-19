@@ -19,55 +19,49 @@
     $result = mysqli_fetch_array($query);
 
 
-    $Password = sha1($_POST['Password']);
+    $Password = ($_POST['Password']);
 
-    $Password2 = sha1($_POST['Password2']);
+    $Password2 = ($_POST['Password2']);
 
-	$OldPassword =sha1($_POST['OldPassword']);
+	$OldPassword =($_POST['OldPassword']);
 
 	$op = $result['S_password'];
 
 
-	if ($OldPassword == $op) {
+    if ($OldPassword == $op) {
 
 
-		if ($Password == $Password2) {
+        if ($Password == $Password2) {
 
-			if ($row == 1) 
-            {
+            if ($row == 1) {
 
-                $log->success->entry($action,$Conn);
-				$update = mysqli_query($Conn, "UPDATE students SET S_password ='$Password' WHERE S_srn ='$S_srn' ") or die(mysqli_connect_error());
-                $return = array(
-                    'status' => 200
-                );
-                http_response_code(200);
-			}
-		} else 
-        {
-            $log->success->entry($action,$Conn,"Unsuccessful");
-		//	$_SESSION['d'] = 'Please Enter same passwords';
-            $return = array(
-                'status' => 400
-            );
-            http_response_code(400);
-			
-		}
-	}
-    else 
-    {
-        $log->success->entry($action,$Conn,"Unsuccessful");
+                $update = mysqli_query($Conn, "UPDATE `students` SET `S_password` ='$Password' WHERE S_srn ='$S_srn' ") or die(mysqli_connect_error());
 
-	//	$_SESSION['c'] = ' Your old password is incorrect';
+                $log->success_entry($action,$Conn);
+                 $return = array(
+                'status' => 200
+             );
+            http_response_code(200);
+        }
+    } else {
+
+
         $return = array(
-            'status' => 500
+            'status' => 400
         );
-        http_response_code(500);
-	
-	}
+        $log->success_entry($action,$Conn,"Unsuccessful");
+        http_response_code(400);
+        
+    }
+} else {
+
+
+    $return = array(
+        'status' => 500
+    );
+    $log->success_entry($action,$Conn,"Unsuccessful");
+    http_response_code(500);
+
 }
-else
-{
-    $log->success->entry($action,$Conn,"Unsuccessful");
-    header("location:index.php");
 }
+?>
