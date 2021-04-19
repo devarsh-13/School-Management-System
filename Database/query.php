@@ -12,7 +12,7 @@ $ay=date('Y').'-'.(date('Y')+1);
 
 
 $table = "CREATE TABLE `Class`(
-`Class_id` SERIAL NOT NULL AUTO_INCREMENT ,
+`Class_id` SERIAL NOT NULL,
 `C_no` INT NOT NULL ,
 `Stream` VARCHAR(40) NOT NULL ,
 PRIMARY KEY (`Class_id`)
@@ -27,7 +27,7 @@ $q=mysqli_query($Conn,$table);
 
 
 $table = "CREATE TABLE `Subjects`(
-`Sub_id` SERIAL NOT NULL AUTO_INCREMENT ,
+`Sub_id` SERIAL NOT NULL,
 `Sub_name` VARCHAR(40) NOT NULL ,
 `Class_id` INT  NOT NULL ,
 UNIQUE(`Sub_name`,`Class_id`),
@@ -37,7 +37,7 @@ $q=mysqli_query($Conn,$table);
 
 
 $table="CREATE TABLE `Resources`(
-`R_id` SERIAL NOT NULL AUTO_INCREMENT ,
+`R_id` SERIAL NOT NULL,
 `R_path` VARCHAR(250) NOT NULL,
 `Created_on` DATE NOT NULL DEFAULT CURRENT_DATE ,
 `Created_by` INT NOT NULL,	
@@ -48,7 +48,7 @@ $q=mysqli_query($Conn,$table);
 
 
 $table = "CREATE TABLE `Students`(
-`S_srn` SERIAL NOT NULL AUTO_INCREMENT,
+`S_srn` SERIAL NOT NULL,
 `S_photo` VARCHAR(50),
 `S_grn` int(5) NOT NULL,
 `S_uidn` VARCHAR(18) NOT NULL,
@@ -79,7 +79,7 @@ $Conn->query($table);
 
 
 $table = "CREATE TABLE `Teachers` ( 
-	`T_srn` SERIAL  AUTO_INCREMENT NOT NULL ,
+	`T_srn` SERIAL NOT NULL ,
 	`login_count` INT NOT NULL ,
 	`T_photo` VARCHAR(50), 
 	`T_name` VARCHAR(50) NOT NULL , 
@@ -102,7 +102,7 @@ $Conn->query($table);
 
 
 $table = "CREATE TABLE `Images` (
-  `Id` SERIAL NOT NULL AUTO_INCREMENT,
+  `Id` SERIAL NOT NULL ,
   `Image` VARCHAR(255) NOT NULL,
   `Uploaded_by` INT NOT NULL,
   `Uploaded_on` DATE NOT NULL DEFAULT CURRENT_DATE,
@@ -112,7 +112,7 @@ $Conn->query($table);
 
 
 $table = "CREATE TABLE `Notification` ( 
-	`Sr_n` SERIAL NOT NULL AUTO_INCREMENT , 
+	`Sr_n` SERIAL NOT NULL, 
 	`Notification_topic` VARCHAR(120) NOT NULL ,
 	`Notification_text` VARCHAR(120) NOT NULL , 
 	`is_deleted` BOOLEAN NOT NULL,
@@ -127,7 +127,7 @@ $Conn->query($table);
 
 
 $table = "CREATE TABLE `Event` ( 
-	`Sr_n` SERIAL NOT NULL AUTO_INCREMENT , 
+	`Sr_n` SERIAL NOT NULL, 
 	`Event_topic` VARCHAR(120) NOT NULL , 
 	`Event_text` VARCHAR(120) NOT NULL , 
 	`is_deleted` BOOLEAN NOT NULL,
@@ -140,7 +140,7 @@ $Conn->query($table);
 
 
 $table="CREATE TABLE `Admin` ( 
-`A_id` SERIAL NOT NULL AUTO_INCREMENT ,
+`A_id` SERIAL NOT NULL,
 `A_Photo` VARCHAR(50),
 `A_name` VARCHAR(60) NOT NULL ,
 `A_mobile` VARCHAR(10) NOT NULL ,
