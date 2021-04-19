@@ -35,7 +35,7 @@
 
             if ($row == 1) {
 
-                $update = mysqli_query($Conn, "UPDATE `students` SET `S_password` ='$Password' WHERE S_srn ='$S_srn' ") or die(mysqli_connect_error());
+                $update = mysqli_query($Conn, "UPDATE `students` SET `S_password` ='$Password' WHERE S_srn ='$S_srn' AND `is_deleted`='0' AND `updated`='0'") or die(mysqli_connect_error());
 
                 $log->success_entry($action,$Conn);
                  $return = array(

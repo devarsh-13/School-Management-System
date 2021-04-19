@@ -3,6 +3,7 @@
 require "connection.php";
 require "ec_dc.php";
 error_reporting(0);
+
 $obj = new ecdc();
 
 $os="123";
@@ -26,7 +27,12 @@ $q=mysqli_query($Conn,$table);
 
 
 
-$table = "CREATE TABLE `teacherstd`(`ts_id` INT NOT NULL AUTO_INCREMENT,`id_sub` INT NOT NULL,`id_teacher` INT NOT NULL,`is_deleted` BOOLEAN NOT NUll,PRIMARY KEY (`ts_id`))";
+$table = "CREATE TABLE `teacherstd`(
+`ts_id` SERIAL NOT NULL,
+`id_sub` INT NOT NULL,
+`id_teacher` INT NOT NULL,
+PRIMARY KEY (`ts_id`)
+)";
 $q=mysqli_query($Conn,$table);
 
 
@@ -34,7 +40,7 @@ $q=mysqli_query($Conn,$table);
 $table = "CREATE TABLE `Subjects`(
 `Sub_id` SERIAL NOT NULL,
 `Sub_name` VARCHAR(40) NOT NULL ,
-`Class_id` INT  NOT NULL ,
+`Class_id` BIGINT UNSIGNED NOT NULL,
 UNIQUE(`Sub_name`,`Class_id`),
 PRIMARY KEY (`Sub_id`)
 )";
@@ -45,8 +51,8 @@ $table="CREATE TABLE `Resources`(
 `R_id` SERIAL NOT NULL,
 `R_path` VARCHAR(250) NOT NULL,
 `Created_on` DATE NOT NULL DEFAULT CURRENT_DATE ,
-`Created_by` INT NOT NULL,	
-`Sub_id` INT NOT NULL , 
+`Created_by` BIGINT UNSIGNED NOT NULL,	
+`Sub_id` BIGINT UNSIGNED NOT NULL, 
 PRIMARY KEY (`R_id`)
 )";
 $q=mysqli_query($Conn,$table); 
@@ -63,7 +69,7 @@ $table = "CREATE TABLE `Students`(
 `S_dob`  DATE NOT NUll,
 `S_contact` VARCHAR(10) NOT NULL,
 `S_ad_date` DATE NOT NUll,
-`Class_id` INT NOT NUll,
+`Class_id` BIGINT UNSIGNED NOT NUll,
 `S_adharn` VARCHAR(12) NOT NUll,
 `S_hostel` varchar(50) NOT NUll,
 `S_home` varchar(50) NOT NUll,
@@ -109,7 +115,7 @@ $Conn->query($table);
 $table = "CREATE TABLE `Images` (
   `Id` SERIAL NOT NULL ,
   `Image` VARCHAR(255) NOT NULL,
-  `Uploaded_by` INT NOT NULL,
+  `Uploaded_by` BIGINT UNSIGNED NOT NULL,
   `Uploaded_on` DATE NOT NULL DEFAULT CURRENT_DATE,
   PRIMARY KEY (`id`)
 )";
@@ -124,7 +130,7 @@ $table = "CREATE TABLE `Notification` (
 	`N_count` INT NOT NULL , 
 	`Created_on` DATE NOT NULL DEFAULT CURRENT_DATE ,
 	`N_Time` TIME NOT NULL DEFAULT CURRENT_TIMESTAMP, 
-	`created_by` INT NOT NULL,
+	`created_by` BIGINT UNSIGNED NOT NULL,
 	PRIMARY KEY (`Sr_n`),
 	`n_status` BOOLEAN NOT NULL
 	)";
@@ -138,7 +144,7 @@ $table = "CREATE TABLE `Event` (
 	`is_deleted` BOOLEAN NOT NULL,
 	`Created_on` DATE NOT NULL DEFAULT CURRENT_DATE ,
 	`event_date` DATE NOT NULL,
-	`created_by` INT NOT NULL,
+	`created_by` BIGINT UNSIGNED NOT NULL,
 	PRIMARY KEY (`Sr_n`)
 )";
 $Conn->query($table); 
@@ -154,7 +160,7 @@ $table="CREATE TABLE `Admin` (
 `is_deleted` BOOLEAN NOT NUll,
 `A_dob` date NOT NULL,
 `Created_on` DATE NOT NULL DEFAULT CURRENT_DATE ,
-`Created_by` INT NOT NULL,
+`Created_by` BIGINT UNSIGNED NOT NULL,
 `notification_count` INT(20) NOT NULL,
 PRIMARY KEY (`A_id`),
 UNIQUE (A_mobile)
@@ -166,8 +172,8 @@ $table="CREATE TABLE `conversation` (
 `chat_id` SERIAL NOT NULL,
 `chat_text` VARCHAR(255) NOT NULL ,
 `Created_on` DATE NOT NULL DEFAULT CURRENT_DATE ,
-`S_srn` INT(5) NOT NULL,
-`T_srn` INT(3) NOT NULL,
+`S_srn` BIGINT UNSIGNED NOT NULL,
+`T_srn` BIGINT UNSIGNED NOT NULL,
 `is_c_deleted` BOOLEAN NOT NUll,
 `sender_type` VARCHAR(10) NOT NULL
 )"; 
@@ -192,39 +198,32 @@ $q=mysqli_query($Conn,$table);
 
 //Alters
 
-$Sql="ALTER TABLE `Subjects` ADD FOREIGN KEY (`Class_id`) REFERENCES `Class`(`Class_id`)  ON DELETE CASCADE ON UPDATE CASCADE";
-$q=mysqli_query($Conn,$Sql);
+$Sql="ALTER TABLE `subjects` ADD FOREIGN KEY (`Class_id`) REFERENCES `class`(`Class_id`) ON DELETE RESTRICT ON UPDATE CASCADE"; 
+$q=mysqli_query($Conn,$Sql)or die(mysqli_error($Conn));
 
 
-
-$SQL="ALTER TABLE `Students` ADD FOREIGN KEY (`Class_id`) REFERENCES `Class`(`Class_id`)ON DELETE CASCADE ON UPDATE CASCADE "; 
-$q=mysqli_query($Conn,$Sql);
-
-$Sql="ALTER TABLE `students` ADD FOREIGN KEY (`Class_id`) REFERENCES `class`(`Class_id`)ON DELETE CASCADE ON UPDATE CASCADE "; 
-$q=mysqli_query($Conn,$Sql);
-
-$Sql="ALTER TABLE `images` ADD FOREIGN KEY (`Uploaded_by`) REFERENCES `admin`(`A_id`)ON DELETE CASCADE ON UPDATE CASCADE"; 
-$q=mysqli_query($Conn,$Sql);
+$Sql="ALTER TABLE `Images` ADD FOREIGN KEY (`Uploaded_by`) REFERENCES `admin`(`A_id`)ON DELETE RESTRICT ON UPDATE CASCADE"; 
+$q=mysqli_query($Conn,$Sql)or die(mysqli_error($Conn));
 
 
-$Sql="ALTER TABLE `Event` ADD FOREIGN KEY (`created_by`) REFERENCES `admin`(`A_id`)ON DELETE CASCADE ON UPDATE CASCADE"; 
-$q=mysqli_query($Conn,$Sql);
+$Sql="ALTER TABLE `Event` ADD FOREIGN KEY (`created_by`) REFERENCES `admin`(`A_id`)ON DELETE RESTRICT ON UPDATE CASCADE"; 
+$q=mysqli_query($Conn,$Sql)or die(mysqli_error($Conn));
 
 
-$Sql="ALTER TABLE `conversation` ADD FOREIGN KEY (`S_srn`) REFERENCES `students`(`S_srn`) ON DELETE CASCADE ON UPDATE CASCADE"; 
-$q=mysqli_query($Conn,$Sql);
+$Sql="ALTER TABLE `conversation` ADD FOREIGN KEY (`S_srn`) REFERENCES `students`(`S_srn`)ON DELETE RESTRICT ON UPDATE CASCADE"; 
+$q=mysqli_query($Conn,$Sql)or die(mysqli_error($Conn));
 
-$Sql="ALTER TABLE `conversation` ADD FOREIGN KEY (`T_srn`) REFERENCES `Teachers`(`T_srn`) ON DELETE CASCADE ON UPDATE CASCADE"; 
-$q=mysqli_query($Conn,$Sql);
+$Sql="ALTER TABLE `conversation` ADD FOREIGN KEY (`T_srn`) REFERENCES `Teachers`(`T_srn`) ON DELETE RESTRICT ON UPDATE CASCADE";  
+$q=mysqli_query($Conn,$Sql)or die(mysqli_error($Conn));
 
-$Sql="ALTER TABLE `Resources` ADD FOREIGN KEY (Created_by) REFERENCES `Teachers`(`T_srn`) ON DELETE CASCADE ON UPDATE CASCADE";
-$q=mysqli_query($Conn,$Sql);
+$Sql="ALTER TABLE `Resources` ADD FOREIGN KEY (Created_by) REFERENCES `Teachers`(`T_srn`) ON DELETE RESTRICT ON UPDATE CASCADE"; 
+$q=mysqli_query($Conn,$Sql)or die(mysqli_error($Conn));
 
-$Sql="ALTER TABLE `Resources` ADD FOREIGN KEY (`Sub_id`) REFERENCES `Subjects`(`Sub_id`)ON DELETE CASCADE ON UPDATE CASCADE";
-$q=mysqli_query($Conn,$Sql);
+$Sql="ALTER TABLE `Resources` ADD FOREIGN KEY (`Sub_id`) REFERENCES `Subjects`(`Sub_id`)ON DELETE RESTRICT ON UPDATE CASCADE"; 
+$q=mysqli_query($Conn,$Sql)or die(mysqli_error($Conn));
 
-$Sql="ALTER TABLE `Notification` ADD FOREIGN KEY (`Created_by`) REFERENCES `Admin`(`A_id`)ON DELETE CASCADE ON UPDATE CASCADE";
-$q=mysqli_query($Conn,$Sql);
+$Sql="ALTER TABLE `Notification` ADD FOREIGN KEY (`Created_by`) REFERENCES `Admin`(`A_id`)ON DELETE RESTRICT ON UPDATE CASCADE"; 
+$q=mysqli_query($Conn,$Sql)or die(mysqli_error($Conn));
 
 //Inserts
 $Sql="INSERT INTO `class` (`Class_id`, `C_no`, `Stream`) VALUES (NULL, '9', NULL), 

@@ -22,12 +22,16 @@
 			$i=0;
 			while($i<= sizeof($class_array)-1)
 			{
-				$query=mysqli_query($Conn,"UPDATE `students` SET `updated`= '2' WHERE `Class_id`='$class_array[$i]' AND `updated`='1' ");
+				$query=mysqli_query($Conn,"UPDATE `students` SET `updated`= '2' WHERE `Class_id`='$class_array[$i]' AND `updated`='1'")or die(mysqli_error($Conn));
 				$query=mysqli_query($Conn,"UPDATE `students` SET `updated`= '1' WHERE `Class_id`='$class_array[$i]' AND `updated`='0'");
 				$i++;
 			}
 
 			header("location:Export.php");
+		}
+		if(isset($_POST['import']))
+		{
+			header("location:Import.php");
 		}
 ?>
 
@@ -225,7 +229,12 @@
 
 	<li  align="center">
 			<a>	<input type="Submit" class="btn btn-primary" name="Select" value="Select" /></a>
-</li>
+	</li>
+
+	<li  align="center">
+			<a>	<input type="Submit" class="btn btn-primary" name="import" value="import" /></a>
+	</li>
+
 	</ul>
 </nav>
 </div>

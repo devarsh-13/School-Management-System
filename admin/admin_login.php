@@ -16,8 +16,6 @@ if (isset($_POST['Submit'])) {
  $os=$_POST['Password'];
 $Password= $obj->encrypt($os);
 
-echo $Password;
-echo $os;
 	$error = false;
 
 	$mo = $_POST['Contact_no'];
