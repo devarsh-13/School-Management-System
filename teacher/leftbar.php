@@ -17,6 +17,10 @@
                                         <a href="view-profile.php"><i class="fa fa-user"></i> <span>Profile</span> </a>
                                      
                                     </li>
+                                     <li>
+                                        <a href="manage_subject.php"><i class="fa fa-bars"></i> <span>Manage Subjects</span> </a>
+                                     
+                                    </li>
                                      
                                         
                             </li>

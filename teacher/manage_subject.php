@@ -6,6 +6,30 @@ include('../admin/store_data.php');
 $tid = $_SESSION['t_id'];
 
 
+ 
+   $Sql = "UPDATE `teacherstd` SET `is_deleted` = '1' WHERE `id_teacher`='$tid'";
+     $q = mysqli_query($Conn, $Sql);
+
+
+if (isset($_POST['Update'])) {
+    $s = $_POST['sub'];
+    if (isset($_POST['sub']) == null) {
+
+        echo "<script>alert('Please select atleast one subject');window.location.href='teacher_info.php';</script>";
+    } else {
+
+
+        for ($i = 0; $i < sizeof($s); $i++) {
+               $Sql = "INSERT INTO `teacherstd` (id_sub,id_teacher,is_deleted)VALUES('" . $s[$i] . "','$tid','0')";
+            $q = mysqli_query($Conn, $Sql);
+          
+        }
+
+
+        header("location:dashboard.php");
+    }
+}
+
 
 ?>
 <!DOCTYPE html>
@@ -16,7 +40,7 @@ $tid = $_SESSION['t_id'];
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Std stream </title>
+    <title>Manage subject </title>
 
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/font-awesome.min.css">
@@ -165,7 +189,7 @@ $tid = $_SESSION['t_id'];
 </head>
 
 <body>
-    <form method="post" action="dashboard.php">
+    <form method="post">
         <div class="page-container">
             <div class="sidebar-menu">
                 <div class="sidebar-header">
@@ -206,7 +230,7 @@ $tid = $_SESSION['t_id'];
 
                                     </li>
                                 <?php } ?>
-                                <li align="center"><button type="submit" name="subject" class="btn btn-primary">Submit</button></li>
+                                <li align="center"><button type="submit" name="Update" class="btn btn-primary">Update</button></li>
 
 
                             </ul>
