@@ -274,15 +274,22 @@ if(strlen($_SESSION['a_id'])=="")
  
 
                     </ul>
-                      <style>.add button {margin-left: 60%;}.dlt button{margin-left: 100%;}</style>
+                         <ul>
+                     <style type="text/css">
+                         .add
+                         {
+                            border: 3px solid red;
+                            width: 100%;
+                            margin-left: 5%;
+                         }
+                       
+
+                     </style>
                        <div class="add">
                             <a href="add-students.php" id="b"> <button type="submit" name="add" class="btn btn-success">Add Student</button></a>
-                        </div> 
-                    
-                       <div class="dlt">
-                
-                    <a href="Promote_stu.php" ><button type="submit" name="btn_delete" id="btn_delete" class="btn btn-primary">Promote</button></a>
-                  </div>
+                            <a href="Promote_stu.php"  id="a" ><button type="submit" name="btn_delete" id="btn_delete" class="btn btn-primary">Promote</button></a>
+                       </div>
+                   </ul>
                 </div>
           </div>
 

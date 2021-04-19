@@ -84,7 +84,7 @@ if(strlen($_SESSION['t_id'])=="")
 require "connection.php";
 $t=$_SESSION['t_id'];
 $cid = $_GET['C_id'];
-$sql1 ="SELECT * from `subjects` join teacherstd WHERE subjects.Class_id='$cid' AND subjects.Sub_id=teacherstd.id_sub AND teacherstd.id_teacher= $t ";
+$sql1 ="SELECT * from `subjects` join teacherstd WHERE subjects.Class_id='$cid' AND subjects.Sub_id=teacherstd.id_sub AND teacherstd.id_teacher= $t AND teacherstd.is_deleted = '0' ";
 $query= $Conn -> query($sql1); 
 $row = mysqli_num_rows($query);
    

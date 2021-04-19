@@ -98,7 +98,7 @@ else{
 <?php
 $t=$_SESSION['t_id'];
 
-$sub="SELECT * from `Subjects` join teacherstd WHERE Subjects.Sub_id = teacherstd.id_sub AND teacherstd.id_teacher= $t";
+$sub="SELECT * from `Subjects` join teacherstd WHERE Subjects.Sub_id = teacherstd.id_sub AND teacherstd.id_teacher= $t AND teacherstd.is_deleted = '0' ";
 $re= $Conn -> query($sub); 
 
 

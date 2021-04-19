@@ -2,7 +2,27 @@
 
 require "connection.php";
 session_start();
+$tid = $_SESSION['t_id'];
 
+if (isset($_POST['subject'])) {
+    
+mysqli_query($Conn, "UPDATE `teachers` SET `login_count` = '1' WHERE `T_srn`='$tid'");
+    $s = $_POST['sub'];
+    if (isset($_POST['sub']) == null) {
+
+        echo "<script>alert('Please select atleast one subject');window.location.href='teacher_info.php';</script>";
+            header("location:teacher_info.php");
+    } else {
+
+        for ($i = 0; $i < sizeof($s); $i++) {
+            $Sql = "INSERT INTO `teacherstd` (id_sub,id_teacher,is_deleted)VALUES('" . $s[$i] . "','$tid','0')";
+            $q = mysqli_query($Conn, $Sql);
+        }
+
+
+        header("location:dashboard.php");
+    }
+}
 
 if (isset($_SESSION['t_id'])) {
    
