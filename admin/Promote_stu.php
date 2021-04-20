@@ -84,10 +84,15 @@
             padding: 20px 10px 0 0;
             -webkit-transition: all 0.3s ease 0s;
             transition: all 0.3s ease 0s;
+            overflow-y: scroll;
+        }
+          ::-webkit-scrollbar
+        {
+            width: 5px;
         }
 
         .menu-inner {
-            overflow-y: scroll;
+            
             height: 100%;
         }
 

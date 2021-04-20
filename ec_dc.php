@@ -34,12 +34,12 @@ class ecdc
     {
 
 		// Non-NULL Initialization Vector for decryption
-		private $decryption_iv = '1234567891011121';
-		private $ciphering = "AES-128-CTR";
-		private $options = 0;
+		 $decryption_iv = '1234567891011121';
+		 $ciphering = "AES-128-CTR";
+		 $options = 0;
 
 		// Store the decryption key
-		private $decryption_key = "GeeksforGeeks";
+		 $decryption_key = "GeeksforGeeks";
 
 		// Use openssl_decrypt() function to decrypt the data
 		$decryption=openssl_decrypt ($en, $ciphering, $decryption_key, $options, $decryption_iv);

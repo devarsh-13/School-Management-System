@@ -31,6 +31,7 @@ $table = "CREATE TABLE `teacherstd`(
 `ts_id` SERIAL NOT NULL,
 `id_sub` INT NOT NULL,
 `id_teacher` INT NOT NULL,
+`is_deleted` BOOLEAN NOT NUll,
 PRIMARY KEY (`ts_id`)
 )";
 $q=mysqli_query($Conn,$table);
@@ -233,7 +234,9 @@ $Sql="INSERT INTO `class` (`Class_id`, `C_no`, `Stream`) VALUES (NULL, '9', NULL
 																(NULL, '11', 'Commerce'), 
 																(NULL, '12', 'Commerce'), 
 																(NULL, '11', 'Science'), 
-																(NULL, '12', 'Science')
+																(NULL, '12', 'Science'),
+																(NULL, '11', 'Home Science'),
+																(NULL, '12', 'Home Science')
 	";
 	 
 $q=mysqli_query($Conn,$Sql);
@@ -247,6 +250,8 @@ $std11_12_sci = array("Biology","Physics","Chemistry","Maths","Gujarati","Englis
 $std11_12_com = array("Accountancy","Org. of Commerce","S.P. & C.C.","Economics","Statistics","Gujarati","English","Computer");
 
 $std11_12_art = array("Psychology","Sociology","Geography","Economics","Gujarati","English","Philosophy","Logic","Computer","Beauty","Health","Music","History");
+
+$std11_12_hosc = array("Gujarati","English","Sociology","Psychology","Udhyog Sahsikta","Economics","Advance Housekeeping","Interior Decoration","Social skill And Reportable matters");
 
 foreach ($std9_10 as $value) 
 {
@@ -304,6 +309,20 @@ foreach ($std11_12_sci as $value)
 	$q=mysqli_query($Conn,$Sql);
 }
 
+
+
+foreach ($std11_12_hosc as $value) 
+{
+	$Sql="INSERT INTO `Subjects` (Sub_name,Class_id)VALUES('$value','9')";
+	$q=mysqli_query($Conn,$Sql);
+}
+
+
+foreach ($std11_12_hosc as $value) 
+{
+	$Sql="INSERT INTO `Subjects` (Sub_name,Class_id)VALUES('$value','10')";
+	$q=mysqli_query($Conn,$Sql);
+}
 
 
 

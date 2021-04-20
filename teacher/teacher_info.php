@@ -17,6 +17,11 @@ $tid = $_SESSION['t_id'];
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Std stream </title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta name="description" content="Educo" />
+    <meta name="keywords" content="Educo, html template, Education template" />
+    <meta name="author" content="Kamleshyadav" />
+    <meta name="MobileOptimized" content="320" />
 
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/font-awesome.min.css">
@@ -42,6 +47,7 @@ $tid = $_SESSION['t_id'];
             box-shadow: 2px 0 32px rgba(0, 0, 0, 0.05);
             -webkit-transition: all 0.3s ease 0s;
             transition: all 0.3s ease 0s;
+
         }
 
         .sbar_collapsed .sidebar-menu {
@@ -56,10 +62,16 @@ $tid = $_SESSION['t_id'];
             padding: 20px 10px 0 0;
             -webkit-transition: all 0.3s ease 0s;
             transition: all 0.3s ease 0s;
+            overflow-y: scroll;
+
+        }
+        ::-webkit-scrollbar
+        {
+            width: 5px;
         }
 
         .menu-inner {
-            overflow-y: scroll;
+            
             height: 100%;
         }
 
