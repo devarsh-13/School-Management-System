@@ -40,7 +40,7 @@
 			if ($row == 1) 
             {
 
-                $os=$_POST['Password'];
+                $os=$Password;
                 $Pass= $obj->encrypt($os);
 
                 $log->success_entry($action,$Conn);

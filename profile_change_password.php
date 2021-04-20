@@ -1,7 +1,7 @@
 <?php
     include 'Database/connection.php';
     include('admin/store_data.php');
-    require "../ec_dc.php";
+    require "ec_dc.php";
     session_start();
 
     $action="Change Student Password";
@@ -37,7 +37,7 @@
 
             if ($row == 1) {
 
-                $os=$_POST['Password'];
+                $os=$Password;
                 $Pass= $obj->encrypt($os);
 
                 $update = mysqli_query($Conn, "UPDATE `students` SET `S_password` ='$Pass' WHERE S_srn ='$S_srn' AND `is_deleted`='0' AND `updated`='0'") or die(mysqli_connect_error());

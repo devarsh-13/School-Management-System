@@ -45,7 +45,7 @@
 
 			    if ($row == 1) 
                 {
-                    $os=$_POST['Password'];
+                    $os=$Password;
                     $Pass= $obj->encrypt($os);
 
 				    $update = mysqli_query($Conn, "UPDATE `admin` SET `A_password` ='$Pass' WHERE A_id ='$A_id' ") or die(mysqli_connect_error());

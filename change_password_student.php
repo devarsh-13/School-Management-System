@@ -24,7 +24,7 @@ if (isset($_POST['Submit'])) {
   if ($Password == $Password2) 
   {
 
-       $os=$_POST['Password'];
+       $os=$Password;
       $Pass= $obj->encrypt($os);
     $query = mysqli_query($Conn, "SELECT S_password FROM  Students WHERE
 			 S_srn = '$S_srn'") or die(mysqli_connect_error());
