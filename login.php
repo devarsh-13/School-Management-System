@@ -1,35 +1,18 @@
 <?php
-require_once "Database/Create_db.php";
-require_once "Database/connection.php";
 
+require_once "Database/connection.php";
+require "ec_dc.php";
 include('admin/store_data.php');
 $action="Student Login";
 $log=new Log();
-
+$obj = new ecdc();
 $flag = 0;
 
 if (isset($_POST['Submit'])) {
 	$Contact =	$_POST['Contact_no'];
 	
-$simple_string = $_POST['Password'];
-// Store the cipher method
-$ciphering = "AES-128-CTR";
-
-// Use OpenSSl Encryption method
-$iv_length = openssl_cipher_iv_length($ciphering);
-$options = 0;
-
-// Non-NULL Initialization Vector for encryption
-$encryption_iv = '1234567891011121';
-
-// Store the encryption key
-$encryption_key = "GeeksforGeeks";
-
-// Use openssl_encrypt() function to encrypt the data
-$encryption = openssl_encrypt($simple_string, $ciphering,
-			$encryption_key, $options, $encryption_iv);
- 
-$Password = $encryption;
+	$os = $_POST['Password'];
+	$Password = $obj->encrypt($os);
 	$error = false;
 
 	$mo = $_POST['Contact_no'];
