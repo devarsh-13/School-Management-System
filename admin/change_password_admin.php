@@ -3,34 +3,37 @@ session_start();
 
 require "connection.php";
 require "store_data.php";
+require "../ec_dc.php";
 
 $action="Admin Password Changed";
 $log=new Log();
-
+$obj = new ecdc();
 $flag = 0;
 
 
 if (isset($_POST['Submit'])) {
 
 
-  $Password = sha1($_POST['Password']);
+  $Password = $_POST['Password'];
 
-  $Password2 = sha1($_POST['Password2']);
+  $Password2 = $_POST['Password2'];
   $A_id = $_SESSION['a_id'];
 
 
   $error = false;
 
 
-  if ($Password == $Password2) {
-
+  if ($Password == $Password2) 
+  {
+      $os=$_POST['Password'];
+      $Pass= $obj->encrypt($os);
 
     $query = mysqli_query($Conn, "SELECT `A_password` FROM  `admin` WHERE
 			 `A_id` = '$A_id'") or die(mysqli_connect_error());
 
     if (mysqli_num_rows($query) == 1) {
 
-      $result = mysqli_query($Conn, "UPDATE `admin` SET `A_password` ='$Password' WHERE `A_id` ='$A_id' ") or die(mysqli_connect_error());
+      $result = mysqli_query($Conn, "UPDATE `admin` SET `A_password` ='$Pass' WHERE `A_id` ='$A_id' ") or die(mysqli_connect_error());
       $log->success_entry($action,$Conn);
       header("location:admin_login.php");
     }

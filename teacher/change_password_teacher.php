@@ -3,17 +3,18 @@ session_start();
 
 require "connection.php";
 include ('../admin/store_data.php');
-
+require "../ec_dc.php";
 $log=new Log();
+$obj = new ecdc();
 $action="Teacher Password Changed";
 
 $flag = 0;
 
 if (isset($_POST['Submit'])) 
 {
-  $Password = sha1($_POST['Password']);
+  $Password = $_POST['Password'];
 
-  $Password2 = sha1($_POST['Password2']);
+  $Password2 = $_POST['Password2'];
   $T_srn = $_SESSION['t_id'];
 
 
@@ -22,11 +23,14 @@ if (isset($_POST['Submit']))
 
   if ($Password == $Password2) 
   {
+       $os=$_POST['Password'];
+      $Pass= $obj->encrypt($os);
+
     $query = mysqli_query($Conn, "SELECT `Password` FROM `Teachers` WHERE `T_srn` = '$T_srn'") or die(mysqli_connect_error());
 
     if (mysqli_num_rows($query) == 1) 
     {
-      $result = mysqli_query($Conn, "UPDATE `Teachers` SET `Password` = '$Password' WHERE `T_srn` = '$T_srn' ") or die(mysqli_connect_error());
+      $result = mysqli_query($Conn, "UPDATE `Teachers` SET `Password` = '$Pass' WHERE `T_srn` = '$T_srn' ") or die(mysqli_connect_error());
       if($result)
       {
         $log->success_entry($action,$Conn);

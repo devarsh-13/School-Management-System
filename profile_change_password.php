@@ -1,11 +1,12 @@
 <?php
     include 'Database/connection.php';
     include('admin/store_data.php');
+    require "../ec_dc.php";
     session_start();
 
     $action="Change Student Password";
     $log=new Log();
-
+    $obj = new ecdc();
     if(isset($_SESSION['s_id']))
     {
 
@@ -23,7 +24,8 @@
 
     $Password2 = ($_POST['Password2']);
 
-	$OldPassword =($_POST['OldPassword']);
+    $os=$_POST['OldPassword'];
+    $OldPassword = $obj->encrypt($os);
 
 	$op = $result['S_password'];
 
@@ -35,7 +37,10 @@
 
             if ($row == 1) {
 
-                $update = mysqli_query($Conn, "UPDATE `students` SET `S_password` ='$Password' WHERE S_srn ='$S_srn' AND `is_deleted`='0' AND `updated`='0'") or die(mysqli_connect_error());
+                $os=$_POST['Password'];
+                $Pass= $obj->encrypt($os);
+
+                $update = mysqli_query($Conn, "UPDATE `students` SET `S_password` ='$Pass' WHERE S_srn ='$S_srn' AND `is_deleted`='0' AND `updated`='0'") or die(mysqli_connect_error());
 
                 $log->success_entry($action,$Conn);
                  $return = array(
