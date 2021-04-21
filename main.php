@@ -161,18 +161,18 @@ if (isset($_SESSION['s_id']))
 		<--Slider form end-->
 		</div>
 		<!--Latest news start -->
-		<div class="ed_graysection ed_toppadder80 ed_bottompadder80" id="event">
+		<div class="ed_graysection ed_toppadder80 " id="event">
 		
 					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ed_bottompadder30">
 						<div class="ed_heading_top">
 							<h3>Events</h3>
 						</div>
 					</div>
-					<div class="col-lg-12 ">
+					<div class="col-lg-12 ed_toppadder80 ed_bottompadder80">
 
 						
 
- <div class="scrollmenu">
+ 					<div class="scrollmenu ">
 
 							 <div class="ec">
       
@@ -218,8 +218,7 @@ if (isset($_SESSION['s_id']))
 				</div>
 			</div>
 		</div><!-- /.container -->
-
-	</div>
+</div></div>
 
 	
 	<div class="ed_footer_wrapper">
