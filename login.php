@@ -1,7 +1,7 @@
 <?php
 
 require_once "Database/connection.php";
-require "ec_dc.php";
+include('ec_dc.php');
 include('admin/store_data.php');
 $action="Student Login";
 $log=new Log();

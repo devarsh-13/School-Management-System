@@ -27,6 +27,8 @@ if (isset($_SESSION['s_id']))
     <link rel="stylesheet" href="teacher/assets/css/metisMenu.css">
     <link rel="stylesheet" href="teacher/assets/css/default-css.css">
     <link rel="stylesheet" href="teacher/assets/css/styles.css">
+
+    <link rel="stylesheet" href="event_style.css" />
    
 	<meta charset="utf-8" />
 	<title>IGHS | Home </title>
@@ -53,7 +55,18 @@ if (isset($_SESSION['s_id']))
 			white-space: nowrap;
 
 
+
 		}
+		 .scrollmenu
+    {
+        max-height: 520px;
+
+        border: 1px solid #ddd;
+        overflow-y: scroll;
+    }
+
+  
+
 
 		.card {
 			border: 2px solid black;
@@ -149,38 +162,59 @@ if (isset($_SESSION['s_id']))
 		</div>
 		<!--Latest news start -->
 		<div class="ed_graysection ed_toppadder80 ed_bottompadder80" id="event">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ed_bottompadder80">
+		
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ed_bottompadder30">
 						<div class="ed_heading_top">
 							<h3>Events</h3>
 						</div>
 					</div>
-					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="col-lg-12 ">
 
-						<div id="owl-demo2" class="scrolling-wrapper">
+						
+
+ <div class="scrollmenu">
+
+							 <div class="ec">
+      
+      <?php
+
+      require "Database/connection.php";
+              $sql = ("SELECT * FROM `Event` WHERE `is_deleted`='0'") or die(mysqli_connect_error());
+
+              $q = mysqli_query($Conn, $sql);
+
+              while ($r = mysqli_fetch_array($q)) { ?>
+
+      <div class="eve">
+        <div class="el">
+          <div class="ed">
+            <div class="d"><?php $d= $r['event_date'];
+                                    echo date("d",strtotime($d));?></div>
+            <div class="m"><?php $d= $r['event_date'];
+                                    echo date("F",strtotime($d));?></div>
+          </div>
+        </div>
+
+        <div class="er">
+          <h3 class="et"><?php echo $r['Event_topic'];?></h3>
+
+          <div class="edes">
+            <?php echo $r['Event_text'];?>
+          </div>
+
+          <div class="etiming">
+            
+          </div>
+        </div>
+      </div>
+
+    <?php } ?>
 
 
 
-							<?php
 
-
-							$sql = ("SELECT * FROM `Event` WHERE `is_deleted`='0'") or die(mysqli_connect_error());
-
-							$q = mysqli_query($Conn, $sql);
-
-							while ($r = mysqli_fetch_array($q)) {
-								echo " 
-            								<div class='card'>
-            									  <h4>" . $r['Event_topic'] . "</h4>
-                        <p> " . $r['Event_text'] . "</p>
-                        <span>" . $r['event_date'] . "</span>
-																									
-												</div>	";
-							}
-							?>
-						</div>
-					</div>
+						
+			
 				</div>
 			</div>
 		</div><!-- /.container -->
