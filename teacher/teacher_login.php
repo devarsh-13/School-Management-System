@@ -46,7 +46,7 @@ $Password= $obj->encrypt($os);
 			
 			$Pa= $obj->decrypt($Password);
 
-			setcookie("teacher_password", $pa, time() + (10 * 365 * 24 * 60 * 60), "/");
+			setcookie("teacher_password", $Pa, time() + (10 * 365 * 24 * 60 * 60), "/");
 			
 			$c = mysqli_query($Conn, "SELECT * FROM `teachers` WHERE `Contact` = '$Contact' && `Password` = '$Password'");			
 			$count = mysqli_fetch_array($c);
