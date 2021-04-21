@@ -649,7 +649,7 @@ body {
                   // Create the pop out image
                   image_popup.innerHTML = `
             <div class="con">
-               <img src="${img.src}">
+               <img src="${img.src}" height"300px" width="300px;">
             </div>
          `;
                   image_popup.style.display = 'flex';
