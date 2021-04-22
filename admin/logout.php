@@ -21,6 +21,6 @@ $log->success_entry($action,$Conn);
 
 session_unset();
 session_destroy();
-header("location:http://localhost/Sem6CollegeProject/admin/");
+header("location:index.php");
 ?>
 

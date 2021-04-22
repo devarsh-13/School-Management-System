@@ -39,7 +39,7 @@ $result = mysqli_fetch_array($query);
 	
  
     
-    <link rel="stylesheet" href="teacher/assets/css/bootstrap.min.css">
+    
     <link rel="stylesheet" href="teacher/assets/css/font-awesome.min.css">
     <link rel="stylesheet" href="teacher/assets/css/themify-icons.css">
     <link rel="stylesheet" href="teacher/assets/css/metisMenu.css">

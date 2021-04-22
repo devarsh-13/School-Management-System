@@ -73,7 +73,7 @@ $result = mysqli_fetch_array($query);
 
 
       <link rel="shortcut icon" type="image/png" href="assets/images/icon/favicon.ico">
-    <link rel="stylesheet" href="../teacher/assets/css/bootstrap.min.css">
+    
     <link rel="stylesheet" href="../teacher/assets/css/font-awesome.min.css">
     <link rel="stylesheet" href="../teacher/assets/css/themify-icons.css">
     <link rel="stylesheet" href="../teacher/assets/css/metisMenu.css">
@@ -89,10 +89,10 @@ $result = mysqli_fetch_array($query);
     <!-- modernizr css -->
     <script src="../teacher/assets/js/vendor/modernizr-2.8.3.min.js"></script>
   <style type="text/css">
-        .section
+        #l
         {
             background-color: white;
-            margin-top: 3%;
+            
         }
     </style>
 </head>
@@ -113,28 +113,22 @@ $result = mysqli_fetch_array($query);
             <div class="header-area">
                 <div class="row align-items-center">
                     <ul class="breadcrumbs pull-left">
-                          <h4 class="page-title pull-left">ADD Event</h4>
+                          <h4 class="page-title pull-left">Admin Profile</h4>
                                 <li><a href="dashboard.php">Home</a></li>
                                 
-                                <li><span>Add Event</span></li>
+                                <li><span>Admin Profile</span></li>
                             </ul>
                    
                 </div>
             </div>
-              <div class="row">
-                            <div class="col-md-12">
-                                <div class="panel">
-                                    <div class="panel-heading">
-                                        <div class="panel-title">
-                                            <span>Fill The Event Info.</span>
-                                        </div>
-                                    </div>
+              <div class="row" style="background-color: white;">
+                                    
             <!-- page title area end -->
-            <div class="main-content-inner">
+            <div class="main-content-inner" >
                 <!-- MAIN CONTENT GOES HERE -->
 
 
-	<div id="educo_wrapper">
+	<div id="educo_wrapper" >
 
 
 		<div class="ed_dashboard_wrapper">
@@ -180,7 +174,7 @@ $result = mysqli_fetch_array($query);
 
 																<tr>
 																	<td><b>Name</b></td>
-																	<td><?php echo $result['A_name'];  ?>
+																	<td><?php echo $result['A_name'];  ?></td>
 																</tr>
 
 
@@ -268,7 +262,7 @@ $result = mysqli_fetch_array($query);
 
 
 	</div>
-
+</div></div></div></div>
 	<script type="text/javascript" src="../js/jquery-1.12.2.js"></script>
 	<script type="text/javascript" src="../js/bootstrap.js"></script>
 	<script type="text/javascript" src="../js/modernizr.js"></script>

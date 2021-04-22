@@ -52,7 +52,7 @@ $result = mysqli_fetch_array($query);
 
 
       <link rel="shortcut icon" type="image/png" href="assets/images/icon/favicon.ico">
-    <link rel="stylesheet" href="../teacher/assets/css/bootstrap.min.css">
+    
     <link rel="stylesheet" href="../teacher/assets/css/font-awesome.min.css">
     <link rel="stylesheet" href="../teacher/assets/css/themify-icons.css">
     <link rel="stylesheet" href="../teacher/assets/css/metisMenu.css">
@@ -100,9 +100,8 @@ $result = mysqli_fetch_array($query);
                    
                 </div>
             </div>
-              <div class="row">
-                            <div class="col-md-12">
-                                <div class="panel">
+              <div class="row"style="background-color: white;">
+                            
                                  
             <!-- page title area end -->
             <div class="main-content-inner">
@@ -154,7 +153,7 @@ $result = mysqli_fetch_array($query);
 
 																<tr>
 																	<td><b>Name</b></td>
-																	<td><?php echo $result['T_name'];  ?>
+																	<td><?php echo $result['T_name'];  ?></td>
 																</tr>
 
 
@@ -249,11 +248,10 @@ $result = mysqli_fetch_array($query);
 				</div>
 			</div>
 		</div>
-
+</div></div></div></div>
 
 
 	</div>
-
 	<script type="text/javascript" src="../js/jquery-1.12.2.js"></script>
 	<script type="text/javascript" src="../js/bootstrap.js"></script>
 	<script type="text/javascript" src="../js/modernizr.js"></script>
