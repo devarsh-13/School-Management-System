@@ -287,63 +287,63 @@ if (strlen($_SESSION['a_id']) == "") {
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Gr Number</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" name="gr" class="form-control"  oninput='digitValidate(this)' pattern=".{5}"  title=" 5 numbers" maxlength="5" id="gr" autocomplete="off">
+                                                    <input type="text" name="gr" class="form-control"  oninput='digitValidate(this)' pattern=".{5}"  title=" 5 numbers" maxlength="5" id="gr" autocomplete="off" required>
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">UID Number</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" name="ui" class="form-control"  id="ui" oninput='digitValidate(this)' pattern=".{18}"  title=" 18 numbers" maxlength="18" autocomplete="off">
+                                                    <input type="text" name="ui" class="form-control"  id="ui" oninput='digitValidate(this)' pattern=".{18}"  title=" 18 numbers" maxlength="18" autocomplete="off" required>
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Student Name</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" name="sn" class="form-control" oninput='stringValidate(this)' maxlength="50"  id="sn" autocomplete="off">
+                                                    <input type="text" name="sn" class="form-control" oninput='stringValidate(this)' maxlength="50"  id="sn" required autocomplete="off">
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Caste</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" name="cast" class="form-control" oninput='stringValidate(this)'  id="cast" autocomplete="off">
+                                                    <input type="text" name="cast" class="form-control" oninput='stringValidate(this)'  id="cast" autocomplete="off" required>
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Category</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" name="cat" class="form-control" oninput='stringValidate(this)'  id="cat" autocomplete="off">
+                                                    <input type="text" name="cat" class="form-control" oninput='stringValidate(this)'  id="cat" autocomplete="off" required>
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Date of Birth</label>
                                                 <div class="col-sm-10">
-                                                    <input type="date" name="dob" class="form-control"  id="dob" min="1900-01-01" max='<?php echo date('Y-m-d');?>' autocomplete="off">
+                                                    <input type="date" name="dob" class="form-control"  id="dob" min="1900-01-01" max='<?php echo date('Y-m-d');?>' autocomplete="off" required>
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Contact</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" name="con" class="form-control"  id="con" oninput='digitValidate(this)' pattern=".{10}"  title=" 10 numbers" maxlength="10" autocomplete="off">
+                                                    <input type="text" name="con" class="form-control"  id="con" oninput='digitValidate(this)' pattern=".{10}"  title=" 10 numbers" maxlength="10" autocomplete="off" required>
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Admission Date</label>
                                                 <div class="col-sm-10">
-                                                    <input type="date" name="adate" class="form-control"  id="adate"  min="1990-01-01" max='<?php echo date('Y-m-d');?>' autocomplete="off">
+                                                    <input type="date" name="adate" class="form-control"  id="adate"  min="1990-01-01" max='<?php echo date('Y-m-d');?>' autocomplete="off" required>
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Class</label>
                                                 <div class="col-sm-10">
-                                                    <Select name="class" class="form-control" id="clas"  autocomplete="off" onkeyup="Check_class()" onclick="Check_class()">
+                                                    <Select name="class" class="form-control" id="clas"  autocomplete="off" onkeyup="Check_class()" onclick="Check_class()" required>
                                                         <option value="NULL">---Select---</option>
                                                         <option value="9">9</option>
                                                         <option value="10">10</option>
@@ -370,7 +370,7 @@ if (strlen($_SESSION['a_id']) == "") {
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Academic Year</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" name="AY" class="form-control"  pattern="[0-9]{4}-[0-9]{4}"  title="pattern should be yyyy-yyyy "    id="AY" autocomplete="off">
+                                                    <input type="text" name="AY" class="form-control"  pattern="[0-9]{4}-[0-9]{4}"  title="pattern should be yyyy-yyyy " required id="AY" autocomplete="off">
                                                 </div>
                                             </div>
 
@@ -387,14 +387,14 @@ if (strlen($_SESSION['a_id']) == "") {
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Adhar Number</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" name="adhar" class="form-control" oninput='digitValidate(this)'  id="adhar" pattern=".{12}"  title=" 12 numbers" maxlength='12' autocomplete="on">
+                                                    <input type="text" name="adhar" class="form-control" oninput='digitValidate(this)'  id="adhar" pattern=".{12}"  required title=" 12 numbers" maxlength='12' autocomplete="on">
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Home Address</label>
                                                 <div class="col-sm-10">
-                                                    <textarea rows="5" name="home" class="form-control"  id="home" autocomplete="off" maxlength="40"></textarea>
+                                                    <textarea rows="5" name="home" class="form-control"  id="home" autocomplete="off" maxlength="40" required ></textarea>
                                                 </div>
                                             </div>
 
@@ -403,7 +403,7 @@ if (strlen($_SESSION['a_id']) == "") {
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Hostel Address</label>
                                                 <div class="col-sm-10">
-                                                    <textarea rows="5" name="hostel" class="form-control" id="hostel" autocomplete="off" maxlength="40"></textarea>
+                                                    <textarea rows="5" name="hostel" class="form-control" id="hostel" autocomplete="off" maxlength="40" ></textarea>
                                                 </div>
                                             </div>
 
@@ -411,8 +411,8 @@ if (strlen($_SESSION['a_id']) == "") {
                                                 <label for="default" class="col-sm-2 control-label">Handicapped</label>
                                                 <div class="col-sm-10">
 
-                                                    <input type="radio" name="hand" value="Yes"  onclick="desc()" id="hand1">Yes</input>
-                                                    <input type="radio" name="hand" value="No"  onclick="desc()" id="hand2">No</input>
+                                                    <input type="radio" name="hand" value="Yes" required onclick="desc()" id="hand1">Yes</input>
+                                                    <input type="radio" name="hand" value="No" required onclick="desc()" id="hand2">No</input>
                                                 </div>
                                             </div>
 
@@ -427,7 +427,7 @@ if (strlen($_SESSION['a_id']) == "") {
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Password</label>
                                                 <div class="col-sm-10">
-                                                    <input type="password" name="pass"  class="form-control" id="pass" maxlength="15" minlength="4" autocomplete="off">
+                                                    <input type="password" name="pass"  class="form-control" id="pass" maxlength="15" minlength="4" autocomplete="off" required>
                                                 </div>
                                             </div>
 
