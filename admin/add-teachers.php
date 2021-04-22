@@ -20,7 +20,7 @@ if (strlen($_SESSION['a_id']) == "") {
     {
         require "connection.php";
 
-        $uploadFolder = '../user_photos/';
+        $uploadFolder = '../user_photos/teacher';
 
 
         $imageTmpName = $_FILES['file']['tmp_name'];

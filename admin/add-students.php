@@ -73,7 +73,7 @@ if (strlen($_SESSION['a_id']) == "") {
 
         if($error5==false)
         {
-            $uploadFolder = '../user_photos/';
+            $uploadFolder = '../user_photos/student/';
 
             $imageTmpName = $_FILES['file']['tmp_name'];
             $extension=pathinfo($_FILES["file"]["name"],PATHINFO_EXTENSION);

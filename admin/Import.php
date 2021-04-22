@@ -91,10 +91,9 @@ function get_pass($p2)
                             $remarks=$Conn->real_escape_string($t[15]);
 
                             $ay     =$Conn->real_escape_string($t[16]);
-                            $ph     =$Conn->real_escape_string($t[17]);
                             
 
-                            $ok=$obj->Store_student($gr,$uid,$name,$cast,$cate,$dob,$cont,$ad_date,$cid,$adhar,$hos,$hom,$handi,$des,$pass,$remarks,$ay,$Conn,$ph);
+                            $ok=$obj->Store_student($gr,$uid,$name,$cast,$cate,$dob,$cont,$ad_date,$cid,$adhar,$hos,$hom,$handi,$des,$pass,$remarks,$ay,$Conn);
                 }
                 $i++;
             }

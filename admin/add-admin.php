@@ -18,7 +18,7 @@ else
     
     if (isset($_POST['submit'])) 
     {
-        $uploadFolder = '../user_photos/';
+        $uploadFolder = '../user_photos/admin/';
 
 
         $imageTmpName = $_FILES['file']['tmp_name'];

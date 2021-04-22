@@ -2,7 +2,7 @@
 error_reporting(0);
 class Upload
 {
-    public function Store_student($gr,$uid,$name,$cast,$cate,$dob,$con,$ad_date,$cid,$adhar,$hos,$hom,$handi,$des,$pass,$remarks,$ay,$Conn,$ph="student_default.jpg")
+    public function Store_student($gr,$uid,$name,$cast,$cate,$dob,$con,$ad_date,$cid,$adhar,$hos,$hom,$handi,$des,$pass,$remarks,$ay,$Conn)
     {
         $d=date("Y-m-d");
         $status="offline";
