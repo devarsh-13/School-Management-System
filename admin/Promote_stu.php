@@ -6,14 +6,15 @@
 
 	$log=new Log();
 	$action="In Promote Student";
+
 	if(isset($_SESSION['a_id']))
 	{
-		if(!(isset($_POST['Select'])))
+		if(!(isset($_POST['Promote'])))
 		{
 			$log->success_entry($action,$Conn);	
 		}
 		
-		if(isset($_POST['Select']))
+		if(isset($_POST['Promote']))
 		{
 				$class_array=array();
 				$class_array=$_POST['class'];
@@ -22,11 +23,12 @@
 			$i=0;
 			while($i<= sizeof($class_array)-1)
 			{
-				$query=mysqli_query($Conn,"UPDATE `students` SET `updated`= '2' WHERE `Class_id`='$class_array[$i]' AND `updated`='1'")or die(mysqli_error($Conn));
+				
 				$query=mysqli_query($Conn,"UPDATE `students` SET `updated`= '1' WHERE `Class_id`='$class_array[$i]' AND `updated`='0'");
+                
 				$i++;
 			}
-
+            
 			header("location:Export.php");
 		}
 		if(isset($_POST['import']))
@@ -84,15 +86,10 @@
             padding: 20px 10px 0 0;
             -webkit-transition: all 0.3s ease 0s;
             transition: all 0.3s ease 0s;
-            overflow-y: scroll;
-        }
-          ::-webkit-scrollbar
-        {
-            width: 5px;
         }
 
         .menu-inner {
-            
+            overflow-y: scroll;
             height: 100%;
         }
 
@@ -198,7 +195,7 @@
 </head>
 
 <body>
-    <form method="POST" name="select_class">
+    <form method="POST" name="select_class" >
         <div class="page-container">
             <div class="sidebar-menu">
                 <div class="sidebar-header">
@@ -233,11 +230,11 @@
 	?>
 
 	<li  align="center">
-			<a>	<input type="Submit" class="btn btn-primary" name="Select" value="Select" /></a>
+			<a>	<input type="Submit" class="btn btn-primary" name="Promote" value="Promote" /></a>
 	</li>
 
 	<li  align="center">
-			<a>	<input type="Submit" class="btn btn-primary" name="import" value="import" /></a>
+			<a>	<input type="Submit" class="btn btn-primary" name="import" value="Upload" /></a>
 	</li>
 
 	</ul>
@@ -252,16 +249,18 @@
 </html>
 
     <!-- jquery latest version -->
-    <script src="../teacher/assets/js/vendor/jquery-2.2.4.min.js"></script>
+    <!-- <script src="../teacher/assets/js/vendor/jquery-2.2.4.min.js"></script> -->
     <!-- bootstrap 4 js -->
-    <script src="../teacher/assets/js/popper.min.js"></script>
+<!--     <script src="../teacher/assets/js/popper.min.js"></script>
     <script src="../teacher/assets/js/bootstrap.min.js"></script>
     <script src="../teacher/assets/js/owl.carousel.min.js"></script>
     <script src="../teacher/assets/js/metisMenu.min.js"></script>
     <script src="../teacher/assets/js/jquery.slimscroll.min.js"></script>
     <script src="../teacher/assets/js/jquery.slicknav.min.js"></script>
     <script src="../teacher/assets/js/scripts.js"></script>
-<?php
+ -->
+
+ <?php
 
 	}
 	else

@@ -8,7 +8,8 @@ $log=new Log();
 $obj = new ecdc();
 $flag = 0;
 
-if (isset($_POST['Submit'])) {
+if (isset($_POST['Submit'])) 
+{
 	$Contact =	$_POST['Contact_no'];
 	
 	$os = $_POST['Password'];
@@ -34,28 +35,33 @@ if (isset($_POST['Submit'])) {
 	$row = mysqli_num_rows($query);
 	$arr = mysqli_fetch_row($query);
 
-	if ($row >= 1) {
+	if ($row >= 1) 
+	{
 		session_start();
 		$_SESSION['s_id'] = $arr[0];
 
 		$log->success_entry($action,$Conn);
 
-		if (isset($_POST["remember"])) {
+		if (isset($_POST["remember"])) 
+		{
 			setcookie("contact_no", $Contact, time() + (10 * 365 * 24 * 60 * 60), "/");
 			$decryption_iv = '1234567891011121';
-$ciphering = "AES-128-CTR";
-$options = 0;
-$en=$Password;
-// Store the decryption key
-$decryption_key = "GeeksforGeeks";
+			$ciphering = "AES-128-CTR";
+			$options = 0;
+			$en=$Password;
+			// Store the decryption key
+			$decryption_key = "GeeksforGeeks";
 
-// Use openssl_decrypt() function to decrypt the data
-$decryption=openssl_decrypt ($en, $ciphering,
-		$decryption_key, $options, $decryption_iv);
-			$Pa= $decryption;
+			// Use openssl_decrypt() function to decrypt the data
+			$decryption=openssl_decrypt ($en, $ciphering,
+			$decryption_key, $options, $decryption_iv);
+
+			$Pa=$decryption;
 			setcookie("password", $Pa, time() + (10 * 365 * 24 * 60 * 60), "/");
 			header("location:http://localhost/Sem6CollegeProject/main.php");
-		} else {
+		} 
+		else 
+		{
 			unset($_COOKIE['contact_no']);
 			setcookie('contact_no', null, -1, '/');
 			unset($_COOKIE['password']);
@@ -65,7 +71,8 @@ $decryption=openssl_decrypt ($en, $ciphering,
 	}
 	else 
 	{
-		$log->wrong_login($_POST[$Contact_no],$action,$Conn);
+		$Contact =	$_POST['Contact_no'];
+		$log->wrong_login($Contact,$action,$Conn);
 		$flag = 1;
 	}
 }

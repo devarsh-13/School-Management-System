@@ -29,7 +29,7 @@ class Upload
                         
                         $ay     =$Conn->real_escape_string($t[16]);
                        
-                        $repeat=mysqli_query($Conn,"SELECT `S_srn`FROM `Students` WHERE `S_name`='$name'AND`S_contact`='$cont'AND`Academic_year`='$ay'");
+                        $repeat=mysqli_query($Conn,"SELECT `S_srn`FROM `Students` WHERE `S_name`='$name'AND`S_contact`='$cont'AND`Academic_year`='$ay' AND `updated`='0'");
 
                             
                         $r=mysqli_num_rows($repeat);
@@ -40,7 +40,6 @@ class Upload
                         }
             }
             $i++;
-            // var_dump($repeat);
         }
         return 0;
     }
@@ -134,7 +133,7 @@ class Log
     	elseif(isset($_SESSION['s_id']))
     	{	
     		$id=$_SESSION['s_id'];
-    		$q=mysqli_query($Conn,"SELECT `S_name`,`S_contact` FROM `Students` WHERE `S_srn`='$id'")or die(mysqli_error($Conn));
+    		$q=mysqli_query($Conn,"SELECT `S_name`,`S_contact` FROM `Students` WHERE `S_srn`='$id' AND `is_deleted`='0' AND `updated`='0'")or die(mysqli_error($Conn));
 	   		$auth="Student";
     	}
     	$data=mysqli_fetch_row($q);
@@ -156,7 +155,7 @@ class Log
 
     public function wrong_login($contact,$action,$Conn)
     {
-
+       
     	$status="Unsuccessful";
 		$ip=getIPAddress();
 		
@@ -187,13 +186,15 @@ class Log
 			}
 			else
 			{
-				$q=mysqli_query($Conn,"SELECT `S_name` FROM `Students` WHERE `S_contact`='$contact'");
+				$q=mysqli_query($Conn,"SELECT `S_name` FROM `Students` WHERE `S_contact`='$contact'  AND `is_deleted`='0' AND `updated`='0' ");
 				$data=mysqli_fetch_row($q);
+
+                
 				if($data)
 				{
 					$name=$data[0];
 					$auth="Student";		
-				}
+       			}
 				else
 				{
 					$name="Unknown";

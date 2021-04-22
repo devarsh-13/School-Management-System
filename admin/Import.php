@@ -23,8 +23,6 @@ function get_pass($p2)
     return $p3;
 }
 
-//USE PhpOffice\PhpSpreadsheet\Spreadsheet;
-
 
   if(isset($_POST['submit']))
   {
@@ -61,10 +59,19 @@ function get_pass($p2)
                     
                     $q=mysqli_query($Conn,"SELECT `Class_id` FROM `Class` WHERE `C_no`='$t[3]' AND `Stream`='$t[4]' ")or die(mysqli_error($Conn));
                     $c_id=mysqli_fetch_array($q);
-                    $pass = $ec->encrypt(get_pass($t[0]));
-                     
 
-                   
+                    $q2=mysqli_query($Conn, "SELECT `S_password` FROM `Students` WHERE `S_contact`=$t[9] AND `is_deleted`='0' AND `updated`='1' ");
+                    $raw_pass=mysqli_fetch_row($q2);
+
+                    if(isset($raw_pass['0']))
+                    {
+                        $pass=$raw_pass['0'];
+                    }
+                    else
+                    {
+                        $pass = $ec->encrypt(get_pass($t[0]));    
+                    }
+
                             $gr     =$Conn->real_escape_string($t[0]);
                             $uid    =$Conn->real_escape_string($t[1]);
                             $name   =$Conn->real_escape_string($t[2]);
@@ -86,12 +93,17 @@ function get_pass($p2)
                             $ay     =$Conn->real_escape_string($t[16]);
                             $ph     =$Conn->real_escape_string($t[17]);
                             
+
                             $ok=$obj->Store_student($gr,$uid,$name,$cast,$cate,$dob,$cont,$ad_date,$cid,$adhar,$hos,$hom,$handi,$des,$pass,$remarks,$ay,$Conn,$ph);
                 }
                 $i++;
-            }   
+            }
+        for($i=0;$i<=10;$i++)
+        {
+            $query=mysqli_query($Conn,"UPDATE `students` SET`updated`='2' WHERE `Class_id`='$i' AND `updated`='1'")or die(mysqli_error($Conn));
         }
         unlink($targetPath);
+            }
 
 
 $action="Student data Imported";
