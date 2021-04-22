@@ -5,7 +5,7 @@
 						<div class="row">
 							<div class="col-lg-4 col-md-4 col-sm-12">
 								<div class="widget text-widget">
-									<p><a href="index.html"><img src="images/footer/F_Logo.png" alt="Footer Logo" /></a></p>
+									<p><a href="index.html"><img src="images/header/ighs_sidebar.png" alt="Footer Logo" height= "30%" width="30%" style="margin-bottom: -5%;" /></a></p>
 									<p>Edution is an outstanding PSD template targeting educational institutions, helping them establish strong identity on the internet without any real developing knowledge.
 									</p>
 									<div class="ed_sociallink">
