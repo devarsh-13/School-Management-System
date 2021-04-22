@@ -13,12 +13,12 @@ if (isset($_POST['verify'])) {
 
 
 
-  // if ($_SESSION['otp'] == $otp) {
+  if ($_SESSION['otp'] == $otp) {
     header("location:change_password_student.php");
-  // } else {
+  } else {
 
     $error_msg['C'] = 'Please enter correct OTP';
-  
+  }
 }
 ?>
 
@@ -31,8 +31,8 @@ if (isset($_POST['verify'])) {
 
   <link rel="stylesheet" href="css/otp.css">
   <script src="js/otp.js"></script>
-  
-	<meta name="MobileOptimized" content="320" />
+
+  <meta name="MobileOptimized" content="320" />
 
 </head>
 

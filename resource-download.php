@@ -31,9 +31,7 @@ Purchase:
 	<meta charset="utf-8" />
       <title>Resources</title>
       <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-      <meta name="description" content="Educo" />
-      <meta name="keywords" content="Educo, html template, Education template" />
-      <meta name="author" content="Kamleshyadav" />
+
       <meta name="MobileOptimized" content="320" />
 
 		<!--srart theme style -->
@@ -50,7 +48,7 @@ Purchase:
 
 	<link href="css/main.css" rel="stylesheet" type="text/css" />
 
-	<link rel="shortcut icon" type="image/png" href="images/header/favicon.png" />
+	<link rel="shortcut icon" type="image/png" href="images/header/IGHS(1).png" />
 		
 
 		<style type="text/css">

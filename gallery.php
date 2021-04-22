@@ -30,11 +30,9 @@ if (isset($_SESSION['s_id'])) {
       <link rel="stylesheet" href="teacher/assets/css/styles.css">
 
       <meta charset="utf-8" />
-      <title>Educo Multipurpose Responsive HTML Template</title>
+      <title>Stdeunt Gallery</title>
       <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-      <meta name="description" content="Educo" />
-      <meta name="keywords" content="Educo, html template, Education template" />
-      <meta name="author" content="Kamleshyadav" />
+
       <meta name="MobileOptimized" content="320" />
 
 
@@ -52,7 +50,7 @@ if (isset($_SESSION['s_id'])) {
       <link href="css/main.css" rel="stylesheet" type="text/css" />
       <!-- end theme style -->
       <!-- favicon links -->
-      <link rel="shortcut icon" type="image/png" href="images/header/favicon.png" />
+      <link rel="shortcut icon" type="image/png" href="images/header/IGHS(1).png" />
 
 
    </head>
@@ -68,7 +66,7 @@ if (isset($_SESSION['s_id'])) {
          <div class="ed_courses ed_toppadder80 ed_bottompadder80">
             <div class="container">
                <?php if ($row == 0) {
-                  echo "<center><h1> No images to show</h1></center>";
+                  echo "<center><h1> No images to show<br>   </br></h1></center>";
                } ?>
                <div class="row">
 

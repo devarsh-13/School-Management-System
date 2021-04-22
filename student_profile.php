@@ -48,15 +48,14 @@ $result = mysqli_fetch_array($query);
    
 	<meta charset="utf-8" />
 	<title>IGHS | Student Profile</title>
+	
 	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
-	<meta name="description" content="Educo" />
-	<meta name="keywords" content="Educo, html template, Education template" />
-	<meta name="author" content="Kamleshyadav" />
+
 	<meta name="MobileOptimized" content="320" />
 
 	<link href="css/main.css" rel="stylesheet" type="text/css" />
 
-	<link rel="shortcut icon" type="image/png" href="images/header/favicon.png" />
+	<link rel="shortcut icon" type="image/png" href="images/header/IGHS(1).png" />
 </head>
 
 <body>
