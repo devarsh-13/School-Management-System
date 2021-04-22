@@ -145,7 +145,7 @@ if(strlen($_SESSION['a_id'])=="")
 .dlt button
 {
     
-    margin-left: 100%;
+ margin-left: 5px; 
 }
 
         </style>
@@ -172,8 +172,9 @@ if(strlen($_SESSION['a_id'])=="")
                                 <li><span>manage Gallery</span></li>
 
 
-                    </ul>
-                      <style>.add button {margin-left: 60%;}</style>
+                    </ul><ul>
+                      <style>.a {width: 100%;display: inline-flex; margin-left: 5px;}</style>
+                      <div class="a">
                        <div class="add">
                             <a href="add-gallery.php" id="b"> <button type="submit" name="add" class="btn btn-success">Add Image</button></a>
                         </div> 
@@ -183,7 +184,7 @@ if(strlen($_SESSION['a_id'])=="")
                   <button type="submit" name="btn_delete" id="btn_delete" class="btn btn-danger">Delete</button>
                   </div>
                       
-                </div>
+                </div></ul>
           </div>
 
 
