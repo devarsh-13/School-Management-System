@@ -180,6 +180,13 @@ if (isset($_SESSION['s_id']))
               $sql = ("SELECT * FROM `Event` WHERE `is_deleted`='0'") or die(mysqli_connect_error());
 
               $q = mysqli_query($Conn, $sql);
+              $row = mysqli_num_rows($q);
+              if ($row == 0) 
+              {
+              	echo "<center><h3>No Events</h3></center>";	
+              }
+              else
+              {
 
               while ($r = mysqli_fetch_array($q)) { ?>
 
@@ -206,7 +213,7 @@ if (isset($_SESSION['s_id']))
         </div>
       </div>
 
-    <?php } ?>
+    <?php } } ?>
 
 
 
