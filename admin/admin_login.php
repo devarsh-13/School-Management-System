@@ -7,7 +7,8 @@ error_reporting(0);
 $flag = 0;
  $obj = new ecdc();
 
-if (isset($_POST['Submit'])) {
+if (isset($_POST['Submit'])) 
+{
 	$action = "Admin Login";
 
 	$Contact =	$_POST['Contact_no'];
@@ -35,7 +36,8 @@ $Password= $obj->encrypt($os);
 	$row = mysqli_num_rows($query);
 	$arr = mysqli_fetch_row($query);
 
-	if ($row == 1) {
+	if ($row == 1) 
+	{
 		$flag = 0;
 		session_start();
 		$_SESSION['a_id'] = $arr[0];
@@ -45,13 +47,15 @@ $Password= $obj->encrypt($os);
 		$log = new Log();
 		$log->success_entry($action, $Conn);
 
-		if (isset($_POST["remember"])) {
+		if (isset($_POST["remember"])) 
+		{
 			setcookie("admin_contact", $Contact, time() + (10 * 365 * 24 * 60 * 60), "/");
 			$Pa= $obj->decrypt($Password);
 			setcookie("admin_password", $Pa, time() + (10 * 365 * 24 * 60 * 60), "/");
 			header("location:dashboard.php");
 		}
-		else{
+		else
+		{
 			unset($_COOKIE['admin_contact']); 
    		 setcookie('admin_contact', null, -1, '/'); 
 			unset($_COOKIE['admin_password']); 
@@ -59,7 +63,6 @@ $Password= $obj->encrypt($os);
 		header("location:dashboard.php");
 		}
 	}
-
 	else 
 	{
 		$contact = $_POST['Contact_no'];

@@ -140,7 +140,7 @@ if(strlen($_SESSION['a_id'])=="")
   
     .scrollmenu table
     {
-        
+        width: 100%;
         background-color: #ddd;
         
     }
@@ -215,7 +215,7 @@ else if($error){?>
 
                                              <table id="example" class="display nowrap" width="100%">
                                                 <thead>
-                                                        <tr>
+                                                        <tr align="center">
                                                             
                                                             <th>Sr.No</th>
                                                             <th>Action</th>
@@ -239,7 +239,7 @@ if($row > 0)
      $path="img/";
     while($result=mysqli_fetch_array($query))
     {       $full = $path.$result['Image']; ?>
-                    <tr>
+                    <tr align="center">
                           <td><?php echo htmlentities($cnt);?></td>
                           <td> 
                                 <a href="manage-gallery.php?G_id=<?php echo $result['Id'];?>">

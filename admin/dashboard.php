@@ -129,7 +129,7 @@ $row = mysqli_num_rows($query1);
 
 ?>
 
-                                            <span class="number counter"><?php echo $row;?></span>
+                                            <span class="number counter"><?php echo $row-1;?></span>
                                             <span class="name">Admin</span>
                                             <span class="bg-icon"><i class="fa fa-users"></i></span>
                                         </a>

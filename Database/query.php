@@ -342,7 +342,7 @@ $q=mysqli_query($Conn,$sql);
 
 
 
-$sql="INSERT INTO `admin`(`A_Photo`,`A_name`, `A_mobile`, `A_address`,`A_password`, `A_dob`,`Created_by`) VALUES ('admin_default.jpg','jay','9638435147','bhuj','$admin2pass','2000-02-22','0')";
+$sql="INSERT INTO `admin`(`A_Photo`,`A_name`, `A_mobile`, `A_address`,`A_password`, `A_dob`,`Created_by`) VALUES ('admin_default.jpg','jay','9638435147','bhuj','$admin2pass','2000-02-22','1')";
 $q=mysqli_query($Conn,$sql);
 
 

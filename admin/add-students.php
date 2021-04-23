@@ -3,12 +3,12 @@ session_start();
 error_reporting(0);
 include('connection.php');
 include('store_data.php');
-
+require "../ec_dc.php";
 
 if (strlen($_SESSION['a_id']) == "") {
     header("Location: index.php");
 } else {
-
+    $obj = new ecdc();
     $log = new Log();
     if (!(isset($_POST['gr']))) {
         $action = "In Add Student";
@@ -31,7 +31,10 @@ if (strlen($_SESSION['a_id']) == "") {
         $home = $_POST['home'];
         $hand = $_POST['hand'];
         $des = $_POST['des'];
-        $pass = sha1($_POST['pass']);
+
+        $os=$_POST['pass'];
+        $pass= $obj->encrypt($os);
+       
         $re = $_POST['re'];
         $stat = "offline";
         // $ay=date('Y').'-'.(date('Y')+1);

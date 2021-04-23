@@ -150,14 +150,14 @@ if (isset($_GET['N_id']))
     {
         max-height: 520px;
         border: 1px solid #ddd;
-        display: flex;
+        
         overflow-x: auto;
     }
 
   
     .scrollmenu table
     {
-        min-width: 100%;
+        width: 100%;
         background-color: #ddd;
         
     }
@@ -223,7 +223,7 @@ else if($error){?>
                                              
                                                      <table id="example" class="display nowrap" >
                                                 <thead>
-                                                        <tr>
+                                                        <tr align="center">
                                                             <th>#</th>
                                                              <th>Action</th>
                                                             <th>Notification Topic</th>

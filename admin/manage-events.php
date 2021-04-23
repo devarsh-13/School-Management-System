@@ -239,7 +239,7 @@ else if($error){?>
                                             
                                                      <table id="example" class="display nowrap" >
                                                 <thead>
-                                                        <tr>
+                                                        <tr align="center">
                                                              <th>#</th>
                                                                <th>Action</th>
                                                             <th>Dis/Ena</th>
@@ -278,7 +278,7 @@ if($row > 0)
                               <img src="images/delete-icon.jpg" height="25px" width='25px'/>&nbsp;Delete</a>
                             
                               <input type="checkbox" name="recordsCheckBox[]" id="recordsCheckBox" class="chh" value="<?php echo $result['Sr_n'];?>">
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         </td>
                         <td>
                         <?php

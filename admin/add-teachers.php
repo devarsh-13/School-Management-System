@@ -3,10 +3,12 @@ session_start();
 error_reporting(0);
 include('connection.php');
 include('store_data.php');
+require "../ec_dc.php";
 
 if (strlen($_SESSION['a_id']) == "") {
     header("Location: index.php");
 } else {
+    $obj = new ecdc();
 
     if(!(isset($_POST['tn'])))
     {
@@ -40,7 +42,10 @@ if (strlen($_SESSION['a_id']) == "") {
         $jdate = $_POST['jdate'];
         $rdate = $_POST['rdate'];
         $deg = $_POST['deg'];
-        $pass = sha1($_POST['pass']);
+
+        $os=$_POST['pass'];
+        $pass= $obj->encrypt($os);
+        
         $d = date("Y-m-d");
         $stat = "offline";
 

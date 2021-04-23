@@ -28,7 +28,7 @@ $Password= $obj->encrypt($os);
 	}
 
 	$query = mysqli_query($Conn, "SELECT * FROM `teachers` WHERE
-			`Contact` = '$Contact' && `Password` = '$Password'
+			`Contact` = '$Contact' && `Password` = '$Password' AND `is_deleted`='0'
 			") or die(mysqli_connect_error());
 
 	$row = mysqli_num_rows($query);
@@ -48,7 +48,7 @@ $Password= $obj->encrypt($os);
 
 			setcookie("teacher_password", $Pa, time() + (10 * 365 * 24 * 60 * 60), "/");
 			
-			$c = mysqli_query($Conn, "SELECT * FROM `teachers` WHERE `Contact` = '$Contact' && `Password` = '$Password'");			
+			$c = mysqli_query($Conn, "SELECT * FROM `teachers` WHERE `Contact` = '$Contact' && `Password` = '$Password' AND `is_deleted`='0'");			
 			$count = mysqli_fetch_array($c);
 			
 			if($count['login_count'] == 0)
@@ -63,7 +63,7 @@ $Password= $obj->encrypt($os);
 		}
 		else 
 		{
-			$c = mysqli_query($Conn, "SELECT * FROM `teachers` WHERE `Contact` = '$Contact' && `Password` = '$Password'");			
+			$c = mysqli_query($Conn, "SELECT * FROM `teachers` WHERE `Contact` = '$Contact' && `Password` = '$Password'AND `is_deleted`='0'");			
 			$count = mysqli_fetch_array($c);
 			
 			if($count['login_count'] == 0)
@@ -87,8 +87,20 @@ $Password= $obj->encrypt($os);
 	}
 	else 
 	{
+		$log = new Log();
 		$log->wrong_login($_POST['Contact_no'],$action,$Conn);
 		$flag = 1;
+
+
+		$query = mysqli_query($Conn, "SELECT * FROM `teachers` WHERE
+			`Contact` = '$Contact' && `Password` = '$Password' AND `is_deleted`='1'
+			") or die(mysqli_connect_error());
+		$row = mysqli_num_rows($query);
+		$arr = mysqli_fetch_row($query);
+		if ($row == 1) 
+		{
+			$flag = 2;
+		}
 	}
 }
 
@@ -136,9 +148,14 @@ $Password= $obj->encrypt($os);
 			</div>
 
 			<?php
-			if ($flag) {
+			if ($flag == 1) {
 				echo "<div class='invalid'><p>Incorrect Contact Number OR Password</p></div>";
 				$flag = 0;
+			}
+			elseif($flag==2)
+			{
+				echo "<div class='invalid'><p>This User is Blocked Please Contact Admin</p></div>";
+				$flag=0;
 			}
 			?>
 

@@ -256,21 +256,18 @@ input.chh
     {
         max-height: 520px;
         border: 1px solid #ddd;
-        display: flex;
+        
         overflow-x: auto;
     }
 
   
     .scrollmenu table
     {
-        min-width: 100%;
+        width: 100%;
         background-color: #ddd;
         
     }
-    .scrollmenu th,td
-    {
-        border: 1px solid black;
-    }
+   
 .dl button
 {
 
@@ -338,7 +335,7 @@ else if($error){?>
                                              <!--   <table id="example" class="display table table-striped table-bordered" cellspacing="0" width="100%">-->
                                                  <table id="example" class="display nowrap"  style="width:100%">
                                                       <thead>
-                                                                                                             <tr>
+                                                        <tr align="center">
                                                             <th>#</th>
                                                             <th>action</th>
                                                             <th>Teacher Nmae</th>

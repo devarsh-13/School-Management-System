@@ -74,6 +74,17 @@ if (isset($_POST['Submit']))
 		$Contact =	$_POST['Contact_no'];
 		$log->wrong_login($Contact,$action,$Conn);
 		$flag = 1;
+
+
+		$query =mysqli_query($Conn, "SELECT `S_srn` FROM `Students` WHERE
+			`S_contact` = '$Contact' && `S_password` = '$Password' AND `updated`='0' AND `is_deleted`='1'
+			") or die(mysqli_connect_error());
+		$row = mysqli_num_rows($query);
+		$arr = mysqli_fetch_row($query);
+		if ($row == 1) 
+		{
+			$flag = 2;
+		}
 	}
 }
 
@@ -121,9 +132,14 @@ if (isset($_POST['Submit']))
 			</div>
 
 			<?php
-			if ($flag) {
+			if ($flag == 1) {
 				echo "<div class='invalid'><p>Incorrect Contact Number OR Password</p></div>";
 				$flag = 0;
+			}
+			elseif($flag==2)
+			{
+				echo "<div class='invalid'><p>This User is Blocked Please Contact Admin</p></div>";
+				$flag=0;
 			}
 			?>
 
