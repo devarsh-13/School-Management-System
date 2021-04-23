@@ -8,59 +8,57 @@ if(strlen($_SESSION['a_id'])=="")
     {   
     header("Location: index.php"); 
     }
-    else
-    {
+    else{
         $stid=$_GET['S_id'];
 
-        if(isset($_POST['update']))
-        {
+if(isset($_POST['update']))
+{
    
-            $gr=$_POST['gr'];
-            $ui=$_POST['ui']; 
-            $sn=$_POST['sn']; 
-            $cast=$_POST['cast']; 
-            $cat=$_POST['cat']; 
-            $dob=$_POST['dob']; 
-            $con=$_POST['con']; 
-            $adate=$_POST['adate'];
-            $adhar=$_POST['adhar'];
-            $hostel=$_POST['hostel'];  
-            $home=$_POST['home']; 
-            $hand=$_POST['hand']; 
-            $des=$_POST['des'];
-            $pass=$_POST['pass'];  
-            $re=$_POST['re']; 
-            $class=$_POST['class'];
-            $stream=$_POST['stream'];
-            $d = date("Y-m-d");
-            $s="SELECT `Class_id` FROM `class` WHERE `C_no` = '$class' AND `Stream`='$stream'";
-            $q=mysqli_query($Conn,$s);
-            $ci=mysqli_fetch_array($q);
+$gr=$_POST['gr'];
+$ui=$_POST['ui']; 
+$sn=$_POST['sn']; 
+$cast=$_POST['cast']; 
+$cat=$_POST['cat']; 
+$dob=$_POST['dob']; 
+$con=$_POST['con']; 
+$adate=$_POST['adate'];
+$adhar=$_POST['adhar'];
+$hostel=$_POST['hostel'];  
+$home=$_POST['home']; 
+$hand=$_POST['hand']; 
+$des=$_POST['des'];
+$pass=$_POST['pass'];  
+$re=$_POST['re']; 
+$class=$_POST['class'];
+$stream=$_POST['stream'];
+$d = date("Y-m-d");
+$s="SELECT `Class_id` FROM `class` WHERE `C_no` = '$class' AND `Stream`='$stream'";
+$q=mysqli_query($Conn,$s);
+$ci=mysqli_fetch_array($q);
 
-            $c=$ci[0];
+$c=$ci[0];
 
-            $Sql="UPDATE `students` SET `S_grn`='$gr',`S_uidn`='$ui',`S_name`='$sn',`S_caste`='$cast', `S_category`= '$cat', `S_dob`= '$dob',`S_contact`='$con',`S_ad_date`='$adate',`Class_id`= '$c',`S_adharn`='$adhar',`S_hostel`='$hostel',`S_home`='$home',`S_handicapped`='$hand',`S_describe`='$des',`S_password`='$pass',`S_remarks`='$re',`is_deleted`='0',`Created_on`='$d' WHERE `S_srn`='$stid'";
+$Sql="UPDATE `students` SET `S_grn`='$gr',`S_uidn`='$ui',`S_name`='$sn',`S_caste`='$cast', `S_category`= '$cat', `S_dob`= '$dob',`S_contact`='$con',`S_ad_date`='$adate',`Class_id`= '$c',`S_adharn`='$adhar',`S_hostel`='$hostel',`S_home`='$home',`S_handicapped`='$hand',`S_describe`='$des',`S_password`='$pass',`S_remarks`='$re',`is_deleted`='0',`Created_on`='$d' WHERE `S_srn`='$stid'";
 
-                                         
+                             
 
-            $q=mysqli_query($Conn,$Sql);
-            $action="Edit Student data";
-            if($q)
-            {
-                $log=new Log();
-                $log->success_entry($action,$Conn);
-                $msg="Student Info Edit Successfully";
-                unset($_GET);
-            }
-            else 
-            {
-                $log=new Log();
-                $log->success_entry($action,$Conn,"Unsuccessful");
+$q=mysqli_query($Conn,$Sql);
+$action="Edit Student data";
+if($q)
+{
+$log=new Log();
+$log->success_entry($action,$Conn);
+$msg="Student Info Edit Successfully";
+}
+else 
+{
+$log=new Log();
+$log->success_entry($action,$Conn,"Unsuccessful");
 
-                $error="Something went wrong. Please try again";
-            }
+$error="Something went wrong. Please try again";
+}
 
-        }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -110,39 +108,26 @@ if(strlen($_SESSION['a_id'])=="")
                 {
                     document.getElementById("stream").required = true;
                     document.getElementById("stream").disabled = false;
-                    
                 }
                 else
                 {
                     document.getElementById("stream").required = false;
-                    document.getElementById("stream").value="NULL";
                     document.getElementById("stream").disabled = true;
-                    
+                    document.getElementById("stream").VALUES="NULL";
                 }
             }
-            
-            function desc(i)
+            function Des(i)
             {
-                var c=document.getElementById("hand1").checked;
-                if(c==true)
-                {
-                    document.getElementById("des").required = true;
-                    document.getElementById("des").disabled = false;
-                    var s=document.getElementById("des").value;
-
-                    if(s.localeCompare("NULL")==0)
+                    if(i==1)
                     {
-                       document.getElementById("des").value="";
+                        document.getElementById("des").required = true;
+                        document.getElementById("des").disabled = false;
                     }
-
-                }
-                else
-                {
-                    document.getElementById("des").required = false;   
-                    document.getElementById("des").value="NULL";
-                    document.getElementById("des").disabled = true;
-                }
-
+                    else
+                    {
+                        document.getElementById("des").required = false;   
+                        document.getElementById("des").disabled = true;
+                    } 
 
             }
            
@@ -198,7 +183,7 @@ else if($error){?>
                                             <?php echo htmlentities($error); ?>
                                         </div>
                                         <?php } ?>
-                                        <form class="form-horizontal" method="post" onmouseenter="Check_class()" onkeyup="Check_class()" onkeyup="desc()" onmousemove="desc()" onscroll="desc()" >
+                                        <form class="form-horizontal" method="post" onmouseenter="Check_class()">
 <?php 
  $sql = "SELECT * from `students` join Class on students.Class_id=Class.Class_id WHERE `S_srn`='$stid'";
 $query = mysqli_query($Conn,$sql);
@@ -270,32 +255,17 @@ if($row > 0)
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Class</label>
                                                 <div class="col-sm-10">
-
-                                                    <select name="class" class="form-control" id="clas" required="required" autocomplete="off" onkeyup="Check_class()">
-
-                                                    <?php  $id=$result['Class_id'];
-                                                    $q=mysqli_query($Conn,"SELECT `C_no`,`Stream` FROM `class` WHERE `Class_id` = '$id' ");
-                                                    $name=mysqli_fetch_array($q);
-                                                    ?>
-                                                    <option value="NULL">---Select---</option>  
-                                                    <option value="9"  <?php if($name[0]==9){echo "selected";} ?>>9</option>
-                                                    <option value="10" <?php if($name[0]==10){echo "selected";} ?>>10</option>
-                                                    <option value="11" <?php if($name[0]==11){echo "selected";} ?>>11</option>
-                                                    <option value="12" <?php if($name[0]==12){echo "selected";} ?>>12</option>
-                                                </select>
+                                                    <input type="text" name="class"value="<?php  $id=$result['Class_id'];
+                                 $q=mysqli_query($Conn,"SELECT `C_no` FROM `class` WHERE `Class_id` = '$id' ");
+                                 $name=mysqli_fetch_array($q);
+                                echo $name[0];?>"  class="form-control" id="clas" required="required" autocomplete="off" onkeyup="Check_class()">
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Stream</label>
                                                 <div class="col-sm-10">
-
-                                                    <select name="stream" class="form-control" id="stream" required="required" autocomplete="off">
-                                                            
-                                                            <option value="Arts">Arts</option>
-                                                            <option value="Commerce">Commerce</option>
-                                                            <option value="Science">Science</option>
-                                                    </select>
+                                                    <input type="text" name="stream" value="<?php echo htmlentities($result['Stream'])?>" class="form-control" id="stream" required="required" autocomplete="off">
                                                 </div>
                                             </div>
 
@@ -309,7 +279,7 @@ if($row > 0)
                                               <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Home Address</label>
                                                 <div class="col-sm-10">
-                                                     <textarea rows="5"  name="home"  class="form-control" id="home"  autocomplete="off"><?php echo htmlentities($result['S_home'])?>
+                                                     <textarea rows="5"  name="home"  class="form-control" id="home" required="required" autocomplete="off"><?php echo htmlentities($result['S_home'])?>
                                                      </textarea>
                                                 </div>
                                             </div>
@@ -319,7 +289,7 @@ if($row > 0)
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Hostel Address</label>
                                                 <div class="col-sm-10">
-                                                     <textarea rows="5"  name="hostel"  class="form-control" id="hostel"  autocomplete="off"><?php echo htmlentities($result['S_hostel'])?></textarea>
+                                                     <textarea rows="5"  name="hostel"  class="form-control" id="hostel" required="required" autocomplete="off"><?php echo htmlentities($result['S_hostel'])?></textarea>
                                                 </div>
                                             </div>
 
@@ -328,23 +298,20 @@ if($row > 0)
                                                 <div class="col-sm-10">
                                                     <?php  
                                                         $hd=$result['S_handicapped'];
-                                                        if(strcmp($hd,"Yes")==1)  
+                                                        if(strcmp($hd,"YES"))  
                                                         {
-                                                            $f=1;
-
                                                             echo'
-                                                                <input type="radio" name="hand" value="Yes" required="" checked="" onclick="desc()"  id="hand1">Yes</input> 
+                                                                <input type="radio" name="hand" value="Yes" required="" checked="">Yes</input> 
 
-                                                                <input type="radio" name="hand" value="No" required="required" onclick="desc()"  id="hand2">No</input>
+                                                                <input type="radio" name="hand" value="No" required="required">No</input>
                                                                 ';
                                                         }
                                                         else
                                                         {
-                                                            $f=0;
                                                             echo'
-                                                                <input type="radio" name="hand" value="Yes" required="" onclick="desc()"  id="hand1">Yes</input> 
+                                                                <input type="radio" name="hand" value="Yes" required="">Yes</input> 
 
-                                                                <input type="radio" name="hand" value="No"  checked="" required="required" onclick="desc()"  id="hand2">No</input>
+                                                                <input type="radio" name="hand" value="No"  checked="" required="required">No</input>
                                                                 ';
                                                         }
                                                     ?>
@@ -356,7 +323,7 @@ if($row > 0)
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">If Yes Describe</label>
                                                 <div class="col-sm-10">
-                                                     <textarea rows="5"  name="des"  class="form-control" id="des"><?php echo htmlentities($result['S_describe'])?></textarea>
+                                                     <textarea rows="5"  name="des"  class="form-control" id="des" required="required" autocomplete="off"><?php echo htmlentities($result['S_describe'])?></textarea>
                                                 </div>
                                             </div>
 

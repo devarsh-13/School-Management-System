@@ -1,16 +1,16 @@
+
 <?php
+
 session_start();
-include('store_data.php');
-include('../Database/connection.php');
 
-$log=new Log();
-$action="in view Log";
+require 'connection.php';
+require 'Store_data.php';
 
-if(isset($_SESSION['a_id']))
-{
-	$log->success_entry($action,$Conn);
+
 
 ?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -287,7 +287,15 @@ if(isset($_SESSION['a_id']))
 </div></div></div></div></div></div>
 
 </body>
- <!-- bootstrap 4 js -->
+</html>
+
+
+
+
+
+
+
+    <!-- bootstrap 4 js -->
     <script src="../teacher/assets/js/popper.min.js"></script>
     <script src="../teacher/assets/js/bootstrap.min.js"></script>
     <script src="../teacher/assets/js/owl.carousel.min.js"></script>
@@ -313,20 +321,3 @@ if(isset($_SESSION['a_id']))
     <script src="../teacher/assets/js/plugins.js"></script>
     <script src="../teacher/assets/js/scripts.js"></script>
        
-</html>
-
-<?php
-}
-else
-{
-	$log->success_entry($action,$Conn,"Unsuccessful");
-	header("location:index.php");
-}
-
-
-
-
-
-
-
-   
