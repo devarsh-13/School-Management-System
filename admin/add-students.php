@@ -308,14 +308,14 @@ if (strlen($_SESSION['a_id']) == "") {
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Caste</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" name="cast" class="form-control" oninput='stringValidate(this)'  id="cast" autocomplete="off" required>
+                                                    <input type="text" name="cast" class="form-control" oninput='stringValidate(this)'  maxlength="20"  id="cast" autocomplete="off" required>
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Category</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" name="cat" class="form-control" oninput='stringValidate(this)'  id="cat" autocomplete="off" required>
+                                                    <input type="text" name="cat" class="form-control" oninput='stringValidate(this)'  maxlength="20"  id="cat" autocomplete="off" required>
                                                 </div>
                                             </div>
 
