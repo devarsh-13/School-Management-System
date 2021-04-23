@@ -156,16 +156,20 @@ if (isset($_GET['E_id']))
 
 
   
+        .scrollmenu
+    {
+        max-height: 520px;
+        border: 1px solid #ddd;
+        
+        overflow-x: auto;
+    }
+
+  
     .scrollmenu table
     {
-        
+        min-width: 100%;
         background-color: #ddd;
-        width: 100%;
         
-    }
-    .scrollmenu th,td
-    {
-        border: 1px solid black;
     }
 
         </style>
@@ -272,9 +276,9 @@ if($row > 0)
                               &nbsp;
                             <a href="manage-events.php?E_id=<?php echo $result['Sr_n'];?>">
                               <img src="images/delete-icon.jpg" height="25px" width='25px'/>&nbsp;Delete</a>
-                               &nbsp;
-                              <input type="checkbox" name="recordsCheckBox[]" id="recordsCheckBox" class="chh" value="<?php echo $result['Sr_n'];?>">
                             
+                              <input type="checkbox" name="recordsCheckBox[]" id="recordsCheckBox" class="chh" value="<?php echo $result['Sr_n'];?>">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         </td>
                         <td>
                         <?php

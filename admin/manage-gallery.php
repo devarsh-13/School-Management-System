@@ -129,17 +129,20 @@ if(strlen($_SESSION['a_id'])=="")
 }
 
 
+      .scrollmenu
+    {
+        max-height: 520px;
+        border: 1px solid #ddd;
+        
+        overflow-x: auto;
+    }
+
   
     .scrollmenu table
     {
         
         background-color: #ddd;
-        width: 100%;
         
-    }
-    .scrollmenu th,td
-    {
-        border: 1px solid black;
     }
 
 .dlt button
@@ -210,7 +213,7 @@ else if($error){?>
                                         <?php } ?>
                                             <div class="scrollmenu">
 
-                                             <table id="example" class="display nowrap" >
+                                             <table id="example" class="display nowrap" width="100%">
                                                 <thead>
                                                         <tr>
                                                             
@@ -241,10 +244,10 @@ if($row > 0)
                           <td> 
                                 <a href="manage-gallery.php?G_id=<?php echo $result['Id'];?>">
                                     <img src="images/delete-icon.jpg" height="25px" width='25px'/>&nbsp;Delete
-                                </a>  &nbsp;
+                                </a>  
 
 
-                              <input type="checkbox" name="customer_id[]" class="delete_customer" value="<?php echo $result['Id'];?>">
+                              <input type="checkbox" name="customer_id[]" class="delete_customer" value="<?php echo $result['Id'];?>">  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                           </td>
                         
                         <td> <img src="<?php echo $full; ?>" height="100px" width="100px"></img></td>

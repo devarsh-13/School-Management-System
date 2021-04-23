@@ -143,18 +143,25 @@ if (isset($_GET['N_id']))
 }
 
 
+
+        </style>
+            <style>
+        .scrollmenu
+    {
+        max-height: 520px;
+        border: 1px solid #ddd;
+        display: flex;
+        overflow-x: auto;
+    }
+
   
     .scrollmenu table
     {
-        
+        min-width: 100%;
         background-color: #ddd;
-        width: 100%;
         
     }
-    .scrollmenu th,td
-    {
-        border: 1px solid black;
-    }
+
 
         </style>
     </head>
@@ -219,7 +226,6 @@ else if($error){?>
                                                         <tr>
                                                             <th>#</th>
                                                              <th>Action</th>
-                                                            <th>Dis/Ena</th>
                                                             <th>Notification Topic</th>
                                                             <th>Notification Text</th>
                                                             <th>Created Date</th>
@@ -244,31 +250,17 @@ if($row > 0)
                     <tr align="center">
                          <td><?php echo htmlentities($cnt);?></td>
 
-                          <td><a href="edit-notif.php?N_id=<?php echo $result['Sr_n'];?>">
+                          <td>
+                            <a href="edit-notif.php?N_id=<?php echo $result['Sr_n'];?>">
                               <img src="images/edit-icon.jpg" height="25px" width='25px'/> Edit</a> 
                                  &nbsp;
                             <a href="manage-notif.php?N_id=<?php echo $result['Sr_n'];?>">
                               <img src="images/delete-icon.jpg" height="25px" width='25px'/>&nbsp;Delete</a>
-                              &nbsp;
-                              <input type="checkbox" name="recordsCheckBox[]" id="recordsCheckBox" class="chh" value="<?php echo $result['Sr_n'];?>">
+                              
+                              <input type="checkbox" name="recordsCheckBox[]" id="recordsCheckBox" class="chh" value="<?php echo $result['Sr_n'];?>" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
                           </td>
-                        <td>  <?php
-                            if($result['is_deleted']==0)
-                            {
-                        ?>
-                                <a href="disable_record.php?notif_id=<?php echo $result['Sr_n'];?>"><img src="images/disable.jpg" width='30px'/></a>
-                        <?php
-                            }
-                            else
-                            {
-                        ?>
-                                <a href="enable_record.php?notif_id=<?php echo $result['Sr_n'];?>"><img src="images/enable.jpg" width='30px'/></a>   
-                        <?php
-                            }
-                        ?>
-
-                        </td>
+                      
                         <td><?php echo $result['Notification_topic'];?></td>
                         <td><?php echo $result['Notification_text'];?></td>
                         <td><?php echo $result['Created_on'];?></td>
@@ -299,7 +291,7 @@ if($row > 0)
                                                     
                                                     
                                                 </table>
-</form>
+
                                          
                                                 <!-- /.col-md-12 -->
                                             </div>

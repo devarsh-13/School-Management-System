@@ -28,7 +28,7 @@ if (isset($A_id)) {
 
                                 <div class='tm-title'>
                                     <h4>" . $r['Notification_topic'] . "</h4>
-                                    <span class='time'><i class='ti-time'></i>09:35</span>
+                                    <span class='time'><i class='ti-time'></i>" . $r['N_Time'] . "</span>
                                 </div>
                                 <p> " . $r['Notification_text'] . "</p>
                             </div>

@@ -60,14 +60,14 @@ if (isset($_SESSION['a_id'])) {
                 <div class="recent-activity">
 
 
-
+<script src="set_notification.js"></script>
 
 
                 </div>
             </div>
 
         </div>
-        <script src="set_notification.js"></script>
+        
     </div>
     <!-- offset area end -->
 
