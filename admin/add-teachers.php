@@ -5,36 +5,23 @@ include('connection.php');
 include('store_data.php');
 require "../ec_dc.php";
 
-if (strlen($_SESSION['a_id']) == "") {
+
+if (strlen($_SESSION['a_id']) == "") 
+{
     header("Location: index.php");
-} else {
+}
+else 
+{
     $obj = new ecdc();
 
     if(!(isset($_POST['tn'])))
     {
-
-
         $action = " In ADD Techers";
         $log = new Log();
         $log->success_entry($action, $Conn);
     }
     if (isset($_POST['submit']))
     {
-        require "connection.php";
-
-        $uploadFolder = '../user_photos/teacher';
-
-
-        $imageTmpName = $_FILES['file']['tmp_name'];
-        $imageName = $_FILES['file']['name'];
-        $result = move_uploaded_file($imageTmpName, $uploadFolder . $imageName);
-       
-        if ($result == null) {
-
-            $imageName="teacher_default.jpg";
-
-        }
-
         $tn = $_POST['tn'];
         $dob = $_POST['dob'];
         $con = $_POST['con'];
@@ -49,6 +36,19 @@ if (strlen($_SESSION['a_id']) == "") {
         $d = date("Y-m-d");
         $stat = "offline";
 
+        if(isset($_FILES['file']))
+        {
+            $uploadFolder = '../user_photos/teacher';
+            $imageTmpName = $_FILES['file']['tmp_name'];
+
+            $extension=pathinfo($_FILES['file']['name'],PATHINFO_EXTENSION);
+            $i_name=$con.$extension;
+                          
+        }
+        else
+        {
+            $imageName="teacher_default.jpg";
+        }
 
         $Sql = "INSERT INTO `teachers` 
                             (   
@@ -87,14 +87,18 @@ if (strlen($_SESSION['a_id']) == "") {
         $action = "Add teacher data";
         if ($q) 
         {
-            $log = new Log();
+            if(isset($_FILES['file']))
+            {
+                $result = compress($imageTmpName, $uploadFolder.$imageName);    
+            }
+            
             $log->success_entry($action, $Conn);
             $msg = "Teacher Info Added Successfully";
             unset($_POST['tn']);
         }
         else 
         {
-            $log = new Log();
+            
             $log->success_entry($action, $Conn, "Unsuccessful");
             $error = "Something went wrong. Please try again";
             unset($_POST['tn']);

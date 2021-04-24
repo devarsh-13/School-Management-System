@@ -85,16 +85,18 @@ else
 
         if($error5==false)
         {
-            $uploadFolder = '../user_photos/student/';
+            if(isset($_FILES['file']))
+            {
+                $uploadFolder = '../user_photos/student/';
 
-            $imageTmpName = $_FILES['file']['tmp_name'];
-            $extension=pathinfo($_FILES["file"]["name"],PATHINFO_EXTENSION);
+                $imageTmpName = $_FILES['file']['tmp_name'];
+                $extension=pathinfo($_FILES["file"]["name"],PATHINFO_EXTENSION);
 
-            $imageName = $gr.".".$extension;
+                $imageName = $gr.".".$extension;
 
-            $result = compress($imageTmpName,$uploadFolder.$imageName);
-           
-            if ($result==false) 
+                $result = compress($imageTmpName,$uploadFolder.$imageName);
+            }   
+            else
             {
                 $imageName = "student_default.jpg";
             }
@@ -178,26 +180,32 @@ else
     <head>
     
         <script type="text/javascript">
-            function Check_class() {
-
-                if (document.getElementById("clas").value == 11 || document.getElementById("clas").value == 12) {
-                    document.getElementById("stream"). = true;
+            
+            function Check_class() 
+            {
+                if (document.getElementById("clas").value == 11 || document.getElementById("clas").value == 12) 
+                {
+                    document.getElementById("stream").required = true;
                     document.getElementById("stream").disabled = false;
-                    if (document.getElementById("stream").value == "NULL") {
+                    if (document.getElementById("stream").value == "NULL") 
+                    {
                         document.getElementById("stream").value = "";
                     }
                 } else {
-                    document.getElementById("stream"). = false;
+
+                	
+                    document.getElementById("stream").required = false;
                     document.getElementById("stream").disabled = true;
                     document.getElementById("stream").value = "NULL";
                 }
             }
 
-            function desc(i) {
+            function desc(i) 
+            {
                 var c = document.getElementById("hand1").checked;
                 var c2 = document.getElementById("hand2").checked;
                 if (c == true) {
-                    document.getElementById("des"). = true;
+                    document.getElementById("des").required = true;
                     document.getElementById("des").disabled = false;
                     var s = document.getElementById("des").value;
 
@@ -206,13 +214,10 @@ else
                     }
 
                 } else if (c2 == true) {
-                    document.getElementById("des"). = false;
+                    document.getElementById("des").required = false;
                     document.getElementById("des").value = "NULL";
                     document.getElementById("des").disabled = true;
-                } else {
-
-                }
-
+                } 
 
             }
         </script>
@@ -324,7 +329,7 @@ else
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Student Name</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" name="sn" class="form-control" oninput='stringValidate(this)' maxlength="50"  id="sn" required autocomplete="off">
+                                                    <input type="text" name="sn" class="form-control" oninput='stringValidate(this)' maxlength="50"  id="sn"  autocomplete="off" required>
                                                 </div>
                                             </div>
 
@@ -393,7 +398,7 @@ else
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Academic Year</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" name="AY" class="form-control"  pattern="[0-9]{4}-[0-9]{4}"  title="pattern should be yyyy-yyyy " required id="AY" autocomplete="off">
+                                                    <input type="text" name="AY" class="form-control"  pattern="[0-9]{4}-[0-9]{4}"  title="pattern should be yyyy-yyyy "  id="AY" autocomplete="off" required>
                                                 </div>
                                             </div>
 
@@ -410,14 +415,14 @@ else
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Adhar Number</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" name="adhar" class="form-control" oninput='digitValidate(this)'  id="adhar" pattern=".{12}"  required title=" 12 numbers" maxlength='12' autocomplete="on">
+                                                    <input type="text" name="adhar" class="form-control" oninput='digitValidate(this)'  id="adhar" pattern=".{12}"   title=" 12 numbers" maxlength='12' autocomplete="on" required>
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Home Address</label>
                                                 <div class="col-sm-10">
-                                                    <textarea rows="5" name="home" class="form-control"  id="home" autocomplete="off" maxlength="40" required ></textarea>
+                                                    <textarea rows="5" name="home" class="form-control"  id="home" autocomplete="off" maxlength="40" required></textarea>
                                                 </div>
                                             </div>
 
@@ -434,8 +439,8 @@ else
                                                 <label for="default" class="col-sm-2 control-label">Handicapped</label>
                                                 <div class="col-sm-10">
 
-                                                    <input type="radio" name="hand" value="Yes" required onclick="desc()" id="hand1">Yes</input>
-                                                    <input type="radio" name="hand" value="No" required onclick="desc()" id="hand2">No</input>
+                                                    <input type="radio" name="hand" value="Yes"  onclick="desc()" id="hand1" required>Yes</input>
+                                                    <input type="radio" name="hand" value="No"  onclick="desc()" id="hand2" required>No</input>
                                                 </div>
                                             </div>
 
@@ -443,7 +448,7 @@ else
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">If Yes Describe</label>
                                                 <div class="col-sm-10">
-                                                    <textarea rows="5" name="des" class="form-control" id="des" autocomplete="off"></textarea>
+                                                    <textarea rows="5" name="des" class="form-control" id="des" autocomplete="off" ></textarea>
                                                 </div>
                                             </div>
 

@@ -154,10 +154,8 @@ else if($error){?>
 
 
 var uploader = $('#ssi-upload').ssi_uploader({
-        type: 'POST',
+    
         url: 'stu_up_ajax.php',
-        
-        dataType:"json"
     });
 
     $( "#myForm" ).on( "submit", function( event ) {
@@ -165,10 +163,12 @@ var uploader = $('#ssi-upload').ssi_uploader({
         uploader.data('ssi_upload').uploadFiles();
         
         uploader.on('onUpload.ssi-uploader',function(){
-            console.log('complete');
+
             $( "#myForm" ).submit();
         });
     });
+
+    
   
 </script>
 

@@ -1,5 +1,4 @@
 <?php
-    
     require "connection.php";
     include('store_data.php');
     include('image_compress.php');
@@ -17,9 +16,12 @@
     {
 
         $imageTmpName = $_FILES['file']['tmp_name'][$key];
-        $imageName = $_FILES['file']['name'][$key];
+        
 
         $gr=pathinfo($_FILES["file"]["name"][$key],PATHINFO_FILENAME);
+        $extension=pathinfo($_FILES["file"]["name"][$key],PATHINFO_EXTENSION);
+
+        $imageName =$gr.$extension;
 
         $q=mysqli_query($Conn,"SELECT * FROM `Students` WHERE `S_grn`='$gr' AND `is_deleted`='0' AND `updated`='0'");
         $row=mysqli_num_rows($q);
@@ -39,12 +41,12 @@
     if($flag)
     {
         $log->success_entry($action,$Conn);      
-        echo json_encode($failed_images); 
+        
     }
     else
     {
         $log->success_entry($action,$Conn,"Unsuccessful");   
-        echo json_encode($failed_images); 
+        //echo json_encode($failed_images); 
     }
 
 ?>
