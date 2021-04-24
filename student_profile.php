@@ -47,7 +47,9 @@ $result = mysqli_fetch_array($query);
     <link rel="stylesheet" href="teacher/assets/css/styles.css">
    
 	<meta charset="utf-8" />
-	<title>IGHS | Student Profile</title>
+
+	
+	<title> Student Profile | IGHS</title>
 	
 	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
 

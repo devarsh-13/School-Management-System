@@ -8,44 +8,39 @@ include('Database/connection.php');
 // $action="In Download Resource";
 // $log=new Log();
 
-if(!isset($_SESSION['s_id'])) 
-{
+if (!isset($_SESSION['s_id'])) {
 	//$log->success_entry($action,$Conn,"Unsuccessful");
 	header("location:login.php");
-}
-else 
-{
+} else {
 
 ?>
 
 	<!DOCTYPE html>
 	<html lang="en">
+
 	<head>
 
-		<title>ighs</title>
+		<title>Download Resources | IGHS</title>
 
 		<!--srart theme style -->
-		
-    
-    <link rel="stylesheet" href="teacher/assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="teacher/assets/css/font-awesome.min.css">
-    <link rel="stylesheet" href="teacher/assets/css/themify-icons.css">
-    <link rel="stylesheet" href="teacher/assets/css/metisMenu.css">
-    <link rel="stylesheet" href="teacher/assets/css/default-css.css">
-    <link rel="stylesheet" href="teacher/assets/css/styles.css">
-   
-	<meta charset="utf-8" />
-	<title>IGHS | Download Resources</title>
-	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
-	<meta name="description" content="Educo" />
-	<meta name="keywords" content="Educo, html template, Education template" />
-	<meta name="author" content="Kamleshyadav" />
-	<meta name="MobileOptimized" content="320" />
 
-	<link href="css/main.css" rel="stylesheet" type="text/css" />
 
-	<link rel="shortcut icon" type="image/png" href="images/header/favicon.png" />
-		
+		<link rel="stylesheet" href="teacher/assets/css/bootstrap.min.css">
+		<link rel="stylesheet" href="teacher/assets/css/font-awesome.min.css">
+		<link rel="stylesheet" href="teacher/assets/css/themify-icons.css">
+		<link rel="stylesheet" href="teacher/assets/css/metisMenu.css">
+		<link rel="stylesheet" href="teacher/assets/css/default-css.css">
+		<link rel="stylesheet" href="teacher/assets/css/styles.css">
+
+		<meta charset="utf-8" />
+
+		<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+		<meta name="MobileOptimized" content="320" />
+
+		<link href="css/main.css" rel="stylesheet" type="text/css" />
+		<link rel="shortcut icon" type="image/png" href="images/header/IGHS(1).png" />
+
 
 		<style type="text/css">
 			#s {
@@ -56,7 +51,6 @@ else
 			.ed_footer_wrapper {
 				padding-top: 30%;
 			}
-
 		</style>
 	</head>
 
@@ -72,80 +66,80 @@ else
 
 
 
- <section class="section">
-                            <div class="container-fluid">
-                                <div class="row">
+		<section class="section">
+			<div class="container-fluid">
+				<div class="row">
 
 
-                                     <table id="example" class="display table table-striped table-bordered" cellspacing="0" width="100%">
-                                                    
-                                                        <tr>
-                                                            <th>#</th>
-                                                            <th>Action</th>
-                                                            <th>Resource Name</th>
-                                                            <th>Created by</th>
-                                                            <th>Created On</th>
-                                                        </tr>
+					<table id="example" class="display table table-striped table-bordered" cellspacing="0" width="100%">
+
+						<tr>
+							<th>#</th>
+							<th>Action</th>
+							<th>Resource Name</th>
+							<th>Created by</th>
+							<th>Created On</th>
+						</tr>
 
 
 
-<?php 
-require "Database/connection.php";
-session_start();
+						<?php
+						require "Database/connection.php";
+						session_start();
 
-$S_srn = $_SESSION['id'];
-$sub_id=$_GET['sub_id'];
+						$S_srn = $_SESSION['id'];
+						$sub_id = $_GET['sub_id'];
 
-$sql1 ="SELECT * from `resources` WHERE `Sub_id`='$sub_id' ";
-$query= $Conn -> query($sql1); 
-$row = mysqli_num_rows($query);
-   $path = "teacher/resources/";
+						$sql1 = "SELECT * from `resources` WHERE `Sub_id`='$sub_id' ";
+						$query = $Conn->query($sql1);
+						$row = mysqli_num_rows($query);
+						$path = "teacher/resources/";
 
-$cnt=1;
-if($row > 0)
-{
-while ($query1=mysqli_fetch_array($query)) {
-    $full = $path . $query1['R_path'];
-   ?>
-                    <tr align="center">
-                        <td><?php echo htmlentities($cnt);?></td>
-                        <td>
-                               <a href="<?php echo $full; ?>" download="<?php echo $full; ?>"><img src="teacher/images/download.png" height="25px" width='25px'/>&nbsp;Download</a>
-                        </td>
-                        
-                        <td><?php echo $query1['R_path'];?></td>
+						$cnt = 1;
+						if ($row > 0) {
+							while ($query1 = mysqli_fetch_array($query)) {
+								$full = $path . $query1['R_path'];
+						?>
+								<tr align="center">
+									<td><?php echo htmlentities($cnt); ?></td>
+									<td>
+										<a href="<?php echo $full; ?>" download="<?php echo $full; ?>"><img src="teacher/images/download.png" height="25px" width='25px' />&nbsp;Download</a>
+									</td>
 
-                         <td><?php
-                                $id=$query1['Created_by'];
-                                 $q=mysqli_query($Conn,"SELECT `T_name` FROM `teachers` WHERE `T_srn` = '$id' ");
-                                 $name=mysqli_fetch_array($q);
-                                echo $name[0];
-                            ?>
-                        </td>
-                        
-                        <td><?php echo $query1['Created_on'];?></td>
-                       
-                       
-                   
-                    </tr>
-<?php 
-    $cnt=$cnt+1;}
-}
- ?>
-                                                       
-                                                    
-                                                    
-                                                </table>
-                                  
-                                  
+									<td><?php echo $query1['R_path']; ?></td>
 
-                                </div>
-                                <!-- /.row -->
-                            </div>
+									<td><?php
+										$id = $query1['Created_by'];
+										$q = mysqli_query($Conn, "SELECT `T_name` FROM `teachers` WHERE `T_srn` = '$id' ");
+										$name = mysqli_fetch_array($q);
+										echo $name[0];
+										?>
+									</td>
 
-                            <!-- /.container-fluid -->
-                        </section>
-                            <!-- /.section -->
+									<td><?php echo $query1['Created_on']; ?></td>
+
+
+
+								</tr>
+						<?php
+								$cnt = $cnt + 1;
+							}
+						}
+						?>
+
+
+
+					</table>
+
+
+
+				</div>
+				<!-- /.row -->
+			</div>
+
+			<!-- /.container-fluid -->
+		</section>
+		<!-- /.section -->
 
 
 
@@ -176,12 +170,13 @@ while ($query1=mysqli_fetch_array($query)) {
 		<!--main js file end-->
 
 
-    <script src="teacher/assets/js/metisMenu.min.js"></script>
-    <script src="teacher/assets/js/jquery.slimscroll.min.js"></script>
-    <script src="teacher/assets/js/jquery.slicknav.min.js"></script>
-    <script src="teacher/assets/js/plugins.js"></script>
-    <script src="teacher/assets/js/scripts.js"></script>
+		<script src="teacher/assets/js/metisMenu.min.js"></script>
+		<script src="teacher/assets/js/jquery.slimscroll.min.js"></script>
+		<script src="teacher/assets/js/jquery.slicknav.min.js"></script>
+		<script src="teacher/assets/js/plugins.js"></script>
+		<script src="teacher/assets/js/scripts.js"></script>
 	</body>
+
 	</html>
 
 <?php  } ?>
