@@ -30,7 +30,7 @@ if (isset($_SESSION['s_id'])) {
       <link rel="stylesheet" href="teacher/assets/css/styles.css">
 
       <meta charset="utf-8" />
-      <title>Stdeunt Gallery</title>
+      <title>IGHS |  Gallery</title>
       <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
       <meta name="MobileOptimized" content="320" />
