@@ -50,8 +50,8 @@ $Password= $obj->encrypt($os);
 		if (isset($_POST["remember"])) 
 		{
 			setcookie("admin_contact", $Contact, time() + (10 * 365 * 24 * 60 * 60), "/");
-			$Pa= $obj->decrypt($Password);
-			setcookie("admin_password", $Pa, time() + (10 * 365 * 24 * 60 * 60), "/");
+			
+			setcookie("admin_password", $Password, time() + (10 * 365 * 24 * 60 * 60), "/");
 			header("location:dashboard.php");
 		}
 		else
@@ -118,7 +118,7 @@ $Password= $obj->encrypt($os);
 
 
 			<div class="field">
-				<input type="password" name="Password" value="<?php if(isset($_COOKIE["admin_password"])) { echo $_COOKIE["admin_password"]; } ?>" required>
+				<input type="password" name="Password" value="<?php if(isset($_COOKIE["admin_password"])) { $c=$obj->decrypt($_COOKIE["admin_password"]);echo $c; } ?>" required>
 				<label>Password</label>
 			</div>
 

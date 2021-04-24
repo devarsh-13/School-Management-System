@@ -1,7 +1,9 @@
 <?php 
   
-  include('../admin/store_data.php');  
+  include('../admin/store_data.php');
+  include'../ec_dc.php';    
     session_start();
+    $obj = new ecdc();
     if(isset($_SESSION['t_id'])){
 
 
@@ -9,8 +11,8 @@
        // echo mysqli_real_escape_string($Conn, $_GET['teacher_id']);
         include_once "../Database/connection.php";
         
-       
-        $message = mysqli_real_escape_string($Conn, $_POST['message']);
+       $os= $_POST['message'];
+        $message = mysqli_real_escape_string($Conn, $obj->encrypt($os));
      
         if(!empty($message)){
                 $sender_type="T";

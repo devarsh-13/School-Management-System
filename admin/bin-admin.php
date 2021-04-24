@@ -237,7 +237,7 @@ input.chh
 }
 .scrollmenu
     {
-        max-height: 520px;
+        max-height: 100%;
         border: 1px solid #ddd;
         
         overflow-x: auto;

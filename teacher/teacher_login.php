@@ -43,10 +43,8 @@ $Password= $obj->encrypt($os);
 		if (isset($_POST["remember"])) 
 		{
 			setcookie("teacher_contact", $Contact, time() + (10 * 365 * 24 * 60 * 60), "/");
-			
-			$Pa= $obj->decrypt($Password);
 
-			setcookie("teacher_password", $Pa, time() + (10 * 365 * 24 * 60 * 60), "/");
+			setcookie("teacher_password", $Password, time() + (10 * 365 * 24 * 60 * 60), "/");
 			
 			$c = mysqli_query($Conn, "SELECT * FROM `teachers` WHERE `Contact` = '$Contact' && `Password` = '$Password' AND `is_deleted`='0'");			
 			$count = mysqli_fetch_array($c);
@@ -142,7 +140,8 @@ $Password= $obj->encrypt($os);
 
 			<div class="field">
 				<input type="password" name="Password" value="<?php if (isset($_COOKIE['teacher_password'])) {
-																	echo $_COOKIE['teacher_password'];
+																	$c=$obj->decrypt($_COOKIE["teacher_password"]);echo $c;
+																	
 																} ?>" required>
 				<label>Password</label>
 			</div>

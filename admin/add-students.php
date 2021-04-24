@@ -3,8 +3,12 @@ session_start();
 error_reporting(0);
 include('connection.php');
 include('store_data.php');
+
 include("../ec_dc.php");
 include('image_compress.php');
+
+require 'alertbox.php';
+
 
 
 if (strlen($_SESSION['a_id']) == "") 
@@ -146,10 +150,19 @@ else
 
             $q = mysqli_query($Conn, $Sql) or die(mysqli_error($Conn));
             $action = "Student Added";
+         
             if ($q) {
 
                 $log->success_entry($action, $Conn);
-                echo "<script>alert('Student Info Added Successfully');window.location.href='add-students.php';</script>";
+                echo "
+                <script>
+                
+                window.onload = function()
+                {
+                    suc('Student ADD Successfully.','add-students.php');
+                }</script>";
+                
+
             } else {
 
                 $log->success_entry($action, $Conn, "Unsuccessful");
@@ -163,6 +176,7 @@ else
     <html lang="en">
 
     <head>
+    
         <script type="text/javascript">
             function Check_class() {
 

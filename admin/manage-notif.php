@@ -148,7 +148,7 @@ if (isset($_GET['N_id']))
             <style>
         .scrollmenu
     {
-        max-height: 520px;
+        max-height: 100%;
         border: 1px solid #ddd;
         
         overflow-x: auto;

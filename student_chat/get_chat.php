@@ -1,5 +1,7 @@
 <?php
+include'../ec_dc.php';  
 session_start();
+$obj = new ecdc();
 if (isset($_SESSION['s_id'])) {
 
     include_once "../Database/connection.php";
@@ -19,14 +21,14 @@ if (isset($_SESSION['s_id'])) {
             if ($row['sender_type'] === "S") {
                 $output .= '<div class="chat outgoing">
                                 <div class="details">
-                                    <p>' . $row['chat_text'] . '</p>
+                                    <p>' . $obj->decrypt($row['chat_text']) . '</p>
                                 </div>
                                 </div>';
             } else {
                 $output .= '<div class="chat incoming">
                               
                                 <div class="details">
-                                    <p>' . $row['chat_text'] . '</p>
+                                    <p>' . $obj->decrypt($row['chat_text']) . '</p>
                                 </div>
                                 </div>';
             }

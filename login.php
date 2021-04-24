@@ -45,19 +45,8 @@ if (isset($_POST['Submit']))
 		if (isset($_POST["remember"])) 
 		{
 			setcookie("contact_no", $Contact, time() + (10 * 365 * 24 * 60 * 60), "/");
-			$decryption_iv = '1234567891011121';
-			$ciphering = "AES-128-CTR";
-			$options = 0;
-			$en=$Password;
-			// Store the decryption key
-			$decryption_key = "GeeksforGeeks";
-
-			// Use openssl_decrypt() function to decrypt the data
-			$decryption=openssl_decrypt ($en, $ciphering,
-			$decryption_key, $options, $decryption_iv);
-
-			$Pa=$decryption;
-			setcookie("password", $Pa, time() + (10 * 365 * 24 * 60 * 60), "/");
+			
+			setcookie("password", $Password, time() + (10 * 365 * 24 * 60 * 60), "/");
 			header("location:http://localhost/Sem6CollegeProject/main.php");
 		} 
 		else 
@@ -126,7 +115,8 @@ if (isset($_POST['Submit']))
 
 			<div class="field">
 				<input type="password" name="Password" value="<?php if (isset($_COOKIE["password"])) {
-																	echo $_COOKIE["password"];
+																	$c=$obj->decrypt($_COOKIE["password"]);echo $c;
+																	
 																} ?>" required>
 				<label>Password</label>
 			</div>
