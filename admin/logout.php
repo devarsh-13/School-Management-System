@@ -12,15 +12,15 @@
 // session_destroy(); // destroy session
 // header("location:index.php"); 
 session_start();
-require"store_data.php";
-require"../Database/connection.php";
+require "store_data.php";
+require "../Database/connection.php";
 
 $action="Logout";
 $log= new Log();
 $log->success_entry($action,$Conn);
 
-session_unset();
-session_destroy();
+unset($_SESSION['a_id']);
+
 header("location:index.php");
 ?>
 

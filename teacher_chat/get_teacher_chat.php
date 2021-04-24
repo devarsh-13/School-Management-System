@@ -5,8 +5,9 @@ $obj = new ecdc();
 if (isset($_SESSION['t_id'])) {
 
     include_once "../Database/connection.php";
+    
 
-    $S_srn = $_SESSION['s_id'];
+
 
     $T_srn = $_SESSION['t_id'];
     
@@ -14,7 +15,7 @@ if (isset($_SESSION['t_id'])) {
    
 
 
-    $chat_query = mysqli_query($Conn, "SELECT * FROM `conversation` WHERE `S_srn`='$S_srn' && `T_srn`='$T_srn'");
+    $chat_query = mysqli_query($Conn, "SELECT * FROM `conversation` inner join `students` ON conversation.S_srn=students.S_srn WHERE `T_srn`='$T_srn' and `is_c_deleted`='0'  ");
 
     if (mysqli_num_rows($chat_query) > 0) {
         while ($row = mysqli_fetch_assoc($chat_query)) {
@@ -38,5 +39,5 @@ if (isset($_SESSION['t_id'])) {
     }
     echo $output;
 } else {
-    header("location: ../login.php");
+    header("location: ../teacher/teacher_login.php");
 }
