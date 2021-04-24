@@ -3,11 +3,16 @@ session_start();
 error_reporting(0);
 include('connection.php');
 include('store_data.php');
-require "../ec_dc.php";
+include("../ec_dc.php");
+include('image_compress.php');
 
-if (strlen($_SESSION['a_id']) == "") {
+
+if (strlen($_SESSION['a_id']) == "") 
+{
     header("Location: index.php");
-} else {
+} 
+else 
+{
     $obj = new ecdc();
     $log = new Log();
     if (!(isset($_POST['gr']))) {
@@ -82,7 +87,8 @@ if (strlen($_SESSION['a_id']) == "") {
             $extension=pathinfo($_FILES["file"]["name"],PATHINFO_EXTENSION);
 
             $imageName = $gr.".".$extension;
-            $result = move_uploaded_file($imageTmpName, $uploadFolder . $imageName);
+
+            $result = compress($imageTmpName,$uploadFolder.$imageName);
            
             if ($result==false) 
             {

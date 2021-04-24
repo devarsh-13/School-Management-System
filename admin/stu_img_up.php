@@ -24,7 +24,7 @@ if(strlen($_SESSION['a_id'])=="")
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>IGHS Admin| ADD Gallery </title>
+    <title>IGHS Admin| Upload Student Images </title>
      <link rel="stylesheet" href="ssi-uploader/styles/ssi-uploader.css"/>
      
     <link rel="stylesheet" href="../teacher/css/bootstrap.min.css" media="screen" >
@@ -154,7 +154,10 @@ else if($error){?>
 
 
 var uploader = $('#ssi-upload').ssi_uploader({
+        type: 'POST',
         url: 'stu_up_ajax.php',
+        
+        dataType:"json"
     });
 
     $( "#myForm" ).on( "submit", function( event ) {
