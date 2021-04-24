@@ -825,7 +825,7 @@
             maxNumberOfFiles: '',
             responseValidation: false,
             ignoreCallbackErrors: false,
-            maxFileSize: 10,
+            maxFileSize: 50,
             inForm: false,
             ajaxOptions: {},
             onUpload: function () {
@@ -846,7 +846,7 @@
             }
         };
         var options = $.extend(true, defaults, opts);
-        options.allowed = options.allowed || ['jpg', 'jpeg', 'png', 'bmp', 'gif','pptx','pdf','zip'];
+        options.allowed = options.allowed || ['pdf', 'doc', 'docx','txt' , 'rar' ,'zip','ppt','pptx'];
         return this.each(function () {
             var $element = $(this);
             if ($element.is('input[type="file"]')) {

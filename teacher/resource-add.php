@@ -71,7 +71,7 @@ if(isset($_GET['r_id']))
     <!-- modernizr css -->
     <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
 
-      <link rel="stylesheet" href="ssi-uploader/styles/ssi-uploader.css"/>
+      <link rel="stylesheet" href="../admin/ssi-uploader/styles/ssi-uploader.css"/>
 
       <script src="//code.jquery.com/jquery-1.6.2.min.js"></script>
 
@@ -140,7 +140,7 @@ if(isset($_GET['r_id']))
 </table>
 <script src="https://code.jquery.com/jquery-1.12.3.min.js"
         integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ=" crossorigin="anonymous"></script>
-<script src="ssi-uploader/js/ssi-uploader.js"></script>
+<script src="../admin/ssi-uploader/js/ssi-uploader_resource.js"></script>
 <script src="bower_components\ssi-modal\dist\ssi-modal\js\ssi-modal.js"></script>
 <script>
     var notifyOptions = {

@@ -846,7 +846,7 @@
             }
         };
         var options = $.extend(true, defaults, opts);
-        options.allowed = options.allowed || ['jpg', 'jpeg', 'png', 'bmp', 'gif','pptx','pdf','zip'];
+        options.allowed = options.allowed || ['jpg', 'jpeg', 'png'];
         return this.each(function () {
             var $element = $(this);
             if ($element.is('input[type="file"]')) {
