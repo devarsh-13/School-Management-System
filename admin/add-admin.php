@@ -1,9 +1,11 @@
 <?php
-session_start();
+session_start(); 
 error_reporting(0);
 include('connection.php');
 include('store_data.php');
-
+require "../ec_dc.php";
+require 'alertbox.php';
+$obj = new ecdc();
 $log = new Log();
 
 if (strlen($_SESSION['a_id']) == "") {
@@ -35,7 +37,10 @@ $a = $_SESSION['a_id'];
         $dob = $_POST['dob'];
         $con = $_POST['con'];
         $ad=$_POST['ad']; 
-        $pass = sha1($_POST['pass']);
+
+         $os=$_POST['pass'];
+        $pass = $obj->encrypt($os);
+
         $d = date("Y-m-d");
 
 
@@ -72,15 +77,24 @@ $a = $_SESSION['a_id'];
         if ($q)
         {
             $log->success_entry($action, $Conn);
-            $msg = "Admin Info Added Successfully";
             unset($_POST['an']);
+             echo "     <script>
+                window.onload = function()
+                {
+                    suc('Admin ADD Successfully.','add-admin.php');
+                }</script>";
 
         } else 
         {
         
             $log->success_entry($action, $Conn, "Unsuccessful");
-            $error = "Something went wrong. Please try again";
              unset($_POST['an']);
+
+               echo "     <script>
+                window.onload = function()
+                {
+                    uns('Failed To Add Admin.','add-admin.php');
+                }</script>";
         }
     }
 ?>
@@ -174,17 +188,7 @@ $a = $_SESSION['a_id'];
                                 <div class="main-content-inner">
                                     <!-- MAIN CONTENT GOES HERE -->
                                     <div class="panel-body">
-                                        <?php if ($msg) { ?>
-                                            <div class="alert alert-success left-icon-alert" role="alert">
-
-                                                <?php echo htmlentities($msg); ?>
-                                            </div>
-                                        <?php } else if ($error) { ?>
-                                            <div class="alert alert-danger left-icon-alert" role="alert">
-
-                                                <?php echo htmlentities($error); ?>
-                                            </div>
-                                        <?php } ?>
+                                      
                                         <form class="form-horizontal" method="post" enctype="multipart/form-data">
 
                                             <div class="form-group">

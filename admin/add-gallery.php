@@ -95,18 +95,7 @@ if(strlen($_SESSION['a_id'])=="")
             <div class="main-content-inner">
                 <!-- MAIN CONTENT GOES HERE -->
                                     <div class="panel-body">
-                                        <?php if($msg){?>
-                                        <div class="alert alert-success left-icon-alert" role="alert">
-                                            
-                                            <?php echo htmlentities($msg); ?>
-                                        </div>
-                                        <?php } 
-else if($error){?>
-                                        <div class="alert alert-danger left-icon-alert" role="alert">
-                                            
-                                            <?php echo htmlentities($error); ?>
-                                        </div>
-                                        <?php } ?>
+                                      
                                         <form class="form-horizontal" method="post"  id="myForm"   enctype="multipart/form-data">
 
                                             <div class="form-group">
@@ -157,13 +146,16 @@ var uploader = $('#ssi-upload').ssi_uploader({
         url: 'up.php',
     });
 
-    $( "#myForm" ).on( "submit", function( event ) {
+    $( "#myForm" ).on( "submit", function( event ) 
+    {
         event.preventDefault();
         uploader.data('ssi_upload').uploadFiles();
         
-        uploader.on('onUpload.ssi-uploader',function(){
+        uploader.on('onUpload.ssi-uploader',function()
+        {
             console.log('complete');
             $( "#myForm" ).submit();
+            
         });
     });
   

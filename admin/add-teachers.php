@@ -3,7 +3,10 @@ session_start();
 error_reporting(0);
 include('connection.php');
 include('store_data.php');
+require "../ec_dc.php";
+require 'alertbox.php';
 
+$obj = new ecdc();
 if (strlen($_SESSION['a_id']) == "") {
     header("Location: index.php");
 } else {
@@ -40,7 +43,10 @@ if (strlen($_SESSION['a_id']) == "") {
         $jdate = $_POST['jdate'];
         $rdate = $_POST['rdate'];
         $deg = $_POST['deg'];
-        $pass = sha1($_POST['pass']);
+
+        $os=$_POST['pass'];
+        $pass = $obj->encrypt($os);
+
         $d = date("Y-m-d");
         $stat = "offline";
 
@@ -84,15 +90,25 @@ if (strlen($_SESSION['a_id']) == "") {
         {
             $log = new Log();
             $log->success_entry($action, $Conn);
-            $msg = "Teacher Info Added Successfully";
+            
             unset($_POST['tn']);
+             echo "     <script>
+                window.onload = function()
+                {
+                    suc('Teacher ADD Successfully.','add-teachers.php');
+                }</script>";
         }
         else 
         {
             $log = new Log();
             $log->success_entry($action, $Conn, "Unsuccessful");
-            $error = "Something went wrong. Please try again";
+         
             unset($_POST['tn']);
+             echo "     <script>
+                window.onload = function()
+                {
+                    uns('Failed To Add Teacher.','add-teachers.php');
+                }</script>";
         }
     }
 ?>

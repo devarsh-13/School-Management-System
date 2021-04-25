@@ -4,6 +4,7 @@ session_start();
 error_reporting(0);
 include('connection.php');
 include('store_data.php');
+require 'alertbox.php';
 
 $log=new Log();
 
@@ -31,12 +32,21 @@ if (isset($_GET['a_id']))
     {
      
         $log->success_entry($action,$Conn); 
-        $msg="Admin Info Restore Successfully";
+         echo "     <script>
+                window.onload = function()
+                {
+                    suc('Admin Info Restore Successfully.','bin-admin.php');
+                }</script>";
+        
 }
 else 
 {
     $log->success_entry($action,$Conn,"Unsuccessful"); 
-    $error="Something went wrong. Please try again";
+         echo "     <script>
+                window.onload = function()
+                {
+                    uns('Failed To Restore Admin Info.','bin-admin.php');
+                }</script>";   
 }
 }
     
@@ -301,15 +311,7 @@ input.chh
             <div class="main-content-inner">
                 <!-- MAIN CONTENT GOES HERE -->
                 <div class="panel-body">
-<?php if($msg){?>
-<div class="alert alert-success left-icon-alert" role="alert">
- <?php echo htmlentities($msg); ?>
- </div><?php } 
-else if($error){?>
-    <div class="alert alert-danger left-icon-alert" role="alert">
-                                         <?php echo htmlentities($error); ?>
-                                        </div>
-                                        <?php } ?>
+
                                             <div class="scrollmenu">
 
                                              <!--   <table id="example" class="display table table-striped table-bordered" cellspacing="0" width="100%">-->

@@ -46,7 +46,11 @@ if($insert)
 else 
 {
     $log->success_entry($action,$Conn,"Unsuccessful");
-    
+    echo "     <script>
+                window.onload = function()
+                {
+                    uns('Failed To Add Event.','add-event.php');
+                }</script>";
 }
 
 }

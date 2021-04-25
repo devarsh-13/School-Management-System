@@ -4,6 +4,7 @@ session_start();
 error_reporting(0);
 include('connection.php');
 include('store_data.php');
+require 'alertbox.php';
 
 if(strlen($_SESSION['a_id'])=="")
     {   
@@ -33,15 +34,25 @@ if (isset($_GET['Sr_id']))
         $log=new Log();
         $log->success_entry($action,$Conn); 
 
-        $msg="Student Info Restore Successfully";
+         echo "     <script>
+                window.onload = function()
+                {
+                    suc('Student Info Restore Successfully.','bin-students.php');
+                }</script>";
+        
+        
 }
 else 
 {
 
         $log=new Log();
         $log->success_entry($action,$Conn,"Unsuccessful"); 
+          echo "     <script>
+                window.onload = function()
+                {
+                    uns('Failed To Restore Student Info.','bin-students.php');
+                }</script>";   
 
-$error="Something went wrong. Please try again";
 }
 }
     

@@ -3,6 +3,7 @@ session_start();
 error_reporting(0);
 include('connection.php');
 include('store_data.php');
+require 'alertbox.php';
 if(strlen($_SESSION['a_id'])=="")
     {   
     header("Location: index.php"); 
@@ -34,12 +35,20 @@ if(isset($_POST['submit']))
 if($insert)
 {
     $log->success_entry($action,$Conn);
-    $msg="Notification Added Successfully";
+     echo "     <script>
+                window.onload = function()
+                {
+                    suc('Notification ADD Successfully.','add-notification.php');
+                }</script>";
 }
 else 
 {
     $log->success_entry($action,$Conn,"Unsucessful");
-    $error="Something went wrong. Please try again";
+     echo "     <script>
+                window.onload = function()
+                {
+                    uns('Failed To Add Notification.','add-notification.php');
+                }</script>";
 }
 
 }
@@ -121,18 +130,7 @@ else
                 <!-- MAIN CONTENT GOES HERE -->
  
                                     <div class="panel-body">
-                                        <?php if($msg){?>
-                                        <div class="alert alert-success left-icon-alert" role="alert">
-                                            
-                                            <?php echo htmlentities($msg); ?>
-                                        </div>
-                                        <?php } 
-else if($error){?>
-                                        <div class="alert alert-danger left-icon-alert" role="alert">
-                                            
-                                            <?php echo htmlentities($error); ?>
-                                        </div>
-                                        <?php } ?>
+                                     
                                         <form class="form-horizontal" method="post">
 
 
