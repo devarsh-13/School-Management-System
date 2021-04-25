@@ -1,5 +1,5 @@
 <!--  -->
-<?php include_once "teacher_head.php"; ?>
+
 
 
 
@@ -30,77 +30,38 @@ if (isset($_SESSION['t_id'])) {
 
 ?>
 
-    <head>
-        <link rel="stylesheet" href="../teacher/css/bootstrap.min.css" media="screen">
-        <link rel="stylesheet" href="../teacher/css/font-awesome.min.css" media="screen">
-        <link rel="stylesheet" href="../teacher/css/animate-css/animate.min.css" media="screen">
-        <link rel="stylesheet" href="../teacher/css/main.css" media="screen">
-        <script src="../teacher/js/modernizr/modernizr.min.js"></script>
+<?php include_once "teacher_head.php"; ?>
 
 
-        <link rel="shortcut icon" type="image/png" href="assets/images/icon/favicon.ico">
-        <link rel="stylesheet" href="../teacher/assets/css/bootstrap.min.css">
-        <link rel="stylesheet" href="../teacher/assets/css/font-awesome.min.css">
-        <link rel="stylesheet" href="../teacher/assets/css/themify-icons.css">
-        <link rel="stylesheet" href="../teacher/assets/css/metisMenu.css">
-        <link rel="stylesheet" href="../teacher/assets/css/owl.carousel.min.css">
-        <link rel="stylesheet" href="../teacher/assets/css/slicknav.min.css">
-        <!-- amchart css -->
-        <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
-        <!-- others css -->
-        <link rel="stylesheet" href="../teacher/assets/css/typography.css">
-        <link rel="stylesheet" href="../teacher/assets/css/default-css.css">
-        <link rel="stylesheet" href="../teacher/assets/css/styles.css">
-        <link rel="stylesheet" href="../teacher/assets/css/responsive.css">
-        <!-- modernizr css -->
-        <script src="../teacher/assets/js/vendor/modernizr-2.8.3.min.js"></script>
-        <style type="text/css">
-            #h {
-                margin-top: 5px;
-            }
-        </style>
-    </head>
 
     <body>
-        <div id="preloader">
-            <div class="loader"></div>
-        </div>
+
 
 
         <!-- page title area start -->
 
-        <div class="row">
-            <div class="col-md-12">
-
-                <div class="panel-heading">
-
-                </div>
-                <!-- page title area end -->
-                <div class="main-content-inner">
-
-                    <!-- MAIN CONTENT GOES HERE -->
-                    <div class="wrapper">
-                        <section class="users">
-                            <header>
-                                <div class="content">
-                                    <a href="../teacher/dashboard.php" class="logout">Back</a>
-                                </div>
-
-                            </header>
+        <div class="wrapper">
+            <section class="users">
+                <header>
+                    <div class="content">
+                        <a href="../teacher/Dashboard.php" class="logout">Back</a>
 
 
-                            <div class="search">
-                                <span class="text">Select an user to start chat</span>
-                                <input type="text" placeholder="Enter name to search...">
-                                <button><i class="fas fa-search"></i></button>
-                            </div>
-                            <div class="users-list">
-
-                            </div>
-                        </section>
                     </div>
 
-                    <script src="show_students.js"></script>
+                </header>
+
+                <div class="search">
+                    <span class="text">Select an user to start chat</span>
+                    <input type="text" placeholder="Enter name to search...">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+                <div class="users-list">
+
+                </div>
+            </section>
+        </div>
+        <script src="show_students.js"></script>
 
     </body>
 

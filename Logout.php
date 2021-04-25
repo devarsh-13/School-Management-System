@@ -1,7 +1,7 @@
 <?php
 session_start();
-require "../admin/store_data.php";
-require "../Database/connection.php";
+require "admin/store_data.php";
+require "Database/connection.php";
 
 $action = "Logout";
 $log = new Log();
