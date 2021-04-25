@@ -183,9 +183,9 @@ $log->success_entry($action,$Conn);
           <style>
         .scrollmenu
     {
-        max-height: 520px;
+        max-height: 100%;
         border: 1px solid #ddd;
-        display: flex;
+        
         overflow-x: auto;
     }
 
@@ -254,7 +254,7 @@ $log->success_entry($action,$Conn);
                 <div class="panel-body">
                       <div class="scrollmenu">
 
-	    <table id="example" class="display nowrap"  style="width:100%">
+	    <table id="example" class="display nowrap" >
 	    <thead>
         <tr align="center">
             <th>DATE</th>

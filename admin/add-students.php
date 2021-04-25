@@ -9,16 +9,16 @@ include('image_compress.php');
 
 require 'alertbox.php';
 
-
-
+ 
+    $log = new Log();
+$obj = new ecdc();
 if (strlen($_SESSION['a_id']) == "") 
 {
     header("Location: index.php");
 } 
 else 
 {
-    $obj = new ecdc();
-    $log = new Log();
+   
     if (!(isset($_POST['gr']))) {
         $action = "In Add Student";
         $log->success_entry($action, $Conn);
@@ -151,17 +151,17 @@ else
                                         )";
 
             $q = mysqli_query($Conn, $Sql) or die(mysqli_error($Conn));
-            $action = "Student Added";
+           
          
             if ($q) {
-
-                $log->success_entry($action, $Conn);
+                 $action = "Student Added";
+                $log->success_entry($action, $Conn) or die(mysqli_error($Conn));
                 echo "
                 <script>
                 
                 window.onload = function()
                 {
-                    suc('Student ADD Successfully.','add-students.php');
+                    suc('Student ADD Successfully.','add-students.php') or die(mysqli_error($Conn));
                 }</script>";
                 
 

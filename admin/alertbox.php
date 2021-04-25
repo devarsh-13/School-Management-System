@@ -24,7 +24,21 @@
   animation: open-frame 0.3s linear;
 }
 
+#alertBoxu {
+   background: #fff;
+  min-height: 100px;
+  width: 300px;
+  box-shadow: 5px 5px 10px rgb(0, 0, 0, 0.2);
+  border-radius: 10px;
+  animation: open-frame 0.3s linear;
+}
+
 #modalContainer > #alertBox {
+    position:fixed;
+}
+
+
+#modalContainer > #alertBoxu {
     position:fixed;
 }
 
@@ -46,7 +60,7 @@
     border-top-left-radius:  10px;
     text-align: center;
     font:bold 1em Raleway,arial;
-    background-color:green;
+    background-color:red;
     color:#FFF;
     border-bottom:1px solid #f97352;
     padding:10px 0 10px 5px;
@@ -59,18 +73,25 @@
   vertical-align:middle;
 }
 
+#alertBoxu p {
+    height:50px;
+    padding-left:5px;
+  padding-top:30px;
+  text-align:center;
+  vertical-align:middle;
+}
+
 #alertBox #closeBtn {
     display:block;
     position:relative;
     margin:10px auto 10px auto;
     padding:7px;
-    border:0 none;
+    border-radius: 10px;
     width:70px;
     text-transform:uppercase;
     text-align:center;
     color:#FFF;
     background-color:green;
-    border-radius: 0px;
     text-decoration:none;
   outline:0!important;
 }
@@ -85,7 +106,7 @@
     text-transform:uppercase;
     text-align:center;
     color:#FFF;
-    background-color:green;
+    background-color:red;
     text-decoration:none;
   outline:0!important;
 }
@@ -143,11 +164,20 @@ code {
     width:90%;
   top:30%;
 }
+
+@media (max-width: 600px) 
+{
+  #alertBoxu {
+    position:relative;
+    width:90%;
+  top:30%;
+}
     </style>
 
 <script type="text/javascript">
 
 var ALERT_TITLE = "Success";
+var ALERT_TITLEu = "Fail!";
 var ALERT_BUTTON_TEXT = "Ok";
 
      function suc(msg ,r) 
@@ -187,11 +217,11 @@ function createCustomAlert(txt,r) {
 
 
 
- function uns(msg) 
+ function uns(msg,r) 
     {
-        createCustomAler(msg);
+        createCustomAler(msg,r);
     }
-function createCustomAler(txt) {
+function createCustomAler(txt,r) {
     d = document;
 
     if(d.getElementById("modalContainer")) return;
@@ -207,7 +237,7 @@ function createCustomAler(txt) {
     alertObj.style.visiblity="visible";
 
     h1 = alertObj.appendChild(d.createElement("h1"));
-    h1.appendChild(d.createTextNode(ALERT_TITLE));
+    h1.appendChild(d.createTextNode(ALERT_TITLEu));
 
     msg = alertObj.appendChild(d.createElement("p"));
     //msg.appendChild(d.createTextNode(txt));
@@ -216,7 +246,7 @@ function createCustomAler(txt) {
     btn = alertObj.appendChild(d.createElement("a"));
     btn.id = "closeBtnu";
     btn.appendChild(d.createTextNode(ALERT_BUTTON_TEXT));
-    btn.href = "#";
+    btn.href = r;
     btn.focus();
     alertObj.style.display = "block";   
 }

@@ -4,6 +4,7 @@ error_reporting(0);
 
 include('connection.php');
 include('store_data.php');
+require 'alertbox.php';
 
 if(strlen($_SESSION['a_id'])=="")
 {   
@@ -36,12 +37,16 @@ if(isset($_POST['submit']))
 if($insert)
 {
     $log->success_entry($action,$Conn);
-    $msg="Event Added Successfully";
+     echo "     <script>
+                window.onload = function()
+                {
+                    suc('Event ADD Successfully.','add-event.php');
+                }</script>";
 }
 else 
 {
     $log->success_entry($action,$Conn,"Unsuccessful");
-    $error="Something went wrong. Please try again";
+    
 }
 
 }
@@ -124,18 +129,7 @@ else
 
 
                                     <div class="panel-body">
-                                        <?php if($msg){?>
-                                        <div class="alert alert-success left-icon-alert" role="alert">
-                                            
-                                            <?php echo htmlentities($msg); ?>
-                                        </div>
-                                        <?php } 
-else if($error){?>
-                                        <div class="alert alert-danger left-icon-alert" role="alert">
-                                            
-                                            <?php echo htmlentities($error); ?>
-                                        </div>
-                                        <?php } ?>
+                                       
                                         <form class="form-horizontal" method="post">
                                              
 
