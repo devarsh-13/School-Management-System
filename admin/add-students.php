@@ -4,6 +4,7 @@ error_reporting(0);
 include('connection.php');
 include('store_data.php');
 include('Image_compress.php');
+include('alertbox.php');
 
 
 if (strlen($_SESSION['a_id']) == "") 
@@ -127,7 +128,12 @@ else
         {
             $result = compress($imageTmpName, $uploadFolder.$imageName);
             $log->success_entry($action, $Conn);
-            echo "<script>alert('Student Info Added Successfully');window.location.href='add-students.php';</script>";
+             echo "     <script>
+                window.onload = function()
+                {
+                    suc('Event ADD Successfully.','add-student.php');
+                }</script>";
+            
         }
         else 
         {
@@ -366,7 +372,7 @@ else
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Academic Year</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" name="AY" class="form-control"  pattern="[0-9]{4}-[0-9]{4}" required title="pattern should be yyyy-yyyy "   required="required" id="AY" autocomplete="off">
+                                                    <input type="text" name="AY" class="form-control"  pattern="[0-9]{4}-[0-9]{4}" required title="pattern should be yyyy-yyyy "   required="required" id="AY" autocomplete="off" maxlength="9">
                                                 </div>
                                             </div>
 
@@ -383,7 +389,7 @@ else
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Adhar Number</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" name="adhar" class="form-control" oninput='digitValidate(this)' required="required" id="adhar" pattern=".{12}" required title=" 12 numbers" maxlength='12' autocomplete="on">
+                                                    <input type="text" name="adhar" class="form-control" oninput='digitValidate(this)' required="required" id="adhar" pattern=".{12}" required title=" 12 numbers" maxlength='12' autocomplete="off">
                                                 </div>
                                             </div>
 

@@ -1,6 +1,7 @@
-  <style type="text/css">
-        #modalContainer {
-   display: flex;
+<style type="text/css">
+
+#modalContainer {
+  display: flex;
   width: 100%;
   height: 100%;
   align-items: center;
@@ -250,6 +251,4 @@ function createCustomAler(txt,r) {
     btn.focus();
     alertObj.style.display = "block";   
 }
-
-
 </script>
