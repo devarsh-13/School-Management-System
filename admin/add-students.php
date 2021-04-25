@@ -3,11 +3,15 @@ session_start();
 error_reporting(0);
 include('connection.php');
 include('store_data.php');
+include('Image_compress.php');
 
 
-if (strlen($_SESSION['a_id']) == "") {
+if (strlen($_SESSION['a_id']) == "") 
+{
     header("Location: index.php");
-} else {
+} 
+else 
+{
 
     $log = new Log();
     if (!(isset($_POST['gr']))) {
@@ -15,24 +19,8 @@ if (strlen($_SESSION['a_id']) == "") {
         $log->success_entry($action, $Conn);
     }
 
-    if (isset($_POST['submit'])) {
-
-
-
-
-        $uploadFolder = '../user_photos/';
-
-
-        $imageTmpName = $_FILES['file']['tmp_name'];
-        $imageName = $_FILES['file']['name'];
-        $result = move_uploaded_file($imageTmpName, $uploadFolder . $imageName);
-
-        if ($result == null) {
-
-            $imageName = "student_default.jpg";
-        }
-
-
+    if (isset($_POST['submit'])) 
+    {
         $gr = $_POST['gr'];
         $ui = $_POST['ui'];
         $sn = $_POST['sn'];
@@ -56,11 +44,14 @@ if (strlen($_SESSION['a_id']) == "") {
         $stream = $_POST['stream'];
         $d = date("Y-m-d");
 
-        if ($class == 11 || $class == 12) {
+        if ($class == 11 || $class == 12) 
+        {
             $s = "SELECT `Class_id` FROM `class` WHERE `C_no` = '$class' AND `Stream` = '$stream' ";
             $q = mysqli_query($Conn, $s);
             $ci = mysqli_fetch_array($q);
-        } else {
+        }
+        else 
+        {
             $s = "SELECT `Class_id` FROM `class` WHERE `C_no` = '$class'";
             $q = mysqli_query($Conn, $s);
 
@@ -68,31 +59,19 @@ if (strlen($_SESSION['a_id']) == "") {
         }
 
 
+        $uploadFolder = '../user_photos/student/';
 
-
-
-        $error5 = false;
-
-        $mo = $_POST['con'];
-        if (!preg_match("/^[0-9]*$/", $mo)) {
-
-            echo '<script>alert(" Enter Only number!!")';
-            $error5 = true;
-        } elseif (strlen($mo) < 10) {
-            echo '<script>alert(" Please enter proper 10 Digit number!!") ';
-            $error5 = true;
-        } elseif (strlen($mo) > 10) {
-            echo '<script>alert(" Please enter proper 10 Digit number!!") ';
-            $error5 = true;
+        if(strlen($_FILES['file']['name'])=="")
+        {
+            $imageName = "student_default.jpg";
         }
-
-
-
-
-
-
-
-
+        else
+        {
+            $imageTmpName = $_FILES['file']['tmp_name'];
+            $extension=pathinfo($_FILES['file']['name'],PATHINFO_EXTENSION);
+            $imageName = "$gr.$extension";
+        }
+        
         $Sql = "INSERT INTO `students` 
                                     (
                                         `S_photo`,
@@ -144,39 +123,50 @@ if (strlen($_SESSION['a_id']) == "") {
 
         $q = mysqli_query($Conn, $Sql) or die(mysqli_error($Conn));
         $action = "Student Added";
-        if ($q) {
-
+        if ($q) 
+        {
+            $result = compress($imageTmpName, $uploadFolder.$imageName);
             $log->success_entry($action, $Conn);
             echo "<script>alert('Student Info Added Successfully');window.location.href='add-students.php';</script>";
-        } else {
+        }
+        else 
+        {
 
             $log->success_entry($action, $Conn, "Unsuccessful");
 
             $error = "Something went wrong. Please try again";
         }
     }
-?>
+
+    
+    ?>
     <!DOCTYPE html>
     <html lang="en">
 
     <head>
         <script type="text/javascript">
-            function Check_class() {
+            function Check_class() 
+            {
 
-                if (document.getElementById("clas").value == 11 || document.getElementById("clas").value == 12) {
+                if (document.getElementById("clas").value == 11 || document.getElementById("clas").value == 12) 
+                {
                     document.getElementById("stream").required = true;
                     document.getElementById("stream").disabled = false;
-                    if (document.getElementById("stream").value == "NULL") {
+                    if (document.getElementById("stream").value == "NULL") 
+                    {
                         document.getElementById("stream").value = "";
                     }
-                } else {
+                } 
+                else 
+                {
                     document.getElementById("stream").required = false;
                     document.getElementById("stream").disabled = true;
                     document.getElementById("stream").value = "NULL";
                 }
             }
 
-            function desc(i) {
+            function desc(i) 
+            {
                 var c = document.getElementById("hand1").checked;
                 var c2 = document.getElementById("hand2").checked;
                 if (c == true) {
@@ -288,7 +278,7 @@ if (strlen($_SESSION['a_id']) == "") {
                                     <!-- MAIN CONTENT GOES HERE -->
                                     <div class="panel-body">
 
-                                        <form class="form-horizontal" method="post">
+                                        <form class="form-horizontal" method="post" enctype="multipart/form-data">
 
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Gr Number</label>
@@ -495,4 +485,7 @@ if (strlen($_SESSION['a_id']) == "") {
     </body>
 
     </html>
-<?PHP } ?>
+<?php 
+}
+
+?>
