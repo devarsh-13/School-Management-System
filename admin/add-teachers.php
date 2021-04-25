@@ -3,25 +3,36 @@ session_start();
 error_reporting(0);
 include('connection.php');
 include('store_data.php');
-require "../ec_dc.php";
 
-
-if (strlen($_SESSION['a_id']) == "") 
-{
+if (strlen($_SESSION['a_id']) == "") {
     header("Location: index.php");
-}
-else 
-{
-    $obj = new ecdc();
+} else {
 
     if(!(isset($_POST['tn'])))
     {
+
+
         $action = " In ADD Techers";
         $log = new Log();
         $log->success_entry($action, $Conn);
     }
     if (isset($_POST['submit']))
     {
+        require "connection.php";
+
+        $uploadFolder = '../user_photos/';
+
+
+        $imageTmpName = $_FILES['file']['tmp_name'];
+        $imageName = $_FILES['file']['name'];
+        $result = move_uploaded_file($imageTmpName, $uploadFolder . $imageName);
+       
+        if ($result == null) {
+
+            $imageName="teacher_default.jpg";
+
+        }
+
         $tn = $_POST['tn'];
         $dob = $_POST['dob'];
         $con = $_POST['con'];
@@ -29,26 +40,10 @@ else
         $jdate = $_POST['jdate'];
         $rdate = $_POST['rdate'];
         $deg = $_POST['deg'];
-
-        $os=$_POST['pass'];
-        $pass= $obj->encrypt($os);
-        
+        $pass = sha1($_POST['pass']);
         $d = date("Y-m-d");
         $stat = "offline";
 
-        if(isset($_FILES['file']))
-        {
-            $uploadFolder = '../user_photos/teacher';
-            $imageTmpName = $_FILES['file']['tmp_name'];
-
-            $extension=pathinfo($_FILES['file']['name'],PATHINFO_EXTENSION);
-            $i_name=$con.$extension;
-                          
-        }
-        else
-        {
-            $imageName="teacher_default.jpg";
-        }
 
         $Sql = "INSERT INTO `teachers` 
                             (   
@@ -87,18 +82,14 @@ else
         $action = "Add teacher data";
         if ($q) 
         {
-            if(isset($_FILES['file']))
-            {
-                $result = compress($imageTmpName, $uploadFolder.$imageName);    
-            }
-            
+            $log = new Log();
             $log->success_entry($action, $Conn);
             $msg = "Teacher Info Added Successfully";
             unset($_POST['tn']);
         }
         else 
         {
-            
+            $log = new Log();
             $log->success_entry($action, $Conn, "Unsuccessful");
             $error = "Something went wrong. Please try again";
             unset($_POST['tn']);
@@ -214,7 +205,7 @@ else
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Teacher Nmae</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" name="tn" class="form-control" id="tn" required="required" oninput='stringValidate(this)'  maxlength="50" autocomplete="off">
+                                                    <input type="text" name="tn" class="form-control" id="tn" required="required" oninput='stringValidate(this)'  maxlength="15" autocomplete="off">
                                                 </div>
                                             </div>
 

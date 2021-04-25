@@ -18,9 +18,19 @@ else
     
     if (isset($_POST['submit'])) 
     {
-        
-        $a = $_SESSION['a_id'];  
+        $uploadFolder = '../user_photos/';
 
+
+        $imageTmpName = $_FILES['file']['tmp_name'];
+        $imageName = $_FILES['file']['name'];
+        $result = move_uploaded_file($imageTmpName, $uploadFolder . $imageName);
+       
+        if ($result == null) {
+
+            $imageName="admin_default.jpg";
+
+        }
+$a = $_SESSION['a_id'];  
         $an = $_POST['an'];
         $dob = $_POST['dob'];
         $con = $_POST['con'];
@@ -28,49 +38,39 @@ else
         $pass = sha1($_POST['pass']);
         $d = date("Y-m-d");
 
-        if(isset($_FILES['file']))
-        {
-            $uploadFolder = '../user_photos/admin/';
 
-            $imageTmpName = $_FILES['file']['tmp_name'];
-            $extension=pathinfo($_FILES['file']['name'],PATHINFO_EXTENSION);
-            $imageName = $cont.$extension;
-        }
-        else
-        {
-            $imageName="default.jpg";
-        }
-                   
-        $Sql = "INSERT INTO `admin`
-        (   
-            `A_Photo`,
-            `A_name`, 
-            `A_mobile`, 
-            `A_address`, 
-            `A_password`,
-            `A_dob`, 
-            `Created_on`, 
-            `is_deleted`,
-            `Created_by`
-        ) 
-        VALUES 
-        (
-            '$imageName',
-            '$an', 
-            '$con', 
-            '$ad',
-            '$pass',
-            '$dob',
-            '$d', 
-            '0',
-            '$a'
-        )";
+        $Sql = "INSERT INTO `admin` 
+                            (   
+                                `A_Photo`,
+                                `A_name`, 
+                                `A_mobile`, 
+                                `A_address`, 
+                                `A_password`,
+                                `A_dob`, 
+                                `Created_on`, 
+                                `is_deleted`,
+                                `Created_by`
+                            
+                                    ) 
+
+                            VALUES 
+                            (
+                                '$imageName',
+                                '$an', 
+                                '$con', 
+                                '$ad',
+                                '$pass',
+                                '$dob',
+                                '$d', 
+                                '0',
+                                '$a'
+                            )";
+
 
         $q = mysqli_query($Conn, $Sql);
         $action = "Admin data Added";
         if ($q)
         {
-            $result = compress($imageTmpName, $uploadFolder.$imageName);
             $log->success_entry($action, $Conn);
             $msg = "Admin Info Added Successfully";
             unset($_POST['an']);
@@ -190,7 +190,7 @@ else
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Admin Name</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" name="an" class="form-control" id="an"  oninput='stringValidate(this)'  maxlength="50" required="required" autocomplete="off">
+                                                    <input type="text" name="an" class="form-control" id="an"  oninput='stringValidate(this)'  maxlength="15" required="required" autocomplete="off">
                                                 </div>
                                             </div>
 

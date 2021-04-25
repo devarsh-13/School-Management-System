@@ -4,28 +4,34 @@ error_reporting(0);
 include('connection.php');
 include('store_data.php');
 
-include("../ec_dc.php");
-include('image_compress.php');
 
-require 'alertbox.php';
-
- 
-    $log = new Log();
-$obj = new ecdc();
-if (strlen($_SESSION['a_id']) == "") 
-{
+if (strlen($_SESSION['a_id']) == "") {
     header("Location: index.php");
-} 
-else 
-{
-   
+} else {
+
+    $log = new Log();
     if (!(isset($_POST['gr']))) {
         $action = "In Add Student";
         $log->success_entry($action, $Conn);
     }
 
-    if (isset($_POST['submit'])) 
-    {
+    if (isset($_POST['submit'])) {
+
+
+
+
+        $uploadFolder = '../user_photos/';
+
+
+        $imageTmpName = $_FILES['file']['tmp_name'];
+        $imageName = $_FILES['file']['name'];
+        $result = move_uploaded_file($imageTmpName, $uploadFolder . $imageName);
+
+        if ($result == null) {
+
+            $imageName = "student_default.jpg";
+        }
+
 
         $gr = $_POST['gr'];
         $ui = $_POST['ui'];
@@ -40,10 +46,7 @@ else
         $home = $_POST['home'];
         $hand = $_POST['hand'];
         $des = $_POST['des'];
-
-        $os=$_POST['pass'];
-        $pass= $obj->encrypt($os);
-       
+        $pass = sha1($_POST['pass']);
         $re = $_POST['re'];
         $stat = "offline";
         // $ay=date('Y').'-'.(date('Y')+1);
@@ -83,94 +86,73 @@ else
             $error5 = true;
         }
 
-        if($error5==false)
-        {
-            if(isset($_FILES['file']))
-            {
-                $uploadFolder = '../user_photos/student/';
 
-                $imageTmpName = $_FILES['file']['tmp_name'];
-                $extension=pathinfo($_FILES["file"]["name"],PATHINFO_EXTENSION);
 
-                $imageName = $gr.".".$extension;
 
-                $result = compress($imageTmpName,$uploadFolder.$imageName);
-            }   
-            else
-            {
-                $imageName = "student_default.jpg";
-            }
 
-            $Sql = "INSERT INTO `students` 
-                                        (
-                                            `S_photo`,
-                                            `S_grn`, 
-                                            `S_uidn`, 
-                                            `S_name`, 
-                                            `S_caste`, 
-                                            `S_category`, 
-                                            `S_dob`, 
-                                            `S_contact`, 
-                                            `S_ad_date`, 
-                                            `Class_id`, 
-                                            `S_adharn`, 
-                                            `S_hostel`, 
-                                            `S_home`, 
-                                            `S_handicapped`, 
-                                            `S_describe`, 
-                                            `S_password`, 
-                                            `S_remarks`,
-                                            `Academic_year`, 
-                                            `is_deleted`, 
-                                            `Created_on`,
-                                            `s_status`,
-                                            `updated`
-                                        )VALUES(
-                                            '$imageName',
-                                            '$gr', 
-                                            '$ui', 
-                                            '$sn',
-                                            '$cast', 
-                                            '$cat', 
-                                            '$dob', 
-                                            '$con', 
-                                            '$adate', 
-                                            '$ci[0]', 
-                                            '$adhar', 
-                                            '$hostel', 
-                                            '$home', 
-                                            '$hand', 
-                                            '$des', 
-                                            '$pass', 
-                                            '$re',
-                                            '$ay', 
-                                            '0', 
-                                            '$d',
-                                            '$stat',
-                                            '0'
-                                        )";
 
-            $q = mysqli_query($Conn, $Sql) or die(mysqli_error($Conn));
-           
-         
-            if ($q) {
-                 $action = "Student Added";
-                $log->success_entry($action, $Conn) or die(mysqli_error($Conn));
-                echo "
-                <script>
-                
-                window.onload = function()
-                {
-                    suc('Student ADD Successfully.','add-students.php') or die(mysqli_error($Conn));
-                }</script>";
-                
 
-            } else {
 
-                $log->success_entry($action, $Conn, "Unsuccessful");
+        $Sql = "INSERT INTO `students` 
+                                    (
+                                        `S_photo`,
+                                        `S_grn`, 
+                                        `S_uidn`, 
+                                        `S_name`, 
+                                        `S_caste`, 
+                                        `S_category`, 
+                                        `S_dob`, 
+                                        `S_contact`, 
+                                        `S_ad_date`, 
+                                        `Class_id`, 
+                                        `S_adharn`, 
+                                        `S_hostel`, 
+                                        `S_home`, 
+                                        `S_handicapped`, 
+                                        `S_describe`, 
+                                        `S_password`, 
+                                        `S_remarks`,
+                                        `Academic_year`, 
+                                        `is_deleted`, 
+                                        `Created_on`,
+                                        `s_status`,
+                                        `updated`
+                                    )VALUES(
+                                        '$imageName',
+                                        '$gr', 
+                                        '$ui', 
+                                        '$sn',
+                                        '$cast', 
+                                        '$cat', 
+                                        '$dob', 
+                                        '$con', 
+                                        '$adate', 
+                                        '$ci[0]', 
+                                        '$adhar', 
+                                        '$hostel', 
+                                        '$home', 
+                                        '$hand', 
+                                        '$des', 
+                                        '$pass', 
+                                        '$re',
+                                        '$ay', 
+                                        '0', 
+                                        '$d',
+                                        '$stat',
+                                        '0'
+                                    )";
 
-                $error = "Something went wrong. Please try again";
-            }
+        $q = mysqli_query($Conn, $Sql) or die(mysqli_error($Conn));
+        $action = "Student Added";
+        if ($q) {
+
+            $log->success_entry($action, $Conn);
+            echo "<script>alert('Student Info Added Successfully');window.location.href='add-students.php';</script>";
+        } else {
+
+            $log->success_entry($action, $Conn, "Unsuccessful");
+
+            $error = "Something went wrong. Please try again";
         }
     }
 ?>
@@ -178,30 +160,23 @@ else
     <html lang="en">
 
     <head>
-    
         <script type="text/javascript">
-            
-            function Check_class() 
-            {
-                if (document.getElementById("clas").value == 11 || document.getElementById("clas").value == 12) 
-                {
+            function Check_class() {
+
+                if (document.getElementById("clas").value == 11 || document.getElementById("clas").value == 12) {
                     document.getElementById("stream").required = true;
                     document.getElementById("stream").disabled = false;
-                    if (document.getElementById("stream").value == "NULL") 
-                    {
+                    if (document.getElementById("stream").value == "NULL") {
                         document.getElementById("stream").value = "";
                     }
                 } else {
-
-                	
                     document.getElementById("stream").required = false;
                     document.getElementById("stream").disabled = true;
                     document.getElementById("stream").value = "NULL";
                 }
             }
 
-            function desc(i) 
-            {
+            function desc(i) {
                 var c = document.getElementById("hand1").checked;
                 var c2 = document.getElementById("hand2").checked;
                 if (c == true) {
@@ -217,7 +192,10 @@ else
                     document.getElementById("des").required = false;
                     document.getElementById("des").value = "NULL";
                     document.getElementById("des").disabled = true;
-                } 
+                } else {
+
+                }
+
 
             }
         </script>
@@ -310,68 +288,68 @@ else
                                     <!-- MAIN CONTENT GOES HERE -->
                                     <div class="panel-body">
 
-                                        <form class="form-horizontal" method="post" enctype="multipart/form-data">
+                                        <form class="form-horizontal" method="post">
 
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Gr Number</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" name="gr" class="form-control"  oninput='digitValidate(this)' pattern=".{5}"  title=" 5 numbers" maxlength="5" id="gr" autocomplete="off" required>
+                                                    <input type="text" name="gr" class="form-control" required="required" oninput='digitValidate(this)' pattern=".{5}" required title=" 5 numbers" maxlength="5" id="gr" autocomplete="off">
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">UID Number</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" name="ui" class="form-control"  id="ui" oninput='digitValidate(this)' pattern=".{18}"  title=" 18 numbers" maxlength="18" autocomplete="off" required>
+                                                    <input type="text" name="ui" class="form-control" required="required" id="ui" oninput='digitValidate(this)' pattern=".{18}" required title=" 18 numbers" maxlength="18" autocomplete="off">
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Student Name</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" name="sn" class="form-control" oninput='stringValidate(this)' maxlength="50"  id="sn"  autocomplete="off" required>
+                                                    <input type="text" name="sn" class="form-control" oninput='stringValidate(this)' maxlength="15" required="required" id="sn" autocomplete="off">
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Caste</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" name="cast" class="form-control" oninput='stringValidate(this)'  maxlength="20"  id="cast" autocomplete="off" required>
+                                                    <input type="text" name="cast" class="form-control" oninput='stringValidate(this)' required="required" id="cast" autocomplete="off">
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Category</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" name="cat" class="form-control" oninput='stringValidate(this)'  maxlength="20"  id="cat" autocomplete="off" required>
+                                                    <input type="text" name="cat" class="form-control" oninput='stringValidate(this)' required="required" id="cat" autocomplete="off">
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Date of Birth</label>
                                                 <div class="col-sm-10">
-                                                    <input type="date" name="dob" class="form-control"  id="dob" min="1900-01-01" max='<?php echo date('Y-m-d');?>' autocomplete="off" required>
+                                                    <input type="date" name="dob" class="form-control" required="required" id="dob" min="1900-01-01" max='<?php echo date('Y-m-d');?>' autocomplete="off">
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Contact</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" name="con" class="form-control"  id="con" oninput='digitValidate(this)' pattern=".{10}"  title=" 10 numbers" maxlength="10" autocomplete="off" required>
+                                                    <input type="text" name="con" class="form-control" required="required" id="con" oninput='digitValidate(this)' pattern=".{10}" required title=" 10 numbers" maxlength="10" autocomplete="off">
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Admission Date</label>
                                                 <div class="col-sm-10">
-                                                    <input type="date" name="adate" class="form-control"  id="adate"  min="1990-01-01" max='<?php echo date('Y-m-d');?>' autocomplete="off" required>
+                                                    <input type="date" name="adate" class="form-control" required="required" id="adate"  min="1990-01-01" max='<?php echo date('Y-m-d');?>' autocomplete="off">
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Class</label>
                                                 <div class="col-sm-10">
-                                                    <Select name="class" class="form-control" id="clas"  autocomplete="off" onkeyup="Check_class()" onclick="Check_class()" required>
+                                                    <Select name="class" class="form-control" id="clas" required="required" autocomplete="off" onkeyup="Check_class()" onclick="Check_class()">
                                                         <option value="NULL">---Select---</option>
                                                         <option value="9">9</option>
                                                         <option value="10">10</option>
@@ -398,7 +376,7 @@ else
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Academic Year</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" name="AY" class="form-control"  pattern="[0-9]{4}-[0-9]{4}"  title="pattern should be yyyy-yyyy "  id="AY" autocomplete="off" required>
+                                                    <input type="text" name="AY" class="form-control"  pattern="[0-9]{4}-[0-9]{4}" required title="pattern should be yyyy-yyyy "   required="required" id="AY" autocomplete="off">
                                                 </div>
                                             </div>
 
@@ -415,14 +393,14 @@ else
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Adhar Number</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" name="adhar" class="form-control" oninput='digitValidate(this)'  id="adhar" pattern=".{12}"   title=" 12 numbers" maxlength='12' autocomplete="on" required>
+                                                    <input type="text" name="adhar" class="form-control" oninput='digitValidate(this)' required="required" id="adhar" pattern=".{12}" required title=" 12 numbers" maxlength='12' autocomplete="on">
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Home Address</label>
                                                 <div class="col-sm-10">
-                                                    <textarea rows="5" name="home" class="form-control"  id="home" autocomplete="off" maxlength="40" required></textarea>
+                                                    <textarea rows="5" name="home" class="form-control" required="required" id="home" autocomplete="off" maxlength="40"></textarea>
                                                 </div>
                                             </div>
 
@@ -431,7 +409,7 @@ else
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Hostel Address</label>
                                                 <div class="col-sm-10">
-                                                    <textarea rows="5" name="hostel" class="form-control" id="hostel" autocomplete="off" maxlength="40" ></textarea>
+                                                    <textarea rows="5" name="hostel" class="form-control" id="hostel" autocomplete="off" maxlength="40"></textarea>
                                                 </div>
                                             </div>
 
@@ -439,8 +417,8 @@ else
                                                 <label for="default" class="col-sm-2 control-label">Handicapped</label>
                                                 <div class="col-sm-10">
 
-                                                    <input type="radio" name="hand" value="Yes"  onclick="desc()" id="hand1" required>Yes</input>
-                                                    <input type="radio" name="hand" value="No"  onclick="desc()" id="hand2" required>No</input>
+                                                    <input type="radio" name="hand" value="Yes" required onclick="desc()" id="hand1">Yes</input>
+                                                    <input type="radio" name="hand" value="No" required onclick="desc()" id="hand2">No</input>
                                                 </div>
                                             </div>
 
@@ -448,14 +426,14 @@ else
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">If Yes Describe</label>
                                                 <div class="col-sm-10">
-                                                    <textarea rows="5" name="des" class="form-control" id="des" autocomplete="off" ></textarea>
+                                                    <textarea rows="5" name="des" class="form-control" id="des" autocomplete="off"></textarea>
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Password</label>
                                                 <div class="col-sm-10">
-                                                    <input type="password" name="pass"  class="form-control" id="pass" maxlength="15" minlength="4" autocomplete="off" required>
+                                                    <input type="password" name="pass" required="required" class="form-control" id="pass" maxlength="15" minlength="4" autocomplete="off">
                                                 </div>
                                             </div>
 
