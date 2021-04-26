@@ -61,6 +61,7 @@ $update = mysqli_query($Conn, "UPDATE teachers SET t_status ='offline' WHERE T_s
     <link rel="stylesheet" href="assets/css/default-css.css">
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="assets/css/responsive.css">
+    <meta name="MobileOptimized" content="320" />
     <!-- modernizr css -->
     <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
     <style type="text/css">
