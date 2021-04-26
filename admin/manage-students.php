@@ -32,8 +32,9 @@ if(strlen($_SESSION['a_id'])=="")
                 $action="Delete Student Row";
                 $log1=new Log();
                 $log1->success_entry($action,$Conn);
-                $msg="Student Info Deleted Successfully";
+                
                 unset($_GET['S_id']);
+                   echo "<script>alert('Student Deleted Successfully.');window.location.href='manage-students.php';</script>";   
                
             }
             else 
@@ -41,8 +42,10 @@ if(strlen($_SESSION['a_id'])=="")
                 $action="Delete Student Row";
                 $log=new Log();
                 $log->success_entry($action,$Conn,"Unsuccessful");
-                $error="Something went wrong. Please try again";
+                
                  unset($_GET['S_id']);
+
+                   echo "<script>alert('Failed To Delete Student.');window.location.href='manage-students.php';</script>";  
             }
 
         }
@@ -307,15 +310,7 @@ if(strlen($_SESSION['a_id'])=="")
             <div class="main-content-inner">
                 <!-- MAIN CONTENT GOES HERE -->
                 <div class="panel-body">
-<?php if($msg){?>
-<div class="alert alert-success left-icon-alert" role="alert">
- <?php echo htmlentities($msg); ?>
- </div><?php } 
-else if($error){?>
-    <div class="alert alert-danger left-icon-alert" role="alert">
-                                        <?php echo htmlentities($error); ?>
-                                        </div>
-                                        <?php } ?>
+
                                         
                                             <div class="scrollmenu">
 

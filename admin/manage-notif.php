@@ -21,30 +21,7 @@ if(strlen($_SESSION['a_id'])=="")
                 }
             }
             
- if(isset($_POST['delt']))
- {
-    $log=new Log();
-    $action="Notifications deleted";
-
-    $nid=$_POST['recordsCheckBox'];
-    
-    foreach ( $nid as $id ) 
-    { 
-        $query = "DELETE FROM `notification` WHERE `Sr_n`='$id'";
-        $result = $Conn->query($query) or die("Error in query".$Conn->error);
-    }
-
-    if($result)
-    {
-        $msg="Notification Deleted Successfully";
-        $log->success_entry($action,$Conn);
-    }
-    else 
-    {
-        $error="Something went wrong. Please try again";
-        $log->success_entry($action,$Conn,"Unsuccessful");
-    }
-}
+ 
 if (isset($_GET['N_id']))
 {
     $log=new Log();
@@ -57,13 +34,16 @@ if (isset($_GET['N_id']))
    
     if($delete)
     {
-        $msg="Notification Deleted Successfully";
+        
         $log->success_entry($action,$Conn);
+        echo "<script>alert('Notification Deleted Successfully');window.location.href='manage-notif.php';</script>";   
+
     }
     else 
     {
-        $error="Something went wrong. Please try again";
+        
         $log->success_entry($action,$Conn,"Unsuccessful");
+         echo "<script>alert('Failed To Delete Notification.');window.location.href='manage-notif.php';</script>";   
     }
 }
 
@@ -209,15 +189,7 @@ if (isset($_GET['N_id']))
             <div class="main-content-inner">
                 <!-- MAIN CONTENT GOES HERE -->
                 <div class="panel-body">
-<?php if($msg){?>
-<div class="alert alert-success left-icon-alert" role="alert">
- <?php echo htmlentities($msg); ?>
- </div><?php } 
-else if($error){?>
-    <div class="alert alert-danger left-icon-alert" role="alert">
-                                        <?php echo htmlentities($error); ?>
-                                        </div>
-                                        <?php } ?>
+
                                             <div class="scrollmenu">
 
                                              
@@ -257,7 +229,7 @@ if($row > 0)
                             <a href="manage-notif.php?N_id=<?php echo $result['Sr_n'];?>">
                               <img src="images/delete-icon.jpg" height="25px" width='25px'/>&nbsp;Delete</a>
                               
-                              <input type="checkbox" name="recordsCheckBox[]" id="recordsCheckBox" class="chh" value="<?php echo $result['Sr_n'];?>" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
                           </td>
                       

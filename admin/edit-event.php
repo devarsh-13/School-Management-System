@@ -37,14 +37,14 @@ if($q)
 {
    
     $log->success_entry($action,$Conn);
-    $msg="Event Edit Successfully";
     unset($_POST);
+    echo "<script>alert('Event Edit Successfully.');window.location.href='edit-event.php';</script>";   
 }
 else 
 {
    
     $log->success_entry($action,$Conn,"Unsuccessful");
-    $error="Something went wrong. Please try again";
+    echo "<script>alert('Failed To Edit Event.');window.location.href='edit-event.php';</script>";
     
 }
 

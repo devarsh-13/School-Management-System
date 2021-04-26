@@ -4,7 +4,7 @@ session_start();
 error_reporting(0);
 include('connection.php');
 include('store_data.php');
-require 'alertbox.php';
+
 
 if(strlen($_SESSION['a_id'])=="")
     {   
@@ -33,12 +33,8 @@ if (isset($_GET['Sr_id']))
 
         $log=new Log();
         $log->success_entry($action,$Conn); 
-
-         echo "     <script>
-                window.onload = function()
-                {
-                    suc('Student Info Restore Successfully.','bin-students.php');
-                }</script>";
+         echo "<script>alert('Student Info Restore Successfully');window.location.href='bin-students.php';</script>";   
+        
         
         
 }
@@ -47,11 +43,8 @@ else
 
         $log=new Log();
         $log->success_entry($action,$Conn,"Unsuccessful"); 
-          echo "     <script>
-                window.onload = function()
-                {
-                    uns('Failed To Restore Student Info.','bin-students.php');
-                }</script>";   
+          echo "<script>alert('Failed To Restore Student Info.');window.location.href='bin-students.php';</script>";   
+      
 
 }
 }
@@ -317,15 +310,7 @@ else
             <div class="main-content-inner">
                 <!-- MAIN CONTENT GOES HERE -->
                 <div class="panel-body">
-<?php if($msg){?>
-<div class="alert alert-success left-icon-alert" role="alert">
- <?php echo htmlentities($msg); ?>
- </div><?php } 
-else if($error){?>
-    <div class="alert alert-danger left-icon-alert" role="alert">
-                                        <?php echo htmlentities($error); ?>
-                                        </div>
-                                        <?php } ?>
+
                                         
                                             <div class="scrollmenu">
 

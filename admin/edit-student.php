@@ -50,14 +50,16 @@ if (strlen($_SESSION['a_id']) == "") {
         if ($q) {
 
             $log->success_entry($action, $Conn);
-            $msg = "Student Info Edit Successfully";
+            
             unset($_POST['gr']);
+             echo "<script>alert('Student Info. Edit Successfully.');window.location.href='edit-student.php';</script>";   
         } else {
 
             $log->success_entry($action, $Conn, "Unsuccessful");
 
-            $error = "Something went wrong. Please try again";
+            
             unset($_POST['gr']);
+            echo "<script>alert('Failed To Edit Student.');window.location.href='edit-student.php';</script>";   
         }
     }
 ?>

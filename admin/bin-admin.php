@@ -4,7 +4,7 @@ session_start();
 error_reporting(0);
 include('connection.php');
 include('store_data.php');
-require 'alertbox.php';
+
 
 $log=new Log();
 
@@ -32,21 +32,15 @@ if (isset($_GET['a_id']))
     {
      
         $log->success_entry($action,$Conn); 
-         echo "     <script>
-                window.onload = function()
-                {
-                    suc('Admin Info Restore Successfully.','bin-admin.php');
-                }</script>";
+  
+         echo "<script>alert('Admin Info Restore Successfully');window.location.href='bin-admin.php';</script>";   
         
 }
 else 
 {
     $log->success_entry($action,$Conn,"Unsuccessful"); 
-         echo "     <script>
-                window.onload = function()
-                {
-                    uns('Failed To Restore Admin Info.','bin-admin.php');
-                }</script>";   
+         
+            echo "<script>alert('Failed To Restore Admin Info.');window.location.href='bin-admin.php';</script>";   
 }
 }
     

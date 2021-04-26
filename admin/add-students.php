@@ -3,9 +3,7 @@ session_start();
 error_reporting(0);
 include('connection.php');
 include('store_data.php');
-include('Image_compress.php');
-include('alertbox.php');
-
+include('../ec_dc.php');
 
 if (strlen($_SESSION['a_id']) == "") 
 {
@@ -13,9 +11,10 @@ if (strlen($_SESSION['a_id']) == "")
 } 
 else 
 {
-
+    $obj = new ecdc();
     $log = new Log();
-    if (!(isset($_POST['gr']))) {
+    if (!(isset($_POST['gr']))) 
+    {
         $action = "In Add Student";
         $log->success_entry($action, $Conn);
     }
@@ -35,7 +34,10 @@ else
         $home = $_POST['home'];
         $hand = $_POST['hand'];
         $des = $_POST['des'];
-        $pass = sha1($_POST['pass']);
+
+        
+        $os=$_POST['pass'];
+        $pass = $obj->encrypt($os);
         $re = $_POST['re'];
         $stat = "offline";
         // $ay=date('Y').'-'.(date('Y')+1);
@@ -62,16 +64,16 @@ else
 
         $uploadFolder = '../user_photos/student/';
 
-        if(strlen($_FILES['file']['name'])=="")
-        {
+
+        $imageTmpName = $_FILES['file']['tmp_name'];
+        $imageName = $_FILES['file']['name'];
+        $result = move_uploaded_file($imageTmpName, $uploadFolder . $imageName);
+
+        if ($result == null) {
+
             $imageName = "student_default.jpg";
         }
-        else
-        {
-            $imageTmpName = $_FILES['file']['tmp_name'];
-            $extension=pathinfo($_FILES['file']['name'],PATHINFO_EXTENSION);
-            $imageName = "$gr.$extension";
-        }
+
         
         $Sql = "INSERT INTO `students` 
                                     (
@@ -123,24 +125,21 @@ else
                                     )";
 
         $q = mysqli_query($Conn, $Sql) or die(mysqli_error($Conn));
-        $action = "Student Added";
+       
         if ($q) 
         {
-            $result = compress($imageTmpName, $uploadFolder.$imageName);
+             $action = "Student Added";   
             $log->success_entry($action, $Conn);
-             echo "     <script>
-                window.onload = function()
-                {
-                    suc('Event ADD Successfully.','add-student.php');
-                }</script>";
             
+            echo "<script>alert('Student Info Added Successfully');window.location.href='add-students.php';</script>";   
         }
         else 
         {
 
             $log->success_entry($action, $Conn, "Unsuccessful");
+            echo "<script>alert('Failed To Add Student');window.location.href='add-students.php';</script>";   
 
-            $error = "Something went wrong. Please try again";
+            
         }
     }
 
@@ -248,10 +247,6 @@ else
             <?php include('leftbar.php'); ?>
             <div class="main-content">
                 <?php include('topbar.php'); ?>
-
-
-
-
                 <!-- page title area start -->
                 <div class="header-area">
                     <div class="row align-items-center">
@@ -296,14 +291,14 @@ else
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">UID Number</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" name="ui" class="form-control" required="required" id="ui" oninput='digitValidate(this)' pattern=".{18}" required title=" 18 numbers" maxlength="18" autocomplete="off">
+                                                    <input type="text" name="ui" class="form-control" required="required" id="ui" oninput='digitValidate(this)' pattern=".{18}" required title=" 18 numbers" maxlength="18" autocomplete="off" />
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Student Name</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" name="sn" class="form-control" oninput='stringValidate(this)' maxlength="15" required="required" id="sn" autocomplete="off">
+                                                    <input type="text" name="sn" class="form-control" oninput='stringValidate(this)' maxlength="15" required="required" id="sn" autocomplete="off" />
                                                 </div>
                                             </div>
 
@@ -351,7 +346,7 @@ else
                                                         <option value="10">10</option>
                                                         <option value="11">11</option>
                                                         <option value="12">12</option>
-                                                    </select>
+                                                    </Select>
                                                 </div>
                                             </div>
 
@@ -372,15 +367,15 @@ else
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Academic Year</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" name="AY" class="form-control"  pattern="[0-9]{4}-[0-9]{4}" required title="pattern should be yyyy-yyyy "   required="required" id="AY" autocomplete="off" maxlength="9">
-                                                </div>
+                                                    <input type="text" name="AY" class="form-control"  pattern="[0-9]{4}-[0-9]{4}" required title="pattern should be yyyy-yyyy "   required="required" id="AY" autocomplete="off" maxlength="9" />
+                                                </div> 
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Student Image</label>
                                                 <div class="col-sm-10">
 
-                                                    <input type="file" name="file" class="form-control" id="img">
+                                                    <input type="file" name="file" class="form-control" id="img" />
 
                                                 </div>
                                             </div>
@@ -389,7 +384,7 @@ else
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Adhar Number</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" name="adhar" class="form-control" oninput='digitValidate(this)' required="required" id="adhar" pattern=".{12}" required title=" 12 numbers" maxlength='12' autocomplete="off">
+                                                    <input type="text" name="adhar" class="form-control" oninput='digitValidate(this)' required="required" id="adhar" pattern=".{12}" required title=" 12 numbers" maxlength='12' autocomplete="off" />
                                                 </div>
                                             </div>
 
@@ -413,8 +408,8 @@ else
                                                 <label for="default" class="col-sm-2 control-label">Handicapped</label>
                                                 <div class="col-sm-10">
 
-                                                    <input type="radio" name="hand" value="Yes" required onclick="desc()" id="hand1">Yes</input>
-                                                    <input type="radio" name="hand" value="No" required onclick="desc()" id="hand2">No</input>
+                                                    <input type="radio" name="hand" value="Yes" required onclick="desc()" id="hand1" />Yes
+                                                    <input type="radio" name="hand" value="No" required onclick="desc()" id="hand2" />No
                                                 </div>
                                             </div>
 

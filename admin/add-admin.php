@@ -4,7 +4,7 @@ error_reporting(0);
 include('connection.php');
 include('store_data.php');
 require "../ec_dc.php";
-require 'alertbox.php';
+
 $obj = new ecdc();
 $log = new Log();
 
@@ -78,11 +78,7 @@ $a = $_SESSION['a_id'];
         {
             $log->success_entry($action, $Conn);
             unset($_POST['an']);
-             echo "     <script>
-                window.onload = function()
-                {
-                    suc('Admin ADD Successfully.','add-admin.php');
-                }</script>";
+            echo "<script>alert('Admin Info Added Successfully');window.location.href='add-admin.php';</script>";   
 
         } else 
         {
@@ -90,11 +86,7 @@ $a = $_SESSION['a_id'];
             $log->success_entry($action, $Conn, "Unsuccessful");
              unset($_POST['an']);
 
-               echo "     <script>
-                window.onload = function()
-                {
-                    uns('Failed To Add Admin.','add-admin.php');
-                }</script>";
+           echo "<script>alert('Failed To Add Admin');window.location.href='add-admin.php';</script>";   
         }
     }
 ?>

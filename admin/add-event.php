@@ -4,7 +4,7 @@ error_reporting(0);
 
 include('connection.php');
 include('store_data.php');
-require 'alertbox.php';
+
 
 if(strlen($_SESSION['a_id'])=="")
 {   
@@ -37,20 +37,14 @@ if(isset($_POST['submit']))
 if($insert)
 {
     $log->success_entry($action,$Conn);
-     echo "     <script>
-                window.onload = function()
-                {
-                    suc('Event ADD Successfully.','add-event.php');
-                }</script>";
+       echo "<script>alert('Event ADD Successfully');window.location.href='add-event.php';</script>";   
+    
 }
 else 
 {
     $log->success_entry($action,$Conn,"Unsuccessful");
-    echo "     <script>
-                window.onload = function()
-                {
-                    uns('Failed To Add Event.','add-event.php');
-                }</script>";
+   
+      echo "<script>alert('Failed To Add Event');window.location.href='add-event.php';</script>";   
 }
 
 }

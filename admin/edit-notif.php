@@ -35,15 +35,17 @@ else
         $action="Notifications Edited";
         if($q)
         {
-            $msg="Notification Edit Successfully";
+            
             $log->success_entry($action,$Conn);
             unset($_POST);
+            echo "<script>alert('Notification Edit Successfully.');window.location.href='edit-notif.php';</script>";
 
         }
         else 
         {
-            $error="Something went wrong. Please try again";
+         
             $log->success_entry($action,$Conn,"Unsuccessful");
+            echo "<script>alert('Failed To Edit Notification.');window.location.href='edit-notif.php';</script>";
         }
 
     }

@@ -6,6 +6,7 @@ error_reporting(0);
 include('connection.php');
 include('store_data.php');
 
+
 if(strlen($_SESSION['a_id'])=="")
     {   
     header("Location: index.php"); 
@@ -29,13 +30,17 @@ if(strlen($_SESSION['a_id'])=="")
                 
                 if($delete)
                 {
-                    $msg="Teacher Info Restore Successfully";
+                    
                     $log->success_entry($action,$Conn);
+                     echo "<script>alert('Teacher Info Restore Successfully.');window.location.href='bin-teachers.php';</script>";   
+                  
                 }
                 else 
                 {
-                    $error="Something went wrong. Please try again";
+                    
                     $log->success_entry($action,$Conn,"Unsuccessful");
+                      echo "<script>alert('Failed To Restore Teacher Info.');window.location.href='bin-teachers.php';</script>";   
+                    
                 }
             }
     
@@ -318,15 +323,7 @@ input.chh
             <div class="main-content-inner">
                 <!-- MAIN CONTENT GOES HERE -->
                 <div class="panel-body">
-<?php if($msg){?>
-<div class="alert alert-success left-icon-alert" role="alert">
- <?php echo htmlentities($msg); ?>
- </div><?php } 
-else if($error){?>
-    <div class="alert alert-danger left-icon-alert" role="alert">
-                                         <?php echo htmlentities($error); ?>
-                                        </div>
-                                        <?php } ?>
+
                                             <div class="scrollmenu">
 
                                              <!--   <table id="example" class="display table table-striped table-bordered" cellspacing="0" width="100%">-->

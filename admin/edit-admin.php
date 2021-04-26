@@ -53,15 +53,16 @@ $Sql="UPDATE `admin` SET `A_Photo`='$imageName',`A_name`='$an',`A_mobile`='$con'
             
             $log->success_entry($action, $Conn);
 
-            $msg = "Admin Info Edit Successfully";
+            
             unset($_POST['an']);
+            echo "<script>alert('Admin Info. Edit Successfully.');window.location.href='edit-admin.php';</script>";   
             
         } 
         else 
         {
             
             $log->success_entry($action, $Conn, "Unsuccessful");
-            $error = "Something went wrong. Please try again";
+            echo "<script>alert('Failed To Edit Admin.');window.location.href='edit-admin.php';</script>";   
             
         }
     }

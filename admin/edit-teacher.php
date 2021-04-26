@@ -42,14 +42,16 @@ if($q)
 {
     
     $log->success_entry($action,$Conn);
-    $msg="Teacher Info Edit Successfully";
+    
     unset($_POST['tn']);
+    echo "<script>alert('Teacher Info. Edit Successfully.');window.location.href='edit-teacher.php';</script>";   
 }
 else 
 {
     $log->success_entry($action,$Conn,"Unsuccessful");
-    $error="Something went wrong. Please try again";
+    
     unset($_POST['tn']);
+     echo "<script>alert('Failed To Edit Teacher.');window.location.href='edit-teacher.php';</script>";   
 }
 
 }

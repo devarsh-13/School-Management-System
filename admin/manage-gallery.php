@@ -41,14 +41,17 @@ if(strlen($_SESSION['a_id'])=="")
             if($delete)
             {
                 $d=  unlink($full);
-                $msg="Image Deleted Successfully";
+                
                 $log->success_entry($action,$Conn); 
                 unset($_GET['G_id']);
+                   echo "<script>alert('Image Deleted successfully.');window.location.href='manage-gallery.php';</script>";   
+    
             }
             else 
             {
-                $error="Something went wrong. Please try again";
+               
                 $log->success_entry($action,$Conn,"Unsuccessful"); 
+                 echo "<script>alert('Failed To Delete Image.');window.location.href='manage-gallery.php';</script>";   
             }
         }
     }
@@ -202,15 +205,7 @@ if(strlen($_SESSION['a_id'])=="")
             <div class="main-content-inner">
                 <!-- MAIN CONTENT GOES HERE -->
                 <div class="panel-body">
-<?php if($msg){?>
-<div class="alert alert-success left-icon-alert" role="alert">
- <?php echo htmlentities($msg); ?>
- </div><?php } 
-else if($error){?>
-    <div class="alert alert-danger left-icon-alert" role="alert">
-                                         <?php echo htmlentities($error); ?>
-                                        </div>
-                                        <?php } ?>
+
                                             <div class="scrollmenu">
 
                                              <table id="example" class="display nowrap" width="100%">

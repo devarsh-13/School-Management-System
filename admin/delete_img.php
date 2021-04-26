@@ -25,10 +25,13 @@ if(isset($_POST["id"]))
         if($flag==1)
         {
             $log->success_entry($action,$Conn);
+               echo "<script>alert('Images Deleted successfully.');window.location.href='manage-gallery.php';</script>";   
+    
         }
         else
         {
             $log->success_entry($action,$Conn,"Unsuccessful");
+            echo "<script>alert('Failed To Delete Images.');window.location.href='manage-gallery.php';</script>";               
         }
     }
 

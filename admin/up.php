@@ -39,6 +39,7 @@
         {
             $flag=1;
             compress($imageTmpName,$uploadFolder.$imageName);
+            
         }
     }
     if($flag)

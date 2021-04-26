@@ -4,7 +4,7 @@ error_reporting(0);
 include('connection.php');
 include('store_data.php');
 require "../ec_dc.php";
-require 'alertbox.php';
+
 
 $obj = new ecdc();
 if (strlen($_SESSION['a_id']) == "") {
@@ -92,11 +92,8 @@ if (strlen($_SESSION['a_id']) == "") {
             $log->success_entry($action, $Conn);
             
             unset($_POST['tn']);
-             echo "     <script>
-                window.onload = function()
-                {
-                    suc('Teacher ADD Successfully.','add-teachers.php');
-                }</script>";
+            
+                 echo "<script>alert('Teacher ADD Successfully');window.location.href='add-teachers.php';</script>";   
         }
         else 
         {
@@ -104,11 +101,8 @@ if (strlen($_SESSION['a_id']) == "") {
             $log->success_entry($action, $Conn, "Unsuccessful");
          
             unset($_POST['tn']);
-             echo "     <script>
-                window.onload = function()
-                {
-                    uns('Failed To Add Teacher.','add-teachers.php');
-                }</script>";
+             echo "<script>alert('Failed To Add Teacher');window.location.href='add-teachers.php';</script>";  
+         
         }
     }
 ?>

@@ -30,15 +30,14 @@ if (isset($_GET['T_id']))
     if ($delete)
     {
         $log->success_entry($action,$Conn);       
-        $msg="Teacher Deleted successfully";
-
         unset($_GET['T_id']);
-        // header("Location:manage-teachers.php");
+        echo "<script>alert('Teacher Deleted Successfully.');window.location.href='manage-teachers.php';</script>";   
     }
     else 
     {
         $log->success_entry($action,$Conn,"Unsuccessful");
-        $error="Something went wrong. Please try again";
+        
+        echo "<script>alert('Failed To Delete Teacher.');window.location.href='manage-teachers.php';</script>";   
     }
 }
 ?>

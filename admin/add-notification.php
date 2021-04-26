@@ -3,7 +3,7 @@ session_start();
 error_reporting(0);
 include('connection.php');
 include('store_data.php');
-require 'alertbox.php';
+
 if(strlen($_SESSION['a_id'])=="")
     {   
     header("Location: index.php"); 
@@ -35,20 +35,12 @@ if(isset($_POST['submit']))
 if($insert)
 {
     $log->success_entry($action,$Conn);
-     echo "     <script>
-                window.onload = function()
-                {
-                    suc('Notification ADD Successfully.','add-notification.php');
-                }</script>";
+     echo "<script>alert('Notification Add Successfully');window.location.href='add-notification.php';</script>";
 }
 else 
 {
     $log->success_entry($action,$Conn,"Unsucessful");
-     echo "     <script>
-                window.onload = function()
-                {
-                    uns('Failed To Add Notification.','add-notification.php');
-                }</script>";
+    echo "<script>alert('Failed To Add Notification');window.location.href='add-notification.php';</script>";
 }
 
 }

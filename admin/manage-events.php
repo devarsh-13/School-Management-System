@@ -35,13 +35,14 @@ if($result)
     $log->success_entry($action,$Conn);
     $msg="Event Deleted Successfully";
     unset($_GET['E_id']);
-    header("location:manage-events.php");
+     echo "<script>alert('Event Deleted successfully.');window.location.href='manage-events.php';</script>";   
+    
 }
 else 
 {
     $log->success_entry($action,$Conn,"Unsuccessful");
+        echo "<script>alert('Failed To Delete Event.');window.location.href='manage-events.php';</script>";   
 
-$error="Something went wrong. Please try again";
 }
             }
 
