@@ -31,6 +31,10 @@
                                         <a href="manage-admin.php"><i class="fa fa-server"></i> <span>Manage Admin</span> </a>
                                      
                                     </li>
+                                     <li>
+                                        <a href="bin-admin.php"><i class="fa fa-server"></i> <span>Deleted Admin</span> </a>
+                                     
+                                    </li>
                                         </ul>
                             </li>
                            <li class="has-children">
@@ -39,6 +43,8 @@
                                             <li><a href="add-students.php"><i class="fa fa-bars"></i> <span>Add Students</span></a></li>
                                             <li><a href="manage-students.php"><i class="fa fa fa-server"></i> <span>Manage Students</span></a></li>
                                             <li><a href="Export_stu_pass.php"><i class="fa fa-bars"></i> <span>Export Password</span></a></li>
+                                             <li><a href="stu_img_up.php"><i class="fa fa-bars"></i> <span>Add Students Images</span></a></li>
+                                              <li><a href="bin-students.php"><i class="fa fa-bars"></i> <span>Deleted Students</span></a></li>
                                         </ul>
                                     </li>
                                       <li class="has-children">
@@ -47,6 +53,8 @@
                                             <li><a href="add-teachers.php"><i class="fa fa-bars"></i> <span>Add Teachers</span></a></li>
                                             <li><a href="manage-teachers.php"><i class="fa fa fa-server"></i> <span>Manage Teachers</span></a></li>
                                             <li><a href="Export_tea_pass.php"><i class="fa fa-bars"></i> <span>Export Password</span></a></li>
+                                             <li><a href="tea_img_up.php"><i class="fa fa-bars"></i> <span>Add Teachers Images</span></a></li>
+                                              <li><a href="bin-teachers.php"><i class="fa fa-bars"></i> <span>Deleted Teachers</span></a></li>
                                         </ul>
                                     </li>
                                       <li class="has-children">

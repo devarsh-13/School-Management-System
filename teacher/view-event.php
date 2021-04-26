@@ -32,7 +32,7 @@ if(strlen($_SESSION['t_id'])=="")
         <link rel="stylesheet" href="css/main.css" media="screen" >
         <script src="js/modernizr/modernizr.min.js"></script>
 
-
+<link rel="stylesheet" href="../event_style.css" />
           <link rel="shortcut icon" type="image/png" href="assets/images/icon/favicon.ico">
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/font-awesome.min.css">
@@ -67,27 +67,14 @@ if(strlen($_SESSION['t_id'])=="")
     box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
 }
         
-.scrolling-wrapper {
-    height: 300px;
-  overflow-x: scroll;
-  overflow-y: hidden;
-  white-space: nowrap;
 
+     .scrollmenu
+    {
+        max-height: 520px;
 
-}
-  .card {
-    border: 2px solid black;
-    display: inline-block;
-    height: 100%;
-    text-align: center;
-    width: 50%;
-    padding: 9px;
-
-  }
-  .card h4
-  {
-    margin-top: 20%;
-  }
+        border: 1px solid #ddd;
+        overflow-y: scroll;
+    }
 
         </style>
     </head>
@@ -137,23 +124,58 @@ if(strlen($_SESSION['t_id'])=="")
                                        
                   <div id="owl-demo2"class="scrolling-wrapper">
 
-                  <?php
-                  require "connection.php";
+                <div class="scrollmenu ">
 
-                  $sql = ("SELECT * FROM `Event` WHERE `is_deleted`='0'") or die(mysqli_error());
+                             <div class="ec">
+      
+      <?php
 
-                  $q = mysqli_query($Conn, $sql);
+      require "connection.php";
+              $sql = ("SELECT * FROM `Event` WHERE `is_deleted`='0'") or die(mysqli_connect_error());
 
-                  while ($r = mysqli_fetch_array($q)) {
-                    echo " 
-                            <div class='card'>
-                        <h4>" . $r['Event_topic'] . "</h4>
-                        <p> " . $r['Event_text'] . "</p>
-                        <span>" . $r['event_date'] . "</span>
-                                                  
-                        </div>  ";
-                  }
-                  ?>
+              $q = mysqli_query($Conn, $sql);
+              $row = mysqli_num_rows($q);
+              if ($row == 0) 
+              {
+                echo "<center><h3>No Events</h3></center>"; 
+              }
+              else
+              {
+
+              while ($r = mysqli_fetch_array($q)) { ?>
+
+      <div class="eve">
+        <div class="el">
+          <div class="ed">
+            <div class="d"><?php $d= $r['event_date'];
+                                    echo date("d",strtotime($d));?></div>
+            <div class="m"><?php $d= $r['event_date'];
+                                    echo date("F",strtotime($d));?></div>
+          </div>
+        </div>
+
+        <div class="er">
+          <h3 class="et"><?php echo $r['Event_topic'];?></h3>
+
+          <div class="edes">
+            <?php echo $r['Event_text'];?>
+          </div>
+
+          <div class="etiming">
+            
+          </div>
+        </div>
+      </div>
+
+    <?php } } ?>
+
+
+
+
+                        
+            
+                </div>
+            </div>
 </div>
 
                                  </div>
