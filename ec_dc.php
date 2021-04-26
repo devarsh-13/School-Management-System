@@ -21,7 +21,7 @@ class ecdc
 		$encryption_iv = '1234567891011121';
 
 		// Store the encryption key
-		$encryption_key = "GeeksforGeeks";
+		$encryption_key = "sT/7DI+yMdv8aj6t";
 
 		// Use openssl_encrypt() function to encrypt the data
 		$encryption = openssl_encrypt($simple_string, $ciphering,
@@ -39,7 +39,7 @@ class ecdc
 		 $options = 0;
 
 		// Store the decryption key
-		 $decryption_key = "GeeksforGeeks";
+		 $decryption_key = "sT/7DI+yMdv8aj6t";
 
 		// Use openssl_decrypt() function to decrypt the data
 		$decryption=openssl_decrypt ($en, $ciphering, $decryption_key, $options, $decryption_iv);

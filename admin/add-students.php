@@ -4,6 +4,8 @@ error_reporting(0);
 include('connection.php');
 include('store_data.php');
 include('../ec_dc.php');
+include('Image_compress.php');
+
 
 if (strlen($_SESSION['a_id']) == "") 
 {
@@ -60,21 +62,22 @@ else
 
             $ci = mysqli_fetch_array($q);
         }
-
-
+ 
         $uploadFolder = '../user_photos/student/';
-
-
         $imageTmpName = $_FILES['file']['tmp_name'];
-        $imageName = $_FILES['file']['name'];
-        $result = move_uploaded_file($imageTmpName, $uploadFolder . $imageName);
 
-        if ($result == null) {
-
+        if(strlen($_FILES['file']['name'])=="")
+        {
             $imageName = "student_default.jpg";
         }
+        else
+        {
+            $imageTmpName = $_FILES['file']['tmp_name'];
+            $extension=pathinfo($_FILES['file']['name'],PATHINFO_EXTENSION);
+            $imageName = "$gr.$extension";
 
-        
+        }
+
         $Sql = "INSERT INTO `students` 
                                     (
                                         `S_photo`,
@@ -128,18 +131,15 @@ else
        
         if ($q) 
         {
-             $action = "Student Added";   
+            $result = compress($imageTmpName, $uploadFolder.$imageName);
+            $action = "Student Added";   
             $log->success_entry($action, $Conn);
-            
             echo "<script>alert('Student Info Added Successfully');window.location.href='add-students.php';</script>";   
         }
         else 
         {
-
             $log->success_entry($action, $Conn, "Unsuccessful");
             echo "<script>alert('Failed To Add Student');window.location.href='add-students.php';</script>";   
-
-            
         }
     }
 
