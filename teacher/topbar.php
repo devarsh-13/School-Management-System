@@ -62,12 +62,12 @@ if (isset($_SESSION['t_id'])) {
 
 
                     
-
+<script src="set_notification.js"></script>
                    
                    
                 </div>
             </div>
-            <script src="set_notification.js"></script>
+            
         </div>
     </div>
     <!-- offset area end -->

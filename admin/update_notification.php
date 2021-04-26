@@ -18,6 +18,10 @@ if (isset($A_id)) {
     $output = "";
 
     $notification_count = 0;
+    ?>
+    
+<div class="scrollmenu">
+    <?php
     while ($r = mysqli_fetch_array($q)) {
         $notification_count = $notification_count+1;
         $output =  " 
@@ -39,6 +43,9 @@ if (isset($A_id)) {
         echo $output;
     }
     $result_students = mysqli_query($Conn, "UPDATE `admin` SET notification_count = '$notification_count' WHERE `A_id`='$A_id' ") or die(mysqli_connect_error());
+    ?>
+</div>
+    <?php
 }
 
 ?>

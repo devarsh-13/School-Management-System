@@ -55,8 +55,8 @@ if (isset($_SESSION['a_id'])) {
             <li><a class="active" data-toggle="tab" href="#activity">Notification</a></li>
             <li></li>
         </ul>
-        <div class="offset-content tab-content">
-            <div id="activity" class="tab-pane fade in show active">
+        
+           
                 <div class="recent-activity">
 
 
@@ -64,9 +64,9 @@ if (isset($_SESSION['a_id'])) {
 
 
                 </div>
-            </div>
+            
 
-        </div>
+        
         
     </div>
     <!-- offset area end -->
