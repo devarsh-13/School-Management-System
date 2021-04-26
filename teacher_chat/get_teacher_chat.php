@@ -8,14 +8,14 @@ if (isset($_SESSION['t_id'])) {
     
 
 
+    $S_srn=$_SESSION['student_id'];
 
     $T_srn = $_SESSION['t_id'];
     
     $output = "";
    
 
-
-    $chat_query = mysqli_query($Conn, "SELECT * FROM `conversation` inner join `students` ON conversation.S_srn=students.S_srn WHERE `T_srn`='$T_srn' and `is_c_deleted`='0'  ");
+    $chat_query = mysqli_query($Conn, "SELECT * FROM `conversation` WHERE `S_srn`='$S_srn'&& `T_srn`='$T_srn' && `is_c_deleted`='0'  ");
 
     if (mysqli_num_rows($chat_query) > 0) {
         while ($row = mysqli_fetch_assoc($chat_query)) {

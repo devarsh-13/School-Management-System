@@ -14,7 +14,7 @@
           $teacher_id = mysqli_real_escape_string($Conn, $_GET['teacher_id']);
 
 
-          $_SESSION['t_id']=$teacher_id;
+          $_SESSION['teacher_id']=$teacher_id;
           
           $sql = mysqli_query($Conn, "SELECT * FROM `Teachers` WHERE `T_srn` = {$teacher_id}");
           if(mysqli_num_rows($sql) > 0){
@@ -24,7 +24,7 @@
           }
         ?>
         <a href=" select_users.php" class="back-icon"><i class="fas fa-arrow-left"></i></a>
-        <img src="../user_photos/<?php echo $row['T_photo']; ?>" alt="">
+        <img src="../user_photos/teacher/<?php echo $row['T_photo']; ?>" alt="">
         <div class="details">
           <span><?php echo $row['T_name'] ?></span>
           <p><?php echo $row['t_status']; ?></p>

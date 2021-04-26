@@ -19,8 +19,10 @@ include'../ec_dc.php';
         if(!empty($message)){
                 $sender_type="S";
                 $S_srn=$_SESSION['s_id'];
+                
+            
 
-                $T_srn=$_SESSION['t_id'];
+                $T_srn=$_SESSION['teacher_id'];
 
             $d = date("Y-m-d");
             $sql = mysqli_query($Conn, "INSERT INTO `conversation` (`chat_text`,`created_on`,`S_srn`,`T_srn`,`sender_type`) VALUES ('$message','$d','$S_srn','$T_srn','$sender_type')") or die();

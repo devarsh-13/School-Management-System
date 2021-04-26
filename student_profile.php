@@ -71,7 +71,7 @@ $result = mysqli_fetch_array($query);
 					<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
 						<div class="ed_sidebar_wrapper">
 							<div class="ed_profile_img">
-								<img src="user_photos/<?php echo $result['S_photo']; ?>" alt="">
+								<img src="user_photos/student/<?php echo $result['S_photo']; ?>" alt="">
 							</div>
 							<h3><?php echo $result['S_name'];  ?></h3>
 							<div class="ed_tabs_left">

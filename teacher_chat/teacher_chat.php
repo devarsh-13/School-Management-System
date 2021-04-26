@@ -15,7 +15,7 @@ if (!isset($_SESSION['t_id'])) {
         $student_id = mysqli_real_escape_string($Conn, $_GET['student_id']);
 
 
-        $_SESSION['s_id'] = $student_id;
+        $_SESSION['student_id'] = $student_id;
 
         $sql = mysqli_query($Conn, "SELECT * FROM `students` WHERE `S_srn` = {$student_id}");
         if (mysqli_num_rows($sql) > 0) {
@@ -25,7 +25,7 @@ if (!isset($_SESSION['t_id'])) {
         }
         ?>
         <a href=" select_students.php" class="back-icon"><i class="fas fa-arrow-left"></i></a>
-        <img src="../user_photos/<?php echo $row['S_photo']; ?>" alt="">
+        <img src="../user_photos/student/<?php echo $row['S_photo']; ?>" alt="">
         <div class="details">
           <span><?php echo $row['S_name'] ?></span>
           <p><?php echo $row['s_status']; ?></p>

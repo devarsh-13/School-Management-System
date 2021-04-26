@@ -16,7 +16,7 @@
      
         if(!empty($message)){
                 $sender_type="T";
-                $S_srn=$_SESSION['s_id'];
+                $S_srn=$_SESSION['student_id'];
 
                 $T_srn=$_SESSION['t_id'];
 
