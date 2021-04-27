@@ -18,6 +18,19 @@
                     $output = "";
 
                     $notification_count = 0;
+                     ?>
+   <style type="text/css">
+       .scrollmenu
+    {
+
+        overflow-wrap: break-word;
+        overflow-y: auto;
+        width: 100%;
+        
+    }
+   </style>
+<div class="scrollmenu">
+    <?php
                     while ($r = mysqli_fetch_array($q)) {
                         $notification_count = $notification_count+1;
                         $output =  " 
@@ -39,6 +52,9 @@
                         echo $output;
                     }
                     $result_students = mysqli_query($Conn, "UPDATE `students` SET notification_count = '$notification_count' WHERE `S_srn`='$S_srn' ") or die(mysqli_connect_error());
+                     ?>
+</div>
+    <?php
                 }
 
                 ?>

@@ -18,8 +18,15 @@ if (isset($A_id)) {
     $output = "";
 
     $notification_count = 0;
-    ?>
-   
+    ?><style>
+   .scrollmenu
+    {
+
+        overflow-wrap: break-word;
+        overflow-y: auto;
+        width: 100%;
+        
+    }</style>
 <div class="scrollmenu">
     <?php
     while ($r = mysqli_fetch_array($q)) {
@@ -27,6 +34,7 @@ if (isset($A_id)) {
         $output =  " 
                             <div class='timeline-task'>
                                  <div class='icon bg1'>
+                                 
                                     <h4>" . $r['Sr_n'] . "</h4>
                                 </div>
 

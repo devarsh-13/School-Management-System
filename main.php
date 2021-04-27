@@ -56,30 +56,7 @@ if (isset($_SESSION['s_id']))
 
 
 		}
-		 .scrollmenu
-    {
-        max-height: 520px;
-
-        border: 1px solid #ddd;
-        overflow-y: scroll;
-    }
-
-  
-
-
-		.card {
-			border: 2px solid black;
-			display: inline-block;
-			height: 100%;
-			text-align: center;
-			width: 50%;
-			padding: 9px;
-
-		}
-
-		.card h4 {
-			margin-top: 20%;
-		}
+		 
 	</style>
 </head>
 

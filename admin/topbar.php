@@ -1,4 +1,4 @@
-<!--[if lt IE 8]>
+ <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 <!-- preloader area start -->
@@ -59,21 +59,21 @@ if (isset($_SESSION['a_id'])) {
             <div id="activity" class="tab-pane fade in show active">
                 <div class="recent-activity">
 
-
-<script src="set_notification.js"></script>
+                    
+                <script src="set_notification.js"></script>
 
 
                 </div>
             </div>
-
+        
         
         
     </div>
+
     <!-- offset area end -->
+    
 
-    </body>
-
-    </html>
+    
 <?php
 
 } ?>

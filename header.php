@@ -66,16 +66,16 @@ if (isset($_SESSION['s_id'])) {
         <li><a class="active" data-toggle="tab" href="#activity">Notification</a></li>
         <li></li>
     </ul>
-    <div class="offset-content tab-content">
+    
         <div id="activity" class="tab-pane fade in show active">
             <div class="recent-activity">
-
+<script src="set_notification.js"></script>
                 
-            </div>
+            
         </div>
     </div>
 </div>
-<script src="set_notification.js"></script>
+
 </div>
 
 <?php
