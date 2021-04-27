@@ -72,7 +72,6 @@ else
         }
         else
         {
-            $imageTmpName = $_FILES['file']['tmp_name'];
             $extension=pathinfo($_FILES['file']['name'],PATHINFO_EXTENSION);
             $imageName = "$gr.$extension";
 
@@ -298,7 +297,7 @@ else
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Student Name</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" name="sn" class="form-control" oninput='stringValidate(this)' maxlength="15" required="required" id="sn" autocomplete="off" />
+                                                    <input type="text" name="sn" class="form-control" oninput='stringValidate(this)' maxlength="50" required="required" id="sn" autocomplete="off" />
                                                 </div>
                                             </div>
 

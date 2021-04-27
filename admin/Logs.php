@@ -257,6 +257,7 @@ $log->success_entry($action,$Conn);
 	    <table id="example" class="display nowrap" >
 	    <thead>
         <tr align="center">
+            <th>#</th>
             <th>DATE</th>
             <th>Time</th>
             <th>Name</th>
