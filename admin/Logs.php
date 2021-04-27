@@ -20,7 +20,7 @@ $log->success_entry($action,$Conn);
 <html>
 <head>
 	<title>SYSTEM LOGS</title>
-<head>
+
      <link rel="stylesheet" href="../teacher/css/bootstrap.min.css" media="screen" >
         <link rel="stylesheet" href="../teacher/css/font-awesome.min.css" media="screen" >
         <link rel="stylesheet" href="../teacher/css/animate-css/animate.min.css" media="screen" >

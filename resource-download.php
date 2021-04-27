@@ -1,5 +1,7 @@
 <?php
 session_start();
+include('ec_dc.php');
+$obj = new ecdc();
 
 if (!isset($_SESSION['s_id'])) {
 	header("location:login.php");
@@ -160,7 +162,7 @@ Purchase:
 
 					?>
 						<div class="col-lg-2 col-md-3 col-sm-6 col-xs-12" id="s">
-							<a class="dashboard-stat bg-primary" href="download-res.php?sub_id=<?php echo $query1['Sub_id']; ?>">
+							<a class="dashboard-stat bg-primary" href="download-res.php?sub_id=<?php echo $obj->encrypt($query1['Sub_id']);?>">
 								<span class="name"><?php echo $query1['Sub_name']; ?></span>
 								<span class="bg-icon"><i class="fa fa-folder"></i></span>
 							</a>

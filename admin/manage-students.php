@@ -4,6 +4,8 @@ session_start();
 error_reporting(0);
 include('connection.php');
 include('store_data.php');
+include('../ec_dc.php');
+$obj = new ecdc();
 
 if(strlen($_SESSION['a_id'])=="")
     {   
@@ -20,7 +22,7 @@ if(strlen($_SESSION['a_id'])=="")
 
         if (isset($_GET['S_id']))
         {
-            $stid = $_GET['S_id'];
+            $stid = $obj->decrypt($_GET['S_id']);
 
             $Sql="UPDATE `students` SET `is_deleted`='1' WHERE `S_srn`='$stid'";
             
@@ -357,11 +359,11 @@ if($row > 0)
                     <tr align="center">
                         <td><?php echo htmlentities($cnt);?></td>
                          <td>
-                            <a href="edit-student.php?S_id=<?php echo $result['S_srn'];?>">
+                            <a href="edit-student.php?S_id=<?php echo $obj->encrypt($result['S_srn']);?>">
                                     <img src="images/edit-icon.jpg" height="25px" width='25px'/> Edit
                             </a> 
                              &nbsp;
-                            <a href="manage-students.php?S_id=<?php echo $result['S_srn'];?>">
+                            <a href="manage-students.php?S_id=<?php echo $obj->encrypt($result['S_srn']);?>">
                               <img src="images/delete-icon.jpg" height="25px" width='25px'/>&nbsp;Delete</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         </td>
                     

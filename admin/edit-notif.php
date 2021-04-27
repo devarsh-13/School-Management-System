@@ -3,7 +3,8 @@ session_start();
 error_reporting(0);
 include('connection.php');
 include('store_data.php');
-
+include('../ec_dc.php');
+$obj = new ecdc();
 $log=new Log();
 
 if(strlen($_SESSION['a_id'])=="")
@@ -19,7 +20,8 @@ else
         $log->success_entry($action,$Conn);
     }
 
-    $nid=$_GET['N_id'];
+    $nid=$obj->decrypt($_GET['N_id']);
+    
     if(isset($_POST['submit']))
     {
         $nt = $_POST["nt"];

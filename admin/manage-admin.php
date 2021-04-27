@@ -4,7 +4,8 @@ session_start();
 error_reporting(0);
 include('connection.php');
 include('store_data.php');
-
+include('../ec_dc.php');
+$obj = new ecdc();
 if(strlen($_SESSION['a_id'])=="")
     {   
     header("Location: index.php"); 
@@ -20,7 +21,8 @@ if(strlen($_SESSION['a_id'])=="")
 
 if (isset($_GET['a_id']))
 {
-    $aid = $_GET['a_id'];
+    $aid = $obj->decrypt($_GET['a_id']);
+
 
     $Sql="UPDATE `admin` SET `is_deleted`='1' WHERE `A_id`='$aid'";
     $action="Admin data Deleted";
@@ -350,11 +352,11 @@ if($row > 0)
                         <td><?php echo htmlentities($cnt);?></td>
 
                         <td>
-                            <a href="edit-admin.php?a_id=<?php echo $result['A_id'];?>">
+                            <a href="edit-admin.php?a_id=<?php echo $obj->encrypt($result['A_id']);?>">
                                     <img src="images/edit-icon.jpg" height="25px" width='25px'/> Edit
                             </a> 
                               &nbsp;
-                            <a href="manage-admin.php?a_id=<?php echo $result['A_id'];?>">
+                            <a href="manage-admin.php?a_id=<?php echo $obj->encrypt($result['A_id']);?>">
                               <img src="images/delete-icon.jpg" height="25px" width='25px'/>&nbsp;Delete</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                              
                         </td>

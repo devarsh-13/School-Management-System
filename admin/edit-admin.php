@@ -3,6 +3,8 @@ session_start();
 error_reporting(0);
 include('connection.php');
 include('store_data.php');
+include('../ec_dc.php');
+$obj = new ecdc();
 
 $log=new Log();
 
@@ -17,7 +19,8 @@ else
         $action = " In Edit Admin";
         $log->success_entry($action, $Conn);
     }
-    $aid=$_GET['a_id'];
+    $aid=$obj->decrypt($_GET['a_id']);
+    
     
     if (isset($_POST['Update'])) 
     {
@@ -158,17 +161,7 @@ $Sql="UPDATE `admin` SET `A_Photo`='$imageName',`A_name`='$an',`A_mobile`='$con'
                                 <div class="main-content-inner">
                                     <!-- MAIN CONTENT GOES HERE -->
                                     <div class="panel-body">
-                                        <?php if ($msg) { ?>
-                                            <div class="alert alert-success left-icon-alert" role="alert">
-
-                                                <?php echo htmlentities($msg); ?>
-                                            </div>
-                                        <?php } else if ($error) { ?>
-                                            <div class="alert alert-danger left-icon-alert" role="alert">
-
-                                                <?php echo htmlentities($error); ?>
-                                            </div>
-                                        <?php } ?>
+                                        
                                         <form class="form-horizontal" method="post" enctype="multipart/form-data">
 <?php 
  $sql = "SELECT * from `admin` WHERE `A_id`='$aid'";

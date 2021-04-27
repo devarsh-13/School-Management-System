@@ -3,13 +3,15 @@ session_start();
 error_reporting(0);
 include('connection.php');
 include('../admin/store_data.php');
-
+include('../ec_dc.php');
+$obj = new ecdc();
 $log=new Log();
 
 if(isset($_SESSION['t_id']))
 {   
     
-    $sub_id=$_GET['sub_id'];
+    $sub_id=$obj->decrypt($_GET['sub_id']);
+    $i=$obj->encrypt($sub_id);
 
 if(isset($_GET['r_id']))
 {
@@ -17,8 +19,9 @@ if(isset($_GET['r_id']))
     $action="Resources Deleted";
     
 
-    $rid=$_GET['r_id'];
-    $sql = "SELECT `R_path` from `resources`  WHERE `R_id`='$rid' ";
+    $rid=$obj->decrypt($_GET['r_id']);
+
+    $sql = "SELECT * from `resources`  WHERE `R_id`='$rid' ";
     
     $query = mysqli_query($Conn,$sql);
     $result= mysqli_fetch_array($query);
@@ -35,8 +38,8 @@ if(isset($_GET['r_id']))
         $delet = mysqli_query($Conn,"DELETE FROM `resources` WHERE `R_id`='$rid'");
         
     }
- 
-    header("location:resource-add.php?sub_id=$sub_id");
+    
+    header("location:resource-add.php?sub_id=$i");
 
 }
 
@@ -226,28 +229,28 @@ $('#ssi-upload').ssi_uploader({
 require "connection.php";
 session_start();
 
-$sub_id=$_GET['sub_id'];
+$sub_id= $obj->decrypt($_GET['sub_id']);
+
 
 $sql1 ="SELECT * from `resources` WHERE `Sub_id`='$sub_id' ";
 
 $query= $Conn -> query($sql1); 
 $row = mysqli_num_rows($query);
  $path = "resources/";
+ $folder="$sub_id/";
 $cnt=1;
-
-
 if($row > 0)
 {
 while ($query1=mysqli_fetch_array($query)) 
 {
-    $full = $path . $query1['R_path'];
+    $full = $path.$folder.$query1['R_path'];
 
    
    ?>
                     <tr align="center">
                         <td><?php echo htmlentities($cnt);?></td>
                         <td>
-                           <a href="resource-add.php?sub_id=<?php echo $sub_id;?>&r_id=<?php echo  $query1['R_id'];?>">
+                           <a href="resource-add.php?sub_id=<?php echo $obj->encrypt($sub_id);?>&r_id=<?php echo $obj->encrypt($query1['R_id']);?>">
                               <img src="images/delete-icon.jpg" height="25px" width='25px'/>&nbsp;Delete</a>
                               <!-- <input type="hidden" name="rid" value="<?php //echo $query1['R_id']; ?>">
                               <input type="submit" name="dlt" value="Delete" class="btn btn-danger">-->

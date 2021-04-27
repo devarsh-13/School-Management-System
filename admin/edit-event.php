@@ -3,7 +3,8 @@ session_start();
 error_reporting(0);
 include('connection.php');
 include('store_data.php');
-
+include('../ec_dc.php');
+$obj = new ecdc();
 if(strlen($_SESSION['a_id'])=="")
     {   
     header("Location: index.php"); 
@@ -17,7 +18,8 @@ if(strlen($_SESSION['a_id'])=="")
         }
 
         $action="Edit Event data";
-        $eid=$_GET['E_id'];
+        $eid=$obj->decrypt($_GET['E_id']);
+        
 
 if(isset($_POST['submit']))
 {

@@ -5,6 +5,8 @@ $_SESSION['page']='1';
 error_reporting(0);
 include('connection.php');
 include('store_data.php');
+include('../ec_dc.php');
+$obj = new ecdc();
 if(strlen($_SESSION['a_id'])=="")
     {   
     header("Location: index.php"); 
@@ -18,40 +20,15 @@ if(strlen($_SESSION['a_id'])=="")
     
         }
         
-            if(isset($_POST['delt']))
-            {
-
-                $action="Delete Event data";
-                $eid=$_POST['recordsCheckBox'];
-
-                   foreach ( $eid as $id ) 
-                   { 
-                          $query = "DELETE FROM `event` WHERE `Sr_n`='$id'";
-                        $result = $Conn->query($query) or die("Error in query".$Conn->error);
-                   }
-
-if($result)
-{
-    $log->success_entry($action,$Conn);
-    $msg="Event Deleted Successfully";
-    unset($_GET['E_id']);
-     echo "<script>alert('Event Deleted successfully.');window.location.href='manage-events.php';</script>";   
-    
-}
-else 
-{
-    $log->success_entry($action,$Conn,"Unsuccessful");
-        echo "<script>alert('Failed To Delete Event.');window.location.href='manage-events.php';</script>";   
-
-}
-            }
+           
 
 
 
 
 if (isset($_GET['E_id']))
 {
-    $eid = $_GET['E_id'];
+    $eid = $obj->decrypt($_GET['E_id']);
+    
 
     $Sql="DELETE FROM `event` WHERE `Sr_n`='$eid'";
     
@@ -272,13 +249,13 @@ if($row > 0)
 
                         <td><?php echo htmlentities($cnt);?></td>
                              <td>
-                            <a href="edit-event.php?E_id=<?php echo $result['Sr_n'];?>">
+                            <a href="edit-event.php?E_id=<?php echo $obj->encrypt($result['Sr_n']);?>">
                               <img src="images/edit-icon.jpg" height="25px" width='25px'/> Edit</a>
                               &nbsp;
-                            <a href="manage-events.php?E_id=<?php echo $result['Sr_n'];?>">
+                            <a href="manage-events.php?E_id=<?php echo $obj->encrypt($result['Sr_n']);?>">
                               <img src="images/delete-icon.jpg" height="25px" width='25px'/>&nbsp;Delete</a>
                             
-                              <input type="checkbox" name="recordsCheckBox[]" id="recordsCheckBox" class="chh" value="<?php echo $result['Sr_n'];?>">
+                             
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         </td>
                         <td>

@@ -19,7 +19,7 @@ if (isset($A_id)) {
 
     $notification_count = 0;
     ?>
-    
+   
 <div class="scrollmenu">
     <?php
     while ($r = mysqli_fetch_array($q)) {

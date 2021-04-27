@@ -4,7 +4,8 @@ session_start();
 error_reporting(0);
 include('connection.php');
 include('store_data.php');
-
+include('../ec_dc.php');
+$obj = new ecdc();
 
 if(strlen($_SESSION['a_id'])=="")
     {   
@@ -25,7 +26,8 @@ if (isset($_GET['Sr_id']))
     $log=new Log();
     $action="Student data Restored";
 
-    $tid = $_GET['Sr_id'];
+    $tid = $obj->decrypt($_GET['Sr_id']);
+
     $query = "UPDATE `students` SET `is_deleted`='0' WHERE `S_srn`='$tid'";
     $delete = $Conn->query($query) or die("Error in query".$Conn->error);
     if ($delete)
@@ -357,7 +359,7 @@ if($row > 0)
     {       ?>
                     <tr align="center">
                         <td><?php echo htmlentities($cnt);?></td>
-                         <td>  <a href="bin-students.php?Sr_id=<?php echo $result['S_srn'];?>">
+                         <td>  <a href="bin-students.php?Sr_id=<?php echo $obj->encrypt($result['S_srn']);?>">
                               <img src="images/restore-icon.png" height="25px" width='25px'/>&nbsp;Restore</a>
                                  &nbsp;
                         </td>

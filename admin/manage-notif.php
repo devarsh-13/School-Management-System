@@ -5,7 +5,8 @@ $_SESSION['page']='2';
 error_reporting(0);
 include('connection.php');
 include('store_data.php');
-
+include('../ec_dc.php');
+$obj = new ecdc();
 if(strlen($_SESSION['a_id'])=="")
     {   
     header("Location: index.php"); 
@@ -27,7 +28,8 @@ if (isset($_GET['N_id']))
     $log=new Log();
     $action="Notification deleted";
 
-    $nid = $_GET['N_id'];
+    $nid = $obj->decrypt($_GET['N_id']);
+
     $Sql="DELETE FROM `notification` WHERE `Sr_n`='$nid'";
    
     $delete = $Conn->query($Sql) or die("Error in query2".$connection->error);
@@ -223,10 +225,10 @@ if($row > 0)
                          <td><?php echo htmlentities($cnt);?></td>
 
                           <td>
-                            <a href="edit-notif.php?N_id=<?php echo $result['Sr_n'];?>">
+                            <a href="edit-notif.php?N_id=<?php echo $obj->encrypt($result['Sr_n']);?>">
                               <img src="images/edit-icon.jpg" height="25px" width='25px'/> Edit</a> 
                                  &nbsp;
-                            <a href="manage-notif.php?N_id=<?php echo $result['Sr_n'];?>">
+                            <a href="manage-notif.php?N_id=<?php echo $obj->encrypt($result['Sr_n']);?>">
                               <img src="images/delete-icon.jpg" height="25px" width='25px'/>&nbsp;Delete</a>
                               
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

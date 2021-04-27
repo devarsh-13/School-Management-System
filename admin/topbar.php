@@ -56,7 +56,7 @@ if (isset($_SESSION['a_id'])) {
             <li></li>
         </ul>
         
-           
+            <div id="activity" class="tab-pane fade in show active">
                 <div class="recent-activity">
 
 
@@ -64,7 +64,7 @@ if (isset($_SESSION['a_id'])) {
 
 
                 </div>
-            
+            </div>
 
         
         

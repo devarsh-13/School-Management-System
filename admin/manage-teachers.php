@@ -4,6 +4,8 @@ session_start();
 error_reporting(0);
 include('connection.php');
 include('store_data.php');
+include('../ec_dc.php');
+$obj = new ecdc();
 if(strlen($_SESSION['a_id'])=="")
     {   
         header("Location: index.php"); 
@@ -19,7 +21,8 @@ if(strlen($_SESSION['a_id'])=="")
 
 if (isset($_GET['T_id']))
 {
-    $tid = $_GET['T_id'];
+    $tid =$obj->decrypt($_GET['T_id']);
+
 
     $Sql="UPDATE `teachers` SET `is_deleted`='1' WHERE `T_srn`='$tid'";
     $action="Teacher data Deleted";
@@ -320,15 +323,7 @@ input.chh
             <div class="main-content-inner">
                 <!-- MAIN CONTENT GOES HERE -->
                 <div class="panel-body">
-<?php if($msg){?>
-<div class="alert alert-success left-icon-alert" role="alert">
- <?php echo htmlentities($msg); ?>
- </div><?php } 
-else if($error){?>
-    <div class="alert alert-danger left-icon-alert" role="alert">
-                                         <?php echo htmlentities($error); ?>
-                                        </div>
-                                        <?php } ?>
+
                                             <div class="scrollmenu">
 
                                              <!--   <table id="example" class="display table table-striped table-bordered" cellspacing="0" width="100%">-->
@@ -363,11 +358,11 @@ if($row > 0)
                         <td><?php echo htmlentities($cnt);?></td>
 
                         <td>
-                            <a href="edit-teacher.php?T_id=<?php echo $result['T_srn'];?>">
+                            <a href="edit-teacher.php?T_id=<?php echo $obj->encrypt($result['T_srn']);?>">
                                     <img src="images/edit-icon.jpg" height="25px" width='25px'/> Edit
                             </a> 
                               &nbsp;
-                            <a href="manage-teachers.php?T_id=<?php echo $result['T_srn'];?>">
+                            <a href="manage-teachers.php?T_id=<?php echo $obj->encrypt($result['T_srn']);?>">
                               <img src="images/delete-icon.jpg" height="25px" width='25px'/>&nbsp;Delete</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                              
                         </td>

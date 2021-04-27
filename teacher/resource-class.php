@@ -3,7 +3,8 @@
 error_reporting(0);
 include('connection.php');
 include('../admin/store_data.php');
-
+include('../ec_dc.php');
+$obj = new ecdc();
 $action="In Upload Resources";
 $log=new Log();
 
@@ -124,7 +125,7 @@ while ($query1=mysqli_fetch_array($re))
 
    ?>
                                     <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12" id="c">
-                                        <a class="dashboard-stat bg-primary" href="resource-sub.php?C_id=<?php echo $query1['Class_id'];?>">
+                                        <a class="dashboard-stat bg-primary" href="resource-sub.php?C_id=<?php echo $obj->encrypt($query1['Class_id']);?>">
 
                                             <span class="name"><?php echo $query['C_no']." ".$query['Stream'];?></span>
 

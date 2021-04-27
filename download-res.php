@@ -1,7 +1,8 @@
 <?php
 session_start();
 error_reporting(0);
-
+include('ec_dc.php');
+$obj = new ecdc();
 include('Database/connection.php');
 // include('admin/store_data.php');
 
@@ -88,17 +89,20 @@ if (!isset($_SESSION['s_id'])) {
 						session_start();
 
 						$S_srn = $_SESSION['id'];
-						$sub_id = $_GET['sub_id'];
+						$sub_id = $obj->decrypt($_GET['sub_id']);
+						
 
 						$sql1 = "SELECT * from `resources` WHERE `Sub_id`='$sub_id' ";
 						$query = $Conn->query($sql1);
 						$row = mysqli_num_rows($query);
 						$path = "teacher/resources/";
+						 
+    					$folder="$sub_id/";
 
 						$cnt = 1;
 						if ($row > 0) {
 							while ($query1 = mysqli_fetch_array($query)) {
-								$full = $path . $query1['R_path'];
+								$full = $path .$folder. $query1['R_path'];
 						?>
 								<tr align="center">
 									<td><?php echo htmlentities($cnt); ?></td>

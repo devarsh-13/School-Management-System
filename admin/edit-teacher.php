@@ -3,7 +3,8 @@ session_start();
 error_reporting(0);
 include('connection.php');
 include('store_data.php');
-
+include('../ec_dc.php');
+$obj = new ecdc();
 $log=new Log();
 if(strlen($_SESSION['a_id'])=="")
     {   
@@ -17,7 +18,9 @@ if(strlen($_SESSION['a_id'])=="")
             $log->success_entry($action,$Conn);
         }
 
-$tid=$_GET['T_id'];
+$tid=$obj->decrypt($_GET['T_id']);
+
+
 if(isset($_POST['update']))
 {
     require "connection.php";

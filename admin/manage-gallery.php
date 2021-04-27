@@ -5,7 +5,8 @@ session_start();
 error_reporting(0);
 include('connection.php');
 include('store_data.php');
-
+include('../ec_dc.php');
+$obj = new ecdc();
 if(strlen($_SESSION['a_id'])=="")
     {   
     header("Location: index.php"); 
@@ -20,7 +21,8 @@ if(strlen($_SESSION['a_id'])=="")
                 $log->success_entry($action,$Conn); 
             
         }
-    $gid = $_GET['G_id'];
+    $gid = $obj->decrypt($_GET['G_id']);
+
     
     if (isset($gid))
     {
@@ -237,7 +239,7 @@ if($row > 0)
                     <tr align="center">
                           <td><?php echo htmlentities($cnt);?></td>
                           <td> 
-                                <a href="manage-gallery.php?G_id=<?php echo $result['Id'];?>">
+                                <a href="manage-gallery.php?G_id=<?php echo $obj->encrypt($result['Id']);?>">
                                     <img src="images/delete-icon.jpg" height="25px" width='25px'/>&nbsp;Delete
                                 </a>  
 
