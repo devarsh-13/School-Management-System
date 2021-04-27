@@ -143,6 +143,9 @@ if (isset($_GET['N_id']))
         background-color: #ddd;
         
     }
+    td{
+        word-break: break-all;
+    }
 
 
         </style>
@@ -195,7 +198,7 @@ if (isset($_GET['N_id']))
                                             <div class="scrollmenu">
 
                                              
-                                                     <table id="example" class="display nowrap" >
+                                                     <table id="example"  >
                                                 <thead>
                                                         <tr align="center">
                                                             <th>#</th>
