@@ -1,9 +1,11 @@
 <?php
 session_start();
 error_reporting(0);
-include('connection.php');
-include('store_data.php');
+
+require('connection.php');
+require('store_data.php');
 require "../ec_dc.php";
+require('Image_compress.php');
 
 
 $obj = new ecdc();
@@ -21,21 +23,6 @@ if (strlen($_SESSION['a_id']) == "") {
     }
     if (isset($_POST['submit']))
     {
-        require "connection.php";
-
-        $uploadFolder = '../user_photos/';
-
-
-        $imageTmpName = $_FILES['file']['tmp_name'];
-        $imageName = $_FILES['file']['name'];
-        $result = move_uploaded_file($imageTmpName, $uploadFolder . $imageName);
-       
-        if ($result == null) {
-
-            $imageName="teacher_default.jpg";
-
-        }
-
         $tn = $_POST['tn'];
         $dob = $_POST['dob'];
         $con = $_POST['con'];
@@ -50,6 +37,22 @@ if (strlen($_SESSION['a_id']) == "") {
         $d = date("Y-m-d");
         $stat = "offline";
 
+        $uploadFolder = '../user_photos/teacher/';
+
+
+        $imageTmpName = $_FILES['file']['tmp_name'];
+        $ext=pathinfo($_FILES['file']['name'],PATHINFO_EXTENSION);
+
+        
+        if (strlen($_FILES['file']['name'])=="")
+        {
+            $imageName="teacher_default.jpg";
+        }
+        else
+        {
+            $imageName ="$con.$ext";    
+            $result = compress($imageTmpName,$uploadFolder.$imageName);
+        }
 
         $Sql = "INSERT INTO `teachers` 
                             (   
@@ -213,7 +216,7 @@ if (strlen($_SESSION['a_id']) == "") {
                                         <form class="form-horizontal" method="post" enctype="multipart/form-data">
 
                                             <div class="form-group">
-                                                <label for="default" class="col-sm-2 control-label">Teacher Nmae</label>
+                                                <label for="default" class="col-sm-2 control-label">Teacher Name</label>
                                                 <div class="col-sm-10">
                                                     <input type="text" name="tn" class="form-control" id="tn" required="required" oninput='stringValidate(this)'  maxlength="15" autocomplete="off">
                                                 </div>
