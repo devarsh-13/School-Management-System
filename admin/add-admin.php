@@ -208,7 +208,7 @@ $a = $_SESSION['a_id'];
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Address</label>
                                                 <div class="col-sm-10">
-                                                     <textarea rows="5"  name="ad" class="form-control" required="required" id="ad"  maxlength="40" autocomplete="off"></textarea>
+                                                     <textarea rows="5"  name="ad" class="form-control" required="required" id="ad"  maxlength="78" autocomplete="off"></textarea>
                                                 </div>
                                             </div>
 

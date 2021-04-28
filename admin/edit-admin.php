@@ -199,7 +199,7 @@ if($row > 0)
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Address</label>
                                                 <div class="col-sm-10">
-                                                     <textarea rows="5"  name="ad"  maxlength="40" class="form-control" required="required" id="ad" autocomplete="off"><?php echo htmlentities($result['A_address'])?></textarea>
+                                                     <textarea rows="5"  name="ad"  maxlength="78" class="form-control" required="required" id="ad" autocomplete="off"><?php echo htmlentities($result['A_address'])?></textarea>
                                                 </div>
                                             </div>
 

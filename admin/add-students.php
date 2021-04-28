@@ -390,7 +390,7 @@ else
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Home Address</label>
                                                 <div class="col-sm-10">
-                                                    <textarea rows="5" name="home" class="form-control" required="required" id="home" autocomplete="off" maxlength="40"></textarea>
+                                                    <textarea rows="5" name="home" class="form-control" required="required" id="home" autocomplete="off" maxlength="78"></textarea>
                                                 </div>
                                             </div>
 
@@ -399,7 +399,7 @@ else
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Hostel Address</label>
                                                 <div class="col-sm-10">
-                                                    <textarea rows="5" name="hostel" class="form-control" id="hostel" autocomplete="off" maxlength="40"></textarea>
+                                                    <textarea rows="5" name="hostel" class="form-control" id="hostel" autocomplete="off" maxlength="78"></textarea>
                                                 </div>
                                             </div>
 

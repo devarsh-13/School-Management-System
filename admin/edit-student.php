@@ -318,7 +318,7 @@ if (strlen($_SESSION['a_id']) == "") {
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Home Address</label>
                                                 <div class="col-sm-10">
-                                                    <textarea rows="5" name="home" class="form-control" id="home" required="required" maxlength="40" autocomplete="off"><?php echo htmlentities($result['S_home']) ?>
+                                                    <textarea rows="5" name="home" class="form-control" id="home" required="required" maxlength="78" autocomplete="off"><?php echo htmlentities($result['S_home']) ?>
                                                      </textarea>
                                                 </div>
                                             </div>
@@ -328,7 +328,7 @@ if (strlen($_SESSION['a_id']) == "") {
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Hostel Address</label>
                                                 <div class="col-sm-10">
-                                                    <textarea rows="5" name="hostel" class="form-control" id="hostel" required="required" maxlength="40" autocomplete="off"><?php echo htmlentities($result['S_hostel']) ?></textarea>
+                                                    <textarea rows="5" name="hostel" class="form-control" id="hostel" required="required" maxlength="78" autocomplete="off"><?php echo htmlentities($result['S_hostel']) ?></textarea>
                                                 </div>
                                             </div>
 
