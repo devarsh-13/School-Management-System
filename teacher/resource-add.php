@@ -255,7 +255,7 @@ while ($query1=mysqli_fetch_array($query))
                               <!-- <input type="hidden" name="rid" value="<?php //echo $query1['R_id']; ?>">
                               <input type="submit" name="dlt" value="Delete" class="btn btn-danger">-->
                               &nbsp;
-                               <a href="<?php echo $full; ?>" download="<?php echo $full; ?> " 
+                               <a href="<?php echo $full; ?>" download="<?php echo $query1['R_path']; ?> " 
 
                                 <?php $action="File Downloaded"; $log->success_entry($action,$Conn); ?>
 

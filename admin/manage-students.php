@@ -444,13 +444,7 @@ else
 
         </div>
         <!-- /.main-wrapper -->
-
-    </body>
-</html>
-<?php } ?>
-
- 
-    <!-- bootstrap 4 js -->
+  <!-- bootstrap 4 js -->
     <script src="../teacher/assets/js/popper.min.js"></script>
     <script src="../teacher/assets/js/bootstrap.min.js"></script>
     <script src="../teacher/assets/js/owl.carousel.min.js"></script>
@@ -476,3 +470,10 @@ else
     <script src="../teacher/assets/js/plugins.js"></script>
     <script src="../teacher/assets/js/scripts.js"></script>
        
+
+    </body>
+</html>
+<?php } ?>
+
+ 
+  

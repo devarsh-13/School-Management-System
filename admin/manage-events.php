@@ -204,15 +204,7 @@ if (isset($_GET['E_id']))
                 <!-- MAIN CONTENT GOES HERE -->
                 
                 <div class="panel-body">
-<?php if($msg){?>
-<div class="alert alert-success left-icon-alert" role="alert">
- <?php echo htmlentities($msg); ?>
- </div><?php } 
-else if($error){?>
-    <div class="alert alert-danger left-icon-alert" role="alert">
-                                        <?php echo htmlentities($error); ?>
-                                        </div>
-                                        <?php } ?>
+
                                             <div class="scrollmenu">
 
                                             

@@ -107,7 +107,7 @@ if (!isset($_SESSION['s_id'])) {
 								<tr align="center">
 									<td><?php echo htmlentities($cnt); ?></td>
 									<td>
-										<a href="<?php echo $full; ?>" download="<?php echo $full; ?>"><img src="teacher/images/download.png" height="25px" width='25px' />&nbsp;Download</a>
+										<a href="<?php echo $full; ?>" download="<?php echo $query1['R_path']; ?>"><img src="teacher/images/download.png" height="25px" width='25px' />&nbsp;Download</a>
 									</td>
 
 									<td><?php echo $query1['R_path']; ?></td>
