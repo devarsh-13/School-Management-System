@@ -149,9 +149,10 @@ if (isset($_GET['E_id']))
         background-color: #ddd;
         
     }
-
-        </style>
-           <style type="text/css">
+ td{
+        word-break: break-all;
+    }
+       
         .section
         {
             background-color: white;
@@ -215,18 +216,18 @@ else if($error){?>
                                             <div class="scrollmenu">
 
                                             
-                                                     <table id="example" class="display nowrap" >
+                                                     <table id="example" >
                                                 <thead>
                                                         <tr align="center">
                                                              <th>#</th>
-                                                               <th>Action</th>
+                                                               <th style="width: 15%;">Action</th>
                                                             <th>Dis/Ena</th>
                                                             <th>Event Topic</th>
                                                             <th>Event Text</th>
-                                                            <th>Event Date</th>
+                                                            <th style="width: 10%;">Event Date</th>
                                                             <th>Status</th>
                                                             <th>Created By</th>
-                                                             <th>Created Date</th>
+                                                             <th style="width: 10%;">Created Date</th>
                                                          
                                                         </tr>
                                                     </thead>
@@ -248,7 +249,7 @@ if($row > 0)
                     <tr align="center">
 
                         <td><?php echo htmlentities($cnt);?></td>
-                             <td>
+                             <th>
                             <a href="edit-event.php?E_id=<?php echo $obj->encrypt($result['Sr_n']);?>">
                               <img src="images/edit-icon.jpg" height="25px" width='25px'/> Edit</a>
                               &nbsp;
@@ -256,8 +257,8 @@ if($row > 0)
                               <img src="images/delete-icon.jpg" height="25px" width='25px'/>&nbsp;Delete</a>
                             
                              
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        </td>
+                            
+                        </th>
                         <td>
                         <?php
                             if($result['is_deleted']==0)

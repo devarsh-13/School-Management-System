@@ -202,10 +202,10 @@ if (isset($_GET['N_id']))
                                                 <thead>
                                                         <tr align="center">
                                                             <th>#</th>
-                                                             <th>Action</th>
+                                                             <th style="width: 15%;">Action</th>
                                                             <th>Notification Topic</th>
                                                             <th>Notification Text</th>
-                                                            <th>Created Date</th>
+                                                            <th style="width: 10%;">Created Date</th>
                                                             <th>Status</th>
                                                             <th>Created By</th>
                                                           
@@ -227,16 +227,16 @@ if($row > 0)
                     <tr align="center">
                          <td><?php echo htmlentities($cnt);?></td>
 
-                          <td>
+                          <th>
                             <a href="edit-notif.php?N_id=<?php echo $obj->encrypt($result['Sr_n']);?>">
                               <img src="images/edit-icon.jpg" height="25px" width='25px'/> Edit</a> 
                                  &nbsp;
                             <a href="manage-notif.php?N_id=<?php echo $obj->encrypt($result['Sr_n']);?>">
                               <img src="images/delete-icon.jpg" height="25px" width='25px'/>&nbsp;Delete</a>
                               
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            
 
-                          </td>
+                          </th>
                       
                         <td><?php echo $result['Notification_topic'];?></td>
                         <td><?php echo $result['Notification_text'];?></td>
