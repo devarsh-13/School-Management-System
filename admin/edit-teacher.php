@@ -216,7 +216,8 @@ if($row > 0)
                                                <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Password</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" name="pass" value="<?php echo htmlentities($result['Password'])?>" class="form-control" id="pass"  maxlength="15" minlength="4" required="required" autocomplete="off">
+                                                    <?php $r_pass=$obj->decrypt($result['Password']); ?>
+                                                    <input type="Password" name="pass" value="<?php echo htmlentities($r_pass)?>" class="form-control" id="pass"  maxlength="15" minlength="4" required="required" autocomplete="off">
                                                 </div>
                                             </div>
 

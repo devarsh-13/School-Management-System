@@ -262,7 +262,7 @@ while ($query1=mysqli_fetch_array($query))
                                ><img src="images/download.png" height="25px" width='25px'/>&nbsp;Download</a>
                         </td>
                         
-                        <td><?php echo $query1['R_path'].$query1['R_id'];?></td>
+                        <td><?php echo $query1['R_path'];?></td>
 
                          <td><?php
                                 $id=$query1['Created_by'];
