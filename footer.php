@@ -16,9 +16,11 @@
 							<div class="col-lg-4 col-md-4 col-sm-12">
 								<div class="widget text-widget">
 									<h4 class="widget-title">find us</h4>
-									<p><i class="fa fa-safari"></i>Wimbledon Street 42a, 45290 Wimbledon, <br />United Kingdom</p>
-									<p><i class="fa fa-envelope-o"></i><a href="#">info@edutioncollege.gov.co.uk</a> <a href="#">public@edutioncollege.gov.co.uk</a></p>
-									<p><i class="fa fa-phone"></i> 1-220-090-080</p>
+									<p><i class="fa fa-map-marker"></i>Opp, Bus Station Rd, Ghanshyam Nagar, Bhuj, Gujarat 370001</p>
+								
+									<p><i class="fa fa-phone"></i> Work - +91 8232223047<br>
+																   Phone - +91 28320223048	</p>
+									<p><i class="fa fa-envelope-o"></i> <a href="#">ighs.corres@gmail.com</a></p>
 								</div>
 							</div>
 							<div class="col-lg-4 col-md-4 col-sm-12">
