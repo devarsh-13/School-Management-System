@@ -90,6 +90,8 @@ if(strlen($_SESSION['a_id'])=="")
 <script type="text/javascript" src="js/vfs_fonts.js"></script>
 <script type="text/javascript" src="js/buttons.html5.min.js"></script>
 <script type="text/javascript" src="js/buttons.print.min.js"></script>
+<link href="js/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
+<link href="js/buttons.dataTables.min.css" rel="stylesheet" type="text/css" />
 
  <style>
         :after, :before {
@@ -233,9 +235,6 @@ if(strlen($_SESSION['a_id'])=="")
 } );
 </script>
 
-
-<link href="js/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
-<link href="js/buttons.dataTables.min.css" rel="stylesheet" type="text/css" />
 
           <style>
         .scrollmenu
