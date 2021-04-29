@@ -102,7 +102,7 @@ if (!isset($_SESSION['s_id'])) {
 						$cnt = 1;
 						if ($row > 0) {
 							while ($query1 = mysqli_fetch_array($query)) {
-								$full = $path .$folder. $query1['R_path'];
+								$full = $path.$folder.$query1['R_path'];
 						?>
 								<tr align="center">
 									<td><?php echo htmlentities($cnt); ?></td>
