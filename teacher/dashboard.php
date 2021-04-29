@@ -25,6 +25,10 @@ mysqli_query($Conn, "UPDATE `teachers` SET `login_count` = '1' WHERE `T_srn`='$t
 }
 
 if (isset($_SESSION['t_id'])) {
+
+    $sql2 = "SELECT * FROM `conversation` inner join `students` ON conversation.S_srn=students.S_srn WHERE `T_srn`='$tid' and `is_c_deleted`='0'   GROUP BY conversation.S_srn";
+    $query2 = mysqli_query($Conn, $sql2);
+    $row2 = mysqli_num_rows($query2);
    
 
 
@@ -134,7 +138,7 @@ $update = mysqli_query($Conn, "UPDATE teachers SET t_status ='offline' WHERE T_s
                                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                                     <a class="dashboard-stat bg-success" href="../teacher_chat/select_students.php">
 
-
+                                    <span class="number counter"><?php echo $row2;?></span>
                                         <span class="name">Chat</span>
                                         <span class="bg-icon"><i class="fa fa-comment"></i></span>
                                     </a>
