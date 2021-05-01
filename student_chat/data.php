@@ -11,7 +11,7 @@ while ($row = mysqli_fetch_assoc($query)) {
 
     $S_srn = $_SESSION['s_id'];
     $T_srn = $row['T_srn'];
-    $sql2 = "SELECT * FROM `conversation` WHERE `S_srn`='$S_srn' && `T_srn`='$T_srn' && `is_c_deleted`='0'  ORDER BY `chat_id` DESC LIMIT 1";
+    $sql2 = "SELECT * FROM `conversation` WHERE `S_srn`='$S_srn' && `T_srn`='$T_srn'  ORDER BY `chat_id` DESC LIMIT 1";
     $query2 = mysqli_query($Conn, $sql2);
     $row2 = mysqli_fetch_assoc($query2);
 

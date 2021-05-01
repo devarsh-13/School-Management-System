@@ -17,7 +17,7 @@ if (isset($_SESSION['s_id'])) {
    
 
 
-    $chat_query = mysqli_query($Conn, "SELECT * FROM `conversation` WHERE `S_srn`='$S_srn'&& `T_srn`='$T_srn' && `is_c_deleted`='0'  ");
+    $chat_query = mysqli_query($Conn, "SELECT * FROM `conversation` WHERE `S_srn`='$S_srn'&& `T_srn`='$T_srn'    ");
 
     if (mysqli_num_rows($chat_query) > 0) {
         while ($row = mysqli_fetch_assoc($chat_query)) {
