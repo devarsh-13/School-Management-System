@@ -137,7 +137,7 @@ $result = mysqli_fetch_array($query);
 									<div class="ed_dashboard_tab_info">
 										<h1>hello, <span><?php echo $result['T_name'];  ?></span></h1>
 										<h1>welcome to dashboard</h1>
-										<p>Hi <strong> <?php echo $result['T_name'];  ?></strong>, here you have to see your profile, notifications and change your password.</p>
+										<p>Hi <strong> <?php echo $result['T_name'];  ?></strong>, here you can see your profile and can change your password.</p>
 									</div>
 								</div>
 								<div class="tab-pane" id="profile">

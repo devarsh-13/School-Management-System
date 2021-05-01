@@ -36,9 +36,7 @@ if (isset($_POST['getOtp'])) {
 
 
 
-		// Account details
-
-		// Message details
+	
 		 $numbers = $mo;
 
 		 $otp = mt_rand(1000, 9999);
@@ -53,7 +51,7 @@ if (isset($_POST['getOtp'])) {
 		$curl = curl_init();
 
 		curl_setopt_array($curl, array(
-			// CURLOPT_URL => "http://2factor.in/API/V1/e047ac95-8cab-11eb-a9bc-0200cd936042/SMS/$numbers/$otp",
+			CURLOPT_URL => "http://2factor.in/API/V1/e047ac95-8cab-11eb-a9bc-0200cd936042/SMS/$numbers/$otp",
 			CURLOPT_RETURNTRANSFER => true,
 			CURLOPT_ENCODING => "",
 			CURLOPT_MAXREDIRS => 10,

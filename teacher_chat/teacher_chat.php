@@ -28,7 +28,7 @@ if (!isset($_SESSION['t_id'])) {
         <img src="../user_photos/student/<?php echo $row['S_photo']; ?>" alt="">
         <div class="details">
           <span><?php echo $row['S_name'] ?></span>
-          <p><?php echo $row['s_status']; ?></p>
+   
         </div>
       </header>
       <div class="chat-box">

@@ -27,7 +27,7 @@
         <img src="../user_photos/teacher/<?php echo $row['T_photo']; ?>" alt="">
         <div class="details">
           <span><?php echo $row['T_name'] ?></span>
-          <p><?php echo $row['t_status']; ?></p>
+        
         </div>
       </header>
       <div class="chat-box">
