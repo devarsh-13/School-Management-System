@@ -3,7 +3,7 @@
 <?php
 session_start();
 error_reporting(0);
-include('connection.php');
+include('../connection.php');
 include('../admin/store_data.php');
 
 $log=new Log();
@@ -613,7 +613,7 @@ body {
          
 
          <?php
-         require 'connection.php';
+         
 
 
          $images = mysqli_query($Conn, "select * from images");

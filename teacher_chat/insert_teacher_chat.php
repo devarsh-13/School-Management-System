@@ -9,7 +9,7 @@
 
       
        // echo mysqli_real_escape_string($Conn, $_GET['teacher_id']);
-        include_once "../Database/connection.php";
+        include_once "../connection.php";
         
        $os= $_POST['message'];
         $message = mysqli_real_escape_string($Conn, $obj->encrypt($os));

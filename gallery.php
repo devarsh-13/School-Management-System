@@ -1,5 +1,5 @@
 <?php
-require 'Database/connection.php';
+require 'connection.php';
 include('admin/store_data.php');
 session_start();
 

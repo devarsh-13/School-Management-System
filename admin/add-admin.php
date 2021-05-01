@@ -1,14 +1,18 @@
 <?php
 session_start(); 
 error_reporting(0);
-include('connection.php');
-include('store_data.php');
+require('../connection.php');
+require('store_data.php');
 require "../ec_dc.php";
+require("Image_compress.php");
 
 $obj = new ecdc();
 $log = new Log();
 
-if (strlen($_SESSION['a_id']) == "") {
+if (strlen($_SESSION['a_id']) == "") 
+{
+    $action = " In ADD Admin";
+    $log->success_entry($action,$Conn,"Unsuccessful");
     header("Location: index.php");
 } 
 else 
@@ -20,28 +24,31 @@ else
     
     if (isset($_POST['submit'])) 
     {
-        $uploadFolder = '../user_photos/';
-
-
-        $imageTmpName = $_FILES['file']['tmp_name'];
-        $imageName = $_FILES['file']['name'];
-        $result = move_uploaded_file($imageTmpName, $uploadFolder . $imageName);
-       
-        if ($result == null) {
-
-            $imageName="admin_default.jpg";
-
-        }
-$a = $_SESSION['a_id'];  
+        $a = $_SESSION['a_id'];  
         $an = $_POST['an'];
         $dob = $_POST['dob'];
         $con = $_POST['con'];
         $ad=$_POST['ad']; 
 
-         $os=$_POST['pass'];
+        $os=$_POST['pass'];
         $pass = $obj->encrypt($os);
 
         $d = date("Y-m-d");
+        
+        $uploadFolder = '../user_photos/admin/';
+        $imageTmpName = $_FILES['file']['tmp_name'];
+        $ext=pathinfo($_FILES['file']['name'],PATHINFO_EXTENSION);
+
+        
+        
+        if(strlen($_FILES['file']['name'])=="")      
+        {
+            $imageName="admin_default.jpg";
+        }
+        else
+        {
+            $imageName ="$con.$ext";
+        }
 
 
         $Sql = "INSERT INTO `admin` 
@@ -75,18 +82,17 @@ $a = $_SESSION['a_id'];
         $q = mysqli_query($Conn, $Sql);
         $action = "Admin data Added";
         if ($q)
-        {
+        {   
+            $result = compress($imageTmpName, $uploadFolder . $imageName);
             $log->success_entry($action, $Conn);
-            unset($_POST['an']);
+            
             echo "<script>alert('Admin Info Added Successfully');window.location.href='add-admin.php';</script>";   
 
         } else 
         {
         
             $log->success_entry($action, $Conn, "Unsuccessful");
-             unset($_POST['an']);
-
-           echo "<script>alert('Failed To Add Admin');window.location.href='add-admin.php';</script>";   
+            echo "<script>alert('Failed To Add Admin');window.location.href='add-admin.php';</script>";   
         }
     }
 ?>
@@ -97,7 +103,7 @@ $a = $_SESSION['a_id'];
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>IGHS Admin| ADD Admin </title>
+        <title>ADD Admin | IGHS </title>
         <style type="text/css">
             .add button {
 

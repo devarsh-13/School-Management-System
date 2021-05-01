@@ -2,19 +2,24 @@
 <?php
 session_start();
 error_reporting(0);
-include('connection.php');
+include('../connection.php');
 include('store_data.php');
 include('../ec_dc.php');
 $obj = new ecdc();
+$log=new Log();
+
 if(strlen($_SESSION['a_id'])=="")
-    {   
+    {  
+        $action="In manage-Teachers";
+            
+        $log->success_entry($action,$Conn,"Unsuccessful");
         header("Location: index.php"); 
     }
     else{
         if(!(isset($_GET['T_id'])))
         {
             $action="In manage-Teachers";
-            $log=new Log();
+            
             $log->success_entry($action,$Conn);
         }
            
@@ -47,7 +52,7 @@ if (isset($_GET['T_id']))
 <!DOCTYPE html>
 <html lang="en">
     <head>
-      <title>Manage Teacher</title>
+      <title>Manage Teacher | IGHS</title>
    <link rel="stylesheet" href="../teacher/css/bootstrap.min.css" media="screen" >
         <link rel="stylesheet" href="../teacher/css/font-awesome.min.css" media="screen" >
         <link rel="stylesheet" href="../teacher/css/animate-css/animate.min.css" media="screen" >
@@ -342,7 +347,7 @@ input.chh
                                                         </thead>                                     
                                                 
 <?php 
-include 'connection.php';
+
  $sql = "SELECT * from `teachers` WHERE `is_deleted`='0' ORDER BY T_srn";
 $query = mysqli_query($Conn,$sql);
 $row = mysqli_num_rows($query);

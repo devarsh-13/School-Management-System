@@ -3,24 +3,26 @@
 <?php
 session_start();
 error_reporting(0);
-include('connection.php');
+include('../connection.php');
 include('store_data.php');
 include('../ec_dc.php');
 $obj = new ecdc();
-if(strlen($_SESSION['a_id'])=="")
-    {   
-    header("Location: index.php"); 
-    }
-    else{
+$log=new Log();
 
-        if(!(isset($_GET['G_id']))) 
-        {
-           
-                $action="In Manage Gallery";
-                $log=new Log();
-                $log->success_entry($action,$Conn); 
-            
-        }
+if(strlen($_SESSION['a_id'])=="")
+{   
+  $action="In Manage Gallery";
+  $log->success_entry($action,$Conn,"Unsuccessful"); 
+  header("Location: index.php"); 
+}
+else
+{
+    if(!(isset($_GET['G_id']))) 
+    {
+      $action="In Manage Gallery";
+      $log->success_entry($action,$Conn); 
+        
+    }
     $gid = $obj->decrypt($_GET['G_id']);
 
     
@@ -65,7 +67,7 @@ if(strlen($_SESSION['a_id'])=="")
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
     	<meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>IGHS Admin | Manage Gallery</title>
+        <title>Manage Gallery | IGHS</title>
        <link rel="stylesheet" href="../teacher/css/bootstrap.min.css" media="screen" >
         <link rel="stylesheet" href="../teacher/css/font-awesome.min.css" media="screen" >
         <link rel="stylesheet" href="../teacher/css/animate-css/animate.min.css" media="screen" >
@@ -222,7 +224,7 @@ if(strlen($_SESSION['a_id'])=="")
                                                    
                                                     
 <?php
-include 'connection.php';
+
  $sql = "SELECT * from `images` ORDER BY Uploaded_on DESC";
 $query = mysqli_query($Conn,$sql);
 $row = mysqli_num_rows($query);

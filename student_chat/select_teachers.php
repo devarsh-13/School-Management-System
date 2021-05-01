@@ -2,7 +2,7 @@
 session_start();
 if (isset($_SESSION['s_id'])) {
     // include_once "config.php";
-    include_once "../Database/connection.php";
+    include_once "../connection.php";
 
     $sql = "SELECT * FROM `teachers` where `is_deleted`= 0";
     $query = mysqli_query($Conn, $sql);

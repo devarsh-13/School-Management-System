@@ -1,5 +1,5 @@
 <?php
-    include 'connection.php';
+    include '../connection.php';
     include 'store_data.php';
     require "../ec_dc.php";
     $obj = new ecdc();

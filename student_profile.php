@@ -1,6 +1,6 @@
 <?php
 
-include 'Database/connection.php';
+include 'connection.php';
 include('admin/store_data.php');
 
 session_start();

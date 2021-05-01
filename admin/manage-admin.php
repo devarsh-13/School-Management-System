@@ -2,21 +2,26 @@
 <?php
 session_start();
 error_reporting(0);
-include('connection.php');
+include('../connection.php');
 include('store_data.php');
 include('../ec_dc.php');
+
 $obj = new ecdc();
+$log=new Log();
+
 if(strlen($_SESSION['a_id'])=="")
-    {   
+{   
+    $action="In manage-Admin";
+    $log->success_entry($action,$Conn,"Unsuccessful");
     header("Location: index.php"); 
+}
+else
+{
+    if(!(isset($_GET['a_id'])))
+    {
+        $action="In manage-Admin";
+        $log->success_entry($action,$Conn);
     }
-    else{
-        if(!(isset($_GET['a_id'])))
-        {
-            $action="In manage-Admin";
-            $log=new Log();
-            $log->success_entry($action,$Conn);
-        }
            
 
 if (isset($_GET['a_id']))
@@ -26,7 +31,7 @@ if (isset($_GET['a_id']))
 
     $Sql="UPDATE `admin` SET `is_deleted`='1' WHERE `A_id`='$aid'";
     $action="Admin data Deleted";
-    $log=new Log();
+    
    
     $delete = $Conn->query($Sql) or die("Error in query2".$connection->error);
     
@@ -50,7 +55,7 @@ if (isset($_GET['a_id']))
 <!DOCTYPE html>
 <html lang="en">
     <head>
-      <title>Manage Teacher</title>
+      <title>Manage Admin | IGHS</title>
    <link rel="stylesheet" href="../teacher/css/bootstrap.min.css" media="screen" >
         <link rel="stylesheet" href="../teacher/css/font-awesome.min.css" media="screen" >
         <link rel="stylesheet" href="../teacher/css/animate-css/animate.min.css" media="screen" >
@@ -334,7 +339,7 @@ else if($error){?>
                                                         </thead>                                     
                                                 
 <?php 
-include 'connection.php';
+
 $sql = "SELECT * from `admin` WHERE `is_deleted`='0' ORDER BY A_id";
 $query = mysqli_query($Conn,$sql);
 $row = mysqli_num_rows($query);

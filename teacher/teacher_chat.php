@@ -2,7 +2,7 @@
 
 use PhpOffice\PhpSpreadsheet\Shared\Font;
 
-require 'connection.php';
+require '../connection.php';
 session_start();
 
 
@@ -42,7 +42,7 @@ Purchase:
 
 <head>
 
-	<title>ighs</title>
+	<title>Teacher Chat | IGHS</title>
 
 	<!--srart theme style -->
 	<link href="../css/main.css" rel="stylesheet" type="text/css" />

@@ -1,11 +1,12 @@
 <?php
 session_start();
 error_reporting(0);
-include('connection.php');
-include('store_data.php');
-include('../ec_dc.php');
-$obj = new ecdc();
+require('../connection.php');
+require('store_data.php');
+require('../ec_dc.php');
+require('Image_compress.php');
 
+$obj = new ecdc();
 $log=new Log();
 
 if (strlen($_SESSION['a_id']) == "") 
@@ -19,33 +20,35 @@ else
         $action = " In Edit Admin";
         $log->success_entry($action, $Conn);
     }
-    $aid=$obj->decrypt($_GET['a_id']);
     
+    $aid=$obj->decrypt($_GET['a_id']);
     
     if (isset($_POST['Update'])) 
     {
-        require "connection.php";
- 
-        $uploadFolder = '../user_photos/';
-
-
-        $imageTmpName = $_FILES['file']['tmp_name'];
-        $imageName = $_FILES['file']['name'];
-        $result = move_uploaded_file($imageTmpName, $uploadFolder . $imageName);
-       
-        if ($result == null) 
-        {
-
-            $imageName="admin_default.jpg";
-
-    }
-$a = $_SESSION['a_id'];  
+        $a = $_SESSION['a_id'];  
         $an = $_POST['an'];
         $dob = $_POST['dob'];
         $con = $_POST['con'];
         $ad=$_POST['ad']; 
-        $pass = $_POST['pass'];
+        $pass = $obj->encrypt($_POST['pass']);
         $d = date("Y-m-d");
+        $up=false;
+         
+        if(strlen($_FILES['file']['name'])=="")
+        {            
+            $imageName=$_POST['img_name'];            
+        }
+        else
+        {
+            $uploadFolder ='../user_photos/admin/';
+            $imageTmpName = $_FILES['file']['tmp_name'];
+            $ext=pathinfo($_FILES['file']['name'],PATHINFO_EXTENSION);
+            $imageName ="$con.$ext";
+            $up=true;
+            unset($uploadFolder.$_POST['img_name']);
+
+        }
+
 
 $Sql="UPDATE `admin` SET `A_Photo`='$imageName',`A_name`='$an',`A_mobile`='$con',`A_address`='$ad',`A_password`='$pass',`A_dob`='$dob',`Created_on`='$d',`is_deleted`='0',`Created_by`='a' WHERE `A_id`='$aid'";
 
@@ -53,19 +56,20 @@ $Sql="UPDATE `admin` SET `A_Photo`='$imageName',`A_name`='$an',`A_mobile`='$con'
         $action = "Admin data Edited";
         if ($q) 
         {
+            if($up)
+            {
+                compress($imageTmpName, $uploadFolder . $imageName);    
+            }
             
             $log->success_entry($action, $Conn);
-
-            
-            unset($_POST['an']);
-            echo "<script>alert('Admin Info. Edit Successfully.');window.location.href='edit-admin.php';</script>";   
+            echo "<script>alert('Admin Info. Edit Successfully.');window.location.href='manage-admin.php';</script>";   
             
         } 
         else 
         {
             
             $log->success_entry($action, $Conn, "Unsuccessful");
-            echo "<script>alert('Failed To Edit Admin.');window.location.href='edit-admin.php';</script>";   
+            echo "<script>alert('Failed To Edit Admin.');window.location.href='manage-admin.php';</script>";   
             
         }
     }
@@ -77,12 +81,11 @@ $Sql="UPDATE `admin` SET `A_Photo`='$imageName',`A_name`='$an',`A_mobile`='$con'
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>IGHS Admin| ADD Admin </title>
+        <title>Edit Admin | IGHS</title>
         <style type="text/css">
-            .add button {
-
+            .add button 
+            {
                 margin-left: 100%;
-
             }
         </style>
         <link rel="stylesheet" href="../teacher/css/bootstrap.min.css" media="screen">
@@ -111,7 +114,8 @@ $Sql="UPDATE `admin` SET `A_Photo`='$imageName',`A_name`='$an',`A_mobile`='$con'
         <!-- modernizr css -->
         <script src="../teacher/assets/js/vendor/modernizr-2.8.3.min.js"></script>
         <style type="text/css">
-            .section {
+            .section 
+            {
                 background-color: white;
                 margin-top: 3%;
             }
@@ -175,7 +179,7 @@ if($row > 0)
     {   ?>
 
                                             <div class="form-group">
-                                                <label for="default" class="col-sm-2 control-label">Admin Nmae</label>
+                                                <label for="default" class="col-sm-2 control-label">Admin Name</label>
                                                 <div class="col-sm-10">
                                                     <input type="text" name="an" value="<?php echo htmlentities($result['A_name'])?>" class="form-control"  id="an" oninput='stringValidate(this)'  maxlength="50" required="required" autocomplete="off">
                                                 </div>
@@ -207,14 +211,15 @@ if($row > 0)
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Admin Image</label>
                                                 <div class="col-sm-10">
-                                                    <input type="file" name="file" value="<?php echo htmlentities($result['A_Photo'])?>" class="form-control" id="img">
+                                                    <input type="file" name="file" class="form-control" id="img">
+                                                    <input type="hidden" name="img_name" value="<?php echo htmlentities($result['A_Photo'])?>">
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Password</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" name="pass" value="<?php echo htmlentities($result['A_password'])?>" class="form-control" id="pass"  maxlength="15" minlength="4" required="required" autocomplete="off"> 
+                                                    <input type="Password" name="pass" value="<?php echo htmlentities($obj->decrypt($result['A_password']))?>" class="form-control" id="pass"  maxlength="15" minlength="4" required="required" autocomplete="off"> 
                                                 </div>
                                             </div>
 

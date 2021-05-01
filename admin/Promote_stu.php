@@ -1,6 +1,6 @@
 <?php
 
-	include('../Database/connection.php');
+	include('../connection.php');
 	include('store_data.php');
 	session_start();
 
@@ -46,7 +46,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Promote </title>
+    <title>Promote Student | IGHS</title>
 
     <link rel="stylesheet" href="../teacher/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="../teacher/assets/css/font-awesome.min.css">

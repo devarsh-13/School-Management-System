@@ -3,7 +3,7 @@ session_start();
 error_reporting(0);
 include('ec_dc.php');
 $obj = new ecdc();
-include('Database/connection.php');
+include('connection.php');
 // include('admin/store_data.php');
 
 // $action="In Download Resource";

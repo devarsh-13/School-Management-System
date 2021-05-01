@@ -1,24 +1,25 @@
 <?php
 
-require "connection.php";
+require "../connection.php";
 session_start();
 $tid = $_SESSION['t_id'];
 
-if (isset($_POST['subject'])) {
+if (isset($_POST['subject'])) 
+{
     
-mysqli_query($Conn, "UPDATE `teachers` SET `login_count` = '1' WHERE `T_srn`='$tid'");
+    mysqli_query($Conn, "UPDATE `teachers` SET `login_count` = '1' WHERE `T_srn`='$tid'");
     $s = $_POST['sub'];
     if (isset($_POST['sub']) == null) {
 
         echo "<script>alert('Please select atleast one subject');window.location.href='teacher_info.php';</script>";
             header("location:teacher_info.php");
-    } else {
-
+    } 
+    else 
+    {
         for ($i = 0; $i < sizeof($s); $i++) {
             $Sql = "INSERT INTO `teacherstd` (id_sub,id_teacher,is_deleted)VALUES('" . $s[$i] . "','$tid','0')";
             $q = mysqli_query($Conn, $Sql);
         }
-
 
         header("location:dashboard.php");
     }
@@ -36,6 +37,9 @@ if (isset($_SESSION['t_id'])) {
 $T_srn = $_SESSION['t_id'];
 $update = mysqli_query($Conn, "UPDATE teachers SET t_status ='offline' WHERE T_srn ='$T_srn' ") or die(mysqli_connect_error());
 
+$row1=mysqli_num_rows(mysqli_query($Conn,"SELECT `R_id` FROM `Resources` WHERE `Created_by`='$T_srn'"));
+$row3=mysqli_num_rows(mysqli_query($Conn,"SELECT `Sr_n` FROM `Event` "));
+$row4=mysqli_num_rows(mysqli_query($Conn,"SELECT `Id` FROM `Images` "));
 
 ?>
 <!DOCTYPE html>
@@ -43,7 +47,7 @@ $update = mysqli_query($Conn, "UPDATE teachers SET t_status ='offline' WHERE T_s
 
 <head>
     
-    <title>Teacher | Dashboard</title>
+    <title>Teacher Dashboard | IGHS</title>
        <link rel="stylesheet" href="css/bootstrap.min.css" media="screen" >
         <link rel="stylesheet" href="css/font-awesome.min.css" media="screen" >
         <link rel="stylesheet" href="css/animate-css/animate.min.css" media="screen" >
@@ -127,7 +131,7 @@ $update = mysqli_query($Conn, "UPDATE teachers SET t_status ='offline' WHERE T_s
                             <div class="row">
                                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                                     <a class="dashboard-stat bg-primary" href="resource-class.php">
-
+                                        <span class="number counter"><?php echo $row1;?></span>
                                         <span class="name">Resources</span>
                                         <span class="bg-icon"><i id="a" class="fa fa-folder"></i></span>
                                     </a>
@@ -148,7 +152,7 @@ $update = mysqli_query($Conn, "UPDATE teachers SET t_status ='offline' WHERE T_s
 
                                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                                     <a class="dashboard-stat bg-warning" href="view-event.php">
-
+                                        <span class="number counter"><?php echo $row3;?></span>
                                         <span class="name">Events</span>
                                         <span class="bg-icon"><i class="fa fa-file-text"></i></span>
                                     </a>
@@ -158,7 +162,7 @@ $update = mysqli_query($Conn, "UPDATE teachers SET t_status ='offline' WHERE T_s
 
                                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                                     <a class="dashboard-stat bg-danger" href="view-gallery.php">
-
+                                        <span class="number counter"><?php echo $row4;?></span>
                                         <span class="name">Gallery</span>
                                         <span class="bg-icon"><i class="fa fa-picture-o"></i></span>
                                     </a>

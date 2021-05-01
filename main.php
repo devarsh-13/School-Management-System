@@ -1,6 +1,6 @@
 <?php
 
-require "Database/connection.php";
+require "connection.php";
 require "admin/store_data.php";
 
 session_start();
@@ -109,34 +109,9 @@ if (isset($_SESSION['s_id']))
 					</div><!-- END REVOLUTION SLIDER WRAPPER -->
 				</article>
 			</section>
-			<!--Slider end-->
-			<!--Slider form start--
-				<div class="ed_form_box">
-		<div class="container">
-		<div class="ed_search_form">
-		<form class="form-inline">
-		  <div class="form-group">
-			<input type="text" placeholder="Course Name" class="form-control" id="course">
-		  </div>
-		  <div class="form-group">
-			<input type="text" placeholder="Location" class="form-control" id="location">
-		  </div>
-		  <div class="form-group">
-			<input type="text" placeholder="Language" class="form-control" id="language">
-		  </div>
-		  <div class="form-group">
-			<input type="text" placeholder="Type" class="form-control" id="type">
-		  </div>
-		  <div class="form-group">
-		  <button type="button" class="btn ed_btn pull-right ed_orange">search</button>
-		  </div>
-		</form>
+			
 		</div>
-		</div>
-		</div>
-		<--Slider form end-->
-		</div>
-		<!--Latest news start -->
+		
 		<div class="ed_graysection ed_toppadder80 " id="event">
 		
 					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ed_bottompadder30">
@@ -154,8 +129,8 @@ if (isset($_SESSION['s_id']))
       
       <?php
 
-      require "Database/connection.php";
-              $sql = ("SELECT * FROM `Event` WHERE `is_deleted`='0'") or die(mysqli_connect_error());
+      
+              $sql = ("SELECT * FROM `Event` WHERE `is_deleted`='0' AND `disabled`='0'ORDER BY `event_date`") or die(mysqli_connect_error());
 
               $q = mysqli_query($Conn, $sql);
               $row = mysqli_num_rows($q);
@@ -166,38 +141,35 @@ if (isset($_SESSION['s_id']))
               else
               {
 
-              while ($r = mysqli_fetch_array($q)) { ?>
+              while ($r = mysqli_fetch_array($q)) 
+              { ?>
 
-      <div class="eve">
-        <div class="el">
-          <div class="ed">
-            <div class="d"><?php $d= $r['event_date'];
-                                    echo date("d",strtotime($d));?></div>
-            <div class="m"><?php $d= $r['event_date'];
-                                    echo date("F",strtotime($d));?></div>
-          </div>
-        </div>
+			      <div class="eve">
+			        <div class="el">
+			          <div class="ed">
+			            <div class="d"><?php $d= $r['event_date'];
+			                                    echo date("d",strtotime($d));?></div>
+			            <div class="m"><?php $d= $r['event_date'];
+			                                    echo date("F",strtotime($d));?></div>
+			          </div>
+			        </div>
 
-        <div class="er">
-          <h3 class="et"><?php echo $r['Event_topic'];?></h3>
+			        <div class="er">
+			          <h3 class="et"><?php echo $r['Event_topic'];?></h3>
 
-          <div class="edes">
-            <?php echo $r['Event_text'];?>
-          </div>
+			          <div class="edes">
+			            <?php echo $r['Event_text'];?>
+			          </div>
 
-          <div class="etiming">
-            
-          </div>
-        </div>
-      </div>
+			          <div class="etiming">
+			            
+			          </div>
+			        </div>
+			      </div>
 
     <?php } } ?>
 
 
-
-
-						
-			
 				</div>
 			</div>
 		</div><!-- /.container -->
@@ -205,7 +177,7 @@ if (isset($_SESSION['s_id']))
 
 	
 	<div class="ed_footer_wrapper">
-		<?php include "footer.php"; ?>
+		<?php require "footer.php"; ?>
 	</div>
 	<!--Page main section end-->
 	<!--main js file start-->

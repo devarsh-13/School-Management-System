@@ -1,69 +1,63 @@
 <?php
-session_start();
-include('ec_dc.php');
-$obj = new ecdc();
 
-if (!isset($_SESSION['s_id'])) {
-	header("location:login.php");
-}
-error_reporting(0);
-include('connection.php');
-if (strlen($_SESSION['s_id']) == "") {
+session_start();
+require('ec_dc.php');
+require('connection.php');
+require('admin/store_data.php');
+
+$obj = new ecdc();
+$log= new Log();
+
+if(strlen($_SESSION['s_id'])=="") 
+{
+	$action="In Download Resources";
+	$log->success_entry($action,$Conn,"Unsuccessful");
 	header("Location: index.php");
-} else {
+} 
+else 
+{
+	$action="In Download Resources";
+	$log->success_entry($action,$Conn);
 ?>
 
-	<!DOCTYPE html>
-	<!-- 
-Template Name: Educo
-Version: 3.0.0
-Author: 
-Website: 
-Purchase: 
--->
-	<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
-	<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
-	<!--[if !IE]><!-->
-	<html lang="en">
-	<!--<![endif]-->
+<!DOCTYPE html>
+<html>
+<head>
 
-	<!-- Begin Head -->
-
-	<head>
 	<meta charset="utf-8" />
       <title>Resources | IGHS</title>
-      <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+      <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+       <meta name="MobileOptimized" content="320"/> 
 
-      <meta name="MobileOptimized" content="320" />
 
-		<!--srart theme style -->
 		
+
     
-    <link rel="stylesheet" href="teacher/assets/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="teacher/assets/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="teacher/assets/css/themify-icons.css" />
-    <link rel="stylesheet" href="teacher/assets/css/metisMenu.css" />
-    <link rel="stylesheet" href="teacher/assets/css/default-css.css" />
-    <link rel="stylesheet" href="teacher/assets/css/styles.css" />
+    <link type="text/css" rel="stylesheet" href="teacher/assets/css/bootstrap.min.css"/>
+    <link type="text/css" rel="stylesheet" href="teacher/assets/css/font-awesome.min.css" />
+    <link type="text/css" rel="stylesheet" href="teacher/assets/css/themify-icons.css" />
+    <link type="text/css" rel="stylesheet" href="teacher/assets/css/metisMenu.css" />
+    <link type="text/css" rel="stylesheet" href="teacher/assets/css/default-css.css" />
+    <!-- <link type="text/css" rel="stylesheet" href="teacher/assets/css/styles.css" /> -->
    
 
-
-	<link href="css/main.css" rel="stylesheet" type="text/css" />
+	<link type="text/css" href="css/main.css" rel="stylesheet" type="text/css"/>
 
 	<link rel="shortcut icon" type="image/png" href="images/header/IGHS(1).png" />
 		
 
-		<style type="text/css">
-			#s {
-				padding-top: 10px;
-				padding-bottom: 10px;
-			}
+<style type="text/css">
 
-			.ed_footer_wrapper {
-				padding-top: 30%;
-			}
+#s {
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
 
-			.dashboard-stat {
+.ed_footer_wrapper {
+	padding-top: 30%;
+}
+
+.dashboard-stat {
   display: block;
   padding: 30px 15px;
   text-align: right;
@@ -124,32 +118,28 @@ Purchase:
   .dashboard-stat {
     margin-bottom: 10px;
   }
+
   .dashboard-stat-2 {
     margin-bottom: 10px;
   }
 }
-
-		</style>
-	</head>
+</style>
+</head> 
+<?php //echo "string"; die();?>	
 
 	<body>
-		<!--Page main section start-->
+		
 		<div id="educo_wrapper">
+			
 			<?php
-			include "header.php";
+			 	require "header.php";
 			?>
-			<!--Breadcrumb start-->
-	
-			<!--single student detail end-->
-
-
-			<section class="section">
+			
+			<!-- <section class="section"> -->
 			<div class="container-fluid">
 				<div class="row">
 					<?php
-					require "Database/connection.php";
-
-
+					
 					$S_srn = $_SESSION['s_id'];
 
 
@@ -158,8 +148,8 @@ Purchase:
 					$row = mysqli_num_rows($query);
 
 
-					while ($query1 = mysqli_fetch_array($query)) {
-
+					while ($query1 = mysqli_fetch_array($query)) 
+					{
 					?>
 						<div class="col-lg-2 col-md-3 col-sm-6 col-xs-12" id="s">
 							<a class="dashboard-stat bg-primary" href="download-res.php?sub_id=<?php echo $obj->encrypt($query1['Sub_id']);?>">
@@ -172,29 +162,18 @@ Purchase:
 
 
 				</div>
-				<!-- /.row -->
+				
 			</div>
 
-			<!-- /.container-fluid -->
-			</section>
-			<!-- /.section -->
-
-
-
+			<!-- </section> -->
+			
 			<?php
-			include "footer.php";
+				require "footer.php";
 			?>
-
-
 		</div>
 
 	
-	</body>
-<?php  } ?>
-
-	</html>
-
-		<!--Page main section end-->
+	<!--Page main section end-->
 		<!--main js file start-->
 		<script type="text/javascript" src="js/jquery-1.12.2.js"></script>
 		<script type="text/javascript" src="js/bootstrap.js"></script>
@@ -218,3 +197,13 @@ Purchase:
     <script src="teacher/assets/js/jquery.slicknav.min.js"></script>
     <script src="teacher/assets/js/plugins.js"></script>
     <script src="teacher/assets/js/scripts.js"></script>
+	</body>
+	</html>
+
+<?php  
+}
+?>
+
+	
+
+		

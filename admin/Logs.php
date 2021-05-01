@@ -3,15 +3,14 @@
 
 session_start();
 error_reporting(0);
-require 'connection.php';
+require '../connection.php';
 require 'Store_data.php';
 
+$log=new Log();
 if(isset($_SESSION['a_id']))
 {
-
-$action="In View Log";
-$log=new Log();
-$log->success_entry($action,$Conn);
+    $action="In View Log";
+    $log->success_entry($action,$Conn);
 
 ?>
 
@@ -19,7 +18,7 @@ $log->success_entry($action,$Conn);
 <!DOCTYPE html>
 <html>
 <head>
-	<title>SYSTEM LOGS</title>
+	<title>SYSTEM LOGS | IGHS</title>
 
      <link rel="stylesheet" href="../teacher/css/bootstrap.min.css" media="screen" >
         <link rel="stylesheet" href="../teacher/css/font-awesome.min.css" media="screen" >
@@ -274,7 +273,7 @@ $log->success_entry($action,$Conn);
     <?php
 
 
-    $q = mysqli_query($Conn, "SELECT * FROM `Log` ORDER BY`L_Date`,`L_Time` DESC");
+    $q = mysqli_query($Conn, "SELECT * FROM `Log` ORDER BY `L_Date` DESC");
 
     while ($data = mysqli_fetch_assoc($q)) 
     {

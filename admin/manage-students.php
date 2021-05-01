@@ -2,13 +2,17 @@
 <?php
 session_start();
 error_reporting(0);
-include('connection.php');
+include('../connection.php');
 include('store_data.php');
 include('../ec_dc.php');
 $obj = new ecdc();
+$log=new Log();
 
 if(strlen($_SESSION['a_id'])=="")
     {   
+        $action="In manage-students";
+            
+        $log->success_entry($action,$Conn,"Unsuccessful");
         header("Location: index.php"); 
     }
     else
@@ -16,7 +20,7 @@ if(strlen($_SESSION['a_id'])=="")
         if(!(isset($_GET['S_id'])))
         {
             $action="In manage-students";
-            $log=new Log();
+            
             $log->success_entry($action,$Conn);
         }
 
@@ -57,7 +61,7 @@ if(strlen($_SESSION['a_id'])=="")
     <head>
           <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Manage Student</title>
+        <title>Manage Student | IGHS</title>
    <link rel="stylesheet" href="../teacher/css/bootstrap.min.css" media="screen" >
         <link rel="stylesheet" href="../teacher/css/font-awesome.min.css" media="screen" >
         <link rel="stylesheet" href="../teacher/css/animate-css/animate.min.css" media="screen" >
@@ -345,7 +349,7 @@ if(strlen($_SESSION['a_id'])=="")
                                                 </thead>
                                                                                                 
 <?php 
-include 'connection.php';
+
  $sql = "SELECT * from `students` join Class on students.Class_id=Class.Class_id WHERE `is_deleted`='0' AND `updated`='0' ORDER BY S_srn";
 $query = mysqli_query($Conn,$sql);
 $row = mysqli_num_rows($query);

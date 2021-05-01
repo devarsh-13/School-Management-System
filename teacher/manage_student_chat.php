@@ -2,7 +2,7 @@
 session_start();
 
 error_reporting(0);
-include 'connection.php';
+include '../connection.php';
 include('../admin/store_data.php');
 
 

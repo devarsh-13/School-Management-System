@@ -1,5 +1,5 @@
 <?php
-    include 'Database/connection.php';
+    include 'connection.php';
     include('admin/store_data.php');
     require "ec_dc.php";
     session_start();

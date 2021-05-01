@@ -1,20 +1,22 @@
 <?php
 session_start();
 error_reporting(0);
-include('connection.php');
+include('../connection.php');
 include('store_data.php');
 include('../ec_dc.php');
 include('Image_compress.php');
 
 
-if (strlen($_SESSION['a_id']) == "") 
+$obj = new ecdc();
+$log = new Log();
+
+if (strlen($_SESSION['a_id']) =="") 
 {
+    $log->success_entry($action,$Conn,"Unsuccessful");
     header("Location: index.php");
 } 
 else 
 {
-    $obj = new ecdc();
-    $log = new Log();
     if (!(isset($_POST['gr']))) 
     {
         $action = "In Add Student";
@@ -130,7 +132,7 @@ else
        
         if ($q) 
         {
-            $result = compress($imageTmpName, $uploadFolder.$imageName);
+            compress($imageTmpName, $uploadFolder.$imageName);
             $action = "Student Added";   
             $log->success_entry($action, $Conn);
             echo "<script>alert('Student Info Added Successfully');window.location.href='add-students.php';</script>";   
@@ -196,7 +198,7 @@ else
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>IGHS Admin| ADD Student </title>
+        <title>ADD Student | IGHS</title>
         <style type="text/css">
             .add button {
 

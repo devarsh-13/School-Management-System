@@ -1,6 +1,6 @@
 <?php
     
-    require "connection.php";
+    require "../connection.php";
     include('store_data.php');
     include('Image_compress.php');
         

@@ -1,5 +1,5 @@
 <?php
-require "connection.php";
+require "../connection.php";
 require "../admin/store_data.php";
 require "../ec_dc.php";
 error_reporting(0);

@@ -33,6 +33,7 @@ if (isset($_POST['verify'])) {
 
   <link rel="stylesheet" href="../css/otp.css">
   <script src="../js/otp.js"></script>
+  <title>Vreify Teacher OTP | IGHS</title>
   
 
 </head>

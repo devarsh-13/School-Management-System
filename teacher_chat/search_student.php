@@ -1,6 +1,6 @@
 <?php
     session_start();
-    include_once "../Database/connection.php";
+    include_once "../connection.php";
     $output = "";
    
     $searchTerm = mysqli_real_escape_string($Conn, $_POST['searchTerm']);

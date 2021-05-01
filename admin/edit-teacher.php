@@ -1,63 +1,83 @@
 <?php
 session_start();
 error_reporting(0);
-include('connection.php');
-include('store_data.php');
-include('../ec_dc.php');
+require('../connection.php');
+require('store_data.php');
+require('../ec_dc.php');
+require('Image_compress.php');
+
 $obj = new ecdc();
 $log=new Log();
+
 if(strlen($_SESSION['a_id'])=="")
-    {   
-        header("Location: index.php"); 
-    }
-    else
-    {
-        if(!(isset($_POST['tn'])))
-        {
-            $action="In Edit Teacher";
-            $log->success_entry($action,$Conn);
-        }
-
-$tid=$obj->decrypt($_GET['T_id']);
-
-
-if(isset($_POST['update']))
-{
-    require "connection.php";
-
-$tn=$_POST['tn']; 
-$dob=$_POST['dob']; 
-$con=$_POST['con']; 
-$adate=$_POST['adate'];
-$jdate=$_POST['jdate'];
-$rdate=$_POST['rdate'];
-$deg=$_POST['deg'];
-$pass=$_POST['pass'];  
-$d = date("Y-m-d");
-
-
-$Sql="UPDATE `teachers` SET `T_name`='$tn',`DOB`='$dob',`Degree`='$deg',`A_date`='$adate',`Joining_date`='$jdate',`Retire_date`='$rdate',`Contact`='$con',`Password`='$pass',`is_deleted`='0',`Created_on`='$d' WHERE `T_srn`='$tid'";
-
-
-$q=mysqli_query($Conn,$Sql);
-$action="Teacher data Edited";
-if($q)
-{
-    
+{   
+    $action="In Edit Teacher";
     $log->success_entry($action,$Conn);
     
-    unset($_POST['tn']);
-    echo "<script>alert('Teacher Info. Edit Successfully.');window.location.href='edit-teacher.php';</script>";   
+    header("Location: index.php"); 
 }
-else 
+else
 {
-    $log->success_entry($action,$Conn,"Unsuccessful");
-    
-    unset($_POST['tn']);
-     echo "<script>alert('Failed To Edit Teacher.');window.location.href='edit-teacher.php';</script>";   
-}
+    if(!(isset($_POST['tn'])))
+    {
+        $action="In Edit Teacher";
+        $log->success_entry($action,$Conn);
+    }
 
-}
+    $tid=$obj->decrypt($_GET['T_id']);
+
+
+    if(isset($_POST['update']))
+    {
+        
+        $tn=$_POST['tn']; 
+        $dob=$_POST['dob']; 
+        $con=$_POST['con']; 
+        $adate=$_POST['adate'];
+        $jdate=$_POST['jdate'];
+        $rdate=$_POST['rdate'];
+        $deg=$_POST['deg'];
+        $pass=$_POST['pass'];  
+        $d = date("Y-m-d");
+
+        if(strlen($_FILES['file']['name'])=="")
+        {            
+            $imageName=$_POST['img_name'];           
+        }
+        else
+        {
+
+            $uploadFolder ='../user_photos/teacher/';
+            $imageTmpName = $_FILES['file']['tmp_name'];
+            $ext=pathinfo($_FILES['file']['name'],PATHINFO_EXTENSION);
+            $imageName ="$con.$ext";
+            $up=true;
+
+            unset($uploadFolder.$_POST['img_name']);
+        }
+
+
+        $Sql="UPDATE `teachers` SET `T_name`='$tn',`DOB`='$dob',`Degree`='$deg',`A_date`='$adate',`Joining_date`='$jdate',`Retire_date`='$rdate',`Contact`='$con',`Password`='$pass',`is_deleted`='0',`Created_on`='$d' WHERE `T_srn`='$tid'";
+
+
+        $q=mysqli_query($Conn,$Sql);
+        $action="Teacher data Edited";
+        if($q)
+        {
+            if ($up) 
+            {
+                compress($uploadFolder.$imageName);
+            }
+            $log->success_entry($action,$Conn);
+            echo "<script>alert('Teacher Info. Edit Successfully.');window.location.href='manage-teachers.php';</script>";   
+        }
+        else 
+        {
+            $log->success_entry($action,$Conn,"Unsuccessful");
+            echo "<script>alert('Failed To Edit Teacher.');window.location.href='manage-teachers.php';</script>";   
+        }
+
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -66,7 +86,7 @@ else
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>IGHS Admin| Edit Teacher </title>
+    <title>Edit Teacher | IGHS</title>
      <link rel="stylesheet" href="../teacher/css/bootstrap.min.css" media="screen" >
         <link rel="stylesheet" href="../teacher/css/font-awesome.min.css" media="screen" >
         <link rel="stylesheet" href="../teacher/css/animate-css/animate.min.css" media="screen" >
@@ -150,7 +170,7 @@ else if($error){?>
                                             <?php echo htmlentities($error); ?>
                                         </div>
                                         <?php } ?>
-                                        <form class="form-horizontal" method="post">
+                                        <form class="form-horizontal" method="post" enctype="multipart/form-data">
 <?php 
  $sql = "SELECT * from `teachers` WHERE `T_srn`='$tid'";
 $query = mysqli_query($Conn,$sql);
@@ -162,7 +182,7 @@ if($row > 0)
  while($result=mysqli_fetch_array($query))
     {   ?>
                                             <div class="form-group">
-                                                <label for="default" class="col-sm-2 control-label">Teacher Nmae</label>
+                                                <label for="default" class="col-sm-2 control-label">Teacher Name</label>
                                                 <div class="col-sm-10">
                                                     <input type="text" name="tn" value="<?php echo htmlentities($result['T_name'])?>" oninput='stringValidate(this)'  maxlength="50" class="form-control" id="tn" required="required" autocomplete="off">
                                                 </div>
@@ -201,6 +221,15 @@ if($row > 0)
                                                 <label for="default" class="col-sm-2 control-label">Retire Date</label>
                                                 <div class="col-sm-10">
                                                     <input type="date" name="rdate" value="<?php echo htmlentities($result['Retire_date'])?>" class="form-control"  min='<?php echo date('Y-m-d');?>' max="2099-01-01" id="rdate" required="required" autocomplete="off">
+                                                </div>
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                <label for="default" class="col-sm-2 control-label">Teacher Image</label>
+                                                <div class="col-sm-10">
+                                                    <input type="file" name="file" class="form-control" id="img">
+                                                    <input type="hidden" name="img_name" value="<?php echo htmlentities($result['A_Photo'])?>">
                                                 </div>
                                             </div>
 

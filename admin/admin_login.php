@@ -1,11 +1,12 @@
 <?php
-require "connection.php";
+require "../connection.php";
 require "store_data.php";
 require "../ec_dc.php";
 error_reporting(0);
 
 $flag = 0;
- $obj = new ecdc();
+$obj = new ecdc();
+$log=new Log();
 
 if (isset($_POST['Submit'])) 
 {
@@ -42,9 +43,6 @@ $Password= $obj->encrypt($os);
 		session_start();
 		$_SESSION['a_id'] = $arr[0];
 
-		//log
-
-		$log = new Log();
 		$log->success_entry($action, $Conn);
 
 		if (isset($_POST["remember"])) 
@@ -66,10 +64,10 @@ $Password= $obj->encrypt($os);
 	else 
 	{
 		$contact = $_POST['Contact_no'];
-		$log = new Log();
+		
 		$log->wrong_login($contact, $action, $Conn);
-		$flag = 1;
 
+		$flag = 1;
 		$query = mysqli_query($Conn, "SELECT * FROM `admin` WHERE
 			`A_mobile` = '$Contact' && `A_password` = '$Password' AND `is_deleted`='1'
 			") or die(mysqli_connect_error());
@@ -91,7 +89,7 @@ $Password= $obj->encrypt($os);
 <html>
 
 <head>
-	<title>Admin Login Form</title>
+	<title>Admin Login Form | IGHS</title>
 	<link rel="stylesheet" href="../css/log_style.css">
 </head>
 

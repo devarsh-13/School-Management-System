@@ -3,24 +3,28 @@
 session_start();
 $_SESSION['page']='2';  
 error_reporting(0);
-include('connection.php');
+include('../connection.php');
 include('store_data.php');
 include('../ec_dc.php');
 $obj = new ecdc();
+$log=new Log();
+
 if(strlen($_SESSION['a_id'])=="")
-    {   
+{
+    $action="In Manage Notifications";
+    $log->success_entry($action,$Conn,"Unsuccessful");   
     header("Location: index.php"); 
+}
+else
+{
+    if(!(isset($_GET['N_id'])))
+    {
+        if(!($_POST['delt']))
+        {
+            $action="In Manage Notifications";
+            $log->success_entry($action,$Conn);
+        }
     }
-    else{
-            if(!(isset($_GET['N_id'])))
-            {
-                if(!($_POST['delt']))
-                {
-                    $action="In Manage Notifications";
-                    $log=new Log();
-                    $log->success_entry($action,$Conn);
-                }
-            }
             
  
 if (isset($_GET['N_id']))
@@ -30,9 +34,9 @@ if (isset($_GET['N_id']))
 
     $nid = $obj->decrypt($_GET['N_id']);
 
-    $Sql="DELETE FROM `notification` WHERE `Sr_n`='$nid'";
+    $Sql="UPDATE `notification` SET `is_deleted`='1' WHERE `Sr_n`='$nid'";
    
-    $delete = $Conn->query($Sql) or die("Error in query2".$connection->error);
+    $delete = $Conn->query($Sql);
    
     if($delete)
     {
@@ -56,7 +60,7 @@ if (isset($_GET['N_id']))
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
     	<meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Admin Manage Notifications</title>
+        <title>Manage Notifications | IGHS</title>
          <link rel="stylesheet" href="../teacher/css/bootstrap.min.css" media="screen" >
         <link rel="stylesheet" href="../teacher/css/font-awesome.min.css" media="screen" >
         <link rel="stylesheet" href="../teacher/css/animate-css/animate.min.css" media="screen" >
@@ -212,8 +216,8 @@ if (isset($_GET['N_id']))
                                                    
                                                     
 <?php
-include 'connection.php';
- $sql = "SELECT * from `notification` ORDER BY created_on DESC";
+
+ $sql = "SELECT * from `notification` WHERE `is_deleted`='0' ORDER BY created_on DESC";
 $query = mysqli_query($Conn,$sql);
 $row = mysqli_num_rows($query);
 $cnt=1;

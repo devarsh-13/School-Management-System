@@ -8,7 +8,7 @@
   }
 
   require_once "../vendor/autoload.php";
-  require "connection.php"; 
+  require "../connection.php"; 
   ob_start();   
   use PhpOffice\PhpSpreadsheet\Spreadsheet;
   use PhpOffice\PhpSpreadsheet\IOFactory;

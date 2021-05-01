@@ -2,23 +2,27 @@
 session_start();
 error_reporting(0);
 
-require('connection.php');
+require('../connection.php');
 require('store_data.php');
 require "../ec_dc.php";
 require('Image_compress.php');
 
-
+$log = new Log();
 $obj = new ecdc();
-if (strlen($_SESSION['a_id']) == "") {
+
+if (strlen($_SESSION['a_id']) == "") 
+{
+    $action="In ADD Teachers";
+    $log->success_entry($action, $Conn,"Unsuccessful");
+    
     header("Location: index.php");
-} else {
+}
+else 
+{
 
     if(!(isset($_POST['tn'])))
     {
-
-
         $action = " In ADD Techers";
-        $log = new Log();
         $log->success_entry($action, $Conn);
     }
     if (isset($_POST['submit']))
@@ -51,7 +55,6 @@ if (strlen($_SESSION['a_id']) == "") {
         else
         {
             $imageName ="$con.$ext";    
-            $result = compress($imageTmpName,$uploadFolder.$imageName);
         }
 
         $Sql = "INSERT INTO `teachers` 
@@ -91,20 +94,17 @@ if (strlen($_SESSION['a_id']) == "") {
         $action = "Add teacher data";
         if ($q) 
         {
-            $log = new Log();
+            
+            compress($imageTmpName,$uploadFolder.$imageName);
             $log->success_entry($action, $Conn);
             
-            unset($_POST['tn']);
-            
-                 echo "<script>alert('Teacher ADD Successfully');window.location.href='add-teachers.php';</script>";   
+            echo "<script>alert('Teacher ADD Successfully');window.location.href='add-teachers.php';</script>";   
         }
         else 
         {
-            $log = new Log();
+            
             $log->success_entry($action, $Conn, "Unsuccessful");
-         
-            unset($_POST['tn']);
-             echo "<script>alert('Failed To Add Teacher');window.location.href='add-teachers.php';</script>";  
+            echo "<script>alert('Failed To Add Teacher');window.location.href='add-teachers.php';</script>";  
          
         }
     }
@@ -116,7 +116,7 @@ if (strlen($_SESSION['a_id']) == "") {
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>IGHS Admin| ADD Teacher </title>
+        <title>ADD Teacher | IGHS</title>
         <style type="text/css">
             .add button {
 

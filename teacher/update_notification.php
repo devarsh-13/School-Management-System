@@ -6,7 +6,7 @@ session_start();
 $T_srn = $_SESSION['t_id'];
 if (isset($T_srn)) {
 
-    require "connection.php";
+    require "../connection.php";
 
     $sql = ("SELECT * FROM `notification` WHERE `is_deleted`='0'") or die(mysqli_connect_error());
 

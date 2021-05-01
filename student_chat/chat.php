@@ -1,6 +1,6 @@
 <?php 
   session_start();
-  include_once "../Database/connection.php";
+  include_once "../connection.php";
   if(!isset($_SESSION['s_id'])){
     header("location: ../login.php");
   }

@@ -1,16 +1,26 @@
 <?php
 session_start();
 error_reporting(0);
-include('connection.php');
+require('../connection.php');
 require "../vendor/autoload.php";
 require "store_data.php";
 require "../ec_dc.php";
+
+$log=new Log();
+
 if(strlen($_SESSION['a_id'])=="")
-    {   
+{   
+    $action="In Teacher Import";
+    $log->success_entry($action,$Conn,"Unsuccessful");
     header("Location: index.php"); 
-    }
-    else
+}
+else
+{
+    if(!(isset($_POST['submit'])))
     {
+        $action="In Teacher Import";
+        $log->success_entry($action,$Conn);
+    }
 
 function get_pass($p2)
 {
@@ -26,7 +36,7 @@ function get_pass($p2)
   if(isset($_POST['submit']))
   {
         $targetPath =$_FILES['file']['name'];
-        move_uploaded_file($_FILES['file']['tmp_name'], $targetPath);
+        // move_uploaded_file($_FILES['file']['tmp_name'], $targetPath);
 
         $reader = new \PhpOffice\PhpSpreadsheet\Reader\Xlsx();
 $ec = new ecdc();
@@ -59,7 +69,7 @@ $ec = new ecdc();
         unlink($targetPath);
 
 $action="Teacher data Imported";
-$log=new Log();
+
 if($ok)
 {
 
@@ -86,7 +96,7 @@ else
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>IGHS Admin| Import </title>
+    <title>Import Teacher details | IGHS</title>
      <link rel="stylesheet" href="ssi-uploader/styles/ssi-uploader.css"/>
      
     <link rel="stylesheet" href="../teacher/css/bootstrap.min.css" media="screen" >

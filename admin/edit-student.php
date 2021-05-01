@@ -1,26 +1,32 @@
 <?php
 session_start();
 error_reporting(0);
-include('connection.php');
-include('store_data.php');
-include('../ec_dc.php');
+require('../connection.php');
+require('store_data.php');
+require('../ec_dc.php');
+require('Image_compress.php');
+
 $obj = new ecdc();
 $log = new Log();
 
-if (strlen($_SESSION['a_id']) == "") {
+if (strlen($_SESSION['a_id']) == "") 
+{
+    $action="In Edit Notifications";
+    $log->success_entry($action,$Conn,"Unsuccessful");
     header("Location: index.php");
-} else {
-    if (!(isset($_POST['gr']))) {
+}
+else 
+{
+    if (!(isset($_POST['gr']))) 
+    {
         $action = "in Edit Student";
-
         $log->success_entry($action, $Conn);
     }
     
     $stid=$obj->decrypt($_GET['S_id']);
     
-
-    if (isset($_POST['update'])) {
-
+    if (isset($_POST['update'])) 
+    {
         $gr = $_POST['gr'];
         $ui = $_POST['ui'];
         $sn = $_POST['sn'];
@@ -34,7 +40,8 @@ if (strlen($_SESSION['a_id']) == "") {
         $home = $_POST['home'];
         $hand = $_POST['hand'];
         $des = $_POST['des'];
-        $pass = sha1($_POST['pass']);
+        $pass = $obj->encrypt($_POST['pass']);
+
         $re = $_POST['re'];
         $class = $_POST['class'];
         $stream = $_POST['stream'];
@@ -44,26 +51,44 @@ if (strlen($_SESSION['a_id']) == "") {
         $ci = mysqli_fetch_array($q);
         $ay = $_POST['AY'];
         $c = $ci[0];
+        $up=false;
 
-        $Sql = "UPDATE `students` SET `S_grn`='$gr',`S_uidn`='$ui',`S_name`='$sn',`S_caste`='$cast', `S_category`= '$cat', `S_dob`= '$dob',`S_contact`='$con',`S_ad_date`='$adate',`Class_id`= '$c',`S_adharn`='$adhar',`S_hostel`='$hostel',`S_home`='$home',`S_handicapped`='$hand',`S_describe`='$des',`S_password`='$pass',`Academic_year`='$ay',`S_remarks`='$re',`is_deleted`='0',`Created_on`='$d' WHERE `S_srn`='$stid'";
+        if(strlen($_FILES['file']['name'])=="")
+        {            
+            $imageName=$_POST['img_name'];           
+        }
+        else
+        {
+
+            $uploadFolder ='../user_photos/student/';
+            $imageTmpName = $_FILES['file']['tmp_name'];
+            $ext=pathinfo($_FILES['file']['name'],PATHINFO_EXTENSION);
+            $imageName ="$gr.$ext";
+            $up=true;
+
+            $old_img=$uploadFolder.$_POST['img_name'];
+            unset($old_img);
+        }
+
+        $Sql = "UPDATE `students` SET `S_photo`='$imageName',`S_grn`='$gr',`S_uidn`='$ui',`S_name`='$sn',`S_caste`='$cast', `S_category`= '$cat', `S_dob`= '$dob',`S_contact`='$con',`S_ad_date`='$adate',`Class_id`= '$c',`S_adharn`='$adhar',`S_hostel`='$hostel',`S_home`='$home',`S_handicapped`='$hand',`S_describe`='$des',`S_password`='$pass',`Academic_year`='$ay',`S_remarks`='$re',`is_deleted`='0',`Created_on`='$d' WHERE `S_srn`='$stid'";
 
 
 
         $q = mysqli_query($Conn, $Sql);
         $action = "Edit Student data";
-        if ($q) {
-
+        if ($q) 
+        {
+            if($up)
+            {
+                compress($imageTmpName, $uploadFolder . $imageName);
+            }
             $log->success_entry($action, $Conn);
-            
-            unset($_POST['gr']);
-             echo "<script>alert('Student Info. Edit Successfully.');window.location.href='edit-student.php';</script>";   
-        } else {
-
+            echo "<script>alert('Student Info. Edit Successfully.');window.location.href='manage-students.php';</script>";   
+        } 
+        else 
+        {
             $log->success_entry($action, $Conn, "Unsuccessful");
-
-            
-            unset($_POST['gr']);
-            echo "<script>alert('Failed To Edit Student.');window.location.href='edit-student.php';</script>";   
+            echo "<script>alert('Failed To Edit Student.');window.location.href='manage-students.php';</script>";   
         }
     }
 ?>
@@ -74,7 +99,7 @@ if (strlen($_SESSION['a_id']) == "") {
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>IGHS Admin| Edit Student </title>
+        <title>Edit Student | IGHS</title>
         <link rel="stylesheet" href="../teacher/css/bootstrap.min.css" media="screen">
         <link rel="stylesheet" href="../teacher/css/font-awesome.min.css" media="screen">
         <link rel="stylesheet" href="../teacher/css/animate-css/animate.min.css" media="screen">
@@ -107,19 +132,22 @@ if (strlen($_SESSION['a_id']) == "") {
         </style>
 
         <script type="text/javascript">
-            function Check_class() {
-
-                if (document.getElementById("clas").value == 11 || document.getElementById("clas").value == 12) {
+            function Check_class() 
+            {
+                if (document.getElementById("clas").value == 11 || document.getElementById("clas").value == 12) 
+                {
                     document.getElementById("stream").required = true;
                     document.getElementById("stream").disabled = false;
-                } else {
+                } 
+                else 
+                {
                     document.getElementById("stream").required = false;
                     document.getElementById("stream").disabled = true;
                     document.getElementById("stream").value = "NULL";
                 }
             }
 
-            function desc(i) {
+            function desc() {
                 var c = document.getElementById("hand1").checked;
                 if (c == true) {
                     document.getElementById("des").required = true;
@@ -146,9 +174,9 @@ if (strlen($_SESSION['a_id']) == "") {
             <div class="loader"></div>
         </div>
         <div class="page-container">
-            <?php include('leftbar.php'); ?>
+            <?php require('leftbar.php'); ?>
             <div class="main-content">
-                <?php include('topbar.php'); ?>
+                <?php require('topbar.php'); ?>
 
 
 
@@ -185,7 +213,7 @@ if (strlen($_SESSION['a_id']) == "") {
                                             <?php echo htmlentities($error); ?>
                                         </div>
                                     <?php } ?>
-                                    <form class="form-horizontal" method="post" onmouseenter="Check_class()" onkeyup="Check_class()" onkeyup="desc()" onmousemove="desc()" onscroll="desc()">
+                                    <form class="form-horizontal" method="post" enctype="multipart/form-data"  onmouseenter="Check_class()" onkeyup="Check_class()" onkeyup="desc()" onmousemove="desc()" onscroll="desc()">
                                         <?php
                                         $sql = "SELECT * from `students` join Class on students.Class_id=Class.Class_id WHERE `S_srn`='$stid'";
                                         $query = mysqli_query($Conn, $sql);
@@ -212,9 +240,10 @@ if (strlen($_SESSION['a_id']) == "") {
                                             </div>
 
                                             <div class="form-group">
-                                                <label for="default" class="col-sm-2 control-label">Student Nmae</label>
+                                                <label for="default" class="col-sm-2 control-label">Student Name</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" name="sn" value="<?php echo htmlentities($result['S_name']); ?>" class="form-control" id="sn" oninput='stringValidate(this)' maxlength="50" required="required" autocomplete="off">
+                                                    <input type="text" name="sn" class="form-control" id="sn" oninput='stringValidate(this)' maxlength="50" required="required" autocomplete="off" value="<?php echo htmlentities($result['S_name']); ?>">
+                                                    
                                                 </div>
                                             </div>
 
@@ -309,6 +338,16 @@ if (strlen($_SESSION['a_id']) == "") {
                                             </div>
 
                                             <div class="form-group">
+                                                <label for="default" class="col-sm-2 control-label">Student Image</label>
+                                                <div class="col-sm-10">
+
+                                                    <input type="file" name="file" class="form-control" id="img" />
+                                                    <input type="hidden" name="img_name" value="<?php echo htmlentities($result['S_photo'])?>">
+
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Adhar Number</label>
                                                 <div class="col-sm-10">
                                                     <input type="text" name="adhar" value="<?php echo htmlentities($result['S_adharn']) ?>" class="form-control"  oninput='digitValidate(this)' pattern=".{12}" required title=" 12 numbers" maxlength='12' id="adhar" required="required" autocomplete="off">
@@ -336,7 +375,7 @@ if (strlen($_SESSION['a_id']) == "") {
                                                 <label for="default" class="col-sm-2 control-label">Handicapped</label>
                                                 <div class="col-sm-10">
                                                     <?php
-                                                    $result['S_handicapped']
+                                                    // $result['S_handicapped']
                                                     ?>
 
                                                     <input type="radio" name="hand" value="Yes" required <?php if ($result['S_handicapped'] == "Yes" || $result['S_handicapped'] == "YES") {
@@ -346,8 +385,6 @@ if (strlen($_SESSION['a_id']) == "") {
                                                     <input type="radio" name="hand" value="No" required <?php if ($result['S_handicapped'] == "No" || $result['S_handicapped'] == "NO") {
                                                                                                             echo "checked";
                                                                                                         } ?> onclick="desc()" id="hand2">No</input>
-
-
                                                 </div>
                                             </div>
 
@@ -362,7 +399,7 @@ if (strlen($_SESSION['a_id']) == "") {
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Password</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" name="pass" value="<?php echo htmlentities($result['S_password']) ?>" class="form-control" id="pass" maxlength="15" minlength="4" required="required" autocomplete="off">
+                                                    <input type="Password" name="pass" value="<?php echo htmlentities($obj->encrypt($result['S_password']))?>" class="form-control" id="pass" maxlength="15" minlength="4" required="required" autocomplete="off">
                                                 </div>
                                             </div>
 

@@ -1,7 +1,7 @@
 <?php 
  session_start();
 error_reporting(0);
-include('connection.php');
+include('../connection.php');
 include('../admin/store_data.php');
 include('../ec_dc.php');
 $obj = new ecdc();
@@ -25,7 +25,7 @@ else{
  
 <head>
     
-    <title>Teacher | Dashboard</title>
+    <title>Select Class | IGHS</title>
  <link rel="stylesheet" href="css/bootstrap.min.css" media="screen" >
         <link rel="stylesheet" href="css/font-awesome.min.css" media="screen" >
         <link rel="stylesheet" href="css/animate-css/animate.min.css" media="screen" >

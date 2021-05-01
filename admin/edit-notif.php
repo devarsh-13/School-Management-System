@@ -1,7 +1,7 @@
 <?php
 session_start();
 error_reporting(0);
-include('connection.php');
+include('../connection.php');
 include('store_data.php');
 include('../ec_dc.php');
 $obj = new ecdc();
@@ -10,13 +10,14 @@ $log=new Log();
 if(strlen($_SESSION['a_id'])=="")
 {   
     header("Location: index.php"); 
+    $action="In Edit Notifications";
+    $log->success_entry($action,$Conn,"Unsuccessful");
 }
 else
 {
     if(!(isset($_POST['submit'])))
     {
         $action="In Edit Notifications";
-        
         $log->success_entry($action,$Conn);
     }
 
@@ -39,7 +40,6 @@ else
         {
             
             $log->success_entry($action,$Conn);
-            unset($_POST);
             echo "<script>alert('Notification Edit Successfully.');window.location.href='edit-notif.php';</script>";
 
         }
@@ -59,15 +59,16 @@ else
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>IGHS Admin | Edit Notification </title>
-     <link rel="stylesheet" href="../teacher/css/bootstrap.min.css" media="screen" >
-        <link rel="stylesheet" href="../teacher/css/font-awesome.min.css" media="screen" >
-        <link rel="stylesheet" href="../teacher/css/animate-css/animate.min.css" media="screen" >
-        <link rel="stylesheet" href="../teacher/css/main.css" media="screen" >
-        <script src="../teacher/js/modernizr/modernizr.min.js"></script>
+    <title>Edit Notification | IGHS</title>
+     
+    <link rel="stylesheet" href="../teacher/css/bootstrap.min.css" media="screen" >
+    <link rel="stylesheet" href="../teacher/css/font-awesome.min.css" media="screen" >
+    <link rel="stylesheet" href="../teacher/css/animate-css/animate.min.css" media="screen" >
+    <link rel="stylesheet" href="../teacher/css/main.css" media="screen" >
+    <script src="../teacher/js/modernizr/modernizr.min.js"></script>
 
 
-      <link rel="shortcut icon" type="image/png" href="assets/images/icon/favicon.ico">
+    <link rel="shortcut icon" type="image/png" href="assets/images/icon/favicon.ico">
     <link rel="stylesheet" href="../teacher/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="../teacher/assets/css/font-awesome.min.css">
     <link rel="stylesheet" href="../teacher/assets/css/themify-icons.css">

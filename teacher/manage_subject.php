@@ -1,7 +1,7 @@
 <?php
 session_start();
 error_reporting(0);
-include('connection.php');
+include('../connection.php');
 include('../admin/store_data.php');
 $tid = $_SESSION['t_id'];
 
@@ -40,7 +40,7 @@ if (isset($_POST['Update'])) {
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Manage subject </title>
+    <title>Manage Teacher's Subject | IGHS</title>
 
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/font-awesome.min.css">

@@ -2,7 +2,7 @@
 <?php
 session_start();
 error_reporting(0);
-include('connection.php');
+include('../connection.php');
 include('store_data.php');
 include('../ec_dc.php');
 $obj = new ecdc();
@@ -53,7 +53,7 @@ else
 <!DOCTYPE html>
 <html lang="en">
     <head>
-      <title>Manage Teacher</title>
+      <title>Bin Admin | IGHS</title>
    <link rel="stylesheet" href="../teacher/css/bootstrap.min.css" media="screen" >
         <link rel="stylesheet" href="../teacher/css/font-awesome.min.css" media="screen" >
         <link rel="stylesheet" href="../teacher/css/animate-css/animate.min.css" media="screen" >

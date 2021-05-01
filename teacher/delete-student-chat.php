@@ -1,6 +1,6 @@
 <?php
 //delete.php
-include('connection.php');
+include('../connection.php');
 include('../admin/store_data.php');
 session_start();
 

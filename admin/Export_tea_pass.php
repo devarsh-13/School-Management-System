@@ -2,18 +2,21 @@
 <?php
 session_start();
 error_reporting(0);
-include('connection.php');
+include('../connection.php');
 include('store_data.php');
 require "../ec_dc.php";
+
+$log=new Log();
 if(strlen($_SESSION['a_id'])=="")
     {   
+        $action="In Export Teacher Password";
+        $log->success_entry($action,$Conn,"Unsuccesful");
         header("Location: index.php"); 
     }
     else{
         if(!(isset($_GET['T_id'])))
         {
             $action="In Export Teacher Password";
-            $log=new Log();
             $log->success_entry($action,$Conn);
         }
            
@@ -22,7 +25,7 @@ if(strlen($_SESSION['a_id'])=="")
 <!DOCTYPE html>
 <html lang="en">
     <head>
-      <title>Export</title>
+      <title>Export Teacher Details | IGHS</title>
    <link rel="stylesheet" href="../teacher/css/bootstrap.min.css" media="screen" >
         <link rel="stylesheet" href="../teacher/css/font-awesome.min.css" media="screen" >
         <link rel="stylesheet" href="../teacher/css/animate-css/animate.min.css" media="screen" >
@@ -301,7 +304,7 @@ else if($error){?>
                                                 </thead>                        
                                                 
 <?php 
-include 'connection.php';
+
  $sql = "SELECT * from `teachers` WHERE `is_deleted`='0' ORDER BY T_srn";
 $query = mysqli_query($Conn,$sql);
 $row = mysqli_num_rows($query);

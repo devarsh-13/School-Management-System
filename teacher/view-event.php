@@ -3,7 +3,7 @@
 <?php
 session_start();
 error_reporting(0);
-include('connection.php');
+include('../connection.php');
 include('../admin/store_data.php');
 
 $log=new Log();
@@ -25,7 +25,7 @@ if(strlen($_SESSION['t_id'])=="")
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
     	<meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>IGHS Teacher | Events</title>
+        <title>Events | IGHS</title>
       <link rel="stylesheet" href="css/bootstrap.min.css" media="screen" >
         <link rel="stylesheet" href="css/font-awesome.min.css" media="screen" >
         <link rel="stylesheet" href="css/animate-css/animate.min.css" media="screen" >

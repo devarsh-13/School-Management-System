@@ -3,41 +3,37 @@
 session_start();
 $_SESSION['page']='1';
 error_reporting(0);
-include('connection.php');
-include('store_data.php');
-include('../ec_dc.php');
+require('../connection.php');
+require('store_data.php');
+require('../ec_dc.php');
+
 $obj = new ecdc();
+$log = new Log();
 if(strlen($_SESSION['a_id'])=="")
-    {   
+{
+    $action="In manage-Events";
+    $log->success_entry($action,$Conn,"Unsuccessful");
     header("Location: index.php"); 
+}
+else
+{
+    if(!(isset($_GET['E_id'])))
+    {
+        $action="In Manage Events";
+        $log->success_entry($action,$Conn);
     }
-    else{
-        if(!(isset($_GET['E_id'])))
-        {
-            $action="In Manage Events";
-            $log=new Log();
-            $log->success_entry($action,$Conn);
     
-        }
-        
-           
-
-
-
-
 if (isset($_GET['E_id']))
 {
     $eid = $obj->decrypt($_GET['E_id']);
     
 
-    $Sql="DELETE FROM `event` WHERE `Sr_n`='$eid'";
-    
-   
-        $delete = $Conn->query($Sql) or die("Error in query2".$connection->error);
+    $Sql="UPDATE `event` SET `disabled`='1' WHERE `Sr_n`='$eid'";
+    $delete = $Conn->query($Sql);
     if ($delete)
     {   
         $action="Delete Event data";
-        $log=new Log();
+        
         $log->success_entry($action,$Conn);
         $msg="Event Deleted Successfully";
         unset($_GET);
@@ -46,7 +42,7 @@ if (isset($_GET['E_id']))
     {
 
         $action="Delete Event data";
-        $log=new Log();
+        
         $log->success_entry($action,$Conn,"Unsuccessful");
     $error="Something went wrong. Please try again";
     }
@@ -64,7 +60,7 @@ if (isset($_GET['E_id']))
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
     	<meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>IGHS Admin | Manage Events</title>
+        <title>Manage Events | IGHS</title>
          <link rel="stylesheet" href="../teacher/css/bootstrap.min.css" media="screen" >
         <link rel="stylesheet" href="../teacher/css/font-awesome.min.css" media="screen" >
         <link rel="stylesheet" href="../teacher/css/animate-css/animate.min.css" media="screen" >
@@ -223,8 +219,8 @@ if (isset($_GET['E_id']))
                                                    
                                                     
 <?php
-include 'connection.php';
- $sql = "SELECT * from `event` ORDER BY created_on DESC";
+
+ $sql = "SELECT * from `event` WHERE `disabled`='0' ORDER BY created_on DESC";
 $query = mysqli_query($Conn,$sql);
 $row = mysqli_num_rows($query);
 $cnt=1;

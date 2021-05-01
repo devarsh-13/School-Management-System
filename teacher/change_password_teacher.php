@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-require "connection.php";
+require "../connection.php";
 include ('../admin/store_data.php');
 require "../ec_dc.php";
 $log=new Log();
@@ -58,7 +58,7 @@ if (isset($_POST['Submit']))
 <html>
 
 <head>
-  <title>change password </title>
+  <title>Reset Teacher Password | IGHS</title>
   <link rel="stylesheet" href="css/log_style.css">
 </head>
 

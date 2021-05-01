@@ -1,7 +1,7 @@
 <?php
 session_start();
 error_reporting(0);
-include('connection.php');
+require('../connection.php');
 require "../vendor/autoload.php";
 require "store_data.php";
 require "../ec_dc.php";
@@ -9,11 +9,11 @@ require "../ec_dc.php";
 
 
 if(strlen($_SESSION['a_id'])=="")
-    {   
+{   
     header("Location: index.php"); 
-    }
-    else
-    {
+}
+else
+{
 
 function get_pass($p2)
 {
@@ -27,7 +27,7 @@ function get_pass($p2)
   if(isset($_POST['submit']))
   {
         $targetPath =$_FILES['file']['name'];
-        move_uploaded_file($_FILES['file']['tmp_name'], $targetPath);
+        //move_uploaded_file($_FILES['file']['tmp_name'], $targetPath);
 
         $reader = new \PhpOffice\PhpSpreadsheet\Reader\Xlsx();
 
@@ -101,7 +101,7 @@ function get_pass($p2)
         {
             $query=mysqli_query($Conn,"UPDATE `students` SET`updated`='2' WHERE `Class_id`='$i' AND `updated`='1'")or die(mysqli_error($Conn));
         }
-        unlink($targetPath);
+        //unlink($targetPath);
             }
 
 
@@ -132,7 +132,7 @@ if(isset($ok))
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>IGHS Admin| Import </title>
+    <title>Import Student details | IGHS </title>
      <link rel="stylesheet" href="ssi-uploader/styles/ssi-uploader.css"/>
      
     <link rel="stylesheet" href="../teacher/css/bootstrap.min.css" media="screen" >
@@ -203,7 +203,7 @@ if(isset($ok))
                                 <div class="panel">
                                     <div class="panel-heading">
                                         <div class="panel-title">
-                                            <span>Fill The Info.</span>
+                                            
                                         </div>
                                     </div>
             <!-- page title area end -->

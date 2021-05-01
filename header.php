@@ -1,5 +1,5 @@
 <?php
-require "database/connection.php";
+require "connection.php";
 
 if (isset($_SESSION['s_id'])) {
 

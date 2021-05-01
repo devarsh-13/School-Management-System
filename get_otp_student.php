@@ -2,7 +2,7 @@
 
 session_start();
 
-require "Database/connection.php";
+require "connection.php";
 
 $flag = 0;
 
@@ -90,7 +90,7 @@ if (isset($_POST['getOtp'])) {
 <html>
 
 <head>
-	<title>get otp</title>
+	<title>Recieve OTP | IGHS</title>
 	<link rel="stylesheet" href="css/log_style.css">
 </head>
 

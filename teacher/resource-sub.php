@@ -1,15 +1,17 @@
 <?php 
  session_start();
 error_reporting(0);
-include('connection.php');
+include('../connection.php');
 include('../ec_dc.php');
-$obj = new ecdc();
-if(strlen($_SESSION['t_id'])=="")
-    {   
-    header("Location: index.php"); 
-    }
-    else{
 
+$obj = new ecdc();
+
+if(strlen($_SESSION['t_id'])=="")
+{   
+    header("Location: index.php"); 
+}
+else
+{
 
 ?> 
 <!DOCTYPE html>
@@ -45,6 +47,7 @@ if(strlen($_SESSION['t_id'])=="")
                 padding-bottom: 10px;
             }
         </style>
+        <title>Select Subjects | IGHS</title>
     </head>
     <body class="top-navbar-fixed">
      
@@ -84,27 +87,36 @@ if(strlen($_SESSION['t_id'])=="")
                             <div class="container-fluid">
                                 <div class="row">
 <?php 
-require "connection.php";
+
 $t=$_SESSION['t_id'];
 $cid = $obj->decrypt($_GET['C_id']);
 
 $sql1 ="SELECT * from `subjects` join teacherstd WHERE subjects.Class_id='$cid' AND subjects.Sub_id=teacherstd.id_sub AND teacherstd.id_teacher= $t AND teacherstd.is_deleted = '0' ";
 $query= $Conn -> query($sql1); 
 $row = mysqli_num_rows($query);
+
    
+if($row==0)
+{
+    echo "<script>alert('Invalid Subject Selected.');window.location.href='resource-class.php';</script>";   
+}
+else
+{
+    while ($query1=mysqli_fetch_array($query)) 
+    {
 
-while ($query1=mysqli_fetch_array($query)) {
-    
+    ?>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12" id="s">
+                <a class="dashboard-stat bg-primary" href="resource-add.php?sub_id=<?php echo $obj->encrypt($query1['Sub_id']);?>">
+                    <span class="name"><?php echo $query1['Sub_name'];?></span>
+                    <span class="bg-icon"><i class="fa fa-folder"></i></span>
+                </a>
+            </div>
 
-   ?>
-                                    <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12" id="s">
-                                        <a class="dashboard-stat bg-primary" href="resource-add.php?sub_id=<?php echo $obj->encrypt($query1['Sub_id']);?>">
-                                            <span class="name"><?php echo $query1['Sub_name'];?></span>
-                                            <span class="bg-icon"><i class="fa fa-folder"></i></span>
-                                        </a>
-                                    </div>
-                                   
-<?php } ?>
+<?php 
+    }
+}
+ ?>
                                   
 
                                 </div>

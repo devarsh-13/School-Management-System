@@ -1,8 +1,9 @@
 <?php
 
-require_once "Database/connection.php";
+require_once "connection.php";
 include('ec_dc.php');
 include('admin/store_data.php');
+
 $action="Student Login";
 $log=new Log();
 $obj = new ecdc();
@@ -85,7 +86,7 @@ if (isset($_POST['Submit']))
 <html>
 
 <head>
-	<title>Student Login Form</title>
+	<title>Student Login Form | IGHS</title>
 	<link rel="stylesheet" href="css/log_style.css">
 </head>
 

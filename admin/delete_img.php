@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-include('connection.php');
+include('../connection.php');
 include('../admin/store_data.php');
 
 $log=new Log();

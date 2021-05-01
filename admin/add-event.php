@@ -2,20 +2,21 @@
 session_start();
 error_reporting(0);
 
-include('connection.php');
+include('../connection.php');
 include('store_data.php');
 
+$log=new Log();
+$action="In add Event";
 
 if(strlen($_SESSION['a_id'])=="")
-{   
+{
+    $log->success_entry($action,$Conn,"Unsuccessful");
     header("Location: index.php"); 
 }
 else{
 
     if(!(isset($_POST['submit'])))
     {
-        $action="In add Event";
-        $log=new Log();
         $log->success_entry($action,$Conn);
     }
 
@@ -56,7 +57,7 @@ else
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>IGHS Admin| ADD Event </title>
+    <title>ADD Event |IGHS </title>
     <link rel="stylesheet" href="../teacher/css/bootstrap.min.css" media="screen" >
         <link rel="stylesheet" href="../teacher/css/font-awesome.min.css" media="screen" >
         <link rel="stylesheet" href="../teacher/css/animate-css/animate.min.css" media="screen" >

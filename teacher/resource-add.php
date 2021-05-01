@@ -1,7 +1,7 @@
 <?php
 session_start();
 error_reporting(0);
-include('connection.php');
+include('../connection.php');
 include('../admin/store_data.php');
 include('../ec_dc.php');
 $obj = new ecdc();
@@ -56,7 +56,7 @@ if(isset($_GET['r_id']))
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>IGHS | Admin reasource </title>
+    <title>Reasource | IGHS</title>
   <link rel="shortcut icon" type="image/png" href="assets/images/icon/favicon.ico">
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/font-awesome.min.css">

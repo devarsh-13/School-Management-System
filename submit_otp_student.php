@@ -34,6 +34,8 @@ if (isset($_POST['verify'])) {
 
   <meta name="MobileOptimized" content="320" />
 
+  <title>Verify OTP | IGHS</title>
+
 </head>
 
 <div class="container">

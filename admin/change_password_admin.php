@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-require "connection.php";
+require "../connection.php";
 require "store_data.php";
 require "../ec_dc.php";
 
@@ -53,7 +53,7 @@ if (isset($_POST['Submit'])) {
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Change Admin Password </title>
+    <title>Change Admin Password | IGHS</title>
    	<link rel="stylesheet" href="css/log_style.css">
   </head>
   <body>

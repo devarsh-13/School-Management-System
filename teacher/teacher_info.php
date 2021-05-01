@@ -1,7 +1,7 @@
 <?php
 session_start();
 error_reporting(0);
-include('connection.php');
+include('../connection.php');
 include('../admin/store_data.php');
 $tid = $_SESSION['t_id'];
 
@@ -16,7 +16,7 @@ $tid = $_SESSION['t_id'];
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Std stream </title>
+    <title>Select Teacher Subjects | IGHS</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta name="description" content="Educo" />
     <meta name="keywords" content="Educo, html template, Education template" />

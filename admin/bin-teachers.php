@@ -3,48 +3,51 @@
 session_start();
 error_reporting(0);
 
-include('connection.php');
+include('../connection.php');
 include('store_data.php');
 include('../ec_dc.php');
 $obj = new ecdc();
+$log=new Log();
 
 if(strlen($_SESSION['a_id'])=="")
-    {   
+{   
+    $action="In Restore Teacher";
+    $log->success_entry($action,$Conn,"Unsuccessful");    
     header("Location: index.php"); 
+}
+else
+{
+    if(!(isset($_GET['Tr_id'])))        
+    {
+        $action="In Restore Teacher";
+        $log->success_entry($action,$Conn);
     }
-    else{
-            if(!(isset($_GET['Tr_id'])))        
-            {
-                $action="In Restore Teacher";
-                $log=new Log();
-                $log->success_entry($action,$Conn);
-            }
 
-            if(isset($_GET['Tr_id']))
-            {
-                $log=new Log();
-                $action="Teacher Data Restored";
+    if(isset($_GET['Tr_id']))
+    {
+        $log=new Log();
+        $action="Teacher Data Restored";
 
-                $tid = $obj->decrypt($_GET['Tr_id']);
-                
-                $query = "UPDATE `teachers` SET `is_deleted`='0' WHERE `T_srn`='$tid'";
-                $delete = $Conn->query($query) or die("Error in query".$Conn->error);
-                
-                if($delete)
-                {
-                    
-                    $log->success_entry($action,$Conn);
-                     echo "<script>alert('Teacher Info Restore Successfully.');window.location.href='bin-teachers.php';</script>";   
-                  
-                }
-                else 
-                {
-                    
-                    $log->success_entry($action,$Conn,"Unsuccessful");
-                      echo "<script>alert('Failed To Restore Teacher Info.');window.location.href='bin-teachers.php';</script>";   
-                    
-                }
-            }
+        $tid = $obj->decrypt($_GET['Tr_id']);
+        
+        $query = "UPDATE `teachers` SET `is_deleted`='0' WHERE `T_srn`='$tid'";
+        $delete = $Conn->query($query) or die("Error in query".$Conn->error);
+        
+        if($delete)
+        {
+            
+            $log->success_entry($action,$Conn);
+             echo "<script>alert('Teacher Info Restore Successfully.');window.location.href='bin-teachers.php';</script>";   
+          
+        }
+        else 
+        {
+            
+            $log->success_entry($action,$Conn,"Unsuccessful");
+            echo "<script>alert('Failed To Restore Teacher Info.');window.location.href='bin-teachers.php';</script>";   
+            
+        }
+    }
     
 
 
@@ -52,7 +55,7 @@ if(strlen($_SESSION['a_id'])=="")
 <!DOCTYPE html>
 <html lang="en">
     <head>
-      <title>Manage Teacher</title>
+      <title>Bin Teacher | IGHS</title>
    <link rel="stylesheet" href="../teacher/css/bootstrap.min.css" media="screen" >
         <link rel="stylesheet" href="../teacher/css/font-awesome.min.css" media="screen" >
         <link rel="stylesheet" href="../teacher/css/animate-css/animate.min.css" media="screen" >

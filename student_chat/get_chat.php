@@ -1,6 +1,6 @@
 <?php
 
-include_once "../Database/connection.php";
+include_once "../connection.php";
 include '../ec_dc.php';  
 session_start();
 $obj = new ecdc();

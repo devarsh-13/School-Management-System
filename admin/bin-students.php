@@ -2,54 +2,53 @@
 <?php
 session_start();
 error_reporting(0);
-include('connection.php');
+include('../connection.php');
 include('store_data.php');
 include('../ec_dc.php');
+
 $obj = new ecdc();
+$log=new Log();
 
 if(strlen($_SESSION['a_id'])=="")
-    {   
+{
+    $action="In Recycle Students";   
+    $log->success_entry($action,$Conn,"Unsuccessful");
     header("Location: index.php"); 
-    }
-    else{
-
+}
+    else
+    {
         if(!(isset($_GET['Sr_id'])))
         {
 
             $action="In Recycle Students";
-            $log=new Log();
+
             $log->success_entry($action,$Conn); 
         }
         
-if (isset($_GET['Sr_id']))
-{
-    $log=new Log();
-    $action="Student data Restored";
+        if (isset($_GET['Sr_id']))
+        {
 
-    $tid = $obj->decrypt($_GET['Sr_id']);
+            $action="Student data Restored";
 
-    $query = "UPDATE `students` SET `is_deleted`='0' WHERE `S_srn`='$tid'";
-    $delete = $Conn->query($query) or die("Error in query".$Conn->error);
-    if ($delete)
-    {
+            $tid = $obj->decrypt($_GET['Sr_id']);
 
-        $log=new Log();
-        $log->success_entry($action,$Conn); 
-         echo "<script>alert('Student Info Restore Successfully');window.location.href='bin-students.php';</script>";   
-        
-        
-        
-}
-else 
-{
+            $query = "UPDATE `students` SET `is_deleted`='0' WHERE `S_srn`='$tid'";
+            $delete = $Conn->query($query) or die("Error in query".$Conn->error);
+            if ($delete)
+            {
 
-        $log=new Log();
-        $log->success_entry($action,$Conn,"Unsuccessful"); 
-          echo "<script>alert('Failed To Restore Student Info.');window.location.href='bin-students.php';</script>";   
-      
+                $log->success_entry($action,$Conn); 
+                 echo "<script>alert('Student Info Restore Successfully');window.location.href='bin-students.php';</script>";   
+                
+            }
+            else 
+            {
+                    $log->success_entry($action,$Conn,"Unsuccessful"); 
+                      echo "<script>alert('Failed To Restore Student Info.');window.location.href='bin-students.php';</script>";   
+                  
 
-}
-}
+            }
+        }
     
 
 
@@ -60,7 +59,7 @@ else
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Manage Student</title>
+        <title>Bin Students | IGHS</title>
    <link rel="stylesheet" href="../teacher/css/bootstrap.min.css" media="screen" >
         <link rel="stylesheet" href="../teacher/css/font-awesome.min.css" media="screen" >
         <link rel="stylesheet" href="../teacher/css/animate-css/animate.min.css" media="screen" >
@@ -443,10 +442,7 @@ else
         <!-- /.main-wrapper -->
 
     </body>
-</html>
-<?php } ?>
 
- 
     <!-- bootstrap 4 js -->
     <script src="../teacher/assets/js/popper.min.js"></script>
     <script src="../teacher/assets/js/bootstrap.min.js"></script>
@@ -472,4 +468,6 @@ else
     <!-- others plugins -->
     <script src="../teacher/assets/js/plugins.js"></script>
     <script src="../teacher/assets/js/scripts.js"></script>
-       
+    
+</html>
+<?php } ?>

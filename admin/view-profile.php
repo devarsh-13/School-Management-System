@@ -1,13 +1,15 @@
 <?php
 
-include  'connection.php';
+include  '../connection.php';
 session_start();
 
 include 'store_data.php';
 $log=new Log();
 $action="In Admin profile";
 
-if (!isset($_SESSION['a_id'])) {
+if (!isset($_SESSION['a_id'])) 
+{
+	$log->success_entry($action,$Conn,"Unsuccessful");
 	header("location:admin_login.php");
 }
 
@@ -31,7 +33,7 @@ $result = mysqli_fetch_array($query);
 
 <head>
 <meta charset="utf-8" />
-	<title>IGHS | Admin Profile</title>
+	<title>Admin Profile | IGHS</title>
 	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
 	<meta name="description" content="Educo" />
 	<meta name="keywords" content="Educo, html template, Education template" />

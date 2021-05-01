@@ -4,7 +4,7 @@ session_start();
 $obj = new ecdc();
 if (isset($_SESSION['t_id'])) {
 
-    include_once "../Database/connection.php";
+    include_once "../connection.php";
     
 
 

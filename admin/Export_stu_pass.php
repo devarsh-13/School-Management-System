@@ -2,19 +2,23 @@
 <?php
 session_start();
 error_reporting(0);
-include('connection.php');
+include('../connection.php');
 include('store_data.php');
 require "../ec_dc.php";
+
+$log=new Log();
 if(strlen($_SESSION['a_id'])=="")
-    {   
+{
+        $action="In Export Student Password";
+        $log->success_entry($action,$Conn,"Unsuccessful");   
+
         header("Location: index.php"); 
-    }
+}
     else
     {   
         if(!(isset($_GET['S_id'])))
         {
             $action="In Export Student Password";
-            $log=new Log();
             $log->success_entry($action,$Conn);
         }
 
@@ -23,7 +27,7 @@ if(strlen($_SESSION['a_id'])=="")
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Manage Student</title>
+        <title>Export Student details | IGHS</title>
    <link rel="stylesheet" href="../teacher/css/bootstrap.min.css" media="screen" >
         <link rel="stylesheet" href="../teacher/css/font-awesome.min.css" media="screen" >
         <link rel="stylesheet" href="../teacher/css/animate-css/animate.min.css" media="screen" >
@@ -265,8 +269,8 @@ else if($error){?>
                                                 </thead>
                                                                                                 
 <?php 
-include 'connection.php';
- $sql = "SELECT * from `students` join Class on students.Class_id=Class.Class_id WHERE `is_deleted`='0' AND `updated`='0' ORDER BY S_srn";
+
+$sql = "SELECT * from `students` join Class on students.Class_id=Class.Class_id WHERE `is_deleted`='0' AND `updated`='0' ORDER BY S_srn";
 $query = mysqli_query($Conn,$sql);
 $row = mysqli_num_rows($query);
 $cnt=1;
@@ -298,10 +302,6 @@ else
 {
     
 } ?>
-                                                                           
-                                                    
-                                                    
-                                                    
                                                 </table>
 
                                          

@@ -1,9 +1,6 @@
 <?php
 session_start();
 
-
-
-
 $flag = 0;
 
 if (isset($_POST['verify'])) {
@@ -33,6 +30,7 @@ if (isset($_POST['verify'])) {
 
   <link rel="stylesheet" href="../css/otp.css">
   <script src="../js/otp.js"></script>
+  <title>Verify OTP | IGHS</title>
 
 
 </head>

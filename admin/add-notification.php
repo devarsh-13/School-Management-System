@@ -1,25 +1,28 @@
 <?php
 session_start();
 error_reporting(0);
-include('connection.php');
+include('../connection.php');
 include('store_data.php');
 
+$log=new Log();
+
 if(strlen($_SESSION['a_id'])=="")
-    {   
+{   
+    $action="In Add Notifications";
+    $log->success_entry($action,$Conn,"Unsucessful");    
     header("Location: index.php"); 
-    }
+}
     else{
             if(!(isset($_POST['submit'])))
             {
                 $action="In Add Notifications";
-                $log=new Log();
                 $log->success_entry($action,$Conn);    
             }
         
 if(isset($_POST['submit']))
 {
     $action="Notification added";       
-    $log=new Log();
+    $
 
         $nt = $_POST["nt"];
         $notification_text = $_POST["notification"];
@@ -29,7 +32,7 @@ if(isset($_POST['submit']))
 
 
         //Insert image content into database
-      $insert = $Conn->query("INSERT INTO notification SET Notification_topic='$nt', Notification_text='$notification_text',created_on='$d',N_Time=CURRENT_TIME() ,created_by='$a',n_status='$n_status'");
+      $insert = $Conn->query("INSERT INTO notification SET Notification_topic='$_POST[nt]', Notification_text='$notification_text',created_on='$d',N_Time=CURRENT_TIME() ,created_by='$a',n_status='$n_status'");
        
 
 if($insert)
@@ -52,7 +55,7 @@ else
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>IGHS Admin | ADD Notification </title>
+    <title>ADD Notification | IGHS</title>
      <link rel="stylesheet" href="../teacher/css/bootstrap.min.css" media="screen" >
         <link rel="stylesheet" href="../teacher/css/font-awesome.min.css" media="screen" >
         <link rel="stylesheet" href="../teacher/css/animate-css/animate.min.css" media="screen" >

@@ -1,6 +1,6 @@
 <?php
 session_start();
-include_once "../teacher/connection.php";
+include_once "../connection.php";
 if (!isset($_SESSION['t_id'])) {
   header("location: ../login.php");
 }
