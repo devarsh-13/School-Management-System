@@ -22,9 +22,8 @@ if (isset($A_id)) {
    .scrollmenu
     {
 
-        overflow-wrap: break-word;
-        overflow-y: auto;
-        width: 100%;
+    word-break: break-all;
+    
         
     }</style>
 <div class="scrollmenu">

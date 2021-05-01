@@ -23,9 +23,7 @@
        .scrollmenu
     {
 
-        overflow-wrap: break-word;
-        overflow-y: auto;
-        width: 100%;
+        word-break: break-all;
         
     }
    </style>
