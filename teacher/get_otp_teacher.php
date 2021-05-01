@@ -55,7 +55,7 @@ if (isset($_POST['getOtp'])) {
 		$curl = curl_init();
 
 		curl_setopt_array($curl, array(
-			CURLOPT_URL => "http://2factor.in/API/V1/e047ac95-8cab-11eb-a9bc-0200cd936042/SMS/$numbers/$otp",
+			CURLOPT_URL => "http://2factor.in/API/V1/0c76f968-a347-11eb-80ea-0200cd936042/SMS/$numbers/$otp",
 			CURLOPT_RETURNTRANSFER => true,
 			CURLOPT_ENCODING => "",
 			CURLOPT_MAXREDIRS => 10,
