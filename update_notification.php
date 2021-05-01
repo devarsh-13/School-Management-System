@@ -16,25 +16,25 @@
                    // $result = mysqli_query($Conn, "UPDATE `notification` SET n_status ='1' WHERE n_status ='0' ") or die(mysqli_connect_error());
 
                     $output = "";
-
+                    $i=1;
                     $notification_count = 0;
                      ?>
    <style type="text/css">
-       .scrollmenu
+       .break
     {
 
         word-break: break-all;
         
     }
    </style>
-<div class="scrollmenu">
+<div class="break">
     <?php
                     while ($r = mysqli_fetch_array($q)) {
                         $notification_count = $notification_count+1;
                         $output =  " 
                                             <div class='timeline-task'>
                                                  <div class='icon bg1'>
-                                                	<h4>" . $r['Sr_n'] . "</h4>
+                                                	<h4>" . $i . "</h4>
                                                 </div>
 
                                                 <div class='tm-title'>
@@ -48,6 +48,7 @@
                                         ";
 
                         echo $output;
+                        $i++;
                     }
                     $result_students = mysqli_query($Conn, "UPDATE `students` SET notification_count = '$notification_count' WHERE `S_srn`='$S_srn' ") or die(mysqli_connect_error());
                      ?>
