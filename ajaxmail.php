@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 $un=$_POST['username'];
 $em=$_POST['useremail'];
 $su=$_POST['useresubject'];

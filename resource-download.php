@@ -38,7 +38,7 @@ else
     <link type="text/css" rel="stylesheet" href="teacher/assets/css/themify-icons.css" />
     <link type="text/css" rel="stylesheet" href="teacher/assets/css/metisMenu.css" />
     <link type="text/css" rel="stylesheet" href="teacher/assets/css/default-css.css" />
-    <!-- <link type="text/css" rel="stylesheet" href="teacher/assets/css/styles.css" /> -->
+    <link type="text/css" rel="stylesheet" href="teacher/assets/css/styles.css" />
    
 
 	<link type="text/css" href="css/main.css" rel="stylesheet" type="text/css"/>

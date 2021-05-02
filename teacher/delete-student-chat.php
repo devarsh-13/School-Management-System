@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 //delete.php
 include('../connection.php');
 include('../admin/store_data.php');

@@ -1,24 +1,11 @@
 
-    <!--[if lt IE 8]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-    <!-- preloader area start -->
-
-    <!-- preloader area end -->
-    <!-- page container area start -->
-   
-        <!-- sidebar menu area start -->
-       
-        <!-- sidebar menu area end -->
-        <!-- main content area start -->
-        
-            <!-- header area start -->
+  
             <?php
 if (isset($_SESSION['t_id'])) {
 ?>
             <div class="header-area">
                 <div class="row align-items-center">
-                    <!-- nav and search button -->
+            
                     <div class="col-md-6 col-sm-8 clearfix">
                         <div class="nav-btn pull-left">
                             <span></span>
@@ -28,7 +15,7 @@ if (isset($_SESSION['t_id'])) {
                         
                        
                     </div>
-                    <!-- profile info & task notification -->
+             
                     <div class="col-md-6 col-sm-4 ">
                         <ul class="notification-area pull-right">
                             
@@ -42,12 +29,7 @@ if (isset($_SESSION['t_id'])) {
                     </div>
                 </div>
             </div>
-            <!-- header area end -->
-      
-        <!-- main content area end -->
-    
-    <!-- page container area end -->
-    <!-- offset area start -->
+
     <div class="offset-area">
         <div class="offset-close"><i class="ti-close"></i></div>
 
@@ -70,7 +52,7 @@ if (isset($_SESSION['t_id'])) {
             
         </div>
     </div>
-    <!-- offset area end -->
+
  
 <?php
 

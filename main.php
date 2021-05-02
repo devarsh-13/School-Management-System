@@ -1,9 +1,12 @@
 <?php
+error_reporting(0);
 
 require "connection.php";
 require "admin/store_data.php";
 
 session_start();
+
+
 
 $action="In Student Home page";
 $log=new Log();

@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 require "connection.php";
 
 if (isset($_SESSION['s_id'])) {

@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 session_start();
 require "admin/store_data.php";
 require "Database/connection.php";
