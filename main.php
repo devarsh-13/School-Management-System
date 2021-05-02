@@ -139,7 +139,18 @@ if (isset($_SESSION['s_id']))
               $row = mysqli_num_rows($q);
               if ($row == 0) 
               {
-              	echo "<center><h3>No Events</h3></center>";	
+              	echo "<div class='eve'>
+              			<div class='er'>
+			          
+              				
+			          <div class='edes'>
+			            <h3>No Events</h3>	
+			          </div>
+
+			          <div class='etiming'>
+			          </div>
+			          </div>
+			        ";
               }
               else
               {

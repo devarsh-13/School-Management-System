@@ -13,6 +13,7 @@
 
                     $q = mysqli_query($Conn, $sql);
 
+
     
                    // $result = mysqli_query($Conn, "UPDATE `notification` SET n_status ='1' WHERE n_status ='0' ") or die(mysqli_connect_error());
 
@@ -30,6 +31,19 @@
    </style>
 <div class="break">
     <?php
+        $row=mysqli_num_rows($q);
+        if($row==0)
+        {
+            echo"
+                <div class='timeline-task'>
+                    <h3>No notifications</h3>
+                </div>
+            ";
+
+        }
+        else
+        {
+
                     while ($r = mysqli_fetch_array($q)) {
                         $notification_count = $notification_count+1;
                         $output =  " 
@@ -56,5 +70,6 @@
 </div>
     <?php
                 }
+            }
 
                 ?>

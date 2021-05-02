@@ -1,6 +1,6 @@
 <?php
 session_start();
-error_reporting(0);
+error_reporting(1);
 include('../connection.php');
 include('../admin/store_data.php');
 $tid = $_SESSION['t_id'];
@@ -192,7 +192,7 @@ $tid = $_SESSION['t_id'];
 
 
                                 <?php
-                                require "connection.php";
+                                
                                 $sql = "SELECT * from `Class`";
                                 $query = mysqli_query($Conn, $sql);
                                 while ($result = mysqli_fetch_array($query)) { ?>
@@ -202,15 +202,14 @@ $tid = $_SESSION['t_id'];
                                         <ul class="child-nav">
 
                                             <?php
-                                            require "connection.php";
-
+                                            
                                             $prn = "SELECT * from `Subjects` WHERE  Class_id=$result[Class_id]";
                                             $xyz = mysqli_query($Conn, $prn);
                                             while ($sub = mysqli_fetch_array($xyz)) { ?>
                                                 <li>
                                                     <a href="#">
 
-                                                        <span><input type="checkbox" name="sub[]" value="<?php echo $sub['Sub_id']; ?>">&nbsp;&nbsp;<?php echo $sub['Sub_name']; ?></span>
+                                                        <span><input type="checkbox" name="sub[]" value="<?php echo $sub['Sub_id']; ?>">  &nbsp;&nbsp;<?php echo $sub['Sub_name']; ?></span>
                                                     </a>
                                                 </li>
                                             <?php } ?>

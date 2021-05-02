@@ -32,31 +32,44 @@ word-break: break-all;
    
 <div class="break">
     <?php
-    while ($r = mysqli_fetch_array($q)) {
-        $notification_count = $notification_count+1;
-        $output =  " 
-                            <div class='timeline-task'>
-                                 <div class='icon bg1'>
-                                    <h4>" . $i . "</h4>
-                                </div>
+     $row=mysqli_num_rows($q);
+        if($row==0)
+        {
+            echo"
+                <div class='timeline-task'>
+                    <h3>No notifications</h3>
+                </div>
+            ";
 
-                                <div class='tm-title'>
-                                    <h4>" . $r['Notification_topic'] . "</h4>
-                                    <span class='time'><i class='ti-time'></i>". $r['N_Time'] ."</span>
-                                </div>
-                                <p> " . $r['Notification_text'] . "</p>
-                            </div>
-                                
-                            
-                        ";
+        }
+        else
+        {
+            while ($r = mysqli_fetch_array($q)) {
+                $notification_count = $notification_count+1;
+                $output =  " 
+                                    <div class='timeline-task'>
+                                         <div class='icon bg1'>
+                                            <h4>" . $i . "</h4>
+                                        </div>
 
-        echo $output;
-        $i++;
-    }
-    $result_students = mysqli_query($Conn, "UPDATE `teachers` SET notification_count = '$notification_count' WHERE `T_srn`='$T_srn' ") or die(mysqli_connect_error());
-     ?>
-</div>
+                                        <div class='tm-title'>
+                                            <h4>" . $r['Notification_topic'] . "</h4>
+                                            <span class='time'><i class='ti-time'></i>". $r['N_Time'] ."</span>
+                                        </div>
+                                        <p> " . $r['Notification_text'] . "</p>
+                                    </div>
+                                        
+                                    
+                                ";
+
+                echo $output;
+                $i++;
+            }
+            $result_students = mysqli_query($Conn, "UPDATE `teachers` SET notification_count = '$notification_count' WHERE `T_srn`='$T_srn' ") or die(mysqli_connect_error());
+             ?>
+        </div>
     <?php
+  }
 }
 
 ?>

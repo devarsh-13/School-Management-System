@@ -619,16 +619,30 @@ body {
          $images = mysqli_query($Conn, "select * from images");
 
          $path = "../admin/img/";
+         $total_row=mysqli_num_rows($images);
 
-         while ($res = mysqli_fetch_array($images)) {
-            $full = $path . $res[1];
-            echo "
-               <div class='slide'>
-               <a href='view-gallery.php'>
-               <img src='$full' height=300px width=300px>
-               </div>
-               </a>";
-         }
+        if($total_row!=0)
+        {
+            while ($res = mysqli_fetch_array($images)) 
+            {
+                $full = $path . $res[1];
+                echo "
+                <div class='slide'>
+                <a href='view-gallery.php'>
+                <img src='$full' height=300px width=300px>
+                </div>
+                </a>";
+            }
+        }
+        else
+        {
+            echo "<div class='slide'>
+                
+                <h3> No images </h3>    
+                </div>
+                ";
+        }
+
 
          ?>
 
