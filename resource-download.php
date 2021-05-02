@@ -197,8 +197,8 @@ else
     <script src="teacher/assets/js/jquery.slicknav.min.js"></script>
     <script src="teacher/assets/js/plugins.js"></script>
     <script src="teacher/assets/js/scripts.js"></script>
-	</body>
-	</html>
+</body>
+</html>
 
 <?php  
 }

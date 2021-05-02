@@ -126,23 +126,26 @@ if(strlen($_SESSION['t_id'])=="")
                                        
                   <div id="owl-demo2"class="scrolling-wrapper">
 
-                <div class="scrollmenu ">
-
-                             <div class="ec">
+                
       
       <?php
 
-      require "connection.php";
+      
               $sql = ("SELECT * FROM `Event` WHERE `is_deleted`='0'ORDER BY `Created_on` DESC") or die(mysqli_connect_error());
 
               $q = mysqli_query($Conn, $sql);
               $row = mysqli_num_rows($q);
               if ($row == 0) 
               {
-                echo "<center><h3>No Events</h3></center>"; 
+                echo " <center><h3>No Events</h3></center>";
+         
               }
               else
               {
+                echo "<div class='scrollmenu'>
+
+                             <div class='ec'>
+                    ";
 
               while ($r = mysqli_fetch_array($q)) { ?>
 
@@ -169,7 +172,10 @@ if(strlen($_SESSION['t_id'])=="")
         </div>
       </div>
 
-    <?php } } ?>
+<?php
+        } 
+    } 
+?>
 
 
 

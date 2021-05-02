@@ -55,12 +55,15 @@ if (isset($_SESSION['s_id']))
 			overflow-x: scroll;
 			overflow-y: hidden;
 			white-space: nowrap;
+		}
 
-
-
+		img
+		{
+			object-fit: scale-down;
 		}
 		 
 	</style>
+		
 </head>
 
 <body>
@@ -87,20 +90,20 @@ if (isset($_SESSION['s_id']))
 									<li data-transition="slotslide-horizontal">
 
 										<!-- MAIN IMAGE -->
-										<img src="banner2.jpg" alt="">
+										<img src="slider/banner.jpg" alt="">
 
 
 									</li>
 									<li data-transition="slotslide-vertical">
 
 										<!-- MAIN IMAGE -->
-										<img src="g2.jpg" alt="">
+										<img src="slider/g2.jpg" alt="">
 
 									</li>
 									<li data-transition="slotslide-vertical">
 
 										<!-- MAIN IMAGE -->
-										<img src="g3.jpg" alt="">
+										<img src="slider/g3.jpg" alt="">
 
 									</li>
 
