@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
     include '../connection.php';
     include 'store_data.php';
     require "../ec_dc.php";

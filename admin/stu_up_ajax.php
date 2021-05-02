@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
     require "../connection.php";
     include('store_data.php');
     include('image_compress.php');

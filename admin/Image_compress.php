@@ -1,5 +1,5 @@
 <?php
-
+error_reporting(0);
 	function compress($source, $destination, $quality=50) 
 	{
 		$info = getimagesize($source);

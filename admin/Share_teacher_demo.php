@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 ob_start();
     function char_only($string)
     {
