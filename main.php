@@ -90,7 +90,7 @@ if (isset($_SESSION['s_id']))
 									<li data-transition="slotslide-horizontal">
 
 										<!-- MAIN IMAGE -->
-										<img src="slider/banner.jpg" alt="">
+										<img src="slider/g1.jpg" alt="">
 
 
 									</li>
@@ -100,10 +100,16 @@ if (isset($_SESSION['s_id']))
 										<img src="slider/g2.jpg" alt="">
 
 									</li>
-									<li data-transition="slotslide-vertical">
+									<li data-transition="slotslide-horizontal">
 
 										<!-- MAIN IMAGE -->
 										<img src="slider/g3.jpg" alt="">
+
+									</li>
+									<li data-transition="slotslide-vertical">
+
+										<!-- MAIN IMAGE -->
+										<img src="slider/g4.jpg" alt="">
 
 									</li>
 
