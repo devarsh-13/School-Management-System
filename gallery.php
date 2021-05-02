@@ -22,14 +22,33 @@ if (isset($_SESSION['s_id'])) {
    <!DOCTYPE html>
 
    <head>
+  <link rel="stylesheet" href="teacher/css/bootstrap.min.css" media="screen" >
+        <link rel="stylesheet" href="teacher/css/font-awesome.min.css" media="screen" >
+        <link rel="stylesheet" href="teacher/css/animate-css/animate.min.css" media="screen" >
+        <link rel="stylesheet" href="teacher/css/main.css" media="screen" >
+        <script src="teacher/js/modernizr/modernizr.min.js"></script>
 
+          <link rel="shortcut icon" type="image/png" href="assets/images/icon/favicon.ico">
+    <link rel="stylesheet" href="teacher/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="teacher/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="teacher/assets/css/themify-icons.css">
+    <link rel="stylesheet" href="teacher/assets/css/metisMenu.css">
+    <link rel="stylesheet" href="teacher/assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="teacher/assets/css/slicknav.min.css">
+    <!-- amchart css -->
+    <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
+    <!-- others css -->
+    <link rel="stylesheet" href="teacher/assets/css/typography.css">
+    <!--<link rel="stylesheet" href="assets/css/default-css.css">-->
+    <link rel="stylesheet" href="teacher/assets/css/styles.css">
+    <link rel="stylesheet" href="teacher/assets/css/responsive.css">
+    <meta name="MobileOptimized" content="320" />
+    <!-- modernizr css -->
+    <script src="teacher/assets/js/vendor/modernizr-2.8.3.min.js"></script>
+    
+   
 
-      <link rel="stylesheet" href="teacher/assets/css/bootstrap.min.css">
-      <link rel="stylesheet" href="teacher/assets/css/font-awesome.min.css">
-      <link rel="stylesheet" href="teacher/assets/css/themify-icons.css">
-      <link rel="stylesheet" href="teacher/assets/css/metisMenu.css">
-      <link rel="stylesheet" href="teacher/assets/css/default-css.css">
-      <link rel="stylesheet" href="teacher/assets/css/styles.css">
+     
 
       <meta charset="utf-8" />
 
@@ -589,8 +608,12 @@ body {
          include "header.php";
          ?>
 
-         <div class="ed_courses ed_toppadder80 ed_bottompadder80">
-            <div class="container">
+            <div class="main-content-inner">
+                <!-- MAIN CONTENT GOES HERE -->
+
+                     
+                                       
+      
                <?php if ($row == 0) {
                   echo "<center><h1> No images to show<br>   </br></h1></center>";
                } ?>
