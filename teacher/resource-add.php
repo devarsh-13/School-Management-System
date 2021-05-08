@@ -65,8 +65,7 @@ if(isset($_GET['r_id']))
     <link rel="stylesheet" href="assets/css/metisMenu.css">
     <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
     <link rel="stylesheet" href="assets/css/slicknav.min.css">
-    <!-- amchart css -->
-    <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
+   
     <!-- others css -->
     <link rel="stylesheet" href="assets/css/typography.css">
     <link rel="stylesheet" href="assets/css/default-css.css">
@@ -92,9 +91,6 @@ if(isset($_GET['r_id']))
        <?php include('leftbar.php'); ?>
     <div class="main-content">
          <?php include('topbar.php'); ?>
-
-
-
 
         <!-- page title area start -->
             <div class="header-area">
@@ -163,7 +159,7 @@ if(isset($_GET['r_id']))
                     },
                     okBtn: {className: 'btn btn-primary btn-sm'},
                     title: 'ssi-modal',
-                    content: 'ssi-modal is an open source modal window plugin that only depends on jquery. It has many options and it\'s super flexible, maybe the most flexible modal out there... For more details click <a class="sss" href="http://ssbeefeater.github.io/#ssi-modal" target="_blank">here</a>',
+                    // content: 'ssi-modal is an open source modal window plugin that only depends on jquery. It has many options and it\'s super flexible, maybe the most flexible modal out there... For more details click <a class="sss" href="http://ssbeefeater.github.io/#ssi-modal" target="_blank">here</a>',
                     sizeClass: 'small',
                     animation: true,
                 });
@@ -227,7 +223,7 @@ $('#ssi-upload').ssi_uploader({
                                                     
                                                    
 <?php 
-require "connection.php";
+
 session_start();
 
 $sub_id= $obj->decrypt($_GET['sub_id']);
@@ -281,18 +277,15 @@ while ($query1=mysqli_fetch_array($query))
     }
     $_POST = array();
 }
+else
+{
+    echo "<tr align='center'><td colspan='5'> No Files Found </td></tr>";
+}
  ?>
                                                        
                                                     
                                                     
                                                 </table>
-                                  
-
-
-
-
-
-
 </form>
                                 </div>
                             </div>
@@ -333,13 +326,12 @@ while ($query1=mysqli_fetch_array($query))
     <script src="assets/js/plugins.js"></script>
     <script src="assets/js/scripts.js"></script>
 
-
-
-}
 </body>
 
 </html>
-<?PHP }
+<?PHP
+
+}
 else
 {
 

@@ -349,7 +349,7 @@ input.chh
                                                         </thead>                                     
                                                 
 <?php 
-include 'connection.php';
+
  $sql = "SELECT * from `teachers` WHERE `is_deleted`='1' ORDER BY T_srn";
 $query = mysqli_query($Conn,$sql);
 $row = mysqli_num_rows($query);

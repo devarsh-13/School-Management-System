@@ -328,7 +328,7 @@ input.chh
                                                         </thead>                                     
                                                 
 <?php 
-include 'connection.php';
+
  $sql = "SELECT * from `admin` WHERE `is_deleted`='1' ORDER BY A_id";
 $query = mysqli_query($Conn,$sql);
 $row = mysqli_num_rows($query);

@@ -210,7 +210,7 @@ if (isset($_POST['Update'])) {
 
 
                                 <?php
-                                require "connection.php";
+                                
                                 $sql = "SELECT * from `Class`";
                                 $query = mysqli_query($Conn, $sql);
                                 while ($result = mysqli_fetch_array($query)) { ?>
@@ -220,7 +220,7 @@ if (isset($_POST['Update'])) {
                                         <ul class="child-nav">
 
                                             <?php
-                                            require "connection.php";
+                                            
 
                                             $prn = "SELECT * from `Subjects` WHERE  Class_id=$result[Class_id]";
                                             $xyz = mysqli_query($Conn, $prn);

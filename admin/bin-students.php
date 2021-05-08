@@ -347,7 +347,7 @@ if(strlen($_SESSION['a_id'])=="")
                                                                                                 
                                                 </thead>
 <?php 
-include 'connection.php';
+
  $sql = "SELECT * from `students` join Class on students.Class_id=Class.Class_id WHERE `is_deleted`='1' ORDER BY S_srn";
 $query = mysqli_query($Conn,$sql);
 $row = mysqli_num_rows($query);

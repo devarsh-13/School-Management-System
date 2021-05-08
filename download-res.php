@@ -1,5 +1,5 @@
 <?php
-error_reporting(0);
+
 session_start();
 error_reporting(0);
 include('ec_dc.php');
@@ -86,9 +86,7 @@ if (!isset($_SESSION['s_id'])) {
 
 
 						<?php
-						require "Database/connection.php";
-						session_start();
-
+						
 						$S_srn = $_SESSION['id'];
 						$sub_id = $obj->decrypt($_GET['sub_id']);
 						
@@ -145,12 +143,7 @@ if (!isset($_SESSION['s_id'])) {
 			<!-- /.container-fluid -->
 		</section>
 		<!-- /.section -->
-
-
-
-
-
-		<?php
+<?php
 		include "footer.php";
 		?>
 
