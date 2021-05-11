@@ -8,17 +8,21 @@ $tid = $_SESSION['t_id'];
 
 
  
-   $Sql = "UPDATE `teacherstd` SET `is_deleted` = '1' WHERE `id_teacher`='$tid'";
-     $q = mysqli_query($Conn, $Sql);
+   
 
-
-if (isset($_POST['Update'])) {
+if (isset($_POST['Update'])) 
+{
     $s = $_POST['sub'];
-    if (isset($_POST['sub']) == null) {
+    if (isset($_POST['sub']) == null) 
+    {
 
         echo "<script>alert('Please select atleast one subject');window.location.href='teacher_info.php';</script>";
-    } else {
+    } 
+    else 
+    {
 
+        $Sql = "UPDATE `teacherstd` SET `is_deleted` = '1' WHERE `id_teacher`='$tid'";
+     $q = mysqli_query($Conn, $Sql);
 
         for ($i = 0; $i < sizeof($s); $i++) {
                $Sql = "INSERT INTO `teacherstd` (id_sub,id_teacher,is_deleted)VALUES('" . $s[$i] . "','$tid','0')";
