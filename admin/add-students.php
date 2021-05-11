@@ -376,7 +376,7 @@ else
                                                 <label for="default" class="col-sm-2 control-label">Student Image</label>
                                                 <div class="col-sm-10">
 
-                                                    <input type="file" name="file" class="form-control" id="img" />
+                                                    <input type="file" name="file" class="form-control" id="img" accept="image/*" />
 
                                                 </div>
                                             </div>

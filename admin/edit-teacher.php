@@ -228,7 +228,7 @@ if($row > 0)
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Teacher Image</label>
                                                 <div class="col-sm-10">
-                                                    <input type="file" name="file" class="form-control" id="img">
+                                                    <input type="file" name="file" class="form-control" id="img" accept="image/*" >
                                                     <input type="hidden" name="img_name" value="<?php echo htmlentities($result['A_Photo'])?>">
                                                 </div>
                                             </div>
