@@ -602,25 +602,25 @@ body {
 
    <body>
       <!--Page main section start-->
-      <div id="educo_wrapper">
+      <div id="educo_wrapper ">
 
          <?php
          include "header.php";
          ?>
 
-            <div class="main-content-inner">
+            <div class="main-content-inner" style="border:1px solid #ddd;">
                 <!-- MAIN CONTENT GOES HERE -->
 
                      
                                        
       
                <?php if ($row == 0) {
-                  echo "<center><h1> No images to show<br>   </br></h1></center>";
+                  echo "<div style='margin-top:15%;'><center><h2> No images to show<br>   </br></h2></center></div>";
                } ?>
                <div class="row">
 
 
-                  <div class="images">
+                  <div class="images ed_toppadder10 ed_bottompadder60">
 
 
                      <?php
