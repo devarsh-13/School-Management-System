@@ -10,7 +10,7 @@
     $query = mysqli_query($Conn, $sql);
     $output = "";
     if(mysqli_num_rows($query) == 0){
-        $output .= "No users are available to chat";
+        $output .= "No students are available to chat";
     }elseif(mysqli_num_rows($query) > 0){
         include_once "data_teacher.php";
     }
