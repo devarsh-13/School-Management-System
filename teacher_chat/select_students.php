@@ -52,7 +52,7 @@ if (isset($_SESSION['t_id'])) {
                 </header>
 
                 <div class="search">
-                    <span class="text">Select an user to start chat</span>
+                    <span class="text">Select a student to start chat</span>
                     <input type="text" placeholder="Enter name to search...">
                     <button><i class="fas fa-search"></i></button>
                 </div>

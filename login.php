@@ -89,6 +89,7 @@ if (isset($_POST['Submit']))
 <head>
 	<title>Student Login Form | IGHS</title>
 	<link rel="stylesheet" href="css/log_style.css">
+	<link rel="shortcut icon" type="image/png" href="images/header/IGHS(1).png" />
 </head>
 
 <body>
