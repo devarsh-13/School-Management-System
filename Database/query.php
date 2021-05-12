@@ -1,6 +1,6 @@
 <?php
 
-require "create_db.php";
+
 require "connection.php";
 require "../ec_dc.php";
 error_reporting(0);

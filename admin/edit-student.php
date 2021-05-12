@@ -249,14 +249,14 @@ else
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Cast</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" name="cast" value="<?php echo htmlentities($result['S_caste']); ?>" class="form-control" id="cast" oninput='stringValidate(this)'  maxlength="20" required="required" autocomplete="off">
+                                                    <input type="text" name="cast" value="<?php echo htmlentities($result['S_caste']); ?>" maxlength="50" class="form-control" id="cast" oninput='stringValidate(this)'  maxlength="20" required="required" autocomplete="off">
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Category</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" name="cat" value="<?php echo htmlentities($result['S_category']) ?>" class="form-control" id="cat" oninput='stringValidate(this)'  maxlength="20" required="required" autocomplete="off">
+                                                    <input type="text" name="cat" value="<?php echo htmlentities($result['S_category']) ?>" maxlength="50" class="form-control" id="cat" oninput='stringValidate(this)'  maxlength="20" required="required" autocomplete="off">
                                                 </div>
                                             </div>
 

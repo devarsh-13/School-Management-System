@@ -306,14 +306,14 @@ else
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Caste</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" name="cast" class="form-control" oninput='stringValidate(this)' required="required" id="cast" autocomplete="off">
+                                                    <input type="text" name="cast" class="form-control" oninput='stringValidate(this)' maxlength="50" required="required" id="cast" autocomplete="off">
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Category</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" name="cat" class="form-control" oninput='stringValidate(this)' required="required" id="cat" autocomplete="off">
+                                                    <input type="text" name="cat" class="form-control" oninput='stringValidate(this)' maxlength="50" required="required" id="cat" autocomplete="off">
                                                 </div>
                                             </div>
 
