@@ -27,7 +27,7 @@ if (!isset($_SESSION['s_id'])) {
 		<!--srart theme style -->
 
 
-		<link rel="stylesheet" href="teacher/assets/css/bootstrap.min.css">
+		<!-- <link rel="stylesheet" href="teacher/assets/css/bootstrap.min.css"> -->
 		<link rel="stylesheet" href="teacher/assets/css/font-awesome.min.css">
 		<link rel="stylesheet" href="teacher/assets/css/themify-icons.css">
 		<link rel="stylesheet" href="teacher/assets/css/metisMenu.css">
@@ -91,7 +91,7 @@ if (!isset($_SESSION['s_id'])) {
 						$sub_id = $obj->decrypt($_GET['sub_id']);
 						
 
-						$sql1 = "SELECT * from `resources` WHERE `Sub_id`='$sub_id' ";
+						$sql1 = "SELECT * from `resources` WHERE `Sub_id`='$sub_id' AND `is_deleted`='0'";
 						$query = $Conn->query($sql1);
 						$row = mysqli_num_rows($query);
 						$path = "teacher/resources/";

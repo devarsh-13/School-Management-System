@@ -164,7 +164,6 @@ else
                     document.getElementById("des").disabled = true;
                 }
 
-
             }
         </script>
     </head>
@@ -341,7 +340,8 @@ else
                                                 <label for="default" class="col-sm-2 control-label">Student Image</label>
                                                 <div class="col-sm-10">
 
-                                                    <input type="file" name="file" class="form-control" id="img" accept="image/*"  />
+                                                    <input type="file" name="file" class="form-control" id="img" accept="image/jpeg,image/png"/>
+
                                                     <input type="hidden" name="img_name" value="<?php echo htmlentities($result['S_photo'])?>">
 
                                                 </div>

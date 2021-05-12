@@ -36,7 +36,7 @@ if(isset($_GET['r_id']))
         
         $full  =$path.$folder.$result['R_path']; 
         $d=  unlink($full);
-        $delet = mysqli_query($Conn,"DELETE FROM `resources` WHERE `R_id`='$rid'");
+        $delet = mysqli_query($Conn,"UPDATE `resources` SET `is_deleted`='1' WHERE `R_id`='$rid'");
         
     }
     
@@ -229,7 +229,7 @@ session_start();
 $sub_id= $obj->decrypt($_GET['sub_id']);
 
 
-$sql1 ="SELECT * from `resources` WHERE `Sub_id`='$sub_id' ";
+$sql1 ="SELECT * from `resources` WHERE `Sub_id`='$sub_id' AND `is_deleted`='0'";
 
 $query= $Conn -> query($sql1); 
 $row = mysqli_num_rows($query);

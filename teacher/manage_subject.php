@@ -1,39 +1,42 @@
 <?php
 error_reporting(0);
 session_start();
-error_reporting(0);
-include('../connection.php');
-include('../admin/store_data.php');
-$tid = $_SESSION['t_id'];
 
+require('../connection.php');
+require('../admin/store_data.php');
 
- 
-   
-
-if (isset($_POST['Update'])) 
+if(isset($_SESSION['t_id']))
 {
-    $s = $_POST['sub'];
-    if (isset($_POST['sub']) == null) 
+
+
+    $tid = $_SESSION['t_id'];
+    // $log =new Log();
+    $action="Update techer's Subjects";
+       
+
+    if (isset($_POST['Update'])) 
     {
+        $s = $_POST['sub'];
+        if (isset($_POST['sub']) == null) 
+        {
+            echo "<script>alert('Please select atleast one subject');window.location.href='teacher_info.php';</script>";
+        } 
+        else 
+        {
 
-        echo "<script>alert('Please select atleast one subject');window.location.href='teacher_info.php';</script>";
-    } 
-    else 
-    {
-
-        $Sql = "UPDATE `teacherstd` SET `is_deleted` = '1' WHERE `id_teacher`='$tid'";
-     $q = mysqli_query($Conn, $Sql);
-
-        for ($i = 0; $i < sizeof($s); $i++) {
-               $Sql = "INSERT INTO `teacherstd` (id_sub,id_teacher,is_deleted)VALUES('" . $s[$i] . "','$tid','0')";
+            $Sql = "UPDATE `teacherstd` SET `is_deleted` = '1' WHERE `id_teacher`='$tid'";
             $q = mysqli_query($Conn, $Sql);
-          
+
+            for ($i = 0; $i < sizeof($s); $i++) {
+                   $Sql = "INSERT INTO `teacherstd` (id_sub,id_teacher,is_deleted)VALUES('" . $s[$i] . "','$tid','0')";
+                $q = mysqli_query($Conn, $Sql);
+              
+            }
+
+            // $log->success_entry($action,$Conn);
+            header("location:dashboard.php");
         }
-
-
-        header("location:dashboard.php");
     }
-}
 
 
 ?>
@@ -265,3 +268,10 @@ if (isset($_POST['Update']))
 </body>
 
 </html>
+
+<?php
+}
+else
+{
+    header("location:index.php");
+}

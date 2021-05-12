@@ -1,5 +1,6 @@
 <?php
 
+require "create_db.php";
 require "connection.php";
 require "../ec_dc.php";
 error_reporting(0);
@@ -53,7 +54,8 @@ $table="CREATE TABLE `Resources`(
 `R_path` VARCHAR(250) NOT NULL,
 `Created_on` DATE NOT NULL DEFAULT CURRENT_DATE ,
 `Created_by` BIGINT UNSIGNED NOT NULL,	
-`Sub_id` BIGINT UNSIGNED NOT NULL, 
+`Sub_id` BIGINT UNSIGNED NOT NULL,
+`is_deleted` BOOLEAN NOT NULL DEFAULT 0, 
 PRIMARY KEY (`R_id`)
 )";
 $q=mysqli_query($Conn,$table); 
