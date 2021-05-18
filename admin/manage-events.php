@@ -175,10 +175,12 @@ if (isset($_GET['E_id']))
 
 
                     </ul>
-                     <style>.add button {margin-left: 100%;}</style>
+                     <style>.add{margin-left: 100%;width: 100%;}</style>
+                     <ul>
                        <div class="add">
                             <a href="add-event.php" id="b"> <button type="submit" name="add" class="btn btn-success">Add Event</button></a>
                         </div> 
+                    </ul>
                 </div>
             </div>
 

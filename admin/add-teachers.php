@@ -118,8 +118,8 @@ else
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>ADD Teacher | IGHS</title>
         <style type="text/css">
-            .add button {
-
+            .add {
+                   width: 100%; 
                 margin-left: 100%;
 
             }
@@ -180,11 +180,12 @@ else
 
 
                         </ul>
+                            <ul>
 
                         <div class="add">
                             <a href="teacher_import.php" id="b"> <button type="submit" name="add" class="btn btn-primary">Import</button></a>
                         </div>
-
+                            </ul>
                     </div>
 
 

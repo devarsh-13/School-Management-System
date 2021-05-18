@@ -306,10 +306,12 @@ input.chh
 
 
                     </ul>
-                        <style>.add button {margin-left: 100%;}</style>
+                        <style>.add{margin-left: 100%;width: 100%;}</style>
+                        <ul>
                        <div class="add">
                             <a href="add-teachers.php" id="b"> <button type="submit" name="add" class="btn btn-success">Add Teacher</button></a>
                         </div>
+                    </ul>
                 </div>
           </div>
 

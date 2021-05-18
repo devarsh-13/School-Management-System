@@ -164,8 +164,8 @@ if(isset($ok))
             background-color: white;
             margin-top: 3%;
         }
-         .add button {
-
+         .add  {
+                width: 100%;
                 margin-left: 100%;
             }
     </style>
@@ -192,10 +192,11 @@ if(isset($ok))
                                 
                                 <li><span>Student Import</span></li>
                             </ul>
+                            <ul>
                           <div class="add">
                             <a href="Share_student_demo.php" id="b"> <button type="submit" name="add" class="btn btn-primary">Demo Sheet</button></a>
                         </div>
-                        
+                        </ul>
                 </div>
             </div>
               <div class="row">
