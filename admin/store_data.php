@@ -11,15 +11,17 @@ class Upload
 
         $sql="INSERT INTO `Students` SET `S_grn`='$gr',`S_uidn`='$uid',`S_name`='$name',`S_caste`='$cast',`S_category`='$cate',`S_dob`='$dob',`S_contact`='$con',`S_ad_date`='$ad_date',`Class_id`='$cid',`S_adharn`='$adhar',`S_hostel`='$hos',`S_home`='$hom',`S_handicapped`='$handi',`S_describe`='$des',`S_password`='$pass',`S_remarks`='$remarks',`Academic_year`='$ay',`S_photo`='$ph',`is_deleted`='0',`Created_on`='$d',`s_status`='$status',`updated`='0'";
 
-        $q=mysqli_query($Conn,$sql)or die(mysqli_error($Conn));
+        $q=mysqli_query($Conn,$sql);
         return $q;
 
     }
 
     public function Check_repeatation($d,$Conn)
-    {
-        
+    {        
         $i=0;
+        $lines=array();
+        array_push($lines, '1');
+
         foreach ($d as $t) 
         {
             if($i>0)
@@ -38,12 +40,54 @@ class Upload
                                
                         if($r>=1)
                         {
-                            return $i;
+                            array_push($lines, $i); 
                         }
             }
             $i++;
         }
-        return 0;
+        return $i;
+    }
+
+    public function Check_empty($d,$Conn)
+    {
+     $i=0;
+        $lines=array();
+        array_push($lines, '0');
+
+        foreach ($d as $t) 
+        {
+            if($i>0)
+            {
+                
+                        $gr     =$Conn->real_escape_string($t[0]);
+                        $uid    =$Conn->real_escape_string($t[1]);
+                        $name   =$Conn->real_escape_string($t[2]);
+                        $cast   =$Conn->real_escape_string($t[5]);
+                        $cate   =$Conn->real_escape_string($t[6]);
+                        $dob    =$Conn->real_escape_string($t[7]);
+                        $cont   =$Conn->real_escape_string($t[9]);
+                        $ad_date=$Conn->real_escape_string($t[8]);
+                        $cid    =$Conn->real_escape_string($c_id[0]);
+
+                        $adhar  =$Conn->real_escape_string($t[10]);
+                        $hos    =$Conn->real_escape_string($t[12]);
+                        $hom    =$Conn->real_escape_string($t[11]);
+                        $handi  =$Conn->real_escape_string($t[13]);
+                        $des    =$Conn->real_escape_string($t[14]);
+                        $pass   =$Conn->real_escape_string($pass);
+                        $remarks=$Conn->real_escape_string($t[15]);
+
+                        $ay     =$Conn->real_escape_string($t[16]);
+
+                                                   
+                        if(empty($gr)||empty($uid)||empty($name)||empty($cast)||empty($cate)||empty($dob)||empty($cont)||empty($ad_date)||empty($cid)||empty($adhar)||empty($hom)||empty($handi)||empty($pass)||empty($remarks)||empty($ay))
+                        {
+                            array_push($lines, $i); 
+                        }
+            }
+            $i++;
+        }
+        return $i;   
     }
 
 
@@ -85,7 +129,7 @@ class Upload
                                 '$status'
                             )";
 
-        $q=mysqli_query($Conn,$sql)or die(mysqli_error($Conn));
+        $q=mysqli_query($Conn,$sql);
         return $q;
 
     }
@@ -129,13 +173,13 @@ class Log
     	elseif(isset($_SESSION['t_id'])) 
     	{
     		$id=$_SESSION['t_id'];
-    		$q=mysqli_query($Conn,"SELECT `T_name`,`contact` FROM `Teachers` WHERE `T_srn`='$id'")or die(mysqli_error($Conn));
+    		$q=mysqli_query($Conn,"SELECT `T_name`,`contact` FROM `Teachers` WHERE `T_srn`='$id'");
     		$auth="Teacher";
     	}
     	elseif(isset($_SESSION['s_id']))
     	{	
     		$id=$_SESSION['s_id'];
-    		$q=mysqli_query($Conn,"SELECT `S_name`,`S_contact` FROM `Students` WHERE `S_srn`='$id' AND `is_deleted`='0' AND `updated`='0'")or die(mysqli_error($Conn));
+    		$q=mysqli_query($Conn,"SELECT `S_name`,`S_contact` FROM `Students` WHERE `S_srn`='$id' AND `is_deleted`='0' AND `updated`='0'");
 	   		$auth="Student";
     	}
     	$data=mysqli_fetch_row($q);

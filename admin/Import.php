@@ -26,103 +26,117 @@ function get_pass($p2)
 
   if(isset($_POST['submit']))
   {
-        $targetPath =$_FILES['file']['name'];
-        //move_uploaded_file($_FILES['file']['tmp_name'], $targetPath);
-
         $reader = new \PhpOffice\PhpSpreadsheet\Reader\Xlsx();
 
-        $spreadsheet = $reader->load("$targetPath");
+        $spreadsheet = $reader->load($_FILES['file']['tmp_name']);
         $d=$spreadsheet->getSheet(0)->toArray();
     
         $obj=new Upload();
 
         $ec = new ecdc();
-        
-        $i=$obj->Check_repeatation($d,$Conn);
 
-        if($i)
+        $i=$obj->Check_empty($d,$Conn);
+        if(sizeof($i)==1)
         {
-          $error="Data is not updated please check at row : $i in uploaded file ";  
- 
+            $i=$obj->Check_repeatation($d,$Conn);
+
+            if(sizeof($i)>1)
+            {
+                $error="Data is not updated please check at row :";
+
+                for ($lines=1; $lines<sizeof($i); $lines++) 
+                { 
+                    $error=$error." $i[$lines],";
+                }  
+                $error=$error." in Uploaded file";
+            }
+            else
+            {
+                $i=0;
+                foreach ($d as $t) 
+                {
+                    if($i>0)
+                    {
+                        if($t[4]=='-' || $t[4]==' ')
+                        {
+                            $t[4]=NULL;
+                        }
+                        
+                        $q=mysqli_query($Conn,"SELECT `Class_id` FROM `Class` WHERE `C_no`='$t[3]' AND `Stream`='$t[4]' ");
+                        $c_id=mysqli_fetch_array($q);
+
+                        $q2=mysqli_query($Conn, "SELECT `S_password` FROM `Students` WHERE `S_contact`=$t[9] AND `is_deleted`='0' AND `updated`='1' ");
+                        $raw_pass=mysqli_fetch_row($q2);
+
+                        if(isset($raw_pass['0']))
+                        {
+                            $pass=$raw_pass['0'];
+                        }
+                        else
+                        {
+                            $pass = $ec->encrypt(get_pass($t[0]));    
+                        }
+
+                                $gr     =$Conn->real_escape_string($t[0]);
+                                $uid    =$Conn->real_escape_string($t[1]);
+                                $name   =$Conn->real_escape_string($t[2]);
+                                $cast   =$Conn->real_escape_string($t[5]);
+                                $cate   =$Conn->real_escape_string($t[6]);
+                                $dob    =$Conn->real_escape_string($t[7]);
+                                $cont   =$Conn->real_escape_string($t[9]);
+                                $ad_date=$Conn->real_escape_string($t[8]);
+                                $cid    =$Conn->real_escape_string($c_id[0]);
+
+                                $adhar  =$Conn->real_escape_string($t[10]);
+                                $hos    =$Conn->real_escape_string($t[12]);
+                                $hom    =$Conn->real_escape_string($t[11]);
+                                $handi  =$Conn->real_escape_string($t[13]);
+                                $des    =$Conn->real_escape_string($t[14]);
+                                $pass   =$Conn->real_escape_string($pass);
+                                $remarks=$Conn->real_escape_string($t[15]);
+
+                                $ay     =$Conn->real_escape_string($t[16]);
+                                
+
+                                $ok=$obj->Store_student($gr,$uid,$name,$cast,$cate,$dob,$cont,$ad_date,$cid,$adhar,$hos,$hom,$handi,$des,$pass,$remarks,$ay,$Conn);
+                    }
+                    $i++;
+                }
+            for($i=0;$i<=10;$i++)
+            {
+                $query=mysqli_query($Conn,"UPDATE `students` SET`updated`='2' WHERE `Class_id`='$i' AND `updated`='1'");
+            }
+            
+                }
+
+
+            $action="Student data Imported";
+            $log=new Log();
+            if(isset($ok))
+            {
+                if($ok)
+                {
+                    $log->success_entry($action,$Conn);
+                    echo "<script>alert('Student Data Stored Successfully');window.location.href='manage-students.php';</script>";
+                }
+                else 
+                {
+                   $str=$log->success_entry($action,$Conn,"Unsuccessful");
+                  
+                }
+            }
         }
         else
         {
-            $i=0;
-            foreach ($d as $t) 
-            {
-                if($i>0)
-                {
-                    if($t[4]=='-')
-                    {
-                        $t[4]=NULL;
-                    }
-                    
-                    $q=mysqli_query($Conn,"SELECT `Class_id` FROM `Class` WHERE `C_no`='$t[3]' AND `Stream`='$t[4]' ")or die(mysqli_error($Conn));
-                    $c_id=mysqli_fetch_array($q);
+             $error="Empty Cell found at row :";
 
-                    $q2=mysqli_query($Conn, "SELECT `S_password` FROM `Students` WHERE `S_contact`=$t[9] AND `is_deleted`='0' AND `updated`='1' ");
-                    $raw_pass=mysqli_fetch_row($q2);
-
-                    if(isset($raw_pass['0']))
-                    {
-                        $pass=$raw_pass['0'];
-                    }
-                    else
-                    {
-                        $pass = $ec->encrypt(get_pass($t[0]));    
-                    }
-
-                            $gr     =$Conn->real_escape_string($t[0]);
-                            $uid    =$Conn->real_escape_string($t[1]);
-                            $name   =$Conn->real_escape_string($t[2]);
-                            $cast   =$Conn->real_escape_string($t[5]);
-                            $cate   =$Conn->real_escape_string($t[6]);
-                            $dob    =$Conn->real_escape_string($t[7]);
-                            $cont   =$Conn->real_escape_string($t[9]);
-                            $ad_date=$Conn->real_escape_string($t[8]);
-                            $cid    =$Conn->real_escape_string($c_id[0]);
-
-                            $adhar  =$Conn->real_escape_string($t[10]);
-                            $hos    =$Conn->real_escape_string($t[12]);
-                            $hom    =$Conn->real_escape_string($t[11]);
-                            $handi  =$Conn->real_escape_string($t[13]);
-                            $des    =$Conn->real_escape_string($t[14]);
-                            $pass   =$Conn->real_escape_string($pass);
-                            $remarks=$Conn->real_escape_string($t[15]);
-
-                            $ay     =$Conn->real_escape_string($t[16]);
-                            
-
-                            $ok=$obj->Store_student($gr,$uid,$name,$cast,$cate,$dob,$cont,$ad_date,$cid,$adhar,$hos,$hom,$handi,$des,$pass,$remarks,$ay,$Conn);
-                }
-                $i++;
-            }
-        for($i=0;$i<=10;$i++)
-        {
-            $query=mysqli_query($Conn,"UPDATE `students` SET`updated`='2' WHERE `Class_id`='$i' AND `updated`='1'")or die(mysqli_error($Conn));
+                for ($lines=1; $lines<sizeof($i); $lines++) 
+                { 
+                    $error=$error." $i[$lines],";
+                }  
+                $error=$error." in Uploaded file (hint : if Uploaded sheet is perfect but still get this error than delete the last empty row.)";
         }
-        //unlink($targetPath);
-            }
-
-
-$action="Student data Imported";
-$log=new Log();
-if(isset($ok))
-{
-    if($ok)
-    {
-        $log->success_entry($action,$Conn);
-        echo "<script>alert('Student Data Stored Successfully');window.location.href='manage-students.php';</script>";
-    }
-    else 
-    {
-       $str=$log->success_entry($action,$Conn,"Unsuccessful");
-       $error="Something went wrong. Please try again";
-    }
 }
-
-}
-
 
 ?>
 <!DOCTYPE html>
