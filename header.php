@@ -49,7 +49,7 @@ if (isset($_SESSION['s_id'])) {
                             
                             </i>
                         </li>
-                        <li><a href="logout.php" class="color-danger text-center"><i class="fa fa-sign-out"></i> Logout</a></li>
+                        <li><a href="logout.php" class="color-danger text-center" style="color: red;"><i class="fa fa-sign-out"></i> Logout</a></li>
 
                     </ul>
 
