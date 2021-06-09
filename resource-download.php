@@ -33,7 +33,7 @@ else
 		
 
     
-    <!-- <link type="text/css" rel="stylesheet" href="teacher/assets/css/bootstrap.min.css"/> -->
+    <link type="text/css" rel="stylesheet" href="teacher/assets/css/bootstrap.min.css"/> 
     <link type="text/css" rel="stylesheet" href="teacher/assets/css/font-awesome.min.css"/>
     <link type="text/css" rel="stylesheet" href="teacher/assets/css/themify-icons.css"/>
     <link type="text/css" rel="stylesheet" href="teacher/assets/css/metisMenu.css"/>
@@ -54,7 +54,7 @@ else
 }
 
 .ed_footer_wrapper {
-	padding-top: 30%;
+	padding-top: 10%;
 }
 
 .dashboard-stat {
