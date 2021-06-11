@@ -22,32 +22,28 @@ else
         $log->success_entry($action,$Conn);
     }
 
-function get_pass($p2)
-{
-    $p1=rand(100,999);
+    function get_pass($p2)
+    {
+        $p1=rand(100,999);
 
-    $p3 = $p1."_".$p2;
-    return $p3;
-}
+        $p3 = $p1."_".$p2;
+        return $p3;
+    }
 
 //USE PhpOffice\PhpSpreadsheet\Spreadsheet;
 
 
   if(isset($_POST['submit']))
   {
-    // $exe=pathinfo($_FILES['file']['name'],PATHINFO_EXTENSION);
-
-    // var_dump($exe);
-    // die();
-
-    // if($exe=="xlsx")
-    // {
-        
-        
+           
+     $ex=pathinfo($_FILES['file']['name'],PATHINFO_EXTENSION);
+       
+    if($ex=="xlsx")
+    {
         $reader = new \PhpOffice\PhpSpreadsheet\Reader\Xlsx();
         $ec = new ecdc();
         $spreadsheet = $reader->load($_FILES['file']['tmp_name']);
-        
+
         $d=$spreadsheet->getSheet(0)->toArray();
 
         $i=0;
@@ -65,34 +61,39 @@ function get_pass($p2)
                         $jdate  =$Conn->real_escape_string($t[4]);
                         $rdate  =$Conn->real_escape_string($t[5]);
                         $con    =$Conn->real_escape_string($t[6]);
-                        $ph     =$Conn->real_escape_string($t[7]);
+                        
                         
                         $s= new Upload ();
-                        $ok=$s->Store_teacher($tn,$dob,$deg,$adate,$jdate,$rdate,$con,$pass,$Conn,$ph);
+                        $ok=$s->Store_teacher($tn,$dob,$deg,$adate,$jdate,$rdate,$con,$pass,$Conn);
             }
             $i++;
 
         }
         
 
-$action="Teacher data Imported";
+        $action="Teacher data Imported";
 
-if($ok)
-{
+        if($ok)
+        {
 
-   
-    $log->success_entry($action,$Conn);
-    echo "<script>alert('Teacher Data Stored Successfully');window.location.href='manage-teachers.php';</script>";
-    
-}
-else 
-{
-   
-    $log->success_entry($action,$Conn,"Unsuccessful");
-    $error="Something went wrong. Please try again";
-}
+           
+            $log->success_entry($action,$Conn);
+            echo "<script>alert('Teacher Data Stored Successfully');window.location.href='manage-teachers.php';</script>";
+            
+        }
+        else 
+        {
+           
+            $log->success_entry($action,$Conn,"Unsuccessful");
+            $error="Something went wrong. Please try again";
+        }
 
     }
+    else
+    {
+        echo "<script>alert('Only excel files are accepted (xlsx)');window.location.href='teacher_import.php';</script>";  
+    }
+}
 
 
 ?>
@@ -259,9 +260,5 @@ else if($error){?>
 
 </html>
 <?php 
-    // }
-    // else
-    // {
-    //     echo "<script>alert('Only excel files are accepted (xslx)');window.location.href='teacher_import.php';</script>";  
-    // }
-} ?>
+   } 
+?>
