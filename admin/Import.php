@@ -27,10 +27,9 @@ function get_pass($p2)
   if(isset($_POST['submit']))
   {
     
-    // $ex=pathinfo($_FILES['file']['name'],PATHINFO_EXTENSION);
-
-    // // echo "<script>alert('$exe');window.location.href='Import.php';</script>";
-
+    $ex=pathinfo($_FILES['file']['name'],PATHINFO_EXTENSION);
+    var_dump($ex);
+    die();
     // if($ex=="xlsx")
     // {
         $reader = new \PhpOffice\PhpSpreadsheet\Reader\Xlsx();

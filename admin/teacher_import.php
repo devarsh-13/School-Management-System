@@ -1,6 +1,6 @@
 <?php
 session_start();
-error_reporting(0);
+error_reporting(1);
 require('../connection.php');
 require "../vendor/autoload.php";
 require "store_data.php";
@@ -42,11 +42,12 @@ function get_pass($p2)
 
     // if($exe=="xlsx")
     // {
-        $targetPath =$_FILES['file']['name'];
+        
         
         $reader = new \PhpOffice\PhpSpreadsheet\Reader\Xlsx();
         $ec = new ecdc();
-        $spreadsheet = $reader->load("$targetPath");
+        $spreadsheet = $reader->load($_FILES['file']['tmp_name']);
+        
         $d=$spreadsheet->getSheet(0)->toArray();
 
         $i=0;
@@ -72,7 +73,7 @@ function get_pass($p2)
             $i++;
 
         }
-        unlink($targetPath);
+        
 
 $action="Teacher data Imported";
 
@@ -165,7 +166,7 @@ else
                             <ul>
                     <div class="add">
                             <a href="Share_teacher_demo.php" id="b"> <button type="submit" name="add" class="btn btn-primary">Demo Sheet</button></a>
-                        </div>
+                    </div>
                     </ul>
                 </div>
             </div>
@@ -257,7 +258,7 @@ else if($error){?>
 </body>
 
 </html>
-<?PHP 
+<?php 
     // }
     // else
     // {
