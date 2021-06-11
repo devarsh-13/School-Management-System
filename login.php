@@ -16,7 +16,7 @@ elseif (isset($_SESSION['t_id']))
 }
 elseif (isset($_SESSION['s_id'])) 
 {
-	echo "<script>alert('Student Account is loged in from the same Device (logout to continue)');window.location.href='../main.php';</script>";	
+	echo "<script>alert('Student Account is loged in from the same Device (logout to continue)');window.location.href='main.php';</script>";	
 }
 else
 {
