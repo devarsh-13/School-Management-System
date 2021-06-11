@@ -33,9 +33,8 @@ class Upload
                         $jdate  =$Conn->real_escape_string($t[4]);
                         $rdate  =$Conn->real_escape_string($t[5]);
                         $con    =$Conn->real_escape_string($t[6]);
-                        $ph     =$Conn->real_escape_string($t[7]);
-                
-                        $repeat=mysqli_query($Conn,"SELECT `T_srn`FROM `Teachers` WHERE `T_name`='$tn' OR `DOB`='$dob' OR `Degree`='$deg' OR `A_date`='$adate' OR `Joining_date`='$jdate' AND `Retire_date`='$rdate' OR `Contact`='$con' AND `T_photo`='$ph' ");
+                                        
+                        $repeat=mysqli_query($Conn,"SELECT `T_srn`FROM `Teachers` WHERE `T_name`='$tn' OR `DOB`='$dob' OR `Degree`='$deg' OR `A_date`='$adate' OR `Joining_date`='$jdate' OR `Retire_date`='$rdate' OR `Contact`='$con'");
 
                             
                         $r=mysqli_num_rows($repeat);
@@ -118,7 +117,37 @@ class Upload
         }
         return $lines;   
     }
+public function Check_empty_teacher($d,$Conn)
+    {
+     $i=0;
+        $lines=array();
+        array_push($lines, '0');
 
+        foreach ($d as $t) 
+        {
+            if($i>0)
+            {
+                
+                $tn     =$Conn->real_escape_string($t[0]);
+                $dob    =$Conn->real_escape_string($t[1]);
+                $deg    =$Conn->real_escape_string($t[2]);
+                $adate  =$Conn->real_escape_string($t[3]);
+                $jdate  =$Conn->real_escape_string($t[4]);
+                $rdate  =$Conn->real_escape_string($t[5]);
+                $con    =$Conn->real_escape_string($t[6]);
+
+                                                   
+                if(empty($tn)||empty($dob)||empty($deg)||empty($adate)||empty($jdate)||empty($rdate)||empty($con))
+                {
+                    array_push($lines, $i); 
+                }
+            }
+            $i++;
+        }
+        var_dump($lines);
+        die();
+        return $lines;   
+    }
 
 
 

@@ -1,6 +1,6 @@
 <?php
 session_start();
-error_reporting(0);
+error_reporting(1);
 require('../connection.php');
 require "../vendor/autoload.php";
 require "store_data.php";
@@ -46,14 +46,29 @@ else
 
         $d=$spreadsheet->getSheet(0)->toArray();
 
-        $i=0;
-        foreach ($d as $t) 
+        $empt= Check_empty_teacher($d,$Conn);
+        if(sizeof($empt)==1)
         {
-            if($i>0)
-            {
-                $pass = $ec->encrypt(get_pass($t[0]));
-                
+            // $rep=Check_teacher($d,$Conn);
+            
+            // if(sizeof($rep)>0)
+            // {
+            //     $error="Data is not updated please check at row :";
 
+            //     for ($lines=1; $lines<sizeof($i); $lines++) 
+            //     { 
+            //         $error=$error." $i[$lines],";
+            //     }  
+            //     $error=$error." in Uploaded file";
+            // }
+            // else
+            // {
+                $i=0;
+                foreach ($d as $t) 
+                {
+
+                    if($i==0)
+                    {
                         $tn     =$Conn->real_escape_string($t[0]);
                         $dob    =$Conn->real_escape_string($t[1]);
                         $deg    =$Conn->real_escape_string($t[2]);
@@ -61,31 +76,62 @@ else
                         $jdate  =$Conn->real_escape_string($t[4]);
                         $rdate  =$Conn->real_escape_string($t[5]);
                         $con    =$Conn->real_escape_string($t[6]);
+
+                        if($tn=="Name" && $dob=="DOB" && $deg=="Degree" && $adate=="Appoinment Date" && $jdate=="Joining Date" && $rdate=="Retire Date" && $con=="Contact No.")
+                        {
+                            $flag1=1;
+                        }
+                        else
+                        {
+                           echo "<script>alert('Invalid File Please upload a valid file.');window.location.href='teacher_import.php';</script>"; 
+                        }
+                    }
+                    if($i>0)
+                    {
+                        $pass = $ec->encrypt(get_pass($t[0]));
                         
-                        
-                        $s= new Upload ();
-                        $ok=$s->Store_teacher($tn,$dob,$deg,$adate,$jdate,$rdate,$con,$pass,$Conn);
-            }
-            $i++;
+                                $tn     =$Conn->real_escape_string($t[0]);
+                                $dob    =$Conn->real_escape_string($t[1]);
+                                $deg    =$Conn->real_escape_string($t[2]);
+                                $adate  =$Conn->real_escape_string($t[3]);
+                                $jdate  =$Conn->real_escape_string($t[4]);
+                                $rdate  =$Conn->real_escape_string($t[5]);
+                                $con    =$Conn->real_escape_string($t[6]);
+                                
+                                
+                                $s= new Upload ();
+                                $ok=$s->Store_teacher($tn,$dob,$deg,$adate,$jdate,$rdate,$con,$pass,$Conn);
+                    }
+                    $i++;
 
+                }
+                
+                $action="Teacher data Imported";
+
+                if($ok)
+                {
+
+                    $log->success_entry($action,$Conn);
+                    echo "<script>alert('Teacher Data Stored Successfully');window.location.href='manage-teachers.php';</script>";
+                    
+                }
+                else 
+                {
+                   
+                    $log->success_entry($action,$Conn,"Unsuccessful");
+                    $error="Something went wrong. Please try again";
+                }
+            // }
         }
-        
-
-        $action="Teacher data Imported";
-
-        if($ok)
+        else
         {
+            $error="Empty Cell found at row :";
 
-           
-            $log->success_entry($action,$Conn);
-            echo "<script>alert('Teacher Data Stored Successfully');window.location.href='manage-teachers.php';</script>";
-            
-        }
-        else 
-        {
-           
-            $log->success_entry($action,$Conn,"Unsuccessful");
-            $error="Something went wrong. Please try again";
+                for ($lines=1; $lines<sizeof($i); $lines++) 
+                { 
+                    $error=$error." $i[$lines],";
+                }  
+                $error=$error." in Uploaded file (hint : if Uploaded sheet is perfect but still get this error than delete the last empty row.)";
         }
 
     }
@@ -184,18 +230,12 @@ else
                 <!-- MAIN CONTENT GOES HERE -->
 
                                     <div class="panel-body">
-                                        <?php if($msg){?>
-                                        <div class="alert alert-success left-icon-alert" role="alert">
-                                            
-                                            <?php echo htmlentities($msg); ?>
-                                        </div>
-                                        <?php } 
-else if($error){?>
+                                       
                                         <div class="alert alert-danger left-icon-alert" role="alert">
                                             
-                                            <?php echo htmlentities($error); ?>
+                                            <?php if(isset($error)){ echo htmlentities($error); }?>
                                         </div>
-                                        <?php } ?>
+                                        
                                         <form class="form-horizontal" method="post"  enctype="multipart/form-data">
 
                                             <div class="form-group">
