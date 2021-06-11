@@ -7,8 +7,6 @@
     if(isset($_SESSION['t_id'])){
 
 
-      
-       // echo mysqli_real_escape_string($Conn, $_GET['teacher_id']);
         include_once "../connection.php";
         
        $os= $_POST['message'];
