@@ -16,8 +16,9 @@ use PhpOffice\PhpSpreadsheet\IOFactory;
 $spreadsheet = new Spreadsheet();
 $sheet = $spreadsheet->getActiveSheet();
 
-$details=["T_name","DOB","Degree","A_date","Joining_date","Retire_date","Contact"];
-$cols=["A1","B1","C1","D1","E1","F1","G1"];
+$details=["Name","DOB","Degree","Appointment date","Joining date","Retire date","Contact No","Photo"];
+
+$cols=["A1","B1","C1","D1","E1","F1","G1","H1"];
 
 for($i=0;$i<=sizeof($details)-1;$i++)
 {

@@ -1,6 +1,6 @@
 <?php
 session_start();
-error_reporting(0);
+error_reporting();
 require('../connection.php');
 require "../vendor/autoload.php";
 require "store_data.php";
@@ -26,6 +26,13 @@ function get_pass($p2)
 
   if(isset($_POST['submit']))
   {
+    
+    // $ex=pathinfo($_FILES['file']['name'],PATHINFO_EXTENSION);
+
+    // // echo "<script>alert('$exe');window.location.href='Import.php';</script>";
+
+    // if($ex=="xlsx")
+    // {
         $reader = new \PhpOffice\PhpSpreadsheet\Reader\Xlsx();
 
         $spreadsheet = $reader->load($_FILES['file']['tmp_name']);
@@ -39,6 +46,7 @@ function get_pass($p2)
         if(sizeof($i)==1)
         {
             $i=$obj->Check_repeatation($d,$Conn);
+
 
             if(sizeof($i)>1)
             {
@@ -107,9 +115,7 @@ function get_pass($p2)
                 $query=mysqli_query($Conn,"UPDATE `students` SET`updated`='2' WHERE `Class_id`='$i' AND `updated`='1'");
             }
             
-                }
-
-
+        }
             $action="Student data Imported";
             $log=new Log();
             if(isset($ok))
@@ -297,4 +303,12 @@ function get_pass($p2)
 </body>
 
 </html>
-<?PHP } ?>
+<?php 
+    // }
+    // else
+    // {
+    //     echo "<script>alert('Only excel files are accepted (xslx)');window.location.href='Import.php';</script>";  
+    // }
+} 
+
+?>

@@ -35,11 +35,17 @@ function get_pass($p2)
 
   if(isset($_POST['submit']))
   {
-        $targetPath =$_FILES['file']['name'];
-        // move_uploaded_file($_FILES['file']['tmp_name'], $targetPath);
+    // $exe=pathinfo($_FILES['file']['name'],PATHINFO_EXTENSION);
 
+    // var_dump($exe);
+    // die();
+
+    // if($exe=="xlsx")
+    // {
+        $targetPath =$_FILES['file']['name'];
+        
         $reader = new \PhpOffice\PhpSpreadsheet\Reader\Xlsx();
-$ec = new ecdc();
+        $ec = new ecdc();
         $spreadsheet = $reader->load("$targetPath");
         $d=$spreadsheet->getSheet(0)->toArray();
 
@@ -251,4 +257,10 @@ else if($error){?>
 </body>
 
 </html>
-<?PHP } ?>
+<?PHP 
+    // }
+    // else
+    // {
+    //     echo "<script>alert('Only excel files are accepted (xslx)');window.location.href='teacher_import.php';</script>";  
+    // }
+} ?>

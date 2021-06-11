@@ -16,6 +16,41 @@ class Upload
 
     }
 
+    public function Check_teacher($d,$Conn)
+    {
+        $i=0;
+        $lines=array();
+        array_push($lines, '1');
+
+        foreach ($d as $t) 
+        {
+            if($i>0)
+            {
+                        $tn     =$Conn->real_escape_string($t[0]);
+                        $dob    =$Conn->real_escape_string($t[1]);
+                        $deg    =$Conn->real_escape_string($t[2]);
+                        $adate  =$Conn->real_escape_string($t[3]);
+                        $jdate  =$Conn->real_escape_string($t[4]);
+                        $rdate  =$Conn->real_escape_string($t[5]);
+                        $con    =$Conn->real_escape_string($t[6]);
+                        $ph     =$Conn->real_escape_string($t[7]);
+                
+                        $repeat=mysqli_query($Conn,"SELECT `T_srn`FROM `Teachers` WHERE `T_name`='$tn' OR `DOB`='$dob' OR `Degree`='$deg' OR `A_date`='$adate' OR `Joining_date`='$jdate' AND `Retire_date`='$rdate' OR `Contact`='$con' AND `T_photo`='$ph' ");
+
+                            
+                        $r=mysqli_num_rows($repeat);
+                               
+                        if($r>=1)
+                        {
+                            array_push($lines, $i);
+ 
+                        }
+            }
+            $i++;
+        }
+        return $lines;
+    }
+
     public function Check_repeatation($d,$Conn)
     {        
         $i=0;
@@ -26,26 +61,27 @@ class Upload
         {
             if($i>0)
             {
+                                $gr     =$Conn->real_escape_string($t[0]);
+                                $uid    =$Conn->real_escape_string($t[1]);
+                                $name   =$Conn->real_escape_string($t[2]);
+                                $cont   =$Conn->real_escape_string($t[9]);
+                                $adhar  =$Conn->real_escape_string($t[10]);
+                                $ay     =$Conn->real_escape_string($t[16]);
                 
-                        $name   =$Conn->real_escape_string($t[2]);
-                        
-                        $cont   =$Conn->real_escape_string($t[9]);
-                        
-                        $ay     =$Conn->real_escape_string($t[16]);
-                       
-                        $repeat=mysqli_query($Conn,"SELECT `S_srn`FROM `Students` WHERE `S_name`='$name'AND`S_contact`='$cont'AND`Academic_year`='$ay' AND `updated`='0'");
+                        $repeat=mysqli_query($Conn,"SELECT `S_srn`FROM `Students` WHERE `S_grn`='$gr' OR `S_uidn`='$uid' OR `S_adharn`='$adhar' OR `S_name`='$name' OR `S_contact`='$cont' AND `Academic_year`='$ay' AND `updated`='0' AND `is_deleted`='0'");
 
                             
                         $r=mysqli_num_rows($repeat);
                                
                         if($r>=1)
                         {
-                            array_push($lines, $i); 
+                            array_push($lines, $i);
+ 
                         }
             }
             $i++;
         }
-        return $i;
+        return $lines;
     }
 
     public function Check_empty($d,$Conn)
@@ -67,27 +103,20 @@ class Upload
                         $dob    =$Conn->real_escape_string($t[7]);
                         $cont   =$Conn->real_escape_string($t[9]);
                         $ad_date=$Conn->real_escape_string($t[8]);
-                        $cid    =$Conn->real_escape_string($c_id[0]);
-
                         $adhar  =$Conn->real_escape_string($t[10]);
-                        $hos    =$Conn->real_escape_string($t[12]);
                         $hom    =$Conn->real_escape_string($t[11]);
                         $handi  =$Conn->real_escape_string($t[13]);
-                        $des    =$Conn->real_escape_string($t[14]);
-                        $pass   =$Conn->real_escape_string($pass);
-                        $remarks=$Conn->real_escape_string($t[15]);
-
                         $ay     =$Conn->real_escape_string($t[16]);
 
                                                    
-                        if(empty($gr)||empty($uid)||empty($name)||empty($cast)||empty($cate)||empty($dob)||empty($cont)||empty($ad_date)||empty($cid)||empty($adhar)||empty($hom)||empty($handi)||empty($pass)||empty($remarks)||empty($ay))
+                        if(empty($gr)||empty($uid)||empty($name)||empty($cast)||empty($cate)||empty($dob)||empty($cont)||empty($ad_date)||empty($adhar)||empty($hom)||empty($handi)||empty($ay))
                         {
                             array_push($lines, $i); 
                         }
             }
             $i++;
         }
-        return $i;   
+        return $lines;   
     }
 
 
