@@ -46,10 +46,10 @@ else
 
         $d=$spreadsheet->getSheet(0)->toArray();
 
-        $empt= Check_empty_teacher($d,$Conn);
-        if(sizeof($empt)==1)
-        {
-            // $rep=Check_teacher($d,$Conn);
+        // $empt= Check_empty_teacher($d,$Conn);
+        // if(sizeof($empt)==1)
+        // {
+        //     // $rep=Check_teacher($d,$Conn);
             
             // if(sizeof($rep)>0)
             // {
@@ -61,8 +61,7 @@ else
             //     }  
             //     $error=$error." in Uploaded file";
             // }
-            // else
-            // {
+          {
                 $i=0;
                 foreach ($d as $t) 
                 {
@@ -123,16 +122,16 @@ else
                 }
             // }
         }
-        else
-        {
-            $error="Empty Cell found at row :";
+        // else
+        // {
+        //     $error="Empty Cell found at row :";
 
-                for ($lines=1; $lines<sizeof($i); $lines++) 
-                { 
-                    $error=$error." $i[$lines],";
-                }  
-                $error=$error." in Uploaded file (hint : if Uploaded sheet is perfect but still get this error than delete the last empty row.)";
-        }
+        //         for ($lines=1; $lines<sizeof($i); $lines++) 
+        //         { 
+        //             $error=$error." $i[$lines],";
+        //         }  
+        //         $error=$error." in Uploaded file (hint : if Uploaded sheet is perfect but still get this error than delete the last empty row.)";
+        // }
 
     }
     else
