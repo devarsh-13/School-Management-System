@@ -6,7 +6,7 @@
 							<div class="col-lg-4 col-md-4 col-sm-12">
 								<div class="widget text-widget">
 									<p><a href="index.html"><img src="images/header/ighs_sidebar.png" alt="Footer Logo" height= "30%" width="30%" style="margin-bottom: -5%;" /></a></p>
-									<p>Edution is an outstanding PSD template targeting educational institutions, helping them establish strong identity on the internet without any real developing knowledge.
+									<p>Indrabai Girls High School was established in year 1949. The school consist of 9 to 12 grade. Gujarati is the language of instructions in this school. It is a government school. School has received many awards for it's quality education and other activities. 
 									</p>
 									<div class="ed_sociallink">
 
