@@ -28,10 +28,9 @@ function get_pass($p2)
   {
     
     $ex=pathinfo($_FILES['file']['name'],PATHINFO_EXTENSION);
-    var_dump($ex);
-    die();
-    // if($ex=="xlsx")
-    // {
+       
+    if($ex=="xlsx")
+    {
         $reader = new \PhpOffice\PhpSpreadsheet\Reader\Xlsx();
 
         $spreadsheet = $reader->load($_FILES['file']['tmp_name']);
@@ -109,12 +108,13 @@ function get_pass($p2)
                     }
                     $i++;
                 }
-            for($i=0;$i<=10;$i++)
-            {
-                $query=mysqli_query($Conn,"UPDATE `students` SET`updated`='2' WHERE `Class_id`='$i' AND `updated`='1'");
+                for($i=0;$i<=10;$i++)
+                {
+                    $query=mysqli_query($Conn,"UPDATE `students` SET`updated`='2' WHERE `Class_id`='$i' AND `updated`='1'");
+                }
+            
             }
             
-        }
             $action="Student data Imported";
             $log=new Log();
             if(isset($ok))
@@ -141,6 +141,11 @@ function get_pass($p2)
                 }  
                 $error=$error." in Uploaded file (hint : if Uploaded sheet is perfect but still get this error than delete the last empty row.)";
         }
+    }
+    else
+    {
+        echo "<script>alert('Only excel files are accepted (xlsx)');window.location.href='Import.php';</script>";  
+    }
 }
 
 ?>
@@ -303,11 +308,7 @@ function get_pass($p2)
 
 </html>
 <?php 
-    // }
-    // else
-    // {
-    //     echo "<script>alert('Only excel files are accepted (xslx)');window.location.href='Import.php';</script>";  
-    // }
+    
 } 
 
 ?>
