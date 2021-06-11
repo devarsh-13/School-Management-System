@@ -19,9 +19,7 @@ $result = mysqli_fetch_array($query);
 
 $update = mysqli_query($Conn, "UPDATE students SET s_status ='online' WHERE S_srn ='$S_srn' ") or die(mysqli_connect_error());
 
-//   if(!isset($_SESSION['unique_id'])){
-//     header("location: login.php");
-//   }
+
 ?>
 <?php include_once "chat_header.php"; ?>
 

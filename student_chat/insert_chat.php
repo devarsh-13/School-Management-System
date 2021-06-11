@@ -10,7 +10,7 @@ include'../ec_dc.php';
 
 
       
-       // echo mysqli_real_escape_string($Conn, $_GET['teacher_id']);
+  
         include_once "../Database/connection.php";
         
        $os= $_POST['message'];
