@@ -6,7 +6,7 @@ error_reporting(0);
     include('Image_compress.php');
         
     session_start();
-    $uploadFolder = '../user_photo/teacher/';
+    $uploadFolder = '../user_photos/teacher/';
     
     $log=new Log();
     $action="Teacher Images Uploaded";
@@ -26,6 +26,7 @@ error_reporting(0);
 
         if($row==1)
         {
+            $q=mysqli_query($Conn,"UPDATE `Teachers` SET `T_photo`='$imageName' WHERE `T_name`='$name' AND `is_deleted`='0'");
             $flag=1;
             $result = compress($imageTmpName,$uploadFolder.$imageName);    
         }
