@@ -210,7 +210,6 @@ if (isset($_GET['N_id']))
                                                             <th>Notification Topic</th>
                                                             <th>Notification Text</th>
                                                             <th style="width: 10%;">Created Date</th>
-                                                            <th>Status</th>
                                                             <th>Created By</th>
                                                           
                                                         </tr>
@@ -245,17 +244,7 @@ if($row > 0)
                         <td><?php echo $result['Notification_topic'];?></td>
                         <td><?php echo $result['Notification_text'];?></td>
                         <td><?php echo $result['Created_on'];?></td>
-                        <td><?php if($result['is_deleted']==0)
-                                    {
-                                        echo "Visible";
-                                    }
-                                    else
-                                    {
-                                        echo"Disabled";
-                                    }
-                        ?>
-                            
-                        </td>
+                       
                         <td><?php
                                  $id=$result['created_by'];
                                  $q=mysqli_query($Conn,"SELECT `A_name` FROM `admin` WHERE `A_id` = '$id' ");
