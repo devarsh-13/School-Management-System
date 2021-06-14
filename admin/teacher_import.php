@@ -229,10 +229,11 @@ else
                 <!-- MAIN CONTENT GOES HERE -->
 
                                     <div class="panel-body">
-                                       
+                                        <?php if(isset($error)){ ?>
                                         <div class="alert alert-danger left-icon-alert" role="alert">
-                                            
-                                            <?php if(isset($error)){ echo htmlentities($error); }?>
+                                            <?php
+                                            echo htmlentities($error); 
+                                        }?>
                                         </div>
                                         
                                         <form class="form-horizontal" method="post"  enctype="multipart/form-data">
