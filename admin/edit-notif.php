@@ -40,14 +40,14 @@ else
         {
             
             $log->success_entry($action,$Conn);
-            echo "<script>alert('Notification Edit Successfully.');window.location.href='edit-notif.php';</script>";
+            echo "<script>alert('Notification Edit Successfully.');window.location.href='manage-notif.php';</script>";
 
         }
         else 
         {
          
             $log->success_entry($action,$Conn,"Unsuccessful");
-            echo "<script>alert('Failed To Edit Notification.');window.location.href='edit-notif.php';</script>";
+            echo "<script>alert('Failed To Edit Notification.');window.location.href='manage-notif.php';</script>";
         }
 
     }
@@ -172,7 +172,7 @@ if($row > 0)
 
                                             <div class="form-group">
                                                 <div class="col-sm-offset-2 col-sm-10">
-                                                    <button type="submit" name="submit" class="btn btn-primary">Add</button>
+                                                    <button type="submit" name="submit" class="btn btn-primary">Update</button>
                                                 </div>
                                             </div>
                                             <?php

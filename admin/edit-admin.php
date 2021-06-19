@@ -45,7 +45,8 @@ else
             $ext=pathinfo($_FILES['file']['name'],PATHINFO_EXTENSION);
             $imageName ="$con.$ext";
             $up=true;
-            unset($uploadFolder.$_POST['img_name']);
+            $old=$uploadFolder.$_POST['img_name'];
+            unset($old);
 
         }
 

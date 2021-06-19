@@ -45,13 +45,13 @@ if($q)
    
     $log->success_entry($action,$Conn);
     unset($_POST);
-    echo "<script>alert('Event Edit Successfully.');window.location.href='edit-event.php';</script>";   
+    echo "<script>alert('Event Edit Successfully.');window.location.href='manage-events.php';</script>";   
 }
 else 
 {
    
     $log->success_entry($action,$Conn,"Unsuccessful");
-    echo "<script>alert('Failed To Edit Event.');window.location.href='edit-event.php';</script>";
+    echo "<script>alert('Failed To Edit Event.');window.location.href='manage-events.php';</script>";
     
 }
 
@@ -183,7 +183,7 @@ if($row > 0)
 
                                             <div class="form-group">
                                                 <div class="col-sm-offset-2 col-sm-10">
-                                                    <button type="submit" name="submit" class="btn btn-primary">Add</button>
+                                                    <button type="submit" name="submit" class="btn btn-primary">Update</button>
                                                 </div>
                                             </div>
                                         <?php }}?>
