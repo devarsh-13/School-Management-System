@@ -1,5 +1,5 @@
 <?php
-error_reporting(0);
+error_reporting(1);
 class Upload
 {
     public function Store_student($gr,$uid,$name,$cast,$cate,$dob,$con,$ad_date,$cid,$adhar,$hos,$hom,$handi,$des,$pass,$remarks,$ay,$Conn)
@@ -27,22 +27,14 @@ class Upload
             if($i>0)
             {
                         $tn     =$Conn->real_escape_string($t[0]);
-                        $dob    =$Conn->real_escape_string($t[1]);
-                        $deg    =$Conn->real_escape_string($t[2]);
-                        $adate  =$Conn->real_escape_string($t[3]);
-                        $jdate  =$Conn->real_escape_string($t[4]);
-                        $rdate  =$Conn->real_escape_string($t[5]);
                         $con    =$Conn->real_escape_string($t[6]);
                                         
-                        $repeat=mysqli_query($Conn,"SELECT `T_srn`FROM `Teachers` WHERE `T_name`='$tn' OR `DOB`='$dob' OR `Degree`='$deg' OR `A_date`='$adate' OR `Joining_date`='$jdate' OR `Retire_date`='$rdate' OR `Contact`='$con'");
+                        $repeat=mysqli_query($Conn,"SELECT `T_srn`FROM `Teachers` WHERE `T_name`='$tn' OR `Contact`='$con' AND `is_deleted`='0' ");
 
-                            
                         $r=mysqli_num_rows($repeat);
-                               
                         if($r>=1)
                         {
                             array_push($lines, $i);
- 
                         }
             }
             $i++;
@@ -139,13 +131,11 @@ public function Check_empty_teacher($d,$Conn)
                                                    
                 if(empty($tn)||empty($dob)||empty($deg)||empty($adate)||empty($jdate)||empty($rdate)||empty($con))
                 {
-                    array_push($lines, $i); 
+                    array_push($lines, $i);
                 }
             }
             $i++;
         }
-        var_dump($lines);
-        die();
         return $lines;   
     }
 

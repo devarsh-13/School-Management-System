@@ -8,7 +8,8 @@ session_start();
 
 if(isset($_SESSION['a_id']))
 {
-	header("location:dashboard.php");
+	echo "<script>alert('Admin Account is loged in from the same Device (logout to continue)');window.location.href='admin/dashboard.php';</script>";	
+
 }
 elseif (isset($_SESSION['t_id'])) 
 {

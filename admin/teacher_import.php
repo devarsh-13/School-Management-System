@@ -46,22 +46,28 @@ else
 
         $d=$spreadsheet->getSheet(0)->toArray();
 
-        // $empt= Check_empty_teacher($d,$Conn);
-        // if(sizeof($empt)==1)
-        // {
-        //     // $rep=Check_teacher($d,$Conn);
+        $obj=new Upload();
+        $empt=array();
+        $empt=$obj->Check_empty_teacher($d,$Conn);
+        
+        if(sizeof($empt)==1)
+        {
+            $rep=array();
+            $rep=$obj->Check_teacher($d,$Conn);
             
-            // if(sizeof($rep)>0)
-            // {
-            //     $error="Data is not updated please check at row :";
+            if(sizeof($rep)>1)
+            {
+                $error="Data already exist in System from row :";
 
-            //     for ($lines=1; $lines<sizeof($i); $lines++) 
-            //     { 
-            //         $error=$error." $i[$lines],";
-            //     }  
-            //     $error=$error." in Uploaded file";
-            // }
-          {
+                for ($lines=1; $lines<sizeof($rep); $lines++) 
+                { 
+                    $error=$error." $rep[$lines],";
+                }  
+                $error=$error." in Uploaded file";
+            }
+            else
+            {
+
                 $i=0;
                 foreach ($d as $t) 
                 {
@@ -82,26 +88,33 @@ else
                         }
                         else
                         {
-                           echo "<script>alert('Invalid File Please upload a valid file.');window.location.href='teacher_import.php';</script>"; 
+                           $flag1=0;
                         }
                     }
-                    if($i>0)
+                    if($flag1==1)
                     {
-                        $pass = $ec->encrypt(get_pass($t[0]));
-                        
-                                $tn     =$Conn->real_escape_string($t[0]);
-                                $dob    =$Conn->real_escape_string($t[1]);
-                                $deg    =$Conn->real_escape_string($t[2]);
-                                $adate  =$Conn->real_escape_string($t[3]);
-                                $jdate  =$Conn->real_escape_string($t[4]);
-                                $rdate  =$Conn->real_escape_string($t[5]);
-                                $con    =$Conn->real_escape_string($t[6]);
-                                
-                                
-                                $s= new Upload ();
-                                $ok=$s->Store_teacher($tn,$dob,$deg,$adate,$jdate,$rdate,$con,$pass,$Conn);
+                        if($i>0)
+                        {
+                            $pass = $ec->encrypt(get_pass($t[0]));
+                            
+                                    $tn     =$Conn->real_escape_string($t[0]);
+                                    $dob    =$Conn->real_escape_string($t[1]);
+                                    $deg    =$Conn->real_escape_string($t[2]);
+                                    $adate  =$Conn->real_escape_string($t[3]);
+                                    $jdate  =$Conn->real_escape_string($t[4]);
+                                    $rdate  =$Conn->real_escape_string($t[5]);
+                                    $con    =$Conn->real_escape_string($t[6]);
+                                    
+                                    
+                                    $s= new Upload ();
+                                    $ok=$s->Store_teacher($tn,$dob,$deg,$adate,$jdate,$rdate,$con,$pass,$Conn);
+                        }
+                        $i++;
                     }
-                    $i++;
+                    else
+                    {
+                        echo "<script>alert('Invalid File Please upload a valid file.');window.location.href='teacher_import.php';</script>"; 
+                    }
 
                 }
                 
@@ -118,20 +131,20 @@ else
                 {
                    
                     $log->success_entry($action,$Conn,"Unsuccessful");
-                    $error="Something went wrong. Please try again";
+                    
                 }
-            // }
+            }
         }
-        // else
-        // {
-        //     $error="Empty Cell found at row :";
+        else
+        {
+            $error="Empty Cell found at row :";
 
-        //         for ($lines=1; $lines<sizeof($i); $lines++) 
-        //         { 
-        //             $error=$error." $i[$lines],";
-        //         }  
-        //         $error=$error." in Uploaded file (hint : if Uploaded sheet is perfect but still get this error than delete the last empty row.)";
-        // }
+                for ($lines=1; $lines<sizeof($empt); $lines++) 
+                { 
+                    $error=$error." $empt[$lines],";
+                }  
+                $error=$error." in Uploaded file (hint : if Uploaded sheet is perfect but still get this error than delete the last empty row.)";
+        }
 
     }
     else
