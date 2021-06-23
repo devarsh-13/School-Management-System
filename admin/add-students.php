@@ -135,7 +135,7 @@ else
             compress($imageTmpName, $uploadFolder.$imageName);
             $action = "Student Added";   
             $log->success_entry($action, $Conn);
-            echo "<script>alert('Student Info Added Successfully');window.location.href='add-students.php';</script>";   
+            echo "<script>alert('Student Info Added Successfully');window.location.href='manage-students.php';</script>";   
         }
         else 
         {

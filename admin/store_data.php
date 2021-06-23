@@ -1,8 +1,8 @@
 <?php
-error_reporting(1);
+error_reporting(0);
 class Upload
 {
-    public function Store_student($gr,$uid,$name,$cast,$cate,$dob,$con,$ad_date,$cid,$adhar,$hos,$hom,$handi,$des,$pass,$remarks,$ay,$Conn)
+    public function Store_student($gr,$uid,$name,$cast,$cate,$dob,$con,$ad_date,$cid,$adhar,$hos,$hom,$handi,$des,$pass,$remarks,$ay,$Conn,$ph="student_default.jpg")
     {
         $d=date("Y-m-d");
         $status="offline";
@@ -79,12 +79,13 @@ class Upload
     {
      $i=0;
         $lines=array();
-        array_push($lines, '0');
-
+        array_push($lines, 0);
+        
         foreach ($d as $t) 
         {
             if($i>0)
             {
+                    $flag=0;
                 
                         $gr     =$Conn->real_escape_string($t[0]);
                         $uid    =$Conn->real_escape_string($t[1]);
@@ -102,16 +103,25 @@ class Upload
                                                    
                         if(empty($gr)||empty($uid)||empty($name)||empty($cast)||empty($cate)||empty($dob)||empty($cont)||empty($ad_date)||empty($adhar)||empty($hom)||empty($handi)||empty($ay))
                         {
-                            array_push($lines, $i); 
+                            array_push($lines, $i);
                         }
+                        else if(sizeof($d[$i])==0)
+                        {
+                            array_push($lines,$i);
+                        }                  
             }
             $i++;
+        }
+      
+        if($i==1)
+        {
+            array_push($lines,'x');
         }
         return $lines;   
     }
 public function Check_empty_teacher($d,$Conn)
     {
-     $i=0;
+        $i=0;
         $lines=array();
         array_push($lines, '0');
 
@@ -133,9 +143,19 @@ public function Check_empty_teacher($d,$Conn)
                 {
                     array_push($lines, $i);
                 }
+                else if(sizeof($d[$i])==0)
+                {
+                    array_push($lines,$i);
+                }   
             }
             $i++;
         }
+        
+        if($i==1)
+        {
+            array_push($lines,'x');
+        }
+        
         return $lines;   
     }
 

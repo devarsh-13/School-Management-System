@@ -154,7 +154,7 @@ function get_pass($p2)
             
             }
             
-            $action="Student data Imported";
+            $action="Students Promoted";
             $log=new Log();
             if(isset($ok))
             {
@@ -199,7 +199,7 @@ function get_pass($p2)
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Import Student details | IGHS </title>
+    <title>Promote Student | IGHS </title>
      <link rel="stylesheet" href="ssi-uploader/styles/ssi-uploader.css"/>
      
     <link rel="stylesheet" href="../teacher/css/bootstrap.min.css" media="screen" >
@@ -254,16 +254,11 @@ function get_pass($p2)
             <div class="header-area">
                 <div class="row align-items-center">
                     <ul class="breadcrumbs pull-left">
-                          <h4 class="page-title pull-left">Student Import</h4>
+                          <h4 class="page-title pull-left">Promote Student</h4>
                                 <li><a href="dashboard.php">Home</a></li>
                                 
-                                <li><span>Student Import</span></li>
+                                <li><span>Promote Student</span></li>
                             </ul>
-                            <ul>
-                          <div class="add">
-                            <a href="Share_student_demo.php" id="b"> <button type="submit" name="add" class="btn btn-primary">Demo Sheet</button></a>
-                        </div>
-                        </ul>
                 </div>
             </div>
               <div class="row">

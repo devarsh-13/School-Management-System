@@ -33,7 +33,7 @@ error_reporting(0);
 		}
 		if(isset($_POST['import']))
 		{
-			header("location:Import.php");
+			header("location:pro_stu.php");
 		}
 ?>
 

@@ -86,7 +86,7 @@ else
             $result = compress($imageTmpName, $uploadFolder . $imageName);
             $log->success_entry($action, $Conn);
             
-            echo "<script>alert('Admin Info Added Successfully');window.location.href='add-admin.php';</script>";   
+            echo "<script>alert('Admin Info Added Successfully');window.location.href='manage-admin.php';</script>";   
 
         } else 
         {

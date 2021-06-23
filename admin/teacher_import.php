@@ -38,7 +38,7 @@ else
            
      $ex=pathinfo($_FILES['file']['name'],PATHINFO_EXTENSION);
        
-    if($ex=="xlsx")
+    if($ex=="xlsx" || $ex=="Xlsx")
     {
         $reader = new \PhpOffice\PhpSpreadsheet\Reader\Xlsx();
         $ec = new ecdc();
@@ -134,6 +134,10 @@ else
                     
                 }
             }
+        }
+        else if(sizeof($empt)==2 && strcmp(x, $empt[1])==0)
+        {
+            $error="Uploaded file is empty : Please fill Data in sheet";
         }
         else
         {

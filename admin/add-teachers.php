@@ -98,7 +98,7 @@ else
             compress($imageTmpName,$uploadFolder.$imageName);
             $log->success_entry($action, $Conn);
             
-            echo "<script>alert('Teacher ADD Successfully');window.location.href='add-teachers.php';</script>";   
+            echo "<script>alert('Teacher ADD Successfully');window.location.href='manage-teachers.php';</script>";   
         }
         else 
         {
