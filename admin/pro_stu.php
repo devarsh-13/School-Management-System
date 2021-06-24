@@ -48,7 +48,7 @@ function get_pass($p2)
 
             if(sizeof($rep)>1)
             {
-                $error="Data already exist in System from row :";
+                $error="Data is not updated at row :";
 
                 for ($lines=1; $lines<sizeof($rep); $lines++) 
                 { 
@@ -149,7 +149,7 @@ function get_pass($p2)
                 }
                 for($k=0;$k<=10;$k++)
                 {
-                    $query=mysqli_query($Conn,"UPDATE `students` SET`updated`='2' WHERE `Class_id`='$i' AND `updated`='1'");
+                    $query=mysqli_query($Conn,"UPDATE `students` SET`updated`='2' WHERE `Class_id`='$k' AND `updated`='1'");
                 }
             
             }

@@ -59,7 +59,7 @@ class Upload
                                 $adhar  =$Conn->real_escape_string($t[10]);
                                 $ay     =$Conn->real_escape_string($t[16]);
                 
-                        $repeat=mysqli_query($Conn,"SELECT `S_srn`FROM `Students` WHERE `S_grn`='$gr' OR `S_uidn`='$uid' OR `S_adharn`='$adhar' OR `S_name`='$name' OR `S_contact`='$cont' AND `Academic_year`='$ay' AND `updated`='0' AND `is_deleted`='0'");
+                        $repeat=mysqli_query($Conn,"SELECT `S_srn`FROM `Students` WHERE (`S_grn`='$gr' OR `S_uidn`='$uid' OR `S_adharn`='$adhar' OR `S_name`='$name' OR `S_contact`='$cont') AND `Academic_year`='$ay' AND `updated`='0' AND `is_deleted`='0'");
 
                             
                         $r=mysqli_num_rows($repeat);
@@ -72,6 +72,7 @@ class Upload
             }
             $i++;
         }
+        
         return $lines;
     }
 
@@ -99,6 +100,12 @@ class Upload
                         $hom    =$Conn->real_escape_string($t[11]);
                         $handi  =$Conn->real_escape_string($t[13]);
                         $ay     =$Conn->real_escape_string($t[16]);
+
+                        if(($t[3]==11 || $t[3]==12)&&(empty($t[4])))
+                        {
+                            array_push($lines,$i);
+                            continue;
+                        }
 
                                                    
                         if(empty($gr)||empty($uid)||empty($name)||empty($cast)||empty($cate)||empty($dob)||empty($cont)||empty($ad_date)||empty($adhar)||empty($hom)||empty($handi)||empty($ay))

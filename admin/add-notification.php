@@ -38,7 +38,7 @@ if(isset($_POST['submit']))
 if($insert)
 {
     $log->success_entry($action,$Conn);
-     echo "<script>alert('Notification Add Successfully');window.location.href='add-notification.php';</script>";
+     echo "<script>alert('Notification Add Successfully');window.location.href='manage-notif.php';</script>";
 }
 else 
 {

@@ -28,28 +28,35 @@ if (isset($_GET['a_id']))
 {
     $aid = $obj->decrypt($_GET['a_id']);
 
-
-    $Sql="UPDATE `admin` SET `is_deleted`='1' WHERE `A_id`='$aid'";
-    $action="Admin data Deleted";
-    
-   
-    $delete = $Conn->query($Sql) or die("Error in query2".$connection->error);
-    
-    if ($delete)
+    if($aid==$_POST['a_id'])
     {
-        $log->success_entry($action,$Conn);       
-          echo "<script>alert('Admin Deleted successfully.');window.location.href='manage-admin.php';</script>";   
-        
-      
+        echo "<script>alert('You can not delete your own account.');window.location.href='manage-admin.php';</script>";   
     }
-    else 
+    else
     {
-        $log->success_entry($action,$Conn,"Unsuccessful");
+        $Sql="UPDATE `admin` SET `is_deleted`='1' WHERE `A_id`='$aid'";
+        $action="Admin data Deleted";
         
-         echo "<script>alert('Failed To Delete Admin.');window.location.href='manage-admin.php';</script>";   
+       
+        $delete = $Conn->query($Sql);
         
+        if ($delete)
+        {
+            $log->success_entry($action,$Conn);       
+              echo "<script>alert('Admin Deleted successfully.');window.location.href='manage-admin.php';</script>";   
+            
+          
+        }
+        else 
+        {
+            $log->success_entry($action,$Conn,"Unsuccessful");
+            
+             echo "<script>alert('Failed To Delete Admin.');window.location.href='manage-admin.php';</script>";   
+            
 
+        }
     }
+
 }
 ?>
 <!DOCTYPE html>

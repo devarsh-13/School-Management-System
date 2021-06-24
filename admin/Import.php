@@ -147,11 +147,6 @@ function get_pass($p2)
                     $j++;
                     }
                 }
-                for($k=0;$k<=10;$k++)
-                {
-                    $query=mysqli_query($Conn,"UPDATE `students` SET`updated`='2' WHERE `Class_id`='$i' AND `updated`='1'");
-                }
-            
             }
             
             $action="Student data Imported";

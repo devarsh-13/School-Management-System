@@ -25,6 +25,7 @@ else
     if (isset($_POST['submit'])) 
     {
         $a = $_SESSION['a_id'];  
+         
         $an = $_POST['an'];
         $dob = $_POST['dob'];
         $con = $_POST['con'];
@@ -229,7 +230,7 @@ else
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Password</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" name="pass" class="form-control" id="pass" maxlength="15" minlength="4" required="required" autocomplete="off">
+                                                    <input type="password" name="pass" class="form-control" id="pass" maxlength="15" minlength="4" required="required" autocomplete="off">
                                                 </div>
                                             </div>
 

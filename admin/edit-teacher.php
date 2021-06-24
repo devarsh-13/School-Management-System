@@ -37,7 +37,7 @@ else
         $jdate=$_POST['jdate'];
         $rdate=$_POST['rdate'];
         $deg=$_POST['deg'];
-        $pass=$_POST['pass'];  
+        $pass=$obj->encrypt($_POST['pass']);  
         $d = date("Y-m-d");
 
         if(strlen($_FILES['file']['name'])=="")
@@ -69,7 +69,7 @@ else
                 compress($uploadFolder.$imageName);
             }
             $log->success_entry($action,$Conn);
-            echo "<script>alert('Teacher Info. Edit Successfully.');window.location.href='manage-teachers.php';</script>";   
+            echo "<script>alert('Teacher Info. Edited Successfully.');window.location.href='manage-teachers.php';</script>";   
         }
         else 
         {

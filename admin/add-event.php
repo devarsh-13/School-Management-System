@@ -38,7 +38,7 @@ if(isset($_POST['submit']))
 if($insert)
 {
     $log->success_entry($action,$Conn);
-       echo "<script>alert('Event ADD Successfully');window.location.href='add-event.php';</script>";   
+       echo "<script>alert('Event ADD Successfully');window.location.href='manage-events.php';</script>";   
     
 }
 else 

@@ -255,7 +255,7 @@ else
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Joining Date</label>
                                                 <div class="col-sm-10">
-                                                    <input type="date" name="jdate" class="form-control" id="jdate" min="1990-01-01" max='<?php echo date('Y-m-d');?>' required="required" autocomplete="off">
+                                                    <input type="date" name="jdate" class="form-control" id="jdate" min="1990-01-01"  required="required" autocomplete="off">
                                                 </div>
                                             </div>
 
@@ -279,7 +279,7 @@ else
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Password</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" name="pass" class="form-control" id="pass" required="required" maxlength="15" minlength="4" autocomplete="off">
+                                                    <input type="password" name="pass" class="form-control" id="pass" required="required" maxlength="15" minlength="4" autocomplete="off">
                                                 </div>
                                             </div>
 

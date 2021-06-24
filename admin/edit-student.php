@@ -83,7 +83,7 @@ else
                 compress($imageTmpName, $uploadFolder . $imageName);
             }
             $log->success_entry($action, $Conn);
-            echo "<script>alert('Student Info. Edit Successfully.');window.location.href='manage-students.php';</script>";   
+            echo "<script>alert('Student Info. Edited Successfully.');window.location.href='manage-students.php';</script>";   
         } 
         else 
         {
@@ -367,7 +367,7 @@ else
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Hostel Address</label>
                                                 <div class="col-sm-10">
-                                                    <textarea rows="5" name="hostel" class="form-control" id="hostel" required="required" maxlength="78" autocomplete="off"><?php echo htmlentities($result['S_hostel']) ?></textarea>
+                                                    <textarea rows="5" name="hostel" class="form-control" id="hostel" maxlength="78" autocomplete="off"><?php echo htmlentities($result['S_hostel']) ?></textarea>
                                                 </div>
                                             </div>
 
@@ -407,7 +407,7 @@ else
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Re marks</label>
                                                 <div class="col-sm-10">
-                                                    <textarea rows="5" name="re" class="form-control" id="re" required="required" maxlength="20" autocomplete="off"><?php echo htmlentities($result['S_remarks']) ?></textarea>
+                                                    <textarea rows="5" name="re" class="form-control" id="re" maxlength="20" autocomplete="off"><?php echo htmlentities($result['S_remarks']) ?></textarea>
                                                 </div>
                                             </div>
 

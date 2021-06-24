@@ -21,7 +21,7 @@ error_reporting(0);
 			
 
 			$i=0;
-			while($i<= sizeof($class_array)-1)
+			while($i<sizeof($class_array))
 			{
 				
 				$query=mysqli_query($Conn,"UPDATE `students` SET `updated`= '1' WHERE `Class_id`='$class_array[$i]' AND `updated`='0'");
