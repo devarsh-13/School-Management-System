@@ -30,12 +30,12 @@ $q=mysqli_query($Conn,$table);
 
 $table = "CREATE TABLE `teacherstd`(
 `ts_id` SERIAL NOT NULL,
-`id_sub` INT NOT NULL,
-`id_teacher` INT NOT NULL,
+`id_sub` BIGINT UNSIGNED NOT NULL,
+`id_teacher` BIGINT UNSIGNED NOT NULL,
 `is_deleted` BOOLEAN NOT NUll,
 PRIMARY KEY (`ts_id`)
 )";
-$q=mysqli_query($Conn,$table);
+$q=mysqli_query($Conn,$table) or die($Conn);
 
 
 
@@ -226,6 +226,12 @@ $Sql="ALTER TABLE `Resources` ADD FOREIGN KEY (`Sub_id`) REFERENCES `Subjects`(`
 $q=mysqli_query($Conn,$Sql)or die(mysqli_error($Conn));
 
 $Sql="ALTER TABLE `Notification` ADD FOREIGN KEY (`Created_by`) REFERENCES `Admin`(`A_id`)ON DELETE RESTRICT ON UPDATE CASCADE"; 
+$q=mysqli_query($Conn,$Sql)or die(mysqli_error($Conn));
+
+$Sql="ALTER TABLE `teacherstd` ADD FOREIGN KEY (`id_teacher`) REFERENCES `Teachers`(`T_srn`)ON DELETE RESTRICT ON UPDATE CASCADE"; 
+$q=mysqli_query($Conn,$Sql)or die(mysqli_error($Conn));
+
+$Sql="ALTER TABLE `teacherstd` ADD FOREIGN KEY (`id_sub`) REFERENCES `Subjects`(`Sub_id`)ON DELETE RESTRICT ON UPDATE CASCADE"; 
 $q=mysqli_query($Conn,$Sql)or die(mysqli_error($Conn));
 
 //Inserts
