@@ -44,103 +44,112 @@ else
         $pass = $obj->encrypt($os);
         $re = $_POST['re'];
         $stat = "offline";
-        // $ay=date('Y').'-'.(date('Y')+1);
-
         $ay = $_POST['AY'];
         $class = $_POST['class'];
         $stream = $_POST['stream'];
         $d = date("Y-m-d");
 
-        if ($class == 11 || $class == 12) 
-        {
-            $s = "SELECT `Class_id` FROM `class` WHERE `C_no` = '$class' AND `Stream` = '$stream' ";
-            $q = mysqli_query($Conn, $s);
-            $ci = mysqli_fetch_array($q);
-        }
-        else 
-        {
-            $s = "SELECT `Class_id` FROM `class` WHERE `C_no` = '$class'";
-            $q = mysqli_query($Conn, $s);
+        $repeat=mysqli_query($Conn,"SELECT `S_srn`FROM `Students` WHERE (`S_grn`='$gr' OR `S_uidn`='$ui' OR `S_adharn`='$adhar' OR `S_name`='$sn' OR `S_contact`='$con') AND `Academic_year`='$ay' AND `updated`='0' AND `is_deleted`='0'");
+         $r=mysqli_num_rows($repeat);
 
-            $ci = mysqli_fetch_array($q);
-        }
- 
-        $uploadFolder = '../user_photos/student/';
-        $imageTmpName = $_FILES['file']['tmp_name'];
-
-        if(strlen($_FILES['file']['name'])=="")
+        if($r==0)
         {
-            $imageName = "student_default.jpg";
+            if ($class == 11 || $class == 12) 
+            {
+                $s = "SELECT `Class_id` FROM `class` WHERE `C_no` = '$class' AND `Stream` = '$stream' ";
+                $q = mysqli_query($Conn, $s);
+                $ci = mysqli_fetch_array($q);
+            }
+            else 
+            {
+                $s = "SELECT `Class_id` FROM `class` WHERE `C_no` = '$class'";
+                $q = mysqli_query($Conn, $s);
+
+                $ci = mysqli_fetch_array($q);
+            }
+     
+            $uploadFolder = '../user_photos/student/';
+            $imageTmpName = $_FILES['file']['tmp_name'];
+
+            if(strlen($_FILES['file']['name'])=="")
+            {
+                $imageName = "student_default.jpg";
+            }
+            else
+            {
+                $extension=pathinfo($_FILES['file']['name'],PATHINFO_EXTENSION);
+                $imageName = "$gr.$extension";
+
+            }
+
+            $Sql = "INSERT INTO `students` 
+                                        (
+                                            `S_photo`,
+                                            `S_grn`, 
+                                            `S_uidn`, 
+                                            `S_name`, 
+                                            `S_caste`, 
+                                            `S_category`, 
+                                            `S_dob`, 
+                                            `S_contact`, 
+                                            `S_ad_date`, 
+                                            `Class_id`, 
+                                            `S_adharn`, 
+                                            `S_hostel`, 
+                                            `S_home`, 
+                                            `S_handicapped`, 
+                                            `S_describe`, 
+                                            `S_password`, 
+                                            `S_remarks`,
+                                            `Academic_year`, 
+                                            `is_deleted`, 
+                                            `Created_on`,
+                                            `s_status`,
+                                            `updated`
+                                        )VALUES(
+                                            '$imageName',
+                                            '$gr', 
+                                            '$ui', 
+                                            '$sn',
+                                            '$cast', 
+                                            '$cat', 
+                                            '$dob', 
+                                            '$con', 
+                                            '$adate', 
+                                            '$ci[0]', 
+                                            '$adhar', 
+                                            '$hostel', 
+                                            '$home', 
+                                            '$hand', 
+                                            '$des', 
+                                            '$pass', 
+                                            '$re',
+                                            '$ay', 
+                                            '0', 
+                                            '$d',
+                                            '$stat',
+                                            '0'
+                                        )";
+
+            $q = mysqli_query($Conn, $Sql);
+           
+            if ($q) 
+            {
+                compress($imageTmpName, $uploadFolder.$imageName);
+                $action = "Student Added";   
+                $log->success_entry($action, $Conn);
+                echo "<script>alert('Student Info Added Successfully');window.location.href='manage-students.php';</script>";   
+            }
+            else 
+            {
+                $log->success_entry($action, $Conn, "Unsuccessful");
+                echo "<script>alert('Failed To Add Student');window.location.href='add-students.php';</script>";   
+            }
         }
         else
         {
-            $extension=pathinfo($_FILES['file']['name'],PATHINFO_EXTENSION);
-            $imageName = "$gr.$extension";
-
-        }
-
-        $Sql = "INSERT INTO `students` 
-                                    (
-                                        `S_photo`,
-                                        `S_grn`, 
-                                        `S_uidn`, 
-                                        `S_name`, 
-                                        `S_caste`, 
-                                        `S_category`, 
-                                        `S_dob`, 
-                                        `S_contact`, 
-                                        `S_ad_date`, 
-                                        `Class_id`, 
-                                        `S_adharn`, 
-                                        `S_hostel`, 
-                                        `S_home`, 
-                                        `S_handicapped`, 
-                                        `S_describe`, 
-                                        `S_password`, 
-                                        `S_remarks`,
-                                        `Academic_year`, 
-                                        `is_deleted`, 
-                                        `Created_on`,
-                                        `s_status`,
-                                        `updated`
-                                    )VALUES(
-                                        '$imageName',
-                                        '$gr', 
-                                        '$ui', 
-                                        '$sn',
-                                        '$cast', 
-                                        '$cat', 
-                                        '$dob', 
-                                        '$con', 
-                                        '$adate', 
-                                        '$ci[0]', 
-                                        '$adhar', 
-                                        '$hostel', 
-                                        '$home', 
-                                        '$hand', 
-                                        '$des', 
-                                        '$pass', 
-                                        '$re',
-                                        '$ay', 
-                                        '0', 
-                                        '$d',
-                                        '$stat',
-                                        '0'
-                                    )";
-
-        $q = mysqli_query($Conn, $Sql) or die(mysqli_error($Conn));
-       
-        if ($q) 
-        {
-            compress($imageTmpName, $uploadFolder.$imageName);
-            $action = "Student Added";   
-            $log->success_entry($action, $Conn);
-            echo "<script>alert('Student Info Added Successfully');window.location.href='manage-students.php';</script>";   
-        }
-        else 
-        {
             $log->success_entry($action, $Conn, "Unsuccessful");
-            echo "<script>alert('Failed To Add Student');window.location.href='add-students.php';</script>";   
+            echo "<script>alert('Student Data Exist or duplicate data is entered.');window.location.href='add-students.php';</script>";
         }
     }
 

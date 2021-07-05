@@ -41,71 +41,83 @@ else
         $d = date("Y-m-d");
         $stat = "offline";
 
-        $uploadFolder = '../user_photos/teacher/';
+        $repeat=mysqli_query($Conn,"SELECT `T_srn`FROM `Teachers` WHERE `T_name`='$tn' OR `Contact`='$con' AND `is_deleted`='0' ");
+        $r=mysqli_num_rows($repeat);
 
-
-        $imageTmpName = $_FILES['file']['tmp_name'];
-        $ext=pathinfo($_FILES['file']['name'],PATHINFO_EXTENSION);
-
-        
-        if (strlen($_FILES['file']['name'])=="")
+        if($r==0)
         {
-            $imageName="teacher_default.jpg";
+
+            $uploadFolder = '../user_photos/teacher/';
+
+
+            $imageTmpName = $_FILES['file']['tmp_name'];
+            $ext=pathinfo($_FILES['file']['name'],PATHINFO_EXTENSION);
+
+            
+            if (strlen($_FILES['file']['name'])=="")
+            {
+                $imageName="teacher_default.jpg";
+            }
+            else
+            {
+                $imageName ="$con.$ext";    
+            }
+
+            $Sql = "INSERT INTO `teachers` 
+                                (   
+                                    `T_photo`,
+                                    `T_name`, 
+                                    `DOB`, 
+                                    `Degree`, 
+                                    `A_date`,
+                                    `Joining_date`, 
+                                    `Retire_date`, 
+                                    `Contact`, 
+                                    `Password`, 
+                                    `is_deleted`, 
+                                     `Created_on`,
+                                    `t_status`
+                                        ) 
+
+                                VALUES 
+                                (
+                                    '$imageName',
+                                    '$tn', 
+                                    '$dob', 
+                                    '$deg',
+                                    '$adate', 
+                                    '$jdate', 
+                                    '$rdate', 
+                                    '$con', 
+                                    '$pass', 
+                                    '0',
+                                    '$d',
+                                    '$stat'
+                                )";
+
+
+            $q = mysqli_query($Conn, $Sql);
+            $action = "Add teacher data";
+            if ($q) 
+            {
+                
+                compress($imageTmpName,$uploadFolder.$imageName);
+                $log->success_entry($action, $Conn);
+                
+                echo "<script>alert('Teacher ADD Successfully');window.location.href='manage-teachers.php';</script>";   
+            }
+            else 
+            {
+                
+                $log->success_entry($action, $Conn, "Unsuccessful");
+                echo "<script>alert('Failed To Add Teacher');window.location.href='add-teachers.php';</script>";  
+             
+            }
         }
         else
         {
-            $imageName ="$con.$ext";    
-        }
-
-        $Sql = "INSERT INTO `teachers` 
-                            (   
-                                `T_photo`,
-                                `T_name`, 
-                                `DOB`, 
-                                `Degree`, 
-                                `A_date`,
-                                `Joining_date`, 
-                                `Retire_date`, 
-                                `Contact`, 
-                                `Password`, 
-                                `is_deleted`, 
-                                 `Created_on`,
-                                `t_status`
-                                    ) 
-
-                            VALUES 
-                            (
-                                '$imageName',
-                                '$tn', 
-                                '$dob', 
-                                '$deg',
-                                '$adate', 
-                                '$jdate', 
-                                '$rdate', 
-                                '$con', 
-                                '$pass', 
-                                '0',
-                                '$d',
-                                '$stat'
-                            )";
-
-
-        $q = mysqli_query($Conn, $Sql);
-        $action = "Add teacher data";
-        if ($q) 
-        {
-            
-            compress($imageTmpName,$uploadFolder.$imageName);
-            $log->success_entry($action, $Conn);
-            
-            echo "<script>alert('Teacher ADD Successfully');window.location.href='manage-teachers.php';</script>";   
-        }
-        else 
-        {
-            
             $log->success_entry($action, $Conn, "Unsuccessful");
-            echo "<script>alert('Failed To Add Teacher');window.location.href='add-teachers.php';</script>";  
-         
+            echo "<script>alert('Teacher Data Exist or duplicate data is entered.');window.location.href='add-teachers.php';</script>";  
         }
     }
 ?>

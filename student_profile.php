@@ -115,7 +115,12 @@ $result = mysqli_fetch_array($query);
 
 
 																<tr>
-																	<td><b>Id</b></td>
+																	<td><b>UID</b></td>
+																	<td><?php echo $result['S_uidn'];  ?></td>
+																</tr>
+																
+																<tr>
+																	<td><b>Gr no</b></td>
 																	<td><?php echo $result['S_grn'];  ?></td>
 																</tr>
 
@@ -127,6 +132,10 @@ $result = mysqli_fetch_array($query);
 																<tr>
 																	<td><b>Student DOB</b></td>
 																	<td><?php echo $result['S_dob'];  ?></td>
+																</tr>
+																<tr>
+																	<td><b>Admission date</b></td>
+																	<td><?php echo $result['S_ad_date'];  ?></td>
 																</tr>
 
 																<tr>

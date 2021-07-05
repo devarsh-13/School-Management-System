@@ -29,7 +29,7 @@ if (isset($_SESSION['s_id'])) {
         <script src="teacher/js/modernizr/modernizr.min.js"></script>
 
           <link rel="shortcut icon" type="image/png" href="assets/images/icon/favicon.ico">
-    <link rel="stylesheet" href="teacher/assets/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="teacher/assets/css/bootstrap.min.css"> -->
     <link rel="stylesheet" href="teacher/assets/css/font-awesome.min.css">
     <link rel="stylesheet" href="teacher/assets/css/themify-icons.css">
     <link rel="stylesheet" href="teacher/assets/css/metisMenu.css">
@@ -39,7 +39,7 @@ if (isset($_SESSION['s_id'])) {
     <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
     <!-- others css -->
 
-    <!--<link rel="stylesheet" href="assets/css/default-css.css">-->
+    <link rel="stylesheet" href="assets/css/default-css.css">
     <link rel="stylesheet" href="teacher/assets/css/styles.css">
     <link rel="stylesheet" href="teacher/assets/css/responsive.css">
     <meta name="MobileOptimized" content="320" />

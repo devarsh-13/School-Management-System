@@ -55,7 +55,7 @@ else
 <!DOCTYPE html>
 <html lang="en">
     <head>
-      <title>Bin Teacher | IGHS</title>
+      <title>Restore Teacher data | IGHS</title>
    <link rel="stylesheet" href="../teacher/css/bootstrap.min.css" media="screen" >
         <link rel="stylesheet" href="../teacher/css/font-awesome.min.css" media="screen" >
         <link rel="stylesheet" href="../teacher/css/animate-css/animate.min.css" media="screen" >
@@ -304,10 +304,10 @@ input.chh
             <div class="header-area">
                 <div class="row align-items-center" >
                     <ul class="breadcrumbs pull-left">
-                          <h4 class="page-title pull-left">Manage Teacher</h4>
+                          <h4 class="page-title pull-left">Restore Teacher</h4>
                                 <li><a href="dashboard.php">Home</a></li>
                                 
-                                <li><span>Manage Teacher</span></li>
+                                <li><span>Restore Teacher data</span></li>
 
 
                     </ul>

@@ -20,7 +20,7 @@ if(strlen($_SESSION['a_id'])=="")
         if(!(isset($_GET['Sr_id'])))
         {
 
-            $action="In Recycle Students";
+            $action="In Restore Students";
 
             $log->success_entry($action,$Conn); 
         }
@@ -59,7 +59,7 @@ if(strlen($_SESSION['a_id'])=="")
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Bin Students | IGHS</title>
+        <title> Restore Student | IGHS</title>
    <link rel="stylesheet" href="../teacher/css/bootstrap.min.css" media="screen" >
         <link rel="stylesheet" href="../teacher/css/font-awesome.min.css" media="screen" >
         <link rel="stylesheet" href="../teacher/css/animate-css/animate.min.css" media="screen" >
@@ -288,10 +288,10 @@ if(strlen($_SESSION['a_id'])=="")
             <div class="header-area">
                 <div class="row align-items-center" >
                     <ul class="breadcrumbs pull-left">
-                          <h4 class="page-title pull-left">Manage Student</h4>
+                          <h4 class="page-title pull-left">Restore Students </h4>
                                 <li><a href="dashboard.php">Home</a></li>
                                 
-                                <li><span>Manage Student</span></li>
+                                <li><span>Restore Students data</span></li>
 
 
                     </ul>
