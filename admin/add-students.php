@@ -49,7 +49,7 @@ else
         $stream = $_POST['stream'];
         $d = date("Y-m-d");
 
-        $repeat=mysqli_query($Conn,"SELECT `S_srn`FROM `Students` WHERE (`S_grn`='$gr' OR `S_uidn`='$ui' OR `S_adharn`='$adhar' OR `S_name`='$sn' OR `S_contact`='$con') AND `Academic_year`='$ay' AND `updated`='0' AND `is_deleted`='0'");
+        $repeat=mysqli_query($Conn,"SELECT `S_srn`,`is_deleted` FROM `Students` WHERE (`S_grn`='$gr' OR `S_uidn`='$ui' OR `S_adharn`='$adhar' OR `S_name`='$sn' OR `S_contact`='$con') AND `Academic_year`='$ay' AND `updated`='0'");
          $r=mysqli_num_rows($repeat);
 
         if($r==0)
@@ -149,7 +149,20 @@ else
         else
         {
             $log->success_entry($action, $Conn, "Unsuccessful");
-            echo "<script>alert('Student Data Exist or duplicate data is entered.');window.location.href='add-students.php';</script>";
+            $is_delete=mysqli_fetch_row($repeat);
+            // var_dump($is_delete);
+            // die();
+            // echo "<script>alert('0.');window.location.href='';</script>";
+            if($is_delete[1]==0)
+            {
+                // echo "<script>alert('0.');window.location.href='';</script>";
+                echo "<script>alert('Student Data Exist or duplicate data is entered.');window.location.href='add-students.php';</script>";
+            }
+            else
+            {
+                // echo "<script>alert('1.');window.location.href='';</script>";
+                echo "<script>alert('Student Data Exist in deleted students.Restore to activate student account.');window.location.href='add-students.php';</script>";
+            }
         }
     }
 
@@ -333,7 +346,7 @@ else
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Date of Birth</label>
                                                 <div class="col-sm-10">
-                                                    <input type="date" name="dob" class="form-control" required="required" id="dob" min="1900-01-01" max='<?php echo date('Y-m-d');?>' autocomplete="off">
+                                                    <input type="date" name="dob" class="form-control" required="required" id="dob" min="1900-01-01" autocomplete="off"  max='<?php echo date('Y-m-d');?>'>
                                                 </div>
                                             </div>
 
@@ -347,7 +360,7 @@ else
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Admission Date</label>
                                                 <div class="col-sm-10">
-                                                    <input type="date" name="adate" class="form-control" required="required" id="adate"  min="1990-01-01" max='<?php echo date('Y-m-d');?>' autocomplete="off">
+                                                    <input type="date" name="adate" class="form-control" required="required" id="adate"   max='<?php echo date('Y-m-d');?>' autocomplete="off">
                                                 </div>
                                             </div>
 
@@ -452,7 +465,7 @@ else
 
                                             <div class="form-group">
                                                 <div class="col-sm-offset-2 col-sm-10">
-                                                    <button type="submit" name="submit" class="btn btn-primary">Add</button>
+                                                    <button type="submit" name="submit" class="btn btn-primary" onclick="Stu_birthdate_check()" >Add</button>
                                                 </div>
                                             </div>
                                         </form>

@@ -189,7 +189,15 @@ if($row > 0)
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Date of Birth</label>
                                                 <div class="col-sm-10">
-                                                    <input type="date" name="dob" value="<?php echo htmlentities($result['A_dob'])?>" class="form-control" id="dob" min="1900-01-01" max='<?php echo date('Y-m-d');?>' required="required" autocomplete="off">
+                                                    <input type="date" name="dob" value="<?php echo htmlentities($result['A_dob'])?>" class="form-control" id="dob" max='<?php echo date('Y-m-d');?>' required="required" autocomplete="off" oninput="staff_birthdate_check()">
+                                                    
+                                                    <div id="b_error">
+                                                        <p id="b_error" class="alert alert-danger left-icon-alert" role="alert">Please enter valid date : Age of staff member must be over 18 years old.</p>
+                                                    </div>
+                                                    <script type="text/javascript">
+                                                        document.getElementById('b_error').style.visibility='hidden';
+                                                        document.getElementById("b_error").style.display= "none";
+                                                    </script>
                                                 </div>
                                             </div>
 

@@ -191,7 +191,16 @@ if($row > 0)
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Date of Birth</label>
                                                 <div class="col-sm-10">
-                                                    <input type="date" name="dob" value="<?php echo htmlentities($result['DOB'])?>" class="form-control" id="dob" min="1900-01-01" max='<?php echo date('Y-m-d');?>'  required="required" autocomplete="off">
+                                                    <input type="date" name="dob" value="<?php echo htmlentities($result['DOB'])?>" class="form-control" id="dob" min="1900-01-01" max='<?php echo date('Y-m-d');?>'  required="required" autocomplete="off" oninput="staff_birthdate_check()">
+                                                    
+                                                    <div id="b_error">
+                                                        <p id="b_error" class="alert alert-danger left-icon-alert" role="alert">Please enter valid date : Age of staff member must be over 18 years old.</p>
+                                                    </div>
+                                                    <script type="text/javascript">
+                                                        document.getElementById('b_error').style.visibility='hidden';
+                                                        document.getElementById("b_error").style.display= "none";
+                                                    </script>
+
                                                 </div>
                                             </div>
 
@@ -205,14 +214,22 @@ if($row > 0)
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Appointment Date</label>
                                                 <div class="col-sm-10">
-                                                    <input type="date" name="adate" value="<?php echo htmlentities($result['A_date'])?>" class="form-control" min="1900-01-01" max='<?php echo date('Y-m-d');?>'  id="adate" required="required" autocomplete="off">
+                                                    <input type="date" name="adate" value="<?php echo htmlentities($result['A_date'])?>" class="form-control" id="adate" required="required" autocomplete="off">
                                                 </div>
                                             </div>
 
                                              <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Joining Date</label>
                                                 <div class="col-sm-10">
-                                                    <input type="date" name="jdate" value="<?php echo htmlentities($result['Joining_date'])?>" class="form-control" min="1900-01-01" max='<?php echo date('Y-m-d');?>'  id="jdate" required="required" autocomplete="off">
+                                                    <input type="date" name="jdate" value="<?php echo htmlentities($result['Joining_date'])?>" class="form-control" id="jdate" required="required" autocomplete="off" oninput="j_date()">
+
+                                                    <div id="j_error">
+                                                        <p id="j_error" class="alert alert-danger left-icon-alert" role="alert">Please enter valid date : Joining date can not be less than appointment date</p>
+                                                    </div>
+                                                    <script type="text/javascript">
+                                                        document.getElementById('j_error').style.visibility='hidden';
+                                                        document.getElementById("j_error").style.display= "none";
+                                                    </script>
                                                 </div>
                                             </div>
 
@@ -220,7 +237,16 @@ if($row > 0)
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Retire Date</label>
                                                 <div class="col-sm-10">
-                                                    <input type="date" name="rdate" value="<?php echo htmlentities($result['Retire_date'])?>" class="form-control"  min='<?php echo date('Y-m-d');?>' max="2099-01-01" id="rdate" required="required" autocomplete="off">
+                                                    <input type="date" name="rdate" value="<?php echo htmlentities($result['Retire_date'])?>" class="form-control" id="rdate" required="required" autocomplete="off" oninput="retire_date()">
+
+                                                    <div id="r_error">
+                                                        <p id="r_error" class="alert alert-danger left-icon-alert" role="alert">Please enter valid date : retire date can not be less than or equal to joining date</p>
+                                                    </div>
+                                                    <script type="text/javascript">
+                                                        document.getElementById('r_error').style.visibility='hidden';
+                                                        document.getElementById("r_error").style.display= "none";
+                                                    </script>
+
                                                 </div>
                                             </div>
 

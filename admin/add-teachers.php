@@ -41,7 +41,7 @@ else
         $d = date("Y-m-d");
         $stat = "offline";
 
-        $repeat=mysqli_query($Conn,"SELECT `T_srn`FROM `Teachers` WHERE `T_name`='$tn' OR `Contact`='$con' AND `is_deleted`='0' ");
+        $repeat=mysqli_query($Conn,"SELECT `T_srn`,`is_deleted` FROM `Teachers` WHERE `T_name`='$tn' OR `Contact`='$con'");
         $r=mysqli_num_rows($repeat);
 
         if($r==0)
@@ -117,7 +117,17 @@ else
         else
         {
             $log->success_entry($action, $Conn, "Unsuccessful");
-            echo "<script>alert('Teacher Data Exist or duplicate data is entered.');window.location.href='add-teachers.php';</script>";  
+            $is_delete=mysqli_fetch_row($repeat);
+
+            if($is_delete[1]==0)
+            {
+                echo "<script>alert('Teacher Data Exist or duplicate data is entered.');window.location.href='add-teachers.php';</script>";
+            }
+            else
+            {
+                echo "<script>alert('Teacher Data Exist in deleted teachers. Restore to activate teacher account.');window.location.href='add-teachers.php';</script>";
+            }
+              
         }
     }
 ?>
@@ -231,24 +241,26 @@ else
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Teacher Name</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" name="tn" class="form-control" id="tn" required="required" oninput='stringValidate(this)'  maxlength="15" autocomplete="off">
+                                                    <input type="text" name="tn" class="form-control" id="tn" required="required" oninput='stringValidate(this)'  maxlength="50" autocomplete="off">
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Date of Birth</label>
                                                 <div class="col-sm-10">
-                                                    <input type="date" name="dob" class="form-control" id="dob" min="1900-01-01" max='<?php echo date('Y-m-d');?>' required="required" autocomplete="off">
+                                                    
+                                                    <input type="date" name="dob" class="form-control" id="dob" min="1900-01-01" max='<?php echo date('Y-m-d');?>' required="required" autocomplete="off" oninput="staff_birthdate_check()">
+                                                    
+                                                    <div id="b_error">
+                                                        <p id="b_error" class="alert alert-danger left-icon-alert" role="alert">Please enter valid date : Age of staff member must be over 18 years old.</p>
+                                                    </div>
+                                                    <script type="text/javascript">
+                                                        document.getElementById('b_error').style.visibility='hidden';
+                                                        document.getElementById("b_error").style.display= "none";
+                                                    </script>
                                                 </div>
+                                                
                                             </div>
-
-                                            <div class="form-group">
-                                                <label for="default" class="col-sm-2 control-label">Degree</label>
-                                                <div class="col-sm-10">
-                                                    <input type="text" name="deg" class="form-control" id="deg" oninput='stringValidate(this)' maxlength="10"  required="required" autocomplete="off">
-                                                </div>
-                                            </div>
-
 
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Teacher Image</label>
@@ -260,14 +272,24 @@ else
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Appointment Date</label>
                                                 <div class="col-sm-10">
-                                                    <input type="date" name="adate" class="form-control" id="adate" min="1990-01-01" max='<?php echo date('Y-m-d');?>' required="required" autocomplete="off">
+                                                    <input type="date" name="adate" class="form-control" id="adate" required="required" autocomplete="off">
+
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Joining Date</label>
                                                 <div class="col-sm-10">
-                                                    <input type="date" name="jdate" class="form-control" id="jdate" min="1990-01-01"  required="required" autocomplete="off">
+                                                    <input type="date" name="jdate" class="form-control" id="jdate" required="required" autocomplete="off" oninput="j_date()">
+
+                                                    <div id="j_error">
+                                                        <p id="j_error" class="alert alert-danger left-icon-alert" role="alert">Please enter valid date : Joining date can not be less than appointment date</p>
+                                                    </div>
+                                                    <script type="text/javascript">
+                                                        document.getElementById('j_error').style.visibility='hidden';
+                                                        document.getElementById("j_error").style.display= "none";
+                                                    </script>
+
                                                 </div>
                                             </div>
 
@@ -275,7 +297,15 @@ else
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Retire Date</label>
                                                 <div class="col-sm-10">
-                                                    <input type="date" name="rdate" class="form-control" id="rdate" min='<?php echo date('Y-m-d');?>' max="2099-01-01" required="required" autocomplete="off">
+                                                    <input type="date" name="rdate" class="form-control" id="rdate" required="required" autocomplete="off" oninput="retire_date()">
+                                                     <div id="r_error">
+                                                        <p id="r_error" class="alert alert-danger left-icon-alert" role="alert">Please enter valid date : retire date can not be less than or equal to joining date</p>
+                                                    </div>
+                                                    <script type="text/javascript">
+                                                        document.getElementById('r_error').style.visibility='hidden';
+                                                        document.getElementById("r_error").style.display= "none";
+                                                    </script>
+                                               
                                                 </div>
                                             </div>
 
@@ -297,7 +327,7 @@ else
 
                                             <div class="form-group">
                                                 <div class="col-sm-offset-2 col-sm-10">
-                                                    <button type="submit" name="submit" class="btn btn-primary">Add</button>
+                                                    <button type="submit" name="submit" class="btn btn-primary" >Add</button>
                                                 </div>
                                             </div>
                                         </form>

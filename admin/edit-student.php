@@ -263,7 +263,7 @@ else
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Date of Birth</label>
                                                 <div class="col-sm-10">
-                                                    <input type="date" name="dob" value="<?php echo htmlentities($result['S_dob']) ?>" class="form-control" id="dob" min="1900-01-01" max='<?php echo date('Y-m-d');?>' required="required" autocomplete="off">
+                                                    <input type="date" name="dob" value="<?php echo htmlentities($result['S_dob']) ?>" class="form-control" id="dob" max='<?php echo date('Y-m-d');?>' required="required" autocomplete="off">
                                                 </div>
                                             </div>
 
@@ -413,7 +413,7 @@ else
 
                                             <div class="form-group">
                                                 <div class="col-sm-offset-2 col-sm-10">
-                                                    <button type="submit" name="update" class="btn btn-primary">Update</button>
+                                                    <button type="submit" name="update" class="btn btn-primary" onclick="Stu_birthdate_check()">Update</button>
                                                 </div>
                                             </div>
 

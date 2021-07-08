@@ -40,60 +40,79 @@ else
         $imageTmpName = $_FILES['file']['tmp_name'];
         $ext=pathinfo($_FILES['file']['name'],PATHINFO_EXTENSION);
 
-        
-        
-        if(strlen($_FILES['file']['name'])=="")      
+        $repeat=mysqli_query($Conn,"SELECT `A_id`,`is_deleted` FROM `Admin` WHERE `A_name`='$an' OR `A_mobile`='$con'");
+        $r=mysqli_num_rows($repeat);
+
+        if($r==0)
         {
-            $imageName="admin_default.jpg";
+        
+            if(strlen($_FILES['file']['name'])=="")      
+            {
+                $imageName="admin_default.jpg";
+            }
+            else
+            {
+                $imageName ="$con.$ext";
+            }
+
+
+            $Sql = "INSERT INTO `admin` 
+                                (   
+                                    `A_Photo`,
+                                    `A_name`, 
+                                    `A_mobile`, 
+                                    `A_address`, 
+                                    `A_password`,
+                                    `A_dob`, 
+                                    `Created_on`, 
+                                    `is_deleted`,
+                                    `Created_by`
+                                
+                                        ) 
+
+                                VALUES 
+                                (
+                                    '$imageName',
+                                    '$an', 
+                                    '$con', 
+                                    '$ad',
+                                    '$pass',
+                                    '$dob',
+                                    '$d', 
+                                    '0',
+                                    '$a'
+                                )";
+
+
+            $q = mysqli_query($Conn, $Sql);
+            $action = "Admin data Added";
+            if ($q)
+            {   
+                $result = compress($imageTmpName, $uploadFolder . $imageName);
+                $log->success_entry($action, $Conn);
+                
+                echo "<script>alert('Admin Info Added Successfully');window.location.href='manage-admin.php';</script>";   
+
+            }
+            else 
+            {        
+                $log->success_entry($action, $Conn, "Unsuccessful");
+                echo "<script>alert('Failed To Add Admin');window.location.href='add-admin.php';</script>";   
+            }
         }
         else
         {
-            $imageName ="$con.$ext";
-        }
-
-
-        $Sql = "INSERT INTO `admin` 
-                            (   
-                                `A_Photo`,
-                                `A_name`, 
-                                `A_mobile`, 
-                                `A_address`, 
-                                `A_password`,
-                                `A_dob`, 
-                                `Created_on`, 
-                                `is_deleted`,
-                                `Created_by`
-                            
-                                    ) 
-
-                            VALUES 
-                            (
-                                '$imageName',
-                                '$an', 
-                                '$con', 
-                                '$ad',
-                                '$pass',
-                                '$dob',
-                                '$d', 
-                                '0',
-                                '$a'
-                            )";
-
-
-        $q = mysqli_query($Conn, $Sql);
-        $action = "Admin data Added";
-        if ($q)
-        {   
-            $result = compress($imageTmpName, $uploadFolder . $imageName);
-            $log->success_entry($action, $Conn);
-            
-            echo "<script>alert('Admin Info Added Successfully');window.location.href='manage-admin.php';</script>";   
-
-        } else 
-        {
-        
             $log->success_entry($action, $Conn, "Unsuccessful");
-            echo "<script>alert('Failed To Add Admin');window.location.href='add-admin.php';</script>";   
+            $is_delete=mysqli_fetch_row($repeat);
+
+            if($is_delete[1]==0)
+            {
+                echo "<script>alert('Admin Data Exist or duplicate data is entered.');window.location.href='add-admin.php';</script>";
+            }
+            else
+            {
+                echo "<script>alert('Admin Data Exist in deleted admin. Restore to activate admin account.');window.location.href='add-admin.php';</script>";
+            }
         }
     }
 ?>
@@ -193,14 +212,23 @@ else
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Admin Name</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" name="an" class="form-control" id="an"  oninput='stringValidate(this)'  maxlength="15" required="required" autocomplete="off">
+                                                    <input type="text" name="an" class="form-control" id="an"  oninput='stringValidate(this)'  maxlength="50" required="required" autocomplete="off">
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Date of Birth</label>
                                                 <div class="col-sm-10">
-                                                    <input type="date" name="dob" class="form-control" id="dob" min="1900-01-01" max='<?php echo date('Y-m-d');?>' required="required" autocomplete="off">
+                                                    <input type="date" name="dob" class="form-control" id="dob" max='<?php echo date('Y-m-d');?>' required="required" autocomplete="off" oninput="staff_birthdate_check()">
+                                                    
+                                                    <div id="b_error">
+                                                        <p id="b_error" class="alert alert-danger left-icon-alert" role="alert">Please enter valid date : Age of staff member must be over 18 years old.</p>
+                                                    </div>
+                                                    <script type="text/javascript">
+                                                        document.getElementById('b_error').style.visibility='hidden';
+                                                        document.getElementById("b_error").style.display= "none";
+                                                    </script>
+
                                                 </div>
                                             </div>
 

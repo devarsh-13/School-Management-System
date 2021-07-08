@@ -1,3 +1,87 @@
+<script type="text/javascript">
+    
+    function Stu_birthdate_check()
+    {
+        bday= new Date(document.getElementById('dob').value);
+        bday_year=bday.getFullYear();
+        
+        cur_year=new Date(Date());
+
+        
+        if(bday_year>cur_year.getFullYear()-13)
+        {
+            alert("Please enter valid birth date");
+            returnToPreviousPage();
+            return false;
+        }
+
+
+    }
+
+    function staff_birthdate_check()
+    {
+        bday= new Date(document.getElementById('dob').value);
+        bday_year= bday.getFullYear();
+        
+        cur_year=new Date(Date());
+        cur_year=cur_year.getFullYear();
+
+        if((cur_year-bday_year)<18)
+        {
+            document.getElementById('b_error').style.visibility='visible';
+            document.getElementById("b_error").style.display= "block";
+            returnToPreviousPage();
+            return false;            
+        }
+        else
+        {
+            document.getElementById('b_error').style.visibility='hidden';
+            document.getElementById("b_error").style.display= "none";
+        }
+
+    }
+    function j_date()
+    {
+        adate= new Date(document.getElementById('adate').value);
+        jdate= new Date(document.getElementById('jdate').value);
+
+        if(adate<=jdate)
+        {
+            document.getElementById('j_error').style.visibility='visible';
+            document.getElementById("j_error").style.display= "block";            
+
+            returnToPreviousPage();
+            return false;
+        }
+        else
+        {
+            document.getElementById('j_error').style.visibility='hidden';
+            document.getElementById("j_error").style.display= "none";
+        }
+    }
+
+    function retire_date()
+    {
+        rdate= new Date(document.getElementById('rdate').value);
+        jdate= new Date(document.getElementById('jdate').value);
+
+        if(rdate<=jdate)
+        {
+            document.getElementById('r_error').style.visibility='visible';
+            document.getElementById("r_error").style.display= "block";            
+
+            returnToPreviousPage();
+            return false;
+        }
+        else
+        {
+            document.getElementById('r_error').style.visibility='hidden';
+            document.getElementById("r_error").style.display= "none";
+        }
+    }
+</script>
+
+
 <?php
 error_reporting(0);
 class Upload
