@@ -327,7 +327,7 @@ else
 
                                             <div class="form-group">
                                                 <div class="col-sm-offset-2 col-sm-10">
-                                                    <button type="submit" name="submit" class="btn btn-primary" >Add</button>
+                                                    <button type="submit" name="submit" class="btn btn-primary" id='sub_f'>Add</button>
                                                 </div>
                                             </div>
                                         </form>

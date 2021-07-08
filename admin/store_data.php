@@ -10,9 +10,15 @@
         
         if(bday_year>cur_year.getFullYear()-13)
         {
-            alert("Please enter valid birth date");
-            returnToPreviousPage();
-            return false;
+            document.getElementById('b_error').style.visibility='visible';
+            document.getElementById("b_error").style.display= "block";
+            document.getElementById('sub_f').disabled='disabled';
+        }
+        else
+        {
+            document.getElementById('b_error').style.visibility='hidden';
+            document.getElementById("b_error").style.display= "none";
+            document.getElementById('sub_f').disabled=false;
         }
 
 
@@ -30,13 +36,15 @@
         {
             document.getElementById('b_error').style.visibility='visible';
             document.getElementById("b_error").style.display= "block";
-            returnToPreviousPage();
-            return false;            
+            document.getElementById('sub_f').disabled='disabled';
+                      
         }
         else
         {
             document.getElementById('b_error').style.visibility='hidden';
             document.getElementById("b_error").style.display= "none";
+            document.getElementById('sub_f').disabled=false;
+            
         }
 
     }
@@ -45,7 +53,7 @@
         adate= new Date(document.getElementById('adate').value);
         jdate= new Date(document.getElementById('jdate').value);
 
-        if(adate<=jdate)
+        if(adate > jdate)
         {
             document.getElementById('j_error').style.visibility='visible';
             document.getElementById("j_error").style.display= "block";            
@@ -57,6 +65,7 @@
         {
             document.getElementById('j_error').style.visibility='hidden';
             document.getElementById("j_error").style.display= "none";
+            document.getElementById('sub_f').disabled=false;
         }
     }
 
@@ -77,6 +86,7 @@
         {
             document.getElementById('r_error').style.visibility='hidden';
             document.getElementById("r_error").style.display= "none";
+            document.getElementById('sub_f').disabled=false;
         }
     }
 </script>

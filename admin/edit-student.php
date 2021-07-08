@@ -263,7 +263,15 @@ else
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Date of Birth</label>
                                                 <div class="col-sm-10">
-                                                    <input type="date" name="dob" value="<?php echo htmlentities($result['S_dob']) ?>" class="form-control" id="dob" max='<?php echo date('Y-m-d');?>' required="required" autocomplete="off">
+                                                    <input type="date" name="dob" value="<?php echo htmlentities($result['S_dob']) ?>" class="form-control" id="dob" max='<?php echo date('Y-m-d');?>' required="required" autocomplete="off" oninput="Stu_birthdate_check()">
+                                                    
+                                                    <div id="b_error">
+                                                        <p id="b_error" class="alert alert-danger left-icon-alert" role="alert">Please enter valid date</p>
+                                                    </div>
+                                                    <script type="text/javascript">
+                                                        document.getElementById('b_error').style.visibility='hidden';
+                                                        document.getElementById("b_error").style.display= "none";
+                                                    </script>
                                                 </div>
                                             </div>
 
@@ -413,7 +421,7 @@ else
 
                                             <div class="form-group">
                                                 <div class="col-sm-offset-2 col-sm-10">
-                                                    <button type="submit" name="update" class="btn btn-primary" onclick="Stu_birthdate_check()">Update</button>
+                                                    <button type="submit" name="update" class="btn btn-primary" id='sub_f'>Update</button>
                                                 </div>
                                             </div>
 

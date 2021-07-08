@@ -278,7 +278,7 @@ if($row > 0)
 
                                             <div class="form-group">
                                                 <div class="col-sm-offset-2 col-sm-10">
-                                                    <button type="submit" name="update" class="btn btn-primary">Update</button>
+                                                    <button type="submit" name="update" class="btn btn-primary" id='sub_f'>Update</button>
                                                 </div>
                                             </div>
                                         <?php }}?>

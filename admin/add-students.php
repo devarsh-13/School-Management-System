@@ -346,7 +346,15 @@ else
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Date of Birth</label>
                                                 <div class="col-sm-10">
-                                                    <input type="date" name="dob" class="form-control" required="required" id="dob" min="1900-01-01" autocomplete="off"  max='<?php echo date('Y-m-d');?>'>
+                                                    <input type="date" name="dob" class="form-control" required="required" id="dob" min="1900-01-01" autocomplete="off"  max='<?php echo date('Y-m-d');?>' oninput="Stu_birthdate_check()">
+                                                    
+                                                    <div id="b_error">
+                                                        <p id="b_error" class="alert alert-danger left-icon-alert" role="alert">Please enter valid date</p>
+                                                    </div>
+                                                    <script type="text/javascript">
+                                                        document.getElementById('b_error').style.visibility='hidden';
+                                                        document.getElementById("b_error").style.display= "none";
+                                                    </script>
                                                 </div>
                                             </div>
 
@@ -465,7 +473,7 @@ else
 
                                             <div class="form-group">
                                                 <div class="col-sm-offset-2 col-sm-10">
-                                                    <button type="submit" name="submit" class="btn btn-primary" onclick="Stu_birthdate_check()" >Add</button>
+                                                    <button type="submit" name="submit" class="btn btn-primary" id='sub_f'>Add</button>
                                                 </div>
                                             </div>
                                         </form>

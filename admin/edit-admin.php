@@ -167,7 +167,7 @@ $Sql="UPDATE `admin` SET `A_Photo`='$imageName',`A_name`='$an',`A_mobile`='$con'
                                     <!-- MAIN CONTENT GOES HERE -->
                                     <div class="panel-body">
                                         
-                                        <form class="form-horizontal" method="post" enctype="multipart/form-data">
+                                        <form class="form-horizontal" method="post" enctype="multipart/form-data" >
 <?php 
  $sql = "SELECT * from `admin` WHERE `A_id`='$aid'";
 $query = mysqli_query($Conn,$sql);
@@ -236,7 +236,7 @@ if($row > 0)
 
                                             <div class="form-group">
                                                 <div class="col-sm-offset-2 col-sm-10">
-                                                    <button type="submit" name="Update" class="btn btn-primary">Update</button>
+                                                    <button type="submit" name="Update" class="btn btn-primary" id='sub_f' >Update</button>
                                                 </div>
                                             </div>
                                             <?PHP } ?>
