@@ -56,10 +56,10 @@
         if(adate > jdate)
         {
             document.getElementById('j_error').style.visibility='visible';
-            document.getElementById("j_error").style.display= "block";            
+            document.getElementById("j_error").style.display= "block";
+            document.getElementById('sub_f').disabled='disabled';          
 
-            returnToPreviousPage();
-            return false;
+            
         }
         else
         {
@@ -77,10 +77,8 @@
         if(rdate<=jdate)
         {
             document.getElementById('r_error').style.visibility='visible';
-            document.getElementById("r_error").style.display= "block";            
-
-            returnToPreviousPage();
-            return false;
+            document.getElementById("r_error").style.display= "block";
+            document.getElementById('sub_f').disabled='disabled';
         }
         else
         {
