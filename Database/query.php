@@ -52,7 +52,7 @@ $q=mysqli_query($Conn,$table);
 $table="CREATE TABLE `Resources`(
 `R_id` SERIAL NOT NULL,
 `R_path` VARCHAR(250) NOT NULL,
-`Created_on` DATE NOT NULL DEFAULT CURRENT_DATE ,
+`Created_on` DATE NOT NULL,
 `Created_by` BIGINT UNSIGNED NOT NULL,	
 `Sub_id` BIGINT UNSIGNED NOT NULL,
 `is_deleted` BOOLEAN NOT NULL DEFAULT 0, 
@@ -82,7 +82,7 @@ $table = "CREATE TABLE `Students`(
 `S_remarks` varchar(50) NOT NUll,
 `Academic_year` VARCHAR(15) NOT NUll,
 `is_deleted` BOOLEAN NOT NUll,
-`Created_on` DATE NOT NULL DEFAULT CURRENT_DATE ,
+`Created_on` DATE NOT NULL ,
 `s_status` VARCHAR(20) NOT NULL,
 `updated` INT(2) NOT NULL,
 `notification_count` INT(20) NOT NULL,
@@ -105,7 +105,7 @@ $table = "CREATE TABLE `Teachers` (
 	`Contact` VARCHAR(10) NOT NULL ,
 	`Password` varchar(50)NOT NULL,
 	`is_deleted` BOOLEAN NOT NUll,
-	`Created_on` DATE NOT NULL DEFAULT CURRENT_DATE ,
+	`Created_on` DATE NOT NULL,
 	`t_status` VARCHAR(20) NOT NULL,
 	`notification_count` INT(20) NOT NULL,
 	PRIMARY KEY (`T_srn`),
@@ -119,7 +119,7 @@ $table = "CREATE TABLE `Images` (
   `Id` SERIAL NOT NULL ,
   `Image` VARCHAR(255) NOT NULL,
   `Uploaded_by` BIGINT UNSIGNED NOT NULL,
-  `Uploaded_on` DATE NOT NULL DEFAULT CURRENT_DATE,
+  `Uploaded_on` DATE NOT NULL ,
   PRIMARY KEY (`id`)
 )";
 $Conn->query($table);
@@ -130,8 +130,8 @@ $table = "CREATE TABLE `Notification` (
 	`Notification_topic` VARCHAR(120) NOT NULL ,
 	`Notification_text` VARCHAR(120) NOT NULL , 
 	`is_deleted` BOOLEAN NOT NULL,
-	`Created_on` DATE NOT NULL DEFAULT CURRENT_DATE ,
-	`N_Time` TIME NOT NULL DEFAULT CURRENT_TIMESTAMP, 
+	`Created_on` DATE NOT NULL,
+	`N_Time` TIME NOT NULL , 
 	`created_by` BIGINT UNSIGNED NOT NULL,
 	PRIMARY KEY (`Sr_n`),
 	`n_status` BOOLEAN NOT NULL
@@ -145,7 +145,7 @@ $table = "CREATE TABLE `Event` (
 	`Event_text` VARCHAR(120) NOT NULL , 
 	`is_deleted` BOOLEAN NOT NULL,
 	`disabled` BOOLEAN NOT NULL DEFAULT FALSE,
-	`Created_on` DATE NOT NULL DEFAULT CURRENT_DATE ,
+	`Created_on` DATE NOT NULL ,
 	`event_date` DATE NOT NULL,
 	`created_by` BIGINT UNSIGNED NOT NULL,
 	PRIMARY KEY (`Sr_n`)
@@ -162,7 +162,7 @@ $table="CREATE TABLE `Admin` (
 `A_password` varchar(50) NOT NULL,
 `is_deleted` BOOLEAN NOT NUll,
 `A_dob` date NOT NULL,
-`Created_on` DATE NOT NULL DEFAULT CURRENT_DATE ,
+`Created_on` DATE NOT NULL ,
 `Created_by` BIGINT UNSIGNED NOT NULL,
 `notification_count` INT(20) NOT NULL,
 PRIMARY KEY (`A_id`),
@@ -174,7 +174,7 @@ $q=mysqli_query($Conn,$table);
 $table="CREATE TABLE `conversation` ( 
 `chat_id` SERIAL NOT NULL,
 `chat_text` VARCHAR(255) NOT NULL ,
-`Created_on` DATE NOT NULL DEFAULT CURRENT_DATE ,
+`Created_on` DATE NOT NULL,
 `S_srn` BIGINT UNSIGNED NOT NULL,
 `T_srn` BIGINT UNSIGNED NOT NULL,
 `is_c_deleted` BOOLEAN NOT NUll,
@@ -184,8 +184,8 @@ $q=mysqli_query($Conn,$table);
 
 $table="CREATE TABLE `log` (
 `Sr_n` SERIAL NOT NULL , 
-`L_Date` DATE NOT NULL DEFAULT CURRENT_DATE,
-`L_Time` TIME NOT NULL DEFAULT CURRENT_TIMESTAMP, 
+`L_Date` DATE NOT NULL,
+`L_Time` TIME NOT NULL, 
 `Name` VARCHAR(100) NOT NULL , 
 `Authority` VARCHAR(10) NOT NULL,
 `Contact` VARCHAR(10) NOT NULL , 
