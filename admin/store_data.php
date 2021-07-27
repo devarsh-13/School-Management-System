@@ -101,7 +101,7 @@ class Upload
 
         file_exists("../user_photos/student/$gr.jpg");
 
-        $sql="INSERT INTO `Students` SET `S_grn`='$gr',`S_uidn`='$uid',`S_name`='$name',`S_caste`='$cast',`S_category`='$cate',`S_dob`='$dob',`S_contact`='$con',`S_ad_date`='$ad_date',`Class_id`='$cid',`S_adharn`='$adhar',`S_hostel`='$hos',`S_home`='$hom',`S_handicapped`='$handi',`S_describe`='$des',`S_password`='$pass',`S_remarks`='$remarks',`Academic_year`='$ay',`S_photo`='$ph',`is_deleted`='0',`Created_on`='$d',`s_status`='$status',`updated`='0'";
+        $sql="INSERT INTO `students` SET `S_grn`='$gr',`S_uidn`='$uid',`S_name`='$name',`S_caste`='$cast',`S_category`='$cate',`S_dob`='$dob',`S_contact`='$con',`S_ad_date`='$ad_date',`Class_id`='$cid',`S_adharn`='$adhar',`S_hostel`='$hos',`S_home`='$hom',`S_handicapped`='$handi',`S_describe`='$des',`S_password`='$pass',`S_remarks`='$remarks',`Academic_year`='$ay',`S_photo`='$ph',`is_deleted`='0',`Created_on`='$d',`s_status`='$status',`updated`='0'";
 
         $q=mysqli_query($Conn,$sql);
         return $q;
@@ -121,7 +121,7 @@ class Upload
                         $tn     =$Conn->real_escape_string($t[0]);
                         $con    =$Conn->real_escape_string($t[6]);
                                         
-                        $repeat=mysqli_query($Conn,"SELECT `T_srn`FROM `Teachers` WHERE `T_name`='$tn' OR `Contact`='$con' AND `is_deleted`='0' ");
+                        $repeat=mysqli_query($Conn,"SELECT `T_srn`FROM `teachers` WHERE `T_name`='$tn' OR `Contact`='$con' AND `is_deleted`='0' ");
 
                         $r=mysqli_num_rows($repeat);
                         if($r>=1)
@@ -151,7 +151,7 @@ class Upload
                                 $adhar  =$Conn->real_escape_string($t[10]);
                                 $ay     =$Conn->real_escape_string($t[16]);
                 
-                        $repeat=mysqli_query($Conn,"SELECT `S_srn`FROM `Students` WHERE (`S_grn`='$gr' OR `S_uidn`='$uid' OR `S_adharn`='$adhar' OR `S_name`='$name' OR `S_contact`='$cont') AND `Academic_year`='$ay' AND `updated`='0' AND `is_deleted`='0'");
+                        $repeat=mysqli_query($Conn,"SELECT `S_srn`FROM `students` WHERE (`S_grn`='$gr' OR `S_uidn`='$uid' OR `S_adharn`='$adhar' OR `S_name`='$name' OR `S_contact`='$cont') AND `Academic_year`='$ay' AND `updated`='0' AND `is_deleted`='0'");
 
                             
                         $r=mysqli_num_rows($repeat);
@@ -334,19 +334,19 @@ class Log
     	if(isset($_SESSION['a_id']))
     	{
     		$id=$_SESSION['a_id'];
-    		$q=mysqli_query($Conn,"SELECT `A_name`,`A_mobile` FROM `Admin` WHERE `A_id`='$id'");
+    		$q=mysqli_query($Conn,"SELECT `A_name`,`A_mobile` FROM `admin` WHERE `A_id`='$id'");
     		$auth="Admin";
     	}
     	elseif(isset($_SESSION['t_id'])) 
     	{
     		$id=$_SESSION['t_id'];
-    		$q=mysqli_query($Conn,"SELECT `T_name`,`contact` FROM `Teachers` WHERE `T_srn`='$id'");
+    		$q=mysqli_query($Conn,"SELECT `T_name`,`contact` FROM `teachers` WHERE `T_srn`='$id'");
     		$auth="Teacher";
     	}
     	elseif(isset($_SESSION['s_id']))
     	{	
     		$id=$_SESSION['s_id'];
-    		$q=mysqli_query($Conn,"SELECT `S_name`,`S_contact` FROM `Students` WHERE `S_srn`='$id' AND `is_deleted`='0' AND `updated`='0'");
+    		$q=mysqli_query($Conn,"SELECT `S_name`,`S_contact` FROM `students` WHERE `S_srn`='$id' AND `is_deleted`='0' AND `updated`='0'");
 	   		$auth="Student";
     	}
     	$data=mysqli_fetch_row($q);
@@ -380,7 +380,7 @@ class Log
         $country=$Loc['country'];
 
 
-		$q=mysqli_query($Conn,"SELECT `A_name` FROM `Admin` WHERE `A_mobile`='$contact'");
+		$q=mysqli_query($Conn,"SELECT `A_name` FROM `admin` WHERE `A_mobile`='$contact'");
 		$data=mysqli_fetch_row($q);
 		
 		if($data)
@@ -390,7 +390,7 @@ class Log
 		}
 		else
 		{
-			$q=mysqli_query($Conn,"SELECT `T_name` FROM `Teachers` WHERE `contact`='$contact'");
+			$q=mysqli_query($Conn,"SELECT `T_name` FROM `teachers` WHERE `contact`='$contact'");
 			$data=mysqli_fetch_row($q);
 			if($data)
 			{
@@ -399,7 +399,7 @@ class Log
 			}
 			else
 			{
-				$q=mysqli_query($Conn,"SELECT `S_name` FROM `Students` WHERE `S_contact`='$contact'  AND `is_deleted`='0' AND `updated`='0' ");
+				$q=mysqli_query($Conn,"SELECT `S_name` FROM `students` WHERE `S_contact`='$contact'  AND `is_deleted`='0' AND `updated`='0' ");
 				$data=mysqli_fetch_row($q);
 
                 

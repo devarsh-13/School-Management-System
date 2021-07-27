@@ -33,7 +33,7 @@ error_reporting(0);
     $activeSheet->setCellValue($cols[$i],$details[$i]);
   }
 
-  $query = $Conn->query("SELECT * FROM `Students` WHERE `updated`='1' AND `is_deleted`='0' ORDER BY Class_id");
+  $query = $Conn->query("SELECT * FROM `students` WHERE `updated`='1' AND `is_deleted`='0' ORDER BY Class_id");
 
   $writer = new \PhpOffice\PhpSpreadsheet\Writer\Xlsx($spreadsheet);
 
@@ -56,7 +56,7 @@ error_reporting(0);
 
       //Set cell value
       $class_id=$row['Class_id'];
-      $q=mysqli_fetch_array(mysqli_query($Conn,"SELECT `C_no`,`Stream` FROM `Class` WHERE `Class_id`='$class_id'"));
+      $q=mysqli_fetch_array(mysqli_query($Conn,"SELECT `C_no`,`Stream` FROM `class` WHERE `Class_id`='$class_id'"));
       //Check class and eter class number abd stream
       if($q['C_no']==9 || $q['C_no']==10 )
       {

@@ -41,7 +41,7 @@ else
         $d = date("Y-m-d");
         $stat = "offline";
 
-        $repeat=mysqli_query($Conn,"SELECT `T_srn`,`is_deleted` FROM `Teachers` WHERE `T_name`='$tn' OR `Contact`='$con'");
+        $repeat=mysqli_query($Conn,"SELECT `T_srn`,`is_deleted` FROM `teachers` WHERE `T_name`='$tn' OR `Contact`='$con'");
         $r=mysqli_num_rows($repeat);
 
         if($r==0)

@@ -49,7 +49,7 @@ else
         $stream = $_POST['stream'];
         $d = date("Y-m-d");
 
-        $repeat=mysqli_query($Conn,"SELECT `S_srn`,`is_deleted` FROM `Students` WHERE (`S_grn`='$gr' OR `S_uidn`='$ui' OR `S_adharn`='$adhar' OR `S_name`='$sn' OR `S_contact`='$con') AND `Academic_year`='$ay' AND `updated`='0'");
+        $repeat=mysqli_query($Conn,"SELECT `S_srn`,`is_deleted` FROM `students` WHERE (`S_grn`='$gr' OR `S_uidn`='$ui' OR `S_adharn`='$adhar' OR `S_name`='$sn' OR `S_contact`='$con') AND `Academic_year`='$ay' AND `updated`='0'");
          $r=mysqli_num_rows($repeat);
 
         if($r==0)

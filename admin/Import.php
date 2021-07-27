@@ -106,10 +106,10 @@ function get_pass($p2)
                                 $t[4]=NULL;
                             }
                             
-                            $q=mysqli_query($Conn,"SELECT `Class_id` FROM `Class` WHERE `C_no`='$t[3]' AND `Stream`='$t[4]' ");
+                            $q=mysqli_query($Conn,"SELECT `Class_id` FROM `class` WHERE `C_no`='$t[3]' AND `Stream`='$t[4]' ");
                             $c_id=mysqli_fetch_array($q);
 
-                            $q2=mysqli_query($Conn, "SELECT `S_password` FROM `Students` WHERE `S_contact`=$t[9] AND `is_deleted`='0' AND `updated`='1' ");
+                            $q2=mysqli_query($Conn, "SELECT `S_password` FROM `students` WHERE `S_contact`=$t[9] AND `is_deleted`='0' AND `updated`='1' ");
                             $raw_pass=mysqli_fetch_row($q2);
 
                             if(isset($raw_pass['0']))

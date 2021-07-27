@@ -40,7 +40,7 @@ else
         $imageTmpName = $_FILES['file']['tmp_name'];
         $ext=pathinfo($_FILES['file']['name'],PATHINFO_EXTENSION);
 
-        $repeat=mysqli_query($Conn,"SELECT `A_id`,`is_deleted` FROM `Admin` WHERE `A_name`='$an' OR `A_mobile`='$con'");
+        $repeat=mysqli_query($Conn,"SELECT `A_id`,`is_deleted` FROM `admin` WHERE `A_name`='$an' OR `A_mobile`='$con'");
         $r=mysqli_num_rows($repeat);
 
         if($r==0)

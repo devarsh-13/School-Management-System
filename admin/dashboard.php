@@ -126,7 +126,7 @@ $row = mysqli_num_rows($query1);
                                         <a class="dashboard-stat bg-primary" href="manage-admin.php">
 <?php 
 
-$sql1 ="SELECT A_id from Admin WHERE `is_deleted`='0'";
+$sql1 ="SELECT A_id from admin WHERE `is_deleted`='0'";
 $query1 = $Conn -> query($sql1); 
 $row = mysqli_num_rows($query1);
 
