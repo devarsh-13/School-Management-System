@@ -214,7 +214,7 @@ else
                                     <?php } ?>
                                     <form class="form-horizontal" method="post" enctype="multipart/form-data"  onmouseenter="Check_class()" onkeyup="Check_class()" onkeyup="desc()" onmousemove="desc()" onscroll="desc()">
                                         <?php
-                                        $sql = "SELECT * from `students` join Class on students.Class_id=Class.Class_id WHERE `S_srn`='$stid'";
+                                        $sql = "SELECT * from `students` join class on students.Class_id=class.Class_id WHERE `S_srn`='$stid'";
                                         $query = mysqli_query($Conn, $sql);
 
                                         $row = mysqli_num_rows($query);

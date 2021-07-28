@@ -273,7 +273,7 @@ if(isset($_SESSION['a_id']))
     <?php
 
 
-    $q = mysqli_query($Conn, "SELECT * FROM `Log` ORDER BY `L_Date` DESC");
+    $q = mysqli_query($Conn, "SELECT * FROM `log` ORDER BY `L_Date` DESC");
 
     while ($data = mysqli_fetch_assoc($q)) 
     {

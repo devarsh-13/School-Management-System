@@ -219,7 +219,7 @@ $row = mysqli_num_rows($query1);
 
 
 
-                                  
+                                 
 
                                 </div>
                                 <!-- /.row -->
@@ -231,7 +231,8 @@ $row = mysqli_num_rows($query1);
 
                          
 
-                                      <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                     
+  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                                         <a class="dashboard-stat bg-danger" href="bin-admin.php">
                                         <?php 
 $sql1 ="SELECT A_id from admin WHERE `is_deleted`='1'";
@@ -245,7 +246,6 @@ $row = mysqli_num_rows($query1);
                                         </a>
                                         <!-- /.dashboard-stat -->
                                     </div>
-
 
                                     
                     

@@ -47,7 +47,7 @@ else
 			$error_msg['C'] = 'Please enter proper 10 Digit number!! ';
 			$error = true;
 		}
-		$query = mysqli_query($Conn, "SELECT `S_srn` FROM `Students` WHERE
+		$query = mysqli_query($Conn, "SELECT `S_srn` FROM `students` WHERE
 				`S_contact` = '$Contact' && `S_password` = '$Password' AND `updated`='0' AND `is_deleted`='0'
 				") or die(mysqli_connect_error());
 
@@ -84,7 +84,7 @@ else
 			$flag = 1;
 
 
-			$query =mysqli_query($Conn, "SELECT `S_srn` FROM `Students` WHERE
+			$query =mysqli_query($Conn, "SELECT `S_srn` FROM `students` WHERE
 				`S_contact` = '$Contact' && `S_password` = '$Password' AND `updated`='0' AND `is_deleted`='1'
 				") or die(mysqli_connect_error());
 			$row = mysqli_num_rows($query);

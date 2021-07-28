@@ -27,11 +27,11 @@ if (isset($_POST['Submit']))
        $os=$Password;
       $Pass= $obj->encrypt($os);
 
-    $query = mysqli_query($Conn, "SELECT `Password` FROM `Teachers` WHERE `T_srn` = '$T_srn'") or die(mysqli_connect_error());
+    $query = mysqli_query($Conn, "SELECT `Password` FROM `teachers` WHERE `T_srn` = '$T_srn'") or die(mysqli_connect_error());
 
     if (mysqli_num_rows($query) == 1) 
     {
-      $result = mysqli_query($Conn, "UPDATE `Teachers` SET `Password` = '$Pass' WHERE `T_srn` = '$T_srn' ") or die(mysqli_connect_error());
+      $result = mysqli_query($Conn, "UPDATE `teachers` SET `Password` = '$Pass' WHERE `T_srn` = '$T_srn' ") or die(mysqli_connect_error());
       if($result)
       {
         $log->success_entry($action,$Conn);

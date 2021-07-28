@@ -131,7 +131,7 @@ if(strlen($_SESSION['t_id'])=="")
       <?php
 
       
-              $sql = ("SELECT * FROM `Event` WHERE `is_deleted`='0' AND `disabled`='0'ORDER BY `Created_on` DESC") or die(mysqli_connect_error());
+              $sql = ("SELECT * FROM `event` WHERE `is_deleted`='0' AND `disabled`='0'ORDER BY `Created_on` DESC") or die(mysqli_connect_error());
 
               $q = mysqli_query($Conn, $sql);
               $row = mysqli_num_rows($q);

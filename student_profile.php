@@ -19,7 +19,7 @@ else
 	$log->success_entry($action,$Conn);
 
 	$S_srn = $_SESSION['s_id'];
-	$sql = "SELECT * from `students` join Class on students.Class_id=Class.Class_id WHERE
+	$sql = "SELECT * from `students` join class on students.Class_id=class.Class_id WHERE
 	S_srn = '$S_srn' AND `is_deleted`='0' AND `updated`='0' ORDER BY Created_on DESC";
 
 	$query = mysqli_query($Conn, $sql);

@@ -100,7 +100,7 @@ else{
 <?php
 $t=$_SESSION['t_id'];
 
-$sub="SELECT * from `Subjects` join teacherstd WHERE Subjects.Sub_id = teacherstd.id_sub AND teacherstd.id_teacher= $t AND teacherstd.is_deleted = '0' ";
+$sub="SELECT * from `subjects` join teacherstd WHERE subjects.Sub_id = teacherstd.id_sub AND teacherstd.id_teacher= $t AND teacherstd.is_deleted = '0' ";
 $re= $Conn -> query($sub); 
 
 
@@ -126,9 +126,9 @@ while ($query1=mysqli_fetch_array($re))
    ?>
                                     <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12" id="c">
                                     <?php 
-                                    $total_sub=mysqli_num_rows(mysqli_query($Conn,"SELECT `R_id` from `Subjects` join `Resources` WHERE Subjects.Sub_id = Resources.Sub_id AND Resources.Created_by= $t AND Resources.is_deleted = '0' AND Subjects.Class_id='$query[Class_id]'"));
+                                    $total_sub=mysqli_num_rows(mysqli_query($Conn,"SELECT `R_id` from `subjects` join `resources` WHERE subjects.Sub_id = resources.Sub_id AND resources.Created_by= $t AND resources.is_deleted = '0' AND subjects.Class_id='$query[Class_id]'"));
 
-                                    $resource_count=mysqli_num_rows(mysqli_query($Conn,"SELECT `R_id` FROM `Resources` WHERE `Created_by`='$t' AND `Sub_id`='$query1[id_sub]'")); ?>
+                                    $resource_count=mysqli_num_rows(mysqli_query($Conn,"SELECT `R_id` FROM `resources` WHERE `Created_by`='$t' AND `Sub_id`='$query1[id_sub]'")); ?>
 
                                         <a class="dashboard-stat bg-primary" href="resource-sub.php?C_id=<?php echo $obj->encrypt($query1['Class_id']);?>">
                                             <span class="number counter"><?php echo $total_sub; ?></span>

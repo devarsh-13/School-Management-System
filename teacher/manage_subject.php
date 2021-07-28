@@ -218,7 +218,7 @@ if(isset($_SESSION['t_id']))
 
                                 <?php
                                 
-                                $sql = "SELECT * from `Class`";
+                                $sql = "SELECT * from `class`";
                                 $query = mysqli_query($Conn, $sql);
                                 while ($result = mysqli_fetch_array($query)) { ?>
 
@@ -229,7 +229,7 @@ if(isset($_SESSION['t_id']))
                                             <?php
                                             
 
-                                            $prn = "SELECT * from `Subjects` WHERE  Class_id=$result[Class_id]";
+                                            $prn = "SELECT * from `subjects` WHERE  Class_id=$result[Class_id]";
                                             $xyz = mysqli_query($Conn, $prn);
                                             while ($sub = mysqli_fetch_array($xyz)) { ?>
                                                 <li>

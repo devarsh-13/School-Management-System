@@ -111,7 +111,7 @@ else
 
                 <?php
                     
-                    $resource_count=mysqli_num_rows(mysqli_query($Conn,"SELECT `R_id` FROM `Resources` WHERE `Created_by`='$t' AND `Sub_id`='$query1[id_sub]' AND `is_deleted`='0'"));
+                    $resource_count=mysqli_num_rows(mysqli_query($Conn,"SELECT `R_id` FROM `resources` WHERE `Created_by`='$t' AND `Sub_id`='$query1[id_sub]' AND `is_deleted`='0'"));
                 ?>
                 <a class="dashboard-stat bg-primary" href="resource-add.php?sub_id=<?php echo $obj->encrypt($query1['Sub_id']);?>">
                     <span class="number counter"><?php  echo $resource_count; ?></span>

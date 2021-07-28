@@ -9,7 +9,7 @@
 
                     require "connection.php";
 
-                    $sql = ("SELECT * FROM `notification` WHERE `is_deleted`='0'") or die(mysqli_connect_error());
+                    $sql = ("SELECT * FROM `notification` WHERE `is_deleted`='0' ORDER BY `N_Time` DESC") or die(mysqli_connect_error());
 
                     $q = mysqli_query($Conn, $sql);
 

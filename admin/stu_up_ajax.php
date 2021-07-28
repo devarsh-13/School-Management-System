@@ -24,7 +24,7 @@ error_reporting(0);
 
         $imageName =$gr.$extension;
 
-        $q=mysqli_query($Conn,"SELECT * FROM `Students` WHERE `S_grn`='$gr' AND `is_deleted`='0' AND `updated`='0'");
+        $q=mysqli_query($Conn,"SELECT * FROM `students` WHERE `S_grn`='$gr' AND `is_deleted`='0' AND `updated`='0'");
         $row=mysqli_num_rows($q);
 
         if($row==1)

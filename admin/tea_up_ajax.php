@@ -21,12 +21,12 @@ error_reporting(0);
         $name=pathinfo($_FILES["file"]["name"][$key],PATHINFO_FILENAME);
         $extension=pathinfo($_FILES["file"]["name"][$key],PATHINFO_EXTENSION);
 
-        $q=mysqli_query($Conn,"SELECT * FROM `Teachers` WHERE `T_name`='$name' AND `is_deleted`='0'");
+        $q=mysqli_query($Conn,"SELECT * FROM `teachers` WHERE `T_name`='$name' AND `is_deleted`='0'");
         $row=mysqli_num_rows($q);
 
         if($row==1)
         {
-            $q=mysqli_query($Conn,"UPDATE `Teachers` SET `T_photo`='$imageName' WHERE `T_name`='$name' AND `is_deleted`='0'");
+            $q=mysqli_query($Conn,"UPDATE `teachers` SET `T_photo`='$imageName' WHERE `T_name`='$name' AND `is_deleted`='0'");
             $flag=1;
             $result = compress($imageTmpName,$uploadFolder.$imageName);    
         }

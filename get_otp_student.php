@@ -25,7 +25,7 @@ if (isset($_POST['getOtp'])) {
 		$error_msg['C'] = 'Please enter proper 10 Digit number!! ';
 		$error = true;
 	}
-	$query = mysqli_query($Conn, "SELECT `S_srn` FROM `Students` WHERE
+	$query = mysqli_query($Conn, "SELECT `S_srn` FROM `students` WHERE
 			`S_contact` = '$mo'") or die(mysqli_connect_error());
 
 	$row = mysqli_num_rows($query);
