@@ -3,7 +3,7 @@
 
     $T_srn = $_SESSION['t_id'];
    
-   include_once "../Database/connection.php";
+   include_once "../connection.php";
    $sql = "SELECT * FROM `conversation` inner join `students` ON conversation.S_srn=students.S_srn WHERE `T_srn`='$T_srn' and `is_c_deleted`='0'   GROUP BY conversation.S_srn";
 
    

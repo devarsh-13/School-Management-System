@@ -11,7 +11,7 @@ include'../ec_dc.php';
 
       
   
-        include_once "../Database/connection.php";
+        include_once "../connection.php";
         
        $os= $_POST['message'];
         $message = mysqli_real_escape_string($Conn, $obj->encrypt($os));
