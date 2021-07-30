@@ -262,6 +262,13 @@ else
                                                 
                                             </div>
 
+                                               <div class="form-group">
+                                                <label for="default" class="col-sm-2 control-label">Degree</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" name="deg"  oninput='stringValidate(this)' maxlength="10" class="form-control" id="deg" required="required" autocomplete="off">
+                                                </div>
+                                            </div>
+
                                             <div class="form-group">
                                                 <label for="default" class="col-sm-2 control-label">Teacher Image</label>
                                                 <div class="col-sm-10">

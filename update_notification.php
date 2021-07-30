@@ -9,7 +9,7 @@
 
                     require "connection.php";
 
-                    $sql = ("SELECT * FROM `notification` WHERE `is_deleted`='0' ORDER BY `N_Time` DESC") or die(mysqli_connect_error());
+                    $sql = ("SELECT * FROM `notification` WHERE `is_deleted`='0' ORDER BY `Created_on` DESC") or die(mysqli_connect_error());
 
                     $q = mysqli_query($Conn, $sql);
 
@@ -54,7 +54,7 @@
 
                                                 <div class='tm-title'>
                                                 	<h4>" . $r['Notification_topic'] . "</h4>
-                                                	<span class='time'><i class='ti-time'></i>". $r['N_Time'] ."</span>
+                                                	<span class='time'><i class='ti-time'></i>". $r['N_Time'] ." ". $r['Created_on']. "</span>
                                                 </div>
                                                 <p> " . $r['Notification_text'] . "</p>
                                             </div>
