@@ -3,8 +3,7 @@
 error_reporting(0);
 include('../connection.php');
 include('../admin/store_data.php');
-include('../ec_dc.php');
-$obj = new ecdc();
+
 $action="In Upload Resources";
 $log=new Log();
 
@@ -130,7 +129,7 @@ while ($query1=mysqli_fetch_array($re))
 
                                     $resource_count=mysqli_num_rows(mysqli_query($Conn,"SELECT `R_id` FROM `resources` WHERE `Created_by`='$t' AND `Sub_id`='$query1[id_sub]'")); ?>
 
-                                        <a class="dashboard-stat bg-primary" href="resource-sub.php?C_id=<?php echo $obj->encrypt($query1['Class_id']);?>">
+                                        <a class="dashboard-stat bg-primary" href="resource-sub.php?C_id=<?php echo $query1['Class_id'];?>">
                                             <span class="number counter"><?php echo $total_sub; ?></span>
                                             <span class="name"><?php echo "Class-".$query['C_no']." ".$query['Stream'];?></span>
                                             <span class="bg-icon"><i class="fa fa-folder"></i></span>

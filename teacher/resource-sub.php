@@ -3,9 +3,7 @@
 session_start();
 error_reporting(0);
 include('../connection.php');
-include('../ec_dc.php');
 
-$obj = new ecdc();
 
 if(strlen($_SESSION['t_id'])=="")
 {   
@@ -90,7 +88,7 @@ else
 <?php 
 
 $t=$_SESSION['t_id'];
-$cid = $obj->decrypt($_GET['C_id']);
+$cid = $_GET['C_id'];
 
 $sql1 ="SELECT * from `subjects` join teacherstd WHERE subjects.Class_id='$cid' AND subjects.Sub_id=teacherstd.id_sub AND teacherstd.id_teacher= $t AND teacherstd.is_deleted = '0' ";
 $query= $Conn -> query($sql1); 
@@ -113,7 +111,7 @@ else
                     
                     $resource_count=mysqli_num_rows(mysqli_query($Conn,"SELECT `R_id` FROM `resources` WHERE `Created_by`='$t' AND `Sub_id`='$query1[id_sub]' AND `is_deleted`='0'"));
                 ?>
-                <a class="dashboard-stat bg-primary" href="resource-add.php?sub_id=<?php echo $obj->encrypt($query1['Sub_id']);?>">
+                <a class="dashboard-stat bg-primary" href="resource-add.php?sub_id=<?php echo $query1['Sub_id'];?>">
                     <span class="number counter"><?php  echo $resource_count; ?></span>
                     <span class="name"><?php echo $query1['Sub_name'];?></span>
                     <span class="bg-icon"><i class="fa fa-folder"></i></span>
