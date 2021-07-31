@@ -88,7 +88,7 @@ else
 <?php 
 
 $t=$_SESSION['t_id'];
-$cid = $_GET['C_id'];
+$cid = $_GET['idc'];
 
 $sql1 ="SELECT * from `subjects` join teacherstd WHERE subjects.Class_id='$cid' AND subjects.Sub_id=teacherstd.id_sub AND teacherstd.id_teacher= $t AND teacherstd.is_deleted = '0' ";
 $query= $Conn -> query($sql1); 
