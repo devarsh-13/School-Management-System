@@ -92,9 +92,10 @@
 
 <?php
 error_reporting(0);
+
 class Upload
 {
-    public function Check_stream()
+    public function Check_stream($d)
     {
         foreach ($d as $t) 
         {
@@ -160,7 +161,7 @@ class Upload
     {        
         $i=0;
         $lines=array();
-        array_push($lines, '1');
+        
 
         foreach ($d as $t) 
         {

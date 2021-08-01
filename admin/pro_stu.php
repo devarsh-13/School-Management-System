@@ -46,7 +46,7 @@ function get_pass($p2)
             $rep=$obj->Check_repeatation($d,$Conn);
 
 
-            if(sizeof($rep)>1)
+            if(sizeof($rep)>=1)
             {
                 $error="Data is not updated at row :";
 
@@ -55,6 +55,25 @@ function get_pass($p2)
                     $error=$error." $rep[$lines],";
                 }  
                 $error=$error." in Uploaded file";
+            }
+            else
+            {
+            	$stream_ch= $obj->Check_stream();
+
+                if($stream_ch==1)
+                {
+                	$er=0;
+                }
+                else
+                {
+                	$er=1;
+                    
+                }
+            }
+
+            if( $er==1)
+            {
+            	echo "<script>alert('Invalid data found in Stream field.');window.location.href='pro_stu.php';</script>"; 
             }
             else
             {
@@ -98,61 +117,54 @@ function get_pass($p2)
                     }
                     else
                     {
-                        $stream_ch= $obj->Check_stream();
 
-                        if($stream_ch==1)
+                        if($j>0)
                         {
-                            if($j>0)
+                            if($t[4]=='-' || $t[4]==' ')
                             {
-                                if($t[4]=='-' || $t[4]==' ')
-                                {
-                                    $t[4]=NULL;
-                                }
-
-                                $q=mysqli_query($Conn,"SELECT `Class_id` FROM `class` WHERE `C_no`='$t[3]' AND `Stream`='$t[4]' ");
-                                $c_id=mysqli_fetch_array($q);
-
-                                $q2=mysqli_query($Conn, "SELECT `S_password` FROM `students` WHERE `S_contact`=$t[9] AND `is_deleted`='0' AND `updated`='1' ");
-                                $raw_pass=mysqli_fetch_row($q2);
-
-                                if(isset($raw_pass['0']))
-                                {
-                                    $pass=$raw_pass['0'];
-                                }
-                                else
-                                {
-                                    $pass = $ec->encrypt(get_pass($t[0]));    
-                                }
-
-                                        $gr     =$Conn->real_escape_string($t[0]);
-                                        $uid    =$Conn->real_escape_string($t[1]);
-                                        $name   =$Conn->real_escape_string($t[2]);
-                                        $cast   =$Conn->real_escape_string($t[5]);
-                                        $cate   =$Conn->real_escape_string($t[6]);
-                                        $dob    =$Conn->real_escape_string($t[7]);
-                                        $cont   =$Conn->real_escape_string($t[9]);
-                                        $ad_date=$Conn->real_escape_string($t[8]);
-                                        $cid    =$Conn->real_escape_string($c_id[0]);
-
-                                        $adhar  =$Conn->real_escape_string($t[10]);
-                                        $hos    =$Conn->real_escape_string($t[12]);
-                                        $hom    =$Conn->real_escape_string($t[11]);
-                                        $handi  =$Conn->real_escape_string($t[13]);
-                                        $des    =$Conn->real_escape_string($t[14]);
-                                        $pass   =$Conn->real_escape_string($pass);
-                                        $remarks=$Conn->real_escape_string($t[15]);
-
-                                        $ay     =$Conn->real_escape_string($t[16]);
-                                        
-
-                                        $ok=$obj->Store_student($gr,$uid,$name,$cast,$cate,$dob,$cont,$ad_date,$cid,$adhar,$hos,$hom,$handi,$des,$pass,$remarks,$ay,$Conn);
+                                $t[4]=NULL;
                             }
-                            $j++;
+
+                            $q=mysqli_query($Conn,"SELECT `Class_id` FROM `class` WHERE `C_no`='$t[3]' AND `Stream`='$t[4]' ");
+                            $c_id=mysqli_fetch_array($q);
+
+                            $q2=mysqli_query($Conn, "SELECT `S_password` FROM `students` WHERE `S_contact`=$t[9] AND `is_deleted`='0' AND `updated`='1' ");
+                            $raw_pass=mysqli_fetch_row($q2);
+
+                            if(isset($raw_pass['0']))
+                            {
+                                $pass=$raw_pass['0'];
+                            }
+                            else
+                            {
+                                $pass = $ec->encrypt(get_pass($t[0]));    
+                            }
+
+                                    $gr     =$Conn->real_escape_string($t[0]);
+                                    $uid    =$Conn->real_escape_string($t[1]);
+                                    $name   =$Conn->real_escape_string($t[2]);
+                                    $cast   =$Conn->real_escape_string($t[5]);
+                                    $cate   =$Conn->real_escape_string($t[6]);
+                                    $dob    =$Conn->real_escape_string($t[7]);
+                                    $cont   =$Conn->real_escape_string($t[9]);
+                                    $ad_date=$Conn->real_escape_string($t[8]);
+                                    $cid    =$Conn->real_escape_string($c_id[0]);
+
+                                    $adhar  =$Conn->real_escape_string($t[10]);
+                                    $hos    =$Conn->real_escape_string($t[12]);
+                                    $hom    =$Conn->real_escape_string($t[11]);
+                                    $handi  =$Conn->real_escape_string($t[13]);
+                                    $des    =$Conn->real_escape_string($t[14]);
+                                    $pass   =$Conn->real_escape_string($pass);
+                                    $remarks=$Conn->real_escape_string($t[15]);
+
+                                    $ay     =$Conn->real_escape_string($t[16]);
+                                    
+
+                                    $ok=$obj->Store_student($gr,$uid,$name,$cast,$cate,$dob,$cont,$ad_date,$cid,$adhar,$hos,$hom,$handi,$des,$pass,$remarks,$ay,$Conn);
                         }
-                        else
-                        {
-                            echo "<script>alert('Invalid data found in Stream field.');window.location.href='pro_stu.php';</script>"; 
-                        }
+                        $j++;
+                    
                     }
                 }
                 for($k=0;$k<=10;$k++)
