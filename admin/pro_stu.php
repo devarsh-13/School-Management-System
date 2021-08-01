@@ -46,7 +46,7 @@ function get_pass($p2)
             $rep=$obj->Check_repeatation($d,$Conn);
 
 
-            if(sizeof($rep)>1)
+            if(sizeof($rep)>=1)
             {
                 $error="Data is not updated at row :";
 
@@ -55,6 +55,25 @@ function get_pass($p2)
                     $error=$error." $rep[$lines],";
                 }  
                 $error=$error." in Uploaded file";
+            }
+            else
+            {
+            	$stream_ch= $obj->Check_stream();
+
+                if($stream_ch==1)
+                {
+                	$er=0;
+                }
+                else
+                {
+                	$er=1;
+                    
+                }
+            }
+
+            if( $er==1)
+            {
+            	echo "<script>alert('Invalid data found in Stream field.');window.location.href='pro_stu.php';</script>"; 
             }
             else
             {
@@ -98,6 +117,7 @@ function get_pass($p2)
                     }
                     else
                     {
+
                         if($j>0)
                         {
                             if($t[4]=='-' || $t[4]==' ')
@@ -144,6 +164,7 @@ function get_pass($p2)
                                     $ok=$obj->Store_student($gr,$uid,$name,$cast,$cate,$dob,$cont,$ad_date,$cid,$adhar,$hos,$hom,$handi,$des,$pass,$remarks,$ay,$Conn);
                         }
                         $j++;
+                    
                     }
                 }
                 for($k=0;$k<=10;$k++)
