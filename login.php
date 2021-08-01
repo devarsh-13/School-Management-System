@@ -66,7 +66,7 @@ else
 				setcookie("contact_no", $Contact, time() + (10 * 365 * 24 * 60 * 60), "/");
 				
 				setcookie("password", $Password, time() + (10 * 365 * 24 * 60 * 60), "/");
-				header("location:http://localhost/Sem6CollegeProject/main.php");
+				header("location:main.php");
 			} 
 			else 
 			{
@@ -74,7 +74,7 @@ else
 				setcookie('contact_no', null, -1, '/');
 				unset($_COOKIE['password']);
 				setcookie('password', null, -1, '/');
-				header("location:http://localhost/Sem6CollegeProject/main.php");
+				header("location:main.php");
 			}
 		}
 		else 
