@@ -95,28 +95,6 @@ error_reporting(0);
 
 class Upload
 {
-    public function Check_stream($d)
-    {
-        foreach ($d as $t) 
-        {
-            if($i>0)
-            {
-                if($t[3]=='11' || $t[3]=='12')
-                {
-                    if($t[4]=='-' || $t[4]==' ')
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
-    }
-    
-
     public function Store_student($gr,$uid,$name,$cast,$cate,$dob,$con,$ad_date,$cid,$adhar,$hos,$hom,$handi,$des,$pass,$remarks,$ay,$Conn,$ph="student_default.jpg")
     {
         $d=date("Y-m-d");
@@ -216,7 +194,7 @@ class Upload
                         $handi  =$Conn->real_escape_string($t[13]);
                         $ay     =$Conn->real_escape_string($t[16]);
 
-                        if(($t[3]==11 || $t[3]==12)&&(empty($t[4])))
+                        if(($t[3]==11 || $t[3]==12)&& ( empty($t[4]) || $t[4]=='-' ))
                         {
                             array_push($lines,$i);
                             continue;

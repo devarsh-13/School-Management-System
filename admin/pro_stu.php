@@ -58,25 +58,7 @@ function get_pass($p2)
             }
             else
             {
-            	$stream_ch= $obj->Check_stream();
-
-                if($stream_ch==1)
-                {
-                	$er=0;
-                }
-                else
-                {
-                	$er=1;
-                    
-                }
-            }
-
-            if( $er==1)
-            {
-            	echo "<script>alert('Invalid data found in Stream field.');window.location.href='pro_stu.php';</script>"; 
-            }
-            else
-            {
+            	
                 $j=0;
                 foreach ($d as $t) 
                 {
@@ -113,7 +95,7 @@ function get_pass($p2)
                     }
                     if($flag1==0)
                     {
-                          echo "<script>alert('Invalid File Please upload a valid file.');window.location.href='Import.php';</script>"; 
+                          echo "<script>alert('Invalid File Please upload a valid file.');window.location.href='pro_stu.php';</script>"; 
                     }
                     else
                     {
@@ -207,7 +189,7 @@ function get_pass($p2)
     }
     else
     {
-        echo "<script>alert('Only excel files are accepted (xlsx)');window.location.href='Import.php';</script>";  
+        echo "<script>alert('Only excel files are accepted (xlsx)');window.location.href='pro_stu.php';</script>";  
     }
 }
 

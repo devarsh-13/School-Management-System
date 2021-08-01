@@ -149,7 +149,7 @@ $result = mysqli_fetch_array($query);
 
 									<li><a href="#profile" data-toggle="tab">profile</a></li>
 									<li><a href="#setting" data-toggle="tab">setting</a></li>
-									<li><a href="Logout.php">Logout</a></li>
+									<li><a href="logout.php">Logout</a></li>
 								</ul>
 							</div>
 						</div>
