@@ -119,12 +119,21 @@ else
     margin-left: 100%;
 }
 
-                .scrollmenu table {
+                .scrollmenu
+    {
+        max-height: 100%;
+        border: 1px solid #ddd;
+        
+        overflow-x: auto;
+    }
 
-                    background-color: #ddd;
-                    width: 100%;
-
-                }
+  
+    .scrollmenu table
+    {
+        width: 100%;
+        background-color: #ddd;
+        
+    }
 
                 .scrollmenu th,
                 td {
@@ -161,12 +170,10 @@ else
                 
                   <button type="submit" name="btn_delete" id="btn_delete" class="btn btn-danger">Delete</button>
                   </div>
-                        </div>
                     </div>
+                    
 
 
-                    <div class="row">
-                        <div class="col-md-12">
                             <div class="panel">
                                 <div class="panel-heading">
                                     <div class="panel-title">
@@ -189,7 +196,7 @@ else
                                         <div class="scrollmenu">
 
 
-                                            <table id="example" class="display nowrap">
+                                            <table id="example" class="display nowrap" width="100%">
 
                                                 <thead>
 
