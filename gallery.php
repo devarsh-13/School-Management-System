@@ -35,9 +35,7 @@ if (isset($_SESSION['s_id'])) {
     <link rel="stylesheet" href="teacher/assets/css/metisMenu.css">
     <link rel="stylesheet" href="teacher/assets/css/owl.carousel.min.css">
     <link rel="stylesheet" href="teacher/assets/css/slicknav.min.css">
-    <!-- amchart css -->
-    <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
-    <!-- others css -->
+    
 
     <link rel="stylesheet" href="assets/css/default-css.css">
     <link rel="stylesheet" href="teacher/assets/css/styles.css">
@@ -542,18 +540,11 @@ body {
     }
 }
 
-.logo img {
+.educo_logo img {
     max-width: 100%;
-    height: auto;
+    height: 15%;
 }
-        .errorWrap {
-    padding: 10px;
-    margin: 0 0 20px 0;
-    background: #fff;
-    border-left: 4px solid #dd3d36;
-    -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
-    box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
-}
+       
 .succWrap{
     padding: 10px;
     margin: 0 0 20px 0;
