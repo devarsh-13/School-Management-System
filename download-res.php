@@ -87,49 +87,65 @@ if (!isset($_SESSION['s_id'])) {
 
 						<?php
 						
-						$S_srn = $_SESSION['id'];
-						$sub_id = $obj->decrypt($_GET['sub_id']);
+					
 						
-
-						$sql1 = "SELECT * from `resources` WHERE `Sub_id`='$sub_id' AND `is_deleted`='0'";
-						$query = $Conn->query($sql1);
-						$row = mysqli_num_rows($query);
-						$path = "teacher/resources/";
-						 
-    					$folder="$sub_id/";
-
-						$cnt = 1;
-						if ($row > 0) {
-							while ($query1 = mysqli_fetch_array($query)) {
-								$full = $path.$folder.$query1['R_path'];
-						?>
-								<tr align="center">
-									<td><?php echo htmlentities($cnt); ?></td>
-									<td>
-										<a href="<?php echo $full; ?>" download="<?php echo $query1['R_path']; ?>"><img src="teacher/images/download.png" height="25px" width='25px' />&nbsp;Download</a>
-									</td>
-
-									<td><?php echo $query1['R_path']; ?></td>
-
-									<td><?php
-										$id = $query1['Created_by'];
-										$q = mysqli_query($Conn, "SELECT `T_name` FROM `teachers` WHERE `T_srn` = '$id' ");
-										$name = mysqli_fetch_array($q);
-										echo $name[0];
-										?>
-									</td>
-
-									<td><?php echo $query1['Created_on']; ?></td>
+					
 
 
 
-								</tr>
-						<?php
-								$cnt = $cnt + 1;
-							}
-						}
-						?>
+$sub_id=  $_GET['sub_id'];
 
+
+
+$sql1 ="SELECT * from `resources` WHERE `Sub_id`='$sub_id' AND `is_deleted`='0'";
+
+$query=  mysqli_query($Conn,$sql1); 
+$row = mysqli_num_rows($query);
+ $path = "teacher/resources/";
+ $folder="$sub_id/";
+$cnt=1;
+if($row > 0)
+{
+while ($query1=mysqli_fetch_array($query)) 
+{
+    $full = $path.$folder.$query1['R_path'];
+
+   
+   ?>
+                    <tr align="center">
+                        <td><?php echo htmlentities($cnt);?></td>
+                        <td>
+                          
+                               <a href="<?php echo $full; ?>" download="<?php echo $query1['R_path']; ?>"><img src="teacher/images/download.png" height="25px" width='25px' />&nbsp;Download</a>
+                        </td>
+                        
+                        <td><?php echo $query1['R_path'];?></td>
+
+                         <td><?php
+                                $id=$query1['Created_by'];
+                                $q=mysqli_query($Conn,"SELECT `T_name` FROM `teachers` WHERE `T_srn` = '$id' ");
+                                $name=mysqli_fetch_array($q);
+                                echo $name[0];
+                            ?>
+                        </td>
+                        
+                        <td><?php echo $query1['Created_on'];?></td>
+                       
+                       
+                   
+                    </tr>
+<?php 
+        
+
+        $cnt=$cnt+1;
+    }
+    $_POST = array();
+}
+else
+{
+    echo "<tr align='center'><td colspan='5'> No Files Found </td></tr>";
+}
+ ?>
 
 
 					</table>

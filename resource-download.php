@@ -156,7 +156,7 @@ else
                     
                     $resource_count=mysqli_num_rows(mysqli_query($Conn,"SELECT `R_id` FROM `resources` WHERE `Sub_id`='$query1[Sub_id]' AND `is_deleted`='0'"));
                 ?>
-							<a class="dashboard-stat bg-primary" href="download-res.php?sub_id=<?php echo $obj->encrypt($query1['Sub_id']);?>">
+							<a class="dashboard-stat bg-primary" href="download-res.php?sub_id=<?php echo $query1['Sub_id'];?>">
 								<span class="number counter"><?php  echo $resource_count; ?></span>
 								<span class="name"><?php echo $query1['Sub_name']; ?></span>
 								<span class="bg-icon"><i class="fa fa-folder"></i></span>
