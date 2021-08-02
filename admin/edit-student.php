@@ -23,7 +23,7 @@ else
         $log->success_entry($action, $Conn);
     }
     
-    $stid=$obj->decrypt($_GET['S_id']);
+    $stid=$_GET['S_id'];
     
     if (isset($_POST['update'])) 
     {

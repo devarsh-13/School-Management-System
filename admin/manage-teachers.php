@@ -362,7 +362,7 @@ if($row > 0)
                         <td><?php echo htmlentities($cnt);?></td>
 
                         <td>
-                            <a href="edit-teacher.php?T_id=<?php echo $obj->encrypt($result['T_srn']);?>">
+                            <a href="edit-teacher.php?T_id=<?php echo $result['T_srn'];?>">
                                     <img src="images/edit-icon.jpg" height="25px" width='25px'/> Edit
                             </a> 
                               &nbsp;

@@ -37,7 +37,7 @@ if (isset($_SESSION['t_id'])) {
 $T_srn = $_SESSION['t_id'];
 $update = mysqli_query($Conn, "UPDATE teachers SET t_status ='offline' WHERE T_srn ='$T_srn' ") or die(mysqli_connect_error());
 
-$row1=mysqli_num_rows(mysqli_query($Conn,"SELECT `R_id` FROM `resources` WHERE `Created_by`='$T_srn'"));
+$row1=mysqli_num_rows(mysqli_query($Conn,"SELECT `R_id` FROM `resources` WHERE `Created_by`='$T_srn' AND `is_deleted`='0'"));
 $row3=mysqli_num_rows(mysqli_query($Conn,"SELECT `Sr_n` FROM `event` "));
 $row4=mysqli_num_rows(mysqli_query($Conn,"SELECT `Id` FROM `images` "));
 

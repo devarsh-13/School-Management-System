@@ -24,7 +24,7 @@ else
         $log->success_entry($action,$Conn);
     }
 
-    $tid=$obj->decrypt($_GET['T_id']);
+    $tid=$_GET['T_id'];
 
 
     if(isset($_POST['update']))
