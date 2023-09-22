@@ -34,20 +34,27 @@ else
         $d = date("Y-m-d");
         $up=false;
          
-        if(strlen($_FILES['file']['name'])=="")
+        if(strlen($_FILES['file']['name'])==0)
         {            
             $imageName=$_POST['img_name'];            
         }
         else
         {
-            $uploadFolder ='../user_photos/admin/';
-            $imageTmpName = $_FILES['file']['tmp_name'];
-            $ext=pathinfo($_FILES['file']['name'],PATHINFO_EXTENSION);
-            $imageName ="$con.$ext";
-            $up=true;
-            $old=$uploadFolder.$_POST['img_name'];
-            unset($old);
-
+             if ($_FILES["file"]["size"] > 500000) 
+            {
+                echo "<script>alert('Sorry, your file is too large.');window.location.href='manage-admin.php';</script>";   
+            }
+            else
+            {
+                $uploadFolder ='../user_photos/admin/';
+                $imageTmpName = $_FILES['file']['tmp_name'];
+                $ext=pathinfo($_FILES['file']['name'],PATHINFO_EXTENSION);
+                $imageName ="$con.$ext";
+                $up=true;
+                $old=$uploadFolder.$_POST['img_name'];
+                unset($old);
+            }
+ 
         }
 
 

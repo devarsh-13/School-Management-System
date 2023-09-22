@@ -54,7 +54,7 @@ else
             $ext=pathinfo($_FILES['file']['name'],PATHINFO_EXTENSION);
 
             
-            if (strlen($_FILES['file']['name'])=="")
+            if (strlen($_FILES['file']['name'])==0)
             {
                 $imageName="teacher_default.jpg";
             }
@@ -63,6 +63,11 @@ else
                 $imageName ="$con.$ext";    
             }
 
+        if ($_FILES["file"]["size"] > 500000) 
+            {
+                echo "<script>alert('Sorry, your file is too large.');window.location.href='add-teachers.php';</script>";   
+            }
+            else{
             $Sql = "INSERT INTO `teachers` 
                                 (   
                                     `T_photo`,
@@ -97,11 +102,17 @@ else
 
 
             $q = mysqli_query($Conn, $Sql);
+        }
             $action = "Add teacher data";
             if ($q) 
             {
+
+                    if(isset($_FILES['file']))
+                    {
+                        compress($imageTmpName, $uploadFolder . $imageName);                                   
+                    }
                 
-                compress($imageTmpName,$uploadFolder.$imageName);
+                
                 $log->success_entry($action, $Conn);
                 
                 echo "<script>alert('Teacher ADD Successfully');window.location.href='manage-teachers.php';</script>";   

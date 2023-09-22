@@ -1,0 +1,8 @@
+
+    <div class="user-detail">
+      <img src="https://reqres.in/img/faces/1-image.jpg" alt="George Bluth">
+      <h2>George Bluth</h2>
+      <p>Email: george.bluth@reqres.in</p>
+      <button id="downloadButton">Download</button>
+    </div>
+  

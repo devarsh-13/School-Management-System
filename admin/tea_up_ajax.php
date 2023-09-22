@@ -12,10 +12,20 @@ error_reporting(0);
     $action="Teacher Images Uploaded";
         
     $flag=0;
+    $size = 1;
 
     foreach ($_FILES['file']['tmp_name'] as $key => $image) 
     {
         $imageTmpName = $_FILES['file']['tmp_name'][$key];
+
+         if ($_FILES["file"]["size"][$key] > 500000) 
+        {
+                echo "<script>alert('Sorry, your file is too large.');window.location.href='tea_img_up.php';</script>";  
+                $size = 0;
+        }
+
+        if($size)
+        {
         $imageName = $_FILES['file']['name'][$key];
 
         $name=pathinfo($_FILES["file"]["name"][$key],PATHINFO_FILENAME);
@@ -29,6 +39,7 @@ error_reporting(0);
             $q=mysqli_query($Conn,"UPDATE `teachers` SET `T_photo`='$imageName' WHERE `T_name`='$name' AND `is_deleted`='0'");
             $flag=1;
             $result = compress($imageTmpName,$uploadFolder.$imageName);    
+        }
         }
     }  
 

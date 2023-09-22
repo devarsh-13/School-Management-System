@@ -59,15 +59,21 @@ else
         }
         else
         {
+            if ($_FILES["file"]["size"] > 500000) 
+            {
+                echo "<script>alert('Sorry, your file is too large.');window.location.href='manage-students.php';</script>";   
+            }
+            else
+            {
+                $uploadFolder ='../user_photos/student/';
+                $imageTmpName = $_FILES['file']['tmp_name'];
+                $ext=pathinfo($_FILES['file']['name'],PATHINFO_EXTENSION);
+                $imageName ="$gr.$ext";
+                $up=true;
 
-            $uploadFolder ='../user_photos/student/';
-            $imageTmpName = $_FILES['file']['tmp_name'];
-            $ext=pathinfo($_FILES['file']['name'],PATHINFO_EXTENSION);
-            $imageName ="$gr.$ext";
-            $up=true;
-
-            $old_img=$uploadFolder.$_POST['img_name'];
-            unset($old_img);
+                $old_img=$uploadFolder.$_POST['img_name'];
+                unset($old_img);
+            }
         }
 
         $Sql = "UPDATE `students` SET `S_photo`='$imageName',`S_grn`='$gr',`S_uidn`='$ui',`S_name`='$sn',`S_caste`='$cast', `S_category`= '$cat', `S_dob`= '$dob',`S_contact`='$con',`S_ad_date`='$adate',`Class_id`= '$c',`S_adharn`='$adhar',`S_hostel`='$hostel',`S_home`='$home',`S_handicapped`='$hand',`S_describe`='$des',`S_password`='$pass',`Academic_year`='$ay',`S_remarks`='$re',`is_deleted`='0',`Created_on`='$d' WHERE `S_srn`='$stid'";

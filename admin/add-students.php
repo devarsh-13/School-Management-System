@@ -71,7 +71,7 @@ else
             $uploadFolder = '../user_photos/student/';
             $imageTmpName = $_FILES['file']['tmp_name'];
 
-            if(strlen($_FILES['file']['name'])=="")
+            if(strlen($_FILES['file']['name'])==0) 
             {
                 $imageName = "student_default.jpg";
             }
@@ -82,6 +82,12 @@ else
 
             }
 
+            // Check file size
+            if ($_FILES["file"]["size"] > 500000) 
+            {
+                echo "<script>alert('Sorry, your file is too large.');window.location.href='add-students.php';</script>";   
+            }
+            else{
             $Sql = "INSERT INTO `students` 
                                         (
                                             `S_photo`,
@@ -132,13 +138,19 @@ else
                                         )";
 
             $q = mysqli_query($Conn, $Sql);
-           
+           }
             if ($q) 
             {
-                compress($imageTmpName, $uploadFolder.$imageName);
+                $msg = "Student Info Added Successfully";
+                
+
+                    if(isset($_FILES['file']))
+                    {
+                        compress($imageTmpName, $uploadFolder.$imageName);
+                    }
                 $action = "Student Added";   
                 $log->success_entry($action, $Conn);
-                echo "<script>alert('Student Info Added Successfully');window.location.href='manage-students.php';</script>";   
+                  
             }
             else 
             {
@@ -305,7 +317,19 @@ else
                                 <div class="main-content-inner">
                                     <!-- MAIN CONTENT GOES HERE -->
                                     <div class="panel-body">
+                                             <?php if ($msg) { ?>
+                                                
+                                            <div class="alert alert-success alert-dismissible" role="alert">
+                                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                <?php echo htmlentities($msg); ?>
+                                            </div>  
+                                        <?php } else if ($error) { ?>
+                                            <div class="alert alert-success alert-dismissible" role="alert">
+                                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 
+                                                <?php echo htmlentities($error); ?>
+                                            </div>
+                                        <?php } ?>
                                         <form class="form-horizontal" method="post" enctype="multipart/form-data">
 
                                             <div class="form-group">

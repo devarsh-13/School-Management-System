@@ -46,7 +46,7 @@ else
         if($r==0)
         {
         
-            if(strlen($_FILES['file']['name'])=="")      
+            if(strlen($_FILES['file']['name'])==0)      
             {
                 $imageName="admin_default.jpg";
             }
@@ -54,9 +54,14 @@ else
             {
                 $imageName ="$con.$ext";
             }
-
-
-            $Sql = "INSERT INTO `admin` 
+    
+           // Check file size
+            if ($_FILES["file"]["size"] > 500000) 
+            {
+                echo "<script>alert('Sorry, your file is too large.');window.location.href='add-admin.php';</script>";   
+            }
+            else{
+                $Sql = "INSERT INTO `admin` 
                                 (   
                                     `A_Photo`,
                                     `A_name`, 
@@ -68,7 +73,7 @@ else
                                     `is_deleted`,
                                     `Created_by`
                                 
-                                        ) 
+                                ) 
 
                                 VALUES 
                                 (
@@ -82,13 +87,20 @@ else
                                     '0',
                                     '$a'
                                 )";
-
-
-            $q = mysqli_query($Conn, $Sql);
+                                 $q = mysqli_query($Conn, $Sql);
+            
+            }
+           
             $action = "Admin data Added";
             if ($q)
             {   
-                $result = compress($imageTmpName, $uploadFolder . $imageName);
+
+                    if(isset($_FILES['file']))
+                    {
+                        compress($imageTmpName, $uploadFolder . $imageName);                                   
+                    }
+                   
+                
                 $log->success_entry($action, $Conn);
                 
                 echo "<script>alert('Admin Info Added Successfully');window.location.href='manage-admin.php';</script>";   
